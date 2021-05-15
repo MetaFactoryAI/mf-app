@@ -1,0 +1,44 @@
+{
+  "main": "__generated__/AppEntry.js",
+  "name": "mf-app",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "postinstall": "expo-yarn-workspaces postinstall",
+    "build": "next build",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@mf/components": "*",
+    "expo": "41.0.1",
+    "expo-status-bar": "1.0.4",
+    "moment": "2.28.0",
+    "next": "10.2.0",
+    "next-transpile-modules": "4.1.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
+    "react-native-web": "0.13.18"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.6",
+    "@expo/next-adapter": "2.1.32",
+    "next-compose-plugins": "2.2.0"
+  },
+  "expo-yarn-workspaces": {
+    "symlinks": [
+      "react-native-unimodules",
+      "expo-constants",
+      "expo-updates",
+      "@unimodules/core",
+      "@unimodules/react-native-adapter",
+      "unimodules-constants-interface",
+      "unimodules-font-interface"
+    ]
+  }
+}

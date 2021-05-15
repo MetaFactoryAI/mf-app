@@ -1,0 +1,14 @@
+node_modules
+__generated__
+
+# IDE
+.idea/*
+
+# build
+**/*.tsbuildinfo
+yarn-error.log
+
+# macOS
+.DS_Store
+tags
+.vscode

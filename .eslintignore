@@ -1,0 +1,9 @@
+__generated__
+.expo
+.expo-shared
+next.config.js
+metro.config.js
+
+# jest
+coverage
+
