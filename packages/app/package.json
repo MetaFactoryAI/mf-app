@@ -27,7 +27,7 @@
     "react-native-web": "0.13.18"
   },
   "devDependencies": {
-    "@babel/core": "7.9.6",
+    "@babel/core": "7.14.3",
     "@expo/next-adapter": "2.1.32",
     "next-compose-plugins": "2.2.0"
   },
