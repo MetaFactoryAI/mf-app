@@ -11,7 +11,8 @@
     "typecheck": "yarn app typecheck",
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
     "app": "yarn --cwd packages/app/",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "yarn app test"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "2.0.0",
