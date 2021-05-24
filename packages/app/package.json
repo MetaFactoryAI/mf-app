@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
-    "@expo/next-adapter": "2.1.32",
+    "@expo/next-adapter": "2.1.73",
     "next-compose-plugins": "2.2.0"
   },
   "expo-yarn-workspaces": {
