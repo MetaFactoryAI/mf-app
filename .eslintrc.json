@@ -25,6 +25,7 @@
   },
   "rules": {
     "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-floating-promises": "off",
 
     // Breaks ESLint: https://github.com/Intellicode/eslint-plugin-react-native/issues/284
     "react-native/no-single-element-style-arrays": "off",
@@ -48,14 +49,20 @@
     // Styles usually declared at bottom of component file
     "@typescript-eslint/no-use-before-define": "off",
 
-    "@typescript-eslint/ban-ts-comment": ["error", {
-      "ts-expect-error": "allow-with-description",
-      "minimumDescriptionLength": 5
-    }],
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "ts-expect-error": "allow-with-description",
+        "minimumDescriptionLength": 5
+      }
+    ],
 
-    "react/style-prop-object": ["error", {
-      "allow": ["StatusBar"]
-    }]
+    "react/style-prop-object": [
+      "error",
+      {
+        "allow": ["StatusBar"]
+      }
+    ]
   },
   "overrides": [
     {
