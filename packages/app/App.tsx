@@ -1,3 +1,5 @@
+import './shim';
+
 import { BaseComponent } from '@mf/components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
