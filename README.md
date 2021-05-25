@@ -28,6 +28,11 @@ in the app folder:
 yarn app add restyled
 # install again at root so workspaces can work its magic
 yarn install
+
+# post install will inject the nessecery node.js libraries for web3.js
+# you will need to set stream in package.json under 'react-native' to:
+#    "stream": "react-native-stream",
+# This is not ideal, and is a pain for injecting - looking into how we can avoid this.
 ```
 
 The nice thing about the monorepo is that you only need each package to be in **one `package.json` file**. You don't need to add a dependency in every `package.json`. So we can use the main app as the entry point for basically every dependency.
