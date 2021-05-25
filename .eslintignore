@@ -1,6 +1,7 @@
 __generated__
 .expo
 .expo-shared
+shim.js
 next.config.js
 metro.config.js
 
