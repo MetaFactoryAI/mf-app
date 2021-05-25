@@ -12,6 +12,7 @@
   ],
   "plugins": ["simple-import-sort", "react-native"],
   "settings": {
+    "import/extensions": [".js", ".jsx", ".ts", ".tsx"],
     "import/resolver": {
       "typescript": {}
     }
