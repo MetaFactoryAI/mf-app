@@ -31,6 +31,11 @@ yarn add restyled
 cd ../..
 # install again
 yarn install
+
+# post install will inject the nessecery node.js libraries for web3.js
+# you will need to set stream in package.json under 'react-native' to:
+#    "stream": "react-native-stream",
+# This is not ideal, and is a pain for injecting - looking into how we can avoid this.
 ```
 
 The nice thing about the monorepo is that you only need each package to be in **one `package.json` file**. You don't need to add a dependency in every `package.json`. So I use my main app as the entry point for basically every dependency.
@@ -55,7 +60,7 @@ Put this in your **root package.json** if you want to avoid excessive callbacks 
 
 If you encounter a build error indicating you don't have these, you should add them. Apparently Expo is working on making this step simpler with a single symlink.
 
-Typically you have to do this: 
+Typically you have to do this:
 
 - Install an expo package
 - add it to the `symlinks` in `package.json` of your `packages/app`
