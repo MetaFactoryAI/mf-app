@@ -54,6 +54,8 @@ const App: React.FC = () => (
 export default withWalletConnect(App, {
   redirectUrl: Platform.OS === 'web' ? window.location.origin : 'appScheme://',
   storageOptions: {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     asyncStorage: AsyncStorage,
   },
 });
