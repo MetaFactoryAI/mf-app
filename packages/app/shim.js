@@ -25,5 +25,3 @@ if (typeof localStorage !== 'undefined') {
 // crypto is loaded first, so it can populate global.crypto
 require('stream');
 require('crypto');
-// require('react-native').NativeModules.RNRandomBytes
-// let RNRandomBytes = require('react-native').NativeModules.RNRandomBytes;
