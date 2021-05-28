@@ -10,7 +10,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { Text, Button, View, Platform } from 'react-native';
+import { Text, Button, SafeAreaView, View, Platform } from 'react-native';
 
 import { linking } from './navigation/linking';
 import { RootNavigator } from './navigation/RootNavigator';
@@ -21,12 +21,14 @@ const WalletConnectUI: React.FC = () => {
   if (!connector.connected) {
     // Connect wallet before continuing
     return (
-      <Button
-        title="Connect"
-        onPress={() => {
-          connector.connect();
-        }}
-      />
+      <SafeAreaView>
+        <Button
+          title="Connect"
+          onPress={() => {
+            connector.connect();
+          }}
+        />
+      </SafeAreaView>
     );
   }
 
