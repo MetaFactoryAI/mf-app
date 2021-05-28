@@ -52,7 +52,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
-    "react-native-crypto": "^2.2.0",
+    "react-native-crypto": "git+https://github.com/MetaFactoryAI/react-native-crypto.git",
     "react-native-get-random-values": "1.5.0",
     "react-native-level-fs": "^3.0.0",
     "react-native-os": "^1.0.1",
