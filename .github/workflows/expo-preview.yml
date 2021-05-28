@@ -1,0 +1,42 @@
+name: Expo Preview
+
+on:
+  pull_request:
+    paths:
+      - 'packages/app/**'
+    branches:
+      - master
+
+jobs:
+  publish:
+    if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
+    name: Publish Preview
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.0
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
+          expo-cache: true
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+      - name: Install packages
+        run: yarn --frozen-lockfile
+      - name: Deploy Preview to Expo
+        run: yarn deploy -- -- --release-channel=pr-${{ github.event.number }}
+      - uses: unsplash/comment-on-pr@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          msg: |
+            ## :white_check_mark: App is ready for review. [Click to Preview](https://expo.io/@metafactory/mfapp?release-channel=pr-${{ github.event.number }}).
