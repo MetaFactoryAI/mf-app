@@ -6,8 +6,9 @@
     "packages/*"
   ],
   "scripts": {
-    "native": "yarn app start",
+    "start": "yarn app start",
     "web": "yarn app next",
+    "deploy": "yarn app deploy",
     "typecheck": "yarn app typecheck",
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
     "app": "yarn --cwd packages/app/",
