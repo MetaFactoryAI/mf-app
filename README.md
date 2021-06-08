@@ -6,7 +6,7 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 
 - Before you begin, you should ensure you run 'yarn install' at root directory, the post install script should take care of all injections etc. with the libraries required that aren't nativly supported by expo.
 
-- If you run into any linking issues (missing 'stream' or 'aynscstorage') it is often due to running 'yarn ios' after/before 'yarn web' both will work on the same config, but for some reason if you want to switch you need to delete node_modules/yarn.lock in both levels and run 'yarn install' again at root. This will fix the issue until we have resolved whatever is causing - most likely a modification caused by `yarn ios/web` in expo/metro config packager, there is no post-install issues etc as either can work out of the box after a 'yarn install'.
+- If you run into any linking issues (missing 'stream' or 'aynscstorage') you likely just need to close the server/localhost page before switching from web to native apps (ios/android) and vice versa, as we depend on package injection the auto generated files of expo/react-native-web need to be refreshed between platforms.
 
 # Folders
 
