@@ -12,7 +12,8 @@
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
     "app": "yarn --cwd packages/app/",
     "prepare": "husky install",
-    "postinstall": "npx rn-nodeify \"stream, crypto\" --hack --yarn"
+    "postinstall": "npx rn-nodeify \"stream, crypto\" --hack --yarn",
+    "test": "yarn app test"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "2.0.0",
