@@ -11,6 +11,7 @@
     "eject": "expo eject",
     "postinstall": "expo-yarn-workspaces postinstall",
     "build": "next build",
+    "deploy": "expo publish",
     "typecheck": "tsc",
     "test": "echo 'No tests setup'"
   },
@@ -24,7 +25,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
-    "react-native-web": "0.13.18"
+    "react-native-web": "0.16.5"
   },
   "devDependencies": {
     "@babel/core": "7.9.6",
