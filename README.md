@@ -6,13 +6,13 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 
 - `packages/components` (import as `@mf/components`)
   - Make sure to add any other package folders you make to `app/next.config.js` after `next-transpile-modules`.
-- `packages/expo-app` (this is the app you run)
+- `packages/app` (this is the app you run)
 
 # Start app
 
 - Clone the repo
 - Run `yarn install`
-- `yarn native` to run the expo app, `yarn web` to run next.js
+- `yarn start` to run the expo app, `yarn web` to run next.js
 
 # Edit code
 
@@ -20,22 +20,19 @@ Open `packages/components` and start editing. Watch changes happen instantly in 
 
 # Practices
 
-I tend to install 99% of my packages directly in the `expo-app` folder. It usually looks like this:
+In order to run a yarn command in the `app` folder, you can prepend it with `yarn app`. For example, to install a package
+in the app folder:
 
 ```sh
-# open the app
-cd package/expo-app
 # add a package
-yarn add restyled
-# go back to the root
-cd ../..
-# install again
+yarn app add restyled
+# install again at root so workspaces can work its magic
 yarn install
 ```
 
-The nice thing about the monorepo is that you only need each package to be in **one `package.json` file**. You don't need to add a dependency in every `package.json`. So I use my main app as the entry point for basically every dependency.
+The nice thing about the monorepo is that you only need each package to be in **one `package.json` file**. You don't need to add a dependency in every `package.json`. So we can use the main app as the entry point for basically every dependency.
 
-I also run `yarn install` at the root every time I add a package, since I use a `patch-package` `postinstall` script at the root folder.
+You should also run `yarn install` at the root every time you add a package, since we use a `patch-package` `postinstall` script at the root folder.
 
 # EAS Build
 
@@ -55,7 +52,7 @@ Put this in your **root package.json** if you want to avoid excessive callbacks 
 
 If you encounter a build error indicating you don't have these, you should add them. Apparently Expo is working on making this step simpler with a single symlink.
 
-Typically you have to do this: 
+Typically you have to do this:
 
 - Install an expo package
 - add it to the `symlinks` in `package.json` of your `packages/app`
