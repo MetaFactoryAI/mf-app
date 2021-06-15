@@ -3,6 +3,7 @@ __generated__
 .expo-shared
 next.config.js
 metro.config.js
+webpack.config.js
 
 # jest
 coverage

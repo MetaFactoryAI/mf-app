@@ -2,6 +2,7 @@
   "expo": {
     "name": "MetaFactory",
     "slug": "mfapp",
+    "scheme": "mf",
     "owner": "metafactory",
     "version": "1.0.0",
     "primaryColor": "#00ECFF",
