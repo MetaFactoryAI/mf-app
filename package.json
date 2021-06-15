@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "start": "yarn app start",
-    "web": "yarn app next",
+    "web": "yarn app web",
     "deploy": "yarn app deploy",
     "typecheck": "yarn app typecheck",
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
