@@ -47,9 +47,14 @@ const App: React.FC = () => {
   );
 };
 
+let redirectEndpoint = 'web';
+if (typeof window !== 'undefined') {
+  redirectEndpoint = 'appScheme://';
+}
+
 // eslint-disable-next-line import/no-default-export
 export default withWalletConnect(App, {
-  redirectUrl: Platform.OS === 'web' ? window.location.origin : 'appScheme://',
+  redirectUrl: redirectEndpoint,
   storageOptions: {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
