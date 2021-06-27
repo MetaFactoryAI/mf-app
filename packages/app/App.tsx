@@ -64,5 +64,6 @@ export default withWalletConnect(App, {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     asyncStorage: AsyncStorage,
+    database: 'mf-app-kv-storage-db',
   },
 });
