@@ -4,6 +4,8 @@ __generated__
 next.config.js
 metro.config.js
 webpack.config.js
+.next
+web-build
 
 # jest
 coverage
