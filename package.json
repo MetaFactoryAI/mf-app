@@ -9,6 +9,7 @@
     "start": "yarn app start",
     "web": "yarn app web",
     "deploy": "yarn app deploy",
+    "postinstall": "yarn app postinstall",
     "typecheck": "yarn app typecheck",
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
     "app": "yarn --cwd packages/app/",
