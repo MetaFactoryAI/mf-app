@@ -7,10 +7,10 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "next",
+    "web": "expo start:web",
     "eject": "expo eject",
     "postinstall": "expo-yarn-workspaces postinstall",
-    "build": "next build",
+    "build": "expo build:web",
     "deploy": "expo publish",
     "typecheck": "tsc",
     "test": "echo 'No tests setup'"
