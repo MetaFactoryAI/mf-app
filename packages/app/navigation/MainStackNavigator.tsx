@@ -3,12 +3,13 @@ import React from 'react';
 
 import { HomeScreen } from '../screens/Home';
 import { ProposalScreen } from '../screens/Proposal';
+import { StackPreset } from './constants';
 import { MainStackParams, Screen } from './types';
 
 const Stack = createStackNavigator<MainStackParams>();
 
 export const MainStackNavigator: React.FC = () => (
-  <Stack.Navigator>
+  <Stack.Navigator screenOptions={StackPreset}>
     <Stack.Screen name={Screen.HOME} component={HomeScreen} />
     <Stack.Screen name={Screen.PROPOSAL} component={ProposalScreen} />
   </Stack.Navigator>
