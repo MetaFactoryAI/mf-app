@@ -8,6 +8,7 @@ const withTM = require('next-transpile-modules')([
   '@mf/components',
   'react-native-dapp',
   'keyvaluestorage',
+  'babel-plugin-transform-class-properties',
 ]);
 const withPlugins = require('next-compose-plugins');
 
