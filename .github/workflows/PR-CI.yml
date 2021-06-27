@@ -74,6 +74,11 @@ jobs:
         env:
           CI: true
 
+      - name: Post-Install packages
+        run: cd packages/app && npx rn-nodeify \"fs, stream, crypto\" --hack --yarn --install && cd ../..
+        env:
+          CI: true
+
       - name: Build NextJS App
         run: yarn app build
         env:
