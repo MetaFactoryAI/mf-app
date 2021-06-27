@@ -11,7 +11,7 @@ if (typeof process === 'undefined') {
   }
 }
 
-process.browser = false;
+// process.browser = undefined;
 if (typeof Buffer === 'undefined') global.Buffer = require('buffer').Buffer;
 
 // global.location = global.location || { port: 80 }

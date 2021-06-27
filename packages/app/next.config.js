@@ -8,7 +8,7 @@ const withTM = require('next-transpile-modules');
 const withPlugins = require('next-compose-plugins');
 
 module.exports = withPlugins([
-  withTM(['@mf/components', 'expo-next-react-navigation']),
+  withTM(['@mf/components', 'expo-next-react-navigation', 'react-native-dapp', 'keyvaluestorage']),
   withFonts,
   withImages,
   [withExpo, { projectRoot: __dirname }],
