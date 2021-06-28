@@ -7,8 +7,8 @@ export const ModalPreset = {
   animationEnabled: true,
   cardOverlayEnabled: true,
   ...Platform.select({
-    android: TransitionPresets.ModalTransition,
-    default: TransitionPresets.ModalPresentationIOS,
+    ios: TransitionPresets.ModalPresentationIOS,
+    default: TransitionPresets.ModalTransition,
   }),
 };
 

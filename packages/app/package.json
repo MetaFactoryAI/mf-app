@@ -42,7 +42,8 @@
     "@babel/core": "7.9.6",
     "@expo/next-adapter": "2.1.32",
     "@expo/webpack-config": "^0.12.77",
-    "next-compose-plugins": "2.2.0"
+    "next-compose-plugins": "2.2.0",
+    "webpack-bundle-analyzer": "^4.4.2"
   },
   "expo-yarn-workspaces": {
     "symlinks": [
