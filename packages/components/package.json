@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.tsx",
   "types": "index.tsx",
+  "files": [
+    "**/*.tsx"
+  ],
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
