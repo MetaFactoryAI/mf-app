@@ -1,3 +1,7 @@
 const { createMetroConfiguration } = require('expo-yarn-workspaces');
 
-module.exports = createMetroConfiguration(__dirname);
+let metroConfig = createMetroConfiguration(__dirname);
+
+metroConfig.resolver.extraNodeModules = require('node-libs-react-native');
+
+module.exports = metroConfig;

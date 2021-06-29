@@ -2,6 +2,12 @@
 
 Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces.
 
+# GETTING STARTED
+
+- Before you begin, you should ensure you run 'yarn install' at root directory, the post install script should take care of all injections etc. with the libraries required that aren't nativly supported by expo.
+
+- If you run into any linking issues (missing 'stream' or 'aynscstorage') you likely just need to close the server/localhost page before switching from web to native apps (ios/android) and vice versa, as we depend on package injection the auto generated files of expo/react-native-web need to be refreshed between platforms.
+
 # Folders
 
 - `packages/components` (import as `@mf/components`)
@@ -28,6 +34,9 @@ in the app folder:
 yarn app add restyled
 # install again at root so workspaces can work its magic
 yarn install
+
+# post install will inject the nessecery libraries for web3.js
+
 ```
 
 The nice thing about the monorepo is that you only need each package to be in **one `package.json` file**. You don't need to add a dependency in every `package.json`. So we can use the main app as the entry point for basically every dependency.
