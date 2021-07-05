@@ -1,4 +1,4 @@
-import { PageContainer } from '@mf/components';
+import { MetamaskConnect, PageContainer } from '@mf/components';
 import { useWalletConnect } from '@walletconnect/react-native-dapp';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
@@ -35,6 +35,9 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
           }}
         />
       )}
+
+      <MetamaskConnect />
+
       <StatusBar style="auto" />
     </PageContainer>
   );

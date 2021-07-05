@@ -11,3 +11,6 @@ web-build
 # jest
 coverage
 
+
+# until we have finalized wrappers/types
+mfWeb3.js
