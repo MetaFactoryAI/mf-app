@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Platform } from 'react-native';
+import { Button, Platform, Text, View } from 'react-native';
 
 import { connectWallet, getCurrentWalletConnected } from './util/mfWeb3';
 import { ConnectedWallet } from './util/types';
@@ -49,28 +49,25 @@ export const MetamaskConnect: React.FC = () => {
     setWallet(walletResponse.address);
   };
 
-  const containerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-  };
+  const buttonTitle =
+    walletAddress && walletAddress.length > 0 ? (
+      `Connected: ${String(walletAddress).substring(0, 6)}...${String(
+        walletAddress,
+      ).substring(38)}`
+    ) : (
+      <Text>Connect Wallet</Text>
+    );
 
   return (
-    <div className="MetamaskConnectWrapper" style={containerStyle}>
-      <button
+    <View className="MetamaskConnectWrapper">
+      <Button
         type="button"
         id="connectMetamaskButton"
-        onClick={connectWalletPressed}
-      >
-        {walletAddress.length > 0 ? (
-          `Connected: ${String(walletAddress).substring(0, 6)}...${String(
-            walletAddress,
-          ).substring(38)}`
-        ) : (
-          <span>Connect Wallet</span>
-        )}
-      </button>
+        onPress={connectWalletPressed}
+        title={buttonTitle}
+      />
 
-      <span>{`Wallet Status: ${status}`}</span>
-    </div>
+      <Text>{`Wallet Status: ${status}`}</Text>
+    </View>
   );
 };
