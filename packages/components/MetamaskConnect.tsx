@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, Platform, Text, View } from 'react-native';
 
 import { connectWallet, getCurrentWalletConnected } from './util/mfWeb3';
