@@ -50,22 +50,15 @@ export const MetamaskConnect: React.FC = () => {
   };
 
   const buttonTitle =
-    walletAddress && walletAddress.length > 0 ? (
-      `Connected: ${String(walletAddress).substring(0, 6)}...${String(
-        walletAddress,
-      ).substring(38)}`
-    ) : (
-      <Text>Connect Wallet</Text>
-    );
+    walletAddress && walletAddress.length > 0
+      ? `Connected: ${String(walletAddress).substring(0, 6)}...${String(
+          walletAddress,
+        ).substring(38)}`
+      : 'Connect Wallet';
 
   return (
-    <View className="MetamaskConnectWrapper">
-      <Button
-        type="button"
-        id="connectMetamaskButton"
-        onPress={connectWalletPressed}
-        title={buttonTitle}
-      />
+    <View>
+      <Button onPress={connectWalletPressed} title={buttonTitle} />
 
       <Text>{`Wallet Status: ${status}`}</Text>
     </View>
