@@ -1,16 +1,17 @@
-import {
-  ProviderConnectInfo,
-  ProviderMessage,
-  ProviderRpcError,
-  RequestArguments,
-} from 'hardhat/types';
+// For now - no hardhat
+// import {
+//   ProviderConnectInfo,
+//   ProviderMessage,
+//   ProviderRpcError,
+//   RequestArguments,
+// } from 'hardhat/types';
 
 export interface EthereumEvent {
-  connect: ProviderConnectInfo;
-  disconnect: ProviderRpcError;
+  connect: any;
+  disconnect: any;
   accountsChanged: Array<string>;
   chainChanged: string;
-  message: ProviderMessage;
+  message: any;
 }
 
 type EventKeys = keyof EthereumEvent;
@@ -34,7 +35,7 @@ export interface Ethereumish {
     request: { method: string; params?: Array<any> },
     callback: (error: any, response: any) => void,
   ) => void;
-  sendAsync: (request: RequestArguments) => Promise<unknown>;
+  sendAsync: (request: any) => Promise<unknown>;
 }
 
 declare global {
