@@ -34,6 +34,10 @@
     // Doesnt work for FC: https://github.com/yannickcr/eslint-plugin-react/issues/2353
     "react/prop-types": "off",
 
+    "react-native/no-raw-text": "off", // Is fine for react and web views that update text state
+    "no-shadow": "off", // Prevents state vars from same name local update vars check
+    "@typescript-eslint/no-shadow": ["error"],
+
     // Prefer non-default exports
     "import/no-default-export": "error",
     "import/prefer-default-export": "off",
