@@ -5,8 +5,8 @@ import { connectWallet, getCurrentWalletConnected } from './util/mfWeb3';
 import { ConnectedWallet } from './util/types';
 
 export const MetamaskConnect: React.FC = () => {
-  const [walletAddress, setWallet] = useState('');
-  const [status, setStatus] = useState('');
+  const [walletAddress, setWallet] = React.useState('');
+  const [status, setStatus] = React.useState('');
 
   useEffect(() => {
     async function connectMetamask() {
