@@ -1,4 +1,4 @@
-import { PageContainer } from '@mf/components/PageContainer';
+import { ScreenContainer } from '@mf/components';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { Suspense } from 'react';
 
@@ -11,7 +11,7 @@ const ProposalScreen = React.lazy(() => import('../screens/Proposal'));
 const Stack = createStackNavigator<MainStackParams>();
 
 export const MainStackNavigator: React.FC = () => (
-  <Suspense fallback={<PageContainer />}>
+  <Suspense fallback={<ScreenContainer />}>
     <Stack.Navigator screenOptions={StackPreset}>
       <Stack.Screen name={Screen.HOME} component={HomeScreen} />
       <Stack.Screen name={Screen.PROPOSAL} component={ProposalScreen} />
