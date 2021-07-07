@@ -1,8 +1,7 @@
-import { ScreenContainer, StyledText } from '@mf/components';
+import { Button, ScreenContainer } from '@mf/components';
 import { useWalletConnect } from '@walletconnect/react-native-dapp';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button } from 'react-native';
 
 import { MainStackScreenProps, Screen } from '../navigation/types';
 
@@ -19,21 +18,19 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
           navigation.navigate(Screen.PROPOSAL, { proposalId: '1' })
         }
       />
-      {connector.connected ? (
-        <Button
-          title="Kill session"
-          onPress={() => {
+      <Button
+        mt="m"
+        secondary
+        title={connector.connected ? 'Kill session' : 'Connect'}
+        onPress={() => {
+          if (connector.connected) {
             connector.killSession();
-          }}
-        />
-      ) : (
-        <Button
-          title="Connect"
-          onPress={() => {
+          } else {
             connector.connect();
-          }}
-        />
-      )}
+          }
+        }}
+      />
+      <Button mt="m" title="Disabled Button" disabled />
       <StatusBar style="auto" />
     </ScreenContainer>
   );

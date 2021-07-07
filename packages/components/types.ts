@@ -9,7 +9,6 @@ export type ResponsiveProps<Theme extends restyle.BaseTheme, Props> = {
 
 export const typographyProperties = {
   fontFamily: true,
-  fontWeight: true,
   fontStyle: true,
   letterSpacing: true,
   textAlign: true,
