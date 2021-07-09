@@ -15295,9 +15295,9 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
-react-native-crypto@^2.0.1, "react-native-crypto@git+https://github.com/MetaFactoryAI/react-native-crypto.git":
+react-native-crypto@MetaFactoryAI/react-native-crypto, react-native-crypto@^2.0.1:
   version "2.2.0"
-  resolved "git+https://github.com/MetaFactoryAI/react-native-crypto.git#f78231074881427b58ed9808127d0d555ee280af"
+  resolved "https://codeload.github.com/MetaFactoryAI/react-native-crypto/tar.gz/4fd7b466d5dec813e57ad16018f54f64f6381ae6"
   dependencies:
     browserify-cipher "^1.0.0"
     browserify-sign "^4.0.4"
