@@ -9,6 +9,7 @@ const BaseBox = createBox();
 export type BoxProps = React.ComponentProps<typeof BaseBox> & {
   bordered?: boolean;
   centered?: boolean;
+  row?: boolean;
   contentContainer?: boolean;
 };
 
@@ -17,6 +18,7 @@ export const Box: React.FC<BoxProps> = ({
   centered,
   bordered,
   contentContainer,
+  row,
   ...props
 }) => {
   const theme = useTheme<Theme>();
@@ -24,11 +26,12 @@ export const Box: React.FC<BoxProps> = ({
   return (
     <BaseBox
       overflow="hidden"
+      borderColor="border"
+      {...(row && { flexDirection: 'row' })}
       {...(centered && { alignItems: 'center', justifyContent: 'center' })}
       {...(bordered && {
         borderStyle: 'solid',
         borderWidth: theme.constants.borderWidth,
-        borderColor: 'border',
       })}
       {...(contentContainer && {
         width: '100%',

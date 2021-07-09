@@ -91,12 +91,12 @@ type Colors = typeof lightColors;
 
 const PRIMARY_OPACITY = 0.95;
 const SECONDARY_OPACITY = 0.6;
-const DISABLED_OPACITY = 0.2;
+const DISABLED_OPACITY = 0.15;
 
 const lightColors = {
   transparent: grayPalette.transparent,
   accent: lightPalette.blue,
-  accentBg: getColor(grayPalette.dark, DISABLED_OPACITY),
+  accentBg: getColor(lightPalette.blue, DISABLED_OPACITY),
   primaryContent: getColor(grayPalette.dark, PRIMARY_OPACITY),
   secondaryContent: getColor(grayPalette.dark, SECONDARY_OPACITY),
   disabledContent: getColor(grayPalette.dark, DISABLED_OPACITY),
@@ -106,7 +106,7 @@ const lightColors = {
   buttonSolidContent: getColor(grayPalette.light, PRIMARY_OPACITY),
   buttonPrimary: grayPalette.dark,
   buttonSecondary: getColor(grayPalette.dark, 0.5),
-  buttonDisabled: getColor(grayPalette.dark, 0.1),
+  buttonDisabled: getColor(grayPalette.dark, DISABLED_OPACITY),
 
   success: lightPalette.green,
   alert: lightPalette.yellow,
@@ -114,14 +114,15 @@ const lightColors = {
 
   bg: grayPalette.lightGray,
   shapeBg: grayPalette.light,
-  translucentBg: getColor(grayPalette.light, 0.95),
-  border: getColor(grayPalette.dark, 0.2),
+  shapeBgContrast: grayPalette.dark,
+  translucentBg: getColor(grayPalette.light, PRIMARY_OPACITY),
+  border: getColor(grayPalette.dark, PRIMARY_OPACITY),
 };
 
 const darkColors: Colors = {
   transparent: grayPalette.transparent,
   accent: darkPalette.blue,
-  accentBg: getColor(grayPalette.dark, DISABLED_OPACITY),
+  accentBg: getColor(darkPalette.blue, DISABLED_OPACITY),
   primaryContent: getColor(grayPalette.light, PRIMARY_OPACITY),
   secondaryContent: getColor(grayPalette.light, SECONDARY_OPACITY),
   disabledContent: getColor(grayPalette.light, DISABLED_OPACITY),
@@ -131,7 +132,7 @@ const darkColors: Colors = {
   buttonSolidContent: getColor(grayPalette.dark, PRIMARY_OPACITY),
   buttonPrimary: grayPalette.light,
   buttonSecondary: getColor(grayPalette.light, 0.6),
-  buttonDisabled: getColor(grayPalette.light, 0.1),
+  buttonDisabled: getColor(grayPalette.light, DISABLED_OPACITY),
 
   success: darkPalette.green,
   alert: darkPalette.yellow,
@@ -139,14 +140,15 @@ const darkColors: Colors = {
 
   bg: grayPalette.oledDark,
   shapeBg: grayPalette.darkGray,
-  translucentBg: getColor(grayPalette.dark, 0.95),
-  border: getColor(grayPalette.light, 0.2),
+  shapeBgContrast: grayPalette.light,
+  translucentBg: getColor(grayPalette.dark, PRIMARY_OPACITY),
+  border: getColor(grayPalette.light, PRIMARY_OPACITY),
 };
 
 // Typography
 
 const fontSizes = {
-  '2xs': 10,
+  '2xs': 11,
   xs: 13,
   s: 15,
   m: 17,
@@ -211,6 +213,20 @@ const textVariants = {
     fontWeight: fontWeights.normal,
     color: 'secondaryContent',
   },
+  label: {
+    fontSize: fontSizes.s,
+    // letterSpacing: getLetterSpacing(fontSizes.s),
+    lineHeight: lineHeights.s,
+    fontWeight: fontWeights.semiBold,
+    color: 'primaryContent',
+  },
+  tag: {
+    fontSize: fontSizes['2xs'],
+    // letterSpacing: getLetterSpacing(fontSizes.xs),
+    lineHeight: lineHeights['2xs'],
+    fontWeight: fontWeights.semiBold,
+    color: 'primaryContent',
+  },
   default: {
     fontSize: fontSizes.m,
     // letterSpacing: getLetterSpacing(fontSizes.m),
@@ -223,27 +239,6 @@ const textVariants = {
     // letterSpacing: getLetterSpacing(fontSizes.s),
     lineHeight: lineHeights.s,
     fontWeight: fontWeights.normal,
-    color: 'primaryContent',
-  },
-  numberLarge: {
-    fontSize: fontSizes['3xl'],
-    // letterSpacing: getLetterSpacing(fontSizes['3xl']),
-    lineHeight: lineHeights['3xl'],
-    fontWeight: fontWeights.medium,
-    color: 'primaryContent',
-  },
-  number: {
-    fontSize: fontSizes['2xl'],
-    // letterSpacing: getLetterSpacing(fontSizes['2xl']),
-    lineHeight: lineHeights['2xl'],
-    fontWeight: fontWeights.medium,
-    color: 'primaryContent',
-  },
-  numberSmall: {
-    fontSize: fontSizes.l,
-    // letterSpacing: getLetterSpacing(fontSizes.l),
-    lineHeight: lineHeights.l,
-    fontWeight: fontWeights.medium,
     color: 'primaryContent',
   },
 };

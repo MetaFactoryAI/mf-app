@@ -2,11 +2,11 @@ import { createRestyleComponent, createVariant } from '@shopify/restyle';
 import * as React from 'react';
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
+import { Spinner } from '../feedback/Spinner';
 import { Theme } from '../theme';
 import { Color, FontSize, FontWeight } from '../types';
 import { StyledText } from '../typography/StyledText';
 import { boxRestyleFunctions, BoxStyleProps } from '../utils/createBox';
-import { Spinner } from './Spinner';
 
 type StyleProps = BoxStyleProps & { variant?: keyof Theme['buttonVariants'] };
 
