@@ -10,7 +10,7 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 
 # Folders
 
-- `packages/components` (import as `@mf/components`)
+- `packages/ui` (import as `@mf/ui`)
   - Make sure to add any other package folders you make to `app/next.config.js` after `next-transpile-modules`.
 - `packages/app` (this is the app you run)
 
@@ -22,7 +22,7 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 
 # Edit code
 
-Open `packages/components` and start editing. Watch changes happen instantly in your app.
+Open `packages/app` and start editing. Watch changes happen instantly in your app.
 
 # Practices
 

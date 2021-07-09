@@ -1,4 +1,4 @@
-import { Button, ScreenContainer } from '@mf/components';
+import { Button, ScreenContainer } from '@mf/ui';
 import { useWalletConnect } from '@walletconnect/react-native-dapp';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';

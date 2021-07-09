@@ -6,7 +6,7 @@ module.exports = async function (env, argv) {
     {
       ...env,
       babel: {
-        dangerouslyAddModulePathsToTranspile: ['@mf/components'],
+        dangerouslyAddModulePathsToTranspile: ['@mf/ui'],
       },
     },
     argv,
