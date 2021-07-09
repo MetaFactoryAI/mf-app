@@ -1,4 +1,4 @@
-import { ScreenContainer } from '@mf/components';
+import { ScreenContainer } from '@mf/ui';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { Suspense } from 'react';
 
@@ -13,7 +13,11 @@ const Stack = createStackNavigator<MainStackParams>();
 export const MainStackNavigator: React.FC = () => (
   <Suspense fallback={<ScreenContainer />}>
     <Stack.Navigator screenOptions={StackPreset}>
-      <Stack.Screen name={Screen.HOME} component={HomeScreen} />
+      <Stack.Screen
+        name={Screen.HOME}
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name={Screen.PROPOSAL} component={ProposalScreen} />
     </Stack.Navigator>
   </Suspense>

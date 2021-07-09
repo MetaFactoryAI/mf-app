@@ -1,7 +1,7 @@
 import './shim';
 import 'react-native-gesture-handler';
 
-import { ThemeProvider } from '@mf/components/theme';
+import { ThemeProvider } from '@mf/ui/theme';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationContainer } from '@react-navigation/native';
 import { withWalletConnect } from '@walletconnect/react-native-dapp';

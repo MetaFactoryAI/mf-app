@@ -1,8 +1,4 @@
-import {
-  createTheme,
-  defaultDarkTheme,
-  defaultLightTheme,
-} from '@mf/components/theme';
+import { createTheme, defaultDarkTheme, defaultLightTheme } from '@mf/ui/theme';
 import { Theme as NavTheme } from '@react-navigation/native';
 
 export const LightTheme = createTheme({
