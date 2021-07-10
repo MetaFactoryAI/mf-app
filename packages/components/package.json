@@ -8,6 +8,12 @@
   ],
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "react-native-safe-area-context": "*",
+    "react-native-svg": "*",
+    "@react-navigation/stack": "^5.14.5"
+  },
+  "dependencies": {
+    "@shopify/restyle": "^1.4.0"
   }
 }

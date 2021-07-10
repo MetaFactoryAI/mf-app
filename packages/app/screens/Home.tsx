@@ -1,8 +1,8 @@
-import { PageContainer } from '@mf/components';
+import { ScreenContainer, StyledText } from '@mf/components';
 import { useWalletConnect } from '@walletconnect/react-native-dapp';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Button, StyleSheet, Text } from 'react-native';
+import { Button } from 'react-native';
 
 import { MainStackScreenProps, Screen } from '../navigation/types';
 
@@ -12,8 +12,7 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const connector = useWalletConnect();
 
   return (
-    <PageContainer>
-      <Text style={styles.text}>Home</Text>
+    <ScreenContainer p="m">
       <Button
         title="Go To Screen"
         onPress={() =>
@@ -36,16 +35,9 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
         />
       )}
       <StatusBar style="auto" />
-    </PageContainer>
+    </ScreenContainer>
   );
 };
 
 // eslint-disable-next-line import/no-default-export
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 24,
-    margin: 10,
-  },
-});
