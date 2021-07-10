@@ -52,7 +52,7 @@
     "process": "^0.11.0",
     "punycode": "^1.2.4",
     "querystring-es3": "~0.2.0",
-    "react": "16.13.1",
+    "react": "16.14.0",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-41.0.0.tar.gz",
     "react-native-crypto": "git+https://github.com/MetaFactoryAI/react-native-crypto.git",
