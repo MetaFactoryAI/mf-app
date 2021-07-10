@@ -12,7 +12,7 @@ export const createTheme = <T extends BaseTheme>(themeObject: T): T =>
 // Custom values
 export const constants = {
   borderWidth: StyleSheet.hairlineWidth,
-  minRowHeight: 48,
+  minRowHeight: 40,
   maxButtonWidth: 350,
   maxContentWidth: 450,
 };
@@ -47,7 +47,7 @@ export const spacing = {
 
 export const borderRadii = {
   field: 10,
-  button: 10,
+  button: 0,
   card: 12,
   rounded: 100,
 };
@@ -60,7 +60,7 @@ const getColor = (color: string, opacity = 1) =>
 
 // Colors
 const lightPalette = {
-  blue: 'rgb(0,190,204)',
+  blue: 'rgb(9,206,217)',
   red: 'rgb(255,59,48)',
   yellow: 'rgb(255,228,44)',
   green: 'rgb(79,230,95)',
@@ -95,7 +95,7 @@ const DISABLED_OPACITY = 0.2;
 
 const lightColors = {
   transparent: grayPalette.transparent,
-  accent: grayPalette.dark,
+  accent: lightPalette.blue,
   accentBg: getColor(grayPalette.dark, DISABLED_OPACITY),
   primaryContent: getColor(grayPalette.dark, PRIMARY_OPACITY),
   secondaryContent: getColor(grayPalette.dark, SECONDARY_OPACITY),
@@ -103,11 +103,10 @@ const lightColors = {
   link: lightPalette.blue,
 
   // Buttons
-  buttonPrimaryContent: getColor(grayPalette.light, PRIMARY_OPACITY),
-  buttonPrimaryBg: grayPalette.dark,
-  buttonSecondaryContent: grayPalette.dark,
-  buttonSecondaryBg: getColor(grayPalette.dark, 0.05),
-  buttonDisabledBg: getColor(grayPalette.dark, 0.05),
+  buttonSolidContent: getColor(grayPalette.light, PRIMARY_OPACITY),
+  buttonPrimary: grayPalette.dark,
+  buttonSecondary: getColor(grayPalette.dark, 0.5),
+  buttonDisabled: getColor(grayPalette.dark, 0.1),
 
   success: lightPalette.green,
   alert: lightPalette.yellow,
@@ -121,7 +120,7 @@ const lightColors = {
 
 const darkColors: Colors = {
   transparent: grayPalette.transparent,
-  accent: grayPalette.light,
+  accent: darkPalette.blue,
   accentBg: getColor(grayPalette.dark, DISABLED_OPACITY),
   primaryContent: getColor(grayPalette.light, PRIMARY_OPACITY),
   secondaryContent: getColor(grayPalette.light, SECONDARY_OPACITY),
@@ -129,11 +128,10 @@ const darkColors: Colors = {
   link: darkPalette.blue,
 
   // Buttons
-  buttonPrimaryContent: getColor(grayPalette.dark, PRIMARY_OPACITY),
-  buttonPrimaryBg: grayPalette.light,
-  buttonSecondaryContent: grayPalette.light,
-  buttonSecondaryBg: getColor(grayPalette.light, 0.15),
-  buttonDisabledBg: getColor(grayPalette.light, 0.1),
+  buttonSolidContent: getColor(grayPalette.dark, PRIMARY_OPACITY),
+  buttonPrimary: grayPalette.light,
+  buttonSecondary: getColor(grayPalette.light, 0.6),
+  buttonDisabled: getColor(grayPalette.light, 0.1),
 
   success: darkPalette.green,
   alert: darkPalette.yellow,
