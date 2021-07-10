@@ -1,5 +1,5 @@
 {
-  "name": "@mf/components",
+  "name": "@mf/ui",
   "version": "1.0.0",
   "main": "index.tsx",
   "types": "index.tsx",

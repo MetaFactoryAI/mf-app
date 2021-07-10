@@ -1,4 +1,4 @@
-import { ScreenContainer, StyledText } from '@mf/components';
+import { ScreenContainer, StyledText } from '@mf/ui';
 import React from 'react';
 
 import { MainStackScreenProps, Screen } from '../navigation/types';
