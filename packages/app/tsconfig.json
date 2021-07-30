@@ -3,12 +3,6 @@
   "compilerOptions": {
     "tsBuildInfoFile": "__generated__/.tsbuildinfo"
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "jest", "./*.js", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

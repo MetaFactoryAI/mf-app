@@ -1,0 +1,18 @@
+{
+  "overrides": [
+    {
+      "files": ["./__testHelpers__/**", "./jest/**"],
+      "rules": {
+        "global-require": "off",
+        "import/no-extraneous-dependencies": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+      }
+    },
+    {
+      "files": ["**/__tests__/**"],
+      "rules": {
+        "@typescript-eslint/unbound-method": "off"
+      }
+    }
+  ]
+}

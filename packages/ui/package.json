@@ -2,10 +2,15 @@
   "name": "@mf/ui",
   "version": "1.0.0",
   "main": "index.tsx",
+  "private": true,
+  "license": "GPL-3.0",
   "types": "index.tsx",
   "files": [
     "**/*.tsx"
   ],
+  "scripts": {
+    "test": "echo 'No tests setup'"
+  },
   "peerDependencies": {
     "react": "*",
     "react-native": "*",

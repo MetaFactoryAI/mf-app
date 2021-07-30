@@ -3,7 +3,7 @@ import React from 'react';
 
 import { MainStackScreenProps, Screen } from '../navigation/types';
 
-type Props = MainStackScreenProps<Screen.PROPOSAL>;
+export type Props = MainStackScreenProps<Screen.PROPOSAL>;
 
 export const ProposalScreen: React.FC<Props> = () => (
   <ScreenContainer p="m">
