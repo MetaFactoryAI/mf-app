@@ -12,9 +12,9 @@
     "postinstall": "yarn app postinstall",
     "typecheck": "yarn app typecheck",
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
-    "app": "yarn --cwd packages/app/",
+    "app": "yarn workspace mf-app",
     "prepare": "husky install",
-    "test": "yarn app test"
+    "test": "yarn workspaces run test"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "2.0.0",

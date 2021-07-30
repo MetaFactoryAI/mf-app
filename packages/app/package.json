@@ -13,7 +13,11 @@
     "build": "expo build:web",
     "deploy": "expo publish",
     "typecheck": "tsc",
-    "test": "echo 'No tests setup'"
+    "test:ci": "jest --coverage",
+    "test": "jest"
+  },
+  "jest": {
+    "preset": "jest-expo"
   },
   "dependencies": {
     "@mf/ui": "*",
@@ -82,9 +86,15 @@
   "devDependencies": {
     "@babel/core": "7.9.6",
     "@expo/next-adapter": "2.1.32",
-    "@expo/webpack-config": "^0.12.77",
+    "@expo/webpack-config": "0.12.82",
+    "@testing-library/react-hooks": "^7.0.1",
+    "@testing-library/react-native": "7.2.0",
+    "@types/jest": "26.0.24",
+    "jest-expo": "42.0.1",
     "next-compose-plugins": "2.2.0",
-    "webpack-bundle-analyzer": "^4.4.2"
+    "react-test-renderer": "17.0.2",
+    "ts-jest": "27.0.3",
+    "webpack-bundle-analyzer": "4.4.2"
   },
   "expo-yarn-workspaces": {
     "symlinks": [

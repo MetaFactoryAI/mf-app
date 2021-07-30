@@ -12,6 +12,9 @@ web-build/
 # macOS
 .DS_Store
 
+#jest
+coverage
+
 # @generated: @expo/next-adapter@2.1.32
 /.expo/*
 # Expo Web

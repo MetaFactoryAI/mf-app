@@ -10,15 +10,17 @@ import { useWalletConnect } from '@walletconnect/react-native-dapp';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 
+import { TEST_IDS } from '../__testHelpers__/testIDs';
 import { ProductProposalCard } from '../components/ProductProposalCard';
 import { MainStackScreenProps, Screen } from '../navigation/types';
 
-type Props = MainStackScreenProps<Screen.HOME>;
+export type Props = MainStackScreenProps<Screen.HOME>;
 
 export const HomeScreen: React.FC<Props> = ({ navigation }) => {
   const connector = useWalletConnect();
 
   const account = connector?.accounts?.[0];
+
   return (
     <ScreenContainer>
       <ScrollContainer px="m">
@@ -55,6 +57,7 @@ export const HomeScreen: React.FC<Props> = ({ navigation }) => {
             navigation.navigate(Screen.PROPOSAL, { proposalId: '1' });
           }}
           title="Unisocks V2"
+          testID={TEST_IDS.HOME.proposalCard}
           author="METADREAMER"
           brand="Uniswap"
           tags={['Socks', 'All-over Print', 'Embroidered']}

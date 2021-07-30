@@ -8,6 +8,7 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:jest/recommended",
+    "plugin:jest/style",
     "prettier"
   ],
   "plugins": ["simple-import-sort", "react-native"],
@@ -25,6 +26,8 @@
     "project": "./tsconfig.json"
   },
   "rules": {
+    "react/jsx-key": ["error"],
+
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-floating-promises": "off",
 

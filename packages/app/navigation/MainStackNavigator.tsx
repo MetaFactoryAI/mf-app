@@ -1,24 +1,20 @@
-import { ScreenContainer } from '@mf/ui';
 import { createStackNavigator } from '@react-navigation/stack';
-import React, { Suspense } from 'react';
+import React from 'react';
 
+import { HomeScreen } from '../screens/Home';
+import { ProposalScreen } from '../screens/Proposal';
 import { StackPreset } from './constants';
 import { MainStackParams, Screen } from './types';
-
-const HomeScreen = React.lazy(() => import('../screens/Home'));
-const ProposalScreen = React.lazy(() => import('../screens/Proposal'));
 
 const Stack = createStackNavigator<MainStackParams>();
 
 export const MainStackNavigator: React.FC = () => (
-  <Suspense fallback={<ScreenContainer />}>
-    <Stack.Navigator screenOptions={StackPreset}>
-      <Stack.Screen
-        name={Screen.HOME}
-        component={HomeScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen name={Screen.PROPOSAL} component={ProposalScreen} />
-    </Stack.Navigator>
-  </Suspense>
+  <Stack.Navigator screenOptions={StackPreset}>
+    <Stack.Screen
+      name={Screen.HOME}
+      component={HomeScreen}
+      options={{ headerShown: false }}
+    />
+    <Stack.Screen name={Screen.PROPOSAL} component={ProposalScreen} />
+  </Stack.Navigator>
 );
