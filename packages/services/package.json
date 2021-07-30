@@ -1,0 +1,16 @@
+{
+  "name": "@mf/services",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo 'No tests setup'",
+    "start": "vercel dev -l 3003"
+  },
+  "dependencies": {
+    "@vercel/node": "1.11.1",
+    "cross-env": "5.0.5"
+  },
+  "devDependencies": {
+    "vercel": "^23.0.1"
+  }
+}

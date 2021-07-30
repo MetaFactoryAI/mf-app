@@ -13,6 +13,7 @@
     "typecheck": "yarn app typecheck",
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
     "app": "yarn workspace mf-app",
+    "services": "yarn workspace @mf/services",
     "prepare": "husky install",
     "test": "yarn workspaces run test"
   },
