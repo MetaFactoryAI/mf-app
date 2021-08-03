@@ -6,7 +6,14 @@ import { CONFIG } from '../utils/config';
 import { getOrCreateLock } from '../utils/lockHelpers';
 import { isValidAuthToken } from '../utils/userHelpers';
 
-// Locksmith used to generate secret links: https://docs.uselocksmith.com/article/166-secret-link-keys
+// Allows an authenticated API user to generate access codes for a given product lock and customer ETH address.
+// Uses basic auth to protect the API. Saving the mapping of user to access code in the database to prevent the
+// same user from generating multiple codes.
+//
+// Product lock must first be created in the Locksmith app in Shopify, then the script to generate access codes should
+// be run which will insert the codes and lockId into the database. These generated codes should then be pasted into
+// the product lock page in Locksmith, ensuring the condition is (gives passcode AND liquid {% if request.page_type == "product" %}).
+// https://docs.uselocksmith.com/article/166-secret-link-keys
 export default async (req: VercelRequest, res: VercelResponse) => {
   const { isValid } = await isValidAuthToken(req.headers.authorization);
 
