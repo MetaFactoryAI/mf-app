@@ -7,8 +7,6 @@ interface IConfig {
   locksmithAccessToken: string;
   locksmithEndpoint: string;
   shopDomain: string;
-  jwtIssuer: string;
-  jwtAudience: string;
 }
 
 function parseEnv<T extends string | number>(
@@ -30,6 +28,4 @@ export const CONFIG: IConfig = {
   locksmithAccessToken: parseEnv(process.env.LS_ACCESS_TOKEN),
   locksmithEndpoint: parseEnv(process.env.LS_ENDPOINT),
   shopDomain: parseEnv(process.env.SHOP_DOMAIN, 'metafactory.myshopify.com'),
-  jwtIssuer: parseEnv(process.env.JWT_ISSUER),
-  jwtAudience: parseEnv(process.env.JWT_AUDIENCE),
 };
