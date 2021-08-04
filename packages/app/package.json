@@ -85,7 +85,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.14.8",
-    "@expo/next-adapter": "2.1.32",
+    "@expo/next-adapter": "3.0.3",
     "@expo/webpack-config": "0.12.82",
     "@testing-library/react-hooks": "^7.0.1",
     "@testing-library/react-native": "7.2.0",
