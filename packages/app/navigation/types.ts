@@ -1,9 +1,12 @@
 import {
   CompositeNavigationProp,
+  CompositeScreenProps,
   NavigatorScreenParams,
-  RouteProp,
 } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {
+  NativeStackNavigationProp,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
 export enum Screen {
   HOME = 'Home',
@@ -28,10 +31,11 @@ export type RootStackNavigationProps<Screen extends keyof RootStackParams> =
 export type MainStackNavigationProps<Screen extends keyof MainStackParams> =
   CompositeNavigationProp<
     NativeStackNavigationProp<MainStackParams, Screen>,
-    RootStackNavigationProps<Screen.MAIN_STACK>
+    NativeStackNavigationProp<RootStackParams, Screen.MAIN_STACK>
   >;
 
-export type MainStackScreenProps<Screen extends keyof MainStackParams> = {
-  navigation: MainStackNavigationProps<Screen>;
-  route: RouteProp<MainStackParams, Screen>;
-};
+export type MainStackScreenProps<Screen extends keyof MainStackParams> =
+  CompositeScreenProps<
+    NativeStackScreenProps<MainStackParams, Screen>,
+    NativeStackScreenProps<RootStackParams, Screen.MAIN_STACK>
+  >;
