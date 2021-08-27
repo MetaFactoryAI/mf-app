@@ -1,4 +1,4 @@
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 
 import { HomeScreen } from '../screens/Home';
@@ -6,7 +6,7 @@ import { ProposalScreen } from '../screens/Proposal';
 import { StackPreset } from './constants';
 import { MainStackParams, Screen } from './types';
 
-const Stack = createStackNavigator<MainStackParams>();
+const Stack = createNativeStackNavigator<MainStackParams>();
 
 export const MainStackNavigator: React.FC = () => (
   <Stack.Navigator screenOptions={StackPreset}>
