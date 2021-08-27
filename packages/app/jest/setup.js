@@ -16,9 +16,9 @@ jest.mock('react-native/Libraries/Animated/src/NativeAnimatedHelper');
 
 jest.mock('expo-linking');
 
-jest.mock('@react-navigation/stack', () => ({
-  ...jest.requireActual('@react-navigation/stack'),
-  useHeaderHeight: () => 48,
+jest.mock('@react-navigation/elements', () => ({
+  ...jest.requireActual('@react-navigation/elements'),
+  useHeaderHeight: () => 56,
 }));
 
 jest.useFakeTimers();
