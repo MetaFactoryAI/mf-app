@@ -7,17 +7,17 @@
     "start": "vercel dev -l 3003"
   },
   "dependencies": {
-    "@vercel/node": "1.11.1",
-    "bcrypt": "^5.0.1",
-    "dotenv": "^10.0.0",
-    "graphql": "^15.5.1",
-    "graphql-request": "^3.5.0",
-    "node-fetch": "^2.6.1",
-    "shortid": "^2.2.16"
+    "@vercel/node": "1.12.1",
+    "bcrypt": "5.0.1",
+    "dotenv": "10.0.0",
+    "graphql": "15.5.1",
+    "graphql-request": "3.5.0",
+    "node-fetch": "2.6.1",
+    "shortid": "2.2.16"
   },
   "devDependencies": {
-    "@types/bcrypt": "^5.0.0",
-    "@types/shortid": "^0.0.29",
-    "vercel": "^23.0.1"
+    "@types/bcrypt": "5.0.0",
+    "@types/shortid": "0.0.29",
+    "vercel": "23.0.1"
   }
 }
