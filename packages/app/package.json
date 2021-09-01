@@ -67,7 +67,7 @@
     "react-native-randombytes": "^3.0.0",
     "react-native-reanimated": "~2.1.0",
     "react-native-safe-area-context": "3.2.0",
-    "react-native-screens": "~3.0.0",
+    "react-native-screens": "~3.6.0",
     "react-native-stream": "^0.1.9",
     "react-native-svg": "^12.1.1",
     "react-native-tcp": "^3.2.1",
