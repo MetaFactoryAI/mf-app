@@ -65,7 +65,7 @@
     "react-native-level-fs": "^3.0.0",
     "react-native-os": "^1.0.1",
     "react-native-randombytes": "^3.0.0",
-    "react-native-reanimated": "~2.1.0",
+    "react-native-reanimated": "~2.2.2",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.0.0",
     "react-native-stream": "^0.1.9",
