@@ -1,10 +1,10 @@
-import { LinkingOptions } from '@react-navigation/native';
 import * as Linking from 'expo-linking';
 
 import { Screen } from './types';
 
 const prefix = Linking.createURL('/');
-export const linking: LinkingOptions = {
+
+export const linking = {
   prefixes: [prefix],
   config: {
     screens: {

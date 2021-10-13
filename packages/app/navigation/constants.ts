@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 export const ModalPreset = {
   headerShown: false,
   gestureEnabled: true,
-  animationEnabled: true,
+  presentation: 'modal' as const,
   cardOverlayEnabled: true,
   ...Platform.select({
     ios: TransitionPresets.ModalPresentationIOS,
@@ -12,6 +12,4 @@ export const ModalPreset = {
   }),
 };
 
-export const StackPreset = {
-  animationEnabled: true,
-};
+export const StackPreset = {};

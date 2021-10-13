@@ -27,8 +27,7 @@ const App: React.FC = () => {
       <WalletConnectProvider
         redirectUrl={REDIRECT_URL}
         storageOptions={{
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
+          // @ts-expect-error mismatch in type defs
           asyncStorage: AsyncStorage,
           database: 'mf-app-kv-storage-db',
         }}

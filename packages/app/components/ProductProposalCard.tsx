@@ -24,7 +24,8 @@ export const ProductProposalCard: React.FC<Props> = ({
       top={0}
       right={0}
       height={32}
-      aspectRatio={1}
+      minWidth={32}
+      px="xs"
     >
       <StyledText variant="label" color="buttonSolidContent">
         #1
