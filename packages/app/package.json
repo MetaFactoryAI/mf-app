@@ -45,7 +45,7 @@
     "expo-next-react-navigation": "1.2.1",
     "expo-random": "11.2.0",
     "expo-status-bar": "1.0.4",
-    "https-browserify": "0.0.1",
+    "https-browserify": "1.0.0",
     "inherits": "2.0.4",
     "moment": "2.29.1",
     "next": "10.2.0",
