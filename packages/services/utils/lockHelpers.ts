@@ -1,14 +1,15 @@
 import { gql } from 'graphql-request';
 
+import { LocksmithLockResponse } from '../types/locksmith';
 import { getRandomElement } from './arrayHelpers';
 import { client } from './hasuraClient';
 
 const GET_EXISTING_CODE_QUERY = gql`
-  query GetExistingAccessCode($ethAddress: String!, $lockId: String!) {
+  query GetExistingAccessCode($uniqueIdentifier: String!, $lockId: String!) {
     shop_product_locks(
       where: {
         _and: {
-          customer_eth_address: { _eq: $ethAddress }
+          customer_eth_address: { _eq: $uniqueIdentifier }
           lock_id: { _eq: $lockId }
         }
       }
@@ -41,11 +42,11 @@ const CLAIM_CODE_MUTATION = gql`
   mutation ClaimCode(
     $accessCode: String!
     $lockId: String!
-    $ethAddress: String!
+    $uniqueIdentifier: String!
   ) {
     claimedLock: update_shop_product_locks_by_pk(
       pk_columns: { access_code: $accessCode, lock_id: $lockId }
-      _set: { customer_eth_address: $ethAddress }
+      _set: { customer_eth_address: $uniqueIdentifier }
     ) {
       customer_eth_address
       lock_id
@@ -70,10 +71,10 @@ type ClaimCodeResponse = {
 
 export const getOrCreateLock = async (
   lockId: string,
-  ethAddress: string,
+  uniqueIdentifier: string,
 ): Promise<ProductLock | null> => {
   const data = await client.request<GetCodeResponse>(GET_EXISTING_CODE_QUERY, {
-    ethAddress,
+    uniqueIdentifier,
     lockId,
   });
   const existingLock =
@@ -99,9 +100,20 @@ export const getOrCreateLock = async (
     {
       lockId: newCode.lock_id,
       accessCode: newCode.access_code,
-      ethAddress,
+      uniqueIdentifier,
     },
   );
 
   return claimedLockData.claimedLock || null;
+};
+
+export const isCodeRedeemed = (
+  code: string,
+  lockResponse: LocksmithLockResponse,
+): boolean => {
+  const availableCodes =
+    lockResponse.keys[0].conditions.find((c) => c.type === 'passcodes')?.options
+      .passcodes || [];
+
+  return availableCodes.indexOf(code) === -1;
 };
