@@ -11,23 +11,6 @@ const GET_API_USER_QUERY = gql`
   }
 `;
 
-const GET_EXISTING_CODE_QUERY = gql`
-  query GetExistingAccessCode($address: String!, $lockId: String = "") {
-    shop_product_locks(
-      where: {
-        _and: {
-          customer_eth_address: { _eq: $address }
-          lock_id: { _eq: $lockId }
-        }
-      }
-    ) {
-      access_code
-      customer_eth_address
-      lock_id
-    }
-  }
-`;
-
 type GetApiUserResponse = {
   user?: {
     password_hash: string;

@@ -3,10 +3,10 @@ import fetch from 'node-fetch';
 
 import { LocksmithLockResponse } from '../types/locksmith';
 import { CONFIG } from '../utils/config';
-import { getOrCreateLock } from '../utils/lockHelpers';
+import { getOrCreateLock, isCodeRedeemed } from '../utils/lockHelpers';
 import { isValidAuthToken } from '../utils/userHelpers';
 
-// Allows an authenticated API user to generate access codes for a given product lock and customer ETH address.
+// Allows an authenticated API user to generate access codes for a given product lock and unique identifier.
 // Uses basic auth to protect the API. Saving the mapping of user to access code in the database to prevent the
 // same user from generating multiple codes.
 //
@@ -22,17 +22,18 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return;
   }
 
-  let { lockId, ethAddress } = req.query;
+  let { lockId, uniqueIdentifier } = req.query;
 
-  if (!lockId || !ethAddress) {
-    res.status(400).send('Must provide lockId and ethAddress');
+  if (!lockId || !uniqueIdentifier) {
+    res.status(400).send('Must provide lockId and uniqueIdentifier');
     return;
   }
 
   if (typeof lockId !== 'string') [lockId] = lockId;
-  if (typeof ethAddress !== 'string') [ethAddress] = ethAddress;
+  if (typeof uniqueIdentifier !== 'string')
+    [uniqueIdentifier] = uniqueIdentifier;
 
-  const userLock = await getOrCreateLock(lockId, ethAddress);
+  const userLock = await getOrCreateLock(lockId, uniqueIdentifier);
 
   if (!userLock) {
     res.status(404).send('Unable to find product or no codes remaining');
@@ -47,11 +48,13 @@ export default async (req: VercelRequest, res: VercelResponse) => {
   });
 
   const data = (await response.json()) as LocksmithLockResponse;
+  const isRedeemed = isCodeRedeemed(userLock.access_code, data);
 
   res.json({
     // eslint-disable-next-line no-underscore-dangle
     url: data._resource_url,
     accessCode: userLock.access_code,
-    customerEthAddress: userLock.customer_eth_address,
+    uniqueIdentifier: userLock.customer_eth_address,
+    isRedeemed,
   });
 };
