@@ -7,6 +7,8 @@
     "start": "vercel dev -l 3003"
   },
   "dependencies": {
+    "@ethersproject/providers": "^5.5.1",
+    "@meta-cred/usewallet": "^0.2.1",
     "@vercel/node": "1.12.1",
     "bcrypt": "5.0.1",
     "dotenv": "10.0.0",

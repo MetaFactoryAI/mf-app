@@ -14,7 +14,6 @@ export const getClient = (params: GetClientParams = {}) =>
       'Content-Type': 'application/json',
       'x-hasura-admin-secret': CONFIG.graphqlAdminSecret,
       'x-hasura-role': params.role || 'admin',
-      'x-hasura-user-id': params.userId || '',
     },
   });
 

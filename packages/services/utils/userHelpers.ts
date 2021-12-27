@@ -17,9 +17,11 @@ type GetApiUserResponse = {
   };
 };
 
+export type APITokenResult = { isValid: boolean; username?: string };
+
 export const isValidAuthToken = async (
   token: string | undefined,
-): Promise<{ isValid: boolean; username?: string }> => {
+): Promise<APITokenResult> => {
   const authTokenReceived = (token || '').split(' ')[1] || '';
 
   const [username, password] = Buffer.from(authTokenReceived, 'base64')
