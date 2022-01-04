@@ -27,6 +27,7 @@ export const isValidAuthToken = async (
   const [username, password] = Buffer.from(authTokenReceived, 'base64')
     .toString()
     .split(':');
+  console.log({ authTokenReceived, username, password });
 
   const data = await client.request<GetApiUserResponse>(GET_API_USER_QUERY, {
     username,

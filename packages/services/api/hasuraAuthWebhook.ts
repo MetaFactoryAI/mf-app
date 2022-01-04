@@ -1,9 +1,9 @@
-import { verifyToken } from '@meta-cred/usewallet';
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
 import { CONFIG } from '../utils/config';
 import { defaultMainnetProvider } from '../utils/defaultProvider';
 import { APITokenResult, isValidAuthToken } from '../utils/userHelpers';
+import { verifyToken } from '../utils/web3JWT';
 
 const unauthorizedVariables = {
   'X-Hasura-Role': 'public',
@@ -15,6 +15,7 @@ async function validateHeaderToken(
   req: VercelRequest,
 ): Promise<EthTokenResult | APITokenResult | null> {
   const authHeader = req.headers.authorization;
+
   if (!authHeader) return null;
 
   if (authHeader.substring(0, 6) !== 'Bearer')
@@ -37,6 +38,7 @@ async function validateHeaderToken(
 export default async (req: VercelRequest, res: VercelResponse) => {
   try {
     const tokenResult = await validateHeaderToken(req);
+    console.log(tokenResult);
 
     if (!tokenResult || ('isValid' in tokenResult && !tokenResult.isValid)) {
       res.json(unauthorizedVariables);
