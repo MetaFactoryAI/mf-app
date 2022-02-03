@@ -1,0 +1,56 @@
+table:
+  name: contributors
+  schema: public
+object_relationships:
+- name: contribution
+  using:
+    foreign_key_constraint_on: contribution_id
+- name: user
+  using:
+    foreign_key_constraint_on: user_id
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      contribution:
+        created_by:
+          _eq: X-Hasura-User-Id
+    columns:
+    - contribution_id
+    - contribution_share
+    - user_id
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - contribution_id
+    - user_id
+    - contribution_share
+    filter: {}
+  role: public
+- permission:
+    columns:
+    - contribution_id
+    - user_id
+    - contribution_share
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - contribution_id
+    - contribution_share
+    - user_id
+    filter:
+      contribution:
+        created_by:
+          _eq: X-Hasura-User-Id
+  role: user
+delete_permissions:
+- permission:
+    filter:
+      contribution:
+        created_by:
+          _eq: X-Hasura-User-Id
+  role: user

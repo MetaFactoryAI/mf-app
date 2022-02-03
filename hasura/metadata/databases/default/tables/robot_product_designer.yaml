@@ -1,0 +1,26 @@
+table:
+  name: product_designer
+  schema: robot
+object_relationships:
+- name: product
+  using:
+    foreign_key_constraint_on: product_id
+select_permissions:
+- permission:
+    columns:
+    - contribution_share
+    - robot_reward
+    - eth_address
+    - product_id
+    filter: {}
+  role: api-user
+- permission:
+    columns:
+    - contribution_share
+    - eth_address
+    - product_id
+    - robot_reward
+    filter:
+      eth_address:
+        _ilike: X-Hasura-Eth-Address
+  role: user

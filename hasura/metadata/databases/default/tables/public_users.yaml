@@ -1,0 +1,35 @@
+table:
+  name: users
+  schema: public
+insert_permissions:
+- permission:
+    backend_only: false
+    check: {}
+    columns:
+    - eth_address
+    - name
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - eth_address
+    - name
+    - id
+    filter: {}
+  role: public
+- permission:
+    columns:
+    - eth_address
+    - name
+    - id
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check: null
+    columns:
+    - name
+    filter:
+      id:
+        _eq: X-Hasura-User-Id
+  role: user

@@ -1,0 +1,28 @@
+table:
+  name: order
+  schema: robot
+select_permissions:
+- permission:
+    columns:
+    - date
+    - buyer_reward
+    - dollars_spent
+    - season
+    - buyer_address
+    - order_id
+    - order_number
+    filter: {}
+  role: api-user
+- permission:
+    columns:
+    - buyer_address
+    - buyer_reward
+    - date
+    - dollars_spent
+    - order_id
+    - order_number
+    - season
+    filter:
+      buyer_address:
+        _ilike: X-Hasura-Eth-Address
+  role: user
