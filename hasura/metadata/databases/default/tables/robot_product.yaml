@@ -1,0 +1,30 @@
+table:
+  name: product
+  schema: robot
+array_relationships:
+- name: designers
+  using:
+    foreign_key_constraint_on:
+      column: product_id
+      table:
+        name: product_designer
+        schema: robot
+select_permissions:
+- permission:
+    columns:
+    - id
+    - title
+    filter: {}
+  role: api-user
+- permission:
+    columns:
+    - id
+    - title
+    filter: {}
+  role: public
+- permission:
+    columns:
+    - id
+    - title
+    filter: {}
+  role: user

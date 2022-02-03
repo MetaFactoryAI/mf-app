@@ -1,0 +1,10 @@
+- name: allowed-queries
+  definition:
+    queries:
+    - name: GetExistingLockAccessCode
+      query: |-
+        query GetExistingAccessCode($address: String!, $lockId: String!) {
+          data: shop_product_locks(where: {_and: {customer_eth_address: {_eq: $address}, lock_id: {_eq: $lockId}}}) {
+            access_code
+          }
+        }

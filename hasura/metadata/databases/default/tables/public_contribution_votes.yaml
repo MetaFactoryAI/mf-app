@@ -1,0 +1,51 @@
+table:
+  name: contribution_votes
+  schema: public
+object_relationships:
+- name: contribution
+  using:
+    foreign_key_constraint_on: contribution_id
+- name: user
+  using:
+    foreign_key_constraint_on: user_id
+insert_permissions:
+- permission:
+    backend_only: false
+    check:
+      user_id:
+        _eq: X-Hasura-User-Id
+    columns:
+    - contribution_id
+    - rating
+    set:
+      user_id: x-hasura-User-Id
+  role: user
+select_permissions:
+- permission:
+    columns:
+    - rating
+    - contribution_id
+    - user_id
+    filter: {}
+  role: public
+- permission:
+    columns:
+    - rating
+    - contribution_id
+    - user_id
+    filter: {}
+  role: user
+update_permissions:
+- permission:
+    check:
+      user_id:
+        _eq: X-Hasura-User-Id
+    columns:
+    - contribution_id
+    - rating
+    filter:
+      user_id:
+        _eq: X-Hasura-User-Id
+    set:
+      user_id: x-hasura-User-Id
+  role: user
