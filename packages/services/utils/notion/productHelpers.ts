@@ -1,8 +1,9 @@
 import { z } from 'zod';
 
+import { Creator, FileData } from '../../types/wearables';
 import {
   BrandPage,
-  DesgignerPage,
+  DesignerPage,
   ProductPage,
   TemplatePage,
   TextBlock,
@@ -12,6 +13,7 @@ type ProductTemplate = {
   id: string;
   url: string;
   name: string;
+  madeIn: string;
   printMethod: string[];
   style: string | undefined;
   composition: string;
@@ -23,6 +25,13 @@ const getTextValue = (blocks: Array<z.infer<typeof TextBlock>>): string =>
 export const getProductTitle = (page: z.infer<typeof ProductPage>): string =>
   getTextValue(page.properties.Name.title);
 
+export const getProductShopLink = (page: z.infer<typeof ProductPage>): string =>
+  page.properties['Shopify Link'].url;
+
+export const getProductShopifyId = (
+  page: z.infer<typeof ProductPage>,
+): string => getProductShopLink(page)?.split(/\S*\//g)[1];
+
 export const getProductReleaseDate = (
   page: z.infer<typeof ProductPage>,
 ): string | undefined => page.properties['Drop Date'].date?.start;
@@ -31,9 +40,9 @@ export const getProductEditionOf = (
   page: z.infer<typeof ProductPage>,
 ): string => getTextValue(page.properties['QTY/Edition'].rich_text);
 
-export const getProductHasSiLoChip = (
+export const getSiloChipVersion = (
   page: z.infer<typeof ProductPage>,
-): boolean => page.properties['SiLo Chip'].checkbox;
+): string | undefined => page.properties['SiLo Chip'].select?.name;
 
 export const getProductDescription = (
   page: z.infer<typeof ProductPage>,
@@ -55,30 +64,52 @@ export const getProductBrand = (
 
 export const getProductDesigner = (
   page: z.infer<typeof ProductPage>,
-): { id: string; url: string; name: string } | null => {
+): Creator | null => {
   const designerRelation =
     page.properties['Designer Rel [NEW]'].relation[0]?.value;
 
   if (!designerRelation) return null;
 
-  const designerPage = DesgignerPage.parse(designerRelation);
+  const designerPage = DesignerPage.parse(designerRelation);
 
   return {
-    id: designerPage.id,
-    url: designerPage.url,
     name: getTextValue(designerPage.properties.Name.title),
+    url: designerPage.properties.Social.url,
+    role: 'Designer',
   };
 };
 
-export const getClo3dModel = (page: z.infer<typeof ProductPage>): string =>
-  page.properties['CLO3d Model'].files[0]?.file.url;
+export const getProductTechnician = (
+  page: z.infer<typeof ProductPage>,
+): Creator | null => {
+  const techRelation = page.properties['Technician Rel'].relation[0]?.value;
+
+  if (!techRelation) return null;
+
+  const techPage = DesignerPage.parse(techRelation);
+
+  return {
+    name: getTextValue(techPage.properties.Name.title),
+    url: techPage.properties.Social.url,
+    role: 'Technician',
+  };
+};
+
+export const getClo3dModel = (page: z.infer<typeof ProductPage>): FileData => ({
+  uri: page.properties['CLO3d Model'].files[0]?.file.url,
+  mimeType: 'application/octet-stream',
+  properties: {
+    description: 'CLO3D / Marvelous Designer Project File',
+  },
+});
 
 export const getProductImages = (page: z.infer<typeof ProductPage>): string[] =>
   page.properties['3D Static'].files.map((f) => f.file.url);
 
-export const getProductWearables = (
+export const getWearablesFolder = (
   page: z.infer<typeof ProductPage>,
-): string[] => page.properties['Wearable Files'].files.map((f) => f.file.url);
+): string | undefined =>
+  page.properties['Wearable Files'].files[0]?.external.url;
 
 export const getProductTemplate = (
   page: z.infer<typeof ProductPage>,
@@ -91,6 +122,7 @@ export const getProductTemplate = (
   return {
     id: template.id,
     url: template.url,
+    madeIn: getTextValue(template.properties['Made In'].rich_text),
     name: getTextValue(template.properties.Ref.title),
     printMethod: template.properties['Print Tech'].multi_select.map(
       (m) => m.name,

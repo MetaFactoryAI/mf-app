@@ -74,6 +74,12 @@ const FileBlock = z.object({
   file: z.object({ url: URLValue, expiry_time: z.string() }),
 });
 
+const ExternalFileBlock = z.object({
+  name: z.string(),
+  type: z.literal('external'),
+  external: z.object({ url: URLValue }),
+});
+
 const MultiSelectBlock = z.object({
   type: z.literal('multi_select'),
   multi_select: z.array(
@@ -101,10 +107,22 @@ const FilesProperty = z.object({
   files: z.array(FileBlock),
 });
 
+const ExternalFilesProperty = z.object({
+  id: z.string(),
+  type: z.literal('files'),
+  files: z.array(ExternalFileBlock),
+});
+
 const URLProperty = z.object({
   id: z.string(),
   type: z.literal('url'),
   url: URLValue.nullable(),
+});
+
+const RequiredURLProperty = z.object({
+  id: z.string(),
+  type: z.literal('url'),
+  url: URLValue,
 });
 
 const resolveRelation = async ({ id }: { id: string }) => ({
@@ -185,8 +203,8 @@ export const ProductPage = BasePage.extend({
     //   relation: z.array(z.unknown()),
     // }),
     'CLO3d Model': SingleFileProperty,
-    'Wearable Files': FilesProperty,
-    Cost: NumberProperty,
+    'Wearable Files': ExternalFilesProperty,
+    'Cost ea.': NumberProperty,
     'Designer Rel [NEW]': RelationProperty,
     'Creation Date': z.object({
       id: z.string(),
@@ -279,7 +297,7 @@ export const ProductPage = BasePage.extend({
     //     function: z.string(),
     //   }),
     // }),
-    'Added to Shop': CheckboxProperty,
+    // 'Added to Shop': CheckboxProperty,
     Priority: SelectProperty,
     // 'Neck Tag design': z.object({
     //   id: z.string(),
@@ -304,12 +322,13 @@ export const ProductPage = BasePage.extend({
     // }),
     Status: SelectProperty,
     'Future Distro': CheckboxProperty,
-    'SiLo Chip': CheckboxProperty,
-    'Wearable Status': SelectProperty,
+    'SiLo Chip': SelectProperty,
+    'Wearable Status': MultiSelectProperty,
     SKU: RichTextProperty,
-    Producer: RelationProperty,
+    // Producer: RelationProperty,
     '3D Static': FilesProperty,
     'Social Media Assets': URLProperty,
+    'Shopify Link': RequiredURLProperty,
     // 'Related to Customer Service (Column)': z.object({
     //   id: z.string(),
     //   type: z.string(),
@@ -348,7 +367,7 @@ export const ProductPage = BasePage.extend({
     Price: NumberProperty,
     'QTY/Edition': RichTextProperty,
     '3D Animation': SingleFileProperty,
-    'Related to Manufacturers (Property)': RelationProperty,
+    // 'Related to Manufacturers (Property)': RelationProperty,
     Name: TitleProperty,
   }),
 });
@@ -367,7 +386,7 @@ export const BrandPage = BasePage.extend({
       type: z.string(),
       rich_text: z.array(EthereumAddress),
     }),
-    Logo: FilesProperty,
+    Logo: FilesProperty.or(ExternalFilesProperty),
     // Website: URLProperty,
     // Twitter: URLProperty,
     // Instagram: URLProperty,
@@ -390,7 +409,7 @@ export const BrandPage = BasePage.extend({
   }),
 });
 
-export const DesgignerPage = BasePage.extend({
+export const DesignerPage = BasePage.extend({
   properties: z.object({
     // Skills: z.object({
     //   id: z.string(),

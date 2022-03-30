@@ -19,6 +19,8 @@ select_permissions:
 - permission:
     columns:
     - id
+    - nft_metadata
+    - nft_token_id
     - title
     filter: {}
   role: public

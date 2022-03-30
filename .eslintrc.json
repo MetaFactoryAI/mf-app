@@ -60,7 +60,12 @@
         "minimumDescriptionLength": 5
       }
     ],
-
+    "no-restricted-syntax": [
+      "error",
+      "ForInStatement",
+      "LabeledStatement",
+      "WithStatement"
+    ],
     "react/style-prop-object": [
       "error",
       {

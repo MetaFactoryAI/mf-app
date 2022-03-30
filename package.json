@@ -17,7 +17,7 @@
     "start:services": "vercel dev -l 3003",
     "prepare": "husky install",
     "test": "yarn workspaces run test",
-    "console": "hasura --project ./hasura console"
+    "hasura": "hasura --project ./hasura"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "3.0.0",
