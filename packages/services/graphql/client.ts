@@ -1,8 +1,8 @@
 import { CONFIG } from '../utils/config';
 import { apiFetch, Thunder } from './__generated__/zeus';
 
-// eslint-disable-next-line @typescript-eslint/no-unsafe-return
 const thunder = Thunder((...params) =>
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   apiFetch([
     CONFIG.graphqlURL,
     {
