@@ -327,7 +327,7 @@ export const ProductPage = BasePage.extend({
     SKU: RichTextProperty,
     // Producer: RelationProperty,
     '3D Static': FilesProperty,
-    'Social Media Assets': URLProperty,
+    'Social Assets': FilesProperty,
     'Shopify Link': RequiredURLProperty,
     // 'Related to Customer Service (Column)': z.object({
     //   id: z.string(),

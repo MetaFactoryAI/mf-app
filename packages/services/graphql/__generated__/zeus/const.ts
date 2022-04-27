@@ -2096,6 +2096,12 @@ export const AllTypesProps: Record<string, any> = {
         arrayRequired: false,
         required: false,
       },
+      _inc: {
+        type: 'robot_product_inc_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
       _prepend: {
         type: 'robot_product_prepend_input',
         array: false,
@@ -2136,6 +2142,12 @@ export const AllTypesProps: Record<string, any> = {
       },
       _delete_key: {
         type: 'robot_product_delete_key_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      _inc: {
+        type: 'robot_product_inc_input',
         array: false,
         arrayRequired: false,
         required: false,
@@ -3412,6 +3424,12 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
+    nft_token_id: {
+      type: 'Int_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
     notion_id: {
       type: 'String_comparison_exp',
       array: false,
@@ -3945,6 +3963,14 @@ export const AllTypesProps: Record<string, any> = {
       required: false,
     },
   },
+  robot_product_inc_input: {
+    nft_token_id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
   robot_product_insert_input: {
     designers: {
       type: 'robot_product_designer_arr_rel_insert_input',
@@ -3960,6 +3986,12 @@ export const AllTypesProps: Record<string, any> = {
     },
     nft_metadata: {
       type: 'jsonb',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    nft_token_id: {
+      type: 'Int',
       array: false,
       arrayRequired: false,
       required: false,
@@ -4036,6 +4068,12 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
+    nft_token_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
     notion_id: {
       type: 'order_by',
       array: false,
@@ -4081,6 +4119,12 @@ export const AllTypesProps: Record<string, any> = {
     },
     nft_metadata: {
       type: 'jsonb',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    nft_token_id: {
+      type: 'Int',
       array: false,
       arrayRequired: false,
       required: false,
@@ -5714,6 +5758,7 @@ export const ReturnTypes: Record<string, any> = {
     designers_aggregate: 'robot_product_designer_aggregate',
     id: 'String',
     nft_metadata: 'jsonb',
+    nft_token_id: 'Int',
     notion_id: 'String',
     shopify_id: 'String',
     title: 'String',
@@ -5723,9 +5768,20 @@ export const ReturnTypes: Record<string, any> = {
     nodes: 'robot_product',
   },
   robot_product_aggregate_fields: {
+    avg: 'robot_product_avg_fields',
     count: 'Int',
     max: 'robot_product_max_fields',
     min: 'robot_product_min_fields',
+    stddev: 'robot_product_stddev_fields',
+    stddev_pop: 'robot_product_stddev_pop_fields',
+    stddev_samp: 'robot_product_stddev_samp_fields',
+    sum: 'robot_product_sum_fields',
+    var_pop: 'robot_product_var_pop_fields',
+    var_samp: 'robot_product_var_samp_fields',
+    variance: 'robot_product_variance_fields',
+  },
+  robot_product_avg_fields: {
+    nft_token_id: 'Float',
   },
   robot_product_designer: {
     contribution_share: 'numeric',
@@ -5804,12 +5860,14 @@ export const ReturnTypes: Record<string, any> = {
   },
   robot_product_max_fields: {
     id: 'String',
+    nft_token_id: 'Int',
     notion_id: 'String',
     shopify_id: 'String',
     title: 'String',
   },
   robot_product_min_fields: {
     id: 'String',
+    nft_token_id: 'Int',
     notion_id: 'String',
     shopify_id: 'String',
     title: 'String',
@@ -5817,6 +5875,27 @@ export const ReturnTypes: Record<string, any> = {
   robot_product_mutation_response: {
     affected_rows: 'Int',
     returning: 'robot_product',
+  },
+  robot_product_stddev_fields: {
+    nft_token_id: 'Float',
+  },
+  robot_product_stddev_pop_fields: {
+    nft_token_id: 'Float',
+  },
+  robot_product_stddev_samp_fields: {
+    nft_token_id: 'Float',
+  },
+  robot_product_sum_fields: {
+    nft_token_id: 'Int',
+  },
+  robot_product_var_pop_fields: {
+    nft_token_id: 'Float',
+  },
+  robot_product_var_samp_fields: {
+    nft_token_id: 'Float',
+  },
+  robot_product_variance_fields: {
+    nft_token_id: 'Float',
   },
   shop_api_users: {
     password_hash: 'String',
