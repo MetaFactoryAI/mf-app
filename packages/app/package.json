@@ -37,7 +37,7 @@
     "constants-browserify": "1.0.0",
     "dns.js": "1.0.1",
     "domain-browser": "1.2.0",
-    "events": "1.1.1",
+    "events": "3.3.0",
     "expo": "42.0.3",
     "expo-app-loading": "1.1.2",
     "expo-crypto": "9.2.0",
