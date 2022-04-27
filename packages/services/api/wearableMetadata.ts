@@ -59,16 +59,11 @@ export default async (
       const title = getProductTitle(p);
 
       const metadata = await generateWearableMetadata(p);
-      const setDataRes = await updateProduct(
-        getProductShopifyId(p),
-        {
-          notion_id: p.id,
-          title,
-        },
-        {
-          nft_metadata: metadata,
-        },
-      );
+      const setDataRes = await updateProduct(getProductShopifyId(p), {
+        notion_id: p.id,
+        title,
+        nft_metadata: metadata,
+      });
 
       itemResults.push(setDataRes?.returning);
     }
