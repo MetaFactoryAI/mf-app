@@ -22,7 +22,7 @@
     "graphql": "15.5.1",
     "graphql-request": "3.5.0",
     "js-base64": "^3.7.2",
-    "nanoid": "^3.1.30",
+    "nanoid": "^3.3.3",
     "node-fetch": "2.6.1",
     "shortid": "2.2.16",
     "zod": "^3.11.6"
