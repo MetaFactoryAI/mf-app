@@ -14,7 +14,7 @@ function generate() {
   test -d "$GEN_PATH" && rm -r "$GEN_PATH"
 
   # pass the rest of the arguments to zeus
-  (set -x; zeus "$GRAPHQL_URL"/v1/graphql "$GEN_PATH" --node --ts "$@")
+  (set -x; zeus "$GRAPHQL_URL" "$GEN_PATH" --node --ts "$@")
 
 
 
