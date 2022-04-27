@@ -226,11 +226,11 @@ export const Properties = {
   //   type: 'relation',
   //   propertyName: 'Designer Rel [OLD]' as const,
   // },
-  socialMediaAssets: {
-    id: 'k%7Ca_' as const,
-    type: 'url',
-    propertyName: 'Social Media Assets' as const,
-  },
+  // socialAssets: {
+  //   id: 'k%7Ca_' as const,
+  //   type: 'url',
+  //   propertyName: 'Social Assets' as const,
+  // },
   // 'Inv Mng By Changed': {
   //   id: 'm%7DDO' as const,
   //   type: 'checkbox',

@@ -11,7 +11,7 @@
     - name: Get NFT Data
       query: |-
         query MyQuery {
-          robot_product(where: {nft_metadata: {_is_null: false}}) {
+          products: robot_product(where: {nft_metadata: {_is_null: false}}) {
             id
             nft_token_id
             nft_metadata
