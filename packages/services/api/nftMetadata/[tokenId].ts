@@ -7,7 +7,6 @@ export default async (
   res: VercelResponse,
 ): Promise<void> => {
   const { tokenId } = req.query;
-  console.log(req.query);
 
   if (tokenId === 'nftMetadata') {
     const data = await client.query({
@@ -35,7 +34,6 @@ export default async (
         },
       ],
     });
-    console.log(data);
 
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     res.status(200).send(data.robot_product[0]?.nft_metadata || null);
