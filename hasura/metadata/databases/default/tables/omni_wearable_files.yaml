@@ -1,0 +1,10 @@
+table:
+  name: wearable_files
+  schema: omni
+object_relationships:
+- name: productByProduct
+  using:
+    foreign_key_constraint_on: product
+- name: wearable_types_enum
+  using:
+    foreign_key_constraint_on: type

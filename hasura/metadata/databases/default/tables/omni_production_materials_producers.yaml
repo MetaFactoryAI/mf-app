@@ -1,0 +1,10 @@
+table:
+  name: production_materials_producers
+  schema: omni
+object_relationships:
+- name: producerByProducer
+  using:
+    foreign_key_constraint_on: producer
+- name: productionMaterialByProductionMaterial
+  using:
+    foreign_key_constraint_on: production_material

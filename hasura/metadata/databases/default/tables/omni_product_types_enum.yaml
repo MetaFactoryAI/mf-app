@@ -1,0 +1,11 @@
+table:
+  name: product_types_enum
+  schema: omni
+array_relationships:
+- name: production_materials
+  using:
+    foreign_key_constraint_on:
+      column: type
+      table:
+        name: production_materials
+        schema: omni
