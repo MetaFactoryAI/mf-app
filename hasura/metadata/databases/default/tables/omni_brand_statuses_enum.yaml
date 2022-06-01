@@ -1,0 +1,12 @@
+table:
+  name: brand_statuses_enum
+  schema: omni
+is_enum: true
+array_relationships:
+- name: brands
+  using:
+    foreign_key_constraint_on:
+      column: status
+      table:
+        name: brands
+        schema: omni

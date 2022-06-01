@@ -1,0 +1,25 @@
+table:
+  name: price_currencies
+  schema: omni
+array_relationships:
+- name: products
+  using:
+    foreign_key_constraint_on:
+      column: price
+      table:
+        name: products
+        schema: omni
+- name: productsByProductionCost
+  using:
+    foreign_key_constraint_on:
+      column: production_cost
+      table:
+        name: products
+        schema: omni
+- name: productsByTotalSales
+  using:
+    foreign_key_constraint_on:
+      column: total_sales
+      table:
+        name: products
+        schema: omni
