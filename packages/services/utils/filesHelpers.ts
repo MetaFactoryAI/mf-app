@@ -40,7 +40,7 @@ export const getFiles = async (wearableUrl: string): Promise<FileData[]> => {
   }
 };
 
-const EXTENSION_MIME_TYPES = {
+export const EXTENSION_MIME_TYPES = {
   glb: 'model/gltf-binary',
   usdz: 'model/vnd.usd+zip',
   png: 'image/png',

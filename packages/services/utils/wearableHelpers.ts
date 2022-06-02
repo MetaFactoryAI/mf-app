@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { $, ValueTypes } from '../graphql/__generated__/zeus';
 import { client } from '../graphql/client';
 import { WearableMetadata } from '../types/wearables';
-import { getFiles } from './filesHelpers';
+import { EXTENSION_MIME_TYPES, getFiles } from './filesHelpers';
 import { ProductPage } from './notion/parser';
 import {
   getClo3dModel,
@@ -62,20 +62,33 @@ export const generateWearableMetadata = async (
   const images = getProductImages(p);
   const wearablesFolder = getWearablesFolder(p);
   const files = wearablesFolder ? await getFiles(wearablesFolder) : [];
-
+  const releaseDate = getProductReleaseDate(p);
   return {
     name: getProductTitle(p),
     image: images[0],
     description: getProductDescription(p),
-    animation_url: files[0]?.uri,
+    animation_url: files.find((f) => f.mimeType === EXTENSION_MIME_TYPES.glb)
+      ?.uri,
+    external_url: getProductShopLink(p),
     properties: {
       brand: getProductBrand(p).name,
       style: blank?.style,
       composition: blank?.composition,
-      shopLink: getProductShopLink(p),
-      madeIn: blank?.madeIn,
+      madeIn: blank?.madeIn
+        ? {
+            name: 'Made In',
+            value: blank.madeIn,
+          }
+        : undefined,
+      designer: designer?.name,
+      technician: tech?.name,
       creators: [designer, tech].filter(isNotNullOrUndefined),
-      releaseDate: getProductReleaseDate(p),
+      releaseDate: releaseDate
+        ? {
+            name: 'Release Date',
+            value: releaseDate,
+          }
+        : undefined,
       images,
     },
     files: [getClo3dModel(p), ...files],

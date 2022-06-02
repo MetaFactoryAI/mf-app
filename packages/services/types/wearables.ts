@@ -1,3 +1,9 @@
+export interface RichProperty {
+  name: string;
+  value: string | number;
+  display_value?: string;
+}
+
 export interface WearableMetadata {
   name: string;
   description: string;
@@ -9,9 +15,10 @@ export interface WearableMetadata {
     // season: string | undefined,
     style: string | undefined;
     composition: string | undefined;
-    shopLink: string | undefined;
-    madeIn: string | undefined;
-    releaseDate: string | undefined;
+    madeIn: RichProperty | undefined;
+    releaseDate: RichProperty | undefined;
+    designer: string | undefined;
+    technician: string | undefined;
     creators: Creator[];
     images: string[];
   };
