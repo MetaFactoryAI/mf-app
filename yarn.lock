@@ -10369,10 +10369,10 @@ hashids@1.1.4:
   resolved "https://registry.yarnpkg.com/hashids/-/hashids-1.1.4.tgz#e4ff92ad66b684a3bd6aace7c17d66618ee5fa21"
   integrity sha512-U/fnTE3edW0AV92ZI/BfEluMZuVcu3MDOopsN7jS+HqDYcarQo8rXQiWlsBlm0uX48/taYSdxRsfzh2HRg5Z6w==
 
-hasura-cli@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/hasura-cli/-/hasura-cli-2.1.1.tgz#20495ae4910d0f44f30a5cb360eae15ba37d0a3c"
-  integrity sha512-ts6h5lRvxmXTaZa5XRD4KM65eH+zQPXAoYJN/glGog77ZEuiIZD+g/U1pnoCNejswnawKrzLF5AEFvmr72SyVA==
+hasura-cli@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/hasura-cli/-/hasura-cli-2.7.0.tgz#981f7232dfe5f40ff6f0516aa74c674ae436ec2c"
+  integrity sha512-wxoZE781ALUV2KWwhe/ezmtaUCtK/XMVHdCAkAGJWjq1dQ4r2/nStk4RMBxRLFxd7A8YQQvd5A6CTst7S45BMA==
   dependencies:
     axios "^0.21.1"
     chalk "^2.4.2"
