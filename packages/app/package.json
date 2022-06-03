@@ -61,7 +61,7 @@
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-crypto": "MetaFactoryAI/react-native-crypto",
-    "react-native-gesture-handler": "1.10.3",
+    "react-native-gesture-handler": "2.4.2",
     "react-native-get-random-values": "1.7.0",
     "react-native-level-fs": "3.0.1",
     "react-native-os": "1.2.6",
