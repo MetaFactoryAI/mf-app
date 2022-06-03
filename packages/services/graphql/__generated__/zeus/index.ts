@@ -5,6 +5,18 @@ type ZEUS_INTERFACES = never;
 type ZEUS_UNIONS = never;
 
 export type ValueTypes = {
+  /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
+  ['Boolean_comparison_exp']: {
+    _eq?: boolean | null;
+    _gt?: boolean | null;
+    _gte?: boolean | null;
+    _in?: boolean[];
+    _is_null?: boolean | null;
+    _lt?: boolean | null;
+    _lte?: boolean | null;
+    _neq?: boolean | null;
+    _nin?: boolean[];
+  };
   /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
   ['Int_comparison_exp']: {
     _eq?: number | null;
@@ -48,6 +60,19 @@ export type ValueTypes = {
     _regex?: string | null;
     /** does the column match the given SQL regular expression */
     _similar?: string | null;
+  };
+  ['bigint']: number;
+  /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
+  ['bigint_comparison_exp']: {
+    _eq?: ValueTypes['bigint'] | null;
+    _gt?: ValueTypes['bigint'] | null;
+    _gte?: ValueTypes['bigint'] | null;
+    _in?: ValueTypes['bigint'][];
+    _is_null?: boolean | null;
+    _lt?: ValueTypes['bigint'] | null;
+    _lte?: ValueTypes['bigint'] | null;
+    _neq?: ValueTypes['bigint'] | null;
+    _nin?: ValueTypes['bigint'][];
   };
   /** columns and relationships of "contribution_votes" */
   ['contribution_votes']: AliasType<{
@@ -679,8 +704,12 @@ export type ValueTypes = {
     _nin?: ValueTypes['date'][];
   };
   ['jsonb']: unknown;
+  ['jsonb_cast_exp']: {
+    String?: ValueTypes['String_comparison_exp'] | null;
+  };
   /** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
   ['jsonb_comparison_exp']: {
+    _cast?: ValueTypes['jsonb_cast_exp'] | null;
     /** is the column contained in the given json value */
     _contained_in?: ValueTypes['jsonb'] | null;
     /** does the column contain the given json value at the top level */
@@ -735,6 +764,336 @@ export type ValueTypes = {
     delete_contributors_by_pk?: [
       { contribution_id: ValueTypes['uuid']; user_id: ValueTypes['uuid'] },
       ValueTypes['contributors'],
+    ];
+    delete_omni_brand_statuses_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_brand_statuses_enum_bool_exp'];
+      },
+      ValueTypes['omni_brand_statuses_enum_mutation_response'],
+    ];
+    delete_omni_brand_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_brand_statuses_enum'],
+    ];
+    delete_omni_brand_users?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_brand_users_bool_exp'];
+      },
+      ValueTypes['omni_brand_users_mutation_response'],
+    ];
+    delete_omni_brand_users_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_brand_users'],
+    ];
+    delete_omni_brands?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_brands_bool_exp'];
+      },
+      ValueTypes['omni_brands_mutation_response'],
+    ];
+    delete_omni_brands_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_brands'],
+    ];
+    delete_omni_collaborator_types_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_collaborator_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_collaborator_types_enum_mutation_response'],
+    ];
+    delete_omni_collaborator_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_collaborator_types_enum'],
+    ];
+    delete_omni_fullfillers?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_fullfillers_bool_exp'];
+      },
+      ValueTypes['omni_fullfillers_mutation_response'],
+    ];
+    delete_omni_fullfillers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_fullfillers'],
+    ];
+    delete_omni_price_currencies?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_price_currencies_bool_exp'];
+      },
+      ValueTypes['omni_price_currencies_mutation_response'],
+    ];
+    delete_omni_price_currencies_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_price_currencies'],
+    ];
+    delete_omni_print_techs_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_print_techs_enum_bool_exp'];
+      },
+      ValueTypes['omni_print_techs_enum_mutation_response'],
+    ];
+    delete_omni_print_techs_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_print_techs_enum'],
+    ];
+    delete_omni_producer_statuses_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_producer_statuses_enum_bool_exp'];
+      },
+      ValueTypes['omni_producer_statuses_enum_mutation_response'],
+    ];
+    delete_omni_producer_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_producer_statuses_enum'],
+    ];
+    delete_omni_producers?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_producers_bool_exp'];
+      },
+      ValueTypes['omni_producers_mutation_response'],
+    ];
+    delete_omni_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_producers'],
+    ];
+    delete_omni_product_collaborators?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_product_collaborators_bool_exp'];
+      },
+      ValueTypes['omni_product_collaborators_mutation_response'],
+    ];
+    delete_omni_product_collaborators_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    delete_omni_product_types_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_product_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_product_types_enum_mutation_response'],
+    ];
+    delete_omni_product_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_product_types_enum'],
+    ];
+    delete_omni_production_genders_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_genders_enum_bool_exp'];
+      },
+      ValueTypes['omni_production_genders_enum_mutation_response'],
+    ];
+    delete_omni_production_genders_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_genders_enum'],
+    ];
+    delete_omni_production_materials?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_materials_bool_exp'];
+      },
+      ValueTypes['omni_production_materials_mutation_response'],
+    ];
+    delete_omni_production_materials_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_materials'],
+    ];
+    delete_omni_production_materials_producers?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_materials_producers_bool_exp'];
+      },
+      ValueTypes['omni_production_materials_producers_mutation_response'],
+    ];
+    delete_omni_production_materials_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    delete_omni_production_materials_ratings_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_materials_ratings_enum_bool_exp'];
+      },
+      ValueTypes['omni_production_materials_ratings_enum_mutation_response'],
+    ];
+    delete_omni_production_materials_ratings_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_materials_ratings_enum'],
+    ];
+    delete_omni_production_methods?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_methods_bool_exp'];
+      },
+      ValueTypes['omni_production_methods_mutation_response'],
+    ];
+    delete_omni_production_methods_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods'],
+    ];
+    delete_omni_production_methods_producers?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_methods_producers_bool_exp'];
+      },
+      ValueTypes['omni_production_methods_producers_mutation_response'],
+    ];
+    delete_omni_production_methods_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    delete_omni_production_methods_products?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_methods_products_bool_exp'];
+      },
+      ValueTypes['omni_production_methods_products_mutation_response'],
+    ];
+    delete_omni_production_methods_products_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    delete_omni_production_pallettes_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_pallettes_enum_bool_exp'];
+      },
+      ValueTypes['omni_production_pallettes_enum_mutation_response'],
+    ];
+    delete_omni_production_pallettes_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_pallettes_enum'],
+    ];
+    delete_omni_production_styles_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_production_styles_enum_bool_exp'];
+      },
+      ValueTypes['omni_production_styles_enum_mutation_response'],
+    ];
+    delete_omni_production_styles_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_styles_enum'],
+    ];
+    delete_omni_products?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_products_bool_exp'];
+      },
+      ValueTypes['omni_products_mutation_response'],
+    ];
+    delete_omni_products_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_products'],
+    ];
+    delete_omni_products_stage_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_products_stage_enum_bool_exp'];
+      },
+      ValueTypes['omni_products_stage_enum_mutation_response'],
+    ];
+    delete_omni_products_stage_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_products_stage_enum'],
+    ];
+    delete_omni_sale_types_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_sale_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_sale_types_enum_mutation_response'],
+    ];
+    delete_omni_sale_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_sale_types_enum'],
+    ];
+    delete_omni_timezones_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_timezones_enum_bool_exp'];
+      },
+      ValueTypes['omni_timezones_enum_mutation_response'],
+    ];
+    delete_omni_timezones_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_timezones_enum'],
+    ];
+    delete_omni_user_skill_types_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_user_skill_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_user_skill_types_enum_mutation_response'],
+    ];
+    delete_omni_user_skill_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_user_skill_types_enum'],
+    ];
+    delete_omni_user_skills?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_user_skills_bool_exp'];
+      },
+      ValueTypes['omni_user_skills_mutation_response'],
+    ];
+    delete_omni_user_skills_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_user_skills'],
+    ];
+    delete_omni_user_statuses_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_user_statuses_enum_bool_exp'];
+      },
+      ValueTypes['omni_user_statuses_enum_mutation_response'],
+    ];
+    delete_omni_user_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_user_statuses_enum'],
+    ];
+    delete_omni_users?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_users_bool_exp'];
+      },
+      ValueTypes['omni_users_mutation_response'],
+    ];
+    delete_omni_users_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_users'],
+    ];
+    delete_omni_wearable_files?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_wearable_files_bool_exp'];
+      },
+      ValueTypes['omni_wearable_files_mutation_response'],
+    ];
+    delete_omni_wearable_files_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_wearable_files'],
+    ];
+    delete_omni_wearable_types_enum?: [
+      {
+        /** filter the rows which have to be deleted */
+        where: ValueTypes['omni_wearable_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_wearable_types_enum_mutation_response'],
+    ];
+    delete_omni_wearable_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_wearable_types_enum'],
     ];
     delete_robot_order?: [
       {
@@ -843,6 +1202,534 @@ export type ValueTypes = {
         on_conflict?: ValueTypes['contributors_on_conflict'] | null;
       },
       ValueTypes['contributors'],
+    ];
+    insert_omni_brand_statuses_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_brand_statuses_enum_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_brand_statuses_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_brand_statuses_enum_mutation_response'],
+    ];
+    insert_omni_brand_statuses_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_brand_statuses_enum_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_brand_statuses_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_brand_statuses_enum'],
+    ];
+    insert_omni_brand_users?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_brand_users_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_brand_users_on_conflict'] | null;
+      },
+      ValueTypes['omni_brand_users_mutation_response'],
+    ];
+    insert_omni_brand_users_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_brand_users_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_brand_users_on_conflict'] | null;
+      },
+      ValueTypes['omni_brand_users'],
+    ];
+    insert_omni_brands?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_brands_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_brands_on_conflict'] | null;
+      },
+      ValueTypes['omni_brands_mutation_response'],
+    ];
+    insert_omni_brands_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_brands_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_brands_on_conflict'] | null;
+      },
+      ValueTypes['omni_brands'],
+    ];
+    insert_omni_collaborator_types_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_collaborator_types_enum_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_collaborator_types_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_collaborator_types_enum_mutation_response'],
+    ];
+    insert_omni_collaborator_types_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_collaborator_types_enum_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_collaborator_types_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_collaborator_types_enum'],
+    ];
+    insert_omni_fullfillers?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_fullfillers_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_fullfillers_on_conflict'] | null;
+      },
+      ValueTypes['omni_fullfillers_mutation_response'],
+    ];
+    insert_omni_fullfillers_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_fullfillers_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_fullfillers_on_conflict'] | null;
+      },
+      ValueTypes['omni_fullfillers'],
+    ];
+    insert_omni_price_currencies?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_price_currencies_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_price_currencies_on_conflict'] | null;
+      },
+      ValueTypes['omni_price_currencies_mutation_response'],
+    ];
+    insert_omni_price_currencies_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_price_currencies_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_price_currencies_on_conflict'] | null;
+      },
+      ValueTypes['omni_price_currencies'],
+    ];
+    insert_omni_print_techs_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_print_techs_enum_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_print_techs_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_print_techs_enum_mutation_response'],
+    ];
+    insert_omni_print_techs_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_print_techs_enum_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_print_techs_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_print_techs_enum'],
+    ];
+    insert_omni_producer_statuses_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_producer_statuses_enum_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_producer_statuses_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_producer_statuses_enum_mutation_response'],
+    ];
+    insert_omni_producer_statuses_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_producer_statuses_enum_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_producer_statuses_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_producer_statuses_enum'],
+    ];
+    insert_omni_producers?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_producers_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_producers_on_conflict'] | null;
+      },
+      ValueTypes['omni_producers_mutation_response'],
+    ];
+    insert_omni_producers_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_producers_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_producers_on_conflict'] | null;
+      },
+      ValueTypes['omni_producers'],
+    ];
+    insert_omni_product_collaborators?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_product_collaborators_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_product_collaborators_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_product_collaborators_mutation_response'],
+    ];
+    insert_omni_product_collaborators_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_product_collaborators_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_product_collaborators_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    insert_omni_product_types_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_product_types_enum_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_product_types_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_product_types_enum_mutation_response'],
+    ];
+    insert_omni_product_types_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_product_types_enum_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_product_types_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_product_types_enum'],
+    ];
+    insert_omni_production_genders_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_genders_enum_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_genders_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_genders_enum_mutation_response'],
+    ];
+    insert_omni_production_genders_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_genders_enum_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_genders_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_genders_enum'],
+    ];
+    insert_omni_production_materials?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_materials_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_materials_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_materials_mutation_response'],
+    ];
+    insert_omni_production_materials_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_materials_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_materials_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    insert_omni_production_materials_producers?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_materials_producers_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_materials_producers_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers_mutation_response'],
+    ];
+    insert_omni_production_materials_producers_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_materials_producers_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_materials_producers_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    insert_omni_production_materials_ratings_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_materials_ratings_enum_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_materials_ratings_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_materials_ratings_enum_mutation_response'],
+    ];
+    insert_omni_production_materials_ratings_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_materials_ratings_enum_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_materials_ratings_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_materials_ratings_enum'],
+    ];
+    insert_omni_production_methods?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_methods_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_production_methods_on_conflict'] | null;
+      },
+      ValueTypes['omni_production_methods_mutation_response'],
+    ];
+    insert_omni_production_methods_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_methods_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_production_methods_on_conflict'] | null;
+      },
+      ValueTypes['omni_production_methods'],
+    ];
+    insert_omni_production_methods_producers?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_methods_producers_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_methods_producers_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_methods_producers_mutation_response'],
+    ];
+    insert_omni_production_methods_producers_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_methods_producers_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_methods_producers_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    insert_omni_production_methods_products?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_methods_products_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_methods_products_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_methods_products_mutation_response'],
+    ];
+    insert_omni_production_methods_products_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_methods_products_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_methods_products_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    insert_omni_production_pallettes_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_pallettes_enum_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_pallettes_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_pallettes_enum_mutation_response'],
+    ];
+    insert_omni_production_pallettes_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_pallettes_enum_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_pallettes_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_pallettes_enum'],
+    ];
+    insert_omni_production_styles_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_production_styles_enum_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_styles_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_styles_enum_mutation_response'],
+    ];
+    insert_omni_production_styles_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_production_styles_enum_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_production_styles_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_production_styles_enum'],
+    ];
+    insert_omni_products?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_products_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_products_on_conflict'] | null;
+      },
+      ValueTypes['omni_products_mutation_response'],
+    ];
+    insert_omni_products_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_products_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_products_on_conflict'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    insert_omni_products_stage_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_products_stage_enum_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_products_stage_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_products_stage_enum_mutation_response'],
+    ];
+    insert_omni_products_stage_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_products_stage_enum_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_products_stage_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_products_stage_enum'],
+    ];
+    insert_omni_sale_types_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_sale_types_enum_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_sale_types_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_sale_types_enum_mutation_response'],
+    ];
+    insert_omni_sale_types_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_sale_types_enum_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_sale_types_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_sale_types_enum'],
+    ];
+    insert_omni_timezones_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_timezones_enum_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_timezones_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_timezones_enum_mutation_response'],
+    ];
+    insert_omni_timezones_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_timezones_enum_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_timezones_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_timezones_enum'],
+    ];
+    insert_omni_user_skill_types_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_user_skill_types_enum_insert_input'][] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_user_skill_types_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_user_skill_types_enum_mutation_response'],
+    ];
+    insert_omni_user_skill_types_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_user_skill_types_enum_insert_input'] /** upsert condition */;
+        on_conflict?:
+          | ValueTypes['omni_user_skill_types_enum_on_conflict']
+          | null;
+      },
+      ValueTypes['omni_user_skill_types_enum'],
+    ];
+    insert_omni_user_skills?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_user_skills_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_user_skills_on_conflict'] | null;
+      },
+      ValueTypes['omni_user_skills_mutation_response'],
+    ];
+    insert_omni_user_skills_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_user_skills_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_user_skills_on_conflict'] | null;
+      },
+      ValueTypes['omni_user_skills'],
+    ];
+    insert_omni_user_statuses_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_user_statuses_enum_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_user_statuses_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_user_statuses_enum_mutation_response'],
+    ];
+    insert_omni_user_statuses_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_user_statuses_enum_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_user_statuses_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_user_statuses_enum'],
+    ];
+    insert_omni_users?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_users_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_users_on_conflict'] | null;
+      },
+      ValueTypes['omni_users_mutation_response'],
+    ];
+    insert_omni_users_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_users_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_users_on_conflict'] | null;
+      },
+      ValueTypes['omni_users'],
+    ];
+    insert_omni_wearable_files?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_wearable_files_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_wearable_files_on_conflict'] | null;
+      },
+      ValueTypes['omni_wearable_files_mutation_response'],
+    ];
+    insert_omni_wearable_files_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_wearable_files_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_wearable_files_on_conflict'] | null;
+      },
+      ValueTypes['omni_wearable_files'],
+    ];
+    insert_omni_wearable_types_enum?: [
+      {
+        /** the rows to be inserted */
+        objects: ValueTypes['omni_wearable_types_enum_insert_input'][] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_wearable_types_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_wearable_types_enum_mutation_response'],
+    ];
+    insert_omni_wearable_types_enum_one?: [
+      {
+        /** the row to be inserted */
+        object: ValueTypes['omni_wearable_types_enum_insert_input'] /** upsert condition */;
+        on_conflict?: ValueTypes['omni_wearable_types_enum_on_conflict'] | null;
+      },
+      ValueTypes['omni_wearable_types_enum'],
     ];
     insert_robot_order?: [
       {
@@ -1005,6 +1892,574 @@ export type ValueTypes = {
         pk_columns: ValueTypes['contributors_pk_columns_input'];
       },
       ValueTypes['contributors'],
+    ];
+    update_omni_brand_statuses_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_brand_statuses_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_brand_statuses_enum_bool_exp'];
+      },
+      ValueTypes['omni_brand_statuses_enum_mutation_response'],
+    ];
+    update_omni_brand_statuses_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_brand_statuses_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_brand_statuses_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_brand_statuses_enum'],
+    ];
+    update_omni_brand_users?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_brand_users_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_brand_users_bool_exp'];
+      },
+      ValueTypes['omni_brand_users_mutation_response'],
+    ];
+    update_omni_brand_users_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_brand_users_set_input'] | null;
+        pk_columns: ValueTypes['omni_brand_users_pk_columns_input'];
+      },
+      ValueTypes['omni_brand_users'],
+    ];
+    update_omni_brands?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_brands_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_brands_bool_exp'];
+      },
+      ValueTypes['omni_brands_mutation_response'],
+    ];
+    update_omni_brands_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_brands_set_input'] | null;
+        pk_columns: ValueTypes['omni_brands_pk_columns_input'];
+      },
+      ValueTypes['omni_brands'],
+    ];
+    update_omni_collaborator_types_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_collaborator_types_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_collaborator_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_collaborator_types_enum_mutation_response'],
+    ];
+    update_omni_collaborator_types_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_collaborator_types_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_collaborator_types_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_collaborator_types_enum'],
+    ];
+    update_omni_fullfillers?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_fullfillers_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_fullfillers_bool_exp'];
+      },
+      ValueTypes['omni_fullfillers_mutation_response'],
+    ];
+    update_omni_fullfillers_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_fullfillers_set_input'] | null;
+        pk_columns: ValueTypes['omni_fullfillers_pk_columns_input'];
+      },
+      ValueTypes['omni_fullfillers'],
+    ];
+    update_omni_price_currencies?: [
+      {
+        /** increments the numeric columns with given value of the filtered values */
+        _inc?:
+          | ValueTypes['omni_price_currencies_inc_input']
+          | null /** sets the columns of the filtered rows to the given values */;
+        _set?:
+          | ValueTypes['omni_price_currencies_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_price_currencies_bool_exp'];
+      },
+      ValueTypes['omni_price_currencies_mutation_response'],
+    ];
+    update_omni_price_currencies_by_pk?: [
+      {
+        /** increments the numeric columns with given value of the filtered values */
+        _inc?:
+          | ValueTypes['omni_price_currencies_inc_input']
+          | null /** sets the columns of the filtered rows to the given values */;
+        _set?: ValueTypes['omni_price_currencies_set_input'] | null;
+        pk_columns: ValueTypes['omni_price_currencies_pk_columns_input'];
+      },
+      ValueTypes['omni_price_currencies'],
+    ];
+    update_omni_print_techs_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_print_techs_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_print_techs_enum_bool_exp'];
+      },
+      ValueTypes['omni_print_techs_enum_mutation_response'],
+    ];
+    update_omni_print_techs_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_print_techs_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_print_techs_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_print_techs_enum'],
+    ];
+    update_omni_producer_statuses_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_producer_statuses_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_producer_statuses_enum_bool_exp'];
+      },
+      ValueTypes['omni_producer_statuses_enum_mutation_response'],
+    ];
+    update_omni_producer_statuses_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_producer_statuses_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_producer_statuses_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_producer_statuses_enum'],
+    ];
+    update_omni_producers?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_producers_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_producers_bool_exp'];
+      },
+      ValueTypes['omni_producers_mutation_response'],
+    ];
+    update_omni_producers_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_producers_set_input'] | null;
+        pk_columns: ValueTypes['omni_producers_pk_columns_input'];
+      },
+      ValueTypes['omni_producers'],
+    ];
+    update_omni_product_collaborators?: [
+      {
+        /** increments the numeric columns with given value of the filtered values */
+        _inc?:
+          | ValueTypes['omni_product_collaborators_inc_input']
+          | null /** sets the columns of the filtered rows to the given values */;
+        _set?:
+          | ValueTypes['omni_product_collaborators_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_product_collaborators_bool_exp'];
+      },
+      ValueTypes['omni_product_collaborators_mutation_response'],
+    ];
+    update_omni_product_collaborators_by_pk?: [
+      {
+        /** increments the numeric columns with given value of the filtered values */
+        _inc?:
+          | ValueTypes['omni_product_collaborators_inc_input']
+          | null /** sets the columns of the filtered rows to the given values */;
+        _set?: ValueTypes['omni_product_collaborators_set_input'] | null;
+        pk_columns: ValueTypes['omni_product_collaborators_pk_columns_input'];
+      },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    update_omni_product_types_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_product_types_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_product_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_product_types_enum_mutation_response'],
+    ];
+    update_omni_product_types_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_product_types_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_product_types_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_product_types_enum'],
+    ];
+    update_omni_production_genders_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_genders_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_genders_enum_bool_exp'];
+      },
+      ValueTypes['omni_production_genders_enum_mutation_response'],
+    ];
+    update_omni_production_genders_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_production_genders_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_production_genders_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_production_genders_enum'],
+    ];
+    update_omni_production_materials?: [
+      {
+        /** increments the numeric columns with given value of the filtered values */
+        _inc?:
+          | ValueTypes['omni_production_materials_inc_input']
+          | null /** sets the columns of the filtered rows to the given values */;
+        _set?:
+          | ValueTypes['omni_production_materials_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_materials_bool_exp'];
+      },
+      ValueTypes['omni_production_materials_mutation_response'],
+    ];
+    update_omni_production_materials_by_pk?: [
+      {
+        /** increments the numeric columns with given value of the filtered values */
+        _inc?:
+          | ValueTypes['omni_production_materials_inc_input']
+          | null /** sets the columns of the filtered rows to the given values */;
+        _set?: ValueTypes['omni_production_materials_set_input'] | null;
+        pk_columns: ValueTypes['omni_production_materials_pk_columns_input'];
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    update_omni_production_materials_producers?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_materials_producers_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_materials_producers_bool_exp'];
+      },
+      ValueTypes['omni_production_materials_producers_mutation_response'],
+    ];
+    update_omni_production_materials_producers_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_materials_producers_set_input']
+          | null;
+        pk_columns: ValueTypes['omni_production_materials_producers_pk_columns_input'];
+      },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    update_omni_production_materials_ratings_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_materials_ratings_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_materials_ratings_enum_bool_exp'];
+      },
+      ValueTypes['omni_production_materials_ratings_enum_mutation_response'],
+    ];
+    update_omni_production_materials_ratings_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_materials_ratings_enum_set_input']
+          | null;
+        pk_columns: ValueTypes['omni_production_materials_ratings_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_production_materials_ratings_enum'],
+    ];
+    update_omni_production_methods?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_methods_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_methods_bool_exp'];
+      },
+      ValueTypes['omni_production_methods_mutation_response'],
+    ];
+    update_omni_production_methods_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_production_methods_set_input'] | null;
+        pk_columns: ValueTypes['omni_production_methods_pk_columns_input'];
+      },
+      ValueTypes['omni_production_methods'],
+    ];
+    update_omni_production_methods_producers?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_methods_producers_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_methods_producers_bool_exp'];
+      },
+      ValueTypes['omni_production_methods_producers_mutation_response'],
+    ];
+    update_omni_production_methods_producers_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_production_methods_producers_set_input'] | null;
+        pk_columns: ValueTypes['omni_production_methods_producers_pk_columns_input'];
+      },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    update_omni_production_methods_products?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_methods_products_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_methods_products_bool_exp'];
+      },
+      ValueTypes['omni_production_methods_products_mutation_response'],
+    ];
+    update_omni_production_methods_products_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_production_methods_products_set_input'] | null;
+        pk_columns: ValueTypes['omni_production_methods_products_pk_columns_input'];
+      },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    update_omni_production_pallettes_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_pallettes_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_pallettes_enum_bool_exp'];
+      },
+      ValueTypes['omni_production_pallettes_enum_mutation_response'],
+    ];
+    update_omni_production_pallettes_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_production_pallettes_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_production_pallettes_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_production_pallettes_enum'],
+    ];
+    update_omni_production_styles_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_production_styles_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_production_styles_enum_bool_exp'];
+      },
+      ValueTypes['omni_production_styles_enum_mutation_response'],
+    ];
+    update_omni_production_styles_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_production_styles_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_production_styles_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_production_styles_enum'],
+    ];
+    update_omni_products?: [
+      {
+        /** increments the numeric columns with given value of the filtered values */
+        _inc?:
+          | ValueTypes['omni_products_inc_input']
+          | null /** sets the columns of the filtered rows to the given values */;
+        _set?:
+          | ValueTypes['omni_products_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_products_bool_exp'];
+      },
+      ValueTypes['omni_products_mutation_response'],
+    ];
+    update_omni_products_by_pk?: [
+      {
+        /** increments the numeric columns with given value of the filtered values */
+        _inc?:
+          | ValueTypes['omni_products_inc_input']
+          | null /** sets the columns of the filtered rows to the given values */;
+        _set?: ValueTypes['omni_products_set_input'] | null;
+        pk_columns: ValueTypes['omni_products_pk_columns_input'];
+      },
+      ValueTypes['omni_products'],
+    ];
+    update_omni_products_stage_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_products_stage_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_products_stage_enum_bool_exp'];
+      },
+      ValueTypes['omni_products_stage_enum_mutation_response'],
+    ];
+    update_omni_products_stage_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_products_stage_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_products_stage_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_products_stage_enum'],
+    ];
+    update_omni_sale_types_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_sale_types_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_sale_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_sale_types_enum_mutation_response'],
+    ];
+    update_omni_sale_types_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_sale_types_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_sale_types_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_sale_types_enum'],
+    ];
+    update_omni_timezones_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_timezones_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_timezones_enum_bool_exp'];
+      },
+      ValueTypes['omni_timezones_enum_mutation_response'],
+    ];
+    update_omni_timezones_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_timezones_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_timezones_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_timezones_enum'],
+    ];
+    update_omni_user_skill_types_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_user_skill_types_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_user_skill_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_user_skill_types_enum_mutation_response'],
+    ];
+    update_omni_user_skill_types_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_user_skill_types_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_user_skill_types_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_user_skill_types_enum'],
+    ];
+    update_omni_user_skills?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_user_skills_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_user_skills_bool_exp'];
+      },
+      ValueTypes['omni_user_skills_mutation_response'],
+    ];
+    update_omni_user_skills_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_user_skills_set_input'] | null;
+        pk_columns: ValueTypes['omni_user_skills_pk_columns_input'];
+      },
+      ValueTypes['omni_user_skills'],
+    ];
+    update_omni_user_statuses_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_user_statuses_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_user_statuses_enum_bool_exp'];
+      },
+      ValueTypes['omni_user_statuses_enum_mutation_response'],
+    ];
+    update_omni_user_statuses_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_user_statuses_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_user_statuses_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_user_statuses_enum'],
+    ];
+    update_omni_users?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_users_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_users_bool_exp'];
+      },
+      ValueTypes['omni_users_mutation_response'],
+    ];
+    update_omni_users_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_users_set_input'] | null;
+        pk_columns: ValueTypes['omni_users_pk_columns_input'];
+      },
+      ValueTypes['omni_users'],
+    ];
+    update_omni_wearable_files?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_wearable_files_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_wearable_files_bool_exp'];
+      },
+      ValueTypes['omni_wearable_files_mutation_response'],
+    ];
+    update_omni_wearable_files_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_wearable_files_set_input'] | null;
+        pk_columns: ValueTypes['omni_wearable_files_pk_columns_input'];
+      },
+      ValueTypes['omni_wearable_files'],
+    ];
+    update_omni_wearable_types_enum?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?:
+          | ValueTypes['omni_wearable_types_enum_set_input']
+          | null /** filter the rows which have to be updated */;
+        where: ValueTypes['omni_wearable_types_enum_bool_exp'];
+      },
+      ValueTypes['omni_wearable_types_enum_mutation_response'],
+    ];
+    update_omni_wearable_types_enum_by_pk?: [
+      {
+        /** sets the columns of the filtered rows to the given values */
+        _set?: ValueTypes['omni_wearable_types_enum_set_input'] | null;
+        pk_columns: ValueTypes['omni_wearable_types_enum_pk_columns_input'];
+      },
+      ValueTypes['omni_wearable_types_enum'],
     ];
     update_robot_order?: [
       {
@@ -1177,6 +2632,5701 @@ export type ValueTypes = {
     _neq?: ValueTypes['numeric'] | null;
     _nin?: ValueTypes['numeric'][];
   };
+  /** columns and relationships of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum']: AliasType<{
+    brands?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brands_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brands_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brands_bool_exp'] | null;
+      },
+      ValueTypes['omni_brands'],
+    ];
+    brands_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brands_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brands_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brands_bool_exp'] | null;
+      },
+      ValueTypes['omni_brands_aggregate'],
+    ];
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_brand_statuses_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_brand_statuses_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_brand_statuses_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_brand_statuses_enum_max_fields'];
+    min?: ValueTypes['omni_brand_statuses_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.brand_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_brand_statuses_enum_bool_exp']: {
+    _and?: ValueTypes['omni_brand_statuses_enum_bool_exp'][];
+    _not?: ValueTypes['omni_brand_statuses_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_brand_statuses_enum_bool_exp'][];
+    brands?: ValueTypes['omni_brands_bool_exp'] | null;
+    description?: ValueTypes['String_comparison_exp'] | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_constraint']: omni_brand_statuses_enum_constraint;
+  ['omni_brand_statuses_enum_enum']: omni_brand_statuses_enum_enum;
+  /** Boolean expression to compare columns of type "omni_brand_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_brand_statuses_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_brand_statuses_enum_enum'] | null;
+    _in?: ValueTypes['omni_brand_statuses_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_brand_statuses_enum_enum'] | null;
+    _nin?: ValueTypes['omni_brand_statuses_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_insert_input']: {
+    brands?: ValueTypes['omni_brands_arr_rel_insert_input'] | null;
+    description?: string | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_brand_statuses_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_brand_statuses_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_brand_statuses_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_brand_statuses_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_brand_statuses_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_on_conflict']: {
+    constraint: ValueTypes['omni_brand_statuses_enum_constraint'];
+    update_columns: ValueTypes['omni_brand_statuses_enum_update_column'][];
+    where?: ValueTypes['omni_brand_statuses_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.brand_statuses_enum". */
+  ['omni_brand_statuses_enum_order_by']: {
+    brands_aggregate?: ValueTypes['omni_brands_aggregate_order_by'] | null;
+    description?: ValueTypes['order_by'] | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_brand_statuses_enum */
+  ['omni_brand_statuses_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_select_column']: omni_brand_statuses_enum_select_column;
+  /** input type for updating data in table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_update_column']: omni_brand_statuses_enum_update_column;
+  /** columns and relationships of "omni.brand_users" */
+  ['omni_brand_users']: AliasType<{
+    brand?: boolean;
+    /** An object relationship */
+    brandByBrand?: ValueTypes['omni_brands'];
+    collaborator?: boolean;
+    id?: boolean;
+    /** An object relationship */
+    user?: ValueTypes['omni_users'];
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.brand_users" */
+  ['omni_brand_users_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_brand_users_aggregate_fields'];
+    nodes?: ValueTypes['omni_brand_users'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.brand_users" */
+  ['omni_brand_users_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_brand_users_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_brand_users_max_fields'];
+    min?: ValueTypes['omni_brand_users_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.brand_users" */
+  ['omni_brand_users_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_brand_users_max_order_by'] | null;
+    min?: ValueTypes['omni_brand_users_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.brand_users" */
+  ['omni_brand_users_arr_rel_insert_input']: {
+    data: ValueTypes['omni_brand_users_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_brand_users_on_conflict'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.brand_users". All fields are combined with a logical 'AND'. */
+  ['omni_brand_users_bool_exp']: {
+    _and?: ValueTypes['omni_brand_users_bool_exp'][];
+    _not?: ValueTypes['omni_brand_users_bool_exp'] | null;
+    _or?: ValueTypes['omni_brand_users_bool_exp'][];
+    brand?: ValueTypes['uuid_comparison_exp'] | null;
+    brandByBrand?: ValueTypes['omni_brands_bool_exp'] | null;
+    collaborator?: ValueTypes['uuid_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    user?: ValueTypes['omni_users_bool_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.brand_users" */
+  ['omni_brand_users_constraint']: omni_brand_users_constraint;
+  /** input type for inserting data into table "omni.brand_users" */
+  ['omni_brand_users_insert_input']: {
+    brand?: ValueTypes['uuid'] | null;
+    brandByBrand?: ValueTypes['omni_brands_obj_rel_insert_input'] | null;
+    collaborator?: ValueTypes['uuid'] | null;
+    id?: ValueTypes['uuid'] | null;
+    user?: ValueTypes['omni_users_obj_rel_insert_input'] | null;
+  };
+  /** aggregate max on columns */
+  ['omni_brand_users_max_fields']: AliasType<{
+    brand?: boolean;
+    collaborator?: boolean;
+    id?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.brand_users" */
+  ['omni_brand_users_max_order_by']: {
+    brand?: ValueTypes['order_by'] | null;
+    collaborator?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_brand_users_min_fields']: AliasType<{
+    brand?: boolean;
+    collaborator?: boolean;
+    id?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.brand_users" */
+  ['omni_brand_users_min_order_by']: {
+    brand?: ValueTypes['order_by'] | null;
+    collaborator?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.brand_users" */
+  ['omni_brand_users_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_brand_users'];
+    __typename?: boolean;
+  }>;
+  /** on_conflict condition type for table "omni.brand_users" */
+  ['omni_brand_users_on_conflict']: {
+    constraint: ValueTypes['omni_brand_users_constraint'];
+    update_columns: ValueTypes['omni_brand_users_update_column'][];
+    where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.brand_users". */
+  ['omni_brand_users_order_by']: {
+    brand?: ValueTypes['order_by'] | null;
+    brandByBrand?: ValueTypes['omni_brands_order_by'] | null;
+    collaborator?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    user?: ValueTypes['omni_users_order_by'] | null;
+  };
+  /** primary key columns input for table: omni_brand_users */
+  ['omni_brand_users_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.brand_users" */
+  ['omni_brand_users_select_column']: omni_brand_users_select_column;
+  /** input type for updating data in table "omni.brand_users" */
+  ['omni_brand_users_set_input']: {
+    brand?: ValueTypes['uuid'] | null;
+    collaborator?: ValueTypes['uuid'] | null;
+    id?: ValueTypes['uuid'] | null;
+  };
+  /** update columns of table "omni.brand_users" */
+  ['omni_brand_users_update_column']: omni_brand_users_update_column;
+  /** columns and relationships of "omni.brands" */
+  ['omni_brands']: AliasType<{
+    /** An object relationship */
+    brand_statuses_enum?: ValueTypes['omni_brand_statuses_enum'];
+    brand_users?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_users'],
+    ];
+    brand_users_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_users_aggregate'],
+    ];
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    discord_url?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    /** link to logo image */
+    logo?: boolean;
+    name?: boolean;
+    products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    status?: boolean;
+    twitter_url?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    website_url?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.brands" */
+  ['omni_brands_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_brands_aggregate_fields'];
+    nodes?: ValueTypes['omni_brands'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.brands" */
+  ['omni_brands_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_brands_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_brands_max_fields'];
+    min?: ValueTypes['omni_brands_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.brands" */
+  ['omni_brands_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_brands_max_order_by'] | null;
+    min?: ValueTypes['omni_brands_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.brands" */
+  ['omni_brands_arr_rel_insert_input']: {
+    data: ValueTypes['omni_brands_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_brands_on_conflict'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.brands". All fields are combined with a logical 'AND'. */
+  ['omni_brands_bool_exp']: {
+    _and?: ValueTypes['omni_brands_bool_exp'][];
+    _not?: ValueTypes['omni_brands_bool_exp'] | null;
+    _or?: ValueTypes['omni_brands_bool_exp'][];
+    brand_statuses_enum?:
+      | ValueTypes['omni_brand_statuses_enum_bool_exp']
+      | null;
+    brand_users?: ValueTypes['omni_brand_users_bool_exp'] | null;
+    created_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    description?: ValueTypes['String_comparison_exp'] | null;
+    discord_url?: ValueTypes['String_comparison_exp'] | null;
+    eth_address?: ValueTypes['String_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    logo?: ValueTypes['String_comparison_exp'] | null;
+    name?: ValueTypes['String_comparison_exp'] | null;
+    products?: ValueTypes['omni_products_bool_exp'] | null;
+    status?: ValueTypes['omni_brand_statuses_enum_enum_comparison_exp'] | null;
+    twitter_url?: ValueTypes['String_comparison_exp'] | null;
+    updated_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    website_url?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.brands" */
+  ['omni_brands_constraint']: omni_brands_constraint;
+  /** input type for inserting data into table "omni.brands" */
+  ['omni_brands_insert_input']: {
+    brand_statuses_enum?:
+      | ValueTypes['omni_brand_statuses_enum_obj_rel_insert_input']
+      | null;
+    brand_users?: ValueTypes['omni_brand_users_arr_rel_insert_input'] | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    description?: string | null;
+    discord_url?: string | null;
+    eth_address?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    /** link to logo image */
+    logo?: string | null;
+    name?: string | null;
+    products?: ValueTypes['omni_products_arr_rel_insert_input'] | null;
+    status?: ValueTypes['omni_brand_statuses_enum_enum'] | null;
+    twitter_url?: string | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+    website_url?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_brands_max_fields']: AliasType<{
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    discord_url?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    /** link to logo image */
+    logo?: boolean;
+    name?: boolean;
+    twitter_url?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    website_url?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.brands" */
+  ['omni_brands_max_order_by']: {
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    description?: ValueTypes['order_by'] | null;
+    discord_url?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    /** link to logo image */
+    logo?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    twitter_url?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+    website_url?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_brands_min_fields']: AliasType<{
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    discord_url?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    /** link to logo image */
+    logo?: boolean;
+    name?: boolean;
+    twitter_url?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    website_url?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.brands" */
+  ['omni_brands_min_order_by']: {
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    description?: ValueTypes['order_by'] | null;
+    discord_url?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    /** link to logo image */
+    logo?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    twitter_url?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+    website_url?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.brands" */
+  ['omni_brands_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_brands'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.brands" */
+  ['omni_brands_obj_rel_insert_input']: {
+    data: ValueTypes['omni_brands_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_brands_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.brands" */
+  ['omni_brands_on_conflict']: {
+    constraint: ValueTypes['omni_brands_constraint'];
+    update_columns: ValueTypes['omni_brands_update_column'][];
+    where?: ValueTypes['omni_brands_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.brands". */
+  ['omni_brands_order_by']: {
+    brand_statuses_enum?:
+      | ValueTypes['omni_brand_statuses_enum_order_by']
+      | null;
+    brand_users_aggregate?:
+      | ValueTypes['omni_brand_users_aggregate_order_by']
+      | null;
+    created_at?: ValueTypes['order_by'] | null;
+    description?: ValueTypes['order_by'] | null;
+    discord_url?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    logo?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    products_aggregate?: ValueTypes['omni_products_aggregate_order_by'] | null;
+    status?: ValueTypes['order_by'] | null;
+    twitter_url?: ValueTypes['order_by'] | null;
+    updated_at?: ValueTypes['order_by'] | null;
+    website_url?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_brands */
+  ['omni_brands_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.brands" */
+  ['omni_brands_select_column']: omni_brands_select_column;
+  /** input type for updating data in table "omni.brands" */
+  ['omni_brands_set_input']: {
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    description?: string | null;
+    discord_url?: string | null;
+    eth_address?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    /** link to logo image */
+    logo?: string | null;
+    name?: string | null;
+    status?: ValueTypes['omni_brand_statuses_enum_enum'] | null;
+    twitter_url?: string | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+    website_url?: string | null;
+  };
+  /** update columns of table "omni.brands" */
+  ['omni_brands_update_column']: omni_brands_update_column;
+  /** columns and relationships of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum']: AliasType<{
+    description?: boolean;
+    product_collaborators?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    product_collaborators_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_collaborator_types_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_collaborator_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_collaborator_types_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_collaborator_types_enum_max_fields'];
+    min?: ValueTypes['omni_collaborator_types_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.collaborator_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_collaborator_types_enum_bool_exp']: {
+    _and?: ValueTypes['omni_collaborator_types_enum_bool_exp'][];
+    _not?: ValueTypes['omni_collaborator_types_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_collaborator_types_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    product_collaborators?:
+      | ValueTypes['omni_product_collaborators_bool_exp']
+      | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_constraint']: omni_collaborator_types_enum_constraint;
+  ['omni_collaborator_types_enum_enum']: omni_collaborator_types_enum_enum;
+  /** Boolean expression to compare columns of type "omni_collaborator_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_collaborator_types_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_collaborator_types_enum_enum'] | null;
+    _in?: ValueTypes['omni_collaborator_types_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_collaborator_types_enum_enum'] | null;
+    _nin?: ValueTypes['omni_collaborator_types_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_insert_input']: {
+    description?: string | null;
+    product_collaborators?:
+      | ValueTypes['omni_product_collaborators_arr_rel_insert_input']
+      | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_collaborator_types_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_collaborator_types_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_collaborator_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_collaborator_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_collaborator_types_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_on_conflict']: {
+    constraint: ValueTypes['omni_collaborator_types_enum_constraint'];
+    update_columns: ValueTypes['omni_collaborator_types_enum_update_column'][];
+    where?: ValueTypes['omni_collaborator_types_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.collaborator_types_enum". */
+  ['omni_collaborator_types_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    product_collaborators_aggregate?:
+      | ValueTypes['omni_product_collaborators_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_collaborator_types_enum */
+  ['omni_collaborator_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_select_column']: omni_collaborator_types_enum_select_column;
+  /** input type for updating data in table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_update_column']: omni_collaborator_types_enum_update_column;
+  /** columns and relationships of "omni.fullfillers" */
+  ['omni_fullfillers']: AliasType<{
+    address?: boolean;
+    /** on create */
+    created_at?: boolean;
+    email?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    name?: boolean;
+    products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    /** on touch */
+    updated_at?: boolean;
+    website_url?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.fullfillers" */
+  ['omni_fullfillers_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_fullfillers_aggregate_fields'];
+    nodes?: ValueTypes['omni_fullfillers'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.fullfillers" */
+  ['omni_fullfillers_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_fullfillers_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_fullfillers_max_fields'];
+    min?: ValueTypes['omni_fullfillers_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.fullfillers". All fields are combined with a logical 'AND'. */
+  ['omni_fullfillers_bool_exp']: {
+    _and?: ValueTypes['omni_fullfillers_bool_exp'][];
+    _not?: ValueTypes['omni_fullfillers_bool_exp'] | null;
+    _or?: ValueTypes['omni_fullfillers_bool_exp'][];
+    address?: ValueTypes['String_comparison_exp'] | null;
+    created_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    email?: ValueTypes['String_comparison_exp'] | null;
+    eth_address?: ValueTypes['String_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    name?: ValueTypes['String_comparison_exp'] | null;
+    products?: ValueTypes['omni_products_bool_exp'] | null;
+    updated_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    website_url?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.fullfillers" */
+  ['omni_fullfillers_constraint']: omni_fullfillers_constraint;
+  /** input type for inserting data into table "omni.fullfillers" */
+  ['omni_fullfillers_insert_input']: {
+    address?: string | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    email?: string | null;
+    eth_address?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    products?: ValueTypes['omni_products_arr_rel_insert_input'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+    website_url?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_fullfillers_max_fields']: AliasType<{
+    address?: boolean;
+    /** on create */
+    created_at?: boolean;
+    email?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    name?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    website_url?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_fullfillers_min_fields']: AliasType<{
+    address?: boolean;
+    /** on create */
+    created_at?: boolean;
+    email?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    name?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    website_url?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.fullfillers" */
+  ['omni_fullfillers_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_fullfillers'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.fullfillers" */
+  ['omni_fullfillers_obj_rel_insert_input']: {
+    data: ValueTypes['omni_fullfillers_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_fullfillers_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.fullfillers" */
+  ['omni_fullfillers_on_conflict']: {
+    constraint: ValueTypes['omni_fullfillers_constraint'];
+    update_columns: ValueTypes['omni_fullfillers_update_column'][];
+    where?: ValueTypes['omni_fullfillers_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.fullfillers". */
+  ['omni_fullfillers_order_by']: {
+    address?: ValueTypes['order_by'] | null;
+    created_at?: ValueTypes['order_by'] | null;
+    email?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    products_aggregate?: ValueTypes['omni_products_aggregate_order_by'] | null;
+    updated_at?: ValueTypes['order_by'] | null;
+    website_url?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_fullfillers */
+  ['omni_fullfillers_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.fullfillers" */
+  ['omni_fullfillers_select_column']: omni_fullfillers_select_column;
+  /** input type for updating data in table "omni.fullfillers" */
+  ['omni_fullfillers_set_input']: {
+    address?: string | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    email?: string | null;
+    eth_address?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+    website_url?: string | null;
+  };
+  /** update columns of table "omni.fullfillers" */
+  ['omni_fullfillers_update_column']: omni_fullfillers_update_column;
+  /** columns and relationships of "omni.price_currencies" */
+  ['omni_price_currencies']: AliasType<{
+    /** enum? */
+    currency?: boolean;
+    id?: boolean;
+    price?: boolean;
+    products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    productsByProductionCost?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    productsByProductionCost_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    productsByTotalSales?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    productsByTotalSales_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.price_currencies" */
+  ['omni_price_currencies_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_price_currencies_aggregate_fields'];
+    nodes?: ValueTypes['omni_price_currencies'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.price_currencies" */
+  ['omni_price_currencies_aggregate_fields']: AliasType<{
+    avg?: ValueTypes['omni_price_currencies_avg_fields'];
+    count?: [
+      {
+        columns?: ValueTypes['omni_price_currencies_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_price_currencies_max_fields'];
+    min?: ValueTypes['omni_price_currencies_min_fields'];
+    stddev?: ValueTypes['omni_price_currencies_stddev_fields'];
+    stddev_pop?: ValueTypes['omni_price_currencies_stddev_pop_fields'];
+    stddev_samp?: ValueTypes['omni_price_currencies_stddev_samp_fields'];
+    sum?: ValueTypes['omni_price_currencies_sum_fields'];
+    var_pop?: ValueTypes['omni_price_currencies_var_pop_fields'];
+    var_samp?: ValueTypes['omni_price_currencies_var_samp_fields'];
+    variance?: ValueTypes['omni_price_currencies_variance_fields'];
+    __typename?: boolean;
+  }>;
+  /** aggregate avg on columns */
+  ['omni_price_currencies_avg_fields']: AliasType<{
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.price_currencies". All fields are combined with a logical 'AND'. */
+  ['omni_price_currencies_bool_exp']: {
+    _and?: ValueTypes['omni_price_currencies_bool_exp'][];
+    _not?: ValueTypes['omni_price_currencies_bool_exp'] | null;
+    _or?: ValueTypes['omni_price_currencies_bool_exp'][];
+    currency?: ValueTypes['String_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    price?: ValueTypes['numeric_comparison_exp'] | null;
+    products?: ValueTypes['omni_products_bool_exp'] | null;
+    productsByProductionCost?: ValueTypes['omni_products_bool_exp'] | null;
+    productsByTotalSales?: ValueTypes['omni_products_bool_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.price_currencies" */
+  ['omni_price_currencies_constraint']: omni_price_currencies_constraint;
+  /** input type for incrementing numeric columns in table "omni.price_currencies" */
+  ['omni_price_currencies_inc_input']: {
+    price?: ValueTypes['numeric'] | null;
+  };
+  /** input type for inserting data into table "omni.price_currencies" */
+  ['omni_price_currencies_insert_input']: {
+    /** enum? */
+    currency?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    price?: ValueTypes['numeric'] | null;
+    products?: ValueTypes['omni_products_arr_rel_insert_input'] | null;
+    productsByProductionCost?:
+      | ValueTypes['omni_products_arr_rel_insert_input']
+      | null;
+    productsByTotalSales?:
+      | ValueTypes['omni_products_arr_rel_insert_input']
+      | null;
+  };
+  /** aggregate max on columns */
+  ['omni_price_currencies_max_fields']: AliasType<{
+    /** enum? */
+    currency?: boolean;
+    id?: boolean;
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_price_currencies_min_fields']: AliasType<{
+    /** enum? */
+    currency?: boolean;
+    id?: boolean;
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.price_currencies" */
+  ['omni_price_currencies_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_price_currencies'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.price_currencies" */
+  ['omni_price_currencies_obj_rel_insert_input']: {
+    data: ValueTypes['omni_price_currencies_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_price_currencies_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.price_currencies" */
+  ['omni_price_currencies_on_conflict']: {
+    constraint: ValueTypes['omni_price_currencies_constraint'];
+    update_columns: ValueTypes['omni_price_currencies_update_column'][];
+    where?: ValueTypes['omni_price_currencies_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.price_currencies". */
+  ['omni_price_currencies_order_by']: {
+    currency?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    price?: ValueTypes['order_by'] | null;
+    productsByProductionCost_aggregate?:
+      | ValueTypes['omni_products_aggregate_order_by']
+      | null;
+    productsByTotalSales_aggregate?:
+      | ValueTypes['omni_products_aggregate_order_by']
+      | null;
+    products_aggregate?: ValueTypes['omni_products_aggregate_order_by'] | null;
+  };
+  /** primary key columns input for table: omni_price_currencies */
+  ['omni_price_currencies_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.price_currencies" */
+  ['omni_price_currencies_select_column']: omni_price_currencies_select_column;
+  /** input type for updating data in table "omni.price_currencies" */
+  ['omni_price_currencies_set_input']: {
+    /** enum? */
+    currency?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    price?: ValueTypes['numeric'] | null;
+  };
+  /** aggregate stddev on columns */
+  ['omni_price_currencies_stddev_fields']: AliasType<{
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate stddev_pop on columns */
+  ['omni_price_currencies_stddev_pop_fields']: AliasType<{
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate stddev_samp on columns */
+  ['omni_price_currencies_stddev_samp_fields']: AliasType<{
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate sum on columns */
+  ['omni_price_currencies_sum_fields']: AliasType<{
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** update columns of table "omni.price_currencies" */
+  ['omni_price_currencies_update_column']: omni_price_currencies_update_column;
+  /** aggregate var_pop on columns */
+  ['omni_price_currencies_var_pop_fields']: AliasType<{
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate var_samp on columns */
+  ['omni_price_currencies_var_samp_fields']: AliasType<{
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate variance on columns */
+  ['omni_price_currencies_variance_fields']: AliasType<{
+    price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** columns and relationships of "omni.print_techs_enum" */
+  ['omni_print_techs_enum']: AliasType<{
+    description?: boolean;
+    production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.print_techs_enum" */
+  ['omni_print_techs_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_print_techs_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_print_techs_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.print_techs_enum" */
+  ['omni_print_techs_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_print_techs_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_print_techs_enum_max_fields'];
+    min?: ValueTypes['omni_print_techs_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.print_techs_enum". All fields are combined with a logical 'AND'. */
+  ['omni_print_techs_enum_bool_exp']: {
+    _and?: ValueTypes['omni_print_techs_enum_bool_exp'][];
+    _not?: ValueTypes['omni_print_techs_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_print_techs_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_constraint']: omni_print_techs_enum_constraint;
+  ['omni_print_techs_enum_enum']: omni_print_techs_enum_enum;
+  /** Boolean expression to compare columns of type "omni_print_techs_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_print_techs_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_print_techs_enum_enum'] | null;
+    _in?: ValueTypes['omni_print_techs_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_print_techs_enum_enum'] | null;
+    _nin?: ValueTypes['omni_print_techs_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_insert_input']: {
+    description?: string | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_arr_rel_insert_input']
+      | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_print_techs_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_print_techs_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_print_techs_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_print_techs_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_print_techs_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_on_conflict']: {
+    constraint: ValueTypes['omni_print_techs_enum_constraint'];
+    update_columns: ValueTypes['omni_print_techs_enum_update_column'][];
+    where?: ValueTypes['omni_print_techs_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.print_techs_enum". */
+  ['omni_print_techs_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    production_materials_aggregate?:
+      | ValueTypes['omni_production_materials_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_print_techs_enum */
+  ['omni_print_techs_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_select_column']: omni_print_techs_enum_select_column;
+  /** input type for updating data in table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_update_column']: omni_print_techs_enum_update_column;
+  /** columns and relationships of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum']: AliasType<{
+    description?: boolean;
+    producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_producers'],
+    ];
+    producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_producers_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_producer_statuses_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_producer_statuses_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_producer_statuses_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_producer_statuses_enum_max_fields'];
+    min?: ValueTypes['omni_producer_statuses_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.producer_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_producer_statuses_enum_bool_exp']: {
+    _and?: ValueTypes['omni_producer_statuses_enum_bool_exp'][];
+    _not?: ValueTypes['omni_producer_statuses_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_producer_statuses_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    producers?: ValueTypes['omni_producers_bool_exp'] | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_constraint']: omni_producer_statuses_enum_constraint;
+  ['omni_producer_statuses_enum_enum']: omni_producer_statuses_enum_enum;
+  /** Boolean expression to compare columns of type "omni_producer_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_producer_statuses_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_producer_statuses_enum_enum'] | null;
+    _in?: ValueTypes['omni_producer_statuses_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_producer_statuses_enum_enum'] | null;
+    _nin?: ValueTypes['omni_producer_statuses_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_insert_input']: {
+    description?: string | null;
+    producers?: ValueTypes['omni_producers_arr_rel_insert_input'] | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_producer_statuses_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_producer_statuses_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_producer_statuses_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_producer_statuses_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_producer_statuses_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_on_conflict']: {
+    constraint: ValueTypes['omni_producer_statuses_enum_constraint'];
+    update_columns: ValueTypes['omni_producer_statuses_enum_update_column'][];
+    where?: ValueTypes['omni_producer_statuses_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.producer_statuses_enum". */
+  ['omni_producer_statuses_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    producers_aggregate?:
+      | ValueTypes['omni_producers_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_producer_statuses_enum */
+  ['omni_producer_statuses_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_select_column']: omni_producer_statuses_enum_select_column;
+  /** input type for updating data in table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_update_column']: omni_producer_statuses_enum_update_column;
+  /** columns and relationships of "omni.producers" */
+  ['omni_producers']: AliasType<{
+    address?: boolean;
+    /** on create */
+    created_at?: boolean;
+    email?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    name?: boolean;
+    /** An object relationship */
+    producer_statuses_enum?: ValueTypes['omni_producer_statuses_enum'];
+    /** An object relationship */
+    product?: ValueTypes['omni_products'];
+    production_materials_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_producers_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_producers_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    production_materials_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_producers_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_producers_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers_aggregate'],
+    ];
+    production_methods_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    production_methods_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_producers_aggregate'],
+    ];
+    products?: boolean;
+    productsByProducer?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    productsByProducer_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    status?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.producers" */
+  ['omni_producers_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_producers_aggregate_fields'];
+    nodes?: ValueTypes['omni_producers'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.producers" */
+  ['omni_producers_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_producers_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_producers_max_fields'];
+    min?: ValueTypes['omni_producers_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.producers" */
+  ['omni_producers_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_producers_max_order_by'] | null;
+    min?: ValueTypes['omni_producers_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.producers" */
+  ['omni_producers_arr_rel_insert_input']: {
+    data: ValueTypes['omni_producers_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_producers_on_conflict'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.producers". All fields are combined with a logical 'AND'. */
+  ['omni_producers_bool_exp']: {
+    _and?: ValueTypes['omni_producers_bool_exp'][];
+    _not?: ValueTypes['omni_producers_bool_exp'] | null;
+    _or?: ValueTypes['omni_producers_bool_exp'][];
+    address?: ValueTypes['String_comparison_exp'] | null;
+    created_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    email?: ValueTypes['String_comparison_exp'] | null;
+    eth_address?: ValueTypes['String_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    name?: ValueTypes['String_comparison_exp'] | null;
+    producer_statuses_enum?:
+      | ValueTypes['omni_producer_statuses_enum_bool_exp']
+      | null;
+    product?: ValueTypes['omni_products_bool_exp'] | null;
+    production_materials_producers?:
+      | ValueTypes['omni_production_materials_producers_bool_exp']
+      | null;
+    production_methods_producers?:
+      | ValueTypes['omni_production_methods_producers_bool_exp']
+      | null;
+    products?: ValueTypes['uuid_comparison_exp'] | null;
+    productsByProducer?: ValueTypes['omni_products_bool_exp'] | null;
+    status?:
+      | ValueTypes['omni_producer_statuses_enum_enum_comparison_exp']
+      | null;
+    updated_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.producers" */
+  ['omni_producers_constraint']: omni_producers_constraint;
+  /** input type for inserting data into table "omni.producers" */
+  ['omni_producers_insert_input']: {
+    address?: string | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    email?: string | null;
+    eth_address?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    producer_statuses_enum?:
+      | ValueTypes['omni_producer_statuses_enum_obj_rel_insert_input']
+      | null;
+    product?: ValueTypes['omni_products_obj_rel_insert_input'] | null;
+    production_materials_producers?:
+      | ValueTypes['omni_production_materials_producers_arr_rel_insert_input']
+      | null;
+    production_methods_producers?:
+      | ValueTypes['omni_production_methods_producers_arr_rel_insert_input']
+      | null;
+    products?: ValueTypes['uuid'] | null;
+    productsByProducer?:
+      | ValueTypes['omni_products_arr_rel_insert_input']
+      | null;
+    status?: ValueTypes['omni_producer_statuses_enum_enum'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+  };
+  /** aggregate max on columns */
+  ['omni_producers_max_fields']: AliasType<{
+    address?: boolean;
+    /** on create */
+    created_at?: boolean;
+    email?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    name?: boolean;
+    products?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.producers" */
+  ['omni_producers_max_order_by']: {
+    address?: ValueTypes['order_by'] | null;
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    email?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    products?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_producers_min_fields']: AliasType<{
+    address?: boolean;
+    /** on create */
+    created_at?: boolean;
+    email?: boolean;
+    eth_address?: boolean;
+    id?: boolean;
+    name?: boolean;
+    products?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.producers" */
+  ['omni_producers_min_order_by']: {
+    address?: ValueTypes['order_by'] | null;
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    email?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    products?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.producers" */
+  ['omni_producers_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_producers'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.producers" */
+  ['omni_producers_obj_rel_insert_input']: {
+    data: ValueTypes['omni_producers_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_producers_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.producers" */
+  ['omni_producers_on_conflict']: {
+    constraint: ValueTypes['omni_producers_constraint'];
+    update_columns: ValueTypes['omni_producers_update_column'][];
+    where?: ValueTypes['omni_producers_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.producers". */
+  ['omni_producers_order_by']: {
+    address?: ValueTypes['order_by'] | null;
+    created_at?: ValueTypes['order_by'] | null;
+    email?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    producer_statuses_enum?:
+      | ValueTypes['omni_producer_statuses_enum_order_by']
+      | null;
+    product?: ValueTypes['omni_products_order_by'] | null;
+    production_materials_producers_aggregate?:
+      | ValueTypes['omni_production_materials_producers_aggregate_order_by']
+      | null;
+    production_methods_producers_aggregate?:
+      | ValueTypes['omni_production_methods_producers_aggregate_order_by']
+      | null;
+    products?: ValueTypes['order_by'] | null;
+    productsByProducer_aggregate?:
+      | ValueTypes['omni_products_aggregate_order_by']
+      | null;
+    status?: ValueTypes['order_by'] | null;
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_producers */
+  ['omni_producers_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.producers" */
+  ['omni_producers_select_column']: omni_producers_select_column;
+  /** input type for updating data in table "omni.producers" */
+  ['omni_producers_set_input']: {
+    address?: string | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    email?: string | null;
+    eth_address?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    products?: ValueTypes['uuid'] | null;
+    status?: ValueTypes['omni_producer_statuses_enum_enum'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+  };
+  /** update columns of table "omni.producers" */
+  ['omni_producers_update_column']: omni_producers_update_column;
+  /** columns and relationships of "omni.product_collaborators" */
+  ['omni_product_collaborators']: AliasType<{
+    collaboration_share?: boolean;
+    collaborator?: boolean;
+    /** An object relationship */
+    collaborator_types_enum?: ValueTypes['omni_collaborator_types_enum'];
+    id?: boolean;
+    product?: boolean;
+    /** An object relationship */
+    productByProduct?: ValueTypes['omni_products'];
+    type?: boolean;
+    /** An object relationship */
+    user?: ValueTypes['omni_users'];
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_product_collaborators_aggregate_fields'];
+    nodes?: ValueTypes['omni_product_collaborators'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate_fields']: AliasType<{
+    avg?: ValueTypes['omni_product_collaborators_avg_fields'];
+    count?: [
+      {
+        columns?: ValueTypes['omni_product_collaborators_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_product_collaborators_max_fields'];
+    min?: ValueTypes['omni_product_collaborators_min_fields'];
+    stddev?: ValueTypes['omni_product_collaborators_stddev_fields'];
+    stddev_pop?: ValueTypes['omni_product_collaborators_stddev_pop_fields'];
+    stddev_samp?: ValueTypes['omni_product_collaborators_stddev_samp_fields'];
+    sum?: ValueTypes['omni_product_collaborators_sum_fields'];
+    var_pop?: ValueTypes['omni_product_collaborators_var_pop_fields'];
+    var_samp?: ValueTypes['omni_product_collaborators_var_samp_fields'];
+    variance?: ValueTypes['omni_product_collaborators_variance_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate_order_by']: {
+    avg?: ValueTypes['omni_product_collaborators_avg_order_by'] | null;
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_product_collaborators_max_order_by'] | null;
+    min?: ValueTypes['omni_product_collaborators_min_order_by'] | null;
+    stddev?: ValueTypes['omni_product_collaborators_stddev_order_by'] | null;
+    stddev_pop?:
+      | ValueTypes['omni_product_collaborators_stddev_pop_order_by']
+      | null;
+    stddev_samp?:
+      | ValueTypes['omni_product_collaborators_stddev_samp_order_by']
+      | null;
+    sum?: ValueTypes['omni_product_collaborators_sum_order_by'] | null;
+    var_pop?: ValueTypes['omni_product_collaborators_var_pop_order_by'] | null;
+    var_samp?:
+      | ValueTypes['omni_product_collaborators_var_samp_order_by']
+      | null;
+    variance?:
+      | ValueTypes['omni_product_collaborators_variance_order_by']
+      | null;
+  };
+  /** input type for inserting array relation for remote table "omni.product_collaborators" */
+  ['omni_product_collaborators_arr_rel_insert_input']: {
+    data: ValueTypes['omni_product_collaborators_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_product_collaborators_on_conflict'] | null;
+  };
+  /** aggregate avg on columns */
+  ['omni_product_collaborators_avg_fields']: AliasType<{
+    collaboration_share?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by avg() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_avg_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.product_collaborators". All fields are combined with a logical 'AND'. */
+  ['omni_product_collaborators_bool_exp']: {
+    _and?: ValueTypes['omni_product_collaborators_bool_exp'][];
+    _not?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+    _or?: ValueTypes['omni_product_collaborators_bool_exp'][];
+    collaboration_share?: ValueTypes['numeric_comparison_exp'] | null;
+    collaborator?: ValueTypes['uuid_comparison_exp'] | null;
+    collaborator_types_enum?:
+      | ValueTypes['omni_collaborator_types_enum_bool_exp']
+      | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    product?: ValueTypes['uuid_comparison_exp'] | null;
+    productByProduct?: ValueTypes['omni_products_bool_exp'] | null;
+    type?:
+      | ValueTypes['omni_collaborator_types_enum_enum_comparison_exp']
+      | null;
+    user?: ValueTypes['omni_users_bool_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.product_collaborators" */
+  ['omni_product_collaborators_constraint']: omni_product_collaborators_constraint;
+  /** input type for incrementing numeric columns in table "omni.product_collaborators" */
+  ['omni_product_collaborators_inc_input']: {
+    collaboration_share?: ValueTypes['numeric'] | null;
+  };
+  /** input type for inserting data into table "omni.product_collaborators" */
+  ['omni_product_collaborators_insert_input']: {
+    collaboration_share?: ValueTypes['numeric'] | null;
+    collaborator?: ValueTypes['uuid'] | null;
+    collaborator_types_enum?:
+      | ValueTypes['omni_collaborator_types_enum_obj_rel_insert_input']
+      | null;
+    id?: ValueTypes['uuid'] | null;
+    product?: ValueTypes['uuid'] | null;
+    productByProduct?: ValueTypes['omni_products_obj_rel_insert_input'] | null;
+    type?: ValueTypes['omni_collaborator_types_enum_enum'] | null;
+    user?: ValueTypes['omni_users_obj_rel_insert_input'] | null;
+  };
+  /** aggregate max on columns */
+  ['omni_product_collaborators_max_fields']: AliasType<{
+    collaboration_share?: boolean;
+    collaborator?: boolean;
+    id?: boolean;
+    product?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_max_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+    collaborator?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_product_collaborators_min_fields']: AliasType<{
+    collaboration_share?: boolean;
+    collaborator?: boolean;
+    id?: boolean;
+    product?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_min_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+    collaborator?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.product_collaborators" */
+  ['omni_product_collaborators_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_product_collaborators'];
+    __typename?: boolean;
+  }>;
+  /** on_conflict condition type for table "omni.product_collaborators" */
+  ['omni_product_collaborators_on_conflict']: {
+    constraint: ValueTypes['omni_product_collaborators_constraint'];
+    update_columns: ValueTypes['omni_product_collaborators_update_column'][];
+    where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.product_collaborators". */
+  ['omni_product_collaborators_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+    collaborator?: ValueTypes['order_by'] | null;
+    collaborator_types_enum?:
+      | ValueTypes['omni_collaborator_types_enum_order_by']
+      | null;
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+    productByProduct?: ValueTypes['omni_products_order_by'] | null;
+    type?: ValueTypes['order_by'] | null;
+    user?: ValueTypes['omni_users_order_by'] | null;
+  };
+  /** primary key columns input for table: omni_product_collaborators */
+  ['omni_product_collaborators_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_select_column']: omni_product_collaborators_select_column;
+  /** input type for updating data in table "omni.product_collaborators" */
+  ['omni_product_collaborators_set_input']: {
+    collaboration_share?: ValueTypes['numeric'] | null;
+    collaborator?: ValueTypes['uuid'] | null;
+    id?: ValueTypes['uuid'] | null;
+    product?: ValueTypes['uuid'] | null;
+    type?: ValueTypes['omni_collaborator_types_enum_enum'] | null;
+  };
+  /** aggregate stddev on columns */
+  ['omni_product_collaborators_stddev_fields']: AliasType<{
+    collaboration_share?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate stddev_pop on columns */
+  ['omni_product_collaborators_stddev_pop_fields']: AliasType<{
+    collaboration_share?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev_pop() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_pop_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate stddev_samp on columns */
+  ['omni_product_collaborators_stddev_samp_fields']: AliasType<{
+    collaboration_share?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev_samp() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_samp_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate sum on columns */
+  ['omni_product_collaborators_sum_fields']: AliasType<{
+    collaboration_share?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by sum() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_sum_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+  };
+  /** update columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_update_column']: omni_product_collaborators_update_column;
+  /** aggregate var_pop on columns */
+  ['omni_product_collaborators_var_pop_fields']: AliasType<{
+    collaboration_share?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by var_pop() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_var_pop_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate var_samp on columns */
+  ['omni_product_collaborators_var_samp_fields']: AliasType<{
+    collaboration_share?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by var_samp() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_var_samp_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate variance on columns */
+  ['omni_product_collaborators_variance_fields']: AliasType<{
+    collaboration_share?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by variance() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_variance_order_by']: {
+    collaboration_share?: ValueTypes['order_by'] | null;
+  };
+  /** columns and relationships of "omni.product_types_enum" */
+  ['omni_product_types_enum']: AliasType<{
+    description?: boolean;
+    production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.product_types_enum" */
+  ['omni_product_types_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_product_types_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_product_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.product_types_enum" */
+  ['omni_product_types_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_product_types_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_product_types_enum_max_fields'];
+    min?: ValueTypes['omni_product_types_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.product_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_product_types_enum_bool_exp']: {
+    _and?: ValueTypes['omni_product_types_enum_bool_exp'][];
+    _not?: ValueTypes['omni_product_types_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_product_types_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.product_types_enum" */
+  ['omni_product_types_enum_constraint']: omni_product_types_enum_constraint;
+  /** input type for inserting data into table "omni.product_types_enum" */
+  ['omni_product_types_enum_insert_input']: {
+    description?: string | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_arr_rel_insert_input']
+      | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_product_types_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_product_types_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.product_types_enum" */
+  ['omni_product_types_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_product_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.product_types_enum" */
+  ['omni_product_types_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_product_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_product_types_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.product_types_enum" */
+  ['omni_product_types_enum_on_conflict']: {
+    constraint: ValueTypes['omni_product_types_enum_constraint'];
+    update_columns: ValueTypes['omni_product_types_enum_update_column'][];
+    where?: ValueTypes['omni_product_types_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.product_types_enum". */
+  ['omni_product_types_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    production_materials_aggregate?:
+      | ValueTypes['omni_production_materials_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_product_types_enum */
+  ['omni_product_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.product_types_enum" */
+  ['omni_product_types_enum_select_column']: omni_product_types_enum_select_column;
+  /** input type for updating data in table "omni.product_types_enum" */
+  ['omni_product_types_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.product_types_enum" */
+  ['omni_product_types_enum_update_column']: omni_product_types_enum_update_column;
+  /** columns and relationships of "omni.production_genders_enum" */
+  ['omni_production_genders_enum']: AliasType<{
+    description?: boolean;
+    production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_genders_enum" */
+  ['omni_production_genders_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_genders_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_genders_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_genders_enum" */
+  ['omni_production_genders_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_genders_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_genders_enum_max_fields'];
+    min?: ValueTypes['omni_production_genders_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.production_genders_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_genders_enum_bool_exp']: {
+    _and?: ValueTypes['omni_production_genders_enum_bool_exp'][];
+    _not?: ValueTypes['omni_production_genders_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_genders_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_constraint']: omni_production_genders_enum_constraint;
+  ['omni_production_genders_enum_enum']: omni_production_genders_enum_enum;
+  /** Boolean expression to compare columns of type "omni_production_genders_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_genders_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_production_genders_enum_enum'] | null;
+    _in?: ValueTypes['omni_production_genders_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_production_genders_enum_enum'] | null;
+    _nin?: ValueTypes['omni_production_genders_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_insert_input']: {
+    description?: string | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_arr_rel_insert_input']
+      | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_genders_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_production_genders_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_genders_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_production_genders_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_production_genders_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_on_conflict']: {
+    constraint: ValueTypes['omni_production_genders_enum_constraint'];
+    update_columns: ValueTypes['omni_production_genders_enum_update_column'][];
+    where?: ValueTypes['omni_production_genders_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.production_genders_enum". */
+  ['omni_production_genders_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    production_materials_aggregate?:
+      | ValueTypes['omni_production_materials_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_genders_enum */
+  ['omni_production_genders_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_select_column']: omni_production_genders_enum_select_column;
+  /** input type for updating data in table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_update_column']: omni_production_genders_enum_update_column;
+  /** columns and relationships of "omni.production_materials" */
+  ['omni_production_materials']: AliasType<{
+    base_price?: boolean;
+    composition?: boolean;
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    gender?: boolean;
+    id?: boolean;
+    name?: boolean;
+    neck_tag?: boolean;
+    pallette?: boolean;
+    print_tech?: boolean;
+    /** An object relationship */
+    print_techs_enum?: ValueTypes['omni_print_techs_enum'];
+    /** An object relationship */
+    product?: ValueTypes['omni_products'];
+    /** An object relationship */
+    product_types_enum?: ValueTypes['omni_product_types_enum'];
+    /** An object relationship */
+    production_genders_enum?: ValueTypes['omni_production_genders_enum'];
+    production_materials_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_producers_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_producers_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    production_materials_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_producers_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_producers_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers_aggregate'],
+    ];
+    /** An object relationship */
+    production_materials_ratings_enum?: ValueTypes['omni_production_materials_ratings_enum'];
+    /** An object relationship */
+    production_pallettes_enum?: ValueTypes['omni_production_pallettes_enum'];
+    /** An object relationship */
+    production_styles_enum?: ValueTypes['omni_production_styles_enum'];
+    products?: boolean;
+    productsByProductionMaterial?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    productsByProductionMaterial_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    rating?: boolean;
+    /** link to guide */
+    size_guide?: boolean;
+    style?: boolean;
+    style_number?: boolean;
+    type?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_materials" */
+  ['omni_production_materials_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_materials_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_materials'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_materials" */
+  ['omni_production_materials_aggregate_fields']: AliasType<{
+    avg?: ValueTypes['omni_production_materials_avg_fields'];
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_materials_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_materials_max_fields'];
+    min?: ValueTypes['omni_production_materials_min_fields'];
+    stddev?: ValueTypes['omni_production_materials_stddev_fields'];
+    stddev_pop?: ValueTypes['omni_production_materials_stddev_pop_fields'];
+    stddev_samp?: ValueTypes['omni_production_materials_stddev_samp_fields'];
+    sum?: ValueTypes['omni_production_materials_sum_fields'];
+    var_pop?: ValueTypes['omni_production_materials_var_pop_fields'];
+    var_samp?: ValueTypes['omni_production_materials_var_samp_fields'];
+    variance?: ValueTypes['omni_production_materials_variance_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.production_materials" */
+  ['omni_production_materials_aggregate_order_by']: {
+    avg?: ValueTypes['omni_production_materials_avg_order_by'] | null;
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_production_materials_max_order_by'] | null;
+    min?: ValueTypes['omni_production_materials_min_order_by'] | null;
+    stddev?: ValueTypes['omni_production_materials_stddev_order_by'] | null;
+    stddev_pop?:
+      | ValueTypes['omni_production_materials_stddev_pop_order_by']
+      | null;
+    stddev_samp?:
+      | ValueTypes['omni_production_materials_stddev_samp_order_by']
+      | null;
+    sum?: ValueTypes['omni_production_materials_sum_order_by'] | null;
+    var_pop?: ValueTypes['omni_production_materials_var_pop_order_by'] | null;
+    var_samp?: ValueTypes['omni_production_materials_var_samp_order_by'] | null;
+    variance?: ValueTypes['omni_production_materials_variance_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.production_materials" */
+  ['omni_production_materials_arr_rel_insert_input']: {
+    data: ValueTypes['omni_production_materials_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_production_materials_on_conflict'] | null;
+  };
+  /** aggregate avg on columns */
+  ['omni_production_materials_avg_fields']: AliasType<{
+    base_price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by avg() on columns of table "omni.production_materials" */
+  ['omni_production_materials_avg_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.production_materials". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_bool_exp']: {
+    _and?: ValueTypes['omni_production_materials_bool_exp'][];
+    _not?: ValueTypes['omni_production_materials_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_materials_bool_exp'][];
+    base_price?: ValueTypes['numeric_comparison_exp'] | null;
+    composition?: ValueTypes['String_comparison_exp'] | null;
+    created_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    description?: ValueTypes['String_comparison_exp'] | null;
+    gender?:
+      | ValueTypes['omni_production_genders_enum_enum_comparison_exp']
+      | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    name?: ValueTypes['String_comparison_exp'] | null;
+    neck_tag?: ValueTypes['Boolean_comparison_exp'] | null;
+    pallette?:
+      | ValueTypes['omni_production_pallettes_enum_enum_comparison_exp']
+      | null;
+    print_tech?: ValueTypes['omni_print_techs_enum_enum_comparison_exp'] | null;
+    print_techs_enum?: ValueTypes['omni_print_techs_enum_bool_exp'] | null;
+    product?: ValueTypes['omni_products_bool_exp'] | null;
+    product_types_enum?: ValueTypes['omni_product_types_enum_bool_exp'] | null;
+    production_genders_enum?:
+      | ValueTypes['omni_production_genders_enum_bool_exp']
+      | null;
+    production_materials_producers?:
+      | ValueTypes['omni_production_materials_producers_bool_exp']
+      | null;
+    production_materials_ratings_enum?:
+      | ValueTypes['omni_production_materials_ratings_enum_bool_exp']
+      | null;
+    production_pallettes_enum?:
+      | ValueTypes['omni_production_pallettes_enum_bool_exp']
+      | null;
+    production_styles_enum?:
+      | ValueTypes['omni_production_styles_enum_bool_exp']
+      | null;
+    products?: ValueTypes['uuid_comparison_exp'] | null;
+    productsByProductionMaterial?: ValueTypes['omni_products_bool_exp'] | null;
+    rating?:
+      | ValueTypes['omni_production_materials_ratings_enum_enum_comparison_exp']
+      | null;
+    size_guide?: ValueTypes['String_comparison_exp'] | null;
+    style?:
+      | ValueTypes['omni_production_styles_enum_enum_comparison_exp']
+      | null;
+    style_number?: ValueTypes['String_comparison_exp'] | null;
+    type?: ValueTypes['String_comparison_exp'] | null;
+    updated_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_materials" */
+  ['omni_production_materials_constraint']: omni_production_materials_constraint;
+  /** input type for incrementing numeric columns in table "omni.production_materials" */
+  ['omni_production_materials_inc_input']: {
+    base_price?: ValueTypes['numeric'] | null;
+  };
+  /** input type for inserting data into table "omni.production_materials" */
+  ['omni_production_materials_insert_input']: {
+    base_price?: ValueTypes['numeric'] | null;
+    composition?: string | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    description?: string | null;
+    gender?: ValueTypes['omni_production_genders_enum_enum'] | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    neck_tag?: boolean | null;
+    pallette?: ValueTypes['omni_production_pallettes_enum_enum'] | null;
+    print_tech?: ValueTypes['omni_print_techs_enum_enum'] | null;
+    print_techs_enum?:
+      | ValueTypes['omni_print_techs_enum_obj_rel_insert_input']
+      | null;
+    product?: ValueTypes['omni_products_obj_rel_insert_input'] | null;
+    product_types_enum?:
+      | ValueTypes['omni_product_types_enum_obj_rel_insert_input']
+      | null;
+    production_genders_enum?:
+      | ValueTypes['omni_production_genders_enum_obj_rel_insert_input']
+      | null;
+    production_materials_producers?:
+      | ValueTypes['omni_production_materials_producers_arr_rel_insert_input']
+      | null;
+    production_materials_ratings_enum?:
+      | ValueTypes['omni_production_materials_ratings_enum_obj_rel_insert_input']
+      | null;
+    production_pallettes_enum?:
+      | ValueTypes['omni_production_pallettes_enum_obj_rel_insert_input']
+      | null;
+    production_styles_enum?:
+      | ValueTypes['omni_production_styles_enum_obj_rel_insert_input']
+      | null;
+    products?: ValueTypes['uuid'] | null;
+    productsByProductionMaterial?:
+      | ValueTypes['omni_products_arr_rel_insert_input']
+      | null;
+    rating?: ValueTypes['omni_production_materials_ratings_enum_enum'] | null;
+    /** link to guide */
+    size_guide?: string | null;
+    style?: ValueTypes['omni_production_styles_enum_enum'] | null;
+    style_number?: string | null;
+    type?: string | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_materials_max_fields']: AliasType<{
+    base_price?: boolean;
+    composition?: boolean;
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    id?: boolean;
+    name?: boolean;
+    products?: boolean;
+    /** link to guide */
+    size_guide?: boolean;
+    style_number?: boolean;
+    type?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.production_materials" */
+  ['omni_production_materials_max_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+    composition?: ValueTypes['order_by'] | null;
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    description?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    products?: ValueTypes['order_by'] | null;
+    /** link to guide */
+    size_guide?: ValueTypes['order_by'] | null;
+    style_number?: ValueTypes['order_by'] | null;
+    type?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_production_materials_min_fields']: AliasType<{
+    base_price?: boolean;
+    composition?: boolean;
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    id?: boolean;
+    name?: boolean;
+    products?: boolean;
+    /** link to guide */
+    size_guide?: boolean;
+    style_number?: boolean;
+    type?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.production_materials" */
+  ['omni_production_materials_min_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+    composition?: ValueTypes['order_by'] | null;
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    description?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    products?: ValueTypes['order_by'] | null;
+    /** link to guide */
+    size_guide?: ValueTypes['order_by'] | null;
+    style_number?: ValueTypes['order_by'] | null;
+    type?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.production_materials" */
+  ['omni_production_materials_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_materials'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.production_materials" */
+  ['omni_production_materials_obj_rel_insert_input']: {
+    data: ValueTypes['omni_production_materials_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_production_materials_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.production_materials" */
+  ['omni_production_materials_on_conflict']: {
+    constraint: ValueTypes['omni_production_materials_constraint'];
+    update_columns: ValueTypes['omni_production_materials_update_column'][];
+    where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.production_materials". */
+  ['omni_production_materials_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+    composition?: ValueTypes['order_by'] | null;
+    created_at?: ValueTypes['order_by'] | null;
+    description?: ValueTypes['order_by'] | null;
+    gender?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    neck_tag?: ValueTypes['order_by'] | null;
+    pallette?: ValueTypes['order_by'] | null;
+    print_tech?: ValueTypes['order_by'] | null;
+    print_techs_enum?: ValueTypes['omni_print_techs_enum_order_by'] | null;
+    product?: ValueTypes['omni_products_order_by'] | null;
+    product_types_enum?: ValueTypes['omni_product_types_enum_order_by'] | null;
+    production_genders_enum?:
+      | ValueTypes['omni_production_genders_enum_order_by']
+      | null;
+    production_materials_producers_aggregate?:
+      | ValueTypes['omni_production_materials_producers_aggregate_order_by']
+      | null;
+    production_materials_ratings_enum?:
+      | ValueTypes['omni_production_materials_ratings_enum_order_by']
+      | null;
+    production_pallettes_enum?:
+      | ValueTypes['omni_production_pallettes_enum_order_by']
+      | null;
+    production_styles_enum?:
+      | ValueTypes['omni_production_styles_enum_order_by']
+      | null;
+    products?: ValueTypes['order_by'] | null;
+    productsByProductionMaterial_aggregate?:
+      | ValueTypes['omni_products_aggregate_order_by']
+      | null;
+    rating?: ValueTypes['order_by'] | null;
+    size_guide?: ValueTypes['order_by'] | null;
+    style?: ValueTypes['order_by'] | null;
+    style_number?: ValueTypes['order_by'] | null;
+    type?: ValueTypes['order_by'] | null;
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_materials */
+  ['omni_production_materials_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** columns and relationships of "omni.production_materials_producers" */
+  ['omni_production_materials_producers']: AliasType<{
+    id?: boolean;
+    producer?: boolean;
+    /** An object relationship */
+    producerByProducer?: ValueTypes['omni_producers'];
+    /** An object relationship */
+    productionMaterialByProductionMaterial?: ValueTypes['omni_production_materials'];
+    production_material?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_materials_producers_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_materials_producers'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_materials_producers_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_materials_producers_max_fields'];
+    min?: ValueTypes['omni_production_materials_producers_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_production_materials_producers_max_order_by'] | null;
+    min?: ValueTypes['omni_production_materials_producers_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_arr_rel_insert_input']: {
+    data: ValueTypes['omni_production_materials_producers_insert_input'][];
+    /** upsert condition */
+    on_conflict?:
+      | ValueTypes['omni_production_materials_producers_on_conflict']
+      | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.production_materials_producers". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_producers_bool_exp']: {
+    _and?: ValueTypes['omni_production_materials_producers_bool_exp'][];
+    _not?: ValueTypes['omni_production_materials_producers_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_materials_producers_bool_exp'][];
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    producer?: ValueTypes['uuid_comparison_exp'] | null;
+    producerByProducer?: ValueTypes['omni_producers_bool_exp'] | null;
+    productionMaterialByProductionMaterial?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    production_material?: ValueTypes['uuid_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_constraint']: omni_production_materials_producers_constraint;
+  /** input type for inserting data into table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_insert_input']: {
+    id?: ValueTypes['uuid'] | null;
+    producer?: ValueTypes['uuid'] | null;
+    producerByProducer?:
+      | ValueTypes['omni_producers_obj_rel_insert_input']
+      | null;
+    productionMaterialByProductionMaterial?:
+      | ValueTypes['omni_production_materials_obj_rel_insert_input']
+      | null;
+    production_material?: ValueTypes['uuid'] | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_materials_producers_max_fields']: AliasType<{
+    id?: boolean;
+    producer?: boolean;
+    production_material?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_max_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    production_material?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_production_materials_producers_min_fields']: AliasType<{
+    id?: boolean;
+    producer?: boolean;
+    production_material?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_min_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    production_material?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_materials_producers'];
+    __typename?: boolean;
+  }>;
+  /** on_conflict condition type for table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_on_conflict']: {
+    constraint: ValueTypes['omni_production_materials_producers_constraint'];
+    update_columns: ValueTypes['omni_production_materials_producers_update_column'][];
+    where?: ValueTypes['omni_production_materials_producers_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.production_materials_producers". */
+  ['omni_production_materials_producers_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    producerByProducer?: ValueTypes['omni_producers_order_by'] | null;
+    productionMaterialByProductionMaterial?:
+      | ValueTypes['omni_production_materials_order_by']
+      | null;
+    production_material?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_materials_producers */
+  ['omni_production_materials_producers_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_select_column']: omni_production_materials_producers_select_column;
+  /** input type for updating data in table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_set_input']: {
+    id?: ValueTypes['uuid'] | null;
+    producer?: ValueTypes['uuid'] | null;
+    production_material?: ValueTypes['uuid'] | null;
+  };
+  /** update columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_update_column']: omni_production_materials_producers_update_column;
+  /** columns and relationships of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum']: AliasType<{
+    description?: boolean;
+    production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_materials_ratings_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_materials_ratings_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_materials_ratings_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_materials_ratings_enum_max_fields'];
+    min?: ValueTypes['omni_production_materials_ratings_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.production_materials_ratings_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_ratings_enum_bool_exp']: {
+    _and?: ValueTypes['omni_production_materials_ratings_enum_bool_exp'][];
+    _not?: ValueTypes['omni_production_materials_ratings_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_materials_ratings_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_constraint']: omni_production_materials_ratings_enum_constraint;
+  ['omni_production_materials_ratings_enum_enum']: omni_production_materials_ratings_enum_enum;
+  /** Boolean expression to compare columns of type "omni_production_materials_ratings_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_materials_ratings_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_production_materials_ratings_enum_enum'] | null;
+    _in?: ValueTypes['omni_production_materials_ratings_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_production_materials_ratings_enum_enum'] | null;
+    _nin?: ValueTypes['omni_production_materials_ratings_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_insert_input']: {
+    description?: string | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_arr_rel_insert_input']
+      | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_materials_ratings_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_production_materials_ratings_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_materials_ratings_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_production_materials_ratings_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?:
+      | ValueTypes['omni_production_materials_ratings_enum_on_conflict']
+      | null;
+  };
+  /** on_conflict condition type for table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_on_conflict']: {
+    constraint: ValueTypes['omni_production_materials_ratings_enum_constraint'];
+    update_columns: ValueTypes['omni_production_materials_ratings_enum_update_column'][];
+    where?:
+      | ValueTypes['omni_production_materials_ratings_enum_bool_exp']
+      | null;
+  };
+  /** Ordering options when selecting data from "omni.production_materials_ratings_enum". */
+  ['omni_production_materials_ratings_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    production_materials_aggregate?:
+      | ValueTypes['omni_production_materials_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_materials_ratings_enum */
+  ['omni_production_materials_ratings_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_select_column']: omni_production_materials_ratings_enum_select_column;
+  /** input type for updating data in table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_update_column']: omni_production_materials_ratings_enum_update_column;
+  /** select columns of table "omni.production_materials" */
+  ['omni_production_materials_select_column']: omni_production_materials_select_column;
+  /** input type for updating data in table "omni.production_materials" */
+  ['omni_production_materials_set_input']: {
+    base_price?: ValueTypes['numeric'] | null;
+    composition?: string | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    description?: string | null;
+    gender?: ValueTypes['omni_production_genders_enum_enum'] | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    neck_tag?: boolean | null;
+    pallette?: ValueTypes['omni_production_pallettes_enum_enum'] | null;
+    print_tech?: ValueTypes['omni_print_techs_enum_enum'] | null;
+    products?: ValueTypes['uuid'] | null;
+    rating?: ValueTypes['omni_production_materials_ratings_enum_enum'] | null;
+    /** link to guide */
+    size_guide?: string | null;
+    style?: ValueTypes['omni_production_styles_enum_enum'] | null;
+    style_number?: string | null;
+    type?: string | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+  };
+  /** aggregate stddev on columns */
+  ['omni_production_materials_stddev_fields']: AliasType<{
+    base_price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate stddev_pop on columns */
+  ['omni_production_materials_stddev_pop_fields']: AliasType<{
+    base_price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev_pop() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_pop_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate stddev_samp on columns */
+  ['omni_production_materials_stddev_samp_fields']: AliasType<{
+    base_price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev_samp() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_samp_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate sum on columns */
+  ['omni_production_materials_sum_fields']: AliasType<{
+    base_price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by sum() on columns of table "omni.production_materials" */
+  ['omni_production_materials_sum_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+  };
+  /** update columns of table "omni.production_materials" */
+  ['omni_production_materials_update_column']: omni_production_materials_update_column;
+  /** aggregate var_pop on columns */
+  ['omni_production_materials_var_pop_fields']: AliasType<{
+    base_price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by var_pop() on columns of table "omni.production_materials" */
+  ['omni_production_materials_var_pop_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate var_samp on columns */
+  ['omni_production_materials_var_samp_fields']: AliasType<{
+    base_price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by var_samp() on columns of table "omni.production_materials" */
+  ['omni_production_materials_var_samp_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate variance on columns */
+  ['omni_production_materials_variance_fields']: AliasType<{
+    base_price?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by variance() on columns of table "omni.production_materials" */
+  ['omni_production_materials_variance_order_by']: {
+    base_price?: ValueTypes['order_by'] | null;
+  };
+  /** columns and relationships of "omni.production_methods" */
+  ['omni_production_methods']: AliasType<{
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    id?: boolean;
+    name?: boolean;
+    production_methods_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    production_methods_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_producers_aggregate'],
+    ];
+    production_methods_products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    production_methods_products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_products_aggregate'],
+    ];
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_methods" */
+  ['omni_production_methods_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_methods_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_methods'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_methods" */
+  ['omni_production_methods_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_methods_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_methods_max_fields'];
+    min?: ValueTypes['omni_production_methods_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.production_methods". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_bool_exp']: {
+    _and?: ValueTypes['omni_production_methods_bool_exp'][];
+    _not?: ValueTypes['omni_production_methods_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_methods_bool_exp'][];
+    created_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    description?: ValueTypes['String_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    name?: ValueTypes['String_comparison_exp'] | null;
+    production_methods_producers?:
+      | ValueTypes['omni_production_methods_producers_bool_exp']
+      | null;
+    production_methods_products?:
+      | ValueTypes['omni_production_methods_products_bool_exp']
+      | null;
+    updated_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_methods" */
+  ['omni_production_methods_constraint']: omni_production_methods_constraint;
+  /** input type for inserting data into table "omni.production_methods" */
+  ['omni_production_methods_insert_input']: {
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    description?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    production_methods_producers?:
+      | ValueTypes['omni_production_methods_producers_arr_rel_insert_input']
+      | null;
+    production_methods_products?:
+      | ValueTypes['omni_production_methods_products_arr_rel_insert_input']
+      | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_methods_max_fields']: AliasType<{
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    id?: boolean;
+    name?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_production_methods_min_fields']: AliasType<{
+    /** on create */
+    created_at?: boolean;
+    description?: boolean;
+    id?: boolean;
+    name?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.production_methods" */
+  ['omni_production_methods_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_methods'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.production_methods" */
+  ['omni_production_methods_obj_rel_insert_input']: {
+    data: ValueTypes['omni_production_methods_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_production_methods_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.production_methods" */
+  ['omni_production_methods_on_conflict']: {
+    constraint: ValueTypes['omni_production_methods_constraint'];
+    update_columns: ValueTypes['omni_production_methods_update_column'][];
+    where?: ValueTypes['omni_production_methods_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.production_methods". */
+  ['omni_production_methods_order_by']: {
+    created_at?: ValueTypes['order_by'] | null;
+    description?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    production_methods_producers_aggregate?:
+      | ValueTypes['omni_production_methods_producers_aggregate_order_by']
+      | null;
+    production_methods_products_aggregate?:
+      | ValueTypes['omni_production_methods_products_aggregate_order_by']
+      | null;
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_methods */
+  ['omni_production_methods_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** columns and relationships of "omni.production_methods_producers" */
+  ['omni_production_methods_producers']: AliasType<{
+    id?: boolean;
+    producer?: boolean;
+    /** An object relationship */
+    producerByProducer?: ValueTypes['omni_producers'];
+    /** An object relationship */
+    productionMethodByProductionMethod?: ValueTypes['omni_production_methods'];
+    production_method?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_methods_producers_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_methods_producers'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_methods_producers_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_methods_producers_max_fields'];
+    min?: ValueTypes['omni_production_methods_producers_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_production_methods_producers_max_order_by'] | null;
+    min?: ValueTypes['omni_production_methods_producers_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_arr_rel_insert_input']: {
+    data: ValueTypes['omni_production_methods_producers_insert_input'][];
+    /** upsert condition */
+    on_conflict?:
+      | ValueTypes['omni_production_methods_producers_on_conflict']
+      | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.production_methods_producers". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_producers_bool_exp']: {
+    _and?: ValueTypes['omni_production_methods_producers_bool_exp'][];
+    _not?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_methods_producers_bool_exp'][];
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    producer?: ValueTypes['uuid_comparison_exp'] | null;
+    producerByProducer?: ValueTypes['omni_producers_bool_exp'] | null;
+    productionMethodByProductionMethod?:
+      | ValueTypes['omni_production_methods_bool_exp']
+      | null;
+    production_method?: ValueTypes['uuid_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_constraint']: omni_production_methods_producers_constraint;
+  /** input type for inserting data into table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_insert_input']: {
+    id?: ValueTypes['uuid'] | null;
+    producer?: ValueTypes['uuid'] | null;
+    producerByProducer?:
+      | ValueTypes['omni_producers_obj_rel_insert_input']
+      | null;
+    productionMethodByProductionMethod?:
+      | ValueTypes['omni_production_methods_obj_rel_insert_input']
+      | null;
+    production_method?: ValueTypes['uuid'] | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_methods_producers_max_fields']: AliasType<{
+    id?: boolean;
+    producer?: boolean;
+    production_method?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_max_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    production_method?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_production_methods_producers_min_fields']: AliasType<{
+    id?: boolean;
+    producer?: boolean;
+    production_method?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_min_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    production_method?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_methods_producers'];
+    __typename?: boolean;
+  }>;
+  /** on_conflict condition type for table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_on_conflict']: {
+    constraint: ValueTypes['omni_production_methods_producers_constraint'];
+    update_columns: ValueTypes['omni_production_methods_producers_update_column'][];
+    where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.production_methods_producers". */
+  ['omni_production_methods_producers_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    producerByProducer?: ValueTypes['omni_producers_order_by'] | null;
+    productionMethodByProductionMethod?:
+      | ValueTypes['omni_production_methods_order_by']
+      | null;
+    production_method?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_methods_producers */
+  ['omni_production_methods_producers_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_select_column']: omni_production_methods_producers_select_column;
+  /** input type for updating data in table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_set_input']: {
+    id?: ValueTypes['uuid'] | null;
+    producer?: ValueTypes['uuid'] | null;
+    production_method?: ValueTypes['uuid'] | null;
+  };
+  /** update columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_update_column']: omni_production_methods_producers_update_column;
+  /** columns and relationships of "omni.production_methods_products" */
+  ['omni_production_methods_products']: AliasType<{
+    id?: boolean;
+    product?: boolean;
+    /** An object relationship */
+    productByProduct?: ValueTypes['omni_products'];
+    /** An object relationship */
+    productionMethodByProductionMethod?: ValueTypes['omni_production_methods'];
+    production_method?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_methods_products_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_methods_products'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_methods_products_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_methods_products_max_fields'];
+    min?: ValueTypes['omni_production_methods_products_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_production_methods_products_max_order_by'] | null;
+    min?: ValueTypes['omni_production_methods_products_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.production_methods_products" */
+  ['omni_production_methods_products_arr_rel_insert_input']: {
+    data: ValueTypes['omni_production_methods_products_insert_input'][];
+    /** upsert condition */
+    on_conflict?:
+      | ValueTypes['omni_production_methods_products_on_conflict']
+      | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.production_methods_products". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_products_bool_exp']: {
+    _and?: ValueTypes['omni_production_methods_products_bool_exp'][];
+    _not?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_methods_products_bool_exp'][];
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    product?: ValueTypes['uuid_comparison_exp'] | null;
+    productByProduct?: ValueTypes['omni_products_bool_exp'] | null;
+    productionMethodByProductionMethod?:
+      | ValueTypes['omni_production_methods_bool_exp']
+      | null;
+    production_method?: ValueTypes['uuid_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_methods_products" */
+  ['omni_production_methods_products_constraint']: omni_production_methods_products_constraint;
+  /** input type for inserting data into table "omni.production_methods_products" */
+  ['omni_production_methods_products_insert_input']: {
+    id?: ValueTypes['uuid'] | null;
+    product?: ValueTypes['uuid'] | null;
+    productByProduct?: ValueTypes['omni_products_obj_rel_insert_input'] | null;
+    productionMethodByProductionMethod?:
+      | ValueTypes['omni_production_methods_obj_rel_insert_input']
+      | null;
+    production_method?: ValueTypes['uuid'] | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_methods_products_max_fields']: AliasType<{
+    id?: boolean;
+    product?: boolean;
+    production_method?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_max_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+    production_method?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_production_methods_products_min_fields']: AliasType<{
+    id?: boolean;
+    product?: boolean;
+    production_method?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_min_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+    production_method?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.production_methods_products" */
+  ['omni_production_methods_products_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_methods_products'];
+    __typename?: boolean;
+  }>;
+  /** on_conflict condition type for table "omni.production_methods_products" */
+  ['omni_production_methods_products_on_conflict']: {
+    constraint: ValueTypes['omni_production_methods_products_constraint'];
+    update_columns: ValueTypes['omni_production_methods_products_update_column'][];
+    where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.production_methods_products". */
+  ['omni_production_methods_products_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+    productByProduct?: ValueTypes['omni_products_order_by'] | null;
+    productionMethodByProductionMethod?:
+      | ValueTypes['omni_production_methods_order_by']
+      | null;
+    production_method?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_methods_products */
+  ['omni_production_methods_products_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_select_column']: omni_production_methods_products_select_column;
+  /** input type for updating data in table "omni.production_methods_products" */
+  ['omni_production_methods_products_set_input']: {
+    id?: ValueTypes['uuid'] | null;
+    product?: ValueTypes['uuid'] | null;
+    production_method?: ValueTypes['uuid'] | null;
+  };
+  /** update columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_update_column']: omni_production_methods_products_update_column;
+  /** select columns of table "omni.production_methods" */
+  ['omni_production_methods_select_column']: omni_production_methods_select_column;
+  /** input type for updating data in table "omni.production_methods" */
+  ['omni_production_methods_set_input']: {
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    description?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+  };
+  /** update columns of table "omni.production_methods" */
+  ['omni_production_methods_update_column']: omni_production_methods_update_column;
+  /** columns and relationships of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum']: AliasType<{
+    description?: boolean;
+    production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_pallettes_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_pallettes_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_pallettes_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_pallettes_enum_max_fields'];
+    min?: ValueTypes['omni_production_pallettes_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.production_pallettes_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_pallettes_enum_bool_exp']: {
+    _and?: ValueTypes['omni_production_pallettes_enum_bool_exp'][];
+    _not?: ValueTypes['omni_production_pallettes_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_pallettes_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_constraint']: omni_production_pallettes_enum_constraint;
+  ['omni_production_pallettes_enum_enum']: omni_production_pallettes_enum_enum;
+  /** Boolean expression to compare columns of type "omni_production_pallettes_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_pallettes_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_production_pallettes_enum_enum'] | null;
+    _in?: ValueTypes['omni_production_pallettes_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_production_pallettes_enum_enum'] | null;
+    _nin?: ValueTypes['omni_production_pallettes_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_insert_input']: {
+    description?: string | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_arr_rel_insert_input']
+      | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_pallettes_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_production_pallettes_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_pallettes_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_production_pallettes_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?:
+      | ValueTypes['omni_production_pallettes_enum_on_conflict']
+      | null;
+  };
+  /** on_conflict condition type for table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_on_conflict']: {
+    constraint: ValueTypes['omni_production_pallettes_enum_constraint'];
+    update_columns: ValueTypes['omni_production_pallettes_enum_update_column'][];
+    where?: ValueTypes['omni_production_pallettes_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.production_pallettes_enum". */
+  ['omni_production_pallettes_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    production_materials_aggregate?:
+      | ValueTypes['omni_production_materials_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_pallettes_enum */
+  ['omni_production_pallettes_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_select_column']: omni_production_pallettes_enum_select_column;
+  /** input type for updating data in table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_update_column']: omni_production_pallettes_enum_update_column;
+  /** columns and relationships of "omni.production_styles_enum" */
+  ['omni_production_styles_enum']: AliasType<{
+    description?: boolean;
+    production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.production_styles_enum" */
+  ['omni_production_styles_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_production_styles_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_production_styles_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.production_styles_enum" */
+  ['omni_production_styles_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_production_styles_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_production_styles_enum_max_fields'];
+    min?: ValueTypes['omni_production_styles_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.production_styles_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_styles_enum_bool_exp']: {
+    _and?: ValueTypes['omni_production_styles_enum_bool_exp'][];
+    _not?: ValueTypes['omni_production_styles_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_production_styles_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_constraint']: omni_production_styles_enum_constraint;
+  ['omni_production_styles_enum_enum']: omni_production_styles_enum_enum;
+  /** Boolean expression to compare columns of type "omni_production_styles_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_styles_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_production_styles_enum_enum'] | null;
+    _in?: ValueTypes['omni_production_styles_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_production_styles_enum_enum'] | null;
+    _nin?: ValueTypes['omni_production_styles_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_insert_input']: {
+    description?: string | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_arr_rel_insert_input']
+      | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_production_styles_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_production_styles_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_production_styles_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_production_styles_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_production_styles_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_on_conflict']: {
+    constraint: ValueTypes['omni_production_styles_enum_constraint'];
+    update_columns: ValueTypes['omni_production_styles_enum_update_column'][];
+    where?: ValueTypes['omni_production_styles_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.production_styles_enum". */
+  ['omni_production_styles_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    production_materials_aggregate?:
+      | ValueTypes['omni_production_materials_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_production_styles_enum */
+  ['omni_production_styles_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_select_column']: omni_production_styles_enum_select_column;
+  /** input type for updating data in table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_update_column']: omni_production_styles_enum_update_column;
+  /** columns and relationships of "omni.products" */
+  ['omni_products']: AliasType<{
+    /** link to drive of asset files related to project */
+    asset_files?: boolean;
+    brand?: boolean;
+    /** An object relationship */
+    brandByBrand?: ValueTypes['omni_brands'];
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** on create */
+    created_at?: boolean;
+    discord_channel_id?: boolean;
+    /** An object relationship */
+    fullfiller?: ValueTypes['omni_fullfillers'];
+    fullfillment?: boolean;
+    id?: boolean;
+    name?: boolean;
+    notion_id?: boolean;
+    price?: boolean;
+    /** An object relationship */
+    priceCurrencyByProductionCost?: ValueTypes['omni_price_currencies'];
+    /** An object relationship */
+    priceCurrencyByTotalSales?: ValueTypes['omni_price_currencies'];
+    /** An object relationship */
+    price_currency?: ValueTypes['omni_price_currencies'];
+    producer?: boolean;
+    /** An object relationship */
+    producerByProducer?: ValueTypes['omni_producers'];
+    producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_producers'],
+    ];
+    producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_producers_aggregate'],
+    ];
+    product_collaborators?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    product_collaborators_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators_aggregate'],
+    ];
+    /** An object relationship */
+    productionMaterialByProductionMaterial?: ValueTypes['omni_production_materials'];
+    production_cost?: boolean;
+    production_material?: boolean;
+    production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    production_methods_products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    production_methods_products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_products_aggregate'],
+    ];
+    /** An object relationship */
+    products_stage_enum?: ValueTypes['omni_products_stage_enum'];
+    /** could be null before drop */
+    quantity?: boolean;
+    sale_type?: boolean;
+    /** An object relationship */
+    sale_types_enum?: ValueTypes['omni_sale_types_enum'];
+    shop_description?: boolean;
+    shopify_id?: boolean;
+    stage?: boolean;
+    total_sales?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    wearable_files?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_files_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_files_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_files'],
+    ];
+    wearable_files_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_files_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_files_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_files_aggregate'],
+    ];
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.products" */
+  ['omni_products_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_products_aggregate_fields'];
+    nodes?: ValueTypes['omni_products'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.products" */
+  ['omni_products_aggregate_fields']: AliasType<{
+    avg?: ValueTypes['omni_products_avg_fields'];
+    count?: [
+      {
+        columns?: ValueTypes['omni_products_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_products_max_fields'];
+    min?: ValueTypes['omni_products_min_fields'];
+    stddev?: ValueTypes['omni_products_stddev_fields'];
+    stddev_pop?: ValueTypes['omni_products_stddev_pop_fields'];
+    stddev_samp?: ValueTypes['omni_products_stddev_samp_fields'];
+    sum?: ValueTypes['omni_products_sum_fields'];
+    var_pop?: ValueTypes['omni_products_var_pop_fields'];
+    var_samp?: ValueTypes['omni_products_var_samp_fields'];
+    variance?: ValueTypes['omni_products_variance_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.products" */
+  ['omni_products_aggregate_order_by']: {
+    avg?: ValueTypes['omni_products_avg_order_by'] | null;
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_products_max_order_by'] | null;
+    min?: ValueTypes['omni_products_min_order_by'] | null;
+    stddev?: ValueTypes['omni_products_stddev_order_by'] | null;
+    stddev_pop?: ValueTypes['omni_products_stddev_pop_order_by'] | null;
+    stddev_samp?: ValueTypes['omni_products_stddev_samp_order_by'] | null;
+    sum?: ValueTypes['omni_products_sum_order_by'] | null;
+    var_pop?: ValueTypes['omni_products_var_pop_order_by'] | null;
+    var_samp?: ValueTypes['omni_products_var_samp_order_by'] | null;
+    variance?: ValueTypes['omni_products_variance_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.products" */
+  ['omni_products_arr_rel_insert_input']: {
+    data: ValueTypes['omni_products_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_products_on_conflict'] | null;
+  };
+  /** aggregate avg on columns */
+  ['omni_products_avg_fields']: AliasType<{
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by avg() on columns of table "omni.products" */
+  ['omni_products_avg_order_by']: {
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.products". All fields are combined with a logical 'AND'. */
+  ['omni_products_bool_exp']: {
+    _and?: ValueTypes['omni_products_bool_exp'][];
+    _not?: ValueTypes['omni_products_bool_exp'] | null;
+    _or?: ValueTypes['omni_products_bool_exp'][];
+    asset_files?: ValueTypes['String_comparison_exp'] | null;
+    brand?: ValueTypes['uuid_comparison_exp'] | null;
+    brandByBrand?: ValueTypes['omni_brands_bool_exp'] | null;
+    brand_reward_share?: ValueTypes['numeric_comparison_exp'] | null;
+    collaborator_reward_share?: ValueTypes['numeric_comparison_exp'] | null;
+    created_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    discord_channel_id?: ValueTypes['String_comparison_exp'] | null;
+    fullfiller?: ValueTypes['omni_fullfillers_bool_exp'] | null;
+    fullfillment?: ValueTypes['uuid_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    name?: ValueTypes['String_comparison_exp'] | null;
+    notion_id?: ValueTypes['String_comparison_exp'] | null;
+    price?: ValueTypes['uuid_comparison_exp'] | null;
+    priceCurrencyByProductionCost?:
+      | ValueTypes['omni_price_currencies_bool_exp']
+      | null;
+    priceCurrencyByTotalSales?:
+      | ValueTypes['omni_price_currencies_bool_exp']
+      | null;
+    price_currency?: ValueTypes['omni_price_currencies_bool_exp'] | null;
+    producer?: ValueTypes['uuid_comparison_exp'] | null;
+    producerByProducer?: ValueTypes['omni_producers_bool_exp'] | null;
+    producers?: ValueTypes['omni_producers_bool_exp'] | null;
+    product_collaborators?:
+      | ValueTypes['omni_product_collaborators_bool_exp']
+      | null;
+    productionMaterialByProductionMaterial?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    production_cost?: ValueTypes['uuid_comparison_exp'] | null;
+    production_material?: ValueTypes['uuid_comparison_exp'] | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_bool_exp']
+      | null;
+    production_methods_products?:
+      | ValueTypes['omni_production_methods_products_bool_exp']
+      | null;
+    products_stage_enum?:
+      | ValueTypes['omni_products_stage_enum_bool_exp']
+      | null;
+    quantity?: ValueTypes['bigint_comparison_exp'] | null;
+    sale_type?: ValueTypes['omni_sale_types_enum_enum_comparison_exp'] | null;
+    sale_types_enum?: ValueTypes['omni_sale_types_enum_bool_exp'] | null;
+    shop_description?: ValueTypes['String_comparison_exp'] | null;
+    shopify_id?: ValueTypes['String_comparison_exp'] | null;
+    stage?: ValueTypes['omni_products_stage_enum_enum_comparison_exp'] | null;
+    total_sales?: ValueTypes['uuid_comparison_exp'] | null;
+    updated_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    wearable_files?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.products" */
+  ['omni_products_constraint']: omni_products_constraint;
+  /** input type for incrementing numeric columns in table "omni.products" */
+  ['omni_products_inc_input']: {
+    brand_reward_share?: ValueTypes['numeric'] | null;
+    collaborator_reward_share?: ValueTypes['numeric'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['bigint'] | null;
+  };
+  /** input type for inserting data into table "omni.products" */
+  ['omni_products_insert_input']: {
+    /** link to drive of asset files related to project */
+    asset_files?: string | null;
+    brand?: ValueTypes['uuid'] | null;
+    brandByBrand?: ValueTypes['omni_brands_obj_rel_insert_input'] | null;
+    brand_reward_share?: ValueTypes['numeric'] | null;
+    collaborator_reward_share?: ValueTypes['numeric'] | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    discord_channel_id?: string | null;
+    fullfiller?: ValueTypes['omni_fullfillers_obj_rel_insert_input'] | null;
+    fullfillment?: ValueTypes['uuid'] | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    notion_id?: string | null;
+    price?: ValueTypes['uuid'] | null;
+    priceCurrencyByProductionCost?:
+      | ValueTypes['omni_price_currencies_obj_rel_insert_input']
+      | null;
+    priceCurrencyByTotalSales?:
+      | ValueTypes['omni_price_currencies_obj_rel_insert_input']
+      | null;
+    price_currency?:
+      | ValueTypes['omni_price_currencies_obj_rel_insert_input']
+      | null;
+    producer?: ValueTypes['uuid'] | null;
+    producerByProducer?:
+      | ValueTypes['omni_producers_obj_rel_insert_input']
+      | null;
+    producers?: ValueTypes['omni_producers_arr_rel_insert_input'] | null;
+    product_collaborators?:
+      | ValueTypes['omni_product_collaborators_arr_rel_insert_input']
+      | null;
+    productionMaterialByProductionMaterial?:
+      | ValueTypes['omni_production_materials_obj_rel_insert_input']
+      | null;
+    production_cost?: ValueTypes['uuid'] | null;
+    production_material?: ValueTypes['uuid'] | null;
+    production_materials?:
+      | ValueTypes['omni_production_materials_arr_rel_insert_input']
+      | null;
+    production_methods_products?:
+      | ValueTypes['omni_production_methods_products_arr_rel_insert_input']
+      | null;
+    products_stage_enum?:
+      | ValueTypes['omni_products_stage_enum_obj_rel_insert_input']
+      | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['bigint'] | null;
+    sale_type?: ValueTypes['omni_sale_types_enum_enum'] | null;
+    sale_types_enum?:
+      | ValueTypes['omni_sale_types_enum_obj_rel_insert_input']
+      | null;
+    shop_description?: string | null;
+    shopify_id?: string | null;
+    stage?: ValueTypes['omni_products_stage_enum_enum'] | null;
+    total_sales?: ValueTypes['uuid'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+    wearable_files?:
+      | ValueTypes['omni_wearable_files_arr_rel_insert_input']
+      | null;
+  };
+  /** aggregate max on columns */
+  ['omni_products_max_fields']: AliasType<{
+    /** link to drive of asset files related to project */
+    asset_files?: boolean;
+    brand?: boolean;
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** on create */
+    created_at?: boolean;
+    discord_channel_id?: boolean;
+    fullfillment?: boolean;
+    id?: boolean;
+    name?: boolean;
+    notion_id?: boolean;
+    price?: boolean;
+    producer?: boolean;
+    production_cost?: boolean;
+    production_material?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    shop_description?: boolean;
+    shopify_id?: boolean;
+    total_sales?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.products" */
+  ['omni_products_max_order_by']: {
+    /** link to drive of asset files related to project */
+    asset_files?: ValueTypes['order_by'] | null;
+    brand?: ValueTypes['order_by'] | null;
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    discord_channel_id?: ValueTypes['order_by'] | null;
+    fullfillment?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    notion_id?: ValueTypes['order_by'] | null;
+    price?: ValueTypes['order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    production_cost?: ValueTypes['order_by'] | null;
+    production_material?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+    shop_description?: ValueTypes['order_by'] | null;
+    shopify_id?: ValueTypes['order_by'] | null;
+    total_sales?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_products_min_fields']: AliasType<{
+    /** link to drive of asset files related to project */
+    asset_files?: boolean;
+    brand?: boolean;
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** on create */
+    created_at?: boolean;
+    discord_channel_id?: boolean;
+    fullfillment?: boolean;
+    id?: boolean;
+    name?: boolean;
+    notion_id?: boolean;
+    price?: boolean;
+    producer?: boolean;
+    production_cost?: boolean;
+    production_material?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    shop_description?: boolean;
+    shopify_id?: boolean;
+    total_sales?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.products" */
+  ['omni_products_min_order_by']: {
+    /** link to drive of asset files related to project */
+    asset_files?: ValueTypes['order_by'] | null;
+    brand?: ValueTypes['order_by'] | null;
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    discord_channel_id?: ValueTypes['order_by'] | null;
+    fullfillment?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    notion_id?: ValueTypes['order_by'] | null;
+    price?: ValueTypes['order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    production_cost?: ValueTypes['order_by'] | null;
+    production_material?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+    shop_description?: ValueTypes['order_by'] | null;
+    shopify_id?: ValueTypes['order_by'] | null;
+    total_sales?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.products" */
+  ['omni_products_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_products'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.products" */
+  ['omni_products_obj_rel_insert_input']: {
+    data: ValueTypes['omni_products_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_products_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.products" */
+  ['omni_products_on_conflict']: {
+    constraint: ValueTypes['omni_products_constraint'];
+    update_columns: ValueTypes['omni_products_update_column'][];
+    where?: ValueTypes['omni_products_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.products". */
+  ['omni_products_order_by']: {
+    asset_files?: ValueTypes['order_by'] | null;
+    brand?: ValueTypes['order_by'] | null;
+    brandByBrand?: ValueTypes['omni_brands_order_by'] | null;
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    created_at?: ValueTypes['order_by'] | null;
+    discord_channel_id?: ValueTypes['order_by'] | null;
+    fullfiller?: ValueTypes['omni_fullfillers_order_by'] | null;
+    fullfillment?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    notion_id?: ValueTypes['order_by'] | null;
+    price?: ValueTypes['order_by'] | null;
+    priceCurrencyByProductionCost?:
+      | ValueTypes['omni_price_currencies_order_by']
+      | null;
+    priceCurrencyByTotalSales?:
+      | ValueTypes['omni_price_currencies_order_by']
+      | null;
+    price_currency?: ValueTypes['omni_price_currencies_order_by'] | null;
+    producer?: ValueTypes['order_by'] | null;
+    producerByProducer?: ValueTypes['omni_producers_order_by'] | null;
+    producers_aggregate?:
+      | ValueTypes['omni_producers_aggregate_order_by']
+      | null;
+    product_collaborators_aggregate?:
+      | ValueTypes['omni_product_collaborators_aggregate_order_by']
+      | null;
+    productionMaterialByProductionMaterial?:
+      | ValueTypes['omni_production_materials_order_by']
+      | null;
+    production_cost?: ValueTypes['order_by'] | null;
+    production_material?: ValueTypes['order_by'] | null;
+    production_materials_aggregate?:
+      | ValueTypes['omni_production_materials_aggregate_order_by']
+      | null;
+    production_methods_products_aggregate?:
+      | ValueTypes['omni_production_methods_products_aggregate_order_by']
+      | null;
+    products_stage_enum?:
+      | ValueTypes['omni_products_stage_enum_order_by']
+      | null;
+    quantity?: ValueTypes['order_by'] | null;
+    sale_type?: ValueTypes['order_by'] | null;
+    sale_types_enum?: ValueTypes['omni_sale_types_enum_order_by'] | null;
+    shop_description?: ValueTypes['order_by'] | null;
+    shopify_id?: ValueTypes['order_by'] | null;
+    stage?: ValueTypes['order_by'] | null;
+    total_sales?: ValueTypes['order_by'] | null;
+    updated_at?: ValueTypes['order_by'] | null;
+    wearable_files_aggregate?:
+      | ValueTypes['omni_wearable_files_aggregate_order_by']
+      | null;
+  };
+  /** primary key columns input for table: omni_products */
+  ['omni_products_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.products" */
+  ['omni_products_select_column']: omni_products_select_column;
+  /** input type for updating data in table "omni.products" */
+  ['omni_products_set_input']: {
+    /** link to drive of asset files related to project */
+    asset_files?: string | null;
+    brand?: ValueTypes['uuid'] | null;
+    brand_reward_share?: ValueTypes['numeric'] | null;
+    collaborator_reward_share?: ValueTypes['numeric'] | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    discord_channel_id?: string | null;
+    fullfillment?: ValueTypes['uuid'] | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    notion_id?: string | null;
+    price?: ValueTypes['uuid'] | null;
+    producer?: ValueTypes['uuid'] | null;
+    production_cost?: ValueTypes['uuid'] | null;
+    production_material?: ValueTypes['uuid'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['bigint'] | null;
+    sale_type?: ValueTypes['omni_sale_types_enum_enum'] | null;
+    shop_description?: string | null;
+    shopify_id?: string | null;
+    stage?: ValueTypes['omni_products_stage_enum_enum'] | null;
+    total_sales?: ValueTypes['uuid'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+  };
+  /** columns and relationships of "omni.products_stage_enum" */
+  ['omni_products_stage_enum']: AliasType<{
+    description?: boolean;
+    products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.products_stage_enum" */
+  ['omni_products_stage_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_products_stage_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_products_stage_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.products_stage_enum" */
+  ['omni_products_stage_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_products_stage_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_products_stage_enum_max_fields'];
+    min?: ValueTypes['omni_products_stage_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.products_stage_enum". All fields are combined with a logical 'AND'. */
+  ['omni_products_stage_enum_bool_exp']: {
+    _and?: ValueTypes['omni_products_stage_enum_bool_exp'][];
+    _not?: ValueTypes['omni_products_stage_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_products_stage_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    products?: ValueTypes['omni_products_bool_exp'] | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_constraint']: omni_products_stage_enum_constraint;
+  ['omni_products_stage_enum_enum']: omni_products_stage_enum_enum;
+  /** Boolean expression to compare columns of type "omni_products_stage_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_products_stage_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_products_stage_enum_enum'] | null;
+    _in?: ValueTypes['omni_products_stage_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_products_stage_enum_enum'] | null;
+    _nin?: ValueTypes['omni_products_stage_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_insert_input']: {
+    description?: string | null;
+    products?: ValueTypes['omni_products_arr_rel_insert_input'] | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_products_stage_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_products_stage_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_products_stage_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_products_stage_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_products_stage_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_on_conflict']: {
+    constraint: ValueTypes['omni_products_stage_enum_constraint'];
+    update_columns: ValueTypes['omni_products_stage_enum_update_column'][];
+    where?: ValueTypes['omni_products_stage_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.products_stage_enum". */
+  ['omni_products_stage_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    products_aggregate?: ValueTypes['omni_products_aggregate_order_by'] | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_products_stage_enum */
+  ['omni_products_stage_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_select_column']: omni_products_stage_enum_select_column;
+  /** input type for updating data in table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_update_column']: omni_products_stage_enum_update_column;
+  /** aggregate stddev on columns */
+  ['omni_products_stddev_fields']: AliasType<{
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev() on columns of table "omni.products" */
+  ['omni_products_stddev_order_by']: {
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate stddev_pop on columns */
+  ['omni_products_stddev_pop_fields']: AliasType<{
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev_pop() on columns of table "omni.products" */
+  ['omni_products_stddev_pop_order_by']: {
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate stddev_samp on columns */
+  ['omni_products_stddev_samp_fields']: AliasType<{
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by stddev_samp() on columns of table "omni.products" */
+  ['omni_products_stddev_samp_order_by']: {
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate sum on columns */
+  ['omni_products_sum_fields']: AliasType<{
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by sum() on columns of table "omni.products" */
+  ['omni_products_sum_order_by']: {
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+  };
+  /** update columns of table "omni.products" */
+  ['omni_products_update_column']: omni_products_update_column;
+  /** aggregate var_pop on columns */
+  ['omni_products_var_pop_fields']: AliasType<{
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by var_pop() on columns of table "omni.products" */
+  ['omni_products_var_pop_order_by']: {
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate var_samp on columns */
+  ['omni_products_var_samp_fields']: AliasType<{
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by var_samp() on columns of table "omni.products" */
+  ['omni_products_var_samp_order_by']: {
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate variance on columns */
+  ['omni_products_variance_fields']: AliasType<{
+    brand_reward_share?: boolean;
+    collaborator_reward_share?: boolean;
+    /** could be null before drop */
+    quantity?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by variance() on columns of table "omni.products" */
+  ['omni_products_variance_order_by']: {
+    brand_reward_share?: ValueTypes['order_by'] | null;
+    collaborator_reward_share?: ValueTypes['order_by'] | null;
+    /** could be null before drop */
+    quantity?: ValueTypes['order_by'] | null;
+  };
+  /** columns and relationships of "omni.sale_types_enum" */
+  ['omni_sale_types_enum']: AliasType<{
+    description?: boolean;
+    products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.sale_types_enum" */
+  ['omni_sale_types_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_sale_types_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_sale_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.sale_types_enum" */
+  ['omni_sale_types_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_sale_types_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_sale_types_enum_max_fields'];
+    min?: ValueTypes['omni_sale_types_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.sale_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_sale_types_enum_bool_exp']: {
+    _and?: ValueTypes['omni_sale_types_enum_bool_exp'][];
+    _not?: ValueTypes['omni_sale_types_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_sale_types_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    products?: ValueTypes['omni_products_bool_exp'] | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_constraint']: omni_sale_types_enum_constraint;
+  ['omni_sale_types_enum_enum']: omni_sale_types_enum_enum;
+  /** Boolean expression to compare columns of type "omni_sale_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_sale_types_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_sale_types_enum_enum'] | null;
+    _in?: ValueTypes['omni_sale_types_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_sale_types_enum_enum'] | null;
+    _nin?: ValueTypes['omni_sale_types_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_insert_input']: {
+    description?: string | null;
+    products?: ValueTypes['omni_products_arr_rel_insert_input'] | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_sale_types_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_sale_types_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_sale_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_sale_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_sale_types_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_on_conflict']: {
+    constraint: ValueTypes['omni_sale_types_enum_constraint'];
+    update_columns: ValueTypes['omni_sale_types_enum_update_column'][];
+    where?: ValueTypes['omni_sale_types_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.sale_types_enum". */
+  ['omni_sale_types_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    products_aggregate?: ValueTypes['omni_products_aggregate_order_by'] | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_sale_types_enum */
+  ['omni_sale_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_select_column']: omni_sale_types_enum_select_column;
+  /** input type for updating data in table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_update_column']: omni_sale_types_enum_update_column;
+  /** columns and relationships of "omni.timezones_enum" */
+  ['omni_timezones_enum']: AliasType<{
+    description?: boolean;
+    users?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_users'],
+    ];
+    users_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_users_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.timezones_enum" */
+  ['omni_timezones_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_timezones_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_timezones_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.timezones_enum" */
+  ['omni_timezones_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_timezones_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_timezones_enum_max_fields'];
+    min?: ValueTypes['omni_timezones_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.timezones_enum". All fields are combined with a logical 'AND'. */
+  ['omni_timezones_enum_bool_exp']: {
+    _and?: ValueTypes['omni_timezones_enum_bool_exp'][];
+    _not?: ValueTypes['omni_timezones_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_timezones_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    users?: ValueTypes['omni_users_bool_exp'] | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.timezones_enum" */
+  ['omni_timezones_enum_constraint']: omni_timezones_enum_constraint;
+  ['omni_timezones_enum_enum']: omni_timezones_enum_enum;
+  /** Boolean expression to compare columns of type "omni_timezones_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_timezones_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_timezones_enum_enum'] | null;
+    _in?: ValueTypes['omni_timezones_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_timezones_enum_enum'] | null;
+    _nin?: ValueTypes['omni_timezones_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.timezones_enum" */
+  ['omni_timezones_enum_insert_input']: {
+    description?: string | null;
+    users?: ValueTypes['omni_users_arr_rel_insert_input'] | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_timezones_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_timezones_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.timezones_enum" */
+  ['omni_timezones_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_timezones_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.timezones_enum" */
+  ['omni_timezones_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_timezones_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_timezones_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.timezones_enum" */
+  ['omni_timezones_enum_on_conflict']: {
+    constraint: ValueTypes['omni_timezones_enum_constraint'];
+    update_columns: ValueTypes['omni_timezones_enum_update_column'][];
+    where?: ValueTypes['omni_timezones_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.timezones_enum". */
+  ['omni_timezones_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    users_aggregate?: ValueTypes['omni_users_aggregate_order_by'] | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_timezones_enum */
+  ['omni_timezones_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.timezones_enum" */
+  ['omni_timezones_enum_select_column']: omni_timezones_enum_select_column;
+  /** input type for updating data in table "omni.timezones_enum" */
+  ['omni_timezones_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.timezones_enum" */
+  ['omni_timezones_enum_update_column']: omni_timezones_enum_update_column;
+  /** columns and relationships of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum']: AliasType<{
+    description?: boolean;
+    user_skills?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skills_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skills_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skills'],
+    ];
+    user_skills_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skills_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skills_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skills_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_user_skill_types_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_user_skill_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_user_skill_types_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_user_skill_types_enum_max_fields'];
+    min?: ValueTypes['omni_user_skill_types_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.user_skill_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_user_skill_types_enum_bool_exp']: {
+    _and?: ValueTypes['omni_user_skill_types_enum_bool_exp'][];
+    _not?: ValueTypes['omni_user_skill_types_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_user_skill_types_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    user_skills?: ValueTypes['omni_user_skills_bool_exp'] | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_constraint']: omni_user_skill_types_enum_constraint;
+  ['omni_user_skill_types_enum_enum']: omni_user_skill_types_enum_enum;
+  /** Boolean expression to compare columns of type "omni_user_skill_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_user_skill_types_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_user_skill_types_enum_enum'] | null;
+    _in?: ValueTypes['omni_user_skill_types_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_user_skill_types_enum_enum'] | null;
+    _nin?: ValueTypes['omni_user_skill_types_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_insert_input']: {
+    description?: string | null;
+    user_skills?: ValueTypes['omni_user_skills_arr_rel_insert_input'] | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_user_skill_types_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_user_skill_types_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_user_skill_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_user_skill_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_user_skill_types_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_on_conflict']: {
+    constraint: ValueTypes['omni_user_skill_types_enum_constraint'];
+    update_columns: ValueTypes['omni_user_skill_types_enum_update_column'][];
+    where?: ValueTypes['omni_user_skill_types_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.user_skill_types_enum". */
+  ['omni_user_skill_types_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    user_skills_aggregate?:
+      | ValueTypes['omni_user_skills_aggregate_order_by']
+      | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_user_skill_types_enum */
+  ['omni_user_skill_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_select_column']: omni_user_skill_types_enum_select_column;
+  /** input type for updating data in table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_update_column']: omni_user_skill_types_enum_update_column;
+  /** columns and relationships of "omni.user_skills" */
+  ['omni_user_skills']: AliasType<{
+    id?: boolean;
+    skill?: boolean;
+    user?: boolean;
+    /** An object relationship */
+    userByUser?: ValueTypes['omni_users'];
+    /** An object relationship */
+    user_skill_types_enum?: ValueTypes['omni_user_skill_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.user_skills" */
+  ['omni_user_skills_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_user_skills_aggregate_fields'];
+    nodes?: ValueTypes['omni_user_skills'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.user_skills" */
+  ['omni_user_skills_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_user_skills_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_user_skills_max_fields'];
+    min?: ValueTypes['omni_user_skills_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.user_skills" */
+  ['omni_user_skills_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_user_skills_max_order_by'] | null;
+    min?: ValueTypes['omni_user_skills_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.user_skills" */
+  ['omni_user_skills_arr_rel_insert_input']: {
+    data: ValueTypes['omni_user_skills_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_user_skills_on_conflict'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.user_skills". All fields are combined with a logical 'AND'. */
+  ['omni_user_skills_bool_exp']: {
+    _and?: ValueTypes['omni_user_skills_bool_exp'][];
+    _not?: ValueTypes['omni_user_skills_bool_exp'] | null;
+    _or?: ValueTypes['omni_user_skills_bool_exp'][];
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    skill?: ValueTypes['omni_user_skill_types_enum_enum_comparison_exp'] | null;
+    user?: ValueTypes['uuid_comparison_exp'] | null;
+    userByUser?: ValueTypes['omni_users_bool_exp'] | null;
+    user_skill_types_enum?:
+      | ValueTypes['omni_user_skill_types_enum_bool_exp']
+      | null;
+  };
+  /** unique or primary key constraints on table "omni.user_skills" */
+  ['omni_user_skills_constraint']: omni_user_skills_constraint;
+  /** input type for inserting data into table "omni.user_skills" */
+  ['omni_user_skills_insert_input']: {
+    id?: ValueTypes['uuid'] | null;
+    skill?: ValueTypes['omni_user_skill_types_enum_enum'] | null;
+    user?: ValueTypes['uuid'] | null;
+    userByUser?: ValueTypes['omni_users_obj_rel_insert_input'] | null;
+    user_skill_types_enum?:
+      | ValueTypes['omni_user_skill_types_enum_obj_rel_insert_input']
+      | null;
+  };
+  /** aggregate max on columns */
+  ['omni_user_skills_max_fields']: AliasType<{
+    id?: boolean;
+    user?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.user_skills" */
+  ['omni_user_skills_max_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    user?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_user_skills_min_fields']: AliasType<{
+    id?: boolean;
+    user?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.user_skills" */
+  ['omni_user_skills_min_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    user?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.user_skills" */
+  ['omni_user_skills_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_user_skills'];
+    __typename?: boolean;
+  }>;
+  /** on_conflict condition type for table "omni.user_skills" */
+  ['omni_user_skills_on_conflict']: {
+    constraint: ValueTypes['omni_user_skills_constraint'];
+    update_columns: ValueTypes['omni_user_skills_update_column'][];
+    where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.user_skills". */
+  ['omni_user_skills_order_by']: {
+    id?: ValueTypes['order_by'] | null;
+    skill?: ValueTypes['order_by'] | null;
+    user?: ValueTypes['order_by'] | null;
+    userByUser?: ValueTypes['omni_users_order_by'] | null;
+    user_skill_types_enum?:
+      | ValueTypes['omni_user_skill_types_enum_order_by']
+      | null;
+  };
+  /** primary key columns input for table: omni_user_skills */
+  ['omni_user_skills_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.user_skills" */
+  ['omni_user_skills_select_column']: omni_user_skills_select_column;
+  /** input type for updating data in table "omni.user_skills" */
+  ['omni_user_skills_set_input']: {
+    id?: ValueTypes['uuid'] | null;
+    skill?: ValueTypes['omni_user_skill_types_enum_enum'] | null;
+    user?: ValueTypes['uuid'] | null;
+  };
+  /** update columns of table "omni.user_skills" */
+  ['omni_user_skills_update_column']: omni_user_skills_update_column;
+  /** columns and relationships of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum']: AliasType<{
+    description?: boolean;
+    users?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_users'],
+    ];
+    users_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_users_aggregate'],
+    ];
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_user_statuses_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_user_statuses_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_user_statuses_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_user_statuses_enum_max_fields'];
+    min?: ValueTypes['omni_user_statuses_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.user_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_user_statuses_enum_bool_exp']: {
+    _and?: ValueTypes['omni_user_statuses_enum_bool_exp'][];
+    _not?: ValueTypes['omni_user_statuses_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_user_statuses_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    users?: ValueTypes['omni_users_bool_exp'] | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_constraint']: omni_user_statuses_enum_constraint;
+  ['omni_user_statuses_enum_enum']: omni_user_statuses_enum_enum;
+  /** Boolean expression to compare columns of type "omni_user_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_user_statuses_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_user_statuses_enum_enum'] | null;
+    _in?: ValueTypes['omni_user_statuses_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_user_statuses_enum_enum'] | null;
+    _nin?: ValueTypes['omni_user_statuses_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_insert_input']: {
+    description?: string | null;
+    users?: ValueTypes['omni_users_arr_rel_insert_input'] | null;
+    value?: string | null;
+  };
+  /** aggregate max on columns */
+  ['omni_user_statuses_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_user_statuses_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_user_statuses_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_user_statuses_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_user_statuses_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_on_conflict']: {
+    constraint: ValueTypes['omni_user_statuses_enum_constraint'];
+    update_columns: ValueTypes['omni_user_statuses_enum_update_column'][];
+    where?: ValueTypes['omni_user_statuses_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.user_statuses_enum". */
+  ['omni_user_statuses_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    users_aggregate?: ValueTypes['omni_users_aggregate_order_by'] | null;
+    value?: ValueTypes['order_by'] | null;
+  };
+  /** primary key columns input for table: omni_user_statuses_enum */
+  ['omni_user_statuses_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_select_column']: omni_user_statuses_enum_select_column;
+  /** input type for updating data in table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_update_column']: omni_user_statuses_enum_update_column;
+  /** columns and relationships of "omni.users" */
+  ['omni_users']: AliasType<{
+    brand_users?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_users'],
+    ];
+    brand_users_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_users_aggregate'],
+    ];
+    /** on create */
+    created_at?: boolean;
+    discord_handle?: boolean;
+    discord_id?: boolean;
+    eth_address?: boolean;
+    github_handle?: boolean;
+    id?: boolean;
+    name?: boolean;
+    product_collaborators?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    product_collaborators_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators_aggregate'],
+    ];
+    status?: boolean;
+    timezone?: boolean;
+    /** An object relationship */
+    timezones_enum?: ValueTypes['omni_timezones_enum'];
+    twitter_handle?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    user_skills?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skills_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skills_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skills'],
+    ];
+    user_skills_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skills_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skills_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skills_aggregate'],
+    ];
+    /** An object relationship */
+    user_statuses_enum?: ValueTypes['omni_user_statuses_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.users" */
+  ['omni_users_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_users_aggregate_fields'];
+    nodes?: ValueTypes['omni_users'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.users" */
+  ['omni_users_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_users_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_users_max_fields'];
+    min?: ValueTypes['omni_users_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.users" */
+  ['omni_users_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_users_max_order_by'] | null;
+    min?: ValueTypes['omni_users_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.users" */
+  ['omni_users_arr_rel_insert_input']: {
+    data: ValueTypes['omni_users_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_users_on_conflict'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.users". All fields are combined with a logical 'AND'. */
+  ['omni_users_bool_exp']: {
+    _and?: ValueTypes['omni_users_bool_exp'][];
+    _not?: ValueTypes['omni_users_bool_exp'] | null;
+    _or?: ValueTypes['omni_users_bool_exp'][];
+    brand_users?: ValueTypes['omni_brand_users_bool_exp'] | null;
+    created_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    discord_handle?: ValueTypes['String_comparison_exp'] | null;
+    discord_id?: ValueTypes['String_comparison_exp'] | null;
+    eth_address?: ValueTypes['String_comparison_exp'] | null;
+    github_handle?: ValueTypes['String_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    name?: ValueTypes['String_comparison_exp'] | null;
+    product_collaborators?:
+      | ValueTypes['omni_product_collaborators_bool_exp']
+      | null;
+    status?: ValueTypes['omni_user_statuses_enum_enum_comparison_exp'] | null;
+    timezone?: ValueTypes['omni_timezones_enum_enum_comparison_exp'] | null;
+    timezones_enum?: ValueTypes['omni_timezones_enum_bool_exp'] | null;
+    twitter_handle?: ValueTypes['String_comparison_exp'] | null;
+    updated_at?: ValueTypes['timestamptz_comparison_exp'] | null;
+    user_skills?: ValueTypes['omni_user_skills_bool_exp'] | null;
+    user_statuses_enum?: ValueTypes['omni_user_statuses_enum_bool_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.users" */
+  ['omni_users_constraint']: omni_users_constraint;
+  /** input type for inserting data into table "omni.users" */
+  ['omni_users_insert_input']: {
+    brand_users?: ValueTypes['omni_brand_users_arr_rel_insert_input'] | null;
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    discord_handle?: string | null;
+    discord_id?: string | null;
+    eth_address?: string | null;
+    github_handle?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    product_collaborators?:
+      | ValueTypes['omni_product_collaborators_arr_rel_insert_input']
+      | null;
+    status?: ValueTypes['omni_user_statuses_enum_enum'] | null;
+    timezone?: ValueTypes['omni_timezones_enum_enum'] | null;
+    timezones_enum?:
+      | ValueTypes['omni_timezones_enum_obj_rel_insert_input']
+      | null;
+    twitter_handle?: string | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+    user_skills?: ValueTypes['omni_user_skills_arr_rel_insert_input'] | null;
+    user_statuses_enum?:
+      | ValueTypes['omni_user_statuses_enum_obj_rel_insert_input']
+      | null;
+  };
+  /** aggregate max on columns */
+  ['omni_users_max_fields']: AliasType<{
+    /** on create */
+    created_at?: boolean;
+    discord_handle?: boolean;
+    discord_id?: boolean;
+    eth_address?: boolean;
+    github_handle?: boolean;
+    id?: boolean;
+    name?: boolean;
+    twitter_handle?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.users" */
+  ['omni_users_max_order_by']: {
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    discord_handle?: ValueTypes['order_by'] | null;
+    discord_id?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    github_handle?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    twitter_handle?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_users_min_fields']: AliasType<{
+    /** on create */
+    created_at?: boolean;
+    discord_handle?: boolean;
+    discord_id?: boolean;
+    eth_address?: boolean;
+    github_handle?: boolean;
+    id?: boolean;
+    name?: boolean;
+    twitter_handle?: boolean;
+    /** on touch */
+    updated_at?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.users" */
+  ['omni_users_min_order_by']: {
+    /** on create */
+    created_at?: ValueTypes['order_by'] | null;
+    discord_handle?: ValueTypes['order_by'] | null;
+    discord_id?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    github_handle?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    twitter_handle?: ValueTypes['order_by'] | null;
+    /** on touch */
+    updated_at?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.users" */
+  ['omni_users_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_users'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.users" */
+  ['omni_users_obj_rel_insert_input']: {
+    data: ValueTypes['omni_users_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_users_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.users" */
+  ['omni_users_on_conflict']: {
+    constraint: ValueTypes['omni_users_constraint'];
+    update_columns: ValueTypes['omni_users_update_column'][];
+    where?: ValueTypes['omni_users_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.users". */
+  ['omni_users_order_by']: {
+    brand_users_aggregate?:
+      | ValueTypes['omni_brand_users_aggregate_order_by']
+      | null;
+    created_at?: ValueTypes['order_by'] | null;
+    discord_handle?: ValueTypes['order_by'] | null;
+    discord_id?: ValueTypes['order_by'] | null;
+    eth_address?: ValueTypes['order_by'] | null;
+    github_handle?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    name?: ValueTypes['order_by'] | null;
+    product_collaborators_aggregate?:
+      | ValueTypes['omni_product_collaborators_aggregate_order_by']
+      | null;
+    status?: ValueTypes['order_by'] | null;
+    timezone?: ValueTypes['order_by'] | null;
+    timezones_enum?: ValueTypes['omni_timezones_enum_order_by'] | null;
+    twitter_handle?: ValueTypes['order_by'] | null;
+    updated_at?: ValueTypes['order_by'] | null;
+    user_skills_aggregate?:
+      | ValueTypes['omni_user_skills_aggregate_order_by']
+      | null;
+    user_statuses_enum?: ValueTypes['omni_user_statuses_enum_order_by'] | null;
+  };
+  /** primary key columns input for table: omni_users */
+  ['omni_users_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.users" */
+  ['omni_users_select_column']: omni_users_select_column;
+  /** input type for updating data in table "omni.users" */
+  ['omni_users_set_input']: {
+    /** on create */
+    created_at?: ValueTypes['timestamptz'] | null;
+    discord_handle?: string | null;
+    discord_id?: string | null;
+    eth_address?: string | null;
+    github_handle?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    name?: string | null;
+    status?: ValueTypes['omni_user_statuses_enum_enum'] | null;
+    timezone?: ValueTypes['omni_timezones_enum_enum'] | null;
+    twitter_handle?: string | null;
+    /** on touch */
+    updated_at?: ValueTypes['timestamptz'] | null;
+  };
+  /** update columns of table "omni.users" */
+  ['omni_users_update_column']: omni_users_update_column;
+  /** columns and relationships of "omni.wearable_files" */
+  ['omni_wearable_files']: AliasType<{
+    file?: boolean;
+    id?: boolean;
+    product?: boolean;
+    /** An object relationship */
+    productByProduct?: ValueTypes['omni_products'];
+    type?: boolean;
+    /** An object relationship */
+    wearable_types_enum?: ValueTypes['omni_wearable_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.wearable_files" */
+  ['omni_wearable_files_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_wearable_files_aggregate_fields'];
+    nodes?: ValueTypes['omni_wearable_files'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.wearable_files" */
+  ['omni_wearable_files_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_wearable_files_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_wearable_files_max_fields'];
+    min?: ValueTypes['omni_wearable_files_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** order by aggregate values of table "omni.wearable_files" */
+  ['omni_wearable_files_aggregate_order_by']: {
+    count?: ValueTypes['order_by'] | null;
+    max?: ValueTypes['omni_wearable_files_max_order_by'] | null;
+    min?: ValueTypes['omni_wearable_files_min_order_by'] | null;
+  };
+  /** input type for inserting array relation for remote table "omni.wearable_files" */
+  ['omni_wearable_files_arr_rel_insert_input']: {
+    data: ValueTypes['omni_wearable_files_insert_input'][];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_wearable_files_on_conflict'] | null;
+  };
+  /** Boolean expression to filter rows from the table "omni.wearable_files". All fields are combined with a logical 'AND'. */
+  ['omni_wearable_files_bool_exp']: {
+    _and?: ValueTypes['omni_wearable_files_bool_exp'][];
+    _not?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+    _or?: ValueTypes['omni_wearable_files_bool_exp'][];
+    file?: ValueTypes['String_comparison_exp'] | null;
+    id?: ValueTypes['uuid_comparison_exp'] | null;
+    product?: ValueTypes['uuid_comparison_exp'] | null;
+    productByProduct?: ValueTypes['omni_products_bool_exp'] | null;
+    type?: ValueTypes['omni_wearable_types_enum_enum_comparison_exp'] | null;
+    wearable_types_enum?:
+      | ValueTypes['omni_wearable_types_enum_bool_exp']
+      | null;
+  };
+  /** unique or primary key constraints on table "omni.wearable_files" */
+  ['omni_wearable_files_constraint']: omni_wearable_files_constraint;
+  /** input type for inserting data into table "omni.wearable_files" */
+  ['omni_wearable_files_insert_input']: {
+    file?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    product?: ValueTypes['uuid'] | null;
+    productByProduct?: ValueTypes['omni_products_obj_rel_insert_input'] | null;
+    type?: ValueTypes['omni_wearable_types_enum_enum'] | null;
+    wearable_types_enum?:
+      | ValueTypes['omni_wearable_types_enum_obj_rel_insert_input']
+      | null;
+  };
+  /** aggregate max on columns */
+  ['omni_wearable_files_max_fields']: AliasType<{
+    file?: boolean;
+    id?: boolean;
+    product?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by max() on columns of table "omni.wearable_files" */
+  ['omni_wearable_files_max_order_by']: {
+    file?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+  };
+  /** aggregate min on columns */
+  ['omni_wearable_files_min_fields']: AliasType<{
+    file?: boolean;
+    id?: boolean;
+    product?: boolean;
+    __typename?: boolean;
+  }>;
+  /** order by min() on columns of table "omni.wearable_files" */
+  ['omni_wearable_files_min_order_by']: {
+    file?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+  };
+  /** response of any mutation on the table "omni.wearable_files" */
+  ['omni_wearable_files_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_wearable_files'];
+    __typename?: boolean;
+  }>;
+  /** on_conflict condition type for table "omni.wearable_files" */
+  ['omni_wearable_files_on_conflict']: {
+    constraint: ValueTypes['omni_wearable_files_constraint'];
+    update_columns: ValueTypes['omni_wearable_files_update_column'][];
+    where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.wearable_files". */
+  ['omni_wearable_files_order_by']: {
+    file?: ValueTypes['order_by'] | null;
+    id?: ValueTypes['order_by'] | null;
+    product?: ValueTypes['order_by'] | null;
+    productByProduct?: ValueTypes['omni_products_order_by'] | null;
+    type?: ValueTypes['order_by'] | null;
+    wearable_types_enum?:
+      | ValueTypes['omni_wearable_types_enum_order_by']
+      | null;
+  };
+  /** primary key columns input for table: omni_wearable_files */
+  ['omni_wearable_files_pk_columns_input']: {
+    id: ValueTypes['uuid'];
+  };
+  /** select columns of table "omni.wearable_files" */
+  ['omni_wearable_files_select_column']: omni_wearable_files_select_column;
+  /** input type for updating data in table "omni.wearable_files" */
+  ['omni_wearable_files_set_input']: {
+    file?: string | null;
+    id?: ValueTypes['uuid'] | null;
+    product?: ValueTypes['uuid'] | null;
+    type?: ValueTypes['omni_wearable_types_enum_enum'] | null;
+  };
+  /** update columns of table "omni.wearable_files" */
+  ['omni_wearable_files_update_column']: omni_wearable_files_update_column;
+  /** columns and relationships of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    wearable_files?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_files_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_files_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_files'],
+    ];
+    wearable_files_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_files_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_files_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_files_aggregate'],
+    ];
+    __typename?: boolean;
+  }>;
+  /** aggregated selection of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_aggregate']: AliasType<{
+    aggregate?: ValueTypes['omni_wearable_types_enum_aggregate_fields'];
+    nodes?: ValueTypes['omni_wearable_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** aggregate fields of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_aggregate_fields']: AliasType<{
+    count?: [
+      {
+        columns?: ValueTypes['omni_wearable_types_enum_select_column'][];
+        distinct?: boolean | null;
+      },
+      boolean,
+    ];
+    max?: ValueTypes['omni_wearable_types_enum_max_fields'];
+    min?: ValueTypes['omni_wearable_types_enum_min_fields'];
+    __typename?: boolean;
+  }>;
+  /** Boolean expression to filter rows from the table "omni.wearable_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_wearable_types_enum_bool_exp']: {
+    _and?: ValueTypes['omni_wearable_types_enum_bool_exp'][];
+    _not?: ValueTypes['omni_wearable_types_enum_bool_exp'] | null;
+    _or?: ValueTypes['omni_wearable_types_enum_bool_exp'][];
+    description?: ValueTypes['String_comparison_exp'] | null;
+    value?: ValueTypes['String_comparison_exp'] | null;
+    wearable_files?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+  };
+  /** unique or primary key constraints on table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_constraint']: omni_wearable_types_enum_constraint;
+  ['omni_wearable_types_enum_enum']: omni_wearable_types_enum_enum;
+  /** Boolean expression to compare columns of type "omni_wearable_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_wearable_types_enum_enum_comparison_exp']: {
+    _eq?: ValueTypes['omni_wearable_types_enum_enum'] | null;
+    _in?: ValueTypes['omni_wearable_types_enum_enum'][];
+    _is_null?: boolean | null;
+    _neq?: ValueTypes['omni_wearable_types_enum_enum'] | null;
+    _nin?: ValueTypes['omni_wearable_types_enum_enum'][];
+  };
+  /** input type for inserting data into table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_insert_input']: {
+    description?: string | null;
+    value?: string | null;
+    wearable_files?:
+      | ValueTypes['omni_wearable_files_arr_rel_insert_input']
+      | null;
+  };
+  /** aggregate max on columns */
+  ['omni_wearable_types_enum_max_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** aggregate min on columns */
+  ['omni_wearable_types_enum_min_fields']: AliasType<{
+    description?: boolean;
+    value?: boolean;
+    __typename?: boolean;
+  }>;
+  /** response of any mutation on the table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_mutation_response']: AliasType<{
+    /** number of rows affected by the mutation */
+    affected_rows?: boolean;
+    /** data from the rows affected by the mutation */
+    returning?: ValueTypes['omni_wearable_types_enum'];
+    __typename?: boolean;
+  }>;
+  /** input type for inserting object relation for remote table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_obj_rel_insert_input']: {
+    data: ValueTypes['omni_wearable_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: ValueTypes['omni_wearable_types_enum_on_conflict'] | null;
+  };
+  /** on_conflict condition type for table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_on_conflict']: {
+    constraint: ValueTypes['omni_wearable_types_enum_constraint'];
+    update_columns: ValueTypes['omni_wearable_types_enum_update_column'][];
+    where?: ValueTypes['omni_wearable_types_enum_bool_exp'] | null;
+  };
+  /** Ordering options when selecting data from "omni.wearable_types_enum". */
+  ['omni_wearable_types_enum_order_by']: {
+    description?: ValueTypes['order_by'] | null;
+    value?: ValueTypes['order_by'] | null;
+    wearable_files_aggregate?:
+      | ValueTypes['omni_wearable_files_aggregate_order_by']
+      | null;
+  };
+  /** primary key columns input for table: omni_wearable_types_enum */
+  ['omni_wearable_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_select_column']: omni_wearable_types_enum_select_column;
+  /** input type for updating data in table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_set_input']: {
+    description?: string | null;
+    value?: string | null;
+  };
+  /** update columns of table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_update_column']: omni_wearable_types_enum_update_column;
   /** column ordering options */
   ['order_by']: order_by;
   ['query_root']: AliasType<{
@@ -1269,6 +8419,908 @@ export type ValueTypes = {
     contributors_by_pk?: [
       { contribution_id: ValueTypes['uuid']; user_id: ValueTypes['uuid'] },
       ValueTypes['contributors'],
+    ];
+    omni_brand_statuses_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_statuses_enum'],
+    ];
+    omni_brand_statuses_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_statuses_enum_aggregate'],
+    ];
+    omni_brand_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_brand_statuses_enum'],
+    ];
+    omni_brand_users?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_users'],
+    ];
+    omni_brand_users_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_users_aggregate'],
+    ];
+    omni_brand_users_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_brand_users'],
+    ];
+    omni_brands?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brands_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brands_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brands_bool_exp'] | null;
+      },
+      ValueTypes['omni_brands'],
+    ];
+    omni_brands_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brands_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brands_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brands_bool_exp'] | null;
+      },
+      ValueTypes['omni_brands_aggregate'],
+    ];
+    omni_brands_by_pk?: [{ id: ValueTypes['uuid'] }, ValueTypes['omni_brands']];
+    omni_collaborator_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_collaborator_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_collaborator_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_collaborator_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_collaborator_types_enum'],
+    ];
+    omni_collaborator_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_collaborator_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_collaborator_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_collaborator_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_collaborator_types_enum_aggregate'],
+    ];
+    omni_collaborator_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_collaborator_types_enum'],
+    ];
+    omni_fullfillers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_fullfillers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_fullfillers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_fullfillers_bool_exp'] | null;
+      },
+      ValueTypes['omni_fullfillers'],
+    ];
+    omni_fullfillers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_fullfillers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_fullfillers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_fullfillers_bool_exp'] | null;
+      },
+      ValueTypes['omni_fullfillers_aggregate'],
+    ];
+    omni_fullfillers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_fullfillers'],
+    ];
+    omni_price_currencies?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_price_currencies_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_price_currencies_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_price_currencies_bool_exp'] | null;
+      },
+      ValueTypes['omni_price_currencies'],
+    ];
+    omni_price_currencies_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_price_currencies_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_price_currencies_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_price_currencies_bool_exp'] | null;
+      },
+      ValueTypes['omni_price_currencies_aggregate'],
+    ];
+    omni_price_currencies_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_price_currencies'],
+    ];
+    omni_print_techs_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_print_techs_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_print_techs_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_print_techs_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_print_techs_enum'],
+    ];
+    omni_print_techs_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_print_techs_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_print_techs_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_print_techs_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_print_techs_enum_aggregate'],
+    ];
+    omni_print_techs_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_print_techs_enum'],
+    ];
+    omni_producer_statuses_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producer_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producer_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producer_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_producer_statuses_enum'],
+    ];
+    omni_producer_statuses_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producer_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producer_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producer_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_producer_statuses_enum_aggregate'],
+    ];
+    omni_producer_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_producer_statuses_enum'],
+    ];
+    omni_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_producers'],
+    ];
+    omni_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_producers_aggregate'],
+    ];
+    omni_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_producers'],
+    ];
+    omni_product_collaborators?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    omni_product_collaborators_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators_aggregate'],
+    ];
+    omni_product_collaborators_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    omni_product_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_types_enum'],
+    ];
+    omni_product_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_types_enum_aggregate'],
+    ];
+    omni_product_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_product_types_enum'],
+    ];
+    omni_production_genders_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_genders_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_genders_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_genders_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_genders_enum'],
+    ];
+    omni_production_genders_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_genders_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_genders_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_genders_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_genders_enum_aggregate'],
+    ];
+    omni_production_genders_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_genders_enum'],
+    ];
+    omni_production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    omni_production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    omni_production_materials_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_materials'],
+    ];
+    omni_production_materials_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_producers_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_producers_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    omni_production_materials_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_producers_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_producers_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers_aggregate'],
+    ];
+    omni_production_materials_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    omni_production_materials_ratings_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_ratings_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_ratings_enum_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_ratings_enum_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_ratings_enum'],
+    ];
+    omni_production_materials_ratings_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_ratings_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_ratings_enum_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_ratings_enum_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_ratings_enum_aggregate'],
+    ];
+    omni_production_materials_ratings_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_materials_ratings_enum'],
+    ];
+    omni_production_methods?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods'],
+    ];
+    omni_production_methods_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_aggregate'],
+    ];
+    omni_production_methods_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods'],
+    ];
+    omni_production_methods_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    omni_production_methods_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_producers_aggregate'],
+    ];
+    omni_production_methods_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    omni_production_methods_products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    omni_production_methods_products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_products_aggregate'],
+    ];
+    omni_production_methods_products_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    omni_production_pallettes_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_pallettes_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_pallettes_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_pallettes_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_pallettes_enum'],
+    ];
+    omni_production_pallettes_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_pallettes_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_pallettes_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_pallettes_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_pallettes_enum_aggregate'],
+    ];
+    omni_production_pallettes_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_pallettes_enum'],
+    ];
+    omni_production_styles_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_styles_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_styles_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_styles_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_styles_enum'],
+    ];
+    omni_production_styles_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_styles_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_styles_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_styles_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_styles_enum_aggregate'],
+    ];
+    omni_production_styles_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_styles_enum'],
+    ];
+    omni_products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    omni_products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    omni_products_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_products'],
+    ];
+    omni_products_stage_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_stage_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_stage_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_stage_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_stage_enum'],
+    ];
+    omni_products_stage_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_stage_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_stage_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_stage_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_stage_enum_aggregate'],
+    ];
+    omni_products_stage_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_products_stage_enum'],
+    ];
+    omni_sale_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_sale_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_sale_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_sale_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_sale_types_enum'],
+    ];
+    omni_sale_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_sale_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_sale_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_sale_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_sale_types_enum_aggregate'],
+    ];
+    omni_sale_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_sale_types_enum'],
+    ];
+    omni_timezones_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_timezones_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_timezones_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_timezones_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_timezones_enum'],
+    ];
+    omni_timezones_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_timezones_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_timezones_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_timezones_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_timezones_enum_aggregate'],
+    ];
+    omni_timezones_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_timezones_enum'],
+    ];
+    omni_user_skill_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skill_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skill_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skill_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skill_types_enum'],
+    ];
+    omni_user_skill_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skill_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skill_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skill_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skill_types_enum_aggregate'],
+    ];
+    omni_user_skill_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_user_skill_types_enum'],
+    ];
+    omni_user_skills?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skills_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skills_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skills'],
+    ];
+    omni_user_skills_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skills_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skills_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skills_aggregate'],
+    ];
+    omni_user_skills_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_user_skills'],
+    ];
+    omni_user_statuses_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_statuses_enum'],
+    ];
+    omni_user_statuses_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_statuses_enum_aggregate'],
+    ];
+    omni_user_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_user_statuses_enum'],
+    ];
+    omni_users?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_users'],
+    ];
+    omni_users_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_users_aggregate'],
+    ];
+    omni_users_by_pk?: [{ id: ValueTypes['uuid'] }, ValueTypes['omni_users']];
+    omni_wearable_files?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_files_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_files_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_files'],
+    ];
+    omni_wearable_files_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_files_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_files_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_files_aggregate'],
+    ];
+    omni_wearable_files_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_wearable_files'],
+    ];
+    omni_wearable_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_types_enum'],
+    ];
+    omni_wearable_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_types_enum_aggregate'],
+    ];
+    omni_wearable_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_wearable_types_enum'],
     ];
     robot_order?: [
       {
@@ -1440,10 +9492,7 @@ export type ValueTypes = {
     users_by_pk?: [{ id: ValueTypes['uuid'] }, ValueTypes['users']];
     __typename?: boolean;
   }>;
-  /** Orders for ROBOT rewards
-
-
-columns and relationships of "robot.order" */
+  /** Orders for ROBOT rewards */
   ['robot_order']: AliasType<{
     buyer_address?: boolean;
     buyer_reward?: boolean;
@@ -1632,10 +9681,7 @@ columns and relationships of "robot.order" */
     season?: boolean;
     __typename?: boolean;
   }>;
-  /** Products for ROBOT designer rewards
-
-
-columns and relationships of "robot.product" */
+  /** Products for ROBOT designer rewards */
   ['robot_product']: AliasType<{
     designers?: [
       {
@@ -1739,10 +9785,7 @@ columns and relationships of "robot.product" */
   ['robot_product_delete_key_input']: {
     nft_metadata?: string | null;
   };
-  /** Designer receiving ROBOT rewards
-
-
-columns and relationships of "robot.product_designer" */
+  /** Designer receiving ROBOT rewards */
   ['robot_product_designer']: AliasType<{
     contribution_share?: boolean;
     designer_name?: boolean;
@@ -2390,6 +10433,908 @@ columns and relationships of "robot.product_designer" */
       { contribution_id: ValueTypes['uuid']; user_id: ValueTypes['uuid'] },
       ValueTypes['contributors'],
     ];
+    omni_brand_statuses_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_statuses_enum'],
+    ];
+    omni_brand_statuses_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_statuses_enum_aggregate'],
+    ];
+    omni_brand_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_brand_statuses_enum'],
+    ];
+    omni_brand_users?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_users'],
+    ];
+    omni_brand_users_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brand_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brand_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brand_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_brand_users_aggregate'],
+    ];
+    omni_brand_users_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_brand_users'],
+    ];
+    omni_brands?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brands_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brands_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brands_bool_exp'] | null;
+      },
+      ValueTypes['omni_brands'],
+    ];
+    omni_brands_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_brands_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_brands_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_brands_bool_exp'] | null;
+      },
+      ValueTypes['omni_brands_aggregate'],
+    ];
+    omni_brands_by_pk?: [{ id: ValueTypes['uuid'] }, ValueTypes['omni_brands']];
+    omni_collaborator_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_collaborator_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_collaborator_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_collaborator_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_collaborator_types_enum'],
+    ];
+    omni_collaborator_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_collaborator_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_collaborator_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_collaborator_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_collaborator_types_enum_aggregate'],
+    ];
+    omni_collaborator_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_collaborator_types_enum'],
+    ];
+    omni_fullfillers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_fullfillers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_fullfillers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_fullfillers_bool_exp'] | null;
+      },
+      ValueTypes['omni_fullfillers'],
+    ];
+    omni_fullfillers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_fullfillers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_fullfillers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_fullfillers_bool_exp'] | null;
+      },
+      ValueTypes['omni_fullfillers_aggregate'],
+    ];
+    omni_fullfillers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_fullfillers'],
+    ];
+    omni_price_currencies?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_price_currencies_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_price_currencies_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_price_currencies_bool_exp'] | null;
+      },
+      ValueTypes['omni_price_currencies'],
+    ];
+    omni_price_currencies_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_price_currencies_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_price_currencies_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_price_currencies_bool_exp'] | null;
+      },
+      ValueTypes['omni_price_currencies_aggregate'],
+    ];
+    omni_price_currencies_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_price_currencies'],
+    ];
+    omni_print_techs_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_print_techs_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_print_techs_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_print_techs_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_print_techs_enum'],
+    ];
+    omni_print_techs_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_print_techs_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_print_techs_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_print_techs_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_print_techs_enum_aggregate'],
+    ];
+    omni_print_techs_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_print_techs_enum'],
+    ];
+    omni_producer_statuses_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producer_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producer_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producer_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_producer_statuses_enum'],
+    ];
+    omni_producer_statuses_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producer_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producer_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producer_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_producer_statuses_enum_aggregate'],
+    ];
+    omni_producer_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_producer_statuses_enum'],
+    ];
+    omni_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_producers'],
+    ];
+    omni_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_producers_aggregate'],
+    ];
+    omni_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_producers'],
+    ];
+    omni_product_collaborators?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    omni_product_collaborators_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_collaborators_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_collaborators_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_collaborators_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_collaborators_aggregate'],
+    ];
+    omni_product_collaborators_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_product_collaborators'],
+    ];
+    omni_product_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_types_enum'],
+    ];
+    omni_product_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_product_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_product_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_product_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_product_types_enum_aggregate'],
+    ];
+    omni_product_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_product_types_enum'],
+    ];
+    omni_production_genders_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_genders_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_genders_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_genders_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_genders_enum'],
+    ];
+    omni_production_genders_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_genders_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_genders_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_genders_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_genders_enum_aggregate'],
+    ];
+    omni_production_genders_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_genders_enum'],
+    ];
+    omni_production_materials?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials'],
+    ];
+    omni_production_materials_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_materials_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_materials_aggregate'],
+    ];
+    omni_production_materials_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_materials'],
+    ];
+    omni_production_materials_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_producers_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_producers_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    omni_production_materials_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_producers_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_producers_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_producers_aggregate'],
+    ];
+    omni_production_materials_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_materials_producers'],
+    ];
+    omni_production_materials_ratings_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_ratings_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_ratings_enum_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_ratings_enum_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_ratings_enum'],
+    ];
+    omni_production_materials_ratings_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_materials_ratings_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_materials_ratings_enum_order_by'][] /** filter the rows returned */;
+        where?:
+          | ValueTypes['omni_production_materials_ratings_enum_bool_exp']
+          | null;
+      },
+      ValueTypes['omni_production_materials_ratings_enum_aggregate'],
+    ];
+    omni_production_materials_ratings_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_materials_ratings_enum'],
+    ];
+    omni_production_methods?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods'],
+    ];
+    omni_production_methods_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_aggregate'],
+    ];
+    omni_production_methods_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods'],
+    ];
+    omni_production_methods_producers?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    omni_production_methods_producers_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_producers_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_producers_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_producers_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_producers_aggregate'],
+    ];
+    omni_production_methods_producers_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods_producers'],
+    ];
+    omni_production_methods_products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    omni_production_methods_products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_methods_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_methods_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_methods_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_methods_products_aggregate'],
+    ];
+    omni_production_methods_products_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_production_methods_products'],
+    ];
+    omni_production_pallettes_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_pallettes_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_pallettes_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_pallettes_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_pallettes_enum'],
+    ];
+    omni_production_pallettes_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_pallettes_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_pallettes_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_pallettes_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_pallettes_enum_aggregate'],
+    ];
+    omni_production_pallettes_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_pallettes_enum'],
+    ];
+    omni_production_styles_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_styles_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_styles_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_styles_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_styles_enum'],
+    ];
+    omni_production_styles_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_production_styles_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_production_styles_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_production_styles_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_production_styles_enum_aggregate'],
+    ];
+    omni_production_styles_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_production_styles_enum'],
+    ];
+    omni_products?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products'],
+    ];
+    omni_products_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_aggregate'],
+    ];
+    omni_products_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_products'],
+    ];
+    omni_products_stage_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_stage_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_stage_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_stage_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_stage_enum'],
+    ];
+    omni_products_stage_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_products_stage_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_products_stage_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_products_stage_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_products_stage_enum_aggregate'],
+    ];
+    omni_products_stage_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_products_stage_enum'],
+    ];
+    omni_sale_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_sale_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_sale_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_sale_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_sale_types_enum'],
+    ];
+    omni_sale_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_sale_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_sale_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_sale_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_sale_types_enum_aggregate'],
+    ];
+    omni_sale_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_sale_types_enum'],
+    ];
+    omni_timezones_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_timezones_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_timezones_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_timezones_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_timezones_enum'],
+    ];
+    omni_timezones_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_timezones_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_timezones_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_timezones_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_timezones_enum_aggregate'],
+    ];
+    omni_timezones_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_timezones_enum'],
+    ];
+    omni_user_skill_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skill_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skill_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skill_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skill_types_enum'],
+    ];
+    omni_user_skill_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skill_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skill_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skill_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skill_types_enum_aggregate'],
+    ];
+    omni_user_skill_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_user_skill_types_enum'],
+    ];
+    omni_user_skills?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skills_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skills_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skills'],
+    ];
+    omni_user_skills_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_skills_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_skills_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_skills_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_skills_aggregate'],
+    ];
+    omni_user_skills_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_user_skills'],
+    ];
+    omni_user_statuses_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_statuses_enum'],
+    ];
+    omni_user_statuses_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_user_statuses_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_user_statuses_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_user_statuses_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_user_statuses_enum_aggregate'],
+    ];
+    omni_user_statuses_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_user_statuses_enum'],
+    ];
+    omni_users?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_users'],
+    ];
+    omni_users_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_users_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_users_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_users_bool_exp'] | null;
+      },
+      ValueTypes['omni_users_aggregate'],
+    ];
+    omni_users_by_pk?: [{ id: ValueTypes['uuid'] }, ValueTypes['omni_users']];
+    omni_wearable_files?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_files_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_files_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_files'],
+    ];
+    omni_wearable_files_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_files_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_files_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_files_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_files_aggregate'],
+    ];
+    omni_wearable_files_by_pk?: [
+      { id: ValueTypes['uuid'] },
+      ValueTypes['omni_wearable_files'],
+    ];
+    omni_wearable_types_enum?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_types_enum'],
+    ];
+    omni_wearable_types_enum_aggregate?: [
+      {
+        /** distinct select on columns */
+        distinct_on?: ValueTypes['omni_wearable_types_enum_select_column'][] /** limit the number of rows returned */;
+        limit?:
+          | number
+          | null /** skip the first n rows. Use only with order_by */;
+        offset?: number | null /** sort the rows by one or more columns */;
+        order_by?: ValueTypes['omni_wearable_types_enum_order_by'][] /** filter the rows returned */;
+        where?: ValueTypes['omni_wearable_types_enum_bool_exp'] | null;
+      },
+      ValueTypes['omni_wearable_types_enum_aggregate'],
+    ];
+    omni_wearable_types_enum_by_pk?: [
+      { value: string },
+      ValueTypes['omni_wearable_types_enum'],
+    ];
     robot_order?: [
       {
         /** distinct select on columns */
@@ -2686,10 +11631,15 @@ columns and relationships of "robot.product_designer" */
 };
 
 export type ModelTypes = {
+  /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
+  ['Boolean_comparison_exp']: GraphQLTypes['Boolean_comparison_exp'];
   /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
   ['Int_comparison_exp']: GraphQLTypes['Int_comparison_exp'];
   /** Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'. */
   ['String_comparison_exp']: GraphQLTypes['String_comparison_exp'];
+  ['bigint']: number;
+  /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
+  ['bigint_comparison_exp']: GraphQLTypes['bigint_comparison_exp'];
   /** columns and relationships of "contribution_votes" */
   ['contribution_votes']: {
     /** An object relationship */
@@ -2762,7 +11712,7 @@ export type ModelTypes = {
     /** An object relationship */
     author: ModelTypes['users'];
     category?: string;
-    /** fetch data from the table: "contributors" */
+    /** An array relationship */
     contributors: ModelTypes['contributors'][];
     /** An aggregate relationship */
     contributors_aggregate: ModelTypes['contributors_aggregate'];
@@ -3016,6 +11966,7 @@ export type ModelTypes = {
   /** Boolean expression to compare columns of type "date". All fields are combined with logical 'AND'. */
   ['date_comparison_exp']: GraphQLTypes['date_comparison_exp'];
   ['jsonb']: any;
+  ['jsonb_cast_exp']: GraphQLTypes['jsonb_cast_exp'];
   /** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
   ['jsonb_comparison_exp']: GraphQLTypes['jsonb_comparison_exp'];
   /** mutation root */
@@ -3032,6 +11983,126 @@ export type ModelTypes = {
     delete_contributors?: ModelTypes['contributors_mutation_response'];
     /** delete single row from the table: "contributors" */
     delete_contributors_by_pk?: ModelTypes['contributors'];
+    /** delete data from the table: "omni.brand_statuses_enum" */
+    delete_omni_brand_statuses_enum?: ModelTypes['omni_brand_statuses_enum_mutation_response'];
+    /** delete single row from the table: "omni.brand_statuses_enum" */
+    delete_omni_brand_statuses_enum_by_pk?: ModelTypes['omni_brand_statuses_enum'];
+    /** delete data from the table: "omni.brand_users" */
+    delete_omni_brand_users?: ModelTypes['omni_brand_users_mutation_response'];
+    /** delete single row from the table: "omni.brand_users" */
+    delete_omni_brand_users_by_pk?: ModelTypes['omni_brand_users'];
+    /** delete data from the table: "omni.brands" */
+    delete_omni_brands?: ModelTypes['omni_brands_mutation_response'];
+    /** delete single row from the table: "omni.brands" */
+    delete_omni_brands_by_pk?: ModelTypes['omni_brands'];
+    /** delete data from the table: "omni.collaborator_types_enum" */
+    delete_omni_collaborator_types_enum?: ModelTypes['omni_collaborator_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.collaborator_types_enum" */
+    delete_omni_collaborator_types_enum_by_pk?: ModelTypes['omni_collaborator_types_enum'];
+    /** delete data from the table: "omni.fullfillers" */
+    delete_omni_fullfillers?: ModelTypes['omni_fullfillers_mutation_response'];
+    /** delete single row from the table: "omni.fullfillers" */
+    delete_omni_fullfillers_by_pk?: ModelTypes['omni_fullfillers'];
+    /** delete data from the table: "omni.price_currencies" */
+    delete_omni_price_currencies?: ModelTypes['omni_price_currencies_mutation_response'];
+    /** delete single row from the table: "omni.price_currencies" */
+    delete_omni_price_currencies_by_pk?: ModelTypes['omni_price_currencies'];
+    /** delete data from the table: "omni.print_techs_enum" */
+    delete_omni_print_techs_enum?: ModelTypes['omni_print_techs_enum_mutation_response'];
+    /** delete single row from the table: "omni.print_techs_enum" */
+    delete_omni_print_techs_enum_by_pk?: ModelTypes['omni_print_techs_enum'];
+    /** delete data from the table: "omni.producer_statuses_enum" */
+    delete_omni_producer_statuses_enum?: ModelTypes['omni_producer_statuses_enum_mutation_response'];
+    /** delete single row from the table: "omni.producer_statuses_enum" */
+    delete_omni_producer_statuses_enum_by_pk?: ModelTypes['omni_producer_statuses_enum'];
+    /** delete data from the table: "omni.producers" */
+    delete_omni_producers?: ModelTypes['omni_producers_mutation_response'];
+    /** delete single row from the table: "omni.producers" */
+    delete_omni_producers_by_pk?: ModelTypes['omni_producers'];
+    /** delete data from the table: "omni.product_collaborators" */
+    delete_omni_product_collaborators?: ModelTypes['omni_product_collaborators_mutation_response'];
+    /** delete single row from the table: "omni.product_collaborators" */
+    delete_omni_product_collaborators_by_pk?: ModelTypes['omni_product_collaborators'];
+    /** delete data from the table: "omni.product_types_enum" */
+    delete_omni_product_types_enum?: ModelTypes['omni_product_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.product_types_enum" */
+    delete_omni_product_types_enum_by_pk?: ModelTypes['omni_product_types_enum'];
+    /** delete data from the table: "omni.production_genders_enum" */
+    delete_omni_production_genders_enum?: ModelTypes['omni_production_genders_enum_mutation_response'];
+    /** delete single row from the table: "omni.production_genders_enum" */
+    delete_omni_production_genders_enum_by_pk?: ModelTypes['omni_production_genders_enum'];
+    /** delete data from the table: "omni.production_materials" */
+    delete_omni_production_materials?: ModelTypes['omni_production_materials_mutation_response'];
+    /** delete single row from the table: "omni.production_materials" */
+    delete_omni_production_materials_by_pk?: ModelTypes['omni_production_materials'];
+    /** delete data from the table: "omni.production_materials_producers" */
+    delete_omni_production_materials_producers?: ModelTypes['omni_production_materials_producers_mutation_response'];
+    /** delete single row from the table: "omni.production_materials_producers" */
+    delete_omni_production_materials_producers_by_pk?: ModelTypes['omni_production_materials_producers'];
+    /** delete data from the table: "omni.production_materials_ratings_enum" */
+    delete_omni_production_materials_ratings_enum?: ModelTypes['omni_production_materials_ratings_enum_mutation_response'];
+    /** delete single row from the table: "omni.production_materials_ratings_enum" */
+    delete_omni_production_materials_ratings_enum_by_pk?: ModelTypes['omni_production_materials_ratings_enum'];
+    /** delete data from the table: "omni.production_methods" */
+    delete_omni_production_methods?: ModelTypes['omni_production_methods_mutation_response'];
+    /** delete single row from the table: "omni.production_methods" */
+    delete_omni_production_methods_by_pk?: ModelTypes['omni_production_methods'];
+    /** delete data from the table: "omni.production_methods_producers" */
+    delete_omni_production_methods_producers?: ModelTypes['omni_production_methods_producers_mutation_response'];
+    /** delete single row from the table: "omni.production_methods_producers" */
+    delete_omni_production_methods_producers_by_pk?: ModelTypes['omni_production_methods_producers'];
+    /** delete data from the table: "omni.production_methods_products" */
+    delete_omni_production_methods_products?: ModelTypes['omni_production_methods_products_mutation_response'];
+    /** delete single row from the table: "omni.production_methods_products" */
+    delete_omni_production_methods_products_by_pk?: ModelTypes['omni_production_methods_products'];
+    /** delete data from the table: "omni.production_pallettes_enum" */
+    delete_omni_production_pallettes_enum?: ModelTypes['omni_production_pallettes_enum_mutation_response'];
+    /** delete single row from the table: "omni.production_pallettes_enum" */
+    delete_omni_production_pallettes_enum_by_pk?: ModelTypes['omni_production_pallettes_enum'];
+    /** delete data from the table: "omni.production_styles_enum" */
+    delete_omni_production_styles_enum?: ModelTypes['omni_production_styles_enum_mutation_response'];
+    /** delete single row from the table: "omni.production_styles_enum" */
+    delete_omni_production_styles_enum_by_pk?: ModelTypes['omni_production_styles_enum'];
+    /** delete data from the table: "omni.products" */
+    delete_omni_products?: ModelTypes['omni_products_mutation_response'];
+    /** delete single row from the table: "omni.products" */
+    delete_omni_products_by_pk?: ModelTypes['omni_products'];
+    /** delete data from the table: "omni.products_stage_enum" */
+    delete_omni_products_stage_enum?: ModelTypes['omni_products_stage_enum_mutation_response'];
+    /** delete single row from the table: "omni.products_stage_enum" */
+    delete_omni_products_stage_enum_by_pk?: ModelTypes['omni_products_stage_enum'];
+    /** delete data from the table: "omni.sale_types_enum" */
+    delete_omni_sale_types_enum?: ModelTypes['omni_sale_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.sale_types_enum" */
+    delete_omni_sale_types_enum_by_pk?: ModelTypes['omni_sale_types_enum'];
+    /** delete data from the table: "omni.timezones_enum" */
+    delete_omni_timezones_enum?: ModelTypes['omni_timezones_enum_mutation_response'];
+    /** delete single row from the table: "omni.timezones_enum" */
+    delete_omni_timezones_enum_by_pk?: ModelTypes['omni_timezones_enum'];
+    /** delete data from the table: "omni.user_skill_types_enum" */
+    delete_omni_user_skill_types_enum?: ModelTypes['omni_user_skill_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.user_skill_types_enum" */
+    delete_omni_user_skill_types_enum_by_pk?: ModelTypes['omni_user_skill_types_enum'];
+    /** delete data from the table: "omni.user_skills" */
+    delete_omni_user_skills?: ModelTypes['omni_user_skills_mutation_response'];
+    /** delete single row from the table: "omni.user_skills" */
+    delete_omni_user_skills_by_pk?: ModelTypes['omni_user_skills'];
+    /** delete data from the table: "omni.user_statuses_enum" */
+    delete_omni_user_statuses_enum?: ModelTypes['omni_user_statuses_enum_mutation_response'];
+    /** delete single row from the table: "omni.user_statuses_enum" */
+    delete_omni_user_statuses_enum_by_pk?: ModelTypes['omni_user_statuses_enum'];
+    /** delete data from the table: "omni.users" */
+    delete_omni_users?: ModelTypes['omni_users_mutation_response'];
+    /** delete single row from the table: "omni.users" */
+    delete_omni_users_by_pk?: ModelTypes['omni_users'];
+    /** delete data from the table: "omni.wearable_files" */
+    delete_omni_wearable_files?: ModelTypes['omni_wearable_files_mutation_response'];
+    /** delete single row from the table: "omni.wearable_files" */
+    delete_omni_wearable_files_by_pk?: ModelTypes['omni_wearable_files'];
+    /** delete data from the table: "omni.wearable_types_enum" */
+    delete_omni_wearable_types_enum?: ModelTypes['omni_wearable_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.wearable_types_enum" */
+    delete_omni_wearable_types_enum_by_pk?: ModelTypes['omni_wearable_types_enum'];
     /** delete data from the table: "robot.order" */
     delete_robot_order?: ModelTypes['robot_order_mutation_response'];
     /** delete single row from the table: "robot.order" */
@@ -3068,6 +12139,126 @@ export type ModelTypes = {
     insert_contributors?: ModelTypes['contributors_mutation_response'];
     /** insert a single row into the table: "contributors" */
     insert_contributors_one?: ModelTypes['contributors'];
+    /** insert data into the table: "omni.brand_statuses_enum" */
+    insert_omni_brand_statuses_enum?: ModelTypes['omni_brand_statuses_enum_mutation_response'];
+    /** insert a single row into the table: "omni.brand_statuses_enum" */
+    insert_omni_brand_statuses_enum_one?: ModelTypes['omni_brand_statuses_enum'];
+    /** insert data into the table: "omni.brand_users" */
+    insert_omni_brand_users?: ModelTypes['omni_brand_users_mutation_response'];
+    /** insert a single row into the table: "omni.brand_users" */
+    insert_omni_brand_users_one?: ModelTypes['omni_brand_users'];
+    /** insert data into the table: "omni.brands" */
+    insert_omni_brands?: ModelTypes['omni_brands_mutation_response'];
+    /** insert a single row into the table: "omni.brands" */
+    insert_omni_brands_one?: ModelTypes['omni_brands'];
+    /** insert data into the table: "omni.collaborator_types_enum" */
+    insert_omni_collaborator_types_enum?: ModelTypes['omni_collaborator_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.collaborator_types_enum" */
+    insert_omni_collaborator_types_enum_one?: ModelTypes['omni_collaborator_types_enum'];
+    /** insert data into the table: "omni.fullfillers" */
+    insert_omni_fullfillers?: ModelTypes['omni_fullfillers_mutation_response'];
+    /** insert a single row into the table: "omni.fullfillers" */
+    insert_omni_fullfillers_one?: ModelTypes['omni_fullfillers'];
+    /** insert data into the table: "omni.price_currencies" */
+    insert_omni_price_currencies?: ModelTypes['omni_price_currencies_mutation_response'];
+    /** insert a single row into the table: "omni.price_currencies" */
+    insert_omni_price_currencies_one?: ModelTypes['omni_price_currencies'];
+    /** insert data into the table: "omni.print_techs_enum" */
+    insert_omni_print_techs_enum?: ModelTypes['omni_print_techs_enum_mutation_response'];
+    /** insert a single row into the table: "omni.print_techs_enum" */
+    insert_omni_print_techs_enum_one?: ModelTypes['omni_print_techs_enum'];
+    /** insert data into the table: "omni.producer_statuses_enum" */
+    insert_omni_producer_statuses_enum?: ModelTypes['omni_producer_statuses_enum_mutation_response'];
+    /** insert a single row into the table: "omni.producer_statuses_enum" */
+    insert_omni_producer_statuses_enum_one?: ModelTypes['omni_producer_statuses_enum'];
+    /** insert data into the table: "omni.producers" */
+    insert_omni_producers?: ModelTypes['omni_producers_mutation_response'];
+    /** insert a single row into the table: "omni.producers" */
+    insert_omni_producers_one?: ModelTypes['omni_producers'];
+    /** insert data into the table: "omni.product_collaborators" */
+    insert_omni_product_collaborators?: ModelTypes['omni_product_collaborators_mutation_response'];
+    /** insert a single row into the table: "omni.product_collaborators" */
+    insert_omni_product_collaborators_one?: ModelTypes['omni_product_collaborators'];
+    /** insert data into the table: "omni.product_types_enum" */
+    insert_omni_product_types_enum?: ModelTypes['omni_product_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.product_types_enum" */
+    insert_omni_product_types_enum_one?: ModelTypes['omni_product_types_enum'];
+    /** insert data into the table: "omni.production_genders_enum" */
+    insert_omni_production_genders_enum?: ModelTypes['omni_production_genders_enum_mutation_response'];
+    /** insert a single row into the table: "omni.production_genders_enum" */
+    insert_omni_production_genders_enum_one?: ModelTypes['omni_production_genders_enum'];
+    /** insert data into the table: "omni.production_materials" */
+    insert_omni_production_materials?: ModelTypes['omni_production_materials_mutation_response'];
+    /** insert a single row into the table: "omni.production_materials" */
+    insert_omni_production_materials_one?: ModelTypes['omni_production_materials'];
+    /** insert data into the table: "omni.production_materials_producers" */
+    insert_omni_production_materials_producers?: ModelTypes['omni_production_materials_producers_mutation_response'];
+    /** insert a single row into the table: "omni.production_materials_producers" */
+    insert_omni_production_materials_producers_one?: ModelTypes['omni_production_materials_producers'];
+    /** insert data into the table: "omni.production_materials_ratings_enum" */
+    insert_omni_production_materials_ratings_enum?: ModelTypes['omni_production_materials_ratings_enum_mutation_response'];
+    /** insert a single row into the table: "omni.production_materials_ratings_enum" */
+    insert_omni_production_materials_ratings_enum_one?: ModelTypes['omni_production_materials_ratings_enum'];
+    /** insert data into the table: "omni.production_methods" */
+    insert_omni_production_methods?: ModelTypes['omni_production_methods_mutation_response'];
+    /** insert a single row into the table: "omni.production_methods" */
+    insert_omni_production_methods_one?: ModelTypes['omni_production_methods'];
+    /** insert data into the table: "omni.production_methods_producers" */
+    insert_omni_production_methods_producers?: ModelTypes['omni_production_methods_producers_mutation_response'];
+    /** insert a single row into the table: "omni.production_methods_producers" */
+    insert_omni_production_methods_producers_one?: ModelTypes['omni_production_methods_producers'];
+    /** insert data into the table: "omni.production_methods_products" */
+    insert_omni_production_methods_products?: ModelTypes['omni_production_methods_products_mutation_response'];
+    /** insert a single row into the table: "omni.production_methods_products" */
+    insert_omni_production_methods_products_one?: ModelTypes['omni_production_methods_products'];
+    /** insert data into the table: "omni.production_pallettes_enum" */
+    insert_omni_production_pallettes_enum?: ModelTypes['omni_production_pallettes_enum_mutation_response'];
+    /** insert a single row into the table: "omni.production_pallettes_enum" */
+    insert_omni_production_pallettes_enum_one?: ModelTypes['omni_production_pallettes_enum'];
+    /** insert data into the table: "omni.production_styles_enum" */
+    insert_omni_production_styles_enum?: ModelTypes['omni_production_styles_enum_mutation_response'];
+    /** insert a single row into the table: "omni.production_styles_enum" */
+    insert_omni_production_styles_enum_one?: ModelTypes['omni_production_styles_enum'];
+    /** insert data into the table: "omni.products" */
+    insert_omni_products?: ModelTypes['omni_products_mutation_response'];
+    /** insert a single row into the table: "omni.products" */
+    insert_omni_products_one?: ModelTypes['omni_products'];
+    /** insert data into the table: "omni.products_stage_enum" */
+    insert_omni_products_stage_enum?: ModelTypes['omni_products_stage_enum_mutation_response'];
+    /** insert a single row into the table: "omni.products_stage_enum" */
+    insert_omni_products_stage_enum_one?: ModelTypes['omni_products_stage_enum'];
+    /** insert data into the table: "omni.sale_types_enum" */
+    insert_omni_sale_types_enum?: ModelTypes['omni_sale_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.sale_types_enum" */
+    insert_omni_sale_types_enum_one?: ModelTypes['omni_sale_types_enum'];
+    /** insert data into the table: "omni.timezones_enum" */
+    insert_omni_timezones_enum?: ModelTypes['omni_timezones_enum_mutation_response'];
+    /** insert a single row into the table: "omni.timezones_enum" */
+    insert_omni_timezones_enum_one?: ModelTypes['omni_timezones_enum'];
+    /** insert data into the table: "omni.user_skill_types_enum" */
+    insert_omni_user_skill_types_enum?: ModelTypes['omni_user_skill_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.user_skill_types_enum" */
+    insert_omni_user_skill_types_enum_one?: ModelTypes['omni_user_skill_types_enum'];
+    /** insert data into the table: "omni.user_skills" */
+    insert_omni_user_skills?: ModelTypes['omni_user_skills_mutation_response'];
+    /** insert a single row into the table: "omni.user_skills" */
+    insert_omni_user_skills_one?: ModelTypes['omni_user_skills'];
+    /** insert data into the table: "omni.user_statuses_enum" */
+    insert_omni_user_statuses_enum?: ModelTypes['omni_user_statuses_enum_mutation_response'];
+    /** insert a single row into the table: "omni.user_statuses_enum" */
+    insert_omni_user_statuses_enum_one?: ModelTypes['omni_user_statuses_enum'];
+    /** insert data into the table: "omni.users" */
+    insert_omni_users?: ModelTypes['omni_users_mutation_response'];
+    /** insert a single row into the table: "omni.users" */
+    insert_omni_users_one?: ModelTypes['omni_users'];
+    /** insert data into the table: "omni.wearable_files" */
+    insert_omni_wearable_files?: ModelTypes['omni_wearable_files_mutation_response'];
+    /** insert a single row into the table: "omni.wearable_files" */
+    insert_omni_wearable_files_one?: ModelTypes['omni_wearable_files'];
+    /** insert data into the table: "omni.wearable_types_enum" */
+    insert_omni_wearable_types_enum?: ModelTypes['omni_wearable_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.wearable_types_enum" */
+    insert_omni_wearable_types_enum_one?: ModelTypes['omni_wearable_types_enum'];
     /** insert data into the table: "robot.order" */
     insert_robot_order?: ModelTypes['robot_order_mutation_response'];
     /** insert a single row into the table: "robot.order" */
@@ -3104,6 +12295,126 @@ export type ModelTypes = {
     update_contributors?: ModelTypes['contributors_mutation_response'];
     /** update single row of the table: "contributors" */
     update_contributors_by_pk?: ModelTypes['contributors'];
+    /** update data of the table: "omni.brand_statuses_enum" */
+    update_omni_brand_statuses_enum?: ModelTypes['omni_brand_statuses_enum_mutation_response'];
+    /** update single row of the table: "omni.brand_statuses_enum" */
+    update_omni_brand_statuses_enum_by_pk?: ModelTypes['omni_brand_statuses_enum'];
+    /** update data of the table: "omni.brand_users" */
+    update_omni_brand_users?: ModelTypes['omni_brand_users_mutation_response'];
+    /** update single row of the table: "omni.brand_users" */
+    update_omni_brand_users_by_pk?: ModelTypes['omni_brand_users'];
+    /** update data of the table: "omni.brands" */
+    update_omni_brands?: ModelTypes['omni_brands_mutation_response'];
+    /** update single row of the table: "omni.brands" */
+    update_omni_brands_by_pk?: ModelTypes['omni_brands'];
+    /** update data of the table: "omni.collaborator_types_enum" */
+    update_omni_collaborator_types_enum?: ModelTypes['omni_collaborator_types_enum_mutation_response'];
+    /** update single row of the table: "omni.collaborator_types_enum" */
+    update_omni_collaborator_types_enum_by_pk?: ModelTypes['omni_collaborator_types_enum'];
+    /** update data of the table: "omni.fullfillers" */
+    update_omni_fullfillers?: ModelTypes['omni_fullfillers_mutation_response'];
+    /** update single row of the table: "omni.fullfillers" */
+    update_omni_fullfillers_by_pk?: ModelTypes['omni_fullfillers'];
+    /** update data of the table: "omni.price_currencies" */
+    update_omni_price_currencies?: ModelTypes['omni_price_currencies_mutation_response'];
+    /** update single row of the table: "omni.price_currencies" */
+    update_omni_price_currencies_by_pk?: ModelTypes['omni_price_currencies'];
+    /** update data of the table: "omni.print_techs_enum" */
+    update_omni_print_techs_enum?: ModelTypes['omni_print_techs_enum_mutation_response'];
+    /** update single row of the table: "omni.print_techs_enum" */
+    update_omni_print_techs_enum_by_pk?: ModelTypes['omni_print_techs_enum'];
+    /** update data of the table: "omni.producer_statuses_enum" */
+    update_omni_producer_statuses_enum?: ModelTypes['omni_producer_statuses_enum_mutation_response'];
+    /** update single row of the table: "omni.producer_statuses_enum" */
+    update_omni_producer_statuses_enum_by_pk?: ModelTypes['omni_producer_statuses_enum'];
+    /** update data of the table: "omni.producers" */
+    update_omni_producers?: ModelTypes['omni_producers_mutation_response'];
+    /** update single row of the table: "omni.producers" */
+    update_omni_producers_by_pk?: ModelTypes['omni_producers'];
+    /** update data of the table: "omni.product_collaborators" */
+    update_omni_product_collaborators?: ModelTypes['omni_product_collaborators_mutation_response'];
+    /** update single row of the table: "omni.product_collaborators" */
+    update_omni_product_collaborators_by_pk?: ModelTypes['omni_product_collaborators'];
+    /** update data of the table: "omni.product_types_enum" */
+    update_omni_product_types_enum?: ModelTypes['omni_product_types_enum_mutation_response'];
+    /** update single row of the table: "omni.product_types_enum" */
+    update_omni_product_types_enum_by_pk?: ModelTypes['omni_product_types_enum'];
+    /** update data of the table: "omni.production_genders_enum" */
+    update_omni_production_genders_enum?: ModelTypes['omni_production_genders_enum_mutation_response'];
+    /** update single row of the table: "omni.production_genders_enum" */
+    update_omni_production_genders_enum_by_pk?: ModelTypes['omni_production_genders_enum'];
+    /** update data of the table: "omni.production_materials" */
+    update_omni_production_materials?: ModelTypes['omni_production_materials_mutation_response'];
+    /** update single row of the table: "omni.production_materials" */
+    update_omni_production_materials_by_pk?: ModelTypes['omni_production_materials'];
+    /** update data of the table: "omni.production_materials_producers" */
+    update_omni_production_materials_producers?: ModelTypes['omni_production_materials_producers_mutation_response'];
+    /** update single row of the table: "omni.production_materials_producers" */
+    update_omni_production_materials_producers_by_pk?: ModelTypes['omni_production_materials_producers'];
+    /** update data of the table: "omni.production_materials_ratings_enum" */
+    update_omni_production_materials_ratings_enum?: ModelTypes['omni_production_materials_ratings_enum_mutation_response'];
+    /** update single row of the table: "omni.production_materials_ratings_enum" */
+    update_omni_production_materials_ratings_enum_by_pk?: ModelTypes['omni_production_materials_ratings_enum'];
+    /** update data of the table: "omni.production_methods" */
+    update_omni_production_methods?: ModelTypes['omni_production_methods_mutation_response'];
+    /** update single row of the table: "omni.production_methods" */
+    update_omni_production_methods_by_pk?: ModelTypes['omni_production_methods'];
+    /** update data of the table: "omni.production_methods_producers" */
+    update_omni_production_methods_producers?: ModelTypes['omni_production_methods_producers_mutation_response'];
+    /** update single row of the table: "omni.production_methods_producers" */
+    update_omni_production_methods_producers_by_pk?: ModelTypes['omni_production_methods_producers'];
+    /** update data of the table: "omni.production_methods_products" */
+    update_omni_production_methods_products?: ModelTypes['omni_production_methods_products_mutation_response'];
+    /** update single row of the table: "omni.production_methods_products" */
+    update_omni_production_methods_products_by_pk?: ModelTypes['omni_production_methods_products'];
+    /** update data of the table: "omni.production_pallettes_enum" */
+    update_omni_production_pallettes_enum?: ModelTypes['omni_production_pallettes_enum_mutation_response'];
+    /** update single row of the table: "omni.production_pallettes_enum" */
+    update_omni_production_pallettes_enum_by_pk?: ModelTypes['omni_production_pallettes_enum'];
+    /** update data of the table: "omni.production_styles_enum" */
+    update_omni_production_styles_enum?: ModelTypes['omni_production_styles_enum_mutation_response'];
+    /** update single row of the table: "omni.production_styles_enum" */
+    update_omni_production_styles_enum_by_pk?: ModelTypes['omni_production_styles_enum'];
+    /** update data of the table: "omni.products" */
+    update_omni_products?: ModelTypes['omni_products_mutation_response'];
+    /** update single row of the table: "omni.products" */
+    update_omni_products_by_pk?: ModelTypes['omni_products'];
+    /** update data of the table: "omni.products_stage_enum" */
+    update_omni_products_stage_enum?: ModelTypes['omni_products_stage_enum_mutation_response'];
+    /** update single row of the table: "omni.products_stage_enum" */
+    update_omni_products_stage_enum_by_pk?: ModelTypes['omni_products_stage_enum'];
+    /** update data of the table: "omni.sale_types_enum" */
+    update_omni_sale_types_enum?: ModelTypes['omni_sale_types_enum_mutation_response'];
+    /** update single row of the table: "omni.sale_types_enum" */
+    update_omni_sale_types_enum_by_pk?: ModelTypes['omni_sale_types_enum'];
+    /** update data of the table: "omni.timezones_enum" */
+    update_omni_timezones_enum?: ModelTypes['omni_timezones_enum_mutation_response'];
+    /** update single row of the table: "omni.timezones_enum" */
+    update_omni_timezones_enum_by_pk?: ModelTypes['omni_timezones_enum'];
+    /** update data of the table: "omni.user_skill_types_enum" */
+    update_omni_user_skill_types_enum?: ModelTypes['omni_user_skill_types_enum_mutation_response'];
+    /** update single row of the table: "omni.user_skill_types_enum" */
+    update_omni_user_skill_types_enum_by_pk?: ModelTypes['omni_user_skill_types_enum'];
+    /** update data of the table: "omni.user_skills" */
+    update_omni_user_skills?: ModelTypes['omni_user_skills_mutation_response'];
+    /** update single row of the table: "omni.user_skills" */
+    update_omni_user_skills_by_pk?: ModelTypes['omni_user_skills'];
+    /** update data of the table: "omni.user_statuses_enum" */
+    update_omni_user_statuses_enum?: ModelTypes['omni_user_statuses_enum_mutation_response'];
+    /** update single row of the table: "omni.user_statuses_enum" */
+    update_omni_user_statuses_enum_by_pk?: ModelTypes['omni_user_statuses_enum'];
+    /** update data of the table: "omni.users" */
+    update_omni_users?: ModelTypes['omni_users_mutation_response'];
+    /** update single row of the table: "omni.users" */
+    update_omni_users_by_pk?: ModelTypes['omni_users'];
+    /** update data of the table: "omni.wearable_files" */
+    update_omni_wearable_files?: ModelTypes['omni_wearable_files_mutation_response'];
+    /** update single row of the table: "omni.wearable_files" */
+    update_omni_wearable_files_by_pk?: ModelTypes['omni_wearable_files'];
+    /** update data of the table: "omni.wearable_types_enum" */
+    update_omni_wearable_types_enum?: ModelTypes['omni_wearable_types_enum_mutation_response'];
+    /** update single row of the table: "omni.wearable_types_enum" */
+    update_omni_wearable_types_enum_by_pk?: ModelTypes['omni_wearable_types_enum'];
     /** update data of the table: "robot.order" */
     update_robot_order?: ModelTypes['robot_order_mutation_response'];
     /** update single row of the table: "robot.order" */
@@ -3132,6 +12443,2440 @@ export type ModelTypes = {
   ['numeric']: any;
   /** Boolean expression to compare columns of type "numeric". All fields are combined with logical 'AND'. */
   ['numeric_comparison_exp']: GraphQLTypes['numeric_comparison_exp'];
+  /** columns and relationships of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum']: {
+    /** An array relationship */
+    brands: ModelTypes['omni_brands'][];
+    /** An aggregate relationship */
+    brands_aggregate: ModelTypes['omni_brands_aggregate'];
+    description?: string;
+    value: string;
+  };
+  /** aggregated selection of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_brand_statuses_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_brand_statuses_enum'][];
+  };
+  /** aggregate fields of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_brand_statuses_enum_max_fields'];
+    min?: ModelTypes['omni_brand_statuses_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.brand_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_brand_statuses_enum_bool_exp']: GraphQLTypes['omni_brand_statuses_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_constraint']: GraphQLTypes['omni_brand_statuses_enum_constraint'];
+  ['omni_brand_statuses_enum_enum']: GraphQLTypes['omni_brand_statuses_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_brand_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_brand_statuses_enum_enum_comparison_exp']: GraphQLTypes['omni_brand_statuses_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_insert_input']: GraphQLTypes['omni_brand_statuses_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_brand_statuses_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_brand_statuses_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_brand_statuses_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_obj_rel_insert_input']: GraphQLTypes['omni_brand_statuses_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_on_conflict']: GraphQLTypes['omni_brand_statuses_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.brand_statuses_enum". */
+  ['omni_brand_statuses_enum_order_by']: GraphQLTypes['omni_brand_statuses_enum_order_by'];
+  /** primary key columns input for table: omni_brand_statuses_enum */
+  ['omni_brand_statuses_enum_pk_columns_input']: GraphQLTypes['omni_brand_statuses_enum_pk_columns_input'];
+  /** select columns of table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_select_column']: GraphQLTypes['omni_brand_statuses_enum_select_column'];
+  /** input type for updating data in table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_set_input']: GraphQLTypes['omni_brand_statuses_enum_set_input'];
+  /** update columns of table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_update_column']: GraphQLTypes['omni_brand_statuses_enum_update_column'];
+  /** columns and relationships of "omni.brand_users" */
+  ['omni_brand_users']: {
+    brand?: ModelTypes['uuid'];
+    /** An object relationship */
+    brandByBrand?: ModelTypes['omni_brands'];
+    collaborator?: ModelTypes['uuid'];
+    id: ModelTypes['uuid'];
+    /** An object relationship */
+    user?: ModelTypes['omni_users'];
+  };
+  /** aggregated selection of "omni.brand_users" */
+  ['omni_brand_users_aggregate']: {
+    aggregate?: ModelTypes['omni_brand_users_aggregate_fields'];
+    nodes: ModelTypes['omni_brand_users'][];
+  };
+  /** aggregate fields of "omni.brand_users" */
+  ['omni_brand_users_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_brand_users_max_fields'];
+    min?: ModelTypes['omni_brand_users_min_fields'];
+  };
+  /** order by aggregate values of table "omni.brand_users" */
+  ['omni_brand_users_aggregate_order_by']: GraphQLTypes['omni_brand_users_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.brand_users" */
+  ['omni_brand_users_arr_rel_insert_input']: GraphQLTypes['omni_brand_users_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.brand_users". All fields are combined with a logical 'AND'. */
+  ['omni_brand_users_bool_exp']: GraphQLTypes['omni_brand_users_bool_exp'];
+  /** unique or primary key constraints on table "omni.brand_users" */
+  ['omni_brand_users_constraint']: GraphQLTypes['omni_brand_users_constraint'];
+  /** input type for inserting data into table "omni.brand_users" */
+  ['omni_brand_users_insert_input']: GraphQLTypes['omni_brand_users_insert_input'];
+  /** aggregate max on columns */
+  ['omni_brand_users_max_fields']: {
+    brand?: ModelTypes['uuid'];
+    collaborator?: ModelTypes['uuid'];
+    id?: ModelTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.brand_users" */
+  ['omni_brand_users_max_order_by']: GraphQLTypes['omni_brand_users_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_brand_users_min_fields']: {
+    brand?: ModelTypes['uuid'];
+    collaborator?: ModelTypes['uuid'];
+    id?: ModelTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.brand_users" */
+  ['omni_brand_users_min_order_by']: GraphQLTypes['omni_brand_users_min_order_by'];
+  /** response of any mutation on the table "omni.brand_users" */
+  ['omni_brand_users_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_brand_users'][];
+  };
+  /** on_conflict condition type for table "omni.brand_users" */
+  ['omni_brand_users_on_conflict']: GraphQLTypes['omni_brand_users_on_conflict'];
+  /** Ordering options when selecting data from "omni.brand_users". */
+  ['omni_brand_users_order_by']: GraphQLTypes['omni_brand_users_order_by'];
+  /** primary key columns input for table: omni_brand_users */
+  ['omni_brand_users_pk_columns_input']: GraphQLTypes['omni_brand_users_pk_columns_input'];
+  /** select columns of table "omni.brand_users" */
+  ['omni_brand_users_select_column']: GraphQLTypes['omni_brand_users_select_column'];
+  /** input type for updating data in table "omni.brand_users" */
+  ['omni_brand_users_set_input']: GraphQLTypes['omni_brand_users_set_input'];
+  /** update columns of table "omni.brand_users" */
+  ['omni_brand_users_update_column']: GraphQLTypes['omni_brand_users_update_column'];
+  /** columns and relationships of "omni.brands" */
+  ['omni_brands']: {
+    /** An object relationship */
+    brand_statuses_enum?: ModelTypes['omni_brand_statuses_enum'];
+    /** An array relationship */
+    brand_users: ModelTypes['omni_brand_users'][];
+    /** An aggregate relationship */
+    brand_users_aggregate: ModelTypes['omni_brand_users_aggregate'];
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    discord_url?: string;
+    eth_address?: string;
+    id: ModelTypes['uuid'];
+    /** link to logo image */
+    logo?: string;
+    name?: string;
+    /** An array relationship */
+    products: ModelTypes['omni_products'][];
+    /** An aggregate relationship */
+    products_aggregate: ModelTypes['omni_products_aggregate'];
+    status?: ModelTypes['omni_brand_statuses_enum_enum'];
+    twitter_url?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** aggregated selection of "omni.brands" */
+  ['omni_brands_aggregate']: {
+    aggregate?: ModelTypes['omni_brands_aggregate_fields'];
+    nodes: ModelTypes['omni_brands'][];
+  };
+  /** aggregate fields of "omni.brands" */
+  ['omni_brands_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_brands_max_fields'];
+    min?: ModelTypes['omni_brands_min_fields'];
+  };
+  /** order by aggregate values of table "omni.brands" */
+  ['omni_brands_aggregate_order_by']: GraphQLTypes['omni_brands_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.brands" */
+  ['omni_brands_arr_rel_insert_input']: GraphQLTypes['omni_brands_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.brands". All fields are combined with a logical 'AND'. */
+  ['omni_brands_bool_exp']: GraphQLTypes['omni_brands_bool_exp'];
+  /** unique or primary key constraints on table "omni.brands" */
+  ['omni_brands_constraint']: GraphQLTypes['omni_brands_constraint'];
+  /** input type for inserting data into table "omni.brands" */
+  ['omni_brands_insert_input']: GraphQLTypes['omni_brands_insert_input'];
+  /** aggregate max on columns */
+  ['omni_brands_max_fields']: {
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    discord_url?: string;
+    eth_address?: string;
+    id?: ModelTypes['uuid'];
+    /** link to logo image */
+    logo?: string;
+    name?: string;
+    twitter_url?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** order by max() on columns of table "omni.brands" */
+  ['omni_brands_max_order_by']: GraphQLTypes['omni_brands_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_brands_min_fields']: {
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    discord_url?: string;
+    eth_address?: string;
+    id?: ModelTypes['uuid'];
+    /** link to logo image */
+    logo?: string;
+    name?: string;
+    twitter_url?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** order by min() on columns of table "omni.brands" */
+  ['omni_brands_min_order_by']: GraphQLTypes['omni_brands_min_order_by'];
+  /** response of any mutation on the table "omni.brands" */
+  ['omni_brands_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_brands'][];
+  };
+  /** input type for inserting object relation for remote table "omni.brands" */
+  ['omni_brands_obj_rel_insert_input']: GraphQLTypes['omni_brands_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.brands" */
+  ['omni_brands_on_conflict']: GraphQLTypes['omni_brands_on_conflict'];
+  /** Ordering options when selecting data from "omni.brands". */
+  ['omni_brands_order_by']: GraphQLTypes['omni_brands_order_by'];
+  /** primary key columns input for table: omni_brands */
+  ['omni_brands_pk_columns_input']: GraphQLTypes['omni_brands_pk_columns_input'];
+  /** select columns of table "omni.brands" */
+  ['omni_brands_select_column']: GraphQLTypes['omni_brands_select_column'];
+  /** input type for updating data in table "omni.brands" */
+  ['omni_brands_set_input']: GraphQLTypes['omni_brands_set_input'];
+  /** update columns of table "omni.brands" */
+  ['omni_brands_update_column']: GraphQLTypes['omni_brands_update_column'];
+  /** columns and relationships of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum']: {
+    description?: string;
+    /** An array relationship */
+    product_collaborators: ModelTypes['omni_product_collaborators'][];
+    /** An aggregate relationship */
+    product_collaborators_aggregate: ModelTypes['omni_product_collaborators_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_collaborator_types_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_collaborator_types_enum'][];
+  };
+  /** aggregate fields of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_collaborator_types_enum_max_fields'];
+    min?: ModelTypes['omni_collaborator_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.collaborator_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_collaborator_types_enum_bool_exp']: GraphQLTypes['omni_collaborator_types_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_constraint']: GraphQLTypes['omni_collaborator_types_enum_constraint'];
+  ['omni_collaborator_types_enum_enum']: GraphQLTypes['omni_collaborator_types_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_collaborator_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_collaborator_types_enum_enum_comparison_exp']: GraphQLTypes['omni_collaborator_types_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_insert_input']: GraphQLTypes['omni_collaborator_types_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_collaborator_types_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_collaborator_types_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_collaborator_types_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_obj_rel_insert_input']: GraphQLTypes['omni_collaborator_types_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_on_conflict']: GraphQLTypes['omni_collaborator_types_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.collaborator_types_enum". */
+  ['omni_collaborator_types_enum_order_by']: GraphQLTypes['omni_collaborator_types_enum_order_by'];
+  /** primary key columns input for table: omni_collaborator_types_enum */
+  ['omni_collaborator_types_enum_pk_columns_input']: GraphQLTypes['omni_collaborator_types_enum_pk_columns_input'];
+  /** select columns of table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_select_column']: GraphQLTypes['omni_collaborator_types_enum_select_column'];
+  /** input type for updating data in table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_set_input']: GraphQLTypes['omni_collaborator_types_enum_set_input'];
+  /** update columns of table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_update_column']: GraphQLTypes['omni_collaborator_types_enum_update_column'];
+  /** columns and relationships of "omni.fullfillers" */
+  ['omni_fullfillers']: {
+    address?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id: ModelTypes['uuid'];
+    name?: string;
+    /** An array relationship */
+    products: ModelTypes['omni_products'][];
+    /** An aggregate relationship */
+    products_aggregate: ModelTypes['omni_products_aggregate'];
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** aggregated selection of "omni.fullfillers" */
+  ['omni_fullfillers_aggregate']: {
+    aggregate?: ModelTypes['omni_fullfillers_aggregate_fields'];
+    nodes: ModelTypes['omni_fullfillers'][];
+  };
+  /** aggregate fields of "omni.fullfillers" */
+  ['omni_fullfillers_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_fullfillers_max_fields'];
+    min?: ModelTypes['omni_fullfillers_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.fullfillers". All fields are combined with a logical 'AND'. */
+  ['omni_fullfillers_bool_exp']: GraphQLTypes['omni_fullfillers_bool_exp'];
+  /** unique or primary key constraints on table "omni.fullfillers" */
+  ['omni_fullfillers_constraint']: GraphQLTypes['omni_fullfillers_constraint'];
+  /** input type for inserting data into table "omni.fullfillers" */
+  ['omni_fullfillers_insert_input']: GraphQLTypes['omni_fullfillers_insert_input'];
+  /** aggregate max on columns */
+  ['omni_fullfillers_max_fields']: {
+    address?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_fullfillers_min_fields']: {
+    address?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** response of any mutation on the table "omni.fullfillers" */
+  ['omni_fullfillers_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_fullfillers'][];
+  };
+  /** input type for inserting object relation for remote table "omni.fullfillers" */
+  ['omni_fullfillers_obj_rel_insert_input']: GraphQLTypes['omni_fullfillers_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.fullfillers" */
+  ['omni_fullfillers_on_conflict']: GraphQLTypes['omni_fullfillers_on_conflict'];
+  /** Ordering options when selecting data from "omni.fullfillers". */
+  ['omni_fullfillers_order_by']: GraphQLTypes['omni_fullfillers_order_by'];
+  /** primary key columns input for table: omni_fullfillers */
+  ['omni_fullfillers_pk_columns_input']: GraphQLTypes['omni_fullfillers_pk_columns_input'];
+  /** select columns of table "omni.fullfillers" */
+  ['omni_fullfillers_select_column']: GraphQLTypes['omni_fullfillers_select_column'];
+  /** input type for updating data in table "omni.fullfillers" */
+  ['omni_fullfillers_set_input']: GraphQLTypes['omni_fullfillers_set_input'];
+  /** update columns of table "omni.fullfillers" */
+  ['omni_fullfillers_update_column']: GraphQLTypes['omni_fullfillers_update_column'];
+  /** columns and relationships of "omni.price_currencies" */
+  ['omni_price_currencies']: {
+    /** enum? */
+    currency?: string;
+    id: ModelTypes['uuid'];
+    price?: ModelTypes['numeric'];
+    /** An array relationship */
+    products: ModelTypes['omni_products'][];
+    /** An array relationship */
+    productsByProductionCost: ModelTypes['omni_products'][];
+    /** An aggregate relationship */
+    productsByProductionCost_aggregate: ModelTypes['omni_products_aggregate'];
+    /** An array relationship */
+    productsByTotalSales: ModelTypes['omni_products'][];
+    /** An aggregate relationship */
+    productsByTotalSales_aggregate: ModelTypes['omni_products_aggregate'];
+    /** An aggregate relationship */
+    products_aggregate: ModelTypes['omni_products_aggregate'];
+  };
+  /** aggregated selection of "omni.price_currencies" */
+  ['omni_price_currencies_aggregate']: {
+    aggregate?: ModelTypes['omni_price_currencies_aggregate_fields'];
+    nodes: ModelTypes['omni_price_currencies'][];
+  };
+  /** aggregate fields of "omni.price_currencies" */
+  ['omni_price_currencies_aggregate_fields']: {
+    avg?: ModelTypes['omni_price_currencies_avg_fields'];
+    count: number;
+    max?: ModelTypes['omni_price_currencies_max_fields'];
+    min?: ModelTypes['omni_price_currencies_min_fields'];
+    stddev?: ModelTypes['omni_price_currencies_stddev_fields'];
+    stddev_pop?: ModelTypes['omni_price_currencies_stddev_pop_fields'];
+    stddev_samp?: ModelTypes['omni_price_currencies_stddev_samp_fields'];
+    sum?: ModelTypes['omni_price_currencies_sum_fields'];
+    var_pop?: ModelTypes['omni_price_currencies_var_pop_fields'];
+    var_samp?: ModelTypes['omni_price_currencies_var_samp_fields'];
+    variance?: ModelTypes['omni_price_currencies_variance_fields'];
+  };
+  /** aggregate avg on columns */
+  ['omni_price_currencies_avg_fields']: {
+    price?: number;
+  };
+  /** Boolean expression to filter rows from the table "omni.price_currencies". All fields are combined with a logical 'AND'. */
+  ['omni_price_currencies_bool_exp']: GraphQLTypes['omni_price_currencies_bool_exp'];
+  /** unique or primary key constraints on table "omni.price_currencies" */
+  ['omni_price_currencies_constraint']: GraphQLTypes['omni_price_currencies_constraint'];
+  /** input type for incrementing numeric columns in table "omni.price_currencies" */
+  ['omni_price_currencies_inc_input']: GraphQLTypes['omni_price_currencies_inc_input'];
+  /** input type for inserting data into table "omni.price_currencies" */
+  ['omni_price_currencies_insert_input']: GraphQLTypes['omni_price_currencies_insert_input'];
+  /** aggregate max on columns */
+  ['omni_price_currencies_max_fields']: {
+    /** enum? */
+    currency?: string;
+    id?: ModelTypes['uuid'];
+    price?: ModelTypes['numeric'];
+  };
+  /** aggregate min on columns */
+  ['omni_price_currencies_min_fields']: {
+    /** enum? */
+    currency?: string;
+    id?: ModelTypes['uuid'];
+    price?: ModelTypes['numeric'];
+  };
+  /** response of any mutation on the table "omni.price_currencies" */
+  ['omni_price_currencies_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_price_currencies'][];
+  };
+  /** input type for inserting object relation for remote table "omni.price_currencies" */
+  ['omni_price_currencies_obj_rel_insert_input']: GraphQLTypes['omni_price_currencies_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.price_currencies" */
+  ['omni_price_currencies_on_conflict']: GraphQLTypes['omni_price_currencies_on_conflict'];
+  /** Ordering options when selecting data from "omni.price_currencies". */
+  ['omni_price_currencies_order_by']: GraphQLTypes['omni_price_currencies_order_by'];
+  /** primary key columns input for table: omni_price_currencies */
+  ['omni_price_currencies_pk_columns_input']: GraphQLTypes['omni_price_currencies_pk_columns_input'];
+  /** select columns of table "omni.price_currencies" */
+  ['omni_price_currencies_select_column']: GraphQLTypes['omni_price_currencies_select_column'];
+  /** input type for updating data in table "omni.price_currencies" */
+  ['omni_price_currencies_set_input']: GraphQLTypes['omni_price_currencies_set_input'];
+  /** aggregate stddev on columns */
+  ['omni_price_currencies_stddev_fields']: {
+    price?: number;
+  };
+  /** aggregate stddev_pop on columns */
+  ['omni_price_currencies_stddev_pop_fields']: {
+    price?: number;
+  };
+  /** aggregate stddev_samp on columns */
+  ['omni_price_currencies_stddev_samp_fields']: {
+    price?: number;
+  };
+  /** aggregate sum on columns */
+  ['omni_price_currencies_sum_fields']: {
+    price?: ModelTypes['numeric'];
+  };
+  /** update columns of table "omni.price_currencies" */
+  ['omni_price_currencies_update_column']: GraphQLTypes['omni_price_currencies_update_column'];
+  /** aggregate var_pop on columns */
+  ['omni_price_currencies_var_pop_fields']: {
+    price?: number;
+  };
+  /** aggregate var_samp on columns */
+  ['omni_price_currencies_var_samp_fields']: {
+    price?: number;
+  };
+  /** aggregate variance on columns */
+  ['omni_price_currencies_variance_fields']: {
+    price?: number;
+  };
+  /** columns and relationships of "omni.print_techs_enum" */
+  ['omni_print_techs_enum']: {
+    description?: string;
+    /** An array relationship */
+    production_materials: ModelTypes['omni_production_materials'][];
+    /** An aggregate relationship */
+    production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.print_techs_enum" */
+  ['omni_print_techs_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_print_techs_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_print_techs_enum'][];
+  };
+  /** aggregate fields of "omni.print_techs_enum" */
+  ['omni_print_techs_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_print_techs_enum_max_fields'];
+    min?: ModelTypes['omni_print_techs_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.print_techs_enum". All fields are combined with a logical 'AND'. */
+  ['omni_print_techs_enum_bool_exp']: GraphQLTypes['omni_print_techs_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_constraint']: GraphQLTypes['omni_print_techs_enum_constraint'];
+  ['omni_print_techs_enum_enum']: GraphQLTypes['omni_print_techs_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_print_techs_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_print_techs_enum_enum_comparison_exp']: GraphQLTypes['omni_print_techs_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_insert_input']: GraphQLTypes['omni_print_techs_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_print_techs_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_print_techs_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_print_techs_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_obj_rel_insert_input']: GraphQLTypes['omni_print_techs_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_on_conflict']: GraphQLTypes['omni_print_techs_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.print_techs_enum". */
+  ['omni_print_techs_enum_order_by']: GraphQLTypes['omni_print_techs_enum_order_by'];
+  /** primary key columns input for table: omni_print_techs_enum */
+  ['omni_print_techs_enum_pk_columns_input']: GraphQLTypes['omni_print_techs_enum_pk_columns_input'];
+  /** select columns of table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_select_column']: GraphQLTypes['omni_print_techs_enum_select_column'];
+  /** input type for updating data in table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_set_input']: GraphQLTypes['omni_print_techs_enum_set_input'];
+  /** update columns of table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_update_column']: GraphQLTypes['omni_print_techs_enum_update_column'];
+  /** columns and relationships of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum']: {
+    description?: string;
+    /** An array relationship */
+    producers: ModelTypes['omni_producers'][];
+    /** An aggregate relationship */
+    producers_aggregate: ModelTypes['omni_producers_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_producer_statuses_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_producer_statuses_enum'][];
+  };
+  /** aggregate fields of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_producer_statuses_enum_max_fields'];
+    min?: ModelTypes['omni_producer_statuses_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.producer_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_producer_statuses_enum_bool_exp']: GraphQLTypes['omni_producer_statuses_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_constraint']: GraphQLTypes['omni_producer_statuses_enum_constraint'];
+  ['omni_producer_statuses_enum_enum']: GraphQLTypes['omni_producer_statuses_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_producer_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_producer_statuses_enum_enum_comparison_exp']: GraphQLTypes['omni_producer_statuses_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_insert_input']: GraphQLTypes['omni_producer_statuses_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_producer_statuses_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_producer_statuses_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_producer_statuses_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_obj_rel_insert_input']: GraphQLTypes['omni_producer_statuses_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_on_conflict']: GraphQLTypes['omni_producer_statuses_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.producer_statuses_enum". */
+  ['omni_producer_statuses_enum_order_by']: GraphQLTypes['omni_producer_statuses_enum_order_by'];
+  /** primary key columns input for table: omni_producer_statuses_enum */
+  ['omni_producer_statuses_enum_pk_columns_input']: GraphQLTypes['omni_producer_statuses_enum_pk_columns_input'];
+  /** select columns of table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_select_column']: GraphQLTypes['omni_producer_statuses_enum_select_column'];
+  /** input type for updating data in table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_set_input']: GraphQLTypes['omni_producer_statuses_enum_set_input'];
+  /** update columns of table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_update_column']: GraphQLTypes['omni_producer_statuses_enum_update_column'];
+  /** columns and relationships of "omni.producers" */
+  ['omni_producers']: {
+    address?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id: ModelTypes['uuid'];
+    name?: string;
+    /** An object relationship */
+    producer_statuses_enum?: ModelTypes['omni_producer_statuses_enum'];
+    /** An object relationship */
+    product?: ModelTypes['omni_products'];
+    /** An array relationship */
+    production_materials_producers: ModelTypes['omni_production_materials_producers'][];
+    /** An aggregate relationship */
+    production_materials_producers_aggregate: ModelTypes['omni_production_materials_producers_aggregate'];
+    /** An array relationship */
+    production_methods_producers: ModelTypes['omni_production_methods_producers'][];
+    /** An aggregate relationship */
+    production_methods_producers_aggregate: ModelTypes['omni_production_methods_producers_aggregate'];
+    products?: ModelTypes['uuid'];
+    /** An array relationship */
+    productsByProducer: ModelTypes['omni_products'][];
+    /** An aggregate relationship */
+    productsByProducer_aggregate: ModelTypes['omni_products_aggregate'];
+    status?: ModelTypes['omni_producer_statuses_enum_enum'];
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** aggregated selection of "omni.producers" */
+  ['omni_producers_aggregate']: {
+    aggregate?: ModelTypes['omni_producers_aggregate_fields'];
+    nodes: ModelTypes['omni_producers'][];
+  };
+  /** aggregate fields of "omni.producers" */
+  ['omni_producers_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_producers_max_fields'];
+    min?: ModelTypes['omni_producers_min_fields'];
+  };
+  /** order by aggregate values of table "omni.producers" */
+  ['omni_producers_aggregate_order_by']: GraphQLTypes['omni_producers_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.producers" */
+  ['omni_producers_arr_rel_insert_input']: GraphQLTypes['omni_producers_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.producers". All fields are combined with a logical 'AND'. */
+  ['omni_producers_bool_exp']: GraphQLTypes['omni_producers_bool_exp'];
+  /** unique or primary key constraints on table "omni.producers" */
+  ['omni_producers_constraint']: GraphQLTypes['omni_producers_constraint'];
+  /** input type for inserting data into table "omni.producers" */
+  ['omni_producers_insert_input']: GraphQLTypes['omni_producers_insert_input'];
+  /** aggregate max on columns */
+  ['omni_producers_max_fields']: {
+    address?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    products?: ModelTypes['uuid'];
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** order by max() on columns of table "omni.producers" */
+  ['omni_producers_max_order_by']: GraphQLTypes['omni_producers_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_producers_min_fields']: {
+    address?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    products?: ModelTypes['uuid'];
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** order by min() on columns of table "omni.producers" */
+  ['omni_producers_min_order_by']: GraphQLTypes['omni_producers_min_order_by'];
+  /** response of any mutation on the table "omni.producers" */
+  ['omni_producers_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_producers'][];
+  };
+  /** input type for inserting object relation for remote table "omni.producers" */
+  ['omni_producers_obj_rel_insert_input']: GraphQLTypes['omni_producers_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.producers" */
+  ['omni_producers_on_conflict']: GraphQLTypes['omni_producers_on_conflict'];
+  /** Ordering options when selecting data from "omni.producers". */
+  ['omni_producers_order_by']: GraphQLTypes['omni_producers_order_by'];
+  /** primary key columns input for table: omni_producers */
+  ['omni_producers_pk_columns_input']: GraphQLTypes['omni_producers_pk_columns_input'];
+  /** select columns of table "omni.producers" */
+  ['omni_producers_select_column']: GraphQLTypes['omni_producers_select_column'];
+  /** input type for updating data in table "omni.producers" */
+  ['omni_producers_set_input']: GraphQLTypes['omni_producers_set_input'];
+  /** update columns of table "omni.producers" */
+  ['omni_producers_update_column']: GraphQLTypes['omni_producers_update_column'];
+  /** columns and relationships of "omni.product_collaborators" */
+  ['omni_product_collaborators']: {
+    collaboration_share?: ModelTypes['numeric'];
+    collaborator?: ModelTypes['uuid'];
+    /** An object relationship */
+    collaborator_types_enum?: ModelTypes['omni_collaborator_types_enum'];
+    id: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+    /** An object relationship */
+    productByProduct?: ModelTypes['omni_products'];
+    type?: ModelTypes['omni_collaborator_types_enum_enum'];
+    /** An object relationship */
+    user?: ModelTypes['omni_users'];
+  };
+  /** aggregated selection of "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate']: {
+    aggregate?: ModelTypes['omni_product_collaborators_aggregate_fields'];
+    nodes: ModelTypes['omni_product_collaborators'][];
+  };
+  /** aggregate fields of "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate_fields']: {
+    avg?: ModelTypes['omni_product_collaborators_avg_fields'];
+    count: number;
+    max?: ModelTypes['omni_product_collaborators_max_fields'];
+    min?: ModelTypes['omni_product_collaborators_min_fields'];
+    stddev?: ModelTypes['omni_product_collaborators_stddev_fields'];
+    stddev_pop?: ModelTypes['omni_product_collaborators_stddev_pop_fields'];
+    stddev_samp?: ModelTypes['omni_product_collaborators_stddev_samp_fields'];
+    sum?: ModelTypes['omni_product_collaborators_sum_fields'];
+    var_pop?: ModelTypes['omni_product_collaborators_var_pop_fields'];
+    var_samp?: ModelTypes['omni_product_collaborators_var_samp_fields'];
+    variance?: ModelTypes['omni_product_collaborators_variance_fields'];
+  };
+  /** order by aggregate values of table "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate_order_by']: GraphQLTypes['omni_product_collaborators_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.product_collaborators" */
+  ['omni_product_collaborators_arr_rel_insert_input']: GraphQLTypes['omni_product_collaborators_arr_rel_insert_input'];
+  /** aggregate avg on columns */
+  ['omni_product_collaborators_avg_fields']: {
+    collaboration_share?: number;
+  };
+  /** order by avg() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_avg_order_by']: GraphQLTypes['omni_product_collaborators_avg_order_by'];
+  /** Boolean expression to filter rows from the table "omni.product_collaborators". All fields are combined with a logical 'AND'. */
+  ['omni_product_collaborators_bool_exp']: GraphQLTypes['omni_product_collaborators_bool_exp'];
+  /** unique or primary key constraints on table "omni.product_collaborators" */
+  ['omni_product_collaborators_constraint']: GraphQLTypes['omni_product_collaborators_constraint'];
+  /** input type for incrementing numeric columns in table "omni.product_collaborators" */
+  ['omni_product_collaborators_inc_input']: GraphQLTypes['omni_product_collaborators_inc_input'];
+  /** input type for inserting data into table "omni.product_collaborators" */
+  ['omni_product_collaborators_insert_input']: GraphQLTypes['omni_product_collaborators_insert_input'];
+  /** aggregate max on columns */
+  ['omni_product_collaborators_max_fields']: {
+    collaboration_share?: ModelTypes['numeric'];
+    collaborator?: ModelTypes['uuid'];
+    id?: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_max_order_by']: GraphQLTypes['omni_product_collaborators_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_product_collaborators_min_fields']: {
+    collaboration_share?: ModelTypes['numeric'];
+    collaborator?: ModelTypes['uuid'];
+    id?: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_min_order_by']: GraphQLTypes['omni_product_collaborators_min_order_by'];
+  /** response of any mutation on the table "omni.product_collaborators" */
+  ['omni_product_collaborators_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_product_collaborators'][];
+  };
+  /** on_conflict condition type for table "omni.product_collaborators" */
+  ['omni_product_collaborators_on_conflict']: GraphQLTypes['omni_product_collaborators_on_conflict'];
+  /** Ordering options when selecting data from "omni.product_collaborators". */
+  ['omni_product_collaborators_order_by']: GraphQLTypes['omni_product_collaborators_order_by'];
+  /** primary key columns input for table: omni_product_collaborators */
+  ['omni_product_collaborators_pk_columns_input']: GraphQLTypes['omni_product_collaborators_pk_columns_input'];
+  /** select columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_select_column']: GraphQLTypes['omni_product_collaborators_select_column'];
+  /** input type for updating data in table "omni.product_collaborators" */
+  ['omni_product_collaborators_set_input']: GraphQLTypes['omni_product_collaborators_set_input'];
+  /** aggregate stddev on columns */
+  ['omni_product_collaborators_stddev_fields']: {
+    collaboration_share?: number;
+  };
+  /** order by stddev() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_order_by']: GraphQLTypes['omni_product_collaborators_stddev_order_by'];
+  /** aggregate stddev_pop on columns */
+  ['omni_product_collaborators_stddev_pop_fields']: {
+    collaboration_share?: number;
+  };
+  /** order by stddev_pop() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_pop_order_by']: GraphQLTypes['omni_product_collaborators_stddev_pop_order_by'];
+  /** aggregate stddev_samp on columns */
+  ['omni_product_collaborators_stddev_samp_fields']: {
+    collaboration_share?: number;
+  };
+  /** order by stddev_samp() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_samp_order_by']: GraphQLTypes['omni_product_collaborators_stddev_samp_order_by'];
+  /** aggregate sum on columns */
+  ['omni_product_collaborators_sum_fields']: {
+    collaboration_share?: ModelTypes['numeric'];
+  };
+  /** order by sum() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_sum_order_by']: GraphQLTypes['omni_product_collaborators_sum_order_by'];
+  /** update columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_update_column']: GraphQLTypes['omni_product_collaborators_update_column'];
+  /** aggregate var_pop on columns */
+  ['omni_product_collaborators_var_pop_fields']: {
+    collaboration_share?: number;
+  };
+  /** order by var_pop() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_var_pop_order_by']: GraphQLTypes['omni_product_collaborators_var_pop_order_by'];
+  /** aggregate var_samp on columns */
+  ['omni_product_collaborators_var_samp_fields']: {
+    collaboration_share?: number;
+  };
+  /** order by var_samp() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_var_samp_order_by']: GraphQLTypes['omni_product_collaborators_var_samp_order_by'];
+  /** aggregate variance on columns */
+  ['omni_product_collaborators_variance_fields']: {
+    collaboration_share?: number;
+  };
+  /** order by variance() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_variance_order_by']: GraphQLTypes['omni_product_collaborators_variance_order_by'];
+  /** columns and relationships of "omni.product_types_enum" */
+  ['omni_product_types_enum']: {
+    description?: string;
+    /** An array relationship */
+    production_materials: ModelTypes['omni_production_materials'][];
+    /** An aggregate relationship */
+    production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.product_types_enum" */
+  ['omni_product_types_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_product_types_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_product_types_enum'][];
+  };
+  /** aggregate fields of "omni.product_types_enum" */
+  ['omni_product_types_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_product_types_enum_max_fields'];
+    min?: ModelTypes['omni_product_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.product_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_product_types_enum_bool_exp']: GraphQLTypes['omni_product_types_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.product_types_enum" */
+  ['omni_product_types_enum_constraint']: GraphQLTypes['omni_product_types_enum_constraint'];
+  /** input type for inserting data into table "omni.product_types_enum" */
+  ['omni_product_types_enum_insert_input']: GraphQLTypes['omni_product_types_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_product_types_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_product_types_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.product_types_enum" */
+  ['omni_product_types_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_product_types_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.product_types_enum" */
+  ['omni_product_types_enum_obj_rel_insert_input']: GraphQLTypes['omni_product_types_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.product_types_enum" */
+  ['omni_product_types_enum_on_conflict']: GraphQLTypes['omni_product_types_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.product_types_enum". */
+  ['omni_product_types_enum_order_by']: GraphQLTypes['omni_product_types_enum_order_by'];
+  /** primary key columns input for table: omni_product_types_enum */
+  ['omni_product_types_enum_pk_columns_input']: GraphQLTypes['omni_product_types_enum_pk_columns_input'];
+  /** select columns of table "omni.product_types_enum" */
+  ['omni_product_types_enum_select_column']: GraphQLTypes['omni_product_types_enum_select_column'];
+  /** input type for updating data in table "omni.product_types_enum" */
+  ['omni_product_types_enum_set_input']: GraphQLTypes['omni_product_types_enum_set_input'];
+  /** update columns of table "omni.product_types_enum" */
+  ['omni_product_types_enum_update_column']: GraphQLTypes['omni_product_types_enum_update_column'];
+  /** columns and relationships of "omni.production_genders_enum" */
+  ['omni_production_genders_enum']: {
+    description?: string;
+    /** An array relationship */
+    production_materials: ModelTypes['omni_production_materials'][];
+    /** An aggregate relationship */
+    production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.production_genders_enum" */
+  ['omni_production_genders_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_production_genders_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_production_genders_enum'][];
+  };
+  /** aggregate fields of "omni.production_genders_enum" */
+  ['omni_production_genders_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_production_genders_enum_max_fields'];
+    min?: ModelTypes['omni_production_genders_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_genders_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_genders_enum_bool_exp']: GraphQLTypes['omni_production_genders_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_constraint']: GraphQLTypes['omni_production_genders_enum_constraint'];
+  ['omni_production_genders_enum_enum']: GraphQLTypes['omni_production_genders_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_production_genders_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_genders_enum_enum_comparison_exp']: GraphQLTypes['omni_production_genders_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_insert_input']: GraphQLTypes['omni_production_genders_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_genders_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_production_genders_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_genders_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_obj_rel_insert_input']: GraphQLTypes['omni_production_genders_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_on_conflict']: GraphQLTypes['omni_production_genders_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_genders_enum". */
+  ['omni_production_genders_enum_order_by']: GraphQLTypes['omni_production_genders_enum_order_by'];
+  /** primary key columns input for table: omni_production_genders_enum */
+  ['omni_production_genders_enum_pk_columns_input']: GraphQLTypes['omni_production_genders_enum_pk_columns_input'];
+  /** select columns of table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_select_column']: GraphQLTypes['omni_production_genders_enum_select_column'];
+  /** input type for updating data in table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_set_input']: GraphQLTypes['omni_production_genders_enum_set_input'];
+  /** update columns of table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_update_column']: GraphQLTypes['omni_production_genders_enum_update_column'];
+  /** columns and relationships of "omni.production_materials" */
+  ['omni_production_materials']: {
+    base_price?: ModelTypes['numeric'];
+    composition?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    gender?: ModelTypes['omni_production_genders_enum_enum'];
+    id: ModelTypes['uuid'];
+    name?: string;
+    neck_tag?: boolean;
+    pallette?: ModelTypes['omni_production_pallettes_enum_enum'];
+    print_tech?: ModelTypes['omni_print_techs_enum_enum'];
+    /** An object relationship */
+    print_techs_enum?: ModelTypes['omni_print_techs_enum'];
+    /** An object relationship */
+    product?: ModelTypes['omni_products'];
+    /** An object relationship */
+    product_types_enum?: ModelTypes['omni_product_types_enum'];
+    /** An object relationship */
+    production_genders_enum?: ModelTypes['omni_production_genders_enum'];
+    /** An array relationship */
+    production_materials_producers: ModelTypes['omni_production_materials_producers'][];
+    /** An aggregate relationship */
+    production_materials_producers_aggregate: ModelTypes['omni_production_materials_producers_aggregate'];
+    /** An object relationship */
+    production_materials_ratings_enum?: ModelTypes['omni_production_materials_ratings_enum'];
+    /** An object relationship */
+    production_pallettes_enum?: ModelTypes['omni_production_pallettes_enum'];
+    /** An object relationship */
+    production_styles_enum?: ModelTypes['omni_production_styles_enum'];
+    products?: ModelTypes['uuid'];
+    /** An array relationship */
+    productsByProductionMaterial: ModelTypes['omni_products'][];
+    /** An aggregate relationship */
+    productsByProductionMaterial_aggregate: ModelTypes['omni_products_aggregate'];
+    rating?: ModelTypes['omni_production_materials_ratings_enum_enum'];
+    /** link to guide */
+    size_guide?: string;
+    style?: ModelTypes['omni_production_styles_enum_enum'];
+    style_number?: string;
+    type?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** aggregated selection of "omni.production_materials" */
+  ['omni_production_materials_aggregate']: {
+    aggregate?: ModelTypes['omni_production_materials_aggregate_fields'];
+    nodes: ModelTypes['omni_production_materials'][];
+  };
+  /** aggregate fields of "omni.production_materials" */
+  ['omni_production_materials_aggregate_fields']: {
+    avg?: ModelTypes['omni_production_materials_avg_fields'];
+    count: number;
+    max?: ModelTypes['omni_production_materials_max_fields'];
+    min?: ModelTypes['omni_production_materials_min_fields'];
+    stddev?: ModelTypes['omni_production_materials_stddev_fields'];
+    stddev_pop?: ModelTypes['omni_production_materials_stddev_pop_fields'];
+    stddev_samp?: ModelTypes['omni_production_materials_stddev_samp_fields'];
+    sum?: ModelTypes['omni_production_materials_sum_fields'];
+    var_pop?: ModelTypes['omni_production_materials_var_pop_fields'];
+    var_samp?: ModelTypes['omni_production_materials_var_samp_fields'];
+    variance?: ModelTypes['omni_production_materials_variance_fields'];
+  };
+  /** order by aggregate values of table "omni.production_materials" */
+  ['omni_production_materials_aggregate_order_by']: GraphQLTypes['omni_production_materials_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.production_materials" */
+  ['omni_production_materials_arr_rel_insert_input']: GraphQLTypes['omni_production_materials_arr_rel_insert_input'];
+  /** aggregate avg on columns */
+  ['omni_production_materials_avg_fields']: {
+    base_price?: number;
+  };
+  /** order by avg() on columns of table "omni.production_materials" */
+  ['omni_production_materials_avg_order_by']: GraphQLTypes['omni_production_materials_avg_order_by'];
+  /** Boolean expression to filter rows from the table "omni.production_materials". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_bool_exp']: GraphQLTypes['omni_production_materials_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_materials" */
+  ['omni_production_materials_constraint']: GraphQLTypes['omni_production_materials_constraint'];
+  /** input type for incrementing numeric columns in table "omni.production_materials" */
+  ['omni_production_materials_inc_input']: GraphQLTypes['omni_production_materials_inc_input'];
+  /** input type for inserting data into table "omni.production_materials" */
+  ['omni_production_materials_insert_input']: GraphQLTypes['omni_production_materials_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_materials_max_fields']: {
+    base_price?: ModelTypes['numeric'];
+    composition?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    products?: ModelTypes['uuid'];
+    /** link to guide */
+    size_guide?: string;
+    style_number?: string;
+    type?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** order by max() on columns of table "omni.production_materials" */
+  ['omni_production_materials_max_order_by']: GraphQLTypes['omni_production_materials_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_production_materials_min_fields']: {
+    base_price?: ModelTypes['numeric'];
+    composition?: string;
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    products?: ModelTypes['uuid'];
+    /** link to guide */
+    size_guide?: string;
+    style_number?: string;
+    type?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** order by min() on columns of table "omni.production_materials" */
+  ['omni_production_materials_min_order_by']: GraphQLTypes['omni_production_materials_min_order_by'];
+  /** response of any mutation on the table "omni.production_materials" */
+  ['omni_production_materials_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_materials'][];
+  };
+  /** input type for inserting object relation for remote table "omni.production_materials" */
+  ['omni_production_materials_obj_rel_insert_input']: GraphQLTypes['omni_production_materials_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.production_materials" */
+  ['omni_production_materials_on_conflict']: GraphQLTypes['omni_production_materials_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_materials". */
+  ['omni_production_materials_order_by']: GraphQLTypes['omni_production_materials_order_by'];
+  /** primary key columns input for table: omni_production_materials */
+  ['omni_production_materials_pk_columns_input']: GraphQLTypes['omni_production_materials_pk_columns_input'];
+  /** columns and relationships of "omni.production_materials_producers" */
+  ['omni_production_materials_producers']: {
+    id: ModelTypes['uuid'];
+    producer?: ModelTypes['uuid'];
+    /** An object relationship */
+    producerByProducer?: ModelTypes['omni_producers'];
+    /** An object relationship */
+    productionMaterialByProductionMaterial?: ModelTypes['omni_production_materials'];
+    production_material?: ModelTypes['uuid'];
+  };
+  /** aggregated selection of "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate']: {
+    aggregate?: ModelTypes['omni_production_materials_producers_aggregate_fields'];
+    nodes: ModelTypes['omni_production_materials_producers'][];
+  };
+  /** aggregate fields of "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_production_materials_producers_max_fields'];
+    min?: ModelTypes['omni_production_materials_producers_min_fields'];
+  };
+  /** order by aggregate values of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate_order_by']: GraphQLTypes['omni_production_materials_producers_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_arr_rel_insert_input']: GraphQLTypes['omni_production_materials_producers_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.production_materials_producers". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_producers_bool_exp']: GraphQLTypes['omni_production_materials_producers_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_constraint']: GraphQLTypes['omni_production_materials_producers_constraint'];
+  /** input type for inserting data into table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_insert_input']: GraphQLTypes['omni_production_materials_producers_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_materials_producers_max_fields']: {
+    id?: ModelTypes['uuid'];
+    producer?: ModelTypes['uuid'];
+    production_material?: ModelTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_max_order_by']: GraphQLTypes['omni_production_materials_producers_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_production_materials_producers_min_fields']: {
+    id?: ModelTypes['uuid'];
+    producer?: ModelTypes['uuid'];
+    production_material?: ModelTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_min_order_by']: GraphQLTypes['omni_production_materials_producers_min_order_by'];
+  /** response of any mutation on the table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_materials_producers'][];
+  };
+  /** on_conflict condition type for table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_on_conflict']: GraphQLTypes['omni_production_materials_producers_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_materials_producers". */
+  ['omni_production_materials_producers_order_by']: GraphQLTypes['omni_production_materials_producers_order_by'];
+  /** primary key columns input for table: omni_production_materials_producers */
+  ['omni_production_materials_producers_pk_columns_input']: GraphQLTypes['omni_production_materials_producers_pk_columns_input'];
+  /** select columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_select_column']: GraphQLTypes['omni_production_materials_producers_select_column'];
+  /** input type for updating data in table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_set_input']: GraphQLTypes['omni_production_materials_producers_set_input'];
+  /** update columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_update_column']: GraphQLTypes['omni_production_materials_producers_update_column'];
+  /** columns and relationships of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum']: {
+    description?: string;
+    /** An array relationship */
+    production_materials: ModelTypes['omni_production_materials'][];
+    /** An aggregate relationship */
+    production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_production_materials_ratings_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_production_materials_ratings_enum'][];
+  };
+  /** aggregate fields of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_production_materials_ratings_enum_max_fields'];
+    min?: ModelTypes['omni_production_materials_ratings_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_materials_ratings_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_ratings_enum_bool_exp']: GraphQLTypes['omni_production_materials_ratings_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_constraint']: GraphQLTypes['omni_production_materials_ratings_enum_constraint'];
+  ['omni_production_materials_ratings_enum_enum']: GraphQLTypes['omni_production_materials_ratings_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_production_materials_ratings_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_materials_ratings_enum_enum_comparison_exp']: GraphQLTypes['omni_production_materials_ratings_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_insert_input']: GraphQLTypes['omni_production_materials_ratings_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_materials_ratings_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_production_materials_ratings_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_materials_ratings_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_obj_rel_insert_input']: GraphQLTypes['omni_production_materials_ratings_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_on_conflict']: GraphQLTypes['omni_production_materials_ratings_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_materials_ratings_enum". */
+  ['omni_production_materials_ratings_enum_order_by']: GraphQLTypes['omni_production_materials_ratings_enum_order_by'];
+  /** primary key columns input for table: omni_production_materials_ratings_enum */
+  ['omni_production_materials_ratings_enum_pk_columns_input']: GraphQLTypes['omni_production_materials_ratings_enum_pk_columns_input'];
+  /** select columns of table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_select_column']: GraphQLTypes['omni_production_materials_ratings_enum_select_column'];
+  /** input type for updating data in table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_set_input']: GraphQLTypes['omni_production_materials_ratings_enum_set_input'];
+  /** update columns of table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_update_column']: GraphQLTypes['omni_production_materials_ratings_enum_update_column'];
+  /** select columns of table "omni.production_materials" */
+  ['omni_production_materials_select_column']: GraphQLTypes['omni_production_materials_select_column'];
+  /** input type for updating data in table "omni.production_materials" */
+  ['omni_production_materials_set_input']: GraphQLTypes['omni_production_materials_set_input'];
+  /** aggregate stddev on columns */
+  ['omni_production_materials_stddev_fields']: {
+    base_price?: number;
+  };
+  /** order by stddev() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_order_by']: GraphQLTypes['omni_production_materials_stddev_order_by'];
+  /** aggregate stddev_pop on columns */
+  ['omni_production_materials_stddev_pop_fields']: {
+    base_price?: number;
+  };
+  /** order by stddev_pop() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_pop_order_by']: GraphQLTypes['omni_production_materials_stddev_pop_order_by'];
+  /** aggregate stddev_samp on columns */
+  ['omni_production_materials_stddev_samp_fields']: {
+    base_price?: number;
+  };
+  /** order by stddev_samp() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_samp_order_by']: GraphQLTypes['omni_production_materials_stddev_samp_order_by'];
+  /** aggregate sum on columns */
+  ['omni_production_materials_sum_fields']: {
+    base_price?: ModelTypes['numeric'];
+  };
+  /** order by sum() on columns of table "omni.production_materials" */
+  ['omni_production_materials_sum_order_by']: GraphQLTypes['omni_production_materials_sum_order_by'];
+  /** update columns of table "omni.production_materials" */
+  ['omni_production_materials_update_column']: GraphQLTypes['omni_production_materials_update_column'];
+  /** aggregate var_pop on columns */
+  ['omni_production_materials_var_pop_fields']: {
+    base_price?: number;
+  };
+  /** order by var_pop() on columns of table "omni.production_materials" */
+  ['omni_production_materials_var_pop_order_by']: GraphQLTypes['omni_production_materials_var_pop_order_by'];
+  /** aggregate var_samp on columns */
+  ['omni_production_materials_var_samp_fields']: {
+    base_price?: number;
+  };
+  /** order by var_samp() on columns of table "omni.production_materials" */
+  ['omni_production_materials_var_samp_order_by']: GraphQLTypes['omni_production_materials_var_samp_order_by'];
+  /** aggregate variance on columns */
+  ['omni_production_materials_variance_fields']: {
+    base_price?: number;
+  };
+  /** order by variance() on columns of table "omni.production_materials" */
+  ['omni_production_materials_variance_order_by']: GraphQLTypes['omni_production_materials_variance_order_by'];
+  /** columns and relationships of "omni.production_methods" */
+  ['omni_production_methods']: {
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    id: ModelTypes['uuid'];
+    name?: string;
+    /** An array relationship */
+    production_methods_producers: ModelTypes['omni_production_methods_producers'][];
+    /** An aggregate relationship */
+    production_methods_producers_aggregate: ModelTypes['omni_production_methods_producers_aggregate'];
+    /** An array relationship */
+    production_methods_products: ModelTypes['omni_production_methods_products'][];
+    /** An aggregate relationship */
+    production_methods_products_aggregate: ModelTypes['omni_production_methods_products_aggregate'];
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** aggregated selection of "omni.production_methods" */
+  ['omni_production_methods_aggregate']: {
+    aggregate?: ModelTypes['omni_production_methods_aggregate_fields'];
+    nodes: ModelTypes['omni_production_methods'][];
+  };
+  /** aggregate fields of "omni.production_methods" */
+  ['omni_production_methods_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_production_methods_max_fields'];
+    min?: ModelTypes['omni_production_methods_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_methods". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_bool_exp']: GraphQLTypes['omni_production_methods_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_methods" */
+  ['omni_production_methods_constraint']: GraphQLTypes['omni_production_methods_constraint'];
+  /** input type for inserting data into table "omni.production_methods" */
+  ['omni_production_methods_insert_input']: GraphQLTypes['omni_production_methods_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_methods_max_fields']: {
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** aggregate min on columns */
+  ['omni_production_methods_min_fields']: {
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    description?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** response of any mutation on the table "omni.production_methods" */
+  ['omni_production_methods_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_methods'][];
+  };
+  /** input type for inserting object relation for remote table "omni.production_methods" */
+  ['omni_production_methods_obj_rel_insert_input']: GraphQLTypes['omni_production_methods_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.production_methods" */
+  ['omni_production_methods_on_conflict']: GraphQLTypes['omni_production_methods_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_methods". */
+  ['omni_production_methods_order_by']: GraphQLTypes['omni_production_methods_order_by'];
+  /** primary key columns input for table: omni_production_methods */
+  ['omni_production_methods_pk_columns_input']: GraphQLTypes['omni_production_methods_pk_columns_input'];
+  /** columns and relationships of "omni.production_methods_producers" */
+  ['omni_production_methods_producers']: {
+    id: ModelTypes['uuid'];
+    producer?: ModelTypes['uuid'];
+    /** An object relationship */
+    producerByProducer?: ModelTypes['omni_producers'];
+    /** An object relationship */
+    productionMethodByProductionMethod?: ModelTypes['omni_production_methods'];
+    production_method?: ModelTypes['uuid'];
+  };
+  /** aggregated selection of "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate']: {
+    aggregate?: ModelTypes['omni_production_methods_producers_aggregate_fields'];
+    nodes: ModelTypes['omni_production_methods_producers'][];
+  };
+  /** aggregate fields of "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_production_methods_producers_max_fields'];
+    min?: ModelTypes['omni_production_methods_producers_min_fields'];
+  };
+  /** order by aggregate values of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate_order_by']: GraphQLTypes['omni_production_methods_producers_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_arr_rel_insert_input']: GraphQLTypes['omni_production_methods_producers_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.production_methods_producers". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_producers_bool_exp']: GraphQLTypes['omni_production_methods_producers_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_constraint']: GraphQLTypes['omni_production_methods_producers_constraint'];
+  /** input type for inserting data into table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_insert_input']: GraphQLTypes['omni_production_methods_producers_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_methods_producers_max_fields']: {
+    id?: ModelTypes['uuid'];
+    producer?: ModelTypes['uuid'];
+    production_method?: ModelTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_max_order_by']: GraphQLTypes['omni_production_methods_producers_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_production_methods_producers_min_fields']: {
+    id?: ModelTypes['uuid'];
+    producer?: ModelTypes['uuid'];
+    production_method?: ModelTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_min_order_by']: GraphQLTypes['omni_production_methods_producers_min_order_by'];
+  /** response of any mutation on the table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_methods_producers'][];
+  };
+  /** on_conflict condition type for table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_on_conflict']: GraphQLTypes['omni_production_methods_producers_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_methods_producers". */
+  ['omni_production_methods_producers_order_by']: GraphQLTypes['omni_production_methods_producers_order_by'];
+  /** primary key columns input for table: omni_production_methods_producers */
+  ['omni_production_methods_producers_pk_columns_input']: GraphQLTypes['omni_production_methods_producers_pk_columns_input'];
+  /** select columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_select_column']: GraphQLTypes['omni_production_methods_producers_select_column'];
+  /** input type for updating data in table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_set_input']: GraphQLTypes['omni_production_methods_producers_set_input'];
+  /** update columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_update_column']: GraphQLTypes['omni_production_methods_producers_update_column'];
+  /** columns and relationships of "omni.production_methods_products" */
+  ['omni_production_methods_products']: {
+    id: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+    /** An object relationship */
+    productByProduct?: ModelTypes['omni_products'];
+    /** An object relationship */
+    productionMethodByProductionMethod?: ModelTypes['omni_production_methods'];
+    production_method?: ModelTypes['uuid'];
+  };
+  /** aggregated selection of "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate']: {
+    aggregate?: ModelTypes['omni_production_methods_products_aggregate_fields'];
+    nodes: ModelTypes['omni_production_methods_products'][];
+  };
+  /** aggregate fields of "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_production_methods_products_max_fields'];
+    min?: ModelTypes['omni_production_methods_products_min_fields'];
+  };
+  /** order by aggregate values of table "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate_order_by']: GraphQLTypes['omni_production_methods_products_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.production_methods_products" */
+  ['omni_production_methods_products_arr_rel_insert_input']: GraphQLTypes['omni_production_methods_products_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.production_methods_products". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_products_bool_exp']: GraphQLTypes['omni_production_methods_products_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_methods_products" */
+  ['omni_production_methods_products_constraint']: GraphQLTypes['omni_production_methods_products_constraint'];
+  /** input type for inserting data into table "omni.production_methods_products" */
+  ['omni_production_methods_products_insert_input']: GraphQLTypes['omni_production_methods_products_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_methods_products_max_fields']: {
+    id?: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+    production_method?: ModelTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_max_order_by']: GraphQLTypes['omni_production_methods_products_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_production_methods_products_min_fields']: {
+    id?: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+    production_method?: ModelTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_min_order_by']: GraphQLTypes['omni_production_methods_products_min_order_by'];
+  /** response of any mutation on the table "omni.production_methods_products" */
+  ['omni_production_methods_products_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_methods_products'][];
+  };
+  /** on_conflict condition type for table "omni.production_methods_products" */
+  ['omni_production_methods_products_on_conflict']: GraphQLTypes['omni_production_methods_products_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_methods_products". */
+  ['omni_production_methods_products_order_by']: GraphQLTypes['omni_production_methods_products_order_by'];
+  /** primary key columns input for table: omni_production_methods_products */
+  ['omni_production_methods_products_pk_columns_input']: GraphQLTypes['omni_production_methods_products_pk_columns_input'];
+  /** select columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_select_column']: GraphQLTypes['omni_production_methods_products_select_column'];
+  /** input type for updating data in table "omni.production_methods_products" */
+  ['omni_production_methods_products_set_input']: GraphQLTypes['omni_production_methods_products_set_input'];
+  /** update columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_update_column']: GraphQLTypes['omni_production_methods_products_update_column'];
+  /** select columns of table "omni.production_methods" */
+  ['omni_production_methods_select_column']: GraphQLTypes['omni_production_methods_select_column'];
+  /** input type for updating data in table "omni.production_methods" */
+  ['omni_production_methods_set_input']: GraphQLTypes['omni_production_methods_set_input'];
+  /** update columns of table "omni.production_methods" */
+  ['omni_production_methods_update_column']: GraphQLTypes['omni_production_methods_update_column'];
+  /** columns and relationships of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum']: {
+    description?: string;
+    /** An array relationship */
+    production_materials: ModelTypes['omni_production_materials'][];
+    /** An aggregate relationship */
+    production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_production_pallettes_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_production_pallettes_enum'][];
+  };
+  /** aggregate fields of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_production_pallettes_enum_max_fields'];
+    min?: ModelTypes['omni_production_pallettes_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_pallettes_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_pallettes_enum_bool_exp']: GraphQLTypes['omni_production_pallettes_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_constraint']: GraphQLTypes['omni_production_pallettes_enum_constraint'];
+  ['omni_production_pallettes_enum_enum']: GraphQLTypes['omni_production_pallettes_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_production_pallettes_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_pallettes_enum_enum_comparison_exp']: GraphQLTypes['omni_production_pallettes_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_insert_input']: GraphQLTypes['omni_production_pallettes_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_pallettes_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_production_pallettes_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_pallettes_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_obj_rel_insert_input']: GraphQLTypes['omni_production_pallettes_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_on_conflict']: GraphQLTypes['omni_production_pallettes_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_pallettes_enum". */
+  ['omni_production_pallettes_enum_order_by']: GraphQLTypes['omni_production_pallettes_enum_order_by'];
+  /** primary key columns input for table: omni_production_pallettes_enum */
+  ['omni_production_pallettes_enum_pk_columns_input']: GraphQLTypes['omni_production_pallettes_enum_pk_columns_input'];
+  /** select columns of table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_select_column']: GraphQLTypes['omni_production_pallettes_enum_select_column'];
+  /** input type for updating data in table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_set_input']: GraphQLTypes['omni_production_pallettes_enum_set_input'];
+  /** update columns of table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_update_column']: GraphQLTypes['omni_production_pallettes_enum_update_column'];
+  /** columns and relationships of "omni.production_styles_enum" */
+  ['omni_production_styles_enum']: {
+    description?: string;
+    /** An array relationship */
+    production_materials: ModelTypes['omni_production_materials'][];
+    /** An aggregate relationship */
+    production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.production_styles_enum" */
+  ['omni_production_styles_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_production_styles_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_production_styles_enum'][];
+  };
+  /** aggregate fields of "omni.production_styles_enum" */
+  ['omni_production_styles_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_production_styles_enum_max_fields'];
+    min?: ModelTypes['omni_production_styles_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_styles_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_styles_enum_bool_exp']: GraphQLTypes['omni_production_styles_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_constraint']: GraphQLTypes['omni_production_styles_enum_constraint'];
+  ['omni_production_styles_enum_enum']: GraphQLTypes['omni_production_styles_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_production_styles_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_styles_enum_enum_comparison_exp']: GraphQLTypes['omni_production_styles_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_insert_input']: GraphQLTypes['omni_production_styles_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_production_styles_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_production_styles_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_production_styles_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_obj_rel_insert_input']: GraphQLTypes['omni_production_styles_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_on_conflict']: GraphQLTypes['omni_production_styles_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.production_styles_enum". */
+  ['omni_production_styles_enum_order_by']: GraphQLTypes['omni_production_styles_enum_order_by'];
+  /** primary key columns input for table: omni_production_styles_enum */
+  ['omni_production_styles_enum_pk_columns_input']: GraphQLTypes['omni_production_styles_enum_pk_columns_input'];
+  /** select columns of table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_select_column']: GraphQLTypes['omni_production_styles_enum_select_column'];
+  /** input type for updating data in table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_set_input']: GraphQLTypes['omni_production_styles_enum_set_input'];
+  /** update columns of table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_update_column']: GraphQLTypes['omni_production_styles_enum_update_column'];
+  /** columns and relationships of "omni.products" */
+  ['omni_products']: {
+    /** link to drive of asset files related to project */
+    asset_files?: string;
+    brand?: ModelTypes['uuid'];
+    /** An object relationship */
+    brandByBrand?: ModelTypes['omni_brands'];
+    brand_reward_share?: ModelTypes['numeric'];
+    collaborator_reward_share?: ModelTypes['numeric'];
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    discord_channel_id?: string;
+    /** An object relationship */
+    fullfiller?: ModelTypes['omni_fullfillers'];
+    fullfillment?: ModelTypes['uuid'];
+    id: ModelTypes['uuid'];
+    name?: string;
+    notion_id?: string;
+    price?: ModelTypes['uuid'];
+    /** An object relationship */
+    priceCurrencyByProductionCost?: ModelTypes['omni_price_currencies'];
+    /** An object relationship */
+    priceCurrencyByTotalSales?: ModelTypes['omni_price_currencies'];
+    /** An object relationship */
+    price_currency?: ModelTypes['omni_price_currencies'];
+    producer?: ModelTypes['uuid'];
+    /** An object relationship */
+    producerByProducer?: ModelTypes['omni_producers'];
+    /** An array relationship */
+    producers: ModelTypes['omni_producers'][];
+    /** An aggregate relationship */
+    producers_aggregate: ModelTypes['omni_producers_aggregate'];
+    /** An array relationship */
+    product_collaborators: ModelTypes['omni_product_collaborators'][];
+    /** An aggregate relationship */
+    product_collaborators_aggregate: ModelTypes['omni_product_collaborators_aggregate'];
+    /** An object relationship */
+    productionMaterialByProductionMaterial?: ModelTypes['omni_production_materials'];
+    production_cost?: ModelTypes['uuid'];
+    production_material?: ModelTypes['uuid'];
+    /** An array relationship */
+    production_materials: ModelTypes['omni_production_materials'][];
+    /** An aggregate relationship */
+    production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    /** An array relationship */
+    production_methods_products: ModelTypes['omni_production_methods_products'][];
+    /** An aggregate relationship */
+    production_methods_products_aggregate: ModelTypes['omni_production_methods_products_aggregate'];
+    /** An object relationship */
+    products_stage_enum?: ModelTypes['omni_products_stage_enum'];
+    /** could be null before drop */
+    quantity?: ModelTypes['bigint'];
+    sale_type?: ModelTypes['omni_sale_types_enum_enum'];
+    /** An object relationship */
+    sale_types_enum?: ModelTypes['omni_sale_types_enum'];
+    shop_description?: string;
+    shopify_id?: string;
+    stage?: ModelTypes['omni_products_stage_enum_enum'];
+    total_sales?: ModelTypes['uuid'];
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+    /** An array relationship */
+    wearable_files: ModelTypes['omni_wearable_files'][];
+    /** An aggregate relationship */
+    wearable_files_aggregate: ModelTypes['omni_wearable_files_aggregate'];
+  };
+  /** aggregated selection of "omni.products" */
+  ['omni_products_aggregate']: {
+    aggregate?: ModelTypes['omni_products_aggregate_fields'];
+    nodes: ModelTypes['omni_products'][];
+  };
+  /** aggregate fields of "omni.products" */
+  ['omni_products_aggregate_fields']: {
+    avg?: ModelTypes['omni_products_avg_fields'];
+    count: number;
+    max?: ModelTypes['omni_products_max_fields'];
+    min?: ModelTypes['omni_products_min_fields'];
+    stddev?: ModelTypes['omni_products_stddev_fields'];
+    stddev_pop?: ModelTypes['omni_products_stddev_pop_fields'];
+    stddev_samp?: ModelTypes['omni_products_stddev_samp_fields'];
+    sum?: ModelTypes['omni_products_sum_fields'];
+    var_pop?: ModelTypes['omni_products_var_pop_fields'];
+    var_samp?: ModelTypes['omni_products_var_samp_fields'];
+    variance?: ModelTypes['omni_products_variance_fields'];
+  };
+  /** order by aggregate values of table "omni.products" */
+  ['omni_products_aggregate_order_by']: GraphQLTypes['omni_products_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.products" */
+  ['omni_products_arr_rel_insert_input']: GraphQLTypes['omni_products_arr_rel_insert_input'];
+  /** aggregate avg on columns */
+  ['omni_products_avg_fields']: {
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by avg() on columns of table "omni.products" */
+  ['omni_products_avg_order_by']: GraphQLTypes['omni_products_avg_order_by'];
+  /** Boolean expression to filter rows from the table "omni.products". All fields are combined with a logical 'AND'. */
+  ['omni_products_bool_exp']: GraphQLTypes['omni_products_bool_exp'];
+  /** unique or primary key constraints on table "omni.products" */
+  ['omni_products_constraint']: GraphQLTypes['omni_products_constraint'];
+  /** input type for incrementing numeric columns in table "omni.products" */
+  ['omni_products_inc_input']: GraphQLTypes['omni_products_inc_input'];
+  /** input type for inserting data into table "omni.products" */
+  ['omni_products_insert_input']: GraphQLTypes['omni_products_insert_input'];
+  /** aggregate max on columns */
+  ['omni_products_max_fields']: {
+    /** link to drive of asset files related to project */
+    asset_files?: string;
+    brand?: ModelTypes['uuid'];
+    brand_reward_share?: ModelTypes['numeric'];
+    collaborator_reward_share?: ModelTypes['numeric'];
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    discord_channel_id?: string;
+    fullfillment?: ModelTypes['uuid'];
+    id?: ModelTypes['uuid'];
+    name?: string;
+    notion_id?: string;
+    price?: ModelTypes['uuid'];
+    producer?: ModelTypes['uuid'];
+    production_cost?: ModelTypes['uuid'];
+    production_material?: ModelTypes['uuid'];
+    /** could be null before drop */
+    quantity?: ModelTypes['bigint'];
+    shop_description?: string;
+    shopify_id?: string;
+    total_sales?: ModelTypes['uuid'];
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** order by max() on columns of table "omni.products" */
+  ['omni_products_max_order_by']: GraphQLTypes['omni_products_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_products_min_fields']: {
+    /** link to drive of asset files related to project */
+    asset_files?: string;
+    brand?: ModelTypes['uuid'];
+    brand_reward_share?: ModelTypes['numeric'];
+    collaborator_reward_share?: ModelTypes['numeric'];
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    discord_channel_id?: string;
+    fullfillment?: ModelTypes['uuid'];
+    id?: ModelTypes['uuid'];
+    name?: string;
+    notion_id?: string;
+    price?: ModelTypes['uuid'];
+    producer?: ModelTypes['uuid'];
+    production_cost?: ModelTypes['uuid'];
+    production_material?: ModelTypes['uuid'];
+    /** could be null before drop */
+    quantity?: ModelTypes['bigint'];
+    shop_description?: string;
+    shopify_id?: string;
+    total_sales?: ModelTypes['uuid'];
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** order by min() on columns of table "omni.products" */
+  ['omni_products_min_order_by']: GraphQLTypes['omni_products_min_order_by'];
+  /** response of any mutation on the table "omni.products" */
+  ['omni_products_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_products'][];
+  };
+  /** input type for inserting object relation for remote table "omni.products" */
+  ['omni_products_obj_rel_insert_input']: GraphQLTypes['omni_products_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.products" */
+  ['omni_products_on_conflict']: GraphQLTypes['omni_products_on_conflict'];
+  /** Ordering options when selecting data from "omni.products". */
+  ['omni_products_order_by']: GraphQLTypes['omni_products_order_by'];
+  /** primary key columns input for table: omni_products */
+  ['omni_products_pk_columns_input']: GraphQLTypes['omni_products_pk_columns_input'];
+  /** select columns of table "omni.products" */
+  ['omni_products_select_column']: GraphQLTypes['omni_products_select_column'];
+  /** input type for updating data in table "omni.products" */
+  ['omni_products_set_input']: GraphQLTypes['omni_products_set_input'];
+  /** columns and relationships of "omni.products_stage_enum" */
+  ['omni_products_stage_enum']: {
+    description?: string;
+    /** An array relationship */
+    products: ModelTypes['omni_products'][];
+    /** An aggregate relationship */
+    products_aggregate: ModelTypes['omni_products_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.products_stage_enum" */
+  ['omni_products_stage_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_products_stage_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_products_stage_enum'][];
+  };
+  /** aggregate fields of "omni.products_stage_enum" */
+  ['omni_products_stage_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_products_stage_enum_max_fields'];
+    min?: ModelTypes['omni_products_stage_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.products_stage_enum". All fields are combined with a logical 'AND'. */
+  ['omni_products_stage_enum_bool_exp']: GraphQLTypes['omni_products_stage_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_constraint']: GraphQLTypes['omni_products_stage_enum_constraint'];
+  ['omni_products_stage_enum_enum']: GraphQLTypes['omni_products_stage_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_products_stage_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_products_stage_enum_enum_comparison_exp']: GraphQLTypes['omni_products_stage_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_insert_input']: GraphQLTypes['omni_products_stage_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_products_stage_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_products_stage_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_products_stage_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_obj_rel_insert_input']: GraphQLTypes['omni_products_stage_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_on_conflict']: GraphQLTypes['omni_products_stage_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.products_stage_enum". */
+  ['omni_products_stage_enum_order_by']: GraphQLTypes['omni_products_stage_enum_order_by'];
+  /** primary key columns input for table: omni_products_stage_enum */
+  ['omni_products_stage_enum_pk_columns_input']: GraphQLTypes['omni_products_stage_enum_pk_columns_input'];
+  /** select columns of table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_select_column']: GraphQLTypes['omni_products_stage_enum_select_column'];
+  /** input type for updating data in table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_set_input']: GraphQLTypes['omni_products_stage_enum_set_input'];
+  /** update columns of table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_update_column']: GraphQLTypes['omni_products_stage_enum_update_column'];
+  /** aggregate stddev on columns */
+  ['omni_products_stddev_fields']: {
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by stddev() on columns of table "omni.products" */
+  ['omni_products_stddev_order_by']: GraphQLTypes['omni_products_stddev_order_by'];
+  /** aggregate stddev_pop on columns */
+  ['omni_products_stddev_pop_fields']: {
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by stddev_pop() on columns of table "omni.products" */
+  ['omni_products_stddev_pop_order_by']: GraphQLTypes['omni_products_stddev_pop_order_by'];
+  /** aggregate stddev_samp on columns */
+  ['omni_products_stddev_samp_fields']: {
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by stddev_samp() on columns of table "omni.products" */
+  ['omni_products_stddev_samp_order_by']: GraphQLTypes['omni_products_stddev_samp_order_by'];
+  /** aggregate sum on columns */
+  ['omni_products_sum_fields']: {
+    brand_reward_share?: ModelTypes['numeric'];
+    collaborator_reward_share?: ModelTypes['numeric'];
+    /** could be null before drop */
+    quantity?: ModelTypes['bigint'];
+  };
+  /** order by sum() on columns of table "omni.products" */
+  ['omni_products_sum_order_by']: GraphQLTypes['omni_products_sum_order_by'];
+  /** update columns of table "omni.products" */
+  ['omni_products_update_column']: GraphQLTypes['omni_products_update_column'];
+  /** aggregate var_pop on columns */
+  ['omni_products_var_pop_fields']: {
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by var_pop() on columns of table "omni.products" */
+  ['omni_products_var_pop_order_by']: GraphQLTypes['omni_products_var_pop_order_by'];
+  /** aggregate var_samp on columns */
+  ['omni_products_var_samp_fields']: {
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by var_samp() on columns of table "omni.products" */
+  ['omni_products_var_samp_order_by']: GraphQLTypes['omni_products_var_samp_order_by'];
+  /** aggregate variance on columns */
+  ['omni_products_variance_fields']: {
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by variance() on columns of table "omni.products" */
+  ['omni_products_variance_order_by']: GraphQLTypes['omni_products_variance_order_by'];
+  /** columns and relationships of "omni.sale_types_enum" */
+  ['omni_sale_types_enum']: {
+    description?: string;
+    /** An array relationship */
+    products: ModelTypes['omni_products'][];
+    /** An aggregate relationship */
+    products_aggregate: ModelTypes['omni_products_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.sale_types_enum" */
+  ['omni_sale_types_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_sale_types_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_sale_types_enum'][];
+  };
+  /** aggregate fields of "omni.sale_types_enum" */
+  ['omni_sale_types_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_sale_types_enum_max_fields'];
+    min?: ModelTypes['omni_sale_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.sale_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_sale_types_enum_bool_exp']: GraphQLTypes['omni_sale_types_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_constraint']: GraphQLTypes['omni_sale_types_enum_constraint'];
+  ['omni_sale_types_enum_enum']: GraphQLTypes['omni_sale_types_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_sale_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_sale_types_enum_enum_comparison_exp']: GraphQLTypes['omni_sale_types_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_insert_input']: GraphQLTypes['omni_sale_types_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_sale_types_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_sale_types_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_sale_types_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_obj_rel_insert_input']: GraphQLTypes['omni_sale_types_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_on_conflict']: GraphQLTypes['omni_sale_types_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.sale_types_enum". */
+  ['omni_sale_types_enum_order_by']: GraphQLTypes['omni_sale_types_enum_order_by'];
+  /** primary key columns input for table: omni_sale_types_enum */
+  ['omni_sale_types_enum_pk_columns_input']: GraphQLTypes['omni_sale_types_enum_pk_columns_input'];
+  /** select columns of table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_select_column']: GraphQLTypes['omni_sale_types_enum_select_column'];
+  /** input type for updating data in table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_set_input']: GraphQLTypes['omni_sale_types_enum_set_input'];
+  /** update columns of table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_update_column']: GraphQLTypes['omni_sale_types_enum_update_column'];
+  /** columns and relationships of "omni.timezones_enum" */
+  ['omni_timezones_enum']: {
+    description?: string;
+    /** An array relationship */
+    users: ModelTypes['omni_users'][];
+    /** An aggregate relationship */
+    users_aggregate: ModelTypes['omni_users_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.timezones_enum" */
+  ['omni_timezones_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_timezones_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_timezones_enum'][];
+  };
+  /** aggregate fields of "omni.timezones_enum" */
+  ['omni_timezones_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_timezones_enum_max_fields'];
+    min?: ModelTypes['omni_timezones_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.timezones_enum". All fields are combined with a logical 'AND'. */
+  ['omni_timezones_enum_bool_exp']: GraphQLTypes['omni_timezones_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.timezones_enum" */
+  ['omni_timezones_enum_constraint']: GraphQLTypes['omni_timezones_enum_constraint'];
+  ['omni_timezones_enum_enum']: GraphQLTypes['omni_timezones_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_timezones_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_timezones_enum_enum_comparison_exp']: GraphQLTypes['omni_timezones_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.timezones_enum" */
+  ['omni_timezones_enum_insert_input']: GraphQLTypes['omni_timezones_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_timezones_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_timezones_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.timezones_enum" */
+  ['omni_timezones_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_timezones_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.timezones_enum" */
+  ['omni_timezones_enum_obj_rel_insert_input']: GraphQLTypes['omni_timezones_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.timezones_enum" */
+  ['omni_timezones_enum_on_conflict']: GraphQLTypes['omni_timezones_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.timezones_enum". */
+  ['omni_timezones_enum_order_by']: GraphQLTypes['omni_timezones_enum_order_by'];
+  /** primary key columns input for table: omni_timezones_enum */
+  ['omni_timezones_enum_pk_columns_input']: GraphQLTypes['omni_timezones_enum_pk_columns_input'];
+  /** select columns of table "omni.timezones_enum" */
+  ['omni_timezones_enum_select_column']: GraphQLTypes['omni_timezones_enum_select_column'];
+  /** input type for updating data in table "omni.timezones_enum" */
+  ['omni_timezones_enum_set_input']: GraphQLTypes['omni_timezones_enum_set_input'];
+  /** update columns of table "omni.timezones_enum" */
+  ['omni_timezones_enum_update_column']: GraphQLTypes['omni_timezones_enum_update_column'];
+  /** columns and relationships of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum']: {
+    description?: string;
+    /** An array relationship */
+    user_skills: ModelTypes['omni_user_skills'][];
+    /** An aggregate relationship */
+    user_skills_aggregate: ModelTypes['omni_user_skills_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_user_skill_types_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_user_skill_types_enum'][];
+  };
+  /** aggregate fields of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_user_skill_types_enum_max_fields'];
+    min?: ModelTypes['omni_user_skill_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.user_skill_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_user_skill_types_enum_bool_exp']: GraphQLTypes['omni_user_skill_types_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_constraint']: GraphQLTypes['omni_user_skill_types_enum_constraint'];
+  ['omni_user_skill_types_enum_enum']: GraphQLTypes['omni_user_skill_types_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_user_skill_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_user_skill_types_enum_enum_comparison_exp']: GraphQLTypes['omni_user_skill_types_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_insert_input']: GraphQLTypes['omni_user_skill_types_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_user_skill_types_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_user_skill_types_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_user_skill_types_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_obj_rel_insert_input']: GraphQLTypes['omni_user_skill_types_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_on_conflict']: GraphQLTypes['omni_user_skill_types_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.user_skill_types_enum". */
+  ['omni_user_skill_types_enum_order_by']: GraphQLTypes['omni_user_skill_types_enum_order_by'];
+  /** primary key columns input for table: omni_user_skill_types_enum */
+  ['omni_user_skill_types_enum_pk_columns_input']: GraphQLTypes['omni_user_skill_types_enum_pk_columns_input'];
+  /** select columns of table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_select_column']: GraphQLTypes['omni_user_skill_types_enum_select_column'];
+  /** input type for updating data in table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_set_input']: GraphQLTypes['omni_user_skill_types_enum_set_input'];
+  /** update columns of table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_update_column']: GraphQLTypes['omni_user_skill_types_enum_update_column'];
+  /** columns and relationships of "omni.user_skills" */
+  ['omni_user_skills']: {
+    id: ModelTypes['uuid'];
+    skill?: ModelTypes['omni_user_skill_types_enum_enum'];
+    user?: ModelTypes['uuid'];
+    /** An object relationship */
+    userByUser?: ModelTypes['omni_users'];
+    /** An object relationship */
+    user_skill_types_enum?: ModelTypes['omni_user_skill_types_enum'];
+  };
+  /** aggregated selection of "omni.user_skills" */
+  ['omni_user_skills_aggregate']: {
+    aggregate?: ModelTypes['omni_user_skills_aggregate_fields'];
+    nodes: ModelTypes['omni_user_skills'][];
+  };
+  /** aggregate fields of "omni.user_skills" */
+  ['omni_user_skills_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_user_skills_max_fields'];
+    min?: ModelTypes['omni_user_skills_min_fields'];
+  };
+  /** order by aggregate values of table "omni.user_skills" */
+  ['omni_user_skills_aggregate_order_by']: GraphQLTypes['omni_user_skills_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.user_skills" */
+  ['omni_user_skills_arr_rel_insert_input']: GraphQLTypes['omni_user_skills_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.user_skills". All fields are combined with a logical 'AND'. */
+  ['omni_user_skills_bool_exp']: GraphQLTypes['omni_user_skills_bool_exp'];
+  /** unique or primary key constraints on table "omni.user_skills" */
+  ['omni_user_skills_constraint']: GraphQLTypes['omni_user_skills_constraint'];
+  /** input type for inserting data into table "omni.user_skills" */
+  ['omni_user_skills_insert_input']: GraphQLTypes['omni_user_skills_insert_input'];
+  /** aggregate max on columns */
+  ['omni_user_skills_max_fields']: {
+    id?: ModelTypes['uuid'];
+    user?: ModelTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.user_skills" */
+  ['omni_user_skills_max_order_by']: GraphQLTypes['omni_user_skills_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_user_skills_min_fields']: {
+    id?: ModelTypes['uuid'];
+    user?: ModelTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.user_skills" */
+  ['omni_user_skills_min_order_by']: GraphQLTypes['omni_user_skills_min_order_by'];
+  /** response of any mutation on the table "omni.user_skills" */
+  ['omni_user_skills_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_user_skills'][];
+  };
+  /** on_conflict condition type for table "omni.user_skills" */
+  ['omni_user_skills_on_conflict']: GraphQLTypes['omni_user_skills_on_conflict'];
+  /** Ordering options when selecting data from "omni.user_skills". */
+  ['omni_user_skills_order_by']: GraphQLTypes['omni_user_skills_order_by'];
+  /** primary key columns input for table: omni_user_skills */
+  ['omni_user_skills_pk_columns_input']: GraphQLTypes['omni_user_skills_pk_columns_input'];
+  /** select columns of table "omni.user_skills" */
+  ['omni_user_skills_select_column']: GraphQLTypes['omni_user_skills_select_column'];
+  /** input type for updating data in table "omni.user_skills" */
+  ['omni_user_skills_set_input']: GraphQLTypes['omni_user_skills_set_input'];
+  /** update columns of table "omni.user_skills" */
+  ['omni_user_skills_update_column']: GraphQLTypes['omni_user_skills_update_column'];
+  /** columns and relationships of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum']: {
+    description?: string;
+    /** An array relationship */
+    users: ModelTypes['omni_users'][];
+    /** An aggregate relationship */
+    users_aggregate: ModelTypes['omni_users_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_user_statuses_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_user_statuses_enum'][];
+  };
+  /** aggregate fields of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_user_statuses_enum_max_fields'];
+    min?: ModelTypes['omni_user_statuses_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.user_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_user_statuses_enum_bool_exp']: GraphQLTypes['omni_user_statuses_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_constraint']: GraphQLTypes['omni_user_statuses_enum_constraint'];
+  ['omni_user_statuses_enum_enum']: GraphQLTypes['omni_user_statuses_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_user_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_user_statuses_enum_enum_comparison_exp']: GraphQLTypes['omni_user_statuses_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_insert_input']: GraphQLTypes['omni_user_statuses_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_user_statuses_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_user_statuses_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_user_statuses_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_obj_rel_insert_input']: GraphQLTypes['omni_user_statuses_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_on_conflict']: GraphQLTypes['omni_user_statuses_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.user_statuses_enum". */
+  ['omni_user_statuses_enum_order_by']: GraphQLTypes['omni_user_statuses_enum_order_by'];
+  /** primary key columns input for table: omni_user_statuses_enum */
+  ['omni_user_statuses_enum_pk_columns_input']: GraphQLTypes['omni_user_statuses_enum_pk_columns_input'];
+  /** select columns of table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_select_column']: GraphQLTypes['omni_user_statuses_enum_select_column'];
+  /** input type for updating data in table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_set_input']: GraphQLTypes['omni_user_statuses_enum_set_input'];
+  /** update columns of table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_update_column']: GraphQLTypes['omni_user_statuses_enum_update_column'];
+  /** columns and relationships of "omni.users" */
+  ['omni_users']: {
+    /** An array relationship */
+    brand_users: ModelTypes['omni_brand_users'][];
+    /** An aggregate relationship */
+    brand_users_aggregate: ModelTypes['omni_brand_users_aggregate'];
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    discord_handle?: string;
+    discord_id?: string;
+    eth_address?: string;
+    github_handle?: string;
+    id: ModelTypes['uuid'];
+    name?: string;
+    /** An array relationship */
+    product_collaborators: ModelTypes['omni_product_collaborators'][];
+    /** An aggregate relationship */
+    product_collaborators_aggregate: ModelTypes['omni_product_collaborators_aggregate'];
+    status?: ModelTypes['omni_user_statuses_enum_enum'];
+    timezone?: ModelTypes['omni_timezones_enum_enum'];
+    /** An object relationship */
+    timezones_enum?: ModelTypes['omni_timezones_enum'];
+    twitter_handle?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+    /** An array relationship */
+    user_skills: ModelTypes['omni_user_skills'][];
+    /** An aggregate relationship */
+    user_skills_aggregate: ModelTypes['omni_user_skills_aggregate'];
+    /** An object relationship */
+    user_statuses_enum?: ModelTypes['omni_user_statuses_enum'];
+  };
+  /** aggregated selection of "omni.users" */
+  ['omni_users_aggregate']: {
+    aggregate?: ModelTypes['omni_users_aggregate_fields'];
+    nodes: ModelTypes['omni_users'][];
+  };
+  /** aggregate fields of "omni.users" */
+  ['omni_users_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_users_max_fields'];
+    min?: ModelTypes['omni_users_min_fields'];
+  };
+  /** order by aggregate values of table "omni.users" */
+  ['omni_users_aggregate_order_by']: GraphQLTypes['omni_users_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.users" */
+  ['omni_users_arr_rel_insert_input']: GraphQLTypes['omni_users_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.users". All fields are combined with a logical 'AND'. */
+  ['omni_users_bool_exp']: GraphQLTypes['omni_users_bool_exp'];
+  /** unique or primary key constraints on table "omni.users" */
+  ['omni_users_constraint']: GraphQLTypes['omni_users_constraint'];
+  /** input type for inserting data into table "omni.users" */
+  ['omni_users_insert_input']: GraphQLTypes['omni_users_insert_input'];
+  /** aggregate max on columns */
+  ['omni_users_max_fields']: {
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    discord_handle?: string;
+    discord_id?: string;
+    eth_address?: string;
+    github_handle?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    twitter_handle?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** order by max() on columns of table "omni.users" */
+  ['omni_users_max_order_by']: GraphQLTypes['omni_users_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_users_min_fields']: {
+    /** on create */
+    created_at?: ModelTypes['timestamptz'];
+    discord_handle?: string;
+    discord_id?: string;
+    eth_address?: string;
+    github_handle?: string;
+    id?: ModelTypes['uuid'];
+    name?: string;
+    twitter_handle?: string;
+    /** on touch */
+    updated_at?: ModelTypes['timestamptz'];
+  };
+  /** order by min() on columns of table "omni.users" */
+  ['omni_users_min_order_by']: GraphQLTypes['omni_users_min_order_by'];
+  /** response of any mutation on the table "omni.users" */
+  ['omni_users_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_users'][];
+  };
+  /** input type for inserting object relation for remote table "omni.users" */
+  ['omni_users_obj_rel_insert_input']: GraphQLTypes['omni_users_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.users" */
+  ['omni_users_on_conflict']: GraphQLTypes['omni_users_on_conflict'];
+  /** Ordering options when selecting data from "omni.users". */
+  ['omni_users_order_by']: GraphQLTypes['omni_users_order_by'];
+  /** primary key columns input for table: omni_users */
+  ['omni_users_pk_columns_input']: GraphQLTypes['omni_users_pk_columns_input'];
+  /** select columns of table "omni.users" */
+  ['omni_users_select_column']: GraphQLTypes['omni_users_select_column'];
+  /** input type for updating data in table "omni.users" */
+  ['omni_users_set_input']: GraphQLTypes['omni_users_set_input'];
+  /** update columns of table "omni.users" */
+  ['omni_users_update_column']: GraphQLTypes['omni_users_update_column'];
+  /** columns and relationships of "omni.wearable_files" */
+  ['omni_wearable_files']: {
+    file?: string;
+    id: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+    /** An object relationship */
+    productByProduct?: ModelTypes['omni_products'];
+    type?: ModelTypes['omni_wearable_types_enum_enum'];
+    /** An object relationship */
+    wearable_types_enum?: ModelTypes['omni_wearable_types_enum'];
+  };
+  /** aggregated selection of "omni.wearable_files" */
+  ['omni_wearable_files_aggregate']: {
+    aggregate?: ModelTypes['omni_wearable_files_aggregate_fields'];
+    nodes: ModelTypes['omni_wearable_files'][];
+  };
+  /** aggregate fields of "omni.wearable_files" */
+  ['omni_wearable_files_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_wearable_files_max_fields'];
+    min?: ModelTypes['omni_wearable_files_min_fields'];
+  };
+  /** order by aggregate values of table "omni.wearable_files" */
+  ['omni_wearable_files_aggregate_order_by']: GraphQLTypes['omni_wearable_files_aggregate_order_by'];
+  /** input type for inserting array relation for remote table "omni.wearable_files" */
+  ['omni_wearable_files_arr_rel_insert_input']: GraphQLTypes['omni_wearable_files_arr_rel_insert_input'];
+  /** Boolean expression to filter rows from the table "omni.wearable_files". All fields are combined with a logical 'AND'. */
+  ['omni_wearable_files_bool_exp']: GraphQLTypes['omni_wearable_files_bool_exp'];
+  /** unique or primary key constraints on table "omni.wearable_files" */
+  ['omni_wearable_files_constraint']: GraphQLTypes['omni_wearable_files_constraint'];
+  /** input type for inserting data into table "omni.wearable_files" */
+  ['omni_wearable_files_insert_input']: GraphQLTypes['omni_wearable_files_insert_input'];
+  /** aggregate max on columns */
+  ['omni_wearable_files_max_fields']: {
+    file?: string;
+    id?: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.wearable_files" */
+  ['omni_wearable_files_max_order_by']: GraphQLTypes['omni_wearable_files_max_order_by'];
+  /** aggregate min on columns */
+  ['omni_wearable_files_min_fields']: {
+    file?: string;
+    id?: ModelTypes['uuid'];
+    product?: ModelTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.wearable_files" */
+  ['omni_wearable_files_min_order_by']: GraphQLTypes['omni_wearable_files_min_order_by'];
+  /** response of any mutation on the table "omni.wearable_files" */
+  ['omni_wearable_files_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_wearable_files'][];
+  };
+  /** on_conflict condition type for table "omni.wearable_files" */
+  ['omni_wearable_files_on_conflict']: GraphQLTypes['omni_wearable_files_on_conflict'];
+  /** Ordering options when selecting data from "omni.wearable_files". */
+  ['omni_wearable_files_order_by']: GraphQLTypes['omni_wearable_files_order_by'];
+  /** primary key columns input for table: omni_wearable_files */
+  ['omni_wearable_files_pk_columns_input']: GraphQLTypes['omni_wearable_files_pk_columns_input'];
+  /** select columns of table "omni.wearable_files" */
+  ['omni_wearable_files_select_column']: GraphQLTypes['omni_wearable_files_select_column'];
+  /** input type for updating data in table "omni.wearable_files" */
+  ['omni_wearable_files_set_input']: GraphQLTypes['omni_wearable_files_set_input'];
+  /** update columns of table "omni.wearable_files" */
+  ['omni_wearable_files_update_column']: GraphQLTypes['omni_wearable_files_update_column'];
+  /** columns and relationships of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum']: {
+    description?: string;
+    value: string;
+    /** An array relationship */
+    wearable_files: ModelTypes['omni_wearable_files'][];
+    /** An aggregate relationship */
+    wearable_files_aggregate: ModelTypes['omni_wearable_files_aggregate'];
+  };
+  /** aggregated selection of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_aggregate']: {
+    aggregate?: ModelTypes['omni_wearable_types_enum_aggregate_fields'];
+    nodes: ModelTypes['omni_wearable_types_enum'][];
+  };
+  /** aggregate fields of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_aggregate_fields']: {
+    count: number;
+    max?: ModelTypes['omni_wearable_types_enum_max_fields'];
+    min?: ModelTypes['omni_wearable_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.wearable_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_wearable_types_enum_bool_exp']: GraphQLTypes['omni_wearable_types_enum_bool_exp'];
+  /** unique or primary key constraints on table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_constraint']: GraphQLTypes['omni_wearable_types_enum_constraint'];
+  ['omni_wearable_types_enum_enum']: GraphQLTypes['omni_wearable_types_enum_enum'];
+  /** Boolean expression to compare columns of type "omni_wearable_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_wearable_types_enum_enum_comparison_exp']: GraphQLTypes['omni_wearable_types_enum_enum_comparison_exp'];
+  /** input type for inserting data into table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_insert_input']: GraphQLTypes['omni_wearable_types_enum_insert_input'];
+  /** aggregate max on columns */
+  ['omni_wearable_types_enum_max_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_wearable_types_enum_min_fields']: {
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_mutation_response']: {
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: ModelTypes['omni_wearable_types_enum'][];
+  };
+  /** input type for inserting object relation for remote table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_obj_rel_insert_input']: GraphQLTypes['omni_wearable_types_enum_obj_rel_insert_input'];
+  /** on_conflict condition type for table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_on_conflict']: GraphQLTypes['omni_wearable_types_enum_on_conflict'];
+  /** Ordering options when selecting data from "omni.wearable_types_enum". */
+  ['omni_wearable_types_enum_order_by']: GraphQLTypes['omni_wearable_types_enum_order_by'];
+  /** primary key columns input for table: omni_wearable_types_enum */
+  ['omni_wearable_types_enum_pk_columns_input']: GraphQLTypes['omni_wearable_types_enum_pk_columns_input'];
+  /** select columns of table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_select_column']: GraphQLTypes['omni_wearable_types_enum_select_column'];
+  /** input type for updating data in table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_set_input']: GraphQLTypes['omni_wearable_types_enum_set_input'];
+  /** update columns of table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_update_column']: GraphQLTypes['omni_wearable_types_enum_update_column'];
   /** column ordering options */
   ['order_by']: GraphQLTypes['order_by'];
   ['query_root']: {
@@ -3147,12 +14892,192 @@ export type ModelTypes = {
     contributions_aggregate: ModelTypes['contributions_aggregate'];
     /** fetch data from the table: "contributions" using primary key columns */
     contributions_by_pk?: ModelTypes['contributions'];
-    /** fetch data from the table: "contributors" */
+    /** An array relationship */
     contributors: ModelTypes['contributors'][];
     /** An aggregate relationship */
     contributors_aggregate: ModelTypes['contributors_aggregate'];
     /** fetch data from the table: "contributors" using primary key columns */
     contributors_by_pk?: ModelTypes['contributors'];
+    /** fetch data from the table: "omni.brand_statuses_enum" */
+    omni_brand_statuses_enum: ModelTypes['omni_brand_statuses_enum'][];
+    /** fetch aggregated fields from the table: "omni.brand_statuses_enum" */
+    omni_brand_statuses_enum_aggregate: ModelTypes['omni_brand_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.brand_statuses_enum" using primary key columns */
+    omni_brand_statuses_enum_by_pk?: ModelTypes['omni_brand_statuses_enum'];
+    /** fetch data from the table: "omni.brand_users" */
+    omni_brand_users: ModelTypes['omni_brand_users'][];
+    /** fetch aggregated fields from the table: "omni.brand_users" */
+    omni_brand_users_aggregate: ModelTypes['omni_brand_users_aggregate'];
+    /** fetch data from the table: "omni.brand_users" using primary key columns */
+    omni_brand_users_by_pk?: ModelTypes['omni_brand_users'];
+    /** fetch data from the table: "omni.brands" */
+    omni_brands: ModelTypes['omni_brands'][];
+    /** fetch aggregated fields from the table: "omni.brands" */
+    omni_brands_aggregate: ModelTypes['omni_brands_aggregate'];
+    /** fetch data from the table: "omni.brands" using primary key columns */
+    omni_brands_by_pk?: ModelTypes['omni_brands'];
+    /** fetch data from the table: "omni.collaborator_types_enum" */
+    omni_collaborator_types_enum: ModelTypes['omni_collaborator_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.collaborator_types_enum" */
+    omni_collaborator_types_enum_aggregate: ModelTypes['omni_collaborator_types_enum_aggregate'];
+    /** fetch data from the table: "omni.collaborator_types_enum" using primary key columns */
+    omni_collaborator_types_enum_by_pk?: ModelTypes['omni_collaborator_types_enum'];
+    /** fetch data from the table: "omni.fullfillers" */
+    omni_fullfillers: ModelTypes['omni_fullfillers'][];
+    /** fetch aggregated fields from the table: "omni.fullfillers" */
+    omni_fullfillers_aggregate: ModelTypes['omni_fullfillers_aggregate'];
+    /** fetch data from the table: "omni.fullfillers" using primary key columns */
+    omni_fullfillers_by_pk?: ModelTypes['omni_fullfillers'];
+    /** fetch data from the table: "omni.price_currencies" */
+    omni_price_currencies: ModelTypes['omni_price_currencies'][];
+    /** fetch aggregated fields from the table: "omni.price_currencies" */
+    omni_price_currencies_aggregate: ModelTypes['omni_price_currencies_aggregate'];
+    /** fetch data from the table: "omni.price_currencies" using primary key columns */
+    omni_price_currencies_by_pk?: ModelTypes['omni_price_currencies'];
+    /** fetch data from the table: "omni.print_techs_enum" */
+    omni_print_techs_enum: ModelTypes['omni_print_techs_enum'][];
+    /** fetch aggregated fields from the table: "omni.print_techs_enum" */
+    omni_print_techs_enum_aggregate: ModelTypes['omni_print_techs_enum_aggregate'];
+    /** fetch data from the table: "omni.print_techs_enum" using primary key columns */
+    omni_print_techs_enum_by_pk?: ModelTypes['omni_print_techs_enum'];
+    /** fetch data from the table: "omni.producer_statuses_enum" */
+    omni_producer_statuses_enum: ModelTypes['omni_producer_statuses_enum'][];
+    /** fetch aggregated fields from the table: "omni.producer_statuses_enum" */
+    omni_producer_statuses_enum_aggregate: ModelTypes['omni_producer_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.producer_statuses_enum" using primary key columns */
+    omni_producer_statuses_enum_by_pk?: ModelTypes['omni_producer_statuses_enum'];
+    /** fetch data from the table: "omni.producers" */
+    omni_producers: ModelTypes['omni_producers'][];
+    /** fetch aggregated fields from the table: "omni.producers" */
+    omni_producers_aggregate: ModelTypes['omni_producers_aggregate'];
+    /** fetch data from the table: "omni.producers" using primary key columns */
+    omni_producers_by_pk?: ModelTypes['omni_producers'];
+    /** fetch data from the table: "omni.product_collaborators" */
+    omni_product_collaborators: ModelTypes['omni_product_collaborators'][];
+    /** fetch aggregated fields from the table: "omni.product_collaborators" */
+    omni_product_collaborators_aggregate: ModelTypes['omni_product_collaborators_aggregate'];
+    /** fetch data from the table: "omni.product_collaborators" using primary key columns */
+    omni_product_collaborators_by_pk?: ModelTypes['omni_product_collaborators'];
+    /** fetch data from the table: "omni.product_types_enum" */
+    omni_product_types_enum: ModelTypes['omni_product_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.product_types_enum" */
+    omni_product_types_enum_aggregate: ModelTypes['omni_product_types_enum_aggregate'];
+    /** fetch data from the table: "omni.product_types_enum" using primary key columns */
+    omni_product_types_enum_by_pk?: ModelTypes['omni_product_types_enum'];
+    /** fetch data from the table: "omni.production_genders_enum" */
+    omni_production_genders_enum: ModelTypes['omni_production_genders_enum'][];
+    /** fetch aggregated fields from the table: "omni.production_genders_enum" */
+    omni_production_genders_enum_aggregate: ModelTypes['omni_production_genders_enum_aggregate'];
+    /** fetch data from the table: "omni.production_genders_enum" using primary key columns */
+    omni_production_genders_enum_by_pk?: ModelTypes['omni_production_genders_enum'];
+    /** fetch data from the table: "omni.production_materials" */
+    omni_production_materials: ModelTypes['omni_production_materials'][];
+    /** fetch aggregated fields from the table: "omni.production_materials" */
+    omni_production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    /** fetch data from the table: "omni.production_materials" using primary key columns */
+    omni_production_materials_by_pk?: ModelTypes['omni_production_materials'];
+    /** fetch data from the table: "omni.production_materials_producers" */
+    omni_production_materials_producers: ModelTypes['omni_production_materials_producers'][];
+    /** fetch aggregated fields from the table: "omni.production_materials_producers" */
+    omni_production_materials_producers_aggregate: ModelTypes['omni_production_materials_producers_aggregate'];
+    /** fetch data from the table: "omni.production_materials_producers" using primary key columns */
+    omni_production_materials_producers_by_pk?: ModelTypes['omni_production_materials_producers'];
+    /** fetch data from the table: "omni.production_materials_ratings_enum" */
+    omni_production_materials_ratings_enum: ModelTypes['omni_production_materials_ratings_enum'][];
+    /** fetch aggregated fields from the table: "omni.production_materials_ratings_enum" */
+    omni_production_materials_ratings_enum_aggregate: ModelTypes['omni_production_materials_ratings_enum_aggregate'];
+    /** fetch data from the table: "omni.production_materials_ratings_enum" using primary key columns */
+    omni_production_materials_ratings_enum_by_pk?: ModelTypes['omni_production_materials_ratings_enum'];
+    /** fetch data from the table: "omni.production_methods" */
+    omni_production_methods: ModelTypes['omni_production_methods'][];
+    /** fetch aggregated fields from the table: "omni.production_methods" */
+    omni_production_methods_aggregate: ModelTypes['omni_production_methods_aggregate'];
+    /** fetch data from the table: "omni.production_methods" using primary key columns */
+    omni_production_methods_by_pk?: ModelTypes['omni_production_methods'];
+    /** fetch data from the table: "omni.production_methods_producers" */
+    omni_production_methods_producers: ModelTypes['omni_production_methods_producers'][];
+    /** fetch aggregated fields from the table: "omni.production_methods_producers" */
+    omni_production_methods_producers_aggregate: ModelTypes['omni_production_methods_producers_aggregate'];
+    /** fetch data from the table: "omni.production_methods_producers" using primary key columns */
+    omni_production_methods_producers_by_pk?: ModelTypes['omni_production_methods_producers'];
+    /** fetch data from the table: "omni.production_methods_products" */
+    omni_production_methods_products: ModelTypes['omni_production_methods_products'][];
+    /** fetch aggregated fields from the table: "omni.production_methods_products" */
+    omni_production_methods_products_aggregate: ModelTypes['omni_production_methods_products_aggregate'];
+    /** fetch data from the table: "omni.production_methods_products" using primary key columns */
+    omni_production_methods_products_by_pk?: ModelTypes['omni_production_methods_products'];
+    /** fetch data from the table: "omni.production_pallettes_enum" */
+    omni_production_pallettes_enum: ModelTypes['omni_production_pallettes_enum'][];
+    /** fetch aggregated fields from the table: "omni.production_pallettes_enum" */
+    omni_production_pallettes_enum_aggregate: ModelTypes['omni_production_pallettes_enum_aggregate'];
+    /** fetch data from the table: "omni.production_pallettes_enum" using primary key columns */
+    omni_production_pallettes_enum_by_pk?: ModelTypes['omni_production_pallettes_enum'];
+    /** fetch data from the table: "omni.production_styles_enum" */
+    omni_production_styles_enum: ModelTypes['omni_production_styles_enum'][];
+    /** fetch aggregated fields from the table: "omni.production_styles_enum" */
+    omni_production_styles_enum_aggregate: ModelTypes['omni_production_styles_enum_aggregate'];
+    /** fetch data from the table: "omni.production_styles_enum" using primary key columns */
+    omni_production_styles_enum_by_pk?: ModelTypes['omni_production_styles_enum'];
+    /** fetch data from the table: "omni.products" */
+    omni_products: ModelTypes['omni_products'][];
+    /** fetch aggregated fields from the table: "omni.products" */
+    omni_products_aggregate: ModelTypes['omni_products_aggregate'];
+    /** fetch data from the table: "omni.products" using primary key columns */
+    omni_products_by_pk?: ModelTypes['omni_products'];
+    /** fetch data from the table: "omni.products_stage_enum" */
+    omni_products_stage_enum: ModelTypes['omni_products_stage_enum'][];
+    /** fetch aggregated fields from the table: "omni.products_stage_enum" */
+    omni_products_stage_enum_aggregate: ModelTypes['omni_products_stage_enum_aggregate'];
+    /** fetch data from the table: "omni.products_stage_enum" using primary key columns */
+    omni_products_stage_enum_by_pk?: ModelTypes['omni_products_stage_enum'];
+    /** fetch data from the table: "omni.sale_types_enum" */
+    omni_sale_types_enum: ModelTypes['omni_sale_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.sale_types_enum" */
+    omni_sale_types_enum_aggregate: ModelTypes['omni_sale_types_enum_aggregate'];
+    /** fetch data from the table: "omni.sale_types_enum" using primary key columns */
+    omni_sale_types_enum_by_pk?: ModelTypes['omni_sale_types_enum'];
+    /** fetch data from the table: "omni.timezones_enum" */
+    omni_timezones_enum: ModelTypes['omni_timezones_enum'][];
+    /** fetch aggregated fields from the table: "omni.timezones_enum" */
+    omni_timezones_enum_aggregate: ModelTypes['omni_timezones_enum_aggregate'];
+    /** fetch data from the table: "omni.timezones_enum" using primary key columns */
+    omni_timezones_enum_by_pk?: ModelTypes['omni_timezones_enum'];
+    /** fetch data from the table: "omni.user_skill_types_enum" */
+    omni_user_skill_types_enum: ModelTypes['omni_user_skill_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.user_skill_types_enum" */
+    omni_user_skill_types_enum_aggregate: ModelTypes['omni_user_skill_types_enum_aggregate'];
+    /** fetch data from the table: "omni.user_skill_types_enum" using primary key columns */
+    omni_user_skill_types_enum_by_pk?: ModelTypes['omni_user_skill_types_enum'];
+    /** fetch data from the table: "omni.user_skills" */
+    omni_user_skills: ModelTypes['omni_user_skills'][];
+    /** fetch aggregated fields from the table: "omni.user_skills" */
+    omni_user_skills_aggregate: ModelTypes['omni_user_skills_aggregate'];
+    /** fetch data from the table: "omni.user_skills" using primary key columns */
+    omni_user_skills_by_pk?: ModelTypes['omni_user_skills'];
+    /** fetch data from the table: "omni.user_statuses_enum" */
+    omni_user_statuses_enum: ModelTypes['omni_user_statuses_enum'][];
+    /** fetch aggregated fields from the table: "omni.user_statuses_enum" */
+    omni_user_statuses_enum_aggregate: ModelTypes['omni_user_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.user_statuses_enum" using primary key columns */
+    omni_user_statuses_enum_by_pk?: ModelTypes['omni_user_statuses_enum'];
+    /** fetch data from the table: "omni.users" */
+    omni_users: ModelTypes['omni_users'][];
+    /** fetch aggregated fields from the table: "omni.users" */
+    omni_users_aggregate: ModelTypes['omni_users_aggregate'];
+    /** fetch data from the table: "omni.users" using primary key columns */
+    omni_users_by_pk?: ModelTypes['omni_users'];
+    /** fetch data from the table: "omni.wearable_files" */
+    omni_wearable_files: ModelTypes['omni_wearable_files'][];
+    /** fetch aggregated fields from the table: "omni.wearable_files" */
+    omni_wearable_files_aggregate: ModelTypes['omni_wearable_files_aggregate'];
+    /** fetch data from the table: "omni.wearable_files" using primary key columns */
+    omni_wearable_files_by_pk?: ModelTypes['omni_wearable_files'];
+    /** fetch data from the table: "omni.wearable_types_enum" */
+    omni_wearable_types_enum: ModelTypes['omni_wearable_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.wearable_types_enum" */
+    omni_wearable_types_enum_aggregate: ModelTypes['omni_wearable_types_enum_aggregate'];
+    /** fetch data from the table: "omni.wearable_types_enum" using primary key columns */
+    omni_wearable_types_enum_by_pk?: ModelTypes['omni_wearable_types_enum'];
     /** fetch data from the table: "robot.order" */
     robot_order: ModelTypes['robot_order'][];
     /** fetch aggregated fields from the table: "robot.order" */
@@ -3190,10 +15115,7 @@ export type ModelTypes = {
     /** fetch data from the table: "users" using primary key columns */
     users_by_pk?: ModelTypes['users'];
   };
-  /** Orders for ROBOT rewards
-
-
-columns and relationships of "robot.order" */
+  /** Orders for ROBOT rewards */
   ['robot_order']: {
     buyer_address: string;
     buyer_reward: ModelTypes['numeric'];
@@ -3317,10 +15239,7 @@ columns and relationships of "robot.order" */
     dollars_spent?: number;
     season?: number;
   };
-  /** Products for ROBOT designer rewards
-
-
-columns and relationships of "robot.product" */
+  /** Products for ROBOT designer rewards */
   ['robot_product']: {
     /** An array relationship */
     designers: ModelTypes['robot_product_designer'][];
@@ -3368,10 +15287,7 @@ columns and relationships of "robot.product" */
   ['robot_product_delete_elem_input']: GraphQLTypes['robot_product_delete_elem_input'];
   /** delete key/value pair or string element. key/value pairs are matched based on their key value */
   ['robot_product_delete_key_input']: GraphQLTypes['robot_product_delete_key_input'];
-  /** Designer receiving ROBOT rewards
-
-
-columns and relationships of "robot.product_designer" */
+  /** Designer receiving ROBOT rewards */
   ['robot_product_designer']: {
     contribution_share: ModelTypes['numeric'];
     designer_name?: string;
@@ -3699,12 +15615,192 @@ columns and relationships of "robot.product_designer" */
     contributions_aggregate: ModelTypes['contributions_aggregate'];
     /** fetch data from the table: "contributions" using primary key columns */
     contributions_by_pk?: ModelTypes['contributions'];
-    /** fetch data from the table: "contributors" */
+    /** An array relationship */
     contributors: ModelTypes['contributors'][];
     /** An aggregate relationship */
     contributors_aggregate: ModelTypes['contributors_aggregate'];
     /** fetch data from the table: "contributors" using primary key columns */
     contributors_by_pk?: ModelTypes['contributors'];
+    /** fetch data from the table: "omni.brand_statuses_enum" */
+    omni_brand_statuses_enum: ModelTypes['omni_brand_statuses_enum'][];
+    /** fetch aggregated fields from the table: "omni.brand_statuses_enum" */
+    omni_brand_statuses_enum_aggregate: ModelTypes['omni_brand_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.brand_statuses_enum" using primary key columns */
+    omni_brand_statuses_enum_by_pk?: ModelTypes['omni_brand_statuses_enum'];
+    /** fetch data from the table: "omni.brand_users" */
+    omni_brand_users: ModelTypes['omni_brand_users'][];
+    /** fetch aggregated fields from the table: "omni.brand_users" */
+    omni_brand_users_aggregate: ModelTypes['omni_brand_users_aggregate'];
+    /** fetch data from the table: "omni.brand_users" using primary key columns */
+    omni_brand_users_by_pk?: ModelTypes['omni_brand_users'];
+    /** fetch data from the table: "omni.brands" */
+    omni_brands: ModelTypes['omni_brands'][];
+    /** fetch aggregated fields from the table: "omni.brands" */
+    omni_brands_aggregate: ModelTypes['omni_brands_aggregate'];
+    /** fetch data from the table: "omni.brands" using primary key columns */
+    omni_brands_by_pk?: ModelTypes['omni_brands'];
+    /** fetch data from the table: "omni.collaborator_types_enum" */
+    omni_collaborator_types_enum: ModelTypes['omni_collaborator_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.collaborator_types_enum" */
+    omni_collaborator_types_enum_aggregate: ModelTypes['omni_collaborator_types_enum_aggregate'];
+    /** fetch data from the table: "omni.collaborator_types_enum" using primary key columns */
+    omni_collaborator_types_enum_by_pk?: ModelTypes['omni_collaborator_types_enum'];
+    /** fetch data from the table: "omni.fullfillers" */
+    omni_fullfillers: ModelTypes['omni_fullfillers'][];
+    /** fetch aggregated fields from the table: "omni.fullfillers" */
+    omni_fullfillers_aggregate: ModelTypes['omni_fullfillers_aggregate'];
+    /** fetch data from the table: "omni.fullfillers" using primary key columns */
+    omni_fullfillers_by_pk?: ModelTypes['omni_fullfillers'];
+    /** fetch data from the table: "omni.price_currencies" */
+    omni_price_currencies: ModelTypes['omni_price_currencies'][];
+    /** fetch aggregated fields from the table: "omni.price_currencies" */
+    omni_price_currencies_aggregate: ModelTypes['omni_price_currencies_aggregate'];
+    /** fetch data from the table: "omni.price_currencies" using primary key columns */
+    omni_price_currencies_by_pk?: ModelTypes['omni_price_currencies'];
+    /** fetch data from the table: "omni.print_techs_enum" */
+    omni_print_techs_enum: ModelTypes['omni_print_techs_enum'][];
+    /** fetch aggregated fields from the table: "omni.print_techs_enum" */
+    omni_print_techs_enum_aggregate: ModelTypes['omni_print_techs_enum_aggregate'];
+    /** fetch data from the table: "omni.print_techs_enum" using primary key columns */
+    omni_print_techs_enum_by_pk?: ModelTypes['omni_print_techs_enum'];
+    /** fetch data from the table: "omni.producer_statuses_enum" */
+    omni_producer_statuses_enum: ModelTypes['omni_producer_statuses_enum'][];
+    /** fetch aggregated fields from the table: "omni.producer_statuses_enum" */
+    omni_producer_statuses_enum_aggregate: ModelTypes['omni_producer_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.producer_statuses_enum" using primary key columns */
+    omni_producer_statuses_enum_by_pk?: ModelTypes['omni_producer_statuses_enum'];
+    /** fetch data from the table: "omni.producers" */
+    omni_producers: ModelTypes['omni_producers'][];
+    /** fetch aggregated fields from the table: "omni.producers" */
+    omni_producers_aggregate: ModelTypes['omni_producers_aggregate'];
+    /** fetch data from the table: "omni.producers" using primary key columns */
+    omni_producers_by_pk?: ModelTypes['omni_producers'];
+    /** fetch data from the table: "omni.product_collaborators" */
+    omni_product_collaborators: ModelTypes['omni_product_collaborators'][];
+    /** fetch aggregated fields from the table: "omni.product_collaborators" */
+    omni_product_collaborators_aggregate: ModelTypes['omni_product_collaborators_aggregate'];
+    /** fetch data from the table: "omni.product_collaborators" using primary key columns */
+    omni_product_collaborators_by_pk?: ModelTypes['omni_product_collaborators'];
+    /** fetch data from the table: "omni.product_types_enum" */
+    omni_product_types_enum: ModelTypes['omni_product_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.product_types_enum" */
+    omni_product_types_enum_aggregate: ModelTypes['omni_product_types_enum_aggregate'];
+    /** fetch data from the table: "omni.product_types_enum" using primary key columns */
+    omni_product_types_enum_by_pk?: ModelTypes['omni_product_types_enum'];
+    /** fetch data from the table: "omni.production_genders_enum" */
+    omni_production_genders_enum: ModelTypes['omni_production_genders_enum'][];
+    /** fetch aggregated fields from the table: "omni.production_genders_enum" */
+    omni_production_genders_enum_aggregate: ModelTypes['omni_production_genders_enum_aggregate'];
+    /** fetch data from the table: "omni.production_genders_enum" using primary key columns */
+    omni_production_genders_enum_by_pk?: ModelTypes['omni_production_genders_enum'];
+    /** fetch data from the table: "omni.production_materials" */
+    omni_production_materials: ModelTypes['omni_production_materials'][];
+    /** fetch aggregated fields from the table: "omni.production_materials" */
+    omni_production_materials_aggregate: ModelTypes['omni_production_materials_aggregate'];
+    /** fetch data from the table: "omni.production_materials" using primary key columns */
+    omni_production_materials_by_pk?: ModelTypes['omni_production_materials'];
+    /** fetch data from the table: "omni.production_materials_producers" */
+    omni_production_materials_producers: ModelTypes['omni_production_materials_producers'][];
+    /** fetch aggregated fields from the table: "omni.production_materials_producers" */
+    omni_production_materials_producers_aggregate: ModelTypes['omni_production_materials_producers_aggregate'];
+    /** fetch data from the table: "omni.production_materials_producers" using primary key columns */
+    omni_production_materials_producers_by_pk?: ModelTypes['omni_production_materials_producers'];
+    /** fetch data from the table: "omni.production_materials_ratings_enum" */
+    omni_production_materials_ratings_enum: ModelTypes['omni_production_materials_ratings_enum'][];
+    /** fetch aggregated fields from the table: "omni.production_materials_ratings_enum" */
+    omni_production_materials_ratings_enum_aggregate: ModelTypes['omni_production_materials_ratings_enum_aggregate'];
+    /** fetch data from the table: "omni.production_materials_ratings_enum" using primary key columns */
+    omni_production_materials_ratings_enum_by_pk?: ModelTypes['omni_production_materials_ratings_enum'];
+    /** fetch data from the table: "omni.production_methods" */
+    omni_production_methods: ModelTypes['omni_production_methods'][];
+    /** fetch aggregated fields from the table: "omni.production_methods" */
+    omni_production_methods_aggregate: ModelTypes['omni_production_methods_aggregate'];
+    /** fetch data from the table: "omni.production_methods" using primary key columns */
+    omni_production_methods_by_pk?: ModelTypes['omni_production_methods'];
+    /** fetch data from the table: "omni.production_methods_producers" */
+    omni_production_methods_producers: ModelTypes['omni_production_methods_producers'][];
+    /** fetch aggregated fields from the table: "omni.production_methods_producers" */
+    omni_production_methods_producers_aggregate: ModelTypes['omni_production_methods_producers_aggregate'];
+    /** fetch data from the table: "omni.production_methods_producers" using primary key columns */
+    omni_production_methods_producers_by_pk?: ModelTypes['omni_production_methods_producers'];
+    /** fetch data from the table: "omni.production_methods_products" */
+    omni_production_methods_products: ModelTypes['omni_production_methods_products'][];
+    /** fetch aggregated fields from the table: "omni.production_methods_products" */
+    omni_production_methods_products_aggregate: ModelTypes['omni_production_methods_products_aggregate'];
+    /** fetch data from the table: "omni.production_methods_products" using primary key columns */
+    omni_production_methods_products_by_pk?: ModelTypes['omni_production_methods_products'];
+    /** fetch data from the table: "omni.production_pallettes_enum" */
+    omni_production_pallettes_enum: ModelTypes['omni_production_pallettes_enum'][];
+    /** fetch aggregated fields from the table: "omni.production_pallettes_enum" */
+    omni_production_pallettes_enum_aggregate: ModelTypes['omni_production_pallettes_enum_aggregate'];
+    /** fetch data from the table: "omni.production_pallettes_enum" using primary key columns */
+    omni_production_pallettes_enum_by_pk?: ModelTypes['omni_production_pallettes_enum'];
+    /** fetch data from the table: "omni.production_styles_enum" */
+    omni_production_styles_enum: ModelTypes['omni_production_styles_enum'][];
+    /** fetch aggregated fields from the table: "omni.production_styles_enum" */
+    omni_production_styles_enum_aggregate: ModelTypes['omni_production_styles_enum_aggregate'];
+    /** fetch data from the table: "omni.production_styles_enum" using primary key columns */
+    omni_production_styles_enum_by_pk?: ModelTypes['omni_production_styles_enum'];
+    /** fetch data from the table: "omni.products" */
+    omni_products: ModelTypes['omni_products'][];
+    /** fetch aggregated fields from the table: "omni.products" */
+    omni_products_aggregate: ModelTypes['omni_products_aggregate'];
+    /** fetch data from the table: "omni.products" using primary key columns */
+    omni_products_by_pk?: ModelTypes['omni_products'];
+    /** fetch data from the table: "omni.products_stage_enum" */
+    omni_products_stage_enum: ModelTypes['omni_products_stage_enum'][];
+    /** fetch aggregated fields from the table: "omni.products_stage_enum" */
+    omni_products_stage_enum_aggregate: ModelTypes['omni_products_stage_enum_aggregate'];
+    /** fetch data from the table: "omni.products_stage_enum" using primary key columns */
+    omni_products_stage_enum_by_pk?: ModelTypes['omni_products_stage_enum'];
+    /** fetch data from the table: "omni.sale_types_enum" */
+    omni_sale_types_enum: ModelTypes['omni_sale_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.sale_types_enum" */
+    omni_sale_types_enum_aggregate: ModelTypes['omni_sale_types_enum_aggregate'];
+    /** fetch data from the table: "omni.sale_types_enum" using primary key columns */
+    omni_sale_types_enum_by_pk?: ModelTypes['omni_sale_types_enum'];
+    /** fetch data from the table: "omni.timezones_enum" */
+    omni_timezones_enum: ModelTypes['omni_timezones_enum'][];
+    /** fetch aggregated fields from the table: "omni.timezones_enum" */
+    omni_timezones_enum_aggregate: ModelTypes['omni_timezones_enum_aggregate'];
+    /** fetch data from the table: "omni.timezones_enum" using primary key columns */
+    omni_timezones_enum_by_pk?: ModelTypes['omni_timezones_enum'];
+    /** fetch data from the table: "omni.user_skill_types_enum" */
+    omni_user_skill_types_enum: ModelTypes['omni_user_skill_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.user_skill_types_enum" */
+    omni_user_skill_types_enum_aggregate: ModelTypes['omni_user_skill_types_enum_aggregate'];
+    /** fetch data from the table: "omni.user_skill_types_enum" using primary key columns */
+    omni_user_skill_types_enum_by_pk?: ModelTypes['omni_user_skill_types_enum'];
+    /** fetch data from the table: "omni.user_skills" */
+    omni_user_skills: ModelTypes['omni_user_skills'][];
+    /** fetch aggregated fields from the table: "omni.user_skills" */
+    omni_user_skills_aggregate: ModelTypes['omni_user_skills_aggregate'];
+    /** fetch data from the table: "omni.user_skills" using primary key columns */
+    omni_user_skills_by_pk?: ModelTypes['omni_user_skills'];
+    /** fetch data from the table: "omni.user_statuses_enum" */
+    omni_user_statuses_enum: ModelTypes['omni_user_statuses_enum'][];
+    /** fetch aggregated fields from the table: "omni.user_statuses_enum" */
+    omni_user_statuses_enum_aggregate: ModelTypes['omni_user_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.user_statuses_enum" using primary key columns */
+    omni_user_statuses_enum_by_pk?: ModelTypes['omni_user_statuses_enum'];
+    /** fetch data from the table: "omni.users" */
+    omni_users: ModelTypes['omni_users'][];
+    /** fetch aggregated fields from the table: "omni.users" */
+    omni_users_aggregate: ModelTypes['omni_users_aggregate'];
+    /** fetch data from the table: "omni.users" using primary key columns */
+    omni_users_by_pk?: ModelTypes['omni_users'];
+    /** fetch data from the table: "omni.wearable_files" */
+    omni_wearable_files: ModelTypes['omni_wearable_files'][];
+    /** fetch aggregated fields from the table: "omni.wearable_files" */
+    omni_wearable_files_aggregate: ModelTypes['omni_wearable_files_aggregate'];
+    /** fetch data from the table: "omni.wearable_files" using primary key columns */
+    omni_wearable_files_by_pk?: ModelTypes['omni_wearable_files'];
+    /** fetch data from the table: "omni.wearable_types_enum" */
+    omni_wearable_types_enum: ModelTypes['omni_wearable_types_enum'][];
+    /** fetch aggregated fields from the table: "omni.wearable_types_enum" */
+    omni_wearable_types_enum_aggregate: ModelTypes['omni_wearable_types_enum_aggregate'];
+    /** fetch data from the table: "omni.wearable_types_enum" using primary key columns */
+    omni_wearable_types_enum_by_pk?: ModelTypes['omni_wearable_types_enum'];
     /** fetch data from the table: "robot.order" */
     robot_order: ModelTypes['robot_order'][];
     /** fetch aggregated fields from the table: "robot.order" */
@@ -3807,6 +15903,18 @@ columns and relationships of "robot.product_designer" */
 };
 
 export type GraphQLTypes = {
+  /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
+  ['Boolean_comparison_exp']: {
+    _eq?: boolean;
+    _gt?: boolean;
+    _gte?: boolean;
+    _in?: Array<boolean>;
+    _is_null?: boolean;
+    _lt?: boolean;
+    _lte?: boolean;
+    _neq?: boolean;
+    _nin?: Array<boolean>;
+  };
   /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
   ['Int_comparison_exp']: {
     _eq?: number;
@@ -3850,6 +15958,19 @@ export type GraphQLTypes = {
     _regex?: string;
     /** does the column match the given SQL regular expression */
     _similar?: string;
+  };
+  ['bigint']: number;
+  /** Boolean expression to compare columns of type "bigint". All fields are combined with logical 'AND'. */
+  ['bigint_comparison_exp']: {
+    _eq?: GraphQLTypes['bigint'];
+    _gt?: GraphQLTypes['bigint'];
+    _gte?: GraphQLTypes['bigint'];
+    _in?: Array<GraphQLTypes['bigint']>;
+    _is_null?: boolean;
+    _lt?: GraphQLTypes['bigint'];
+    _lte?: GraphQLTypes['bigint'];
+    _neq?: GraphQLTypes['bigint'];
+    _nin?: Array<GraphQLTypes['bigint']>;
   };
   /** columns and relationships of "contribution_votes" */
   ['contribution_votes']: {
@@ -3978,7 +16099,7 @@ export type GraphQLTypes = {
     /** An object relationship */
     author: GraphQLTypes['users'];
     category?: string;
-    /** fetch data from the table: "contributors" */
+    /** An array relationship */
     contributors: Array<GraphQLTypes['contributors']>;
     /** An aggregate relationship */
     contributors_aggregate: GraphQLTypes['contributors_aggregate'];
@@ -4415,8 +16536,12 @@ export type GraphQLTypes = {
     _nin?: Array<GraphQLTypes['date']>;
   };
   ['jsonb']: any;
+  ['jsonb_cast_exp']: {
+    String?: GraphQLTypes['String_comparison_exp'];
+  };
   /** Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'. */
   ['jsonb_comparison_exp']: {
+    _cast?: GraphQLTypes['jsonb_cast_exp'];
     /** is the column contained in the given json value */
     _contained_in?: GraphQLTypes['jsonb'];
     /** does the column contain the given json value at the top level */
@@ -4452,6 +16577,126 @@ export type GraphQLTypes = {
     delete_contributors?: GraphQLTypes['contributors_mutation_response'];
     /** delete single row from the table: "contributors" */
     delete_contributors_by_pk?: GraphQLTypes['contributors'];
+    /** delete data from the table: "omni.brand_statuses_enum" */
+    delete_omni_brand_statuses_enum?: GraphQLTypes['omni_brand_statuses_enum_mutation_response'];
+    /** delete single row from the table: "omni.brand_statuses_enum" */
+    delete_omni_brand_statuses_enum_by_pk?: GraphQLTypes['omni_brand_statuses_enum'];
+    /** delete data from the table: "omni.brand_users" */
+    delete_omni_brand_users?: GraphQLTypes['omni_brand_users_mutation_response'];
+    /** delete single row from the table: "omni.brand_users" */
+    delete_omni_brand_users_by_pk?: GraphQLTypes['omni_brand_users'];
+    /** delete data from the table: "omni.brands" */
+    delete_omni_brands?: GraphQLTypes['omni_brands_mutation_response'];
+    /** delete single row from the table: "omni.brands" */
+    delete_omni_brands_by_pk?: GraphQLTypes['omni_brands'];
+    /** delete data from the table: "omni.collaborator_types_enum" */
+    delete_omni_collaborator_types_enum?: GraphQLTypes['omni_collaborator_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.collaborator_types_enum" */
+    delete_omni_collaborator_types_enum_by_pk?: GraphQLTypes['omni_collaborator_types_enum'];
+    /** delete data from the table: "omni.fullfillers" */
+    delete_omni_fullfillers?: GraphQLTypes['omni_fullfillers_mutation_response'];
+    /** delete single row from the table: "omni.fullfillers" */
+    delete_omni_fullfillers_by_pk?: GraphQLTypes['omni_fullfillers'];
+    /** delete data from the table: "omni.price_currencies" */
+    delete_omni_price_currencies?: GraphQLTypes['omni_price_currencies_mutation_response'];
+    /** delete single row from the table: "omni.price_currencies" */
+    delete_omni_price_currencies_by_pk?: GraphQLTypes['omni_price_currencies'];
+    /** delete data from the table: "omni.print_techs_enum" */
+    delete_omni_print_techs_enum?: GraphQLTypes['omni_print_techs_enum_mutation_response'];
+    /** delete single row from the table: "omni.print_techs_enum" */
+    delete_omni_print_techs_enum_by_pk?: GraphQLTypes['omni_print_techs_enum'];
+    /** delete data from the table: "omni.producer_statuses_enum" */
+    delete_omni_producer_statuses_enum?: GraphQLTypes['omni_producer_statuses_enum_mutation_response'];
+    /** delete single row from the table: "omni.producer_statuses_enum" */
+    delete_omni_producer_statuses_enum_by_pk?: GraphQLTypes['omni_producer_statuses_enum'];
+    /** delete data from the table: "omni.producers" */
+    delete_omni_producers?: GraphQLTypes['omni_producers_mutation_response'];
+    /** delete single row from the table: "omni.producers" */
+    delete_omni_producers_by_pk?: GraphQLTypes['omni_producers'];
+    /** delete data from the table: "omni.product_collaborators" */
+    delete_omni_product_collaborators?: GraphQLTypes['omni_product_collaborators_mutation_response'];
+    /** delete single row from the table: "omni.product_collaborators" */
+    delete_omni_product_collaborators_by_pk?: GraphQLTypes['omni_product_collaborators'];
+    /** delete data from the table: "omni.product_types_enum" */
+    delete_omni_product_types_enum?: GraphQLTypes['omni_product_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.product_types_enum" */
+    delete_omni_product_types_enum_by_pk?: GraphQLTypes['omni_product_types_enum'];
+    /** delete data from the table: "omni.production_genders_enum" */
+    delete_omni_production_genders_enum?: GraphQLTypes['omni_production_genders_enum_mutation_response'];
+    /** delete single row from the table: "omni.production_genders_enum" */
+    delete_omni_production_genders_enum_by_pk?: GraphQLTypes['omni_production_genders_enum'];
+    /** delete data from the table: "omni.production_materials" */
+    delete_omni_production_materials?: GraphQLTypes['omni_production_materials_mutation_response'];
+    /** delete single row from the table: "omni.production_materials" */
+    delete_omni_production_materials_by_pk?: GraphQLTypes['omni_production_materials'];
+    /** delete data from the table: "omni.production_materials_producers" */
+    delete_omni_production_materials_producers?: GraphQLTypes['omni_production_materials_producers_mutation_response'];
+    /** delete single row from the table: "omni.production_materials_producers" */
+    delete_omni_production_materials_producers_by_pk?: GraphQLTypes['omni_production_materials_producers'];
+    /** delete data from the table: "omni.production_materials_ratings_enum" */
+    delete_omni_production_materials_ratings_enum?: GraphQLTypes['omni_production_materials_ratings_enum_mutation_response'];
+    /** delete single row from the table: "omni.production_materials_ratings_enum" */
+    delete_omni_production_materials_ratings_enum_by_pk?: GraphQLTypes['omni_production_materials_ratings_enum'];
+    /** delete data from the table: "omni.production_methods" */
+    delete_omni_production_methods?: GraphQLTypes['omni_production_methods_mutation_response'];
+    /** delete single row from the table: "omni.production_methods" */
+    delete_omni_production_methods_by_pk?: GraphQLTypes['omni_production_methods'];
+    /** delete data from the table: "omni.production_methods_producers" */
+    delete_omni_production_methods_producers?: GraphQLTypes['omni_production_methods_producers_mutation_response'];
+    /** delete single row from the table: "omni.production_methods_producers" */
+    delete_omni_production_methods_producers_by_pk?: GraphQLTypes['omni_production_methods_producers'];
+    /** delete data from the table: "omni.production_methods_products" */
+    delete_omni_production_methods_products?: GraphQLTypes['omni_production_methods_products_mutation_response'];
+    /** delete single row from the table: "omni.production_methods_products" */
+    delete_omni_production_methods_products_by_pk?: GraphQLTypes['omni_production_methods_products'];
+    /** delete data from the table: "omni.production_pallettes_enum" */
+    delete_omni_production_pallettes_enum?: GraphQLTypes['omni_production_pallettes_enum_mutation_response'];
+    /** delete single row from the table: "omni.production_pallettes_enum" */
+    delete_omni_production_pallettes_enum_by_pk?: GraphQLTypes['omni_production_pallettes_enum'];
+    /** delete data from the table: "omni.production_styles_enum" */
+    delete_omni_production_styles_enum?: GraphQLTypes['omni_production_styles_enum_mutation_response'];
+    /** delete single row from the table: "omni.production_styles_enum" */
+    delete_omni_production_styles_enum_by_pk?: GraphQLTypes['omni_production_styles_enum'];
+    /** delete data from the table: "omni.products" */
+    delete_omni_products?: GraphQLTypes['omni_products_mutation_response'];
+    /** delete single row from the table: "omni.products" */
+    delete_omni_products_by_pk?: GraphQLTypes['omni_products'];
+    /** delete data from the table: "omni.products_stage_enum" */
+    delete_omni_products_stage_enum?: GraphQLTypes['omni_products_stage_enum_mutation_response'];
+    /** delete single row from the table: "omni.products_stage_enum" */
+    delete_omni_products_stage_enum_by_pk?: GraphQLTypes['omni_products_stage_enum'];
+    /** delete data from the table: "omni.sale_types_enum" */
+    delete_omni_sale_types_enum?: GraphQLTypes['omni_sale_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.sale_types_enum" */
+    delete_omni_sale_types_enum_by_pk?: GraphQLTypes['omni_sale_types_enum'];
+    /** delete data from the table: "omni.timezones_enum" */
+    delete_omni_timezones_enum?: GraphQLTypes['omni_timezones_enum_mutation_response'];
+    /** delete single row from the table: "omni.timezones_enum" */
+    delete_omni_timezones_enum_by_pk?: GraphQLTypes['omni_timezones_enum'];
+    /** delete data from the table: "omni.user_skill_types_enum" */
+    delete_omni_user_skill_types_enum?: GraphQLTypes['omni_user_skill_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.user_skill_types_enum" */
+    delete_omni_user_skill_types_enum_by_pk?: GraphQLTypes['omni_user_skill_types_enum'];
+    /** delete data from the table: "omni.user_skills" */
+    delete_omni_user_skills?: GraphQLTypes['omni_user_skills_mutation_response'];
+    /** delete single row from the table: "omni.user_skills" */
+    delete_omni_user_skills_by_pk?: GraphQLTypes['omni_user_skills'];
+    /** delete data from the table: "omni.user_statuses_enum" */
+    delete_omni_user_statuses_enum?: GraphQLTypes['omni_user_statuses_enum_mutation_response'];
+    /** delete single row from the table: "omni.user_statuses_enum" */
+    delete_omni_user_statuses_enum_by_pk?: GraphQLTypes['omni_user_statuses_enum'];
+    /** delete data from the table: "omni.users" */
+    delete_omni_users?: GraphQLTypes['omni_users_mutation_response'];
+    /** delete single row from the table: "omni.users" */
+    delete_omni_users_by_pk?: GraphQLTypes['omni_users'];
+    /** delete data from the table: "omni.wearable_files" */
+    delete_omni_wearable_files?: GraphQLTypes['omni_wearable_files_mutation_response'];
+    /** delete single row from the table: "omni.wearable_files" */
+    delete_omni_wearable_files_by_pk?: GraphQLTypes['omni_wearable_files'];
+    /** delete data from the table: "omni.wearable_types_enum" */
+    delete_omni_wearable_types_enum?: GraphQLTypes['omni_wearable_types_enum_mutation_response'];
+    /** delete single row from the table: "omni.wearable_types_enum" */
+    delete_omni_wearable_types_enum_by_pk?: GraphQLTypes['omni_wearable_types_enum'];
     /** delete data from the table: "robot.order" */
     delete_robot_order?: GraphQLTypes['robot_order_mutation_response'];
     /** delete single row from the table: "robot.order" */
@@ -4488,6 +16733,126 @@ export type GraphQLTypes = {
     insert_contributors?: GraphQLTypes['contributors_mutation_response'];
     /** insert a single row into the table: "contributors" */
     insert_contributors_one?: GraphQLTypes['contributors'];
+    /** insert data into the table: "omni.brand_statuses_enum" */
+    insert_omni_brand_statuses_enum?: GraphQLTypes['omni_brand_statuses_enum_mutation_response'];
+    /** insert a single row into the table: "omni.brand_statuses_enum" */
+    insert_omni_brand_statuses_enum_one?: GraphQLTypes['omni_brand_statuses_enum'];
+    /** insert data into the table: "omni.brand_users" */
+    insert_omni_brand_users?: GraphQLTypes['omni_brand_users_mutation_response'];
+    /** insert a single row into the table: "omni.brand_users" */
+    insert_omni_brand_users_one?: GraphQLTypes['omni_brand_users'];
+    /** insert data into the table: "omni.brands" */
+    insert_omni_brands?: GraphQLTypes['omni_brands_mutation_response'];
+    /** insert a single row into the table: "omni.brands" */
+    insert_omni_brands_one?: GraphQLTypes['omni_brands'];
+    /** insert data into the table: "omni.collaborator_types_enum" */
+    insert_omni_collaborator_types_enum?: GraphQLTypes['omni_collaborator_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.collaborator_types_enum" */
+    insert_omni_collaborator_types_enum_one?: GraphQLTypes['omni_collaborator_types_enum'];
+    /** insert data into the table: "omni.fullfillers" */
+    insert_omni_fullfillers?: GraphQLTypes['omni_fullfillers_mutation_response'];
+    /** insert a single row into the table: "omni.fullfillers" */
+    insert_omni_fullfillers_one?: GraphQLTypes['omni_fullfillers'];
+    /** insert data into the table: "omni.price_currencies" */
+    insert_omni_price_currencies?: GraphQLTypes['omni_price_currencies_mutation_response'];
+    /** insert a single row into the table: "omni.price_currencies" */
+    insert_omni_price_currencies_one?: GraphQLTypes['omni_price_currencies'];
+    /** insert data into the table: "omni.print_techs_enum" */
+    insert_omni_print_techs_enum?: GraphQLTypes['omni_print_techs_enum_mutation_response'];
+    /** insert a single row into the table: "omni.print_techs_enum" */
+    insert_omni_print_techs_enum_one?: GraphQLTypes['omni_print_techs_enum'];
+    /** insert data into the table: "omni.producer_statuses_enum" */
+    insert_omni_producer_statuses_enum?: GraphQLTypes['omni_producer_statuses_enum_mutation_response'];
+    /** insert a single row into the table: "omni.producer_statuses_enum" */
+    insert_omni_producer_statuses_enum_one?: GraphQLTypes['omni_producer_statuses_enum'];
+    /** insert data into the table: "omni.producers" */
+    insert_omni_producers?: GraphQLTypes['omni_producers_mutation_response'];
+    /** insert a single row into the table: "omni.producers" */
+    insert_omni_producers_one?: GraphQLTypes['omni_producers'];
+    /** insert data into the table: "omni.product_collaborators" */
+    insert_omni_product_collaborators?: GraphQLTypes['omni_product_collaborators_mutation_response'];
+    /** insert a single row into the table: "omni.product_collaborators" */
+    insert_omni_product_collaborators_one?: GraphQLTypes['omni_product_collaborators'];
+    /** insert data into the table: "omni.product_types_enum" */
+    insert_omni_product_types_enum?: GraphQLTypes['omni_product_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.product_types_enum" */
+    insert_omni_product_types_enum_one?: GraphQLTypes['omni_product_types_enum'];
+    /** insert data into the table: "omni.production_genders_enum" */
+    insert_omni_production_genders_enum?: GraphQLTypes['omni_production_genders_enum_mutation_response'];
+    /** insert a single row into the table: "omni.production_genders_enum" */
+    insert_omni_production_genders_enum_one?: GraphQLTypes['omni_production_genders_enum'];
+    /** insert data into the table: "omni.production_materials" */
+    insert_omni_production_materials?: GraphQLTypes['omni_production_materials_mutation_response'];
+    /** insert a single row into the table: "omni.production_materials" */
+    insert_omni_production_materials_one?: GraphQLTypes['omni_production_materials'];
+    /** insert data into the table: "omni.production_materials_producers" */
+    insert_omni_production_materials_producers?: GraphQLTypes['omni_production_materials_producers_mutation_response'];
+    /** insert a single row into the table: "omni.production_materials_producers" */
+    insert_omni_production_materials_producers_one?: GraphQLTypes['omni_production_materials_producers'];
+    /** insert data into the table: "omni.production_materials_ratings_enum" */
+    insert_omni_production_materials_ratings_enum?: GraphQLTypes['omni_production_materials_ratings_enum_mutation_response'];
+    /** insert a single row into the table: "omni.production_materials_ratings_enum" */
+    insert_omni_production_materials_ratings_enum_one?: GraphQLTypes['omni_production_materials_ratings_enum'];
+    /** insert data into the table: "omni.production_methods" */
+    insert_omni_production_methods?: GraphQLTypes['omni_production_methods_mutation_response'];
+    /** insert a single row into the table: "omni.production_methods" */
+    insert_omni_production_methods_one?: GraphQLTypes['omni_production_methods'];
+    /** insert data into the table: "omni.production_methods_producers" */
+    insert_omni_production_methods_producers?: GraphQLTypes['omni_production_methods_producers_mutation_response'];
+    /** insert a single row into the table: "omni.production_methods_producers" */
+    insert_omni_production_methods_producers_one?: GraphQLTypes['omni_production_methods_producers'];
+    /** insert data into the table: "omni.production_methods_products" */
+    insert_omni_production_methods_products?: GraphQLTypes['omni_production_methods_products_mutation_response'];
+    /** insert a single row into the table: "omni.production_methods_products" */
+    insert_omni_production_methods_products_one?: GraphQLTypes['omni_production_methods_products'];
+    /** insert data into the table: "omni.production_pallettes_enum" */
+    insert_omni_production_pallettes_enum?: GraphQLTypes['omni_production_pallettes_enum_mutation_response'];
+    /** insert a single row into the table: "omni.production_pallettes_enum" */
+    insert_omni_production_pallettes_enum_one?: GraphQLTypes['omni_production_pallettes_enum'];
+    /** insert data into the table: "omni.production_styles_enum" */
+    insert_omni_production_styles_enum?: GraphQLTypes['omni_production_styles_enum_mutation_response'];
+    /** insert a single row into the table: "omni.production_styles_enum" */
+    insert_omni_production_styles_enum_one?: GraphQLTypes['omni_production_styles_enum'];
+    /** insert data into the table: "omni.products" */
+    insert_omni_products?: GraphQLTypes['omni_products_mutation_response'];
+    /** insert a single row into the table: "omni.products" */
+    insert_omni_products_one?: GraphQLTypes['omni_products'];
+    /** insert data into the table: "omni.products_stage_enum" */
+    insert_omni_products_stage_enum?: GraphQLTypes['omni_products_stage_enum_mutation_response'];
+    /** insert a single row into the table: "omni.products_stage_enum" */
+    insert_omni_products_stage_enum_one?: GraphQLTypes['omni_products_stage_enum'];
+    /** insert data into the table: "omni.sale_types_enum" */
+    insert_omni_sale_types_enum?: GraphQLTypes['omni_sale_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.sale_types_enum" */
+    insert_omni_sale_types_enum_one?: GraphQLTypes['omni_sale_types_enum'];
+    /** insert data into the table: "omni.timezones_enum" */
+    insert_omni_timezones_enum?: GraphQLTypes['omni_timezones_enum_mutation_response'];
+    /** insert a single row into the table: "omni.timezones_enum" */
+    insert_omni_timezones_enum_one?: GraphQLTypes['omni_timezones_enum'];
+    /** insert data into the table: "omni.user_skill_types_enum" */
+    insert_omni_user_skill_types_enum?: GraphQLTypes['omni_user_skill_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.user_skill_types_enum" */
+    insert_omni_user_skill_types_enum_one?: GraphQLTypes['omni_user_skill_types_enum'];
+    /** insert data into the table: "omni.user_skills" */
+    insert_omni_user_skills?: GraphQLTypes['omni_user_skills_mutation_response'];
+    /** insert a single row into the table: "omni.user_skills" */
+    insert_omni_user_skills_one?: GraphQLTypes['omni_user_skills'];
+    /** insert data into the table: "omni.user_statuses_enum" */
+    insert_omni_user_statuses_enum?: GraphQLTypes['omni_user_statuses_enum_mutation_response'];
+    /** insert a single row into the table: "omni.user_statuses_enum" */
+    insert_omni_user_statuses_enum_one?: GraphQLTypes['omni_user_statuses_enum'];
+    /** insert data into the table: "omni.users" */
+    insert_omni_users?: GraphQLTypes['omni_users_mutation_response'];
+    /** insert a single row into the table: "omni.users" */
+    insert_omni_users_one?: GraphQLTypes['omni_users'];
+    /** insert data into the table: "omni.wearable_files" */
+    insert_omni_wearable_files?: GraphQLTypes['omni_wearable_files_mutation_response'];
+    /** insert a single row into the table: "omni.wearable_files" */
+    insert_omni_wearable_files_one?: GraphQLTypes['omni_wearable_files'];
+    /** insert data into the table: "omni.wearable_types_enum" */
+    insert_omni_wearable_types_enum?: GraphQLTypes['omni_wearable_types_enum_mutation_response'];
+    /** insert a single row into the table: "omni.wearable_types_enum" */
+    insert_omni_wearable_types_enum_one?: GraphQLTypes['omni_wearable_types_enum'];
     /** insert data into the table: "robot.order" */
     insert_robot_order?: GraphQLTypes['robot_order_mutation_response'];
     /** insert a single row into the table: "robot.order" */
@@ -4524,6 +16889,126 @@ export type GraphQLTypes = {
     update_contributors?: GraphQLTypes['contributors_mutation_response'];
     /** update single row of the table: "contributors" */
     update_contributors_by_pk?: GraphQLTypes['contributors'];
+    /** update data of the table: "omni.brand_statuses_enum" */
+    update_omni_brand_statuses_enum?: GraphQLTypes['omni_brand_statuses_enum_mutation_response'];
+    /** update single row of the table: "omni.brand_statuses_enum" */
+    update_omni_brand_statuses_enum_by_pk?: GraphQLTypes['omni_brand_statuses_enum'];
+    /** update data of the table: "omni.brand_users" */
+    update_omni_brand_users?: GraphQLTypes['omni_brand_users_mutation_response'];
+    /** update single row of the table: "omni.brand_users" */
+    update_omni_brand_users_by_pk?: GraphQLTypes['omni_brand_users'];
+    /** update data of the table: "omni.brands" */
+    update_omni_brands?: GraphQLTypes['omni_brands_mutation_response'];
+    /** update single row of the table: "omni.brands" */
+    update_omni_brands_by_pk?: GraphQLTypes['omni_brands'];
+    /** update data of the table: "omni.collaborator_types_enum" */
+    update_omni_collaborator_types_enum?: GraphQLTypes['omni_collaborator_types_enum_mutation_response'];
+    /** update single row of the table: "omni.collaborator_types_enum" */
+    update_omni_collaborator_types_enum_by_pk?: GraphQLTypes['omni_collaborator_types_enum'];
+    /** update data of the table: "omni.fullfillers" */
+    update_omni_fullfillers?: GraphQLTypes['omni_fullfillers_mutation_response'];
+    /** update single row of the table: "omni.fullfillers" */
+    update_omni_fullfillers_by_pk?: GraphQLTypes['omni_fullfillers'];
+    /** update data of the table: "omni.price_currencies" */
+    update_omni_price_currencies?: GraphQLTypes['omni_price_currencies_mutation_response'];
+    /** update single row of the table: "omni.price_currencies" */
+    update_omni_price_currencies_by_pk?: GraphQLTypes['omni_price_currencies'];
+    /** update data of the table: "omni.print_techs_enum" */
+    update_omni_print_techs_enum?: GraphQLTypes['omni_print_techs_enum_mutation_response'];
+    /** update single row of the table: "omni.print_techs_enum" */
+    update_omni_print_techs_enum_by_pk?: GraphQLTypes['omni_print_techs_enum'];
+    /** update data of the table: "omni.producer_statuses_enum" */
+    update_omni_producer_statuses_enum?: GraphQLTypes['omni_producer_statuses_enum_mutation_response'];
+    /** update single row of the table: "omni.producer_statuses_enum" */
+    update_omni_producer_statuses_enum_by_pk?: GraphQLTypes['omni_producer_statuses_enum'];
+    /** update data of the table: "omni.producers" */
+    update_omni_producers?: GraphQLTypes['omni_producers_mutation_response'];
+    /** update single row of the table: "omni.producers" */
+    update_omni_producers_by_pk?: GraphQLTypes['omni_producers'];
+    /** update data of the table: "omni.product_collaborators" */
+    update_omni_product_collaborators?: GraphQLTypes['omni_product_collaborators_mutation_response'];
+    /** update single row of the table: "omni.product_collaborators" */
+    update_omni_product_collaborators_by_pk?: GraphQLTypes['omni_product_collaborators'];
+    /** update data of the table: "omni.product_types_enum" */
+    update_omni_product_types_enum?: GraphQLTypes['omni_product_types_enum_mutation_response'];
+    /** update single row of the table: "omni.product_types_enum" */
+    update_omni_product_types_enum_by_pk?: GraphQLTypes['omni_product_types_enum'];
+    /** update data of the table: "omni.production_genders_enum" */
+    update_omni_production_genders_enum?: GraphQLTypes['omni_production_genders_enum_mutation_response'];
+    /** update single row of the table: "omni.production_genders_enum" */
+    update_omni_production_genders_enum_by_pk?: GraphQLTypes['omni_production_genders_enum'];
+    /** update data of the table: "omni.production_materials" */
+    update_omni_production_materials?: GraphQLTypes['omni_production_materials_mutation_response'];
+    /** update single row of the table: "omni.production_materials" */
+    update_omni_production_materials_by_pk?: GraphQLTypes['omni_production_materials'];
+    /** update data of the table: "omni.production_materials_producers" */
+    update_omni_production_materials_producers?: GraphQLTypes['omni_production_materials_producers_mutation_response'];
+    /** update single row of the table: "omni.production_materials_producers" */
+    update_omni_production_materials_producers_by_pk?: GraphQLTypes['omni_production_materials_producers'];
+    /** update data of the table: "omni.production_materials_ratings_enum" */
+    update_omni_production_materials_ratings_enum?: GraphQLTypes['omni_production_materials_ratings_enum_mutation_response'];
+    /** update single row of the table: "omni.production_materials_ratings_enum" */
+    update_omni_production_materials_ratings_enum_by_pk?: GraphQLTypes['omni_production_materials_ratings_enum'];
+    /** update data of the table: "omni.production_methods" */
+    update_omni_production_methods?: GraphQLTypes['omni_production_methods_mutation_response'];
+    /** update single row of the table: "omni.production_methods" */
+    update_omni_production_methods_by_pk?: GraphQLTypes['omni_production_methods'];
+    /** update data of the table: "omni.production_methods_producers" */
+    update_omni_production_methods_producers?: GraphQLTypes['omni_production_methods_producers_mutation_response'];
+    /** update single row of the table: "omni.production_methods_producers" */
+    update_omni_production_methods_producers_by_pk?: GraphQLTypes['omni_production_methods_producers'];
+    /** update data of the table: "omni.production_methods_products" */
+    update_omni_production_methods_products?: GraphQLTypes['omni_production_methods_products_mutation_response'];
+    /** update single row of the table: "omni.production_methods_products" */
+    update_omni_production_methods_products_by_pk?: GraphQLTypes['omni_production_methods_products'];
+    /** update data of the table: "omni.production_pallettes_enum" */
+    update_omni_production_pallettes_enum?: GraphQLTypes['omni_production_pallettes_enum_mutation_response'];
+    /** update single row of the table: "omni.production_pallettes_enum" */
+    update_omni_production_pallettes_enum_by_pk?: GraphQLTypes['omni_production_pallettes_enum'];
+    /** update data of the table: "omni.production_styles_enum" */
+    update_omni_production_styles_enum?: GraphQLTypes['omni_production_styles_enum_mutation_response'];
+    /** update single row of the table: "omni.production_styles_enum" */
+    update_omni_production_styles_enum_by_pk?: GraphQLTypes['omni_production_styles_enum'];
+    /** update data of the table: "omni.products" */
+    update_omni_products?: GraphQLTypes['omni_products_mutation_response'];
+    /** update single row of the table: "omni.products" */
+    update_omni_products_by_pk?: GraphQLTypes['omni_products'];
+    /** update data of the table: "omni.products_stage_enum" */
+    update_omni_products_stage_enum?: GraphQLTypes['omni_products_stage_enum_mutation_response'];
+    /** update single row of the table: "omni.products_stage_enum" */
+    update_omni_products_stage_enum_by_pk?: GraphQLTypes['omni_products_stage_enum'];
+    /** update data of the table: "omni.sale_types_enum" */
+    update_omni_sale_types_enum?: GraphQLTypes['omni_sale_types_enum_mutation_response'];
+    /** update single row of the table: "omni.sale_types_enum" */
+    update_omni_sale_types_enum_by_pk?: GraphQLTypes['omni_sale_types_enum'];
+    /** update data of the table: "omni.timezones_enum" */
+    update_omni_timezones_enum?: GraphQLTypes['omni_timezones_enum_mutation_response'];
+    /** update single row of the table: "omni.timezones_enum" */
+    update_omni_timezones_enum_by_pk?: GraphQLTypes['omni_timezones_enum'];
+    /** update data of the table: "omni.user_skill_types_enum" */
+    update_omni_user_skill_types_enum?: GraphQLTypes['omni_user_skill_types_enum_mutation_response'];
+    /** update single row of the table: "omni.user_skill_types_enum" */
+    update_omni_user_skill_types_enum_by_pk?: GraphQLTypes['omni_user_skill_types_enum'];
+    /** update data of the table: "omni.user_skills" */
+    update_omni_user_skills?: GraphQLTypes['omni_user_skills_mutation_response'];
+    /** update single row of the table: "omni.user_skills" */
+    update_omni_user_skills_by_pk?: GraphQLTypes['omni_user_skills'];
+    /** update data of the table: "omni.user_statuses_enum" */
+    update_omni_user_statuses_enum?: GraphQLTypes['omni_user_statuses_enum_mutation_response'];
+    /** update single row of the table: "omni.user_statuses_enum" */
+    update_omni_user_statuses_enum_by_pk?: GraphQLTypes['omni_user_statuses_enum'];
+    /** update data of the table: "omni.users" */
+    update_omni_users?: GraphQLTypes['omni_users_mutation_response'];
+    /** update single row of the table: "omni.users" */
+    update_omni_users_by_pk?: GraphQLTypes['omni_users'];
+    /** update data of the table: "omni.wearable_files" */
+    update_omni_wearable_files?: GraphQLTypes['omni_wearable_files_mutation_response'];
+    /** update single row of the table: "omni.wearable_files" */
+    update_omni_wearable_files_by_pk?: GraphQLTypes['omni_wearable_files'];
+    /** update data of the table: "omni.wearable_types_enum" */
+    update_omni_wearable_types_enum?: GraphQLTypes['omni_wearable_types_enum_mutation_response'];
+    /** update single row of the table: "omni.wearable_types_enum" */
+    update_omni_wearable_types_enum_by_pk?: GraphQLTypes['omni_wearable_types_enum'];
     /** update data of the table: "robot.order" */
     update_robot_order?: GraphQLTypes['robot_order_mutation_response'];
     /** update single row of the table: "robot.order" */
@@ -4562,6 +17047,4493 @@ export type GraphQLTypes = {
     _neq?: GraphQLTypes['numeric'];
     _nin?: Array<GraphQLTypes['numeric']>;
   };
+  /** columns and relationships of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum']: {
+    __typename: 'omni_brand_statuses_enum';
+    /** An array relationship */
+    brands: Array<GraphQLTypes['omni_brands']>;
+    /** An aggregate relationship */
+    brands_aggregate: GraphQLTypes['omni_brands_aggregate'];
+    description?: string;
+    value: string;
+  };
+  /** aggregated selection of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_aggregate']: {
+    __typename: 'omni_brand_statuses_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_brand_statuses_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_brand_statuses_enum']>;
+  };
+  /** aggregate fields of "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_aggregate_fields']: {
+    __typename: 'omni_brand_statuses_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_brand_statuses_enum_max_fields'];
+    min?: GraphQLTypes['omni_brand_statuses_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.brand_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_brand_statuses_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_brand_statuses_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_brand_statuses_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_brand_statuses_enum_bool_exp']>;
+    brands?: GraphQLTypes['omni_brands_bool_exp'];
+    description?: GraphQLTypes['String_comparison_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_constraint']: omni_brand_statuses_enum_constraint;
+  ['omni_brand_statuses_enum_enum']: omni_brand_statuses_enum_enum;
+  /** Boolean expression to compare columns of type "omni_brand_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_brand_statuses_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_brand_statuses_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_brand_statuses_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_brand_statuses_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_brand_statuses_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_insert_input']: {
+    brands?: GraphQLTypes['omni_brands_arr_rel_insert_input'];
+    description?: string;
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_brand_statuses_enum_max_fields']: {
+    __typename: 'omni_brand_statuses_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_brand_statuses_enum_min_fields']: {
+    __typename: 'omni_brand_statuses_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_mutation_response']: {
+    __typename: 'omni_brand_statuses_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_brand_statuses_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_brand_statuses_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_brand_statuses_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_brand_statuses_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_brand_statuses_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_brand_statuses_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.brand_statuses_enum". */
+  ['omni_brand_statuses_enum_order_by']: {
+    brands_aggregate?: GraphQLTypes['omni_brands_aggregate_order_by'];
+    description?: GraphQLTypes['order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_brand_statuses_enum */
+  ['omni_brand_statuses_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_select_column']: omni_brand_statuses_enum_select_column;
+  /** input type for updating data in table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.brand_statuses_enum" */
+  ['omni_brand_statuses_enum_update_column']: omni_brand_statuses_enum_update_column;
+  /** columns and relationships of "omni.brand_users" */
+  ['omni_brand_users']: {
+    __typename: 'omni_brand_users';
+    brand?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    brandByBrand?: GraphQLTypes['omni_brands'];
+    collaborator?: GraphQLTypes['uuid'];
+    id: GraphQLTypes['uuid'];
+    /** An object relationship */
+    user?: GraphQLTypes['omni_users'];
+  };
+  /** aggregated selection of "omni.brand_users" */
+  ['omni_brand_users_aggregate']: {
+    __typename: 'omni_brand_users_aggregate';
+    aggregate?: GraphQLTypes['omni_brand_users_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_brand_users']>;
+  };
+  /** aggregate fields of "omni.brand_users" */
+  ['omni_brand_users_aggregate_fields']: {
+    __typename: 'omni_brand_users_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_brand_users_max_fields'];
+    min?: GraphQLTypes['omni_brand_users_min_fields'];
+  };
+  /** order by aggregate values of table "omni.brand_users" */
+  ['omni_brand_users_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_brand_users_max_order_by'];
+    min?: GraphQLTypes['omni_brand_users_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.brand_users" */
+  ['omni_brand_users_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_brand_users_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_brand_users_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.brand_users". All fields are combined with a logical 'AND'. */
+  ['omni_brand_users_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_brand_users_bool_exp']>;
+    _not?: GraphQLTypes['omni_brand_users_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_brand_users_bool_exp']>;
+    brand?: GraphQLTypes['uuid_comparison_exp'];
+    brandByBrand?: GraphQLTypes['omni_brands_bool_exp'];
+    collaborator?: GraphQLTypes['uuid_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    user?: GraphQLTypes['omni_users_bool_exp'];
+  };
+  /** unique or primary key constraints on table "omni.brand_users" */
+  ['omni_brand_users_constraint']: omni_brand_users_constraint;
+  /** input type for inserting data into table "omni.brand_users" */
+  ['omni_brand_users_insert_input']: {
+    brand?: GraphQLTypes['uuid'];
+    brandByBrand?: GraphQLTypes['omni_brands_obj_rel_insert_input'];
+    collaborator?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+    user?: GraphQLTypes['omni_users_obj_rel_insert_input'];
+  };
+  /** aggregate max on columns */
+  ['omni_brand_users_max_fields']: {
+    __typename: 'omni_brand_users_max_fields';
+    brand?: GraphQLTypes['uuid'];
+    collaborator?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.brand_users" */
+  ['omni_brand_users_max_order_by']: {
+    brand?: GraphQLTypes['order_by'];
+    collaborator?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_brand_users_min_fields']: {
+    __typename: 'omni_brand_users_min_fields';
+    brand?: GraphQLTypes['uuid'];
+    collaborator?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.brand_users" */
+  ['omni_brand_users_min_order_by']: {
+    brand?: GraphQLTypes['order_by'];
+    collaborator?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.brand_users" */
+  ['omni_brand_users_mutation_response']: {
+    __typename: 'omni_brand_users_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_brand_users']>;
+  };
+  /** on_conflict condition type for table "omni.brand_users" */
+  ['omni_brand_users_on_conflict']: {
+    constraint: GraphQLTypes['omni_brand_users_constraint'];
+    update_columns: Array<GraphQLTypes['omni_brand_users_update_column']>;
+    where?: GraphQLTypes['omni_brand_users_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.brand_users". */
+  ['omni_brand_users_order_by']: {
+    brand?: GraphQLTypes['order_by'];
+    brandByBrand?: GraphQLTypes['omni_brands_order_by'];
+    collaborator?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    user?: GraphQLTypes['omni_users_order_by'];
+  };
+  /** primary key columns input for table: omni_brand_users */
+  ['omni_brand_users_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.brand_users" */
+  ['omni_brand_users_select_column']: omni_brand_users_select_column;
+  /** input type for updating data in table "omni.brand_users" */
+  ['omni_brand_users_set_input']: {
+    brand?: GraphQLTypes['uuid'];
+    collaborator?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+  };
+  /** update columns of table "omni.brand_users" */
+  ['omni_brand_users_update_column']: omni_brand_users_update_column;
+  /** columns and relationships of "omni.brands" */
+  ['omni_brands']: {
+    __typename: 'omni_brands';
+    /** An object relationship */
+    brand_statuses_enum?: GraphQLTypes['omni_brand_statuses_enum'];
+    /** An array relationship */
+    brand_users: Array<GraphQLTypes['omni_brand_users']>;
+    /** An aggregate relationship */
+    brand_users_aggregate: GraphQLTypes['omni_brand_users_aggregate'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    discord_url?: string;
+    eth_address?: string;
+    id: GraphQLTypes['uuid'];
+    /** link to logo image */
+    logo?: string;
+    name?: string;
+    /** An array relationship */
+    products: Array<GraphQLTypes['omni_products']>;
+    /** An aggregate relationship */
+    products_aggregate: GraphQLTypes['omni_products_aggregate'];
+    status?: GraphQLTypes['omni_brand_statuses_enum_enum'];
+    twitter_url?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** aggregated selection of "omni.brands" */
+  ['omni_brands_aggregate']: {
+    __typename: 'omni_brands_aggregate';
+    aggregate?: GraphQLTypes['omni_brands_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_brands']>;
+  };
+  /** aggregate fields of "omni.brands" */
+  ['omni_brands_aggregate_fields']: {
+    __typename: 'omni_brands_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_brands_max_fields'];
+    min?: GraphQLTypes['omni_brands_min_fields'];
+  };
+  /** order by aggregate values of table "omni.brands" */
+  ['omni_brands_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_brands_max_order_by'];
+    min?: GraphQLTypes['omni_brands_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.brands" */
+  ['omni_brands_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_brands_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_brands_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.brands". All fields are combined with a logical 'AND'. */
+  ['omni_brands_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_brands_bool_exp']>;
+    _not?: GraphQLTypes['omni_brands_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_brands_bool_exp']>;
+    brand_statuses_enum?: GraphQLTypes['omni_brand_statuses_enum_bool_exp'];
+    brand_users?: GraphQLTypes['omni_brand_users_bool_exp'];
+    created_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    description?: GraphQLTypes['String_comparison_exp'];
+    discord_url?: GraphQLTypes['String_comparison_exp'];
+    eth_address?: GraphQLTypes['String_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    logo?: GraphQLTypes['String_comparison_exp'];
+    name?: GraphQLTypes['String_comparison_exp'];
+    products?: GraphQLTypes['omni_products_bool_exp'];
+    status?: GraphQLTypes['omni_brand_statuses_enum_enum_comparison_exp'];
+    twitter_url?: GraphQLTypes['String_comparison_exp'];
+    updated_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    website_url?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.brands" */
+  ['omni_brands_constraint']: omni_brands_constraint;
+  /** input type for inserting data into table "omni.brands" */
+  ['omni_brands_insert_input']: {
+    brand_statuses_enum?: GraphQLTypes['omni_brand_statuses_enum_obj_rel_insert_input'];
+    brand_users?: GraphQLTypes['omni_brand_users_arr_rel_insert_input'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    discord_url?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    /** link to logo image */
+    logo?: string;
+    name?: string;
+    products?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+    status?: GraphQLTypes['omni_brand_statuses_enum_enum'];
+    twitter_url?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_brands_max_fields']: {
+    __typename: 'omni_brands_max_fields';
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    discord_url?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    /** link to logo image */
+    logo?: string;
+    name?: string;
+    twitter_url?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** order by max() on columns of table "omni.brands" */
+  ['omni_brands_max_order_by']: {
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    description?: GraphQLTypes['order_by'];
+    discord_url?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    /** link to logo image */
+    logo?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    twitter_url?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+    website_url?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_brands_min_fields']: {
+    __typename: 'omni_brands_min_fields';
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    discord_url?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    /** link to logo image */
+    logo?: string;
+    name?: string;
+    twitter_url?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** order by min() on columns of table "omni.brands" */
+  ['omni_brands_min_order_by']: {
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    description?: GraphQLTypes['order_by'];
+    discord_url?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    /** link to logo image */
+    logo?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    twitter_url?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+    website_url?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.brands" */
+  ['omni_brands_mutation_response']: {
+    __typename: 'omni_brands_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_brands']>;
+  };
+  /** input type for inserting object relation for remote table "omni.brands" */
+  ['omni_brands_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_brands_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_brands_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.brands" */
+  ['omni_brands_on_conflict']: {
+    constraint: GraphQLTypes['omni_brands_constraint'];
+    update_columns: Array<GraphQLTypes['omni_brands_update_column']>;
+    where?: GraphQLTypes['omni_brands_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.brands". */
+  ['omni_brands_order_by']: {
+    brand_statuses_enum?: GraphQLTypes['omni_brand_statuses_enum_order_by'];
+    brand_users_aggregate?: GraphQLTypes['omni_brand_users_aggregate_order_by'];
+    created_at?: GraphQLTypes['order_by'];
+    description?: GraphQLTypes['order_by'];
+    discord_url?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    logo?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    products_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+    status?: GraphQLTypes['order_by'];
+    twitter_url?: GraphQLTypes['order_by'];
+    updated_at?: GraphQLTypes['order_by'];
+    website_url?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_brands */
+  ['omni_brands_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.brands" */
+  ['omni_brands_select_column']: omni_brands_select_column;
+  /** input type for updating data in table "omni.brands" */
+  ['omni_brands_set_input']: {
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    discord_url?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    /** link to logo image */
+    logo?: string;
+    name?: string;
+    status?: GraphQLTypes['omni_brand_statuses_enum_enum'];
+    twitter_url?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** update columns of table "omni.brands" */
+  ['omni_brands_update_column']: omni_brands_update_column;
+  /** columns and relationships of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum']: {
+    __typename: 'omni_collaborator_types_enum';
+    description?: string;
+    /** An array relationship */
+    product_collaborators: Array<GraphQLTypes['omni_product_collaborators']>;
+    /** An aggregate relationship */
+    product_collaborators_aggregate: GraphQLTypes['omni_product_collaborators_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_aggregate']: {
+    __typename: 'omni_collaborator_types_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_collaborator_types_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_collaborator_types_enum']>;
+  };
+  /** aggregate fields of "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_aggregate_fields']: {
+    __typename: 'omni_collaborator_types_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_collaborator_types_enum_max_fields'];
+    min?: GraphQLTypes['omni_collaborator_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.collaborator_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_collaborator_types_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_collaborator_types_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_collaborator_types_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_collaborator_types_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    product_collaborators?: GraphQLTypes['omni_product_collaborators_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_constraint']: omni_collaborator_types_enum_constraint;
+  ['omni_collaborator_types_enum_enum']: omni_collaborator_types_enum_enum;
+  /** Boolean expression to compare columns of type "omni_collaborator_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_collaborator_types_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_collaborator_types_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_collaborator_types_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_collaborator_types_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_collaborator_types_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_insert_input']: {
+    description?: string;
+    product_collaborators?: GraphQLTypes['omni_product_collaborators_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_collaborator_types_enum_max_fields']: {
+    __typename: 'omni_collaborator_types_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_collaborator_types_enum_min_fields']: {
+    __typename: 'omni_collaborator_types_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_mutation_response']: {
+    __typename: 'omni_collaborator_types_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_collaborator_types_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_collaborator_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_collaborator_types_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_collaborator_types_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_collaborator_types_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_collaborator_types_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.collaborator_types_enum". */
+  ['omni_collaborator_types_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    product_collaborators_aggregate?: GraphQLTypes['omni_product_collaborators_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_collaborator_types_enum */
+  ['omni_collaborator_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_select_column']: omni_collaborator_types_enum_select_column;
+  /** input type for updating data in table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.collaborator_types_enum" */
+  ['omni_collaborator_types_enum_update_column']: omni_collaborator_types_enum_update_column;
+  /** columns and relationships of "omni.fullfillers" */
+  ['omni_fullfillers']: {
+    __typename: 'omni_fullfillers';
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id: GraphQLTypes['uuid'];
+    name?: string;
+    /** An array relationship */
+    products: Array<GraphQLTypes['omni_products']>;
+    /** An aggregate relationship */
+    products_aggregate: GraphQLTypes['omni_products_aggregate'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** aggregated selection of "omni.fullfillers" */
+  ['omni_fullfillers_aggregate']: {
+    __typename: 'omni_fullfillers_aggregate';
+    aggregate?: GraphQLTypes['omni_fullfillers_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_fullfillers']>;
+  };
+  /** aggregate fields of "omni.fullfillers" */
+  ['omni_fullfillers_aggregate_fields']: {
+    __typename: 'omni_fullfillers_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_fullfillers_max_fields'];
+    min?: GraphQLTypes['omni_fullfillers_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.fullfillers". All fields are combined with a logical 'AND'. */
+  ['omni_fullfillers_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_fullfillers_bool_exp']>;
+    _not?: GraphQLTypes['omni_fullfillers_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_fullfillers_bool_exp']>;
+    address?: GraphQLTypes['String_comparison_exp'];
+    created_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    email?: GraphQLTypes['String_comparison_exp'];
+    eth_address?: GraphQLTypes['String_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    name?: GraphQLTypes['String_comparison_exp'];
+    products?: GraphQLTypes['omni_products_bool_exp'];
+    updated_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    website_url?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.fullfillers" */
+  ['omni_fullfillers_constraint']: omni_fullfillers_constraint;
+  /** input type for inserting data into table "omni.fullfillers" */
+  ['omni_fullfillers_insert_input']: {
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    products?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_fullfillers_max_fields']: {
+    __typename: 'omni_fullfillers_max_fields';
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_fullfillers_min_fields']: {
+    __typename: 'omni_fullfillers_min_fields';
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** response of any mutation on the table "omni.fullfillers" */
+  ['omni_fullfillers_mutation_response']: {
+    __typename: 'omni_fullfillers_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_fullfillers']>;
+  };
+  /** input type for inserting object relation for remote table "omni.fullfillers" */
+  ['omni_fullfillers_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_fullfillers_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_fullfillers_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.fullfillers" */
+  ['omni_fullfillers_on_conflict']: {
+    constraint: GraphQLTypes['omni_fullfillers_constraint'];
+    update_columns: Array<GraphQLTypes['omni_fullfillers_update_column']>;
+    where?: GraphQLTypes['omni_fullfillers_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.fullfillers". */
+  ['omni_fullfillers_order_by']: {
+    address?: GraphQLTypes['order_by'];
+    created_at?: GraphQLTypes['order_by'];
+    email?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    products_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+    updated_at?: GraphQLTypes['order_by'];
+    website_url?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_fullfillers */
+  ['omni_fullfillers_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.fullfillers" */
+  ['omni_fullfillers_select_column']: omni_fullfillers_select_column;
+  /** input type for updating data in table "omni.fullfillers" */
+  ['omni_fullfillers_set_input']: {
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    website_url?: string;
+  };
+  /** update columns of table "omni.fullfillers" */
+  ['omni_fullfillers_update_column']: omni_fullfillers_update_column;
+  /** columns and relationships of "omni.price_currencies" */
+  ['omni_price_currencies']: {
+    __typename: 'omni_price_currencies';
+    /** enum? */
+    currency?: string;
+    id: GraphQLTypes['uuid'];
+    price?: GraphQLTypes['numeric'];
+    /** An array relationship */
+    products: Array<GraphQLTypes['omni_products']>;
+    /** An array relationship */
+    productsByProductionCost: Array<GraphQLTypes['omni_products']>;
+    /** An aggregate relationship */
+    productsByProductionCost_aggregate: GraphQLTypes['omni_products_aggregate'];
+    /** An array relationship */
+    productsByTotalSales: Array<GraphQLTypes['omni_products']>;
+    /** An aggregate relationship */
+    productsByTotalSales_aggregate: GraphQLTypes['omni_products_aggregate'];
+    /** An aggregate relationship */
+    products_aggregate: GraphQLTypes['omni_products_aggregate'];
+  };
+  /** aggregated selection of "omni.price_currencies" */
+  ['omni_price_currencies_aggregate']: {
+    __typename: 'omni_price_currencies_aggregate';
+    aggregate?: GraphQLTypes['omni_price_currencies_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_price_currencies']>;
+  };
+  /** aggregate fields of "omni.price_currencies" */
+  ['omni_price_currencies_aggregate_fields']: {
+    __typename: 'omni_price_currencies_aggregate_fields';
+    avg?: GraphQLTypes['omni_price_currencies_avg_fields'];
+    count: number;
+    max?: GraphQLTypes['omni_price_currencies_max_fields'];
+    min?: GraphQLTypes['omni_price_currencies_min_fields'];
+    stddev?: GraphQLTypes['omni_price_currencies_stddev_fields'];
+    stddev_pop?: GraphQLTypes['omni_price_currencies_stddev_pop_fields'];
+    stddev_samp?: GraphQLTypes['omni_price_currencies_stddev_samp_fields'];
+    sum?: GraphQLTypes['omni_price_currencies_sum_fields'];
+    var_pop?: GraphQLTypes['omni_price_currencies_var_pop_fields'];
+    var_samp?: GraphQLTypes['omni_price_currencies_var_samp_fields'];
+    variance?: GraphQLTypes['omni_price_currencies_variance_fields'];
+  };
+  /** aggregate avg on columns */
+  ['omni_price_currencies_avg_fields']: {
+    __typename: 'omni_price_currencies_avg_fields';
+    price?: number;
+  };
+  /** Boolean expression to filter rows from the table "omni.price_currencies". All fields are combined with a logical 'AND'. */
+  ['omni_price_currencies_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_price_currencies_bool_exp']>;
+    _not?: GraphQLTypes['omni_price_currencies_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_price_currencies_bool_exp']>;
+    currency?: GraphQLTypes['String_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    price?: GraphQLTypes['numeric_comparison_exp'];
+    products?: GraphQLTypes['omni_products_bool_exp'];
+    productsByProductionCost?: GraphQLTypes['omni_products_bool_exp'];
+    productsByTotalSales?: GraphQLTypes['omni_products_bool_exp'];
+  };
+  /** unique or primary key constraints on table "omni.price_currencies" */
+  ['omni_price_currencies_constraint']: omni_price_currencies_constraint;
+  /** input type for incrementing numeric columns in table "omni.price_currencies" */
+  ['omni_price_currencies_inc_input']: {
+    price?: GraphQLTypes['numeric'];
+  };
+  /** input type for inserting data into table "omni.price_currencies" */
+  ['omni_price_currencies_insert_input']: {
+    /** enum? */
+    currency?: string;
+    id?: GraphQLTypes['uuid'];
+    price?: GraphQLTypes['numeric'];
+    products?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+    productsByProductionCost?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+    productsByTotalSales?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+  };
+  /** aggregate max on columns */
+  ['omni_price_currencies_max_fields']: {
+    __typename: 'omni_price_currencies_max_fields';
+    /** enum? */
+    currency?: string;
+    id?: GraphQLTypes['uuid'];
+    price?: GraphQLTypes['numeric'];
+  };
+  /** aggregate min on columns */
+  ['omni_price_currencies_min_fields']: {
+    __typename: 'omni_price_currencies_min_fields';
+    /** enum? */
+    currency?: string;
+    id?: GraphQLTypes['uuid'];
+    price?: GraphQLTypes['numeric'];
+  };
+  /** response of any mutation on the table "omni.price_currencies" */
+  ['omni_price_currencies_mutation_response']: {
+    __typename: 'omni_price_currencies_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_price_currencies']>;
+  };
+  /** input type for inserting object relation for remote table "omni.price_currencies" */
+  ['omni_price_currencies_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_price_currencies_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_price_currencies_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.price_currencies" */
+  ['omni_price_currencies_on_conflict']: {
+    constraint: GraphQLTypes['omni_price_currencies_constraint'];
+    update_columns: Array<GraphQLTypes['omni_price_currencies_update_column']>;
+    where?: GraphQLTypes['omni_price_currencies_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.price_currencies". */
+  ['omni_price_currencies_order_by']: {
+    currency?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    price?: GraphQLTypes['order_by'];
+    productsByProductionCost_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+    productsByTotalSales_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+    products_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+  };
+  /** primary key columns input for table: omni_price_currencies */
+  ['omni_price_currencies_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.price_currencies" */
+  ['omni_price_currencies_select_column']: omni_price_currencies_select_column;
+  /** input type for updating data in table "omni.price_currencies" */
+  ['omni_price_currencies_set_input']: {
+    /** enum? */
+    currency?: string;
+    id?: GraphQLTypes['uuid'];
+    price?: GraphQLTypes['numeric'];
+  };
+  /** aggregate stddev on columns */
+  ['omni_price_currencies_stddev_fields']: {
+    __typename: 'omni_price_currencies_stddev_fields';
+    price?: number;
+  };
+  /** aggregate stddev_pop on columns */
+  ['omni_price_currencies_stddev_pop_fields']: {
+    __typename: 'omni_price_currencies_stddev_pop_fields';
+    price?: number;
+  };
+  /** aggregate stddev_samp on columns */
+  ['omni_price_currencies_stddev_samp_fields']: {
+    __typename: 'omni_price_currencies_stddev_samp_fields';
+    price?: number;
+  };
+  /** aggregate sum on columns */
+  ['omni_price_currencies_sum_fields']: {
+    __typename: 'omni_price_currencies_sum_fields';
+    price?: GraphQLTypes['numeric'];
+  };
+  /** update columns of table "omni.price_currencies" */
+  ['omni_price_currencies_update_column']: omni_price_currencies_update_column;
+  /** aggregate var_pop on columns */
+  ['omni_price_currencies_var_pop_fields']: {
+    __typename: 'omni_price_currencies_var_pop_fields';
+    price?: number;
+  };
+  /** aggregate var_samp on columns */
+  ['omni_price_currencies_var_samp_fields']: {
+    __typename: 'omni_price_currencies_var_samp_fields';
+    price?: number;
+  };
+  /** aggregate variance on columns */
+  ['omni_price_currencies_variance_fields']: {
+    __typename: 'omni_price_currencies_variance_fields';
+    price?: number;
+  };
+  /** columns and relationships of "omni.print_techs_enum" */
+  ['omni_print_techs_enum']: {
+    __typename: 'omni_print_techs_enum';
+    description?: string;
+    /** An array relationship */
+    production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** An aggregate relationship */
+    production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.print_techs_enum" */
+  ['omni_print_techs_enum_aggregate']: {
+    __typename: 'omni_print_techs_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_print_techs_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_print_techs_enum']>;
+  };
+  /** aggregate fields of "omni.print_techs_enum" */
+  ['omni_print_techs_enum_aggregate_fields']: {
+    __typename: 'omni_print_techs_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_print_techs_enum_max_fields'];
+    min?: GraphQLTypes['omni_print_techs_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.print_techs_enum". All fields are combined with a logical 'AND'. */
+  ['omni_print_techs_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_print_techs_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_print_techs_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_print_techs_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    production_materials?: GraphQLTypes['omni_production_materials_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_constraint']: omni_print_techs_enum_constraint;
+  ['omni_print_techs_enum_enum']: omni_print_techs_enum_enum;
+  /** Boolean expression to compare columns of type "omni_print_techs_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_print_techs_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_print_techs_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_print_techs_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_print_techs_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_print_techs_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_insert_input']: {
+    description?: string;
+    production_materials?: GraphQLTypes['omni_production_materials_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_print_techs_enum_max_fields']: {
+    __typename: 'omni_print_techs_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_print_techs_enum_min_fields']: {
+    __typename: 'omni_print_techs_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_mutation_response']: {
+    __typename: 'omni_print_techs_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_print_techs_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_print_techs_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_print_techs_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_print_techs_enum_constraint'];
+    update_columns: Array<GraphQLTypes['omni_print_techs_enum_update_column']>;
+    where?: GraphQLTypes['omni_print_techs_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.print_techs_enum". */
+  ['omni_print_techs_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    production_materials_aggregate?: GraphQLTypes['omni_production_materials_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_print_techs_enum */
+  ['omni_print_techs_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_select_column']: omni_print_techs_enum_select_column;
+  /** input type for updating data in table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.print_techs_enum" */
+  ['omni_print_techs_enum_update_column']: omni_print_techs_enum_update_column;
+  /** columns and relationships of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum']: {
+    __typename: 'omni_producer_statuses_enum';
+    description?: string;
+    /** An array relationship */
+    producers: Array<GraphQLTypes['omni_producers']>;
+    /** An aggregate relationship */
+    producers_aggregate: GraphQLTypes['omni_producers_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_aggregate']: {
+    __typename: 'omni_producer_statuses_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_producer_statuses_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_producer_statuses_enum']>;
+  };
+  /** aggregate fields of "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_aggregate_fields']: {
+    __typename: 'omni_producer_statuses_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_producer_statuses_enum_max_fields'];
+    min?: GraphQLTypes['omni_producer_statuses_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.producer_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_producer_statuses_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_producer_statuses_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_producer_statuses_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_producer_statuses_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    producers?: GraphQLTypes['omni_producers_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_constraint']: omni_producer_statuses_enum_constraint;
+  ['omni_producer_statuses_enum_enum']: omni_producer_statuses_enum_enum;
+  /** Boolean expression to compare columns of type "omni_producer_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_producer_statuses_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_producer_statuses_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_producer_statuses_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_producer_statuses_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_producer_statuses_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_insert_input']: {
+    description?: string;
+    producers?: GraphQLTypes['omni_producers_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_producer_statuses_enum_max_fields']: {
+    __typename: 'omni_producer_statuses_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_producer_statuses_enum_min_fields']: {
+    __typename: 'omni_producer_statuses_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_mutation_response']: {
+    __typename: 'omni_producer_statuses_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_producer_statuses_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_producer_statuses_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_producer_statuses_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_producer_statuses_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_producer_statuses_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_producer_statuses_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.producer_statuses_enum". */
+  ['omni_producer_statuses_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    producers_aggregate?: GraphQLTypes['omni_producers_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_producer_statuses_enum */
+  ['omni_producer_statuses_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_select_column']: omni_producer_statuses_enum_select_column;
+  /** input type for updating data in table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.producer_statuses_enum" */
+  ['omni_producer_statuses_enum_update_column']: omni_producer_statuses_enum_update_column;
+  /** columns and relationships of "omni.producers" */
+  ['omni_producers']: {
+    __typename: 'omni_producers';
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id: GraphQLTypes['uuid'];
+    name?: string;
+    /** An object relationship */
+    producer_statuses_enum?: GraphQLTypes['omni_producer_statuses_enum'];
+    /** An object relationship */
+    product?: GraphQLTypes['omni_products'];
+    /** An array relationship */
+    production_materials_producers: Array<
+      GraphQLTypes['omni_production_materials_producers']
+    >;
+    /** An aggregate relationship */
+    production_materials_producers_aggregate: GraphQLTypes['omni_production_materials_producers_aggregate'];
+    /** An array relationship */
+    production_methods_producers: Array<
+      GraphQLTypes['omni_production_methods_producers']
+    >;
+    /** An aggregate relationship */
+    production_methods_producers_aggregate: GraphQLTypes['omni_production_methods_producers_aggregate'];
+    products?: GraphQLTypes['uuid'];
+    /** An array relationship */
+    productsByProducer: Array<GraphQLTypes['omni_products']>;
+    /** An aggregate relationship */
+    productsByProducer_aggregate: GraphQLTypes['omni_products_aggregate'];
+    status?: GraphQLTypes['omni_producer_statuses_enum_enum'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** aggregated selection of "omni.producers" */
+  ['omni_producers_aggregate']: {
+    __typename: 'omni_producers_aggregate';
+    aggregate?: GraphQLTypes['omni_producers_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_producers']>;
+  };
+  /** aggregate fields of "omni.producers" */
+  ['omni_producers_aggregate_fields']: {
+    __typename: 'omni_producers_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_producers_max_fields'];
+    min?: GraphQLTypes['omni_producers_min_fields'];
+  };
+  /** order by aggregate values of table "omni.producers" */
+  ['omni_producers_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_producers_max_order_by'];
+    min?: GraphQLTypes['omni_producers_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.producers" */
+  ['omni_producers_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_producers_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_producers_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.producers". All fields are combined with a logical 'AND'. */
+  ['omni_producers_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_producers_bool_exp']>;
+    _not?: GraphQLTypes['omni_producers_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_producers_bool_exp']>;
+    address?: GraphQLTypes['String_comparison_exp'];
+    created_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    email?: GraphQLTypes['String_comparison_exp'];
+    eth_address?: GraphQLTypes['String_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    name?: GraphQLTypes['String_comparison_exp'];
+    producer_statuses_enum?: GraphQLTypes['omni_producer_statuses_enum_bool_exp'];
+    product?: GraphQLTypes['omni_products_bool_exp'];
+    production_materials_producers?: GraphQLTypes['omni_production_materials_producers_bool_exp'];
+    production_methods_producers?: GraphQLTypes['omni_production_methods_producers_bool_exp'];
+    products?: GraphQLTypes['uuid_comparison_exp'];
+    productsByProducer?: GraphQLTypes['omni_products_bool_exp'];
+    status?: GraphQLTypes['omni_producer_statuses_enum_enum_comparison_exp'];
+    updated_at?: GraphQLTypes['timestamptz_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.producers" */
+  ['omni_producers_constraint']: omni_producers_constraint;
+  /** input type for inserting data into table "omni.producers" */
+  ['omni_producers_insert_input']: {
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    producer_statuses_enum?: GraphQLTypes['omni_producer_statuses_enum_obj_rel_insert_input'];
+    product?: GraphQLTypes['omni_products_obj_rel_insert_input'];
+    production_materials_producers?: GraphQLTypes['omni_production_materials_producers_arr_rel_insert_input'];
+    production_methods_producers?: GraphQLTypes['omni_production_methods_producers_arr_rel_insert_input'];
+    products?: GraphQLTypes['uuid'];
+    productsByProducer?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+    status?: GraphQLTypes['omni_producer_statuses_enum_enum'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** aggregate max on columns */
+  ['omni_producers_max_fields']: {
+    __typename: 'omni_producers_max_fields';
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    products?: GraphQLTypes['uuid'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** order by max() on columns of table "omni.producers" */
+  ['omni_producers_max_order_by']: {
+    address?: GraphQLTypes['order_by'];
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    email?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    products?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_producers_min_fields']: {
+    __typename: 'omni_producers_min_fields';
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    products?: GraphQLTypes['uuid'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** order by min() on columns of table "omni.producers" */
+  ['omni_producers_min_order_by']: {
+    address?: GraphQLTypes['order_by'];
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    email?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    products?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.producers" */
+  ['omni_producers_mutation_response']: {
+    __typename: 'omni_producers_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_producers']>;
+  };
+  /** input type for inserting object relation for remote table "omni.producers" */
+  ['omni_producers_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_producers_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_producers_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.producers" */
+  ['omni_producers_on_conflict']: {
+    constraint: GraphQLTypes['omni_producers_constraint'];
+    update_columns: Array<GraphQLTypes['omni_producers_update_column']>;
+    where?: GraphQLTypes['omni_producers_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.producers". */
+  ['omni_producers_order_by']: {
+    address?: GraphQLTypes['order_by'];
+    created_at?: GraphQLTypes['order_by'];
+    email?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    producer_statuses_enum?: GraphQLTypes['omni_producer_statuses_enum_order_by'];
+    product?: GraphQLTypes['omni_products_order_by'];
+    production_materials_producers_aggregate?: GraphQLTypes['omni_production_materials_producers_aggregate_order_by'];
+    production_methods_producers_aggregate?: GraphQLTypes['omni_production_methods_producers_aggregate_order_by'];
+    products?: GraphQLTypes['order_by'];
+    productsByProducer_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+    status?: GraphQLTypes['order_by'];
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_producers */
+  ['omni_producers_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.producers" */
+  ['omni_producers_select_column']: omni_producers_select_column;
+  /** input type for updating data in table "omni.producers" */
+  ['omni_producers_set_input']: {
+    address?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    email?: string;
+    eth_address?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    products?: GraphQLTypes['uuid'];
+    status?: GraphQLTypes['omni_producer_statuses_enum_enum'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** update columns of table "omni.producers" */
+  ['omni_producers_update_column']: omni_producers_update_column;
+  /** columns and relationships of "omni.product_collaborators" */
+  ['omni_product_collaborators']: {
+    __typename: 'omni_product_collaborators';
+    collaboration_share?: GraphQLTypes['numeric'];
+    collaborator?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    collaborator_types_enum?: GraphQLTypes['omni_collaborator_types_enum'];
+    id: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    productByProduct?: GraphQLTypes['omni_products'];
+    type?: GraphQLTypes['omni_collaborator_types_enum_enum'];
+    /** An object relationship */
+    user?: GraphQLTypes['omni_users'];
+  };
+  /** aggregated selection of "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate']: {
+    __typename: 'omni_product_collaborators_aggregate';
+    aggregate?: GraphQLTypes['omni_product_collaborators_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_product_collaborators']>;
+  };
+  /** aggregate fields of "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate_fields']: {
+    __typename: 'omni_product_collaborators_aggregate_fields';
+    avg?: GraphQLTypes['omni_product_collaborators_avg_fields'];
+    count: number;
+    max?: GraphQLTypes['omni_product_collaborators_max_fields'];
+    min?: GraphQLTypes['omni_product_collaborators_min_fields'];
+    stddev?: GraphQLTypes['omni_product_collaborators_stddev_fields'];
+    stddev_pop?: GraphQLTypes['omni_product_collaborators_stddev_pop_fields'];
+    stddev_samp?: GraphQLTypes['omni_product_collaborators_stddev_samp_fields'];
+    sum?: GraphQLTypes['omni_product_collaborators_sum_fields'];
+    var_pop?: GraphQLTypes['omni_product_collaborators_var_pop_fields'];
+    var_samp?: GraphQLTypes['omni_product_collaborators_var_samp_fields'];
+    variance?: GraphQLTypes['omni_product_collaborators_variance_fields'];
+  };
+  /** order by aggregate values of table "omni.product_collaborators" */
+  ['omni_product_collaborators_aggregate_order_by']: {
+    avg?: GraphQLTypes['omni_product_collaborators_avg_order_by'];
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_product_collaborators_max_order_by'];
+    min?: GraphQLTypes['omni_product_collaborators_min_order_by'];
+    stddev?: GraphQLTypes['omni_product_collaborators_stddev_order_by'];
+    stddev_pop?: GraphQLTypes['omni_product_collaborators_stddev_pop_order_by'];
+    stddev_samp?: GraphQLTypes['omni_product_collaborators_stddev_samp_order_by'];
+    sum?: GraphQLTypes['omni_product_collaborators_sum_order_by'];
+    var_pop?: GraphQLTypes['omni_product_collaborators_var_pop_order_by'];
+    var_samp?: GraphQLTypes['omni_product_collaborators_var_samp_order_by'];
+    variance?: GraphQLTypes['omni_product_collaborators_variance_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.product_collaborators" */
+  ['omni_product_collaborators_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_product_collaborators_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_product_collaborators_on_conflict'];
+  };
+  /** aggregate avg on columns */
+  ['omni_product_collaborators_avg_fields']: {
+    __typename: 'omni_product_collaborators_avg_fields';
+    collaboration_share?: number;
+  };
+  /** order by avg() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_avg_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+  };
+  /** Boolean expression to filter rows from the table "omni.product_collaborators". All fields are combined with a logical 'AND'. */
+  ['omni_product_collaborators_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_product_collaborators_bool_exp']>;
+    _not?: GraphQLTypes['omni_product_collaborators_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_product_collaborators_bool_exp']>;
+    collaboration_share?: GraphQLTypes['numeric_comparison_exp'];
+    collaborator?: GraphQLTypes['uuid_comparison_exp'];
+    collaborator_types_enum?: GraphQLTypes['omni_collaborator_types_enum_bool_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    product?: GraphQLTypes['uuid_comparison_exp'];
+    productByProduct?: GraphQLTypes['omni_products_bool_exp'];
+    type?: GraphQLTypes['omni_collaborator_types_enum_enum_comparison_exp'];
+    user?: GraphQLTypes['omni_users_bool_exp'];
+  };
+  /** unique or primary key constraints on table "omni.product_collaborators" */
+  ['omni_product_collaborators_constraint']: omni_product_collaborators_constraint;
+  /** input type for incrementing numeric columns in table "omni.product_collaborators" */
+  ['omni_product_collaborators_inc_input']: {
+    collaboration_share?: GraphQLTypes['numeric'];
+  };
+  /** input type for inserting data into table "omni.product_collaborators" */
+  ['omni_product_collaborators_insert_input']: {
+    collaboration_share?: GraphQLTypes['numeric'];
+    collaborator?: GraphQLTypes['uuid'];
+    collaborator_types_enum?: GraphQLTypes['omni_collaborator_types_enum_obj_rel_insert_input'];
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    productByProduct?: GraphQLTypes['omni_products_obj_rel_insert_input'];
+    type?: GraphQLTypes['omni_collaborator_types_enum_enum'];
+    user?: GraphQLTypes['omni_users_obj_rel_insert_input'];
+  };
+  /** aggregate max on columns */
+  ['omni_product_collaborators_max_fields']: {
+    __typename: 'omni_product_collaborators_max_fields';
+    collaboration_share?: GraphQLTypes['numeric'];
+    collaborator?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_max_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+    collaborator?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_product_collaborators_min_fields']: {
+    __typename: 'omni_product_collaborators_min_fields';
+    collaboration_share?: GraphQLTypes['numeric'];
+    collaborator?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_min_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+    collaborator?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.product_collaborators" */
+  ['omni_product_collaborators_mutation_response']: {
+    __typename: 'omni_product_collaborators_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_product_collaborators']>;
+  };
+  /** on_conflict condition type for table "omni.product_collaborators" */
+  ['omni_product_collaborators_on_conflict']: {
+    constraint: GraphQLTypes['omni_product_collaborators_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_product_collaborators_update_column']
+    >;
+    where?: GraphQLTypes['omni_product_collaborators_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.product_collaborators". */
+  ['omni_product_collaborators_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+    collaborator?: GraphQLTypes['order_by'];
+    collaborator_types_enum?: GraphQLTypes['omni_collaborator_types_enum_order_by'];
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+    productByProduct?: GraphQLTypes['omni_products_order_by'];
+    type?: GraphQLTypes['order_by'];
+    user?: GraphQLTypes['omni_users_order_by'];
+  };
+  /** primary key columns input for table: omni_product_collaborators */
+  ['omni_product_collaborators_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_select_column']: omni_product_collaborators_select_column;
+  /** input type for updating data in table "omni.product_collaborators" */
+  ['omni_product_collaborators_set_input']: {
+    collaboration_share?: GraphQLTypes['numeric'];
+    collaborator?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    type?: GraphQLTypes['omni_collaborator_types_enum_enum'];
+  };
+  /** aggregate stddev on columns */
+  ['omni_product_collaborators_stddev_fields']: {
+    __typename: 'omni_product_collaborators_stddev_fields';
+    collaboration_share?: number;
+  };
+  /** order by stddev() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+  };
+  /** aggregate stddev_pop on columns */
+  ['omni_product_collaborators_stddev_pop_fields']: {
+    __typename: 'omni_product_collaborators_stddev_pop_fields';
+    collaboration_share?: number;
+  };
+  /** order by stddev_pop() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_pop_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+  };
+  /** aggregate stddev_samp on columns */
+  ['omni_product_collaborators_stddev_samp_fields']: {
+    __typename: 'omni_product_collaborators_stddev_samp_fields';
+    collaboration_share?: number;
+  };
+  /** order by stddev_samp() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_stddev_samp_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+  };
+  /** aggregate sum on columns */
+  ['omni_product_collaborators_sum_fields']: {
+    __typename: 'omni_product_collaborators_sum_fields';
+    collaboration_share?: GraphQLTypes['numeric'];
+  };
+  /** order by sum() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_sum_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+  };
+  /** update columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_update_column']: omni_product_collaborators_update_column;
+  /** aggregate var_pop on columns */
+  ['omni_product_collaborators_var_pop_fields']: {
+    __typename: 'omni_product_collaborators_var_pop_fields';
+    collaboration_share?: number;
+  };
+  /** order by var_pop() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_var_pop_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+  };
+  /** aggregate var_samp on columns */
+  ['omni_product_collaborators_var_samp_fields']: {
+    __typename: 'omni_product_collaborators_var_samp_fields';
+    collaboration_share?: number;
+  };
+  /** order by var_samp() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_var_samp_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+  };
+  /** aggregate variance on columns */
+  ['omni_product_collaborators_variance_fields']: {
+    __typename: 'omni_product_collaborators_variance_fields';
+    collaboration_share?: number;
+  };
+  /** order by variance() on columns of table "omni.product_collaborators" */
+  ['omni_product_collaborators_variance_order_by']: {
+    collaboration_share?: GraphQLTypes['order_by'];
+  };
+  /** columns and relationships of "omni.product_types_enum" */
+  ['omni_product_types_enum']: {
+    __typename: 'omni_product_types_enum';
+    description?: string;
+    /** An array relationship */
+    production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** An aggregate relationship */
+    production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.product_types_enum" */
+  ['omni_product_types_enum_aggregate']: {
+    __typename: 'omni_product_types_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_product_types_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_product_types_enum']>;
+  };
+  /** aggregate fields of "omni.product_types_enum" */
+  ['omni_product_types_enum_aggregate_fields']: {
+    __typename: 'omni_product_types_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_product_types_enum_max_fields'];
+    min?: GraphQLTypes['omni_product_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.product_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_product_types_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_product_types_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_product_types_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_product_types_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    production_materials?: GraphQLTypes['omni_production_materials_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.product_types_enum" */
+  ['omni_product_types_enum_constraint']: omni_product_types_enum_constraint;
+  /** input type for inserting data into table "omni.product_types_enum" */
+  ['omni_product_types_enum_insert_input']: {
+    description?: string;
+    production_materials?: GraphQLTypes['omni_production_materials_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_product_types_enum_max_fields']: {
+    __typename: 'omni_product_types_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_product_types_enum_min_fields']: {
+    __typename: 'omni_product_types_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.product_types_enum" */
+  ['omni_product_types_enum_mutation_response']: {
+    __typename: 'omni_product_types_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_product_types_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.product_types_enum" */
+  ['omni_product_types_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_product_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_product_types_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.product_types_enum" */
+  ['omni_product_types_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_product_types_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_product_types_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_product_types_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.product_types_enum". */
+  ['omni_product_types_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    production_materials_aggregate?: GraphQLTypes['omni_production_materials_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_product_types_enum */
+  ['omni_product_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.product_types_enum" */
+  ['omni_product_types_enum_select_column']: omni_product_types_enum_select_column;
+  /** input type for updating data in table "omni.product_types_enum" */
+  ['omni_product_types_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.product_types_enum" */
+  ['omni_product_types_enum_update_column']: omni_product_types_enum_update_column;
+  /** columns and relationships of "omni.production_genders_enum" */
+  ['omni_production_genders_enum']: {
+    __typename: 'omni_production_genders_enum';
+    description?: string;
+    /** An array relationship */
+    production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** An aggregate relationship */
+    production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.production_genders_enum" */
+  ['omni_production_genders_enum_aggregate']: {
+    __typename: 'omni_production_genders_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_production_genders_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_genders_enum']>;
+  };
+  /** aggregate fields of "omni.production_genders_enum" */
+  ['omni_production_genders_enum_aggregate_fields']: {
+    __typename: 'omni_production_genders_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_production_genders_enum_max_fields'];
+    min?: GraphQLTypes['omni_production_genders_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_genders_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_genders_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_production_genders_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_production_genders_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_production_genders_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    production_materials?: GraphQLTypes['omni_production_materials_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_constraint']: omni_production_genders_enum_constraint;
+  ['omni_production_genders_enum_enum']: omni_production_genders_enum_enum;
+  /** Boolean expression to compare columns of type "omni_production_genders_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_genders_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_production_genders_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_production_genders_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_production_genders_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_production_genders_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_insert_input']: {
+    description?: string;
+    production_materials?: GraphQLTypes['omni_production_materials_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_production_genders_enum_max_fields']: {
+    __typename: 'omni_production_genders_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_production_genders_enum_min_fields']: {
+    __typename: 'omni_production_genders_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_mutation_response']: {
+    __typename: 'omni_production_genders_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_genders_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_production_genders_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_genders_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_genders_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_genders_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_genders_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_genders_enum". */
+  ['omni_production_genders_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    production_materials_aggregate?: GraphQLTypes['omni_production_materials_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_genders_enum */
+  ['omni_production_genders_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_select_column']: omni_production_genders_enum_select_column;
+  /** input type for updating data in table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.production_genders_enum" */
+  ['omni_production_genders_enum_update_column']: omni_production_genders_enum_update_column;
+  /** columns and relationships of "omni.production_materials" */
+  ['omni_production_materials']: {
+    __typename: 'omni_production_materials';
+    base_price?: GraphQLTypes['numeric'];
+    composition?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    gender?: GraphQLTypes['omni_production_genders_enum_enum'];
+    id: GraphQLTypes['uuid'];
+    name?: string;
+    neck_tag?: boolean;
+    pallette?: GraphQLTypes['omni_production_pallettes_enum_enum'];
+    print_tech?: GraphQLTypes['omni_print_techs_enum_enum'];
+    /** An object relationship */
+    print_techs_enum?: GraphQLTypes['omni_print_techs_enum'];
+    /** An object relationship */
+    product?: GraphQLTypes['omni_products'];
+    /** An object relationship */
+    product_types_enum?: GraphQLTypes['omni_product_types_enum'];
+    /** An object relationship */
+    production_genders_enum?: GraphQLTypes['omni_production_genders_enum'];
+    /** An array relationship */
+    production_materials_producers: Array<
+      GraphQLTypes['omni_production_materials_producers']
+    >;
+    /** An aggregate relationship */
+    production_materials_producers_aggregate: GraphQLTypes['omni_production_materials_producers_aggregate'];
+    /** An object relationship */
+    production_materials_ratings_enum?: GraphQLTypes['omni_production_materials_ratings_enum'];
+    /** An object relationship */
+    production_pallettes_enum?: GraphQLTypes['omni_production_pallettes_enum'];
+    /** An object relationship */
+    production_styles_enum?: GraphQLTypes['omni_production_styles_enum'];
+    products?: GraphQLTypes['uuid'];
+    /** An array relationship */
+    productsByProductionMaterial: Array<GraphQLTypes['omni_products']>;
+    /** An aggregate relationship */
+    productsByProductionMaterial_aggregate: GraphQLTypes['omni_products_aggregate'];
+    rating?: GraphQLTypes['omni_production_materials_ratings_enum_enum'];
+    /** link to guide */
+    size_guide?: string;
+    style?: GraphQLTypes['omni_production_styles_enum_enum'];
+    style_number?: string;
+    type?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** aggregated selection of "omni.production_materials" */
+  ['omni_production_materials_aggregate']: {
+    __typename: 'omni_production_materials_aggregate';
+    aggregate?: GraphQLTypes['omni_production_materials_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_materials']>;
+  };
+  /** aggregate fields of "omni.production_materials" */
+  ['omni_production_materials_aggregate_fields']: {
+    __typename: 'omni_production_materials_aggregate_fields';
+    avg?: GraphQLTypes['omni_production_materials_avg_fields'];
+    count: number;
+    max?: GraphQLTypes['omni_production_materials_max_fields'];
+    min?: GraphQLTypes['omni_production_materials_min_fields'];
+    stddev?: GraphQLTypes['omni_production_materials_stddev_fields'];
+    stddev_pop?: GraphQLTypes['omni_production_materials_stddev_pop_fields'];
+    stddev_samp?: GraphQLTypes['omni_production_materials_stddev_samp_fields'];
+    sum?: GraphQLTypes['omni_production_materials_sum_fields'];
+    var_pop?: GraphQLTypes['omni_production_materials_var_pop_fields'];
+    var_samp?: GraphQLTypes['omni_production_materials_var_samp_fields'];
+    variance?: GraphQLTypes['omni_production_materials_variance_fields'];
+  };
+  /** order by aggregate values of table "omni.production_materials" */
+  ['omni_production_materials_aggregate_order_by']: {
+    avg?: GraphQLTypes['omni_production_materials_avg_order_by'];
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_production_materials_max_order_by'];
+    min?: GraphQLTypes['omni_production_materials_min_order_by'];
+    stddev?: GraphQLTypes['omni_production_materials_stddev_order_by'];
+    stddev_pop?: GraphQLTypes['omni_production_materials_stddev_pop_order_by'];
+    stddev_samp?: GraphQLTypes['omni_production_materials_stddev_samp_order_by'];
+    sum?: GraphQLTypes['omni_production_materials_sum_order_by'];
+    var_pop?: GraphQLTypes['omni_production_materials_var_pop_order_by'];
+    var_samp?: GraphQLTypes['omni_production_materials_var_samp_order_by'];
+    variance?: GraphQLTypes['omni_production_materials_variance_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.production_materials" */
+  ['omni_production_materials_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_production_materials_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_materials_on_conflict'];
+  };
+  /** aggregate avg on columns */
+  ['omni_production_materials_avg_fields']: {
+    __typename: 'omni_production_materials_avg_fields';
+    base_price?: number;
+  };
+  /** order by avg() on columns of table "omni.production_materials" */
+  ['omni_production_materials_avg_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_materials". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_production_materials_bool_exp']>;
+    _not?: GraphQLTypes['omni_production_materials_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_production_materials_bool_exp']>;
+    base_price?: GraphQLTypes['numeric_comparison_exp'];
+    composition?: GraphQLTypes['String_comparison_exp'];
+    created_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    description?: GraphQLTypes['String_comparison_exp'];
+    gender?: GraphQLTypes['omni_production_genders_enum_enum_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    name?: GraphQLTypes['String_comparison_exp'];
+    neck_tag?: GraphQLTypes['Boolean_comparison_exp'];
+    pallette?: GraphQLTypes['omni_production_pallettes_enum_enum_comparison_exp'];
+    print_tech?: GraphQLTypes['omni_print_techs_enum_enum_comparison_exp'];
+    print_techs_enum?: GraphQLTypes['omni_print_techs_enum_bool_exp'];
+    product?: GraphQLTypes['omni_products_bool_exp'];
+    product_types_enum?: GraphQLTypes['omni_product_types_enum_bool_exp'];
+    production_genders_enum?: GraphQLTypes['omni_production_genders_enum_bool_exp'];
+    production_materials_producers?: GraphQLTypes['omni_production_materials_producers_bool_exp'];
+    production_materials_ratings_enum?: GraphQLTypes['omni_production_materials_ratings_enum_bool_exp'];
+    production_pallettes_enum?: GraphQLTypes['omni_production_pallettes_enum_bool_exp'];
+    production_styles_enum?: GraphQLTypes['omni_production_styles_enum_bool_exp'];
+    products?: GraphQLTypes['uuid_comparison_exp'];
+    productsByProductionMaterial?: GraphQLTypes['omni_products_bool_exp'];
+    rating?: GraphQLTypes['omni_production_materials_ratings_enum_enum_comparison_exp'];
+    size_guide?: GraphQLTypes['String_comparison_exp'];
+    style?: GraphQLTypes['omni_production_styles_enum_enum_comparison_exp'];
+    style_number?: GraphQLTypes['String_comparison_exp'];
+    type?: GraphQLTypes['String_comparison_exp'];
+    updated_at?: GraphQLTypes['timestamptz_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_materials" */
+  ['omni_production_materials_constraint']: omni_production_materials_constraint;
+  /** input type for incrementing numeric columns in table "omni.production_materials" */
+  ['omni_production_materials_inc_input']: {
+    base_price?: GraphQLTypes['numeric'];
+  };
+  /** input type for inserting data into table "omni.production_materials" */
+  ['omni_production_materials_insert_input']: {
+    base_price?: GraphQLTypes['numeric'];
+    composition?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    gender?: GraphQLTypes['omni_production_genders_enum_enum'];
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    neck_tag?: boolean;
+    pallette?: GraphQLTypes['omni_production_pallettes_enum_enum'];
+    print_tech?: GraphQLTypes['omni_print_techs_enum_enum'];
+    print_techs_enum?: GraphQLTypes['omni_print_techs_enum_obj_rel_insert_input'];
+    product?: GraphQLTypes['omni_products_obj_rel_insert_input'];
+    product_types_enum?: GraphQLTypes['omni_product_types_enum_obj_rel_insert_input'];
+    production_genders_enum?: GraphQLTypes['omni_production_genders_enum_obj_rel_insert_input'];
+    production_materials_producers?: GraphQLTypes['omni_production_materials_producers_arr_rel_insert_input'];
+    production_materials_ratings_enum?: GraphQLTypes['omni_production_materials_ratings_enum_obj_rel_insert_input'];
+    production_pallettes_enum?: GraphQLTypes['omni_production_pallettes_enum_obj_rel_insert_input'];
+    production_styles_enum?: GraphQLTypes['omni_production_styles_enum_obj_rel_insert_input'];
+    products?: GraphQLTypes['uuid'];
+    productsByProductionMaterial?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+    rating?: GraphQLTypes['omni_production_materials_ratings_enum_enum'];
+    /** link to guide */
+    size_guide?: string;
+    style?: GraphQLTypes['omni_production_styles_enum_enum'];
+    style_number?: string;
+    type?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** aggregate max on columns */
+  ['omni_production_materials_max_fields']: {
+    __typename: 'omni_production_materials_max_fields';
+    base_price?: GraphQLTypes['numeric'];
+    composition?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    products?: GraphQLTypes['uuid'];
+    /** link to guide */
+    size_guide?: string;
+    style_number?: string;
+    type?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** order by max() on columns of table "omni.production_materials" */
+  ['omni_production_materials_max_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+    composition?: GraphQLTypes['order_by'];
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    description?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    products?: GraphQLTypes['order_by'];
+    /** link to guide */
+    size_guide?: GraphQLTypes['order_by'];
+    style_number?: GraphQLTypes['order_by'];
+    type?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_production_materials_min_fields']: {
+    __typename: 'omni_production_materials_min_fields';
+    base_price?: GraphQLTypes['numeric'];
+    composition?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    products?: GraphQLTypes['uuid'];
+    /** link to guide */
+    size_guide?: string;
+    style_number?: string;
+    type?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** order by min() on columns of table "omni.production_materials" */
+  ['omni_production_materials_min_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+    composition?: GraphQLTypes['order_by'];
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    description?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    products?: GraphQLTypes['order_by'];
+    /** link to guide */
+    size_guide?: GraphQLTypes['order_by'];
+    style_number?: GraphQLTypes['order_by'];
+    type?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.production_materials" */
+  ['omni_production_materials_mutation_response']: {
+    __typename: 'omni_production_materials_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_materials']>;
+  };
+  /** input type for inserting object relation for remote table "omni.production_materials" */
+  ['omni_production_materials_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_production_materials_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_materials_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.production_materials" */
+  ['omni_production_materials_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_materials_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_materials_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_materials_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_materials". */
+  ['omni_production_materials_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+    composition?: GraphQLTypes['order_by'];
+    created_at?: GraphQLTypes['order_by'];
+    description?: GraphQLTypes['order_by'];
+    gender?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    neck_tag?: GraphQLTypes['order_by'];
+    pallette?: GraphQLTypes['order_by'];
+    print_tech?: GraphQLTypes['order_by'];
+    print_techs_enum?: GraphQLTypes['omni_print_techs_enum_order_by'];
+    product?: GraphQLTypes['omni_products_order_by'];
+    product_types_enum?: GraphQLTypes['omni_product_types_enum_order_by'];
+    production_genders_enum?: GraphQLTypes['omni_production_genders_enum_order_by'];
+    production_materials_producers_aggregate?: GraphQLTypes['omni_production_materials_producers_aggregate_order_by'];
+    production_materials_ratings_enum?: GraphQLTypes['omni_production_materials_ratings_enum_order_by'];
+    production_pallettes_enum?: GraphQLTypes['omni_production_pallettes_enum_order_by'];
+    production_styles_enum?: GraphQLTypes['omni_production_styles_enum_order_by'];
+    products?: GraphQLTypes['order_by'];
+    productsByProductionMaterial_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+    rating?: GraphQLTypes['order_by'];
+    size_guide?: GraphQLTypes['order_by'];
+    style?: GraphQLTypes['order_by'];
+    style_number?: GraphQLTypes['order_by'];
+    type?: GraphQLTypes['order_by'];
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_materials */
+  ['omni_production_materials_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** columns and relationships of "omni.production_materials_producers" */
+  ['omni_production_materials_producers']: {
+    __typename: 'omni_production_materials_producers';
+    id: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    producerByProducer?: GraphQLTypes['omni_producers'];
+    /** An object relationship */
+    productionMaterialByProductionMaterial?: GraphQLTypes['omni_production_materials'];
+    production_material?: GraphQLTypes['uuid'];
+  };
+  /** aggregated selection of "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate']: {
+    __typename: 'omni_production_materials_producers_aggregate';
+    aggregate?: GraphQLTypes['omni_production_materials_producers_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_materials_producers']>;
+  };
+  /** aggregate fields of "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate_fields']: {
+    __typename: 'omni_production_materials_producers_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_production_materials_producers_max_fields'];
+    min?: GraphQLTypes['omni_production_materials_producers_min_fields'];
+  };
+  /** order by aggregate values of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_production_materials_producers_max_order_by'];
+    min?: GraphQLTypes['omni_production_materials_producers_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_arr_rel_insert_input']: {
+    data: Array<
+      GraphQLTypes['omni_production_materials_producers_insert_input']
+    >;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_materials_producers_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_materials_producers". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_producers_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_production_materials_producers_bool_exp']>;
+    _not?: GraphQLTypes['omni_production_materials_producers_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_production_materials_producers_bool_exp']>;
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    producer?: GraphQLTypes['uuid_comparison_exp'];
+    producerByProducer?: GraphQLTypes['omni_producers_bool_exp'];
+    productionMaterialByProductionMaterial?: GraphQLTypes['omni_production_materials_bool_exp'];
+    production_material?: GraphQLTypes['uuid_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_constraint']: omni_production_materials_producers_constraint;
+  /** input type for inserting data into table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_insert_input']: {
+    id?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    producerByProducer?: GraphQLTypes['omni_producers_obj_rel_insert_input'];
+    productionMaterialByProductionMaterial?: GraphQLTypes['omni_production_materials_obj_rel_insert_input'];
+    production_material?: GraphQLTypes['uuid'];
+  };
+  /** aggregate max on columns */
+  ['omni_production_materials_producers_max_fields']: {
+    __typename: 'omni_production_materials_producers_max_fields';
+    id?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_material?: GraphQLTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_max_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    producer?: GraphQLTypes['order_by'];
+    production_material?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_production_materials_producers_min_fields']: {
+    __typename: 'omni_production_materials_producers_min_fields';
+    id?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_material?: GraphQLTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_min_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    producer?: GraphQLTypes['order_by'];
+    production_material?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_mutation_response']: {
+    __typename: 'omni_production_materials_producers_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_materials_producers']>;
+  };
+  /** on_conflict condition type for table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_materials_producers_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_materials_producers_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_materials_producers_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_materials_producers". */
+  ['omni_production_materials_producers_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    producer?: GraphQLTypes['order_by'];
+    producerByProducer?: GraphQLTypes['omni_producers_order_by'];
+    productionMaterialByProductionMaterial?: GraphQLTypes['omni_production_materials_order_by'];
+    production_material?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_materials_producers */
+  ['omni_production_materials_producers_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_select_column']: omni_production_materials_producers_select_column;
+  /** input type for updating data in table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_set_input']: {
+    id?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_material?: GraphQLTypes['uuid'];
+  };
+  /** update columns of table "omni.production_materials_producers" */
+  ['omni_production_materials_producers_update_column']: omni_production_materials_producers_update_column;
+  /** columns and relationships of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum']: {
+    __typename: 'omni_production_materials_ratings_enum';
+    description?: string;
+    /** An array relationship */
+    production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** An aggregate relationship */
+    production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_aggregate']: {
+    __typename: 'omni_production_materials_ratings_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_production_materials_ratings_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_materials_ratings_enum']>;
+  };
+  /** aggregate fields of "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_aggregate_fields']: {
+    __typename: 'omni_production_materials_ratings_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_production_materials_ratings_enum_max_fields'];
+    min?: GraphQLTypes['omni_production_materials_ratings_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_materials_ratings_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_materials_ratings_enum_bool_exp']: {
+    _and?: Array<
+      GraphQLTypes['omni_production_materials_ratings_enum_bool_exp']
+    >;
+    _not?: GraphQLTypes['omni_production_materials_ratings_enum_bool_exp'];
+    _or?: Array<
+      GraphQLTypes['omni_production_materials_ratings_enum_bool_exp']
+    >;
+    description?: GraphQLTypes['String_comparison_exp'];
+    production_materials?: GraphQLTypes['omni_production_materials_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_constraint']: omni_production_materials_ratings_enum_constraint;
+  ['omni_production_materials_ratings_enum_enum']: omni_production_materials_ratings_enum_enum;
+  /** Boolean expression to compare columns of type "omni_production_materials_ratings_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_materials_ratings_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_production_materials_ratings_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_production_materials_ratings_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_production_materials_ratings_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_production_materials_ratings_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_insert_input']: {
+    description?: string;
+    production_materials?: GraphQLTypes['omni_production_materials_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_production_materials_ratings_enum_max_fields']: {
+    __typename: 'omni_production_materials_ratings_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_production_materials_ratings_enum_min_fields']: {
+    __typename: 'omni_production_materials_ratings_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_mutation_response']: {
+    __typename: 'omni_production_materials_ratings_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_materials_ratings_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_production_materials_ratings_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_materials_ratings_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_materials_ratings_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_materials_ratings_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_materials_ratings_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_materials_ratings_enum". */
+  ['omni_production_materials_ratings_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    production_materials_aggregate?: GraphQLTypes['omni_production_materials_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_materials_ratings_enum */
+  ['omni_production_materials_ratings_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_select_column']: omni_production_materials_ratings_enum_select_column;
+  /** input type for updating data in table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.production_materials_ratings_enum" */
+  ['omni_production_materials_ratings_enum_update_column']: omni_production_materials_ratings_enum_update_column;
+  /** select columns of table "omni.production_materials" */
+  ['omni_production_materials_select_column']: omni_production_materials_select_column;
+  /** input type for updating data in table "omni.production_materials" */
+  ['omni_production_materials_set_input']: {
+    base_price?: GraphQLTypes['numeric'];
+    composition?: string;
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    gender?: GraphQLTypes['omni_production_genders_enum_enum'];
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    neck_tag?: boolean;
+    pallette?: GraphQLTypes['omni_production_pallettes_enum_enum'];
+    print_tech?: GraphQLTypes['omni_print_techs_enum_enum'];
+    products?: GraphQLTypes['uuid'];
+    rating?: GraphQLTypes['omni_production_materials_ratings_enum_enum'];
+    /** link to guide */
+    size_guide?: string;
+    style?: GraphQLTypes['omni_production_styles_enum_enum'];
+    style_number?: string;
+    type?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** aggregate stddev on columns */
+  ['omni_production_materials_stddev_fields']: {
+    __typename: 'omni_production_materials_stddev_fields';
+    base_price?: number;
+  };
+  /** order by stddev() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+  };
+  /** aggregate stddev_pop on columns */
+  ['omni_production_materials_stddev_pop_fields']: {
+    __typename: 'omni_production_materials_stddev_pop_fields';
+    base_price?: number;
+  };
+  /** order by stddev_pop() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_pop_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+  };
+  /** aggregate stddev_samp on columns */
+  ['omni_production_materials_stddev_samp_fields']: {
+    __typename: 'omni_production_materials_stddev_samp_fields';
+    base_price?: number;
+  };
+  /** order by stddev_samp() on columns of table "omni.production_materials" */
+  ['omni_production_materials_stddev_samp_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+  };
+  /** aggregate sum on columns */
+  ['omni_production_materials_sum_fields']: {
+    __typename: 'omni_production_materials_sum_fields';
+    base_price?: GraphQLTypes['numeric'];
+  };
+  /** order by sum() on columns of table "omni.production_materials" */
+  ['omni_production_materials_sum_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+  };
+  /** update columns of table "omni.production_materials" */
+  ['omni_production_materials_update_column']: omni_production_materials_update_column;
+  /** aggregate var_pop on columns */
+  ['omni_production_materials_var_pop_fields']: {
+    __typename: 'omni_production_materials_var_pop_fields';
+    base_price?: number;
+  };
+  /** order by var_pop() on columns of table "omni.production_materials" */
+  ['omni_production_materials_var_pop_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+  };
+  /** aggregate var_samp on columns */
+  ['omni_production_materials_var_samp_fields']: {
+    __typename: 'omni_production_materials_var_samp_fields';
+    base_price?: number;
+  };
+  /** order by var_samp() on columns of table "omni.production_materials" */
+  ['omni_production_materials_var_samp_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+  };
+  /** aggregate variance on columns */
+  ['omni_production_materials_variance_fields']: {
+    __typename: 'omni_production_materials_variance_fields';
+    base_price?: number;
+  };
+  /** order by variance() on columns of table "omni.production_materials" */
+  ['omni_production_materials_variance_order_by']: {
+    base_price?: GraphQLTypes['order_by'];
+  };
+  /** columns and relationships of "omni.production_methods" */
+  ['omni_production_methods']: {
+    __typename: 'omni_production_methods';
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    id: GraphQLTypes['uuid'];
+    name?: string;
+    /** An array relationship */
+    production_methods_producers: Array<
+      GraphQLTypes['omni_production_methods_producers']
+    >;
+    /** An aggregate relationship */
+    production_methods_producers_aggregate: GraphQLTypes['omni_production_methods_producers_aggregate'];
+    /** An array relationship */
+    production_methods_products: Array<
+      GraphQLTypes['omni_production_methods_products']
+    >;
+    /** An aggregate relationship */
+    production_methods_products_aggregate: GraphQLTypes['omni_production_methods_products_aggregate'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** aggregated selection of "omni.production_methods" */
+  ['omni_production_methods_aggregate']: {
+    __typename: 'omni_production_methods_aggregate';
+    aggregate?: GraphQLTypes['omni_production_methods_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_methods']>;
+  };
+  /** aggregate fields of "omni.production_methods" */
+  ['omni_production_methods_aggregate_fields']: {
+    __typename: 'omni_production_methods_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_production_methods_max_fields'];
+    min?: GraphQLTypes['omni_production_methods_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_methods". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_production_methods_bool_exp']>;
+    _not?: GraphQLTypes['omni_production_methods_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_production_methods_bool_exp']>;
+    created_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    description?: GraphQLTypes['String_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    name?: GraphQLTypes['String_comparison_exp'];
+    production_methods_producers?: GraphQLTypes['omni_production_methods_producers_bool_exp'];
+    production_methods_products?: GraphQLTypes['omni_production_methods_products_bool_exp'];
+    updated_at?: GraphQLTypes['timestamptz_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_methods" */
+  ['omni_production_methods_constraint']: omni_production_methods_constraint;
+  /** input type for inserting data into table "omni.production_methods" */
+  ['omni_production_methods_insert_input']: {
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    production_methods_producers?: GraphQLTypes['omni_production_methods_producers_arr_rel_insert_input'];
+    production_methods_products?: GraphQLTypes['omni_production_methods_products_arr_rel_insert_input'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** aggregate max on columns */
+  ['omni_production_methods_max_fields']: {
+    __typename: 'omni_production_methods_max_fields';
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** aggregate min on columns */
+  ['omni_production_methods_min_fields']: {
+    __typename: 'omni_production_methods_min_fields';
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** response of any mutation on the table "omni.production_methods" */
+  ['omni_production_methods_mutation_response']: {
+    __typename: 'omni_production_methods_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_methods']>;
+  };
+  /** input type for inserting object relation for remote table "omni.production_methods" */
+  ['omni_production_methods_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_production_methods_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_methods_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.production_methods" */
+  ['omni_production_methods_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_methods_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_methods_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_methods_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_methods". */
+  ['omni_production_methods_order_by']: {
+    created_at?: GraphQLTypes['order_by'];
+    description?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    production_methods_producers_aggregate?: GraphQLTypes['omni_production_methods_producers_aggregate_order_by'];
+    production_methods_products_aggregate?: GraphQLTypes['omni_production_methods_products_aggregate_order_by'];
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_methods */
+  ['omni_production_methods_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** columns and relationships of "omni.production_methods_producers" */
+  ['omni_production_methods_producers']: {
+    __typename: 'omni_production_methods_producers';
+    id: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    producerByProducer?: GraphQLTypes['omni_producers'];
+    /** An object relationship */
+    productionMethodByProductionMethod?: GraphQLTypes['omni_production_methods'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** aggregated selection of "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate']: {
+    __typename: 'omni_production_methods_producers_aggregate';
+    aggregate?: GraphQLTypes['omni_production_methods_producers_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_methods_producers']>;
+  };
+  /** aggregate fields of "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate_fields']: {
+    __typename: 'omni_production_methods_producers_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_production_methods_producers_max_fields'];
+    min?: GraphQLTypes['omni_production_methods_producers_min_fields'];
+  };
+  /** order by aggregate values of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_production_methods_producers_max_order_by'];
+    min?: GraphQLTypes['omni_production_methods_producers_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_production_methods_producers_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_methods_producers_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_methods_producers". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_producers_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_production_methods_producers_bool_exp']>;
+    _not?: GraphQLTypes['omni_production_methods_producers_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_production_methods_producers_bool_exp']>;
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    producer?: GraphQLTypes['uuid_comparison_exp'];
+    producerByProducer?: GraphQLTypes['omni_producers_bool_exp'];
+    productionMethodByProductionMethod?: GraphQLTypes['omni_production_methods_bool_exp'];
+    production_method?: GraphQLTypes['uuid_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_constraint']: omni_production_methods_producers_constraint;
+  /** input type for inserting data into table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_insert_input']: {
+    id?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    producerByProducer?: GraphQLTypes['omni_producers_obj_rel_insert_input'];
+    productionMethodByProductionMethod?: GraphQLTypes['omni_production_methods_obj_rel_insert_input'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** aggregate max on columns */
+  ['omni_production_methods_producers_max_fields']: {
+    __typename: 'omni_production_methods_producers_max_fields';
+    id?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_max_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    producer?: GraphQLTypes['order_by'];
+    production_method?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_production_methods_producers_min_fields']: {
+    __typename: 'omni_production_methods_producers_min_fields';
+    id?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_min_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    producer?: GraphQLTypes['order_by'];
+    production_method?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_mutation_response']: {
+    __typename: 'omni_production_methods_producers_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_methods_producers']>;
+  };
+  /** on_conflict condition type for table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_methods_producers_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_methods_producers_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_methods_producers_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_methods_producers". */
+  ['omni_production_methods_producers_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    producer?: GraphQLTypes['order_by'];
+    producerByProducer?: GraphQLTypes['omni_producers_order_by'];
+    productionMethodByProductionMethod?: GraphQLTypes['omni_production_methods_order_by'];
+    production_method?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_methods_producers */
+  ['omni_production_methods_producers_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_select_column']: omni_production_methods_producers_select_column;
+  /** input type for updating data in table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_set_input']: {
+    id?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** update columns of table "omni.production_methods_producers" */
+  ['omni_production_methods_producers_update_column']: omni_production_methods_producers_update_column;
+  /** columns and relationships of "omni.production_methods_products" */
+  ['omni_production_methods_products']: {
+    __typename: 'omni_production_methods_products';
+    id: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    productByProduct?: GraphQLTypes['omni_products'];
+    /** An object relationship */
+    productionMethodByProductionMethod?: GraphQLTypes['omni_production_methods'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** aggregated selection of "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate']: {
+    __typename: 'omni_production_methods_products_aggregate';
+    aggregate?: GraphQLTypes['omni_production_methods_products_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_methods_products']>;
+  };
+  /** aggregate fields of "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate_fields']: {
+    __typename: 'omni_production_methods_products_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_production_methods_products_max_fields'];
+    min?: GraphQLTypes['omni_production_methods_products_min_fields'];
+  };
+  /** order by aggregate values of table "omni.production_methods_products" */
+  ['omni_production_methods_products_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_production_methods_products_max_order_by'];
+    min?: GraphQLTypes['omni_production_methods_products_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.production_methods_products" */
+  ['omni_production_methods_products_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_production_methods_products_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_methods_products_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_methods_products". All fields are combined with a logical 'AND'. */
+  ['omni_production_methods_products_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_production_methods_products_bool_exp']>;
+    _not?: GraphQLTypes['omni_production_methods_products_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_production_methods_products_bool_exp']>;
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    product?: GraphQLTypes['uuid_comparison_exp'];
+    productByProduct?: GraphQLTypes['omni_products_bool_exp'];
+    productionMethodByProductionMethod?: GraphQLTypes['omni_production_methods_bool_exp'];
+    production_method?: GraphQLTypes['uuid_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_methods_products" */
+  ['omni_production_methods_products_constraint']: omni_production_methods_products_constraint;
+  /** input type for inserting data into table "omni.production_methods_products" */
+  ['omni_production_methods_products_insert_input']: {
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    productByProduct?: GraphQLTypes['omni_products_obj_rel_insert_input'];
+    productionMethodByProductionMethod?: GraphQLTypes['omni_production_methods_obj_rel_insert_input'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** aggregate max on columns */
+  ['omni_production_methods_products_max_fields']: {
+    __typename: 'omni_production_methods_products_max_fields';
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_max_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+    production_method?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_production_methods_products_min_fields']: {
+    __typename: 'omni_production_methods_products_min_fields';
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_min_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+    production_method?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.production_methods_products" */
+  ['omni_production_methods_products_mutation_response']: {
+    __typename: 'omni_production_methods_products_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_methods_products']>;
+  };
+  /** on_conflict condition type for table "omni.production_methods_products" */
+  ['omni_production_methods_products_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_methods_products_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_methods_products_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_methods_products_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_methods_products". */
+  ['omni_production_methods_products_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+    productByProduct?: GraphQLTypes['omni_products_order_by'];
+    productionMethodByProductionMethod?: GraphQLTypes['omni_production_methods_order_by'];
+    production_method?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_methods_products */
+  ['omni_production_methods_products_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_select_column']: omni_production_methods_products_select_column;
+  /** input type for updating data in table "omni.production_methods_products" */
+  ['omni_production_methods_products_set_input']: {
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    production_method?: GraphQLTypes['uuid'];
+  };
+  /** update columns of table "omni.production_methods_products" */
+  ['omni_production_methods_products_update_column']: omni_production_methods_products_update_column;
+  /** select columns of table "omni.production_methods" */
+  ['omni_production_methods_select_column']: omni_production_methods_select_column;
+  /** input type for updating data in table "omni.production_methods" */
+  ['omni_production_methods_set_input']: {
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    description?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** update columns of table "omni.production_methods" */
+  ['omni_production_methods_update_column']: omni_production_methods_update_column;
+  /** columns and relationships of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum']: {
+    __typename: 'omni_production_pallettes_enum';
+    description?: string;
+    /** An array relationship */
+    production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** An aggregate relationship */
+    production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_aggregate']: {
+    __typename: 'omni_production_pallettes_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_production_pallettes_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_pallettes_enum']>;
+  };
+  /** aggregate fields of "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_aggregate_fields']: {
+    __typename: 'omni_production_pallettes_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_production_pallettes_enum_max_fields'];
+    min?: GraphQLTypes['omni_production_pallettes_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_pallettes_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_pallettes_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_production_pallettes_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_production_pallettes_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_production_pallettes_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    production_materials?: GraphQLTypes['omni_production_materials_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_constraint']: omni_production_pallettes_enum_constraint;
+  ['omni_production_pallettes_enum_enum']: omni_production_pallettes_enum_enum;
+  /** Boolean expression to compare columns of type "omni_production_pallettes_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_pallettes_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_production_pallettes_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_production_pallettes_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_production_pallettes_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_production_pallettes_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_insert_input']: {
+    description?: string;
+    production_materials?: GraphQLTypes['omni_production_materials_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_production_pallettes_enum_max_fields']: {
+    __typename: 'omni_production_pallettes_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_production_pallettes_enum_min_fields']: {
+    __typename: 'omni_production_pallettes_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_mutation_response']: {
+    __typename: 'omni_production_pallettes_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_pallettes_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_production_pallettes_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_pallettes_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_pallettes_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_pallettes_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_pallettes_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_pallettes_enum". */
+  ['omni_production_pallettes_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    production_materials_aggregate?: GraphQLTypes['omni_production_materials_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_pallettes_enum */
+  ['omni_production_pallettes_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_select_column']: omni_production_pallettes_enum_select_column;
+  /** input type for updating data in table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.production_pallettes_enum" */
+  ['omni_production_pallettes_enum_update_column']: omni_production_pallettes_enum_update_column;
+  /** columns and relationships of "omni.production_styles_enum" */
+  ['omni_production_styles_enum']: {
+    __typename: 'omni_production_styles_enum';
+    description?: string;
+    /** An array relationship */
+    production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** An aggregate relationship */
+    production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.production_styles_enum" */
+  ['omni_production_styles_enum_aggregate']: {
+    __typename: 'omni_production_styles_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_production_styles_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_production_styles_enum']>;
+  };
+  /** aggregate fields of "omni.production_styles_enum" */
+  ['omni_production_styles_enum_aggregate_fields']: {
+    __typename: 'omni_production_styles_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_production_styles_enum_max_fields'];
+    min?: GraphQLTypes['omni_production_styles_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.production_styles_enum". All fields are combined with a logical 'AND'. */
+  ['omni_production_styles_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_production_styles_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_production_styles_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_production_styles_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    production_materials?: GraphQLTypes['omni_production_materials_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_constraint']: omni_production_styles_enum_constraint;
+  ['omni_production_styles_enum_enum']: omni_production_styles_enum_enum;
+  /** Boolean expression to compare columns of type "omni_production_styles_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_production_styles_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_production_styles_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_production_styles_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_production_styles_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_production_styles_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_insert_input']: {
+    description?: string;
+    production_materials?: GraphQLTypes['omni_production_materials_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_production_styles_enum_max_fields']: {
+    __typename: 'omni_production_styles_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_production_styles_enum_min_fields']: {
+    __typename: 'omni_production_styles_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_mutation_response']: {
+    __typename: 'omni_production_styles_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_production_styles_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_production_styles_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_production_styles_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_production_styles_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_production_styles_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_production_styles_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.production_styles_enum". */
+  ['omni_production_styles_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    production_materials_aggregate?: GraphQLTypes['omni_production_materials_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_production_styles_enum */
+  ['omni_production_styles_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_select_column']: omni_production_styles_enum_select_column;
+  /** input type for updating data in table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.production_styles_enum" */
+  ['omni_production_styles_enum_update_column']: omni_production_styles_enum_update_column;
+  /** columns and relationships of "omni.products" */
+  ['omni_products']: {
+    __typename: 'omni_products';
+    /** link to drive of asset files related to project */
+    asset_files?: string;
+    brand?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    brandByBrand?: GraphQLTypes['omni_brands'];
+    brand_reward_share?: GraphQLTypes['numeric'];
+    collaborator_reward_share?: GraphQLTypes['numeric'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_channel_id?: string;
+    /** An object relationship */
+    fullfiller?: GraphQLTypes['omni_fullfillers'];
+    fullfillment?: GraphQLTypes['uuid'];
+    id: GraphQLTypes['uuid'];
+    name?: string;
+    notion_id?: string;
+    price?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    priceCurrencyByProductionCost?: GraphQLTypes['omni_price_currencies'];
+    /** An object relationship */
+    priceCurrencyByTotalSales?: GraphQLTypes['omni_price_currencies'];
+    /** An object relationship */
+    price_currency?: GraphQLTypes['omni_price_currencies'];
+    producer?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    producerByProducer?: GraphQLTypes['omni_producers'];
+    /** An array relationship */
+    producers: Array<GraphQLTypes['omni_producers']>;
+    /** An aggregate relationship */
+    producers_aggregate: GraphQLTypes['omni_producers_aggregate'];
+    /** An array relationship */
+    product_collaborators: Array<GraphQLTypes['omni_product_collaborators']>;
+    /** An aggregate relationship */
+    product_collaborators_aggregate: GraphQLTypes['omni_product_collaborators_aggregate'];
+    /** An object relationship */
+    productionMaterialByProductionMaterial?: GraphQLTypes['omni_production_materials'];
+    production_cost?: GraphQLTypes['uuid'];
+    production_material?: GraphQLTypes['uuid'];
+    /** An array relationship */
+    production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** An aggregate relationship */
+    production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    /** An array relationship */
+    production_methods_products: Array<
+      GraphQLTypes['omni_production_methods_products']
+    >;
+    /** An aggregate relationship */
+    production_methods_products_aggregate: GraphQLTypes['omni_production_methods_products_aggregate'];
+    /** An object relationship */
+    products_stage_enum?: GraphQLTypes['omni_products_stage_enum'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['bigint'];
+    sale_type?: GraphQLTypes['omni_sale_types_enum_enum'];
+    /** An object relationship */
+    sale_types_enum?: GraphQLTypes['omni_sale_types_enum'];
+    shop_description?: string;
+    shopify_id?: string;
+    stage?: GraphQLTypes['omni_products_stage_enum_enum'];
+    total_sales?: GraphQLTypes['uuid'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    /** An array relationship */
+    wearable_files: Array<GraphQLTypes['omni_wearable_files']>;
+    /** An aggregate relationship */
+    wearable_files_aggregate: GraphQLTypes['omni_wearable_files_aggregate'];
+  };
+  /** aggregated selection of "omni.products" */
+  ['omni_products_aggregate']: {
+    __typename: 'omni_products_aggregate';
+    aggregate?: GraphQLTypes['omni_products_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_products']>;
+  };
+  /** aggregate fields of "omni.products" */
+  ['omni_products_aggregate_fields']: {
+    __typename: 'omni_products_aggregate_fields';
+    avg?: GraphQLTypes['omni_products_avg_fields'];
+    count: number;
+    max?: GraphQLTypes['omni_products_max_fields'];
+    min?: GraphQLTypes['omni_products_min_fields'];
+    stddev?: GraphQLTypes['omni_products_stddev_fields'];
+    stddev_pop?: GraphQLTypes['omni_products_stddev_pop_fields'];
+    stddev_samp?: GraphQLTypes['omni_products_stddev_samp_fields'];
+    sum?: GraphQLTypes['omni_products_sum_fields'];
+    var_pop?: GraphQLTypes['omni_products_var_pop_fields'];
+    var_samp?: GraphQLTypes['omni_products_var_samp_fields'];
+    variance?: GraphQLTypes['omni_products_variance_fields'];
+  };
+  /** order by aggregate values of table "omni.products" */
+  ['omni_products_aggregate_order_by']: {
+    avg?: GraphQLTypes['omni_products_avg_order_by'];
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_products_max_order_by'];
+    min?: GraphQLTypes['omni_products_min_order_by'];
+    stddev?: GraphQLTypes['omni_products_stddev_order_by'];
+    stddev_pop?: GraphQLTypes['omni_products_stddev_pop_order_by'];
+    stddev_samp?: GraphQLTypes['omni_products_stddev_samp_order_by'];
+    sum?: GraphQLTypes['omni_products_sum_order_by'];
+    var_pop?: GraphQLTypes['omni_products_var_pop_order_by'];
+    var_samp?: GraphQLTypes['omni_products_var_samp_order_by'];
+    variance?: GraphQLTypes['omni_products_variance_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.products" */
+  ['omni_products_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_products_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_products_on_conflict'];
+  };
+  /** aggregate avg on columns */
+  ['omni_products_avg_fields']: {
+    __typename: 'omni_products_avg_fields';
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by avg() on columns of table "omni.products" */
+  ['omni_products_avg_order_by']: {
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+  };
+  /** Boolean expression to filter rows from the table "omni.products". All fields are combined with a logical 'AND'. */
+  ['omni_products_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_products_bool_exp']>;
+    _not?: GraphQLTypes['omni_products_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_products_bool_exp']>;
+    asset_files?: GraphQLTypes['String_comparison_exp'];
+    brand?: GraphQLTypes['uuid_comparison_exp'];
+    brandByBrand?: GraphQLTypes['omni_brands_bool_exp'];
+    brand_reward_share?: GraphQLTypes['numeric_comparison_exp'];
+    collaborator_reward_share?: GraphQLTypes['numeric_comparison_exp'];
+    created_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    discord_channel_id?: GraphQLTypes['String_comparison_exp'];
+    fullfiller?: GraphQLTypes['omni_fullfillers_bool_exp'];
+    fullfillment?: GraphQLTypes['uuid_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    name?: GraphQLTypes['String_comparison_exp'];
+    notion_id?: GraphQLTypes['String_comparison_exp'];
+    price?: GraphQLTypes['uuid_comparison_exp'];
+    priceCurrencyByProductionCost?: GraphQLTypes['omni_price_currencies_bool_exp'];
+    priceCurrencyByTotalSales?: GraphQLTypes['omni_price_currencies_bool_exp'];
+    price_currency?: GraphQLTypes['omni_price_currencies_bool_exp'];
+    producer?: GraphQLTypes['uuid_comparison_exp'];
+    producerByProducer?: GraphQLTypes['omni_producers_bool_exp'];
+    producers?: GraphQLTypes['omni_producers_bool_exp'];
+    product_collaborators?: GraphQLTypes['omni_product_collaborators_bool_exp'];
+    productionMaterialByProductionMaterial?: GraphQLTypes['omni_production_materials_bool_exp'];
+    production_cost?: GraphQLTypes['uuid_comparison_exp'];
+    production_material?: GraphQLTypes['uuid_comparison_exp'];
+    production_materials?: GraphQLTypes['omni_production_materials_bool_exp'];
+    production_methods_products?: GraphQLTypes['omni_production_methods_products_bool_exp'];
+    products_stage_enum?: GraphQLTypes['omni_products_stage_enum_bool_exp'];
+    quantity?: GraphQLTypes['bigint_comparison_exp'];
+    sale_type?: GraphQLTypes['omni_sale_types_enum_enum_comparison_exp'];
+    sale_types_enum?: GraphQLTypes['omni_sale_types_enum_bool_exp'];
+    shop_description?: GraphQLTypes['String_comparison_exp'];
+    shopify_id?: GraphQLTypes['String_comparison_exp'];
+    stage?: GraphQLTypes['omni_products_stage_enum_enum_comparison_exp'];
+    total_sales?: GraphQLTypes['uuid_comparison_exp'];
+    updated_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    wearable_files?: GraphQLTypes['omni_wearable_files_bool_exp'];
+  };
+  /** unique or primary key constraints on table "omni.products" */
+  ['omni_products_constraint']: omni_products_constraint;
+  /** input type for incrementing numeric columns in table "omni.products" */
+  ['omni_products_inc_input']: {
+    brand_reward_share?: GraphQLTypes['numeric'];
+    collaborator_reward_share?: GraphQLTypes['numeric'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['bigint'];
+  };
+  /** input type for inserting data into table "omni.products" */
+  ['omni_products_insert_input']: {
+    /** link to drive of asset files related to project */
+    asset_files?: string;
+    brand?: GraphQLTypes['uuid'];
+    brandByBrand?: GraphQLTypes['omni_brands_obj_rel_insert_input'];
+    brand_reward_share?: GraphQLTypes['numeric'];
+    collaborator_reward_share?: GraphQLTypes['numeric'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_channel_id?: string;
+    fullfiller?: GraphQLTypes['omni_fullfillers_obj_rel_insert_input'];
+    fullfillment?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    notion_id?: string;
+    price?: GraphQLTypes['uuid'];
+    priceCurrencyByProductionCost?: GraphQLTypes['omni_price_currencies_obj_rel_insert_input'];
+    priceCurrencyByTotalSales?: GraphQLTypes['omni_price_currencies_obj_rel_insert_input'];
+    price_currency?: GraphQLTypes['omni_price_currencies_obj_rel_insert_input'];
+    producer?: GraphQLTypes['uuid'];
+    producerByProducer?: GraphQLTypes['omni_producers_obj_rel_insert_input'];
+    producers?: GraphQLTypes['omni_producers_arr_rel_insert_input'];
+    product_collaborators?: GraphQLTypes['omni_product_collaborators_arr_rel_insert_input'];
+    productionMaterialByProductionMaterial?: GraphQLTypes['omni_production_materials_obj_rel_insert_input'];
+    production_cost?: GraphQLTypes['uuid'];
+    production_material?: GraphQLTypes['uuid'];
+    production_materials?: GraphQLTypes['omni_production_materials_arr_rel_insert_input'];
+    production_methods_products?: GraphQLTypes['omni_production_methods_products_arr_rel_insert_input'];
+    products_stage_enum?: GraphQLTypes['omni_products_stage_enum_obj_rel_insert_input'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['bigint'];
+    sale_type?: GraphQLTypes['omni_sale_types_enum_enum'];
+    sale_types_enum?: GraphQLTypes['omni_sale_types_enum_obj_rel_insert_input'];
+    shop_description?: string;
+    shopify_id?: string;
+    stage?: GraphQLTypes['omni_products_stage_enum_enum'];
+    total_sales?: GraphQLTypes['uuid'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    wearable_files?: GraphQLTypes['omni_wearable_files_arr_rel_insert_input'];
+  };
+  /** aggregate max on columns */
+  ['omni_products_max_fields']: {
+    __typename: 'omni_products_max_fields';
+    /** link to drive of asset files related to project */
+    asset_files?: string;
+    brand?: GraphQLTypes['uuid'];
+    brand_reward_share?: GraphQLTypes['numeric'];
+    collaborator_reward_share?: GraphQLTypes['numeric'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_channel_id?: string;
+    fullfillment?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    notion_id?: string;
+    price?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_cost?: GraphQLTypes['uuid'];
+    production_material?: GraphQLTypes['uuid'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['bigint'];
+    shop_description?: string;
+    shopify_id?: string;
+    total_sales?: GraphQLTypes['uuid'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** order by max() on columns of table "omni.products" */
+  ['omni_products_max_order_by']: {
+    /** link to drive of asset files related to project */
+    asset_files?: GraphQLTypes['order_by'];
+    brand?: GraphQLTypes['order_by'];
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    discord_channel_id?: GraphQLTypes['order_by'];
+    fullfillment?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    notion_id?: GraphQLTypes['order_by'];
+    price?: GraphQLTypes['order_by'];
+    producer?: GraphQLTypes['order_by'];
+    production_cost?: GraphQLTypes['order_by'];
+    production_material?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+    shop_description?: GraphQLTypes['order_by'];
+    shopify_id?: GraphQLTypes['order_by'];
+    total_sales?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_products_min_fields']: {
+    __typename: 'omni_products_min_fields';
+    /** link to drive of asset files related to project */
+    asset_files?: string;
+    brand?: GraphQLTypes['uuid'];
+    brand_reward_share?: GraphQLTypes['numeric'];
+    collaborator_reward_share?: GraphQLTypes['numeric'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_channel_id?: string;
+    fullfillment?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    notion_id?: string;
+    price?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_cost?: GraphQLTypes['uuid'];
+    production_material?: GraphQLTypes['uuid'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['bigint'];
+    shop_description?: string;
+    shopify_id?: string;
+    total_sales?: GraphQLTypes['uuid'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** order by min() on columns of table "omni.products" */
+  ['omni_products_min_order_by']: {
+    /** link to drive of asset files related to project */
+    asset_files?: GraphQLTypes['order_by'];
+    brand?: GraphQLTypes['order_by'];
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    discord_channel_id?: GraphQLTypes['order_by'];
+    fullfillment?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    notion_id?: GraphQLTypes['order_by'];
+    price?: GraphQLTypes['order_by'];
+    producer?: GraphQLTypes['order_by'];
+    production_cost?: GraphQLTypes['order_by'];
+    production_material?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+    shop_description?: GraphQLTypes['order_by'];
+    shopify_id?: GraphQLTypes['order_by'];
+    total_sales?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.products" */
+  ['omni_products_mutation_response']: {
+    __typename: 'omni_products_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_products']>;
+  };
+  /** input type for inserting object relation for remote table "omni.products" */
+  ['omni_products_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_products_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_products_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.products" */
+  ['omni_products_on_conflict']: {
+    constraint: GraphQLTypes['omni_products_constraint'];
+    update_columns: Array<GraphQLTypes['omni_products_update_column']>;
+    where?: GraphQLTypes['omni_products_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.products". */
+  ['omni_products_order_by']: {
+    asset_files?: GraphQLTypes['order_by'];
+    brand?: GraphQLTypes['order_by'];
+    brandByBrand?: GraphQLTypes['omni_brands_order_by'];
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    created_at?: GraphQLTypes['order_by'];
+    discord_channel_id?: GraphQLTypes['order_by'];
+    fullfiller?: GraphQLTypes['omni_fullfillers_order_by'];
+    fullfillment?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    notion_id?: GraphQLTypes['order_by'];
+    price?: GraphQLTypes['order_by'];
+    priceCurrencyByProductionCost?: GraphQLTypes['omni_price_currencies_order_by'];
+    priceCurrencyByTotalSales?: GraphQLTypes['omni_price_currencies_order_by'];
+    price_currency?: GraphQLTypes['omni_price_currencies_order_by'];
+    producer?: GraphQLTypes['order_by'];
+    producerByProducer?: GraphQLTypes['omni_producers_order_by'];
+    producers_aggregate?: GraphQLTypes['omni_producers_aggregate_order_by'];
+    product_collaborators_aggregate?: GraphQLTypes['omni_product_collaborators_aggregate_order_by'];
+    productionMaterialByProductionMaterial?: GraphQLTypes['omni_production_materials_order_by'];
+    production_cost?: GraphQLTypes['order_by'];
+    production_material?: GraphQLTypes['order_by'];
+    production_materials_aggregate?: GraphQLTypes['omni_production_materials_aggregate_order_by'];
+    production_methods_products_aggregate?: GraphQLTypes['omni_production_methods_products_aggregate_order_by'];
+    products_stage_enum?: GraphQLTypes['omni_products_stage_enum_order_by'];
+    quantity?: GraphQLTypes['order_by'];
+    sale_type?: GraphQLTypes['order_by'];
+    sale_types_enum?: GraphQLTypes['omni_sale_types_enum_order_by'];
+    shop_description?: GraphQLTypes['order_by'];
+    shopify_id?: GraphQLTypes['order_by'];
+    stage?: GraphQLTypes['order_by'];
+    total_sales?: GraphQLTypes['order_by'];
+    updated_at?: GraphQLTypes['order_by'];
+    wearable_files_aggregate?: GraphQLTypes['omni_wearable_files_aggregate_order_by'];
+  };
+  /** primary key columns input for table: omni_products */
+  ['omni_products_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.products" */
+  ['omni_products_select_column']: omni_products_select_column;
+  /** input type for updating data in table "omni.products" */
+  ['omni_products_set_input']: {
+    /** link to drive of asset files related to project */
+    asset_files?: string;
+    brand?: GraphQLTypes['uuid'];
+    brand_reward_share?: GraphQLTypes['numeric'];
+    collaborator_reward_share?: GraphQLTypes['numeric'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_channel_id?: string;
+    fullfillment?: GraphQLTypes['uuid'];
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    notion_id?: string;
+    price?: GraphQLTypes['uuid'];
+    producer?: GraphQLTypes['uuid'];
+    production_cost?: GraphQLTypes['uuid'];
+    production_material?: GraphQLTypes['uuid'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['bigint'];
+    sale_type?: GraphQLTypes['omni_sale_types_enum_enum'];
+    shop_description?: string;
+    shopify_id?: string;
+    stage?: GraphQLTypes['omni_products_stage_enum_enum'];
+    total_sales?: GraphQLTypes['uuid'];
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** columns and relationships of "omni.products_stage_enum" */
+  ['omni_products_stage_enum']: {
+    __typename: 'omni_products_stage_enum';
+    description?: string;
+    /** An array relationship */
+    products: Array<GraphQLTypes['omni_products']>;
+    /** An aggregate relationship */
+    products_aggregate: GraphQLTypes['omni_products_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.products_stage_enum" */
+  ['omni_products_stage_enum_aggregate']: {
+    __typename: 'omni_products_stage_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_products_stage_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_products_stage_enum']>;
+  };
+  /** aggregate fields of "omni.products_stage_enum" */
+  ['omni_products_stage_enum_aggregate_fields']: {
+    __typename: 'omni_products_stage_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_products_stage_enum_max_fields'];
+    min?: GraphQLTypes['omni_products_stage_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.products_stage_enum". All fields are combined with a logical 'AND'. */
+  ['omni_products_stage_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_products_stage_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_products_stage_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_products_stage_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    products?: GraphQLTypes['omni_products_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_constraint']: omni_products_stage_enum_constraint;
+  ['omni_products_stage_enum_enum']: omni_products_stage_enum_enum;
+  /** Boolean expression to compare columns of type "omni_products_stage_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_products_stage_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_products_stage_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_products_stage_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_products_stage_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_products_stage_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_insert_input']: {
+    description?: string;
+    products?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_products_stage_enum_max_fields']: {
+    __typename: 'omni_products_stage_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_products_stage_enum_min_fields']: {
+    __typename: 'omni_products_stage_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_mutation_response']: {
+    __typename: 'omni_products_stage_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_products_stage_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_products_stage_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_products_stage_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_products_stage_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_products_stage_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_products_stage_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.products_stage_enum". */
+  ['omni_products_stage_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    products_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_products_stage_enum */
+  ['omni_products_stage_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_select_column']: omni_products_stage_enum_select_column;
+  /** input type for updating data in table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.products_stage_enum" */
+  ['omni_products_stage_enum_update_column']: omni_products_stage_enum_update_column;
+  /** aggregate stddev on columns */
+  ['omni_products_stddev_fields']: {
+    __typename: 'omni_products_stddev_fields';
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by stddev() on columns of table "omni.products" */
+  ['omni_products_stddev_order_by']: {
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+  };
+  /** aggregate stddev_pop on columns */
+  ['omni_products_stddev_pop_fields']: {
+    __typename: 'omni_products_stddev_pop_fields';
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by stddev_pop() on columns of table "omni.products" */
+  ['omni_products_stddev_pop_order_by']: {
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+  };
+  /** aggregate stddev_samp on columns */
+  ['omni_products_stddev_samp_fields']: {
+    __typename: 'omni_products_stddev_samp_fields';
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by stddev_samp() on columns of table "omni.products" */
+  ['omni_products_stddev_samp_order_by']: {
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+  };
+  /** aggregate sum on columns */
+  ['omni_products_sum_fields']: {
+    __typename: 'omni_products_sum_fields';
+    brand_reward_share?: GraphQLTypes['numeric'];
+    collaborator_reward_share?: GraphQLTypes['numeric'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['bigint'];
+  };
+  /** order by sum() on columns of table "omni.products" */
+  ['omni_products_sum_order_by']: {
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+  };
+  /** update columns of table "omni.products" */
+  ['omni_products_update_column']: omni_products_update_column;
+  /** aggregate var_pop on columns */
+  ['omni_products_var_pop_fields']: {
+    __typename: 'omni_products_var_pop_fields';
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by var_pop() on columns of table "omni.products" */
+  ['omni_products_var_pop_order_by']: {
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+  };
+  /** aggregate var_samp on columns */
+  ['omni_products_var_samp_fields']: {
+    __typename: 'omni_products_var_samp_fields';
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by var_samp() on columns of table "omni.products" */
+  ['omni_products_var_samp_order_by']: {
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+  };
+  /** aggregate variance on columns */
+  ['omni_products_variance_fields']: {
+    __typename: 'omni_products_variance_fields';
+    brand_reward_share?: number;
+    collaborator_reward_share?: number;
+    /** could be null before drop */
+    quantity?: number;
+  };
+  /** order by variance() on columns of table "omni.products" */
+  ['omni_products_variance_order_by']: {
+    brand_reward_share?: GraphQLTypes['order_by'];
+    collaborator_reward_share?: GraphQLTypes['order_by'];
+    /** could be null before drop */
+    quantity?: GraphQLTypes['order_by'];
+  };
+  /** columns and relationships of "omni.sale_types_enum" */
+  ['omni_sale_types_enum']: {
+    __typename: 'omni_sale_types_enum';
+    description?: string;
+    /** An array relationship */
+    products: Array<GraphQLTypes['omni_products']>;
+    /** An aggregate relationship */
+    products_aggregate: GraphQLTypes['omni_products_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.sale_types_enum" */
+  ['omni_sale_types_enum_aggregate']: {
+    __typename: 'omni_sale_types_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_sale_types_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_sale_types_enum']>;
+  };
+  /** aggregate fields of "omni.sale_types_enum" */
+  ['omni_sale_types_enum_aggregate_fields']: {
+    __typename: 'omni_sale_types_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_sale_types_enum_max_fields'];
+    min?: GraphQLTypes['omni_sale_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.sale_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_sale_types_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_sale_types_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_sale_types_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_sale_types_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    products?: GraphQLTypes['omni_products_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_constraint']: omni_sale_types_enum_constraint;
+  ['omni_sale_types_enum_enum']: omni_sale_types_enum_enum;
+  /** Boolean expression to compare columns of type "omni_sale_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_sale_types_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_sale_types_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_sale_types_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_sale_types_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_sale_types_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_insert_input']: {
+    description?: string;
+    products?: GraphQLTypes['omni_products_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_sale_types_enum_max_fields']: {
+    __typename: 'omni_sale_types_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_sale_types_enum_min_fields']: {
+    __typename: 'omni_sale_types_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_mutation_response']: {
+    __typename: 'omni_sale_types_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_sale_types_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_sale_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_sale_types_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_sale_types_enum_constraint'];
+    update_columns: Array<GraphQLTypes['omni_sale_types_enum_update_column']>;
+    where?: GraphQLTypes['omni_sale_types_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.sale_types_enum". */
+  ['omni_sale_types_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    products_aggregate?: GraphQLTypes['omni_products_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_sale_types_enum */
+  ['omni_sale_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_select_column']: omni_sale_types_enum_select_column;
+  /** input type for updating data in table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.sale_types_enum" */
+  ['omni_sale_types_enum_update_column']: omni_sale_types_enum_update_column;
+  /** columns and relationships of "omni.timezones_enum" */
+  ['omni_timezones_enum']: {
+    __typename: 'omni_timezones_enum';
+    description?: string;
+    /** An array relationship */
+    users: Array<GraphQLTypes['omni_users']>;
+    /** An aggregate relationship */
+    users_aggregate: GraphQLTypes['omni_users_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.timezones_enum" */
+  ['omni_timezones_enum_aggregate']: {
+    __typename: 'omni_timezones_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_timezones_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_timezones_enum']>;
+  };
+  /** aggregate fields of "omni.timezones_enum" */
+  ['omni_timezones_enum_aggregate_fields']: {
+    __typename: 'omni_timezones_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_timezones_enum_max_fields'];
+    min?: GraphQLTypes['omni_timezones_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.timezones_enum". All fields are combined with a logical 'AND'. */
+  ['omni_timezones_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_timezones_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_timezones_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_timezones_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    users?: GraphQLTypes['omni_users_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.timezones_enum" */
+  ['omni_timezones_enum_constraint']: omni_timezones_enum_constraint;
+  ['omni_timezones_enum_enum']: omni_timezones_enum_enum;
+  /** Boolean expression to compare columns of type "omni_timezones_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_timezones_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_timezones_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_timezones_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_timezones_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_timezones_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.timezones_enum" */
+  ['omni_timezones_enum_insert_input']: {
+    description?: string;
+    users?: GraphQLTypes['omni_users_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_timezones_enum_max_fields']: {
+    __typename: 'omni_timezones_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_timezones_enum_min_fields']: {
+    __typename: 'omni_timezones_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.timezones_enum" */
+  ['omni_timezones_enum_mutation_response']: {
+    __typename: 'omni_timezones_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_timezones_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.timezones_enum" */
+  ['omni_timezones_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_timezones_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_timezones_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.timezones_enum" */
+  ['omni_timezones_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_timezones_enum_constraint'];
+    update_columns: Array<GraphQLTypes['omni_timezones_enum_update_column']>;
+    where?: GraphQLTypes['omni_timezones_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.timezones_enum". */
+  ['omni_timezones_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    users_aggregate?: GraphQLTypes['omni_users_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_timezones_enum */
+  ['omni_timezones_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.timezones_enum" */
+  ['omni_timezones_enum_select_column']: omni_timezones_enum_select_column;
+  /** input type for updating data in table "omni.timezones_enum" */
+  ['omni_timezones_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.timezones_enum" */
+  ['omni_timezones_enum_update_column']: omni_timezones_enum_update_column;
+  /** columns and relationships of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum']: {
+    __typename: 'omni_user_skill_types_enum';
+    description?: string;
+    /** An array relationship */
+    user_skills: Array<GraphQLTypes['omni_user_skills']>;
+    /** An aggregate relationship */
+    user_skills_aggregate: GraphQLTypes['omni_user_skills_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_aggregate']: {
+    __typename: 'omni_user_skill_types_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_user_skill_types_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_user_skill_types_enum']>;
+  };
+  /** aggregate fields of "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_aggregate_fields']: {
+    __typename: 'omni_user_skill_types_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_user_skill_types_enum_max_fields'];
+    min?: GraphQLTypes['omni_user_skill_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.user_skill_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_user_skill_types_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_user_skill_types_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_user_skill_types_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_user_skill_types_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    user_skills?: GraphQLTypes['omni_user_skills_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_constraint']: omni_user_skill_types_enum_constraint;
+  ['omni_user_skill_types_enum_enum']: omni_user_skill_types_enum_enum;
+  /** Boolean expression to compare columns of type "omni_user_skill_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_user_skill_types_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_user_skill_types_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_user_skill_types_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_user_skill_types_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_user_skill_types_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_insert_input']: {
+    description?: string;
+    user_skills?: GraphQLTypes['omni_user_skills_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_user_skill_types_enum_max_fields']: {
+    __typename: 'omni_user_skill_types_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_user_skill_types_enum_min_fields']: {
+    __typename: 'omni_user_skill_types_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_mutation_response']: {
+    __typename: 'omni_user_skill_types_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_user_skill_types_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_user_skill_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_user_skill_types_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_user_skill_types_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_user_skill_types_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_user_skill_types_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.user_skill_types_enum". */
+  ['omni_user_skill_types_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    user_skills_aggregate?: GraphQLTypes['omni_user_skills_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_user_skill_types_enum */
+  ['omni_user_skill_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_select_column']: omni_user_skill_types_enum_select_column;
+  /** input type for updating data in table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.user_skill_types_enum" */
+  ['omni_user_skill_types_enum_update_column']: omni_user_skill_types_enum_update_column;
+  /** columns and relationships of "omni.user_skills" */
+  ['omni_user_skills']: {
+    __typename: 'omni_user_skills';
+    id: GraphQLTypes['uuid'];
+    skill?: GraphQLTypes['omni_user_skill_types_enum_enum'];
+    user?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    userByUser?: GraphQLTypes['omni_users'];
+    /** An object relationship */
+    user_skill_types_enum?: GraphQLTypes['omni_user_skill_types_enum'];
+  };
+  /** aggregated selection of "omni.user_skills" */
+  ['omni_user_skills_aggregate']: {
+    __typename: 'omni_user_skills_aggregate';
+    aggregate?: GraphQLTypes['omni_user_skills_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_user_skills']>;
+  };
+  /** aggregate fields of "omni.user_skills" */
+  ['omni_user_skills_aggregate_fields']: {
+    __typename: 'omni_user_skills_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_user_skills_max_fields'];
+    min?: GraphQLTypes['omni_user_skills_min_fields'];
+  };
+  /** order by aggregate values of table "omni.user_skills" */
+  ['omni_user_skills_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_user_skills_max_order_by'];
+    min?: GraphQLTypes['omni_user_skills_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.user_skills" */
+  ['omni_user_skills_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_user_skills_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_user_skills_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.user_skills". All fields are combined with a logical 'AND'. */
+  ['omni_user_skills_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_user_skills_bool_exp']>;
+    _not?: GraphQLTypes['omni_user_skills_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_user_skills_bool_exp']>;
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    skill?: GraphQLTypes['omni_user_skill_types_enum_enum_comparison_exp'];
+    user?: GraphQLTypes['uuid_comparison_exp'];
+    userByUser?: GraphQLTypes['omni_users_bool_exp'];
+    user_skill_types_enum?: GraphQLTypes['omni_user_skill_types_enum_bool_exp'];
+  };
+  /** unique or primary key constraints on table "omni.user_skills" */
+  ['omni_user_skills_constraint']: omni_user_skills_constraint;
+  /** input type for inserting data into table "omni.user_skills" */
+  ['omni_user_skills_insert_input']: {
+    id?: GraphQLTypes['uuid'];
+    skill?: GraphQLTypes['omni_user_skill_types_enum_enum'];
+    user?: GraphQLTypes['uuid'];
+    userByUser?: GraphQLTypes['omni_users_obj_rel_insert_input'];
+    user_skill_types_enum?: GraphQLTypes['omni_user_skill_types_enum_obj_rel_insert_input'];
+  };
+  /** aggregate max on columns */
+  ['omni_user_skills_max_fields']: {
+    __typename: 'omni_user_skills_max_fields';
+    id?: GraphQLTypes['uuid'];
+    user?: GraphQLTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.user_skills" */
+  ['omni_user_skills_max_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    user?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_user_skills_min_fields']: {
+    __typename: 'omni_user_skills_min_fields';
+    id?: GraphQLTypes['uuid'];
+    user?: GraphQLTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.user_skills" */
+  ['omni_user_skills_min_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    user?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.user_skills" */
+  ['omni_user_skills_mutation_response']: {
+    __typename: 'omni_user_skills_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_user_skills']>;
+  };
+  /** on_conflict condition type for table "omni.user_skills" */
+  ['omni_user_skills_on_conflict']: {
+    constraint: GraphQLTypes['omni_user_skills_constraint'];
+    update_columns: Array<GraphQLTypes['omni_user_skills_update_column']>;
+    where?: GraphQLTypes['omni_user_skills_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.user_skills". */
+  ['omni_user_skills_order_by']: {
+    id?: GraphQLTypes['order_by'];
+    skill?: GraphQLTypes['order_by'];
+    user?: GraphQLTypes['order_by'];
+    userByUser?: GraphQLTypes['omni_users_order_by'];
+    user_skill_types_enum?: GraphQLTypes['omni_user_skill_types_enum_order_by'];
+  };
+  /** primary key columns input for table: omni_user_skills */
+  ['omni_user_skills_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.user_skills" */
+  ['omni_user_skills_select_column']: omni_user_skills_select_column;
+  /** input type for updating data in table "omni.user_skills" */
+  ['omni_user_skills_set_input']: {
+    id?: GraphQLTypes['uuid'];
+    skill?: GraphQLTypes['omni_user_skill_types_enum_enum'];
+    user?: GraphQLTypes['uuid'];
+  };
+  /** update columns of table "omni.user_skills" */
+  ['omni_user_skills_update_column']: omni_user_skills_update_column;
+  /** columns and relationships of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum']: {
+    __typename: 'omni_user_statuses_enum';
+    description?: string;
+    /** An array relationship */
+    users: Array<GraphQLTypes['omni_users']>;
+    /** An aggregate relationship */
+    users_aggregate: GraphQLTypes['omni_users_aggregate'];
+    value: string;
+  };
+  /** aggregated selection of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_aggregate']: {
+    __typename: 'omni_user_statuses_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_user_statuses_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_user_statuses_enum']>;
+  };
+  /** aggregate fields of "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_aggregate_fields']: {
+    __typename: 'omni_user_statuses_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_user_statuses_enum_max_fields'];
+    min?: GraphQLTypes['omni_user_statuses_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.user_statuses_enum". All fields are combined with a logical 'AND'. */
+  ['omni_user_statuses_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_user_statuses_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_user_statuses_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_user_statuses_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    users?: GraphQLTypes['omni_users_bool_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+  };
+  /** unique or primary key constraints on table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_constraint']: omni_user_statuses_enum_constraint;
+  ['omni_user_statuses_enum_enum']: omni_user_statuses_enum_enum;
+  /** Boolean expression to compare columns of type "omni_user_statuses_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_user_statuses_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_user_statuses_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_user_statuses_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_user_statuses_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_user_statuses_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_insert_input']: {
+    description?: string;
+    users?: GraphQLTypes['omni_users_arr_rel_insert_input'];
+    value?: string;
+  };
+  /** aggregate max on columns */
+  ['omni_user_statuses_enum_max_fields']: {
+    __typename: 'omni_user_statuses_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_user_statuses_enum_min_fields']: {
+    __typename: 'omni_user_statuses_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_mutation_response']: {
+    __typename: 'omni_user_statuses_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_user_statuses_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_user_statuses_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_user_statuses_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_user_statuses_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_user_statuses_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_user_statuses_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.user_statuses_enum". */
+  ['omni_user_statuses_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    users_aggregate?: GraphQLTypes['omni_users_aggregate_order_by'];
+    value?: GraphQLTypes['order_by'];
+  };
+  /** primary key columns input for table: omni_user_statuses_enum */
+  ['omni_user_statuses_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_select_column']: omni_user_statuses_enum_select_column;
+  /** input type for updating data in table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.user_statuses_enum" */
+  ['omni_user_statuses_enum_update_column']: omni_user_statuses_enum_update_column;
+  /** columns and relationships of "omni.users" */
+  ['omni_users']: {
+    __typename: 'omni_users';
+    /** An array relationship */
+    brand_users: Array<GraphQLTypes['omni_brand_users']>;
+    /** An aggregate relationship */
+    brand_users_aggregate: GraphQLTypes['omni_brand_users_aggregate'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_handle?: string;
+    discord_id?: string;
+    eth_address?: string;
+    github_handle?: string;
+    id: GraphQLTypes['uuid'];
+    name?: string;
+    /** An array relationship */
+    product_collaborators: Array<GraphQLTypes['omni_product_collaborators']>;
+    /** An aggregate relationship */
+    product_collaborators_aggregate: GraphQLTypes['omni_product_collaborators_aggregate'];
+    status?: GraphQLTypes['omni_user_statuses_enum_enum'];
+    timezone?: GraphQLTypes['omni_timezones_enum_enum'];
+    /** An object relationship */
+    timezones_enum?: GraphQLTypes['omni_timezones_enum'];
+    twitter_handle?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    /** An array relationship */
+    user_skills: Array<GraphQLTypes['omni_user_skills']>;
+    /** An aggregate relationship */
+    user_skills_aggregate: GraphQLTypes['omni_user_skills_aggregate'];
+    /** An object relationship */
+    user_statuses_enum?: GraphQLTypes['omni_user_statuses_enum'];
+  };
+  /** aggregated selection of "omni.users" */
+  ['omni_users_aggregate']: {
+    __typename: 'omni_users_aggregate';
+    aggregate?: GraphQLTypes['omni_users_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_users']>;
+  };
+  /** aggregate fields of "omni.users" */
+  ['omni_users_aggregate_fields']: {
+    __typename: 'omni_users_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_users_max_fields'];
+    min?: GraphQLTypes['omni_users_min_fields'];
+  };
+  /** order by aggregate values of table "omni.users" */
+  ['omni_users_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_users_max_order_by'];
+    min?: GraphQLTypes['omni_users_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.users" */
+  ['omni_users_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_users_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_users_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.users". All fields are combined with a logical 'AND'. */
+  ['omni_users_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_users_bool_exp']>;
+    _not?: GraphQLTypes['omni_users_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_users_bool_exp']>;
+    brand_users?: GraphQLTypes['omni_brand_users_bool_exp'];
+    created_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    discord_handle?: GraphQLTypes['String_comparison_exp'];
+    discord_id?: GraphQLTypes['String_comparison_exp'];
+    eth_address?: GraphQLTypes['String_comparison_exp'];
+    github_handle?: GraphQLTypes['String_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    name?: GraphQLTypes['String_comparison_exp'];
+    product_collaborators?: GraphQLTypes['omni_product_collaborators_bool_exp'];
+    status?: GraphQLTypes['omni_user_statuses_enum_enum_comparison_exp'];
+    timezone?: GraphQLTypes['omni_timezones_enum_enum_comparison_exp'];
+    timezones_enum?: GraphQLTypes['omni_timezones_enum_bool_exp'];
+    twitter_handle?: GraphQLTypes['String_comparison_exp'];
+    updated_at?: GraphQLTypes['timestamptz_comparison_exp'];
+    user_skills?: GraphQLTypes['omni_user_skills_bool_exp'];
+    user_statuses_enum?: GraphQLTypes['omni_user_statuses_enum_bool_exp'];
+  };
+  /** unique or primary key constraints on table "omni.users" */
+  ['omni_users_constraint']: omni_users_constraint;
+  /** input type for inserting data into table "omni.users" */
+  ['omni_users_insert_input']: {
+    brand_users?: GraphQLTypes['omni_brand_users_arr_rel_insert_input'];
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_handle?: string;
+    discord_id?: string;
+    eth_address?: string;
+    github_handle?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    product_collaborators?: GraphQLTypes['omni_product_collaborators_arr_rel_insert_input'];
+    status?: GraphQLTypes['omni_user_statuses_enum_enum'];
+    timezone?: GraphQLTypes['omni_timezones_enum_enum'];
+    timezones_enum?: GraphQLTypes['omni_timezones_enum_obj_rel_insert_input'];
+    twitter_handle?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+    user_skills?: GraphQLTypes['omni_user_skills_arr_rel_insert_input'];
+    user_statuses_enum?: GraphQLTypes['omni_user_statuses_enum_obj_rel_insert_input'];
+  };
+  /** aggregate max on columns */
+  ['omni_users_max_fields']: {
+    __typename: 'omni_users_max_fields';
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_handle?: string;
+    discord_id?: string;
+    eth_address?: string;
+    github_handle?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    twitter_handle?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** order by max() on columns of table "omni.users" */
+  ['omni_users_max_order_by']: {
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    discord_handle?: GraphQLTypes['order_by'];
+    discord_id?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    github_handle?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    twitter_handle?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_users_min_fields']: {
+    __typename: 'omni_users_min_fields';
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_handle?: string;
+    discord_id?: string;
+    eth_address?: string;
+    github_handle?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    twitter_handle?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** order by min() on columns of table "omni.users" */
+  ['omni_users_min_order_by']: {
+    /** on create */
+    created_at?: GraphQLTypes['order_by'];
+    discord_handle?: GraphQLTypes['order_by'];
+    discord_id?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    github_handle?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    twitter_handle?: GraphQLTypes['order_by'];
+    /** on touch */
+    updated_at?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.users" */
+  ['omni_users_mutation_response']: {
+    __typename: 'omni_users_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_users']>;
+  };
+  /** input type for inserting object relation for remote table "omni.users" */
+  ['omni_users_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_users_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_users_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.users" */
+  ['omni_users_on_conflict']: {
+    constraint: GraphQLTypes['omni_users_constraint'];
+    update_columns: Array<GraphQLTypes['omni_users_update_column']>;
+    where?: GraphQLTypes['omni_users_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.users". */
+  ['omni_users_order_by']: {
+    brand_users_aggregate?: GraphQLTypes['omni_brand_users_aggregate_order_by'];
+    created_at?: GraphQLTypes['order_by'];
+    discord_handle?: GraphQLTypes['order_by'];
+    discord_id?: GraphQLTypes['order_by'];
+    eth_address?: GraphQLTypes['order_by'];
+    github_handle?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    name?: GraphQLTypes['order_by'];
+    product_collaborators_aggregate?: GraphQLTypes['omni_product_collaborators_aggregate_order_by'];
+    status?: GraphQLTypes['order_by'];
+    timezone?: GraphQLTypes['order_by'];
+    timezones_enum?: GraphQLTypes['omni_timezones_enum_order_by'];
+    twitter_handle?: GraphQLTypes['order_by'];
+    updated_at?: GraphQLTypes['order_by'];
+    user_skills_aggregate?: GraphQLTypes['omni_user_skills_aggregate_order_by'];
+    user_statuses_enum?: GraphQLTypes['omni_user_statuses_enum_order_by'];
+  };
+  /** primary key columns input for table: omni_users */
+  ['omni_users_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.users" */
+  ['omni_users_select_column']: omni_users_select_column;
+  /** input type for updating data in table "omni.users" */
+  ['omni_users_set_input']: {
+    /** on create */
+    created_at?: GraphQLTypes['timestamptz'];
+    discord_handle?: string;
+    discord_id?: string;
+    eth_address?: string;
+    github_handle?: string;
+    id?: GraphQLTypes['uuid'];
+    name?: string;
+    status?: GraphQLTypes['omni_user_statuses_enum_enum'];
+    timezone?: GraphQLTypes['omni_timezones_enum_enum'];
+    twitter_handle?: string;
+    /** on touch */
+    updated_at?: GraphQLTypes['timestamptz'];
+  };
+  /** update columns of table "omni.users" */
+  ['omni_users_update_column']: omni_users_update_column;
+  /** columns and relationships of "omni.wearable_files" */
+  ['omni_wearable_files']: {
+    __typename: 'omni_wearable_files';
+    file?: string;
+    id: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    /** An object relationship */
+    productByProduct?: GraphQLTypes['omni_products'];
+    type?: GraphQLTypes['omni_wearable_types_enum_enum'];
+    /** An object relationship */
+    wearable_types_enum?: GraphQLTypes['omni_wearable_types_enum'];
+  };
+  /** aggregated selection of "omni.wearable_files" */
+  ['omni_wearable_files_aggregate']: {
+    __typename: 'omni_wearable_files_aggregate';
+    aggregate?: GraphQLTypes['omni_wearable_files_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_wearable_files']>;
+  };
+  /** aggregate fields of "omni.wearable_files" */
+  ['omni_wearable_files_aggregate_fields']: {
+    __typename: 'omni_wearable_files_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_wearable_files_max_fields'];
+    min?: GraphQLTypes['omni_wearable_files_min_fields'];
+  };
+  /** order by aggregate values of table "omni.wearable_files" */
+  ['omni_wearable_files_aggregate_order_by']: {
+    count?: GraphQLTypes['order_by'];
+    max?: GraphQLTypes['omni_wearable_files_max_order_by'];
+    min?: GraphQLTypes['omni_wearable_files_min_order_by'];
+  };
+  /** input type for inserting array relation for remote table "omni.wearable_files" */
+  ['omni_wearable_files_arr_rel_insert_input']: {
+    data: Array<GraphQLTypes['omni_wearable_files_insert_input']>;
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_wearable_files_on_conflict'];
+  };
+  /** Boolean expression to filter rows from the table "omni.wearable_files". All fields are combined with a logical 'AND'. */
+  ['omni_wearable_files_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_wearable_files_bool_exp']>;
+    _not?: GraphQLTypes['omni_wearable_files_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_wearable_files_bool_exp']>;
+    file?: GraphQLTypes['String_comparison_exp'];
+    id?: GraphQLTypes['uuid_comparison_exp'];
+    product?: GraphQLTypes['uuid_comparison_exp'];
+    productByProduct?: GraphQLTypes['omni_products_bool_exp'];
+    type?: GraphQLTypes['omni_wearable_types_enum_enum_comparison_exp'];
+    wearable_types_enum?: GraphQLTypes['omni_wearable_types_enum_bool_exp'];
+  };
+  /** unique or primary key constraints on table "omni.wearable_files" */
+  ['omni_wearable_files_constraint']: omni_wearable_files_constraint;
+  /** input type for inserting data into table "omni.wearable_files" */
+  ['omni_wearable_files_insert_input']: {
+    file?: string;
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    productByProduct?: GraphQLTypes['omni_products_obj_rel_insert_input'];
+    type?: GraphQLTypes['omni_wearable_types_enum_enum'];
+    wearable_types_enum?: GraphQLTypes['omni_wearable_types_enum_obj_rel_insert_input'];
+  };
+  /** aggregate max on columns */
+  ['omni_wearable_files_max_fields']: {
+    __typename: 'omni_wearable_files_max_fields';
+    file?: string;
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+  };
+  /** order by max() on columns of table "omni.wearable_files" */
+  ['omni_wearable_files_max_order_by']: {
+    file?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+  };
+  /** aggregate min on columns */
+  ['omni_wearable_files_min_fields']: {
+    __typename: 'omni_wearable_files_min_fields';
+    file?: string;
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+  };
+  /** order by min() on columns of table "omni.wearable_files" */
+  ['omni_wearable_files_min_order_by']: {
+    file?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+  };
+  /** response of any mutation on the table "omni.wearable_files" */
+  ['omni_wearable_files_mutation_response']: {
+    __typename: 'omni_wearable_files_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_wearable_files']>;
+  };
+  /** on_conflict condition type for table "omni.wearable_files" */
+  ['omni_wearable_files_on_conflict']: {
+    constraint: GraphQLTypes['omni_wearable_files_constraint'];
+    update_columns: Array<GraphQLTypes['omni_wearable_files_update_column']>;
+    where?: GraphQLTypes['omni_wearable_files_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.wearable_files". */
+  ['omni_wearable_files_order_by']: {
+    file?: GraphQLTypes['order_by'];
+    id?: GraphQLTypes['order_by'];
+    product?: GraphQLTypes['order_by'];
+    productByProduct?: GraphQLTypes['omni_products_order_by'];
+    type?: GraphQLTypes['order_by'];
+    wearable_types_enum?: GraphQLTypes['omni_wearable_types_enum_order_by'];
+  };
+  /** primary key columns input for table: omni_wearable_files */
+  ['omni_wearable_files_pk_columns_input']: {
+    id: GraphQLTypes['uuid'];
+  };
+  /** select columns of table "omni.wearable_files" */
+  ['omni_wearable_files_select_column']: omni_wearable_files_select_column;
+  /** input type for updating data in table "omni.wearable_files" */
+  ['omni_wearable_files_set_input']: {
+    file?: string;
+    id?: GraphQLTypes['uuid'];
+    product?: GraphQLTypes['uuid'];
+    type?: GraphQLTypes['omni_wearable_types_enum_enum'];
+  };
+  /** update columns of table "omni.wearable_files" */
+  ['omni_wearable_files_update_column']: omni_wearable_files_update_column;
+  /** columns and relationships of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum']: {
+    __typename: 'omni_wearable_types_enum';
+    description?: string;
+    value: string;
+    /** An array relationship */
+    wearable_files: Array<GraphQLTypes['omni_wearable_files']>;
+    /** An aggregate relationship */
+    wearable_files_aggregate: GraphQLTypes['omni_wearable_files_aggregate'];
+  };
+  /** aggregated selection of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_aggregate']: {
+    __typename: 'omni_wearable_types_enum_aggregate';
+    aggregate?: GraphQLTypes['omni_wearable_types_enum_aggregate_fields'];
+    nodes: Array<GraphQLTypes['omni_wearable_types_enum']>;
+  };
+  /** aggregate fields of "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_aggregate_fields']: {
+    __typename: 'omni_wearable_types_enum_aggregate_fields';
+    count: number;
+    max?: GraphQLTypes['omni_wearable_types_enum_max_fields'];
+    min?: GraphQLTypes['omni_wearable_types_enum_min_fields'];
+  };
+  /** Boolean expression to filter rows from the table "omni.wearable_types_enum". All fields are combined with a logical 'AND'. */
+  ['omni_wearable_types_enum_bool_exp']: {
+    _and?: Array<GraphQLTypes['omni_wearable_types_enum_bool_exp']>;
+    _not?: GraphQLTypes['omni_wearable_types_enum_bool_exp'];
+    _or?: Array<GraphQLTypes['omni_wearable_types_enum_bool_exp']>;
+    description?: GraphQLTypes['String_comparison_exp'];
+    value?: GraphQLTypes['String_comparison_exp'];
+    wearable_files?: GraphQLTypes['omni_wearable_files_bool_exp'];
+  };
+  /** unique or primary key constraints on table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_constraint']: omni_wearable_types_enum_constraint;
+  ['omni_wearable_types_enum_enum']: omni_wearable_types_enum_enum;
+  /** Boolean expression to compare columns of type "omni_wearable_types_enum_enum". All fields are combined with logical 'AND'. */
+  ['omni_wearable_types_enum_enum_comparison_exp']: {
+    _eq?: GraphQLTypes['omni_wearable_types_enum_enum'];
+    _in?: Array<GraphQLTypes['omni_wearable_types_enum_enum']>;
+    _is_null?: boolean;
+    _neq?: GraphQLTypes['omni_wearable_types_enum_enum'];
+    _nin?: Array<GraphQLTypes['omni_wearable_types_enum_enum']>;
+  };
+  /** input type for inserting data into table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_insert_input']: {
+    description?: string;
+    value?: string;
+    wearable_files?: GraphQLTypes['omni_wearable_files_arr_rel_insert_input'];
+  };
+  /** aggregate max on columns */
+  ['omni_wearable_types_enum_max_fields']: {
+    __typename: 'omni_wearable_types_enum_max_fields';
+    description?: string;
+    value?: string;
+  };
+  /** aggregate min on columns */
+  ['omni_wearable_types_enum_min_fields']: {
+    __typename: 'omni_wearable_types_enum_min_fields';
+    description?: string;
+    value?: string;
+  };
+  /** response of any mutation on the table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_mutation_response']: {
+    __typename: 'omni_wearable_types_enum_mutation_response';
+    /** number of rows affected by the mutation */
+    affected_rows: number;
+    /** data from the rows affected by the mutation */
+    returning: Array<GraphQLTypes['omni_wearable_types_enum']>;
+  };
+  /** input type for inserting object relation for remote table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_obj_rel_insert_input']: {
+    data: GraphQLTypes['omni_wearable_types_enum_insert_input'];
+    /** upsert condition */
+    on_conflict?: GraphQLTypes['omni_wearable_types_enum_on_conflict'];
+  };
+  /** on_conflict condition type for table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_on_conflict']: {
+    constraint: GraphQLTypes['omni_wearable_types_enum_constraint'];
+    update_columns: Array<
+      GraphQLTypes['omni_wearable_types_enum_update_column']
+    >;
+    where?: GraphQLTypes['omni_wearable_types_enum_bool_exp'];
+  };
+  /** Ordering options when selecting data from "omni.wearable_types_enum". */
+  ['omni_wearable_types_enum_order_by']: {
+    description?: GraphQLTypes['order_by'];
+    value?: GraphQLTypes['order_by'];
+    wearable_files_aggregate?: GraphQLTypes['omni_wearable_files_aggregate_order_by'];
+  };
+  /** primary key columns input for table: omni_wearable_types_enum */
+  ['omni_wearable_types_enum_pk_columns_input']: {
+    value: string;
+  };
+  /** select columns of table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_select_column']: omni_wearable_types_enum_select_column;
+  /** input type for updating data in table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_set_input']: {
+    description?: string;
+    value?: string;
+  };
+  /** update columns of table "omni.wearable_types_enum" */
+  ['omni_wearable_types_enum_update_column']: omni_wearable_types_enum_update_column;
   /** column ordering options */
   ['order_by']: order_by;
   ['query_root']: {
@@ -4578,12 +21550,214 @@ export type GraphQLTypes = {
     contributions_aggregate: GraphQLTypes['contributions_aggregate'];
     /** fetch data from the table: "contributions" using primary key columns */
     contributions_by_pk?: GraphQLTypes['contributions'];
-    /** fetch data from the table: "contributors" */
+    /** An array relationship */
     contributors: Array<GraphQLTypes['contributors']>;
     /** An aggregate relationship */
     contributors_aggregate: GraphQLTypes['contributors_aggregate'];
     /** fetch data from the table: "contributors" using primary key columns */
     contributors_by_pk?: GraphQLTypes['contributors'];
+    /** fetch data from the table: "omni.brand_statuses_enum" */
+    omni_brand_statuses_enum: Array<GraphQLTypes['omni_brand_statuses_enum']>;
+    /** fetch aggregated fields from the table: "omni.brand_statuses_enum" */
+    omni_brand_statuses_enum_aggregate: GraphQLTypes['omni_brand_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.brand_statuses_enum" using primary key columns */
+    omni_brand_statuses_enum_by_pk?: GraphQLTypes['omni_brand_statuses_enum'];
+    /** fetch data from the table: "omni.brand_users" */
+    omni_brand_users: Array<GraphQLTypes['omni_brand_users']>;
+    /** fetch aggregated fields from the table: "omni.brand_users" */
+    omni_brand_users_aggregate: GraphQLTypes['omni_brand_users_aggregate'];
+    /** fetch data from the table: "omni.brand_users" using primary key columns */
+    omni_brand_users_by_pk?: GraphQLTypes['omni_brand_users'];
+    /** fetch data from the table: "omni.brands" */
+    omni_brands: Array<GraphQLTypes['omni_brands']>;
+    /** fetch aggregated fields from the table: "omni.brands" */
+    omni_brands_aggregate: GraphQLTypes['omni_brands_aggregate'];
+    /** fetch data from the table: "omni.brands" using primary key columns */
+    omni_brands_by_pk?: GraphQLTypes['omni_brands'];
+    /** fetch data from the table: "omni.collaborator_types_enum" */
+    omni_collaborator_types_enum: Array<
+      GraphQLTypes['omni_collaborator_types_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.collaborator_types_enum" */
+    omni_collaborator_types_enum_aggregate: GraphQLTypes['omni_collaborator_types_enum_aggregate'];
+    /** fetch data from the table: "omni.collaborator_types_enum" using primary key columns */
+    omni_collaborator_types_enum_by_pk?: GraphQLTypes['omni_collaborator_types_enum'];
+    /** fetch data from the table: "omni.fullfillers" */
+    omni_fullfillers: Array<GraphQLTypes['omni_fullfillers']>;
+    /** fetch aggregated fields from the table: "omni.fullfillers" */
+    omni_fullfillers_aggregate: GraphQLTypes['omni_fullfillers_aggregate'];
+    /** fetch data from the table: "omni.fullfillers" using primary key columns */
+    omni_fullfillers_by_pk?: GraphQLTypes['omni_fullfillers'];
+    /** fetch data from the table: "omni.price_currencies" */
+    omni_price_currencies: Array<GraphQLTypes['omni_price_currencies']>;
+    /** fetch aggregated fields from the table: "omni.price_currencies" */
+    omni_price_currencies_aggregate: GraphQLTypes['omni_price_currencies_aggregate'];
+    /** fetch data from the table: "omni.price_currencies" using primary key columns */
+    omni_price_currencies_by_pk?: GraphQLTypes['omni_price_currencies'];
+    /** fetch data from the table: "omni.print_techs_enum" */
+    omni_print_techs_enum: Array<GraphQLTypes['omni_print_techs_enum']>;
+    /** fetch aggregated fields from the table: "omni.print_techs_enum" */
+    omni_print_techs_enum_aggregate: GraphQLTypes['omni_print_techs_enum_aggregate'];
+    /** fetch data from the table: "omni.print_techs_enum" using primary key columns */
+    omni_print_techs_enum_by_pk?: GraphQLTypes['omni_print_techs_enum'];
+    /** fetch data from the table: "omni.producer_statuses_enum" */
+    omni_producer_statuses_enum: Array<
+      GraphQLTypes['omni_producer_statuses_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.producer_statuses_enum" */
+    omni_producer_statuses_enum_aggregate: GraphQLTypes['omni_producer_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.producer_statuses_enum" using primary key columns */
+    omni_producer_statuses_enum_by_pk?: GraphQLTypes['omni_producer_statuses_enum'];
+    /** fetch data from the table: "omni.producers" */
+    omni_producers: Array<GraphQLTypes['omni_producers']>;
+    /** fetch aggregated fields from the table: "omni.producers" */
+    omni_producers_aggregate: GraphQLTypes['omni_producers_aggregate'];
+    /** fetch data from the table: "omni.producers" using primary key columns */
+    omni_producers_by_pk?: GraphQLTypes['omni_producers'];
+    /** fetch data from the table: "omni.product_collaborators" */
+    omni_product_collaborators: Array<
+      GraphQLTypes['omni_product_collaborators']
+    >;
+    /** fetch aggregated fields from the table: "omni.product_collaborators" */
+    omni_product_collaborators_aggregate: GraphQLTypes['omni_product_collaborators_aggregate'];
+    /** fetch data from the table: "omni.product_collaborators" using primary key columns */
+    omni_product_collaborators_by_pk?: GraphQLTypes['omni_product_collaborators'];
+    /** fetch data from the table: "omni.product_types_enum" */
+    omni_product_types_enum: Array<GraphQLTypes['omni_product_types_enum']>;
+    /** fetch aggregated fields from the table: "omni.product_types_enum" */
+    omni_product_types_enum_aggregate: GraphQLTypes['omni_product_types_enum_aggregate'];
+    /** fetch data from the table: "omni.product_types_enum" using primary key columns */
+    omni_product_types_enum_by_pk?: GraphQLTypes['omni_product_types_enum'];
+    /** fetch data from the table: "omni.production_genders_enum" */
+    omni_production_genders_enum: Array<
+      GraphQLTypes['omni_production_genders_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_genders_enum" */
+    omni_production_genders_enum_aggregate: GraphQLTypes['omni_production_genders_enum_aggregate'];
+    /** fetch data from the table: "omni.production_genders_enum" using primary key columns */
+    omni_production_genders_enum_by_pk?: GraphQLTypes['omni_production_genders_enum'];
+    /** fetch data from the table: "omni.production_materials" */
+    omni_production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** fetch aggregated fields from the table: "omni.production_materials" */
+    omni_production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    /** fetch data from the table: "omni.production_materials" using primary key columns */
+    omni_production_materials_by_pk?: GraphQLTypes['omni_production_materials'];
+    /** fetch data from the table: "omni.production_materials_producers" */
+    omni_production_materials_producers: Array<
+      GraphQLTypes['omni_production_materials_producers']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_materials_producers" */
+    omni_production_materials_producers_aggregate: GraphQLTypes['omni_production_materials_producers_aggregate'];
+    /** fetch data from the table: "omni.production_materials_producers" using primary key columns */
+    omni_production_materials_producers_by_pk?: GraphQLTypes['omni_production_materials_producers'];
+    /** fetch data from the table: "omni.production_materials_ratings_enum" */
+    omni_production_materials_ratings_enum: Array<
+      GraphQLTypes['omni_production_materials_ratings_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_materials_ratings_enum" */
+    omni_production_materials_ratings_enum_aggregate: GraphQLTypes['omni_production_materials_ratings_enum_aggregate'];
+    /** fetch data from the table: "omni.production_materials_ratings_enum" using primary key columns */
+    omni_production_materials_ratings_enum_by_pk?: GraphQLTypes['omni_production_materials_ratings_enum'];
+    /** fetch data from the table: "omni.production_methods" */
+    omni_production_methods: Array<GraphQLTypes['omni_production_methods']>;
+    /** fetch aggregated fields from the table: "omni.production_methods" */
+    omni_production_methods_aggregate: GraphQLTypes['omni_production_methods_aggregate'];
+    /** fetch data from the table: "omni.production_methods" using primary key columns */
+    omni_production_methods_by_pk?: GraphQLTypes['omni_production_methods'];
+    /** fetch data from the table: "omni.production_methods_producers" */
+    omni_production_methods_producers: Array<
+      GraphQLTypes['omni_production_methods_producers']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_methods_producers" */
+    omni_production_methods_producers_aggregate: GraphQLTypes['omni_production_methods_producers_aggregate'];
+    /** fetch data from the table: "omni.production_methods_producers" using primary key columns */
+    omni_production_methods_producers_by_pk?: GraphQLTypes['omni_production_methods_producers'];
+    /** fetch data from the table: "omni.production_methods_products" */
+    omni_production_methods_products: Array<
+      GraphQLTypes['omni_production_methods_products']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_methods_products" */
+    omni_production_methods_products_aggregate: GraphQLTypes['omni_production_methods_products_aggregate'];
+    /** fetch data from the table: "omni.production_methods_products" using primary key columns */
+    omni_production_methods_products_by_pk?: GraphQLTypes['omni_production_methods_products'];
+    /** fetch data from the table: "omni.production_pallettes_enum" */
+    omni_production_pallettes_enum: Array<
+      GraphQLTypes['omni_production_pallettes_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_pallettes_enum" */
+    omni_production_pallettes_enum_aggregate: GraphQLTypes['omni_production_pallettes_enum_aggregate'];
+    /** fetch data from the table: "omni.production_pallettes_enum" using primary key columns */
+    omni_production_pallettes_enum_by_pk?: GraphQLTypes['omni_production_pallettes_enum'];
+    /** fetch data from the table: "omni.production_styles_enum" */
+    omni_production_styles_enum: Array<
+      GraphQLTypes['omni_production_styles_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_styles_enum" */
+    omni_production_styles_enum_aggregate: GraphQLTypes['omni_production_styles_enum_aggregate'];
+    /** fetch data from the table: "omni.production_styles_enum" using primary key columns */
+    omni_production_styles_enum_by_pk?: GraphQLTypes['omni_production_styles_enum'];
+    /** fetch data from the table: "omni.products" */
+    omni_products: Array<GraphQLTypes['omni_products']>;
+    /** fetch aggregated fields from the table: "omni.products" */
+    omni_products_aggregate: GraphQLTypes['omni_products_aggregate'];
+    /** fetch data from the table: "omni.products" using primary key columns */
+    omni_products_by_pk?: GraphQLTypes['omni_products'];
+    /** fetch data from the table: "omni.products_stage_enum" */
+    omni_products_stage_enum: Array<GraphQLTypes['omni_products_stage_enum']>;
+    /** fetch aggregated fields from the table: "omni.products_stage_enum" */
+    omni_products_stage_enum_aggregate: GraphQLTypes['omni_products_stage_enum_aggregate'];
+    /** fetch data from the table: "omni.products_stage_enum" using primary key columns */
+    omni_products_stage_enum_by_pk?: GraphQLTypes['omni_products_stage_enum'];
+    /** fetch data from the table: "omni.sale_types_enum" */
+    omni_sale_types_enum: Array<GraphQLTypes['omni_sale_types_enum']>;
+    /** fetch aggregated fields from the table: "omni.sale_types_enum" */
+    omni_sale_types_enum_aggregate: GraphQLTypes['omni_sale_types_enum_aggregate'];
+    /** fetch data from the table: "omni.sale_types_enum" using primary key columns */
+    omni_sale_types_enum_by_pk?: GraphQLTypes['omni_sale_types_enum'];
+    /** fetch data from the table: "omni.timezones_enum" */
+    omni_timezones_enum: Array<GraphQLTypes['omni_timezones_enum']>;
+    /** fetch aggregated fields from the table: "omni.timezones_enum" */
+    omni_timezones_enum_aggregate: GraphQLTypes['omni_timezones_enum_aggregate'];
+    /** fetch data from the table: "omni.timezones_enum" using primary key columns */
+    omni_timezones_enum_by_pk?: GraphQLTypes['omni_timezones_enum'];
+    /** fetch data from the table: "omni.user_skill_types_enum" */
+    omni_user_skill_types_enum: Array<
+      GraphQLTypes['omni_user_skill_types_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.user_skill_types_enum" */
+    omni_user_skill_types_enum_aggregate: GraphQLTypes['omni_user_skill_types_enum_aggregate'];
+    /** fetch data from the table: "omni.user_skill_types_enum" using primary key columns */
+    omni_user_skill_types_enum_by_pk?: GraphQLTypes['omni_user_skill_types_enum'];
+    /** fetch data from the table: "omni.user_skills" */
+    omni_user_skills: Array<GraphQLTypes['omni_user_skills']>;
+    /** fetch aggregated fields from the table: "omni.user_skills" */
+    omni_user_skills_aggregate: GraphQLTypes['omni_user_skills_aggregate'];
+    /** fetch data from the table: "omni.user_skills" using primary key columns */
+    omni_user_skills_by_pk?: GraphQLTypes['omni_user_skills'];
+    /** fetch data from the table: "omni.user_statuses_enum" */
+    omni_user_statuses_enum: Array<GraphQLTypes['omni_user_statuses_enum']>;
+    /** fetch aggregated fields from the table: "omni.user_statuses_enum" */
+    omni_user_statuses_enum_aggregate: GraphQLTypes['omni_user_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.user_statuses_enum" using primary key columns */
+    omni_user_statuses_enum_by_pk?: GraphQLTypes['omni_user_statuses_enum'];
+    /** fetch data from the table: "omni.users" */
+    omni_users: Array<GraphQLTypes['omni_users']>;
+    /** fetch aggregated fields from the table: "omni.users" */
+    omni_users_aggregate: GraphQLTypes['omni_users_aggregate'];
+    /** fetch data from the table: "omni.users" using primary key columns */
+    omni_users_by_pk?: GraphQLTypes['omni_users'];
+    /** fetch data from the table: "omni.wearable_files" */
+    omni_wearable_files: Array<GraphQLTypes['omni_wearable_files']>;
+    /** fetch aggregated fields from the table: "omni.wearable_files" */
+    omni_wearable_files_aggregate: GraphQLTypes['omni_wearable_files_aggregate'];
+    /** fetch data from the table: "omni.wearable_files" using primary key columns */
+    omni_wearable_files_by_pk?: GraphQLTypes['omni_wearable_files'];
+    /** fetch data from the table: "omni.wearable_types_enum" */
+    omni_wearable_types_enum: Array<GraphQLTypes['omni_wearable_types_enum']>;
+    /** fetch aggregated fields from the table: "omni.wearable_types_enum" */
+    omni_wearable_types_enum_aggregate: GraphQLTypes['omni_wearable_types_enum_aggregate'];
+    /** fetch data from the table: "omni.wearable_types_enum" using primary key columns */
+    omni_wearable_types_enum_by_pk?: GraphQLTypes['omni_wearable_types_enum'];
     /** fetch data from the table: "robot.order" */
     robot_order: Array<GraphQLTypes['robot_order']>;
     /** fetch aggregated fields from the table: "robot.order" */
@@ -4621,10 +21795,7 @@ export type GraphQLTypes = {
     /** fetch data from the table: "users" using primary key columns */
     users_by_pk?: GraphQLTypes['users'];
   };
-  /** Orders for ROBOT rewards
-
-
-columns and relationships of "robot.order" */
+  /** Orders for ROBOT rewards */
   ['robot_order']: {
     __typename: 'robot_order';
     buyer_address: string;
@@ -4807,10 +21978,7 @@ columns and relationships of "robot.order" */
     dollars_spent?: number;
     season?: number;
   };
-  /** Products for ROBOT designer rewards
-
-
-columns and relationships of "robot.product" */
+  /** Products for ROBOT designer rewards */
   ['robot_product']: {
     __typename: 'robot_product';
     /** An array relationship */
@@ -4881,10 +22049,7 @@ columns and relationships of "robot.product" */
   ['robot_product_delete_key_input']: {
     nft_metadata?: string;
   };
-  /** Designer receiving ROBOT rewards
-
-
-columns and relationships of "robot.product_designer" */
+  /** Designer receiving ROBOT rewards */
   ['robot_product_designer']: {
     __typename: 'robot_product_designer';
     contribution_share: GraphQLTypes['numeric'];
@@ -5429,12 +22594,214 @@ columns and relationships of "robot.product_designer" */
     contributions_aggregate: GraphQLTypes['contributions_aggregate'];
     /** fetch data from the table: "contributions" using primary key columns */
     contributions_by_pk?: GraphQLTypes['contributions'];
-    /** fetch data from the table: "contributors" */
+    /** An array relationship */
     contributors: Array<GraphQLTypes['contributors']>;
     /** An aggregate relationship */
     contributors_aggregate: GraphQLTypes['contributors_aggregate'];
     /** fetch data from the table: "contributors" using primary key columns */
     contributors_by_pk?: GraphQLTypes['contributors'];
+    /** fetch data from the table: "omni.brand_statuses_enum" */
+    omni_brand_statuses_enum: Array<GraphQLTypes['omni_brand_statuses_enum']>;
+    /** fetch aggregated fields from the table: "omni.brand_statuses_enum" */
+    omni_brand_statuses_enum_aggregate: GraphQLTypes['omni_brand_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.brand_statuses_enum" using primary key columns */
+    omni_brand_statuses_enum_by_pk?: GraphQLTypes['omni_brand_statuses_enum'];
+    /** fetch data from the table: "omni.brand_users" */
+    omni_brand_users: Array<GraphQLTypes['omni_brand_users']>;
+    /** fetch aggregated fields from the table: "omni.brand_users" */
+    omni_brand_users_aggregate: GraphQLTypes['omni_brand_users_aggregate'];
+    /** fetch data from the table: "omni.brand_users" using primary key columns */
+    omni_brand_users_by_pk?: GraphQLTypes['omni_brand_users'];
+    /** fetch data from the table: "omni.brands" */
+    omni_brands: Array<GraphQLTypes['omni_brands']>;
+    /** fetch aggregated fields from the table: "omni.brands" */
+    omni_brands_aggregate: GraphQLTypes['omni_brands_aggregate'];
+    /** fetch data from the table: "omni.brands" using primary key columns */
+    omni_brands_by_pk?: GraphQLTypes['omni_brands'];
+    /** fetch data from the table: "omni.collaborator_types_enum" */
+    omni_collaborator_types_enum: Array<
+      GraphQLTypes['omni_collaborator_types_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.collaborator_types_enum" */
+    omni_collaborator_types_enum_aggregate: GraphQLTypes['omni_collaborator_types_enum_aggregate'];
+    /** fetch data from the table: "omni.collaborator_types_enum" using primary key columns */
+    omni_collaborator_types_enum_by_pk?: GraphQLTypes['omni_collaborator_types_enum'];
+    /** fetch data from the table: "omni.fullfillers" */
+    omni_fullfillers: Array<GraphQLTypes['omni_fullfillers']>;
+    /** fetch aggregated fields from the table: "omni.fullfillers" */
+    omni_fullfillers_aggregate: GraphQLTypes['omni_fullfillers_aggregate'];
+    /** fetch data from the table: "omni.fullfillers" using primary key columns */
+    omni_fullfillers_by_pk?: GraphQLTypes['omni_fullfillers'];
+    /** fetch data from the table: "omni.price_currencies" */
+    omni_price_currencies: Array<GraphQLTypes['omni_price_currencies']>;
+    /** fetch aggregated fields from the table: "omni.price_currencies" */
+    omni_price_currencies_aggregate: GraphQLTypes['omni_price_currencies_aggregate'];
+    /** fetch data from the table: "omni.price_currencies" using primary key columns */
+    omni_price_currencies_by_pk?: GraphQLTypes['omni_price_currencies'];
+    /** fetch data from the table: "omni.print_techs_enum" */
+    omni_print_techs_enum: Array<GraphQLTypes['omni_print_techs_enum']>;
+    /** fetch aggregated fields from the table: "omni.print_techs_enum" */
+    omni_print_techs_enum_aggregate: GraphQLTypes['omni_print_techs_enum_aggregate'];
+    /** fetch data from the table: "omni.print_techs_enum" using primary key columns */
+    omni_print_techs_enum_by_pk?: GraphQLTypes['omni_print_techs_enum'];
+    /** fetch data from the table: "omni.producer_statuses_enum" */
+    omni_producer_statuses_enum: Array<
+      GraphQLTypes['omni_producer_statuses_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.producer_statuses_enum" */
+    omni_producer_statuses_enum_aggregate: GraphQLTypes['omni_producer_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.producer_statuses_enum" using primary key columns */
+    omni_producer_statuses_enum_by_pk?: GraphQLTypes['omni_producer_statuses_enum'];
+    /** fetch data from the table: "omni.producers" */
+    omni_producers: Array<GraphQLTypes['omni_producers']>;
+    /** fetch aggregated fields from the table: "omni.producers" */
+    omni_producers_aggregate: GraphQLTypes['omni_producers_aggregate'];
+    /** fetch data from the table: "omni.producers" using primary key columns */
+    omni_producers_by_pk?: GraphQLTypes['omni_producers'];
+    /** fetch data from the table: "omni.product_collaborators" */
+    omni_product_collaborators: Array<
+      GraphQLTypes['omni_product_collaborators']
+    >;
+    /** fetch aggregated fields from the table: "omni.product_collaborators" */
+    omni_product_collaborators_aggregate: GraphQLTypes['omni_product_collaborators_aggregate'];
+    /** fetch data from the table: "omni.product_collaborators" using primary key columns */
+    omni_product_collaborators_by_pk?: GraphQLTypes['omni_product_collaborators'];
+    /** fetch data from the table: "omni.product_types_enum" */
+    omni_product_types_enum: Array<GraphQLTypes['omni_product_types_enum']>;
+    /** fetch aggregated fields from the table: "omni.product_types_enum" */
+    omni_product_types_enum_aggregate: GraphQLTypes['omni_product_types_enum_aggregate'];
+    /** fetch data from the table: "omni.product_types_enum" using primary key columns */
+    omni_product_types_enum_by_pk?: GraphQLTypes['omni_product_types_enum'];
+    /** fetch data from the table: "omni.production_genders_enum" */
+    omni_production_genders_enum: Array<
+      GraphQLTypes['omni_production_genders_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_genders_enum" */
+    omni_production_genders_enum_aggregate: GraphQLTypes['omni_production_genders_enum_aggregate'];
+    /** fetch data from the table: "omni.production_genders_enum" using primary key columns */
+    omni_production_genders_enum_by_pk?: GraphQLTypes['omni_production_genders_enum'];
+    /** fetch data from the table: "omni.production_materials" */
+    omni_production_materials: Array<GraphQLTypes['omni_production_materials']>;
+    /** fetch aggregated fields from the table: "omni.production_materials" */
+    omni_production_materials_aggregate: GraphQLTypes['omni_production_materials_aggregate'];
+    /** fetch data from the table: "omni.production_materials" using primary key columns */
+    omni_production_materials_by_pk?: GraphQLTypes['omni_production_materials'];
+    /** fetch data from the table: "omni.production_materials_producers" */
+    omni_production_materials_producers: Array<
+      GraphQLTypes['omni_production_materials_producers']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_materials_producers" */
+    omni_production_materials_producers_aggregate: GraphQLTypes['omni_production_materials_producers_aggregate'];
+    /** fetch data from the table: "omni.production_materials_producers" using primary key columns */
+    omni_production_materials_producers_by_pk?: GraphQLTypes['omni_production_materials_producers'];
+    /** fetch data from the table: "omni.production_materials_ratings_enum" */
+    omni_production_materials_ratings_enum: Array<
+      GraphQLTypes['omni_production_materials_ratings_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_materials_ratings_enum" */
+    omni_production_materials_ratings_enum_aggregate: GraphQLTypes['omni_production_materials_ratings_enum_aggregate'];
+    /** fetch data from the table: "omni.production_materials_ratings_enum" using primary key columns */
+    omni_production_materials_ratings_enum_by_pk?: GraphQLTypes['omni_production_materials_ratings_enum'];
+    /** fetch data from the table: "omni.production_methods" */
+    omni_production_methods: Array<GraphQLTypes['omni_production_methods']>;
+    /** fetch aggregated fields from the table: "omni.production_methods" */
+    omni_production_methods_aggregate: GraphQLTypes['omni_production_methods_aggregate'];
+    /** fetch data from the table: "omni.production_methods" using primary key columns */
+    omni_production_methods_by_pk?: GraphQLTypes['omni_production_methods'];
+    /** fetch data from the table: "omni.production_methods_producers" */
+    omni_production_methods_producers: Array<
+      GraphQLTypes['omni_production_methods_producers']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_methods_producers" */
+    omni_production_methods_producers_aggregate: GraphQLTypes['omni_production_methods_producers_aggregate'];
+    /** fetch data from the table: "omni.production_methods_producers" using primary key columns */
+    omni_production_methods_producers_by_pk?: GraphQLTypes['omni_production_methods_producers'];
+    /** fetch data from the table: "omni.production_methods_products" */
+    omni_production_methods_products: Array<
+      GraphQLTypes['omni_production_methods_products']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_methods_products" */
+    omni_production_methods_products_aggregate: GraphQLTypes['omni_production_methods_products_aggregate'];
+    /** fetch data from the table: "omni.production_methods_products" using primary key columns */
+    omni_production_methods_products_by_pk?: GraphQLTypes['omni_production_methods_products'];
+    /** fetch data from the table: "omni.production_pallettes_enum" */
+    omni_production_pallettes_enum: Array<
+      GraphQLTypes['omni_production_pallettes_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_pallettes_enum" */
+    omni_production_pallettes_enum_aggregate: GraphQLTypes['omni_production_pallettes_enum_aggregate'];
+    /** fetch data from the table: "omni.production_pallettes_enum" using primary key columns */
+    omni_production_pallettes_enum_by_pk?: GraphQLTypes['omni_production_pallettes_enum'];
+    /** fetch data from the table: "omni.production_styles_enum" */
+    omni_production_styles_enum: Array<
+      GraphQLTypes['omni_production_styles_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.production_styles_enum" */
+    omni_production_styles_enum_aggregate: GraphQLTypes['omni_production_styles_enum_aggregate'];
+    /** fetch data from the table: "omni.production_styles_enum" using primary key columns */
+    omni_production_styles_enum_by_pk?: GraphQLTypes['omni_production_styles_enum'];
+    /** fetch data from the table: "omni.products" */
+    omni_products: Array<GraphQLTypes['omni_products']>;
+    /** fetch aggregated fields from the table: "omni.products" */
+    omni_products_aggregate: GraphQLTypes['omni_products_aggregate'];
+    /** fetch data from the table: "omni.products" using primary key columns */
+    omni_products_by_pk?: GraphQLTypes['omni_products'];
+    /** fetch data from the table: "omni.products_stage_enum" */
+    omni_products_stage_enum: Array<GraphQLTypes['omni_products_stage_enum']>;
+    /** fetch aggregated fields from the table: "omni.products_stage_enum" */
+    omni_products_stage_enum_aggregate: GraphQLTypes['omni_products_stage_enum_aggregate'];
+    /** fetch data from the table: "omni.products_stage_enum" using primary key columns */
+    omni_products_stage_enum_by_pk?: GraphQLTypes['omni_products_stage_enum'];
+    /** fetch data from the table: "omni.sale_types_enum" */
+    omni_sale_types_enum: Array<GraphQLTypes['omni_sale_types_enum']>;
+    /** fetch aggregated fields from the table: "omni.sale_types_enum" */
+    omni_sale_types_enum_aggregate: GraphQLTypes['omni_sale_types_enum_aggregate'];
+    /** fetch data from the table: "omni.sale_types_enum" using primary key columns */
+    omni_sale_types_enum_by_pk?: GraphQLTypes['omni_sale_types_enum'];
+    /** fetch data from the table: "omni.timezones_enum" */
+    omni_timezones_enum: Array<GraphQLTypes['omni_timezones_enum']>;
+    /** fetch aggregated fields from the table: "omni.timezones_enum" */
+    omni_timezones_enum_aggregate: GraphQLTypes['omni_timezones_enum_aggregate'];
+    /** fetch data from the table: "omni.timezones_enum" using primary key columns */
+    omni_timezones_enum_by_pk?: GraphQLTypes['omni_timezones_enum'];
+    /** fetch data from the table: "omni.user_skill_types_enum" */
+    omni_user_skill_types_enum: Array<
+      GraphQLTypes['omni_user_skill_types_enum']
+    >;
+    /** fetch aggregated fields from the table: "omni.user_skill_types_enum" */
+    omni_user_skill_types_enum_aggregate: GraphQLTypes['omni_user_skill_types_enum_aggregate'];
+    /** fetch data from the table: "omni.user_skill_types_enum" using primary key columns */
+    omni_user_skill_types_enum_by_pk?: GraphQLTypes['omni_user_skill_types_enum'];
+    /** fetch data from the table: "omni.user_skills" */
+    omni_user_skills: Array<GraphQLTypes['omni_user_skills']>;
+    /** fetch aggregated fields from the table: "omni.user_skills" */
+    omni_user_skills_aggregate: GraphQLTypes['omni_user_skills_aggregate'];
+    /** fetch data from the table: "omni.user_skills" using primary key columns */
+    omni_user_skills_by_pk?: GraphQLTypes['omni_user_skills'];
+    /** fetch data from the table: "omni.user_statuses_enum" */
+    omni_user_statuses_enum: Array<GraphQLTypes['omni_user_statuses_enum']>;
+    /** fetch aggregated fields from the table: "omni.user_statuses_enum" */
+    omni_user_statuses_enum_aggregate: GraphQLTypes['omni_user_statuses_enum_aggregate'];
+    /** fetch data from the table: "omni.user_statuses_enum" using primary key columns */
+    omni_user_statuses_enum_by_pk?: GraphQLTypes['omni_user_statuses_enum'];
+    /** fetch data from the table: "omni.users" */
+    omni_users: Array<GraphQLTypes['omni_users']>;
+    /** fetch aggregated fields from the table: "omni.users" */
+    omni_users_aggregate: GraphQLTypes['omni_users_aggregate'];
+    /** fetch data from the table: "omni.users" using primary key columns */
+    omni_users_by_pk?: GraphQLTypes['omni_users'];
+    /** fetch data from the table: "omni.wearable_files" */
+    omni_wearable_files: Array<GraphQLTypes['omni_wearable_files']>;
+    /** fetch aggregated fields from the table: "omni.wearable_files" */
+    omni_wearable_files_aggregate: GraphQLTypes['omni_wearable_files_aggregate'];
+    /** fetch data from the table: "omni.wearable_files" using primary key columns */
+    omni_wearable_files_by_pk?: GraphQLTypes['omni_wearable_files'];
+    /** fetch data from the table: "omni.wearable_types_enum" */
+    omni_wearable_types_enum: Array<GraphQLTypes['omni_wearable_types_enum']>;
+    /** fetch aggregated fields from the table: "omni.wearable_types_enum" */
+    omni_wearable_types_enum_aggregate: GraphQLTypes['omni_wearable_types_enum_aggregate'];
+    /** fetch data from the table: "omni.wearable_types_enum" using primary key columns */
+    omni_wearable_types_enum_by_pk?: GraphQLTypes['omni_wearable_types_enum'];
     /** fetch data from the table: "robot.order" */
     robot_order: Array<GraphQLTypes['robot_order']>;
     /** fetch aggregated fields from the table: "robot.order" */
@@ -5653,6 +23020,655 @@ export const enum contributors_update_column {
   contribution_id = 'contribution_id',
   contribution_share = 'contribution_share',
   user_id = 'user_id',
+}
+/** unique or primary key constraints on table "omni.brand_statuses_enum" */
+export const enum omni_brand_statuses_enum_constraint {
+  brand_statuses_enum_pkey = 'brand_statuses_enum_pkey',
+}
+export const enum omni_brand_statuses_enum_enum {
+  first_drop = 'first_drop',
+  new = 'new',
+  robot = 'robot',
+}
+/** select columns of table "omni.brand_statuses_enum" */
+export const enum omni_brand_statuses_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.brand_statuses_enum" */
+export const enum omni_brand_statuses_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.brand_users" */
+export const enum omni_brand_users_constraint {
+  brand_users_pkey = 'brand_users_pkey',
+}
+/** select columns of table "omni.brand_users" */
+export const enum omni_brand_users_select_column {
+  brand = 'brand',
+  collaborator = 'collaborator',
+  id = 'id',
+}
+/** update columns of table "omni.brand_users" */
+export const enum omni_brand_users_update_column {
+  brand = 'brand',
+  collaborator = 'collaborator',
+  id = 'id',
+}
+/** unique or primary key constraints on table "omni.brands" */
+export const enum omni_brands_constraint {
+  brands_pkey = 'brands_pkey',
+}
+/** select columns of table "omni.brands" */
+export const enum omni_brands_select_column {
+  created_at = 'created_at',
+  description = 'description',
+  discord_url = 'discord_url',
+  eth_address = 'eth_address',
+  id = 'id',
+  logo = 'logo',
+  name = 'name',
+  status = 'status',
+  twitter_url = 'twitter_url',
+  updated_at = 'updated_at',
+  website_url = 'website_url',
+}
+/** update columns of table "omni.brands" */
+export const enum omni_brands_update_column {
+  created_at = 'created_at',
+  description = 'description',
+  discord_url = 'discord_url',
+  eth_address = 'eth_address',
+  id = 'id',
+  logo = 'logo',
+  name = 'name',
+  status = 'status',
+  twitter_url = 'twitter_url',
+  updated_at = 'updated_at',
+  website_url = 'website_url',
+}
+/** unique or primary key constraints on table "omni.collaborator_types_enum" */
+export const enum omni_collaborator_types_enum_constraint {
+  collaborator_types_enum_pkey = 'collaborator_types_enum_pkey',
+}
+export const enum omni_collaborator_types_enum_enum {
+  brand = 'brand',
+  designer = 'designer',
+  technician = 'technician',
+}
+/** select columns of table "omni.collaborator_types_enum" */
+export const enum omni_collaborator_types_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.collaborator_types_enum" */
+export const enum omni_collaborator_types_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.fullfillers" */
+export const enum omni_fullfillers_constraint {
+  fullfillers_pkey = 'fullfillers_pkey',
+}
+/** select columns of table "omni.fullfillers" */
+export const enum omni_fullfillers_select_column {
+  address = 'address',
+  created_at = 'created_at',
+  email = 'email',
+  eth_address = 'eth_address',
+  id = 'id',
+  name = 'name',
+  updated_at = 'updated_at',
+  website_url = 'website_url',
+}
+/** update columns of table "omni.fullfillers" */
+export const enum omni_fullfillers_update_column {
+  address = 'address',
+  created_at = 'created_at',
+  email = 'email',
+  eth_address = 'eth_address',
+  id = 'id',
+  name = 'name',
+  updated_at = 'updated_at',
+  website_url = 'website_url',
+}
+/** unique or primary key constraints on table "omni.price_currencies" */
+export const enum omni_price_currencies_constraint {
+  price_currencies_pkey = 'price_currencies_pkey',
+}
+/** select columns of table "omni.price_currencies" */
+export const enum omni_price_currencies_select_column {
+  currency = 'currency',
+  id = 'id',
+  price = 'price',
+}
+/** update columns of table "omni.price_currencies" */
+export const enum omni_price_currencies_update_column {
+  currency = 'currency',
+  id = 'id',
+  price = 'price',
+}
+/** unique or primary key constraints on table "omni.print_techs_enum" */
+export const enum omni_print_techs_enum_constraint {
+  print_techs_enum_pkey = 'print_techs_enum_pkey',
+}
+export const enum omni_print_techs_enum_enum {
+  embroidery = 'embroidery',
+}
+/** select columns of table "omni.print_techs_enum" */
+export const enum omni_print_techs_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.print_techs_enum" */
+export const enum omni_print_techs_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.producer_statuses_enum" */
+export const enum omni_producer_statuses_enum_constraint {
+  producer_statuses_enum_pkey = 'producer_statuses_enum_pkey',
+}
+export const enum omni_producer_statuses_enum_enum {
+  current_partner = 'current_partner',
+}
+/** select columns of table "omni.producer_statuses_enum" */
+export const enum omni_producer_statuses_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.producer_statuses_enum" */
+export const enum omni_producer_statuses_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.producers" */
+export const enum omni_producers_constraint {
+  producers_pkey = 'producers_pkey',
+}
+/** select columns of table "omni.producers" */
+export const enum omni_producers_select_column {
+  address = 'address',
+  created_at = 'created_at',
+  email = 'email',
+  eth_address = 'eth_address',
+  id = 'id',
+  name = 'name',
+  products = 'products',
+  status = 'status',
+  updated_at = 'updated_at',
+}
+/** update columns of table "omni.producers" */
+export const enum omni_producers_update_column {
+  address = 'address',
+  created_at = 'created_at',
+  email = 'email',
+  eth_address = 'eth_address',
+  id = 'id',
+  name = 'name',
+  products = 'products',
+  status = 'status',
+  updated_at = 'updated_at',
+}
+/** unique or primary key constraints on table "omni.product_collaborators" */
+export const enum omni_product_collaborators_constraint {
+  product_collaborators_pkey = 'product_collaborators_pkey',
+}
+/** select columns of table "omni.product_collaborators" */
+export const enum omni_product_collaborators_select_column {
+  collaboration_share = 'collaboration_share',
+  collaborator = 'collaborator',
+  id = 'id',
+  product = 'product',
+  type = 'type',
+}
+/** update columns of table "omni.product_collaborators" */
+export const enum omni_product_collaborators_update_column {
+  collaboration_share = 'collaboration_share',
+  collaborator = 'collaborator',
+  id = 'id',
+  product = 'product',
+  type = 'type',
+}
+/** unique or primary key constraints on table "omni.product_types_enum" */
+export const enum omni_product_types_enum_constraint {
+  product_types_enum_pkey = 'product_types_enum_pkey',
+}
+/** select columns of table "omni.product_types_enum" */
+export const enum omni_product_types_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.product_types_enum" */
+export const enum omni_product_types_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.production_genders_enum" */
+export const enum omni_production_genders_enum_constraint {
+  production_genders_enum_pkey = 'production_genders_enum_pkey',
+}
+export const enum omni_production_genders_enum_enum {
+  female = 'female',
+  male = 'male',
+  unisex = 'unisex',
+}
+/** select columns of table "omni.production_genders_enum" */
+export const enum omni_production_genders_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.production_genders_enum" */
+export const enum omni_production_genders_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.production_materials" */
+export const enum omni_production_materials_constraint {
+  production_materials_pkey = 'production_materials_pkey',
+}
+/** unique or primary key constraints on table "omni.production_materials_producers" */
+export const enum omni_production_materials_producers_constraint {
+  production_materials_producers_pkey = 'production_materials_producers_pkey',
+}
+/** select columns of table "omni.production_materials_producers" */
+export const enum omni_production_materials_producers_select_column {
+  id = 'id',
+  producer = 'producer',
+  production_material = 'production_material',
+}
+/** update columns of table "omni.production_materials_producers" */
+export const enum omni_production_materials_producers_update_column {
+  id = 'id',
+  producer = 'producer',
+  production_material = 'production_material',
+}
+/** unique or primary key constraints on table "omni.production_materials_ratings_enum" */
+export const enum omni_production_materials_ratings_enum_constraint {
+  production_materials_ratings_enum_pkey = 'production_materials_ratings_enum_pkey',
+}
+export const enum omni_production_materials_ratings_enum_enum {
+  best = 'best',
+  good = 'good',
+  not_so_good = 'not_so_good',
+}
+/** select columns of table "omni.production_materials_ratings_enum" */
+export const enum omni_production_materials_ratings_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.production_materials_ratings_enum" */
+export const enum omni_production_materials_ratings_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** select columns of table "omni.production_materials" */
+export const enum omni_production_materials_select_column {
+  base_price = 'base_price',
+  composition = 'composition',
+  created_at = 'created_at',
+  description = 'description',
+  gender = 'gender',
+  id = 'id',
+  name = 'name',
+  neck_tag = 'neck_tag',
+  pallette = 'pallette',
+  print_tech = 'print_tech',
+  products = 'products',
+  rating = 'rating',
+  size_guide = 'size_guide',
+  style = 'style',
+  style_number = 'style_number',
+  type = 'type',
+  updated_at = 'updated_at',
+}
+/** update columns of table "omni.production_materials" */
+export const enum omni_production_materials_update_column {
+  base_price = 'base_price',
+  composition = 'composition',
+  created_at = 'created_at',
+  description = 'description',
+  gender = 'gender',
+  id = 'id',
+  name = 'name',
+  neck_tag = 'neck_tag',
+  pallette = 'pallette',
+  print_tech = 'print_tech',
+  products = 'products',
+  rating = 'rating',
+  size_guide = 'size_guide',
+  style = 'style',
+  style_number = 'style_number',
+  type = 'type',
+  updated_at = 'updated_at',
+}
+/** unique or primary key constraints on table "omni.production_methods" */
+export const enum omni_production_methods_constraint {
+  production_methods_pkey = 'production_methods_pkey',
+}
+/** unique or primary key constraints on table "omni.production_methods_producers" */
+export const enum omni_production_methods_producers_constraint {
+  production_methods_producers_pkey = 'production_methods_producers_pkey',
+}
+/** select columns of table "omni.production_methods_producers" */
+export const enum omni_production_methods_producers_select_column {
+  id = 'id',
+  producer = 'producer',
+  production_method = 'production_method',
+}
+/** update columns of table "omni.production_methods_producers" */
+export const enum omni_production_methods_producers_update_column {
+  id = 'id',
+  producer = 'producer',
+  production_method = 'production_method',
+}
+/** unique or primary key constraints on table "omni.production_methods_products" */
+export const enum omni_production_methods_products_constraint {
+  production_methods_products_pkey = 'production_methods_products_pkey',
+}
+/** select columns of table "omni.production_methods_products" */
+export const enum omni_production_methods_products_select_column {
+  id = 'id',
+  product = 'product',
+  production_method = 'production_method',
+}
+/** update columns of table "omni.production_methods_products" */
+export const enum omni_production_methods_products_update_column {
+  id = 'id',
+  product = 'product',
+  production_method = 'production_method',
+}
+/** select columns of table "omni.production_methods" */
+export const enum omni_production_methods_select_column {
+  created_at = 'created_at',
+  description = 'description',
+  id = 'id',
+  name = 'name',
+  updated_at = 'updated_at',
+}
+/** update columns of table "omni.production_methods" */
+export const enum omni_production_methods_update_column {
+  created_at = 'created_at',
+  description = 'description',
+  id = 'id',
+  name = 'name',
+  updated_at = 'updated_at',
+}
+/** unique or primary key constraints on table "omni.production_pallettes_enum" */
+export const enum omni_production_pallettes_enum_constraint {
+  production_pallettes_enum_pkey = 'production_pallettes_enum_pkey',
+}
+export const enum omni_production_pallettes_enum_enum {
+  bwg = 'bwg',
+}
+/** select columns of table "omni.production_pallettes_enum" */
+export const enum omni_production_pallettes_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.production_pallettes_enum" */
+export const enum omni_production_pallettes_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.production_styles_enum" */
+export const enum omni_production_styles_enum_constraint {
+  production_styles_enum_pkey = 'production_styles_enum_pkey',
+}
+export const enum omni_production_styles_enum_enum {
+  t_shirt_ss = 't_shirt_ss',
+}
+/** select columns of table "omni.production_styles_enum" */
+export const enum omni_production_styles_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.production_styles_enum" */
+export const enum omni_production_styles_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.products" */
+export const enum omni_products_constraint {
+  products_pkey = 'products_pkey',
+}
+/** select columns of table "omni.products" */
+export const enum omni_products_select_column {
+  asset_files = 'asset_files',
+  brand = 'brand',
+  brand_reward_share = 'brand_reward_share',
+  collaborator_reward_share = 'collaborator_reward_share',
+  created_at = 'created_at',
+  discord_channel_id = 'discord_channel_id',
+  fullfillment = 'fullfillment',
+  id = 'id',
+  name = 'name',
+  notion_id = 'notion_id',
+  price = 'price',
+  producer = 'producer',
+  production_cost = 'production_cost',
+  production_material = 'production_material',
+  quantity = 'quantity',
+  sale_type = 'sale_type',
+  shop_description = 'shop_description',
+  shopify_id = 'shopify_id',
+  stage = 'stage',
+  total_sales = 'total_sales',
+  updated_at = 'updated_at',
+}
+/** unique or primary key constraints on table "omni.products_stage_enum" */
+export const enum omni_products_stage_enum_constraint {
+  products_stage_enum_pkey = 'products_stage_enum_pkey',
+}
+export const enum omni_products_stage_enum_enum {
+  design = 'design',
+  not_enough_votes = 'not_enough_votes',
+  production = 'production',
+  sampling = 'sampling',
+  submitted = 'submitted',
+  vote = 'vote',
+}
+/** select columns of table "omni.products_stage_enum" */
+export const enum omni_products_stage_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.products_stage_enum" */
+export const enum omni_products_stage_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.products" */
+export const enum omni_products_update_column {
+  asset_files = 'asset_files',
+  brand = 'brand',
+  brand_reward_share = 'brand_reward_share',
+  collaborator_reward_share = 'collaborator_reward_share',
+  created_at = 'created_at',
+  discord_channel_id = 'discord_channel_id',
+  fullfillment = 'fullfillment',
+  id = 'id',
+  name = 'name',
+  notion_id = 'notion_id',
+  price = 'price',
+  producer = 'producer',
+  production_cost = 'production_cost',
+  production_material = 'production_material',
+  quantity = 'quantity',
+  sale_type = 'sale_type',
+  shop_description = 'shop_description',
+  shopify_id = 'shopify_id',
+  stage = 'stage',
+  total_sales = 'total_sales',
+  updated_at = 'updated_at',
+}
+/** unique or primary key constraints on table "omni.sale_types_enum" */
+export const enum omni_sale_types_enum_constraint {
+  sale_types_enum_pkey = 'sale_types_enum_pkey',
+}
+export const enum omni_sale_types_enum_enum {
+  limited_run = 'limited_run',
+  open_edition = 'open_edition',
+}
+/** select columns of table "omni.sale_types_enum" */
+export const enum omni_sale_types_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.sale_types_enum" */
+export const enum omni_sale_types_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.timezones_enum" */
+export const enum omni_timezones_enum_constraint {
+  timezones_enum_pkey = 'timezones_enum_pkey',
+}
+export const enum omni_timezones_enum_enum {
+  central_us = 'central_us',
+  eastern_us = 'eastern_us',
+  mountain_us = 'mountain_us',
+  pacific_us = 'pacific_us',
+}
+/** select columns of table "omni.timezones_enum" */
+export const enum omni_timezones_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.timezones_enum" */
+export const enum omni_timezones_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.user_skill_types_enum" */
+export const enum omni_user_skill_types_enum_constraint {
+  user_skill_types_enum_pkey = 'user_skill_types_enum_pkey',
+}
+export const enum omni_user_skill_types_enum_enum {
+  art_optimization = 'art_optimization',
+  client_relationships = 'client_relationships',
+  clo3d = 'clo3d',
+  coordination = 'coordination',
+  engineering = 'engineering',
+  fashion_design = 'fashion_design',
+  notion = 'notion',
+  production_supply = 'production_supply',
+  templating = 'templating',
+  training = 'training',
+}
+/** select columns of table "omni.user_skill_types_enum" */
+export const enum omni_user_skill_types_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.user_skill_types_enum" */
+export const enum omni_user_skill_types_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.user_skills" */
+export const enum omni_user_skills_constraint {
+  user_skills_pkey = 'user_skills_pkey',
+}
+/** select columns of table "omni.user_skills" */
+export const enum omni_user_skills_select_column {
+  id = 'id',
+  skill = 'skill',
+  user = 'user',
+}
+/** update columns of table "omni.user_skills" */
+export const enum omni_user_skills_update_column {
+  id = 'id',
+  skill = 'skill',
+  user = 'user',
+}
+/** unique or primary key constraints on table "omni.user_statuses_enum" */
+export const enum omni_user_statuses_enum_constraint {
+  user_statuses_enum_pkey = 'user_statuses_enum_pkey',
+}
+export const enum omni_user_statuses_enum_enum {
+  active = 'active',
+  inactive = 'inactive',
+}
+/** select columns of table "omni.user_statuses_enum" */
+export const enum omni_user_statuses_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.user_statuses_enum" */
+export const enum omni_user_statuses_enum_update_column {
+  description = 'description',
+  value = 'value',
+}
+/** unique or primary key constraints on table "omni.users" */
+export const enum omni_users_constraint {
+  users_pkey = 'users_pkey',
+}
+/** select columns of table "omni.users" */
+export const enum omni_users_select_column {
+  created_at = 'created_at',
+  discord_handle = 'discord_handle',
+  discord_id = 'discord_id',
+  eth_address = 'eth_address',
+  github_handle = 'github_handle',
+  id = 'id',
+  name = 'name',
+  status = 'status',
+  timezone = 'timezone',
+  twitter_handle = 'twitter_handle',
+  updated_at = 'updated_at',
+}
+/** update columns of table "omni.users" */
+export const enum omni_users_update_column {
+  created_at = 'created_at',
+  discord_handle = 'discord_handle',
+  discord_id = 'discord_id',
+  eth_address = 'eth_address',
+  github_handle = 'github_handle',
+  id = 'id',
+  name = 'name',
+  status = 'status',
+  timezone = 'timezone',
+  twitter_handle = 'twitter_handle',
+  updated_at = 'updated_at',
+}
+/** unique or primary key constraints on table "omni.wearable_files" */
+export const enum omni_wearable_files_constraint {
+  wearable_files_pkey = 'wearable_files_pkey',
+}
+/** select columns of table "omni.wearable_files" */
+export const enum omni_wearable_files_select_column {
+  file = 'file',
+  id = 'id',
+  product = 'product',
+  type = 'type',
+}
+/** update columns of table "omni.wearable_files" */
+export const enum omni_wearable_files_update_column {
+  file = 'file',
+  id = 'id',
+  product = 'product',
+  type = 'type',
+}
+/** unique or primary key constraints on table "omni.wearable_types_enum" */
+export const enum omni_wearable_types_enum_constraint {
+  wearable_types_enum_pkey = 'wearable_types_enum_pkey',
+}
+export const enum omni_wearable_types_enum_enum {
+  glb = 'glb',
+  png = 'png',
+  vox = 'vox',
+}
+/** select columns of table "omni.wearable_types_enum" */
+export const enum omni_wearable_types_enum_select_column {
+  description = 'description',
+  value = 'value',
+}
+/** update columns of table "omni.wearable_types_enum" */
+export const enum omni_wearable_types_enum_update_column {
+  description = 'description',
+  value = 'value',
 }
 /** column ordering options */
 export const enum order_by {

@@ -14,10 +14,9 @@
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
     "app": "yarn workspace mf-app",
     "services": "yarn workspace @mf/services",
-    "start:services": "vercel dev -l 3003",
     "prepare": "husky install",
     "test": "yarn workspaces run test",
-    "hasura": "hasura --project ./hasura"
+    "hasura": "hasura --envfile ../.env --project ./hasura"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "3.0.0",
@@ -39,7 +38,7 @@
     "eslint-plugin-simple-import-sort": "7.0.0",
     "expo-cli": "5.4.3",
     "expo-yarn-workspaces": "1.5.2",
-    "hasura-cli": "^2.1.1",
+    "hasura-cli": "^2.7.0",
     "husky": "7.0.2",
     "jest": "27.0.6",
     "lint-staged": "11.1.2",
