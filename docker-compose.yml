@@ -6,11 +6,13 @@ services:
     restart: always
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - directus
     ports:
       ## Expose the port for tooling (SQL language server in IDE, connecting with GUI's etc)
-      - '5432:5432'
+      - ${LOCAL_POSTGRES_PORT}:${LOCAL_POSTGRES_PORT}
     environment:
-      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_PASSWORD: ${LOCAL_POSTGRES_PASSWORD}
 
   #  graphql-engine:
   #    image: hasura/graphql-engine:v2.7.0.cli-migrations-v3
@@ -36,6 +38,52 @@ services:
   #      ## uncomment next line to set an admin secret
   #      HASURA_GRAPHQL_AUTH_HOOK: http://host.docker.internal:3000/api/hasuraAuthWebhook
   #      HASURA_GRAPHQL_ADMIN_SECRET: admin-secret
+  cache:
+    container_name: cache
+    image: redis:6
+    networks:
+      - directus
+
+  directus:
+    container_name: directus
+    image: directus/directus:9.12
+    ports:
+      - '8055:8055'
+    volumes:
+      # By default, uploads are stored in /directus/uploads
+      # Always make sure your volumes matches the storage root when using
+      # local driver
+      - ./packages/cms/uploads:/directus/uploads
+      # Make sure to also mount the volume when using SQLite
+      # - ./database:/directus/database
+      # If you want to load extensions from the host
+      - ./packages/cms/extensions:/directus/extensions
+    networks:
+      - directus
+    depends_on:
+      - cache
+      - postgres
+    environment:
+      KEY: ${DIRECTUS_KEY}
+      SECRET: ${DIRECTUS_SECRET}
+
+      DB_CLIENT: 'pg'
+      DB_HOST: postgres
+      DB_PORT: ${LOCAL_POSTGRES_PORT}
+      DB_DATABASE: ${LOCAL_POSTGRES_DATABASE}
+      DB_USER: ${LOCAL_POSTGRES_USER}
+      DB_PASSWORD: ${LOCAL_POSTGRES_PASSWORD}
+      DB_SEARCH_PATH: omni
+      CACHE_ENABLED: 'true'
+      CACHE_STORE: 'redis'
+      CACHE_REDIS: 'redis://cache:6379'
+
+      ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
+
+      # Make sure to set this in production
+      # (see https://docs.directus.io/configuration/config-options/#general)
+      # PUBLIC_URL: 'https://directus.example.com'
 
   graphql-engine:
     build:
@@ -50,12 +98,17 @@ services:
       - 'postgres'
     ports:
       - '8080:8080'
+    networks:
+      - directus
     environment:
       ## postgres database to store Hasura metadata
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
-      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
-      HEROKU_DATABASE_URL: postgres://postgres:postgrespassword@postgres:5432/postgres
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres:${LOCAL_POSTGRES_PORT}/${LOCAL_POSTGRES_DATABASE}
+      HASURA_GRAPHQL_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres:${LOCAL_POSTGRES_PORT}/${LOCAL_POSTGRES_DATABASE}
+      HEROKU_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres:${LOCAL_POSTGRES_PORT}/${LOCAL_POSTGRES_DATABASE}
       HASURA_GRAPHQL_ADMIN_SECRET: admin-secret
       HASURA_GRAPHQL_DEV_MODE: true
 volumes:
   db_data:
+
+networks:
+  directus:
