@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment,no-await-in-loop */
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
+import { setNftTokenIds } from '../lib/setNftTokenIds';
 import { notionClient } from '../utils/notion/client';
 import { DatabaseResult, PropertyName } from '../utils/notion/parser';
 import {
@@ -67,7 +68,7 @@ export default async (
 
       itemResults.push(setDataRes?.returning);
     }
-
+    await setNftTokenIds();
     res.status(200).send(itemResults);
   } catch (e) {
     res.status(500).send(e);

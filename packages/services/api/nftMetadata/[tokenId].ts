@@ -9,31 +9,41 @@ export default async (
   const { tokenId } = req.query;
 
   if (tokenId === 'nftMetadata') {
-    const data = await client.query({
-      robot_product: [
-        { where: { nft_metadata: { _is_null: false } } },
-        {
-          id: true,
-          nft_token_id: true,
-          nft_metadata: [{}, true],
-        },
-      ],
-    });
+    const data = await client.query(
+      {
+        robot_product: [
+          { where: { nft_metadata: { _is_null: false } } },
+          {
+            id: true,
+            nft_token_id: true,
+            nft_metadata: [{}, true],
+          },
+        ],
+      },
+      {
+        operationName: 'getProductNftMetadata  @cached(ttl: 600)',
+      },
+    );
 
     res.status(200).send(data.robot_product);
   }
 
   try {
     const nftTokenId = parseInt(tokenId as string, 10);
-    const data = await client.query({
-      robot_product: [
-        { where: { nft_token_id: { _eq: nftTokenId } } },
-        {
-          id: true,
-          nft_metadata: [{}, true],
-        },
-      ],
-    });
+    const data = await client.query(
+      {
+        robot_product: [
+          { where: { nft_token_id: { _eq: nftTokenId } } },
+          {
+            id: true,
+            nft_metadata: [{}, true],
+          },
+        ],
+      },
+      {
+        operationName: 'getProductNftMetadataById  @cached(ttl: 600)',
+      },
+    );
 
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     res.status(200).send(data.robot_product[0]?.nft_metadata || null);
