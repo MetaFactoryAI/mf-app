@@ -1,0 +1,4008 @@
+version: 1
+directus: 9.12.1
+collections:
+  - collection: brand_statuses_enum
+    meta: null
+    schema:
+      comment: null
+      name: brand_statuses_enum
+      schema: omni
+  - collection: brand_users
+    meta: null
+    schema:
+      comment: null
+      name: brand_users
+      schema: omni
+  - collection: brands
+    meta: null
+    schema:
+      comment: null
+      name: brands
+      schema: omni
+  - collection: collaborator_types_enum
+    meta: null
+    schema:
+      comment: null
+      name: collaborator_types_enum
+      schema: omni
+  - collection: fullfillers
+    meta: null
+    schema:
+      comment: null
+      name: fullfillers
+      schema: omni
+  - collection: price_currencies
+    meta: null
+    schema:
+      comment: null
+      name: price_currencies
+      schema: omni
+  - collection: print_techs_enum
+    meta: null
+    schema:
+      comment: null
+      name: print_techs_enum
+      schema: omni
+  - collection: producer_statuses_enum
+    meta: null
+    schema:
+      comment: null
+      name: producer_statuses_enum
+      schema: omni
+  - collection: producers
+    meta: null
+    schema:
+      comment: null
+      name: producers
+      schema: omni
+  - collection: product_collaborators
+    meta: null
+    schema:
+      comment: null
+      name: product_collaborators
+      schema: omni
+  - collection: product_types_enum
+    meta: null
+    schema:
+      comment: null
+      name: product_types_enum
+      schema: omni
+  - collection: production_genders_enum
+    meta: null
+    schema:
+      comment: null
+      name: production_genders_enum
+      schema: omni
+  - collection: production_materials
+    meta: null
+    schema:
+      comment: null
+      name: production_materials
+      schema: omni
+  - collection: production_materials_producers
+    meta: null
+    schema:
+      comment: null
+      name: production_materials_producers
+      schema: omni
+  - collection: production_materials_ratings_enum
+    meta: null
+    schema:
+      comment: null
+      name: production_materials_ratings_enum
+      schema: omni
+  - collection: production_methods
+    meta: null
+    schema:
+      comment: null
+      name: production_methods
+      schema: omni
+  - collection: production_methods_producers
+    meta: null
+    schema:
+      comment: null
+      name: production_methods_producers
+      schema: omni
+  - collection: production_methods_products
+    meta: null
+    schema:
+      comment: null
+      name: production_methods_products
+      schema: omni
+  - collection: production_pallettes_enum
+    meta: null
+    schema:
+      comment: null
+      name: production_pallettes_enum
+      schema: omni
+  - collection: production_styles_enum
+    meta: null
+    schema:
+      comment: null
+      name: production_styles_enum
+      schema: omni
+  - collection: products
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: products
+      schema: omni
+  - collection: products_stage_enum
+    meta: null
+    schema:
+      comment: null
+      name: products_stage_enum
+      schema: omni
+  - collection: sale_types_enum
+    meta: null
+    schema:
+      comment: null
+      name: sale_types_enum
+      schema: omni
+  - collection: timezones_enum
+    meta: null
+    schema:
+      comment: null
+      name: timezones_enum
+      schema: omni
+  - collection: user_skill_types_enum
+    meta: null
+    schema:
+      comment: null
+      name: user_skill_types_enum
+      schema: omni
+  - collection: user_skills
+    meta: null
+    schema:
+      comment: null
+      name: user_skills
+      schema: omni
+  - collection: user_statuses_enum
+    meta: null
+    schema:
+      comment: null
+      name: user_statuses_enum
+      schema: omni
+  - collection: users
+    meta: null
+    schema:
+      comment: null
+      name: users
+      schema: omni
+  - collection: wearable_files
+    meta: null
+    schema:
+      comment: null
+      name: wearable_files
+      schema: omni
+  - collection: wearable_types_enum
+    meta: null
+    schema:
+      comment: null
+      name: wearable_types_enum
+      schema: omni
+fields:
+  - collection: brand_statuses_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brand_statuses_enum
+    type: text
+  - collection: brand_statuses_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brand_statuses_enum
+    type: text
+  - collection: brand_users
+    field: brand
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: brands
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: brand
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brand_users
+    type: uuid
+  - collection: brand_users
+    field: collaborator
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: collaborator
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brand_users
+    type: uuid
+  - collection: brand_users
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brand_users
+    type: uuid
+  - collection: brands
+    field: created_at
+    meta: null
+    schema:
+      comment: on create
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: timestamp
+  - collection: brands
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: text
+  - collection: brands
+    field: discord_url
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: discord_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: text
+  - collection: brands
+    field: eth_address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: eth_address
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: text
+  - collection: brands
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: uuid
+  - collection: brands
+    field: logo
+    meta: null
+    schema:
+      comment: link to logo image
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: logo
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: text
+  - collection: brands
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: text
+  - collection: brands
+    field: status
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: brand_statuses_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: text
+  - collection: brands
+    field: twitter_url
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: twitter_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: text
+  - collection: brands
+    field: updated_at
+    meta: null
+    schema:
+      comment: on touch
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: updated_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: timestamp
+  - collection: brands
+    field: website_url
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: website_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: brands
+    type: text
+  - collection: collaborator_types_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: collaborator_types_enum
+    type: text
+  - collection: collaborator_types_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: collaborator_types_enum
+    type: text
+  - collection: directus_dashboards
+    field: color
+    meta: null
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: color
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: directus_dashboards
+    type: string
+  - collection: directus_flows
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: directus_flows
+    type: text
+  - collection: fullfillers
+    field: address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: address
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: fullfillers
+    type: text
+  - collection: fullfillers
+    field: created_at
+    meta: null
+    schema:
+      comment: on create
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: fullfillers
+    type: timestamp
+  - collection: fullfillers
+    field: email
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: email
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: fullfillers
+    type: text
+  - collection: fullfillers
+    field: eth_address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: eth_address
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: fullfillers
+    type: text
+  - collection: fullfillers
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: fullfillers
+    type: uuid
+  - collection: fullfillers
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: fullfillers
+    type: text
+  - collection: fullfillers
+    field: updated_at
+    meta: null
+    schema:
+      comment: on touch
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: updated_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: fullfillers
+    type: timestamp
+  - collection: fullfillers
+    field: website_url
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: website_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: fullfillers
+    type: text
+  - collection: price_currencies
+    field: currency
+    meta: null
+    schema:
+      comment: enum?
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: currency
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: price_currencies
+    type: text
+  - collection: price_currencies
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: price_currencies
+    type: uuid
+  - collection: price_currencies
+    field: price
+    meta: null
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: price
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: price_currencies
+    type: integer
+  - collection: print_techs_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: print_techs_enum
+    type: text
+  - collection: print_techs_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: print_techs_enum
+    type: text
+  - collection: producer_statuses_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producer_statuses_enum
+    type: text
+  - collection: producer_statuses_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producer_statuses_enum
+    type: text
+  - collection: producers
+    field: address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: address
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: text
+  - collection: producers
+    field: created_at
+    meta: null
+    schema:
+      comment: on create
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: timestamp
+  - collection: producers
+    field: email
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: email
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: text
+  - collection: producers
+    field: eth_address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: eth_address
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: text
+  - collection: producers
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: uuid
+  - collection: producers
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: text
+  - collection: producers
+    field: products
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: products
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: uuid
+  - collection: producers
+    field: status
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: producer_statuses_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: text
+  - collection: producers
+    field: updated_at
+    meta: null
+    schema:
+      comment: on touch
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: updated_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: producers
+    type: timestamp
+  - collection: product_collaborators
+    field: collaboration_share
+    meta: null
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: collaboration_share
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: product_collaborators
+    type: integer
+  - collection: product_collaborators
+    field: collaborator
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: collaborator
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: product_collaborators
+    type: uuid
+  - collection: product_collaborators
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: product_collaborators
+    type: uuid
+  - collection: product_collaborators
+    field: product
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: product
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: product_collaborators
+    type: uuid
+  - collection: product_collaborators
+    field: type
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: collaborator_types_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: type
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: product_collaborators
+    type: text
+  - collection: product_types_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: product_types_enum
+    type: text
+  - collection: product_types_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: product_types_enum
+    type: text
+  - collection: production_genders_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_genders_enum
+    type: text
+  - collection: production_genders_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_genders_enum
+    type: text
+  - collection: production_materials
+    field: base_price
+    meta: null
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: base_price
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: integer
+  - collection: production_materials
+    field: composition
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: composition
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: created_at
+    meta: null
+    schema:
+      comment: on create
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: timestamp
+  - collection: production_materials
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: gender
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: production_genders_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: gender
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: uuid
+  - collection: production_materials
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: neck_tag
+    meta: null
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: neck_tag
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: boolean
+  - collection: production_materials
+    field: pallette
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: production_pallettes_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: pallette
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: print_tech
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: print_techs_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: print_tech
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: products
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: products
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: uuid
+  - collection: production_materials
+    field: rating
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: production_materials_ratings_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: rating
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: size_guide
+    meta: null
+    schema:
+      comment: link to guide
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: size_guide
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: style
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: production_styles_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: style
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: style_number
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: style_number
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: type
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: product_types_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: type
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: updated_at
+    meta: null
+    schema:
+      comment: on touch
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: updated_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials
+    type: timestamp
+  - collection: production_materials_producers
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials_producers
+    type: uuid
+  - collection: production_materials_producers
+    field: producer
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: producers
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: producer
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials_producers
+    type: uuid
+  - collection: production_materials_producers
+    field: production_material
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_materials
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_material
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials_producers
+    type: uuid
+  - collection: production_materials_ratings_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials_ratings_enum
+    type: text
+  - collection: production_materials_ratings_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_materials_ratings_enum
+    type: text
+  - collection: production_methods
+    field: created_at
+    meta: null
+    schema:
+      comment: on create
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods
+    type: timestamp
+  - collection: production_methods
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods
+    type: text
+  - collection: production_methods
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods
+    type: uuid
+  - collection: production_methods
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods
+    type: text
+  - collection: production_methods
+    field: updated_at
+    meta: null
+    schema:
+      comment: on touch
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: updated_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods
+    type: timestamp
+  - collection: production_methods_producers
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods_producers
+    type: uuid
+  - collection: production_methods_producers
+    field: producer
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: producers
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: producer
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods_producers
+    type: uuid
+  - collection: production_methods_producers
+    field: production_method
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_methods
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_method
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods_producers
+    type: uuid
+  - collection: production_methods_products
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods_products
+    type: uuid
+  - collection: production_methods_products
+    field: product
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: product
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods_products
+    type: uuid
+  - collection: production_methods_products
+    field: production_method
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_methods
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_method
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_methods_products
+    type: uuid
+  - collection: production_pallettes_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_pallettes_enum
+    type: text
+  - collection: production_pallettes_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_pallettes_enum
+    type: text
+  - collection: production_styles_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_styles_enum
+    type: text
+  - collection: production_styles_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: production_styles_enum
+    type: text
+  - collection: products
+    field: asset_files
+    meta: null
+    schema:
+      comment: link to drive of asset files related to project
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: asset_files
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: text
+  - collection: products
+    field: brand
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: brands
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: brand
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: uuid
+  - collection: products
+    field: brand_reward_share
+    meta: null
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: brand_reward_share
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: integer
+  - collection: products
+    field: collaborator_reward_share
+    meta: null
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: collaborator_reward_share
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: integer
+  - collection: products
+    field: created_at
+    meta: null
+    schema:
+      comment: on create
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: timestamp
+  - collection: products
+    field: discord_channel_id
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: discord_channel_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: text
+  - collection: products
+    field: fullfillment
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: fullfillers
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: fullfillment
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: uuid
+  - collection: products
+    field: id
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: Unique identifier for a product
+      options: null
+      readonly: true
+      required: true
+      sort: null
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: uuid
+  - collection: products
+    field: name
+    meta:
+      collection: products
+      conditions: []
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Product Name
+        trim: true
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: text
+  - collection: products
+    field: notion_id
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: notion_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: text
+  - collection: products
+    field: price
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: price_currencies
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: price
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: uuid
+  - collection: products
+    field: producer
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: producers
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: producer
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: uuid
+  - collection: products
+    field: production_cost
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: price_currencies
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_cost
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: uuid
+  - collection: products
+    field: production_material
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_materials
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_material
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: uuid
+  - collection: products
+    field: quantity
+    meta: null
+    schema:
+      comment: could be null before drop
+      data_type: bigint
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: quantity
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: omni
+      table: products
+    type: bigInteger
+  - collection: products
+    field: sale_type
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: sale_type
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: sale_types_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sale_type
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: text
+  - collection: products
+    field: shop_description
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: shop_description
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: Product description to show on the shop page
+      options:
+        customFormats: null
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - customImage
+          - customLink
+          - customMedia
+          - fullscreen
+          - h1
+          - h2
+          - h3
+          - hr
+          - italic
+          - numlist
+          - removeformat
+          - table
+          - underline
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: shop_description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: text
+  - collection: products
+    field: shopify_id
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: shopify_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: text
+  - collection: products
+    field: stage
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: products_stage_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: stage
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: text
+  - collection: products
+    field: total_sales
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: price_currencies
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: total_sales
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: uuid
+  - collection: products
+    field: updated_at
+    meta: null
+    schema:
+      comment: on touch
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: updated_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products
+    type: timestamp
+  - collection: products_stage_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products_stage_enum
+    type: text
+  - collection: products_stage_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products_stage_enum
+    type: text
+  - collection: sale_types_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: sale_types_enum
+    type: text
+  - collection: sale_types_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: sale_types_enum
+    type: text
+  - collection: timezones_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: timezones_enum
+    type: text
+  - collection: timezones_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: timezones_enum
+    type: text
+  - collection: user_skill_types_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: user_skill_types_enum
+    type: text
+  - collection: user_skill_types_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: user_skill_types_enum
+    type: text
+  - collection: user_skills
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: user_skills
+    type: uuid
+  - collection: user_skills
+    field: skill
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: user_skill_types_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: skill
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: user_skills
+    type: text
+  - collection: user_skills
+    field: user
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: user_skills
+    type: uuid
+  - collection: user_statuses_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: user_statuses_enum
+    type: text
+  - collection: user_statuses_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: user_statuses_enum
+    type: text
+  - collection: users
+    field: created_at
+    meta: null
+    schema:
+      comment: on create
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: timestamp
+  - collection: users
+    field: discord_handle
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: discord_handle
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: text
+  - collection: users
+    field: discord_id
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: discord_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: text
+  - collection: users
+    field: eth_address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: eth_address
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: text
+  - collection: users
+    field: github_handle
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: github_handle
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: text
+  - collection: users
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: uuid
+  - collection: users
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: text
+  - collection: users
+    field: status
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: user_statuses_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: text
+  - collection: users
+    field: timezone
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: timezones_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: timezone
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: text
+  - collection: users
+    field: twitter_handle
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: twitter_handle
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: text
+  - collection: users
+    field: updated_at
+    meta: null
+    schema:
+      comment: on touch
+      data_type: timestamp with time zone
+      default_value: '2022-06-03 01:55:48.128024+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: updated_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: users
+    type: timestamp
+  - collection: wearable_files
+    field: file
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: file
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: wearable_files
+    type: text
+  - collection: wearable_files
+    field: id
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: wearable_files
+    type: uuid
+  - collection: wearable_files
+    field: product
+    meta: null
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: product
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: wearable_files
+    type: uuid
+  - collection: wearable_files
+    field: type
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: wearable_types_enum
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: type
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: wearable_files
+    type: text
+  - collection: wearable_types_enum
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: ''
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: wearable_types_enum
+    type: text
+  - collection: wearable_types_enum
+    field: value
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: value
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: wearable_types_enum
+    type: text
+relations:
+  - collection: brand_users
+    field: brand
+    meta: null
+    related_collection: brands
+    schema:
+      column: brand
+      constraint_name: brand_users_brand_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: brands
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: brand_users
+  - collection: brand_users
+    field: collaborator
+    meta: null
+    related_collection: users
+    schema:
+      column: collaborator
+      constraint_name: brand_users_collaborator_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: brand_users
+  - collection: brands
+    field: status
+    meta: null
+    related_collection: brand_statuses_enum
+    schema:
+      column: status
+      constraint_name: brands_status_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: brand_statuses_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: brands
+  - collection: producers
+    field: products
+    meta: null
+    related_collection: products
+    schema:
+      column: products
+      constraint_name: producers_products_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: producers
+  - collection: producers
+    field: status
+    meta: null
+    related_collection: producer_statuses_enum
+    schema:
+      column: status
+      constraint_name: producers_status_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: producer_statuses_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: producers
+  - collection: product_collaborators
+    field: collaborator
+    meta: null
+    related_collection: users
+    schema:
+      column: collaborator
+      constraint_name: product_collaborators_collaborator_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: product_collaborators
+  - collection: product_collaborators
+    field: product
+    meta: null
+    related_collection: products
+    schema:
+      column: product
+      constraint_name: product_collaborators_product_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: product_collaborators
+  - collection: product_collaborators
+    field: type
+    meta: null
+    related_collection: collaborator_types_enum
+    schema:
+      column: type
+      constraint_name: product_collaborators_type_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: collaborator_types_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: product_collaborators
+  - collection: production_materials
+    field: gender
+    meta: null
+    related_collection: production_genders_enum
+    schema:
+      column: gender
+      constraint_name: production_materials_gender_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: production_genders_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials
+  - collection: production_materials
+    field: pallette
+    meta: null
+    related_collection: production_pallettes_enum
+    schema:
+      column: pallette
+      constraint_name: production_materials_pallette_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: production_pallettes_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials
+  - collection: production_materials
+    field: print_tech
+    meta: null
+    related_collection: print_techs_enum
+    schema:
+      column: print_tech
+      constraint_name: production_materials_print_tech_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: print_techs_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials
+  - collection: production_materials
+    field: products
+    meta: null
+    related_collection: products
+    schema:
+      column: products
+      constraint_name: production_materials_products_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials
+  - collection: production_materials
+    field: rating
+    meta: null
+    related_collection: production_materials_ratings_enum
+    schema:
+      column: rating
+      constraint_name: production_materials_rating_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: production_materials_ratings_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials
+  - collection: production_materials
+    field: style
+    meta: null
+    related_collection: production_styles_enum
+    schema:
+      column: style
+      constraint_name: production_materials_style_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: production_styles_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials
+  - collection: production_materials
+    field: type
+    meta: null
+    related_collection: product_types_enum
+    schema:
+      column: type
+      constraint_name: production_materials_type_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: product_types_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials
+  - collection: production_materials_producers
+    field: producer
+    meta: null
+    related_collection: producers
+    schema:
+      column: producer
+      constraint_name: production_materials_producers_producer_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: producers
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials_producers
+  - collection: production_materials_producers
+    field: production_material
+    meta: null
+    related_collection: production_materials
+    schema:
+      column: production_material
+      constraint_name: production_materials_producers_production_material_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_materials
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials_producers
+  - collection: production_methods_producers
+    field: producer
+    meta: null
+    related_collection: producers
+    schema:
+      column: producer
+      constraint_name: production_methods_producers_producer_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: producers
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_methods_producers
+  - collection: production_methods_producers
+    field: production_method
+    meta: null
+    related_collection: production_methods
+    schema:
+      column: production_method
+      constraint_name: production_methods_producers_production_method_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_methods
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_methods_producers
+  - collection: production_methods_products
+    field: product
+    meta: null
+    related_collection: products
+    schema:
+      column: product
+      constraint_name: production_methods_products_product_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_methods_products
+  - collection: production_methods_products
+    field: production_method
+    meta: null
+    related_collection: production_methods
+    schema:
+      column: production_method
+      constraint_name: production_methods_products_production_method_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_methods
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_methods_products
+  - collection: products
+    field: brand
+    meta: null
+    related_collection: brands
+    schema:
+      column: brand
+      constraint_name: products_brand_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: brands
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: fullfillment
+    meta: null
+    related_collection: fullfillers
+    schema:
+      column: fullfillment
+      constraint_name: products_fullfillment_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: fullfillers
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: price
+    meta: null
+    related_collection: price_currencies
+    schema:
+      column: price
+      constraint_name: products_price_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: price_currencies
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: producer
+    meta: null
+    related_collection: producers
+    schema:
+      column: producer
+      constraint_name: products_producer_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: producers
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: production_cost
+    meta: null
+    related_collection: price_currencies
+    schema:
+      column: production_cost
+      constraint_name: products_production_cost_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: price_currencies
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: production_material
+    meta: null
+    related_collection: production_materials
+    schema:
+      column: production_material
+      constraint_name: products_production_material_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_materials
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: sale_type
+    meta: null
+    related_collection: sale_types_enum
+    schema:
+      column: sale_type
+      constraint_name: products_sale_type_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: sale_types_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: stage
+    meta: null
+    related_collection: products_stage_enum
+    schema:
+      column: stage
+      constraint_name: products_stage_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: products_stage_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: total_sales
+    meta: null
+    related_collection: price_currencies
+    schema:
+      column: total_sales
+      constraint_name: products_total_sales_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: price_currencies
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: user_skills
+    field: skill
+    meta: null
+    related_collection: user_skill_types_enum
+    schema:
+      column: skill
+      constraint_name: user_skills_skill_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: user_skill_types_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: user_skills
+  - collection: user_skills
+    field: user
+    meta: null
+    related_collection: users
+    schema:
+      column: user
+      constraint_name: user_skills_user_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: user_skills
+  - collection: users
+    field: status
+    meta: null
+    related_collection: user_statuses_enum
+    schema:
+      column: status
+      constraint_name: users_status_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: user_statuses_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: users
+  - collection: users
+    field: timezone
+    meta: null
+    related_collection: timezones_enum
+    schema:
+      column: timezone
+      constraint_name: users_timezone_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: timezones_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: users
+  - collection: wearable_files
+    field: product
+    meta: null
+    related_collection: products
+    schema:
+      column: product
+      constraint_name: wearable_files_product_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: wearable_files
+  - collection: wearable_files
+    field: type
+    meta: null
+    related_collection: wearable_types_enum
+    schema:
+      column: type
+      constraint_name: wearable_files_type_fkey
+      foreign_key_column: value
+      foreign_key_schema: omni
+      foreign_key_table: wearable_types_enum
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: wearable_files

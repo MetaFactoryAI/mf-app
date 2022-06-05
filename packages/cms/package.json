@@ -1,0 +1,17 @@
+{
+  "name": "@mf/cms",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "directus start",
+    "test": "echo 'No tests setup'",
+    "snapshot": "npx directus schema snapshot",
+    "snapshot:backup": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
+  },
+  "dependencies": {
+    "directus": "^9.12.1"
+  },
+  "devDependencies": {
+    "@directus/cli": "^9.12.1"
+  }
+}
