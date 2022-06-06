@@ -1,32 +1,32 @@
 table:
-  name: product
   schema: robot
+  name: product
 array_relationships:
-- name: designers
-  using:
-    foreign_key_constraint_on:
-      column: product_id
-      table:
-        name: product_designer
-        schema: robot
+  - name: designers
+    using:
+      foreign_key_constraint_on:
+        column: product_id
+        table:
+          schema: robot
+          name: product_designer
 select_permissions:
-- permission:
-    columns:
-    - id
-    - title
-    filter: {}
-  role: api-user
-- permission:
-    columns:
-    - id
-    - nft_metadata
-    - nft_token_id
-    - title
-    filter: {}
-  role: public
-- permission:
-    columns:
-    - id
-    - title
-    filter: {}
-  role: user
+  - role: api-user
+    permission:
+      columns:
+        - id
+        - title
+      filter: {}
+  - role: public
+    permission:
+      columns:
+        - id
+        - nft_metadata
+        - nft_token_id
+        - title
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - id
+        - title
+      filter: {}

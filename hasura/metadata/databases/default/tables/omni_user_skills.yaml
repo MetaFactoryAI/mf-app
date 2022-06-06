@@ -1,10 +1,10 @@
 table:
-  name: user_skills
   schema: omni
+  name: user_skills
 object_relationships:
-- name: userByUser
-  using:
-    foreign_key_constraint_on: user
-- name: user_skill_types_enum
-  using:
-    foreign_key_constraint_on: skill
+  - name: userByUser
+    using:
+      foreign_key_constraint_on: user
+  - name: user_skill_types_enum
+    using:
+      foreign_key_constraint_on: skill

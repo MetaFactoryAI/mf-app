@@ -1,10 +1,10 @@
 table:
-  name: production_methods_products
   schema: omni
+  name: production_methods_products
 object_relationships:
-- name: productByProduct
-  using:
-    foreign_key_constraint_on: product
-- name: productionMethodByProductionMethod
-  using:
-    foreign_key_constraint_on: production_method
+  - name: productByProduct
+    using:
+      foreign_key_constraint_on: product
+  - name: productionMethodByProductionMethod
+    using:
+      foreign_key_constraint_on: production_method

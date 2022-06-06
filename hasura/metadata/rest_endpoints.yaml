@@ -4,16 +4,15 @@
       query_name: GetExistingLockAccessCode
   url: getExistingLockAccessCode/:lockId/:address
   methods:
-  - GET
+    - GET
   name: GetExistingLockAccessCode
-  comment: Return an existing access code if the customer with the given ETH address
-    already generated one for the given lock.
+  comment: Return an existing access code if the customer with the given ETH address already generated one for the given lock.
 - definition:
     query:
       collection_name: allowed-queries
       query_name: Get NFT Data
   url: nft-metadata
   methods:
-  - GET
+    - GET
   name: Get NFT Data
   comment: Returns NFT Metadata for all products that have it

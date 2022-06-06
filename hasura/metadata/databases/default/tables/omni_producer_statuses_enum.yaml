@@ -1,12 +1,12 @@
 table:
-  name: producer_statuses_enum
   schema: omni
+  name: producer_statuses_enum
 is_enum: true
 array_relationships:
-- name: producers
-  using:
-    foreign_key_constraint_on:
-      column: status
-      table:
-        name: producers
-        schema: omni
+  - name: producers
+    using:
+      foreign_key_constraint_on:
+        column: status
+        table:
+          schema: omni
+          name: producers

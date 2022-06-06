@@ -1,12 +1,12 @@
 table:
-  name: timezones_enum
   schema: omni
+  name: timezones_enum
 is_enum: true
 array_relationships:
-- name: users
-  using:
-    foreign_key_constraint_on:
-      column: timezone
-      table:
-        name: users
-        schema: omni
+  - name: users
+    using:
+      foreign_key_constraint_on:
+        column: timezone
+        table:
+          schema: omni
+          name: users

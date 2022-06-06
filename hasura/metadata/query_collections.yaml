@@ -1,19 +1,19 @@
 - name: allowed-queries
   definition:
     queries:
-    - name: GetExistingLockAccessCode
-      query: |-
-        query GetExistingAccessCode($address: String!, $lockId: String!) {
-          data: shop_product_locks(where: {_and: {customer_eth_address: {_eq: $address}, lock_id: {_eq: $lockId}}}) {
-            access_code
+      - name: GetExistingLockAccessCode
+        query: |
+          query GetExistingAccessCode ($address: String!, $lockId: String!) {
+          	data: shop_product_locks(where: {_and:{customer_eth_address:{_eq:$address},lock_id:{_eq:$lockId}}}) {
+          		access_code
+          	}
           }
-        }
-    - name: Get NFT Data
-      query: |-
-        query MyQuery {
-          products: robot_product(where: {nft_metadata: {_is_null: false}}) {
-            id
-            nft_token_id
-            nft_metadata
+      - name: Get NFT Data
+        query: |
+          query MyQuery {
+          	products: robot_product(where: {nft_metadata:{_is_null:false}}) {
+          		id
+          		nft_token_id
+          		nft_metadata
+          	}
           }
-        }

@@ -1,32 +1,32 @@
 table:
-  name: users
   schema: omni
+  name: users
 object_relationships:
-- name: timezones_enum
-  using:
-    foreign_key_constraint_on: timezone
-- name: user_statuses_enum
-  using:
-    foreign_key_constraint_on: status
+  - name: timezones_enum
+    using:
+      foreign_key_constraint_on: timezone
+  - name: user_statuses_enum
+    using:
+      foreign_key_constraint_on: status
 array_relationships:
-- name: brand_users
-  using:
-    foreign_key_constraint_on:
-      column: collaborator
-      table:
-        name: brand_users
-        schema: omni
-- name: product_collaborators
-  using:
-    foreign_key_constraint_on:
-      column: collaborator
-      table:
-        name: product_collaborators
-        schema: omni
-- name: user_skills
-  using:
-    foreign_key_constraint_on:
-      column: user
-      table:
-        name: user_skills
-        schema: omni
+  - name: brand_users
+    using:
+      foreign_key_constraint_on:
+        column: collaborator
+        table:
+          schema: omni
+          name: brand_users
+  - name: product_collaborators
+    using:
+      foreign_key_constraint_on:
+        column: collaborator
+        table:
+          schema: omni
+          name: product_collaborators
+  - name: user_skills
+    using:
+      foreign_key_constraint_on:
+        column: user
+        table:
+          schema: omni
+          name: user_skills

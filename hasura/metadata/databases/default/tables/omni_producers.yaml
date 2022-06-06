@@ -1,32 +1,29 @@
 table:
-  name: producers
   schema: omni
+  name: producers
 object_relationships:
-- name: producer_statuses_enum
-  using:
-    foreign_key_constraint_on: status
-- name: product
-  using:
-    foreign_key_constraint_on: products
+  - name: producer_statuses_enum
+    using:
+      foreign_key_constraint_on: status
 array_relationships:
-- name: production_materials_producers
-  using:
-    foreign_key_constraint_on:
-      column: producer
-      table:
-        name: production_materials_producers
-        schema: omni
-- name: production_methods_producers
-  using:
-    foreign_key_constraint_on:
-      column: producer
-      table:
-        name: production_methods_producers
-        schema: omni
-- name: productsByProducer
-  using:
-    foreign_key_constraint_on:
-      column: producer
-      table:
-        name: products
-        schema: omni
+  - name: production_materials_producers
+    using:
+      foreign_key_constraint_on:
+        column: producer
+        table:
+          schema: omni
+          name: production_materials_producers
+  - name: production_methods_producers
+    using:
+      foreign_key_constraint_on:
+        column: producer
+        table:
+          schema: omni
+          name: production_methods_producers
+  - name: productsByProducer
+    using:
+      foreign_key_constraint_on:
+        column: producer
+        table:
+          schema: omni
+          name: products

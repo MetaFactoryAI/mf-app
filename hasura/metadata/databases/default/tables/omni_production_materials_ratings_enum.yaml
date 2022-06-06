@@ -1,12 +1,12 @@
 table:
-  name: production_materials_ratings_enum
   schema: omni
+  name: production_materials_ratings_enum
 is_enum: true
 array_relationships:
-- name: production_materials
-  using:
-    foreign_key_constraint_on:
-      column: rating
-      table:
-        name: production_materials
-        schema: omni
+  - name: production_materials
+    using:
+      foreign_key_constraint_on:
+        column: rating
+        table:
+          schema: omni
+          name: production_materials

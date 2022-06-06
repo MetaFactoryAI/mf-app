@@ -1,12 +1,12 @@
 table:
-  name: wearable_types_enum
   schema: omni
+  name: wearable_types_enum
 is_enum: true
 array_relationships:
-- name: wearable_files
-  using:
-    foreign_key_constraint_on:
-      column: type
-      table:
-        name: wearable_files
-        schema: omni
+  - name: wearable_files
+    using:
+      foreign_key_constraint_on:
+        column: type
+        table:
+          schema: omni
+          name: wearable_files

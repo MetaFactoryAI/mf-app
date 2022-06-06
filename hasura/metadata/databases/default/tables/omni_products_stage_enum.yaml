@@ -1,12 +1,12 @@
 table:
-  name: products_stage_enum
   schema: omni
+  name: products_stage_enum
 is_enum: true
 array_relationships:
-- name: products
-  using:
-    foreign_key_constraint_on:
-      column: stage
-      table:
-        name: products
-        schema: omni
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: stage
+        table:
+          schema: omni
+          name: products

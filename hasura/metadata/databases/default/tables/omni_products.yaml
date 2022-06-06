@@ -1,67 +1,57 @@
 table:
-  name: products
   schema: omni
+  name: products
 object_relationships:
-- name: brandByBrand
-  using:
-    foreign_key_constraint_on: brand
-- name: fullfiller
-  using:
-    foreign_key_constraint_on: fullfillment
-- name: priceCurrencyByProductionCost
-  using:
-    foreign_key_constraint_on: production_cost
-- name: priceCurrencyByTotalSales
-  using:
-    foreign_key_constraint_on: total_sales
-- name: price_currency
-  using:
-    foreign_key_constraint_on: price
-- name: producerByProducer
-  using:
-    foreign_key_constraint_on: producer
-- name: productionMaterialByProductionMaterial
-  using:
-    foreign_key_constraint_on: production_material
-- name: products_stage_enum
-  using:
-    foreign_key_constraint_on: stage
-- name: sale_types_enum
-  using:
-    foreign_key_constraint_on: sale_type
+  - name: brandByBrand
+    using:
+      foreign_key_constraint_on: brand
+  - name: fullfiller
+    using:
+      foreign_key_constraint_on: fullfillment
+  - name: priceCurrencyByProductionCost
+    using:
+      foreign_key_constraint_on: production_cost
+  - name: price_currency
+    using:
+      foreign_key_constraint_on: price
+  - name: producerByProducer
+    using:
+      foreign_key_constraint_on: producer
+  - name: productionMaterialByProductionMaterial
+    using:
+      foreign_key_constraint_on: production_material
+  - name: products_stage_enum
+    using:
+      foreign_key_constraint_on: stage
+  - name: sale_types_enum
+    using:
+      foreign_key_constraint_on: sale_type
 array_relationships:
-- name: producers
-  using:
-    foreign_key_constraint_on:
-      column: products
-      table:
-        name: producers
-        schema: omni
-- name: product_collaborators
-  using:
-    foreign_key_constraint_on:
-      column: product
-      table:
-        name: product_collaborators
-        schema: omni
-- name: production_materials
-  using:
-    foreign_key_constraint_on:
-      column: products
-      table:
-        name: production_materials
-        schema: omni
-- name: production_methods_products
-  using:
-    foreign_key_constraint_on:
-      column: product
-      table:
-        name: production_methods_products
-        schema: omni
-- name: wearable_files
-  using:
-    foreign_key_constraint_on:
-      column: product
-      table:
-        name: wearable_files
-        schema: omni
+  - name: product_collaborators
+    using:
+      foreign_key_constraint_on:
+        column: product
+        table:
+          schema: omni
+          name: product_collaborators
+  - name: production_materials
+    using:
+      foreign_key_constraint_on:
+        column: products
+        table:
+          schema: omni
+          name: production_materials
+  - name: production_methods_products
+    using:
+      foreign_key_constraint_on:
+        column: product
+        table:
+          schema: omni
+          name: production_methods_products
+  - name: wearable_files
+    using:
+      foreign_key_constraint_on:
+        column: product
+        table:
+          schema: omni
+          name: wearable_files
