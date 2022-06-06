@@ -9,7 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start:web",
     "eject": "expo eject",
-    "postinstall": "expo-yarn-workspaces postinstall && npx rn-nodeify \"stream, crypto\" --hack --yarn --install",
+    "postinstall": "npx expo-yarn-workspaces postinstall && npx rn-nodeify \"stream, crypto\" --hack --yarn --install",
     "build": "expo build:web",
     "deploy": "expo publish",
     "typecheck": "tsc",
