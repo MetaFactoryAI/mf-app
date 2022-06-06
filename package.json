@@ -5,6 +5,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "node": "14"
+  },
   "scripts": {
     "start": "yarn app start",
     "web": "yarn app web",
