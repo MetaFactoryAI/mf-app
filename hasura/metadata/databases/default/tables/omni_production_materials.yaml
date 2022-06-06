@@ -1,40 +1,40 @@
 table:
-  name: production_materials
   schema: omni
+  name: production_materials
 object_relationships:
-- name: print_techs_enum
-  using:
-    foreign_key_constraint_on: print_tech
-- name: product
-  using:
-    foreign_key_constraint_on: products
-- name: product_types_enum
-  using:
-    foreign_key_constraint_on: type
-- name: production_genders_enum
-  using:
-    foreign_key_constraint_on: gender
-- name: production_materials_ratings_enum
-  using:
-    foreign_key_constraint_on: rating
-- name: production_pallettes_enum
-  using:
-    foreign_key_constraint_on: pallette
-- name: production_styles_enum
-  using:
-    foreign_key_constraint_on: style
+  - name: print_techs_enum
+    using:
+      foreign_key_constraint_on: print_tech
+  - name: product
+    using:
+      foreign_key_constraint_on: products
+  - name: product_types_enum
+    using:
+      foreign_key_constraint_on: type
+  - name: production_genders_enum
+    using:
+      foreign_key_constraint_on: gender
+  - name: production_materials_ratings_enum
+    using:
+      foreign_key_constraint_on: rating
+  - name: production_pallettes_enum
+    using:
+      foreign_key_constraint_on: pallette
+  - name: production_styles_enum
+    using:
+      foreign_key_constraint_on: style
 array_relationships:
-- name: production_materials_producers
-  using:
-    foreign_key_constraint_on:
-      column: production_material
-      table:
-        name: production_materials_producers
-        schema: omni
-- name: productsByProductionMaterial
-  using:
-    foreign_key_constraint_on:
-      column: production_material
-      table:
-        name: products
-        schema: omni
+  - name: production_materials_producers
+    using:
+      foreign_key_constraint_on:
+        column: production_material
+        table:
+          schema: omni
+          name: production_materials_producers
+  - name: productsByProductionMaterial
+    using:
+      foreign_key_constraint_on:
+        column: production_material
+        table:
+          schema: omni
+          name: products

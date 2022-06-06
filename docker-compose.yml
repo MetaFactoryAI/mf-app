@@ -48,7 +48,7 @@ services:
     container_name: directus
     image: directus/directus:9.12
     ports:
-      - '8055:8055'
+      - ${LOCAL_DIRECTUS_PORT:-8055}:${LOCAL_DIRECTUS_PORT:-8055}
     volumes:
       # By default, uploads are stored in /directus/uploads
       # Always make sure your volumes matches the storage root when using
@@ -64,26 +64,37 @@ services:
       - cache
       - postgres
     environment:
+      # Make sure to set these in production
+      # (see https://docs.directus.io/configuration/config-options/#general)
       KEY: ${DIRECTUS_KEY}
       SECRET: ${DIRECTUS_SECRET}
+      PUBLIC_URL: ${DIRECTUS_PUBLIC_URL}
+      ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
 
+      # DB Settings
       DB_CLIENT: 'pg'
       DB_HOST: postgres
       DB_PORT: ${LOCAL_POSTGRES_PORT}
       DB_DATABASE: ${LOCAL_POSTGRES_DATABASE}
       DB_USER: ${LOCAL_POSTGRES_USER}
       DB_PASSWORD: ${LOCAL_POSTGRES_PASSWORD}
-      DB_SEARCH_PATH: omni
+      DB_SEARCH_PATH: 'omni'
+
+      # Cache Settings
       CACHE_ENABLED: 'true'
       CACHE_STORE: 'redis'
       CACHE_REDIS: 'redis://cache:6379'
 
-      ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL}
-      ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
-
-      # Make sure to set this in production
-      # (see https://docs.directus.io/configuration/config-options/#general)
-      # PUBLIC_URL: 'https://directus.example.com'
+      AUTH_PROVIDERS: 'ethereum'
+      AUTH_ETHEREUM_DRIVER: 'openid'
+      AUTH_ETHEREUM_SCOPE: 'openid profile'
+      AUTH_ETHEREUM_IDENTIFIER_KEY: 'sub'
+      AUTH_ETHEREUM_ICON: 'key'
+      AUTH_ETHEREUM_ALLOW_PUBLIC_REGISTRATION: true
+      AUTH_ETHEREUM_CLIENT_ID: ${DIRECTUS_SIWE_CLIENT_ID}
+      AUTH_ETHEREUM_CLIENT_SECRET: ${DIRECTUS_SIWE_CLIENT_SECRET}
+      AUTH_ETHEREUM_ISSUER_URL: ${DIRECTUS_SIWE_ISSUER_URL}
 
   graphql-engine:
     build:
@@ -97,7 +108,7 @@ services:
     depends_on:
       - 'postgres'
     ports:
-      - '8080:8080'
+      - ${LOCAL_HASURA_PORT:-8080}:${LOCAL_HASURA_PORT:-8080}
     networks:
       - directus
     environment:

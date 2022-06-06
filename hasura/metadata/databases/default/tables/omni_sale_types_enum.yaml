@@ -1,12 +1,12 @@
 table:
-  name: sale_types_enum
   schema: omni
+  name: sale_types_enum
 is_enum: true
 array_relationships:
-- name: products
-  using:
-    foreign_key_constraint_on:
-      column: sale_type
-      table:
-        name: products
-        schema: omni
+  - name: products
+    using:
+      foreign_key_constraint_on:
+        column: sale_type
+        table:
+          schema: omni
+          name: products

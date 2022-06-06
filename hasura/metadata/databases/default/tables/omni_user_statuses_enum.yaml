@@ -1,12 +1,12 @@
 table:
-  name: user_statuses_enum
   schema: omni
+  name: user_statuses_enum
 is_enum: true
 array_relationships:
-- name: users
-  using:
-    foreign_key_constraint_on:
-      column: status
-      table:
-        name: users
-        schema: omni
+  - name: users
+    using:
+      foreign_key_constraint_on:
+        column: status
+        table:
+          schema: omni
+          name: users

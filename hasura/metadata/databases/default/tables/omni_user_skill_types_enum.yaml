@@ -1,12 +1,12 @@
 table:
-  name: user_skill_types_enum
   schema: omni
+  name: user_skill_types_enum
 is_enum: true
 array_relationships:
-- name: user_skills
-  using:
-    foreign_key_constraint_on:
-      column: skill
-      table:
-        name: user_skills
-        schema: omni
+  - name: user_skills
+    using:
+      foreign_key_constraint_on:
+        column: skill
+        table:
+          schema: omni
+          name: user_skills

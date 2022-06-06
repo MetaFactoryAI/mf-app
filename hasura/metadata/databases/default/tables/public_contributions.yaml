@@ -1,99 +1,99 @@
 table:
-  name: contributions
   schema: public
+  name: contributions
 object_relationships:
-- name: author
-  using:
-    foreign_key_constraint_on: created_by
+  - name: author
+    using:
+      foreign_key_constraint_on: created_by
 array_relationships:
-- name: contributors
-  using:
-    foreign_key_constraint_on:
-      column: contribution_id
-      table:
-        name: contributors
-        schema: public
-- name: votes
-  using:
-    foreign_key_constraint_on:
-      column: contribution_id
-      table:
-        name: contribution_votes
-        schema: public
+  - name: contributors
+    using:
+      foreign_key_constraint_on:
+        column: contribution_id
+        table:
+          schema: public
+          name: contributors
+  - name: votes
+    using:
+      foreign_key_constraint_on:
+        column: contribution_id
+        table:
+          schema: public
+          name: contribution_votes
 insert_permissions:
-- permission:
-    backend_only: false
-    check:
-      created_by:
-        _eq: X-Hasura-User-Id
-    columns:
-    - artifact
-    - category
-    - created_by
-    - date
-    - description
-    - effort
-    - id
-    - impact
-    - title
-    - weight
-    set:
-      created_by: x-hasura-User-Id
-  role: user
-select_permissions:
-- permission:
-    columns:
-    - artifact
-    - category
-    - created_at
-    - created_by
-    - date
-    - description
-    - effort
-    - id
-    - impact
-    - title
-    - weight
-    filter: {}
-  role: public
-- permission:
-    columns:
-    - artifact
-    - category
-    - created_at
-    - created_by
-    - date
-    - description
-    - effort
-    - id
-    - impact
-    - title
-    - weight
-    filter: {}
-  role: user
-update_permissions:
-- permission:
-    check: null
-    columns:
-    - artifact
-    - category
-    - date
-    - description
-    - effort
-    - impact
-    - title
-    - weight
-    filter:
-      _or:
-      - created_by:
+  - role: user
+    permission:
+      check:
+        created_by:
           _eq: X-Hasura-User-Id
-      - contributors:
-          user_id:
-            _eq: X-Hasura-User-Id
-  role: user
+      set:
+        created_by: x-hasura-User-Id
+      columns:
+        - artifact
+        - category
+        - created_by
+        - date
+        - description
+        - effort
+        - id
+        - impact
+        - title
+        - weight
+      backend_only: false
+select_permissions:
+  - role: public
+    permission:
+      columns:
+        - artifact
+        - category
+        - created_at
+        - created_by
+        - date
+        - description
+        - effort
+        - id
+        - impact
+        - title
+        - weight
+      filter: {}
+  - role: user
+    permission:
+      columns:
+        - artifact
+        - category
+        - created_at
+        - created_by
+        - date
+        - description
+        - effort
+        - id
+        - impact
+        - title
+        - weight
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - artifact
+        - category
+        - date
+        - description
+        - effort
+        - impact
+        - title
+        - weight
+      filter:
+        _or:
+          - created_by:
+              _eq: X-Hasura-User-Id
+          - contributors:
+              user_id:
+                _eq: X-Hasura-User-Id
+      check: null
 delete_permissions:
-- permission:
-    filter:
-      created_by:
-        _eq: X-Hasura-User-Id
-  role: user
+  - role: user
+    permission:
+      filter:
+        created_by:
+          _eq: X-Hasura-User-Id

@@ -2,19 +2,73 @@ version: 1
 directus: 9.12.1
 collections:
   - collection: brand_statuses_enum
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: brand_statuses_enum
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: brand_statuses_enum
       schema: omni
   - collection: brand_users
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: brand_users
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: brand_users
       schema: omni
   - collection: brands
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: brands
+      color: '#3399FF'
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: account_balance
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: brands
@@ -26,13 +80,49 @@ collections:
       name: collaborator_types_enum
       schema: omni
   - collection: fullfillers
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: fullfillers
+      color: null
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: fullfillers
       schema: omni
   - collection: price_currencies
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: price_currencies
+      color: null
+      display_template: "{{price}}\_{{currency}}"
+      group: null
+      hidden: true
+      icon: monetization_on
+      item_duplication_fields: null
+      note: Numeric amount of currency
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: price_currencies
@@ -50,13 +140,49 @@ collections:
       name: producer_statuses_enum
       schema: omni
   - collection: producers
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: producers
+      color: null
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: producers
       schema: omni
   - collection: product_collaborators
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: product_collaborators
+      color: null
+      display_template: "{{collaborator}}({{type}}) -\_{{collaboration_share}}"
+      group: null
+      hidden: false
+      icon: people_alt
+      item_duplication_fields: null
+      note: The users that worked on a product
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: product_collaborators
@@ -129,11 +255,11 @@ collections:
       archive_value: null
       collapse: open
       collection: products
-      color: null
-      display_template: null
+      color: '#6644FF'
+      display_template: '{{name}}'
       group: null
       hidden: false
-      icon: null
+      icon: shopping_bag
       item_duplication_fields: null
       note: null
       singleton: false
@@ -146,13 +272,49 @@ collections:
       name: products
       schema: omni
   - collection: products_stage_enum
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products_stage_enum
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: products_stage_enum
       schema: omni
   - collection: sale_types_enum
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: sale_types_enum
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: sale_types_enum
@@ -182,7 +344,25 @@ collections:
       name: user_statuses_enum
       schema: omni
   - collection: users
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: users
+      color: '#A2B5CD'
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: person
+      item_duplication_fields: null
+      note: Users of MetaFactory OS
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: users
@@ -202,7 +382,25 @@ collections:
 fields:
   - collection: brand_statuses_enum
     field: description
-    meta: null
+    meta:
+      collection: brand_statuses_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -225,7 +423,26 @@ fields:
     type: text
   - collection: brand_statuses_enum
     field: value
-    meta: null
+    meta:
+      collection: brand_statuses_enum
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: value
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -248,7 +465,27 @@ fields:
     type: text
   - collection: brand_users
     field: brand
-    meta: null
+    meta:
+      collection: brand_users
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: brand
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: The brand this user belongs to / is a representative of
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
@@ -271,7 +508,27 @@ fields:
     type: uuid
   - collection: brand_users
     field: collaborator
-    meta: null
+    meta:
+      collection: brand_users
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: collaborator
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
@@ -294,11 +551,30 @@ fields:
     type: uuid
   - collection: brand_users
     field: id
-    meta: null
+    meta:
+      collection: brand_users
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: null
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
-      default_value: null
+      default_value: gen_random_uuid()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -317,18 +593,37 @@ fields:
     type: uuid
   - collection: brands
     field: created_at
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+      field: created_at
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: on create
       data_type: timestamp with time zone
-      default_value: '2022-06-03 01:55:48.128024+00'
+      default_value: now()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
       generation_expression: null
       has_auto_increment: false
       is_generated: false
-      is_nullable: true
+      is_nullable: false
       is_primary_key: false
       is_unique: false
       max_length: null
@@ -340,7 +635,26 @@ fields:
     type: timestamp
   - collection: brands
     field: description
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        softLength: 500
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -363,7 +677,26 @@ fields:
     type: text
   - collection: brands
     field: discord_url
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: discord_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: insert_link
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -386,7 +719,31 @@ fields:
     type: text
   - collection: brands
     field: eth_address
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: eth_address
+      group: null
+      hidden: false
+      interface: input
+      note: Mainnet Ethereum address for the brand to receive ROBOT rewards
+      options:
+        font: monospace
+        placeholder: '0x1234'
+        trim: true
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation:
+        _and:
+          - eth_address:
+              _regex: /^0x[a-fA-F0-9]{40}$/
+      validation_message: Invalid Ethereum Address
+      width: full
     schema:
       comment: null
       data_type: text
@@ -409,11 +766,29 @@ fields:
     type: text
   - collection: brands
     field: id
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
-      default_value: null
+      default_value: gen_random_uuid()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -432,7 +807,27 @@ fields:
     type: uuid
   - collection: brands
     field: logo
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: logo
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: image
+        placeholder: https://
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: link to logo image
       data_type: text
@@ -455,7 +850,28 @@ fields:
     type: text
   - collection: brands
     field: name
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: null
+        softLength: 80
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -478,7 +894,25 @@ fields:
     type: text
   - collection: brands
     field: status
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -501,7 +935,27 @@ fields:
     type: text
   - collection: brands
     field: twitter_url
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: twitter_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: link
+        placeholder: twitter.com/TheMetaFactory
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -524,11 +978,31 @@ fields:
     type: text
   - collection: brands
     field: updated_at
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+        relative: true
+      field: updated_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: on touch
       data_type: timestamp with time zone
-      default_value: '2022-06-03 01:55:48.128024+00'
+      default_value: now()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -547,7 +1021,26 @@ fields:
     type: timestamp
   - collection: brands
     field: website_url
-    meta: null
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: website_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: insert_link
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -662,7 +1155,33 @@ fields:
     type: text
   - collection: fullfillers
     field: address
-    meta: null
+    meta:
+      collection: fullfillers
+      conditions: null
+      display: null
+      display_options: null
+      field: address
+      group: null
+      hidden: false
+      interface: map
+      note: null
+      options:
+        defaultView:
+          bearing: 0
+          center:
+            lat: 23.781225972756886
+            lng: 31.97262540292877
+          pitch: 0
+          zoom: 2.8973180856755647
+        geometryType: Point
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -708,7 +1227,27 @@ fields:
     type: timestamp
   - collection: fullfillers
     field: email
-    meta: null
+    meta:
+      collection: fullfillers
+      conditions: null
+      display: null
+      display_options: null
+      field: email
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: alternate_email
+        placeholder: hello@metafactory.ai
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -754,11 +1293,30 @@ fields:
     type: text
   - collection: fullfillers
     field: id
-    meta: null
+    meta:
+      collection: fullfillers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: null
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
-      default_value: null
+      default_value: gen_random_uuid()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -777,7 +1335,25 @@ fields:
     type: uuid
   - collection: fullfillers
     field: name
-    meta: null
+    meta:
+      collection: fullfillers
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -846,18 +1422,44 @@ fields:
     type: text
   - collection: price_currencies
     field: currency
-    meta: null
+    meta:
+      collection: price_currencies
+      conditions: []
+      display: null
+      display_options: null
+      field: currency
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: USD / ETH / ROBOT
+        softLength: 5
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation:
+        _and:
+          - currency:
+              _in:
+                - USD
+                - ETH
+                - ROBOT
+      validation_message: null
+      width: half
     schema:
       comment: enum?
       data_type: text
-      default_value: null
+      default_value: USD
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
       generation_expression: null
       has_auto_increment: false
       is_generated: false
-      is_nullable: true
+      is_nullable: false
       is_primary_key: false
       is_unique: false
       max_length: null
@@ -869,11 +1471,29 @@ fields:
     type: text
   - collection: price_currencies
     field: id
-    meta: null
+    meta:
+      collection: price_currencies
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
-      default_value: null
+      default_value: gen_random_uuid()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -892,7 +1512,27 @@ fields:
     type: uuid
   - collection: price_currencies
     field: price
-    meta: null
+    meta:
+      collection: price_currencies
+      conditions: null
+      display: null
+      display_options: null
+      field: price
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: null
+        min: 0
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: numeric
@@ -903,7 +1543,7 @@ fields:
       generation_expression: null
       has_auto_increment: false
       is_generated: false
-      is_nullable: true
+      is_nullable: false
       is_primary_key: false
       is_unique: false
       max_length: null
@@ -1007,7 +1647,33 @@ fields:
     type: text
   - collection: producers
     field: address
-    meta: null
+    meta:
+      collection: producers
+      conditions: null
+      display: null
+      display_options: null
+      field: address
+      group: null
+      hidden: false
+      interface: map
+      note: null
+      options:
+        defaultView:
+          bearing: 0
+          center:
+            lat: 0
+            lng: 0
+          pitch: 0
+          zoom: 0
+        geometryType: Point
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -1030,7 +1696,26 @@ fields:
     type: text
   - collection: producers
     field: created_at
-    meta: null
+    meta:
+      collection: producers
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+      field: created_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: on create
       data_type: timestamp with time zone
@@ -1053,7 +1738,28 @@ fields:
     type: timestamp
   - collection: producers
     field: email
-    meta: null
+    meta:
+      collection: producers
+      conditions: null
+      display: null
+      display_options: null
+      field: email
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: email
+        placeholder: producer@domain.com
+        trim: true
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -1076,7 +1782,31 @@ fields:
     type: text
   - collection: producers
     field: eth_address
-    meta: null
+    meta:
+      collection: producers
+      conditions: null
+      display: null
+      display_options: null
+      field: eth_address
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+        placeholder: '0x1234'
+        trim: true
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation:
+        _and:
+          - eth_address:
+              _regex: /^0x[a-fA-F0-9]{40}$/
+      validation_message: Invalid Ethereum Address
+      width: full
     schema:
       comment: null
       data_type: text
@@ -1099,7 +1829,25 @@ fields:
     type: text
   - collection: producers
     field: id
-    meta: null
+    meta:
+      collection: producers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
@@ -1122,7 +1870,28 @@ fields:
     type: uuid
   - collection: producers
     field: name
-    meta: null
+    meta:
+      collection: producers
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Producer Name
+        softLength: 80
+        trim: true
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -1144,31 +1913,27 @@ fields:
       table: producers
     type: text
   - collection: producers
-    field: products
-    meta: null
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: products
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: products
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: producers
-    type: uuid
-  - collection: producers
     field: status
-    meta: null
+    meta:
+      collection: producers
+      conditions: null
+      display: null
+      display_options: null
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -1191,7 +1956,27 @@ fields:
     type: text
   - collection: producers
     field: updated_at
-    meta: null
+    meta:
+      collection: producers
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+        relative: true
+      field: updated_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: on touch
       data_type: timestamp with time zone
@@ -1214,7 +1999,37 @@ fields:
     type: timestamp
   - collection: product_collaborators
     field: collaboration_share
-    meta: null
+    meta:
+      collection: product_collaborators
+      conditions: null
+      display: formatted-value
+      display_options:
+        suffix: '%'
+      field: collaboration_share
+      group: null
+      hidden: false
+      interface: input
+      note: >-
+        The % of collaborator rewards that will go to this user for their
+        contributions on the given product
+      options:
+        alwaysShowValue: true
+        iconRight: percent
+        max: 100
+        maxValue: 100
+        min: 0
+        minValue: 0
+        placeholder: null
+        step: 5
+        stepInterval: 5
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: numeric
@@ -1237,7 +2052,27 @@ fields:
     type: integer
   - collection: product_collaborators
     field: collaborator
-    meta: null
+    meta:
+      collection: product_collaborators
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: collaborator
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
@@ -1260,11 +2095,29 @@ fields:
     type: uuid
   - collection: product_collaborators
     field: id
-    meta: null
+    meta:
+      collection: product_collaborators
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
-      default_value: null
+      default_value: gen_random_uuid()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -1283,7 +2136,27 @@ fields:
     type: uuid
   - collection: product_collaborators
     field: product
-    meta: null
+    meta:
+      collection: product_collaborators
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: product
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
@@ -1306,7 +2179,26 @@ fields:
     type: uuid
   - collection: product_collaborators
     field: type
-    meta: null
+    meta:
+      collection: product_collaborators
+      conditions: null
+      display: null
+      display_options: null
+      field: type
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: text
@@ -2272,7 +3164,25 @@ fields:
     type: text
   - collection: products
     field: asset_files
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: asset_files
+      group: null
+      hidden: true
+      interface: null
+      note: Link to Google Drive of product assets
+      options: null
+      readonly: false
+      required: false
+      sort: 19
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: link to drive of asset files related to project
       data_type: text
@@ -2295,7 +3205,27 @@ fields:
     type: text
   - collection: products
     field: brand
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: brand
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
@@ -2318,7 +3248,36 @@ fields:
     type: uuid
   - collection: products
     field: brand_reward_share
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: formatted-value
+      display_options:
+        icon: null
+        suffix: '%'
+      field: brand_reward_share
+      group: null
+      hidden: false
+      interface: input
+      note: What % of rewards will go to the brand
+      options:
+        alwaysShowValue: true
+        iconRight: percent
+        max: 100
+        maxValue: 100
+        min: 0
+        minValue: 0
+        placeholder: '30'
+        step: 5
+        stepInterval: 1
+      readonly: false
+      required: false
+      sort: 12
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: numeric
@@ -2341,7 +3300,30 @@ fields:
     type: integer
   - collection: products
     field: collaborator_reward_share
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: collaborator_reward_share
+      group: null
+      hidden: false
+      interface: input
+      note: What % of rewards will be split between collaborators
+      options:
+        iconRight: percent
+        max: 100
+        min: 0
+        placeholder: '70'
+        step: 5
+      readonly: false
+      required: false
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: numeric
@@ -2364,11 +3346,30 @@ fields:
     type: integer
   - collection: products
     field: created_at
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+      field: created_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 20
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: on create
       data_type: timestamp with time zone
-      default_value: '2022-06-03 01:55:48.128024+00'
+      default_value: now()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -2387,7 +3388,26 @@ fields:
     type: timestamp
   - collection: products
     field: discord_channel_id
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: discord_channel_id
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+      readonly: false
+      required: false
+      sort: 17
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2410,7 +3430,25 @@ fields:
     type: text
   - collection: products
     field: fullfillment
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options: null
+      field: fullfillment
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 14
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: uuid
@@ -2440,23 +3478,23 @@ fields:
       display_options: null
       field: id
       group: null
-      hidden: false
+      hidden: true
       interface: null
       note: Unique identifier for a product
       options: null
       readonly: true
       required: true
-      sort: null
+      sort: 1
       special:
         - uuid
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: fill
     schema:
       comment: null
       data_type: uuid
-      default_value: null
+      default_value: gen_random_uuid()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -2489,8 +3527,8 @@ fields:
         placeholder: Product Name
         trim: true
       readonly: false
-      required: false
-      sort: null
+      required: true
+      sort: 2
       special: null
       translations: null
       validation: null
@@ -2518,7 +3556,26 @@ fields:
     type: text
   - collection: products
     field: notion_id
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: notion_id
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+      readonly: true
+      required: false
+      sort: 16
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2541,7 +3598,27 @@ fields:
     type: text
   - collection: products
     field: price
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{price}}{{currency}}'
+      field: price
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: uuid
@@ -2564,7 +3641,27 @@ fields:
     type: uuid
   - collection: products
     field: producer
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: producer
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: false
+      sort: 13
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: uuid
@@ -2586,8 +3683,54 @@ fields:
       table: products
     type: uuid
   - collection: products
+    field: product_collaborators
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: "{{collaborator}}\_({{type}}) -\_{{collaboration_share}}"
+      field: product_collaborators
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options:
+        template: "{{collaborator}}\_({{type}}\_) -\_{{collaboration_share}}"
+      readonly: false
+      required: false
+      sort: 10
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
     field: production_cost
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{price}}{{currency}}'
+      field: production_cost
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: null
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: null
       data_type: uuid
@@ -2610,7 +3753,25 @@ fields:
     type: uuid
   - collection: products
     field: production_material
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options: null
+      field: production_material
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 15
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
@@ -2633,7 +3794,27 @@ fields:
     type: uuid
   - collection: products
     field: quantity
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: quantity
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: numbers
+        min: 0
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: could be null before drop
       data_type: bigint
@@ -2664,17 +3845,18 @@ fields:
       field: sale_type
       group: null
       hidden: false
-      interface: null
+      interface: select-dropdown-m2o
       note: null
-      options: null
+      options:
+        template: '{{value}}'
       readonly: false
       required: false
-      sort: null
+      sort: 6
       special: null
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: text
@@ -2729,7 +3911,7 @@ fields:
           - underline
       readonly: false
       required: false
-      sort: null
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -2757,7 +3939,26 @@ fields:
     type: text
   - collection: products
     field: shopify_id
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: shopify_id
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+      readonly: false
+      required: false
+      sort: 18
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2780,7 +3981,26 @@ fields:
     type: text
   - collection: products
     field: stage
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: stage
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: What stage of production the product is currently in
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2802,35 +4022,32 @@ fields:
       table: products
     type: text
   - collection: products
-    field: total_sales
-    meta: null
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: price_currencies
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: total_sales
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: products
-    type: uuid
-  - collection: products
     field: updated_at
-    meta: null
+    meta:
+      collection: products
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+        relative: true
+      field: updated_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 21
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
     schema:
       comment: on touch
       data_type: timestamp with time zone
-      default_value: '2022-06-03 01:55:48.128024+00'
+      default_value: now()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -2849,7 +4066,26 @@ fields:
     type: timestamp
   - collection: products_stage_enum
     field: description
-    meta: null
+    meta:
+      collection: products_stage_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        softLength: 255
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2872,7 +4108,26 @@ fields:
     type: text
   - collection: products_stage_enum
     field: value
-    meta: null
+    meta:
+      collection: products_stage_enum
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: value
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2895,7 +4150,25 @@ fields:
     type: text
   - collection: sale_types_enum
     field: description
-    meta: null
+    meta:
+      collection: sale_types_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2918,7 +4191,26 @@ fields:
     type: text
   - collection: sale_types_enum
     field: value
-    meta: null
+    meta:
+      collection: sale_types_enum
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      field: value
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3148,7 +4440,26 @@ fields:
     type: text
   - collection: users
     field: created_at
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+      field: created_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 10
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: on create
       data_type: timestamp with time zone
@@ -3171,7 +4482,33 @@ fields:
     type: timestamp
   - collection: users
     field: discord_handle
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: discord_handle
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: METAFACTORY#1111
+        trim: true
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation:
+        _and:
+          - _or:
+              - discord_handle:
+                  _regex: ^.{3,32}#[0-9]{4}$
+              - discord_handle:
+                  _null: true
+      validation_message: 'Invalid Discord Handle. Must include handle and 4 digit #'
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3194,7 +4531,26 @@ fields:
     type: text
   - collection: users
     field: discord_id
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: discord_id
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Unique discord user ID
+      readonly: true
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3217,7 +4573,30 @@ fields:
     type: text
   - collection: users
     field: eth_address
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: eth_address
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        font: monospace
+        placeholder: '0x1234'
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation:
+        _and:
+          - eth_address:
+              _regex: /^0x[a-fA-F0-9]{40}$/
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3240,7 +4619,25 @@ fields:
     type: text
   - collection: users
     field: github_handle
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: github_handle
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3263,11 +4660,30 @@ fields:
     type: text
   - collection: users
     field: id
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
-      default_value: null
+      default_value: gen_random_uuid()
       foreign_key_column: null
       foreign_key_schema: null
       foreign_key_table: null
@@ -3286,7 +4702,27 @@ fields:
     type: uuid
   - collection: users
     field: name
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        softLength: 80
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3309,7 +4745,25 @@ fields:
     type: text
   - collection: users
     field: status
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3332,7 +4786,25 @@ fields:
     type: text
   - collection: users
     field: timezone
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: timezone
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3355,7 +4827,29 @@ fields:
     type: text
   - collection: users
     field: twitter_handle
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: formatted-value
+      display_options:
+        prefix: '@'
+      field: twitter_handle
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: alternate_email
+        placeholder: TheMetaFactory
+        trim: true
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3378,7 +4872,27 @@ fields:
     type: text
   - collection: users
     field: updated_at
-    meta: null
+    meta:
+      collection: users
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+        relative: true
+      field: updated_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 11
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: on touch
       data_type: timestamp with time zone
@@ -3578,19 +5092,6 @@ relations:
       on_update: NO ACTION
       table: brands
   - collection: producers
-    field: products
-    meta: null
-    related_collection: products
-    schema:
-      column: products
-      constraint_name: producers_products_fkey
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: products
-      on_delete: NO ACTION
-      on_update: NO ACTION
-      table: producers
-  - collection: producers
     field: status
     meta: null
     related_collection: producer_statuses_enum
@@ -3605,7 +5106,16 @@ relations:
       table: producers
   - collection: product_collaborators
     field: collaborator
-    meta: null
+    meta:
+      junction_field: product
+      many_collection: product_collaborators
+      many_field: collaborator
+      one_allowed_collections: null
+      one_collection: users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
     related_collection: users
     schema:
       column: collaborator
@@ -3618,7 +5128,16 @@ relations:
       table: product_collaborators
   - collection: product_collaborators
     field: product
-    meta: null
+    meta:
+      junction_field: collaborator
+      many_collection: product_collaborators
+      many_field: product
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: product_collaborators
+      sort_field: null
     related_collection: products
     schema:
       column: product
@@ -3626,7 +5145,7 @@ relations:
       foreign_key_column: id
       foreign_key_schema: omni
       foreign_key_table: products
-      on_delete: NO ACTION
+      on_delete: CASCADE
       on_update: NO ACTION
       table: product_collaborators
   - collection: product_collaborators
@@ -3912,19 +5431,6 @@ relations:
       foreign_key_column: value
       foreign_key_schema: omni
       foreign_key_table: products_stage_enum
-      on_delete: NO ACTION
-      on_update: NO ACTION
-      table: products
-  - collection: products
-    field: total_sales
-    meta: null
-    related_collection: price_currencies
-    schema:
-      column: total_sales
-      constraint_name: products_total_sales_fkey
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: price_currencies
       on_delete: NO ACTION
       on_update: NO ACTION
       table: products
