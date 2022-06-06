@@ -46,18 +46,23 @@ services:
 
   directus:
     container_name: directus
-    image: directus/directus:9.12
+    build:
+      context: ./packages/cms
+      args:
+        OIDC_CLIENT_ID: ${DIRECTUS_SIWE_CLIENT_ID}
+        OIDC_CLIENT_SECRET: ${DIRECTUS_SIWE_CLIENT_SECRET}
+        OIDC_ISSUER_URL: ${DIRECTUS_SIWE_ISSUER_URL}
     ports:
       - ${LOCAL_DIRECTUS_PORT:-8055}:${LOCAL_DIRECTUS_PORT:-8055}
-    volumes:
-      # By default, uploads are stored in /directus/uploads
-      # Always make sure your volumes matches the storage root when using
-      # local driver
-      - ./packages/cms/uploads:/directus/uploads
-      # Make sure to also mount the volume when using SQLite
-      # - ./database:/directus/database
-      # If you want to load extensions from the host
-      - ./packages/cms/extensions:/directus/extensions
+    #    volumes:
+    #      # By default, uploads are stored in /directus/uploads
+    #      # Always make sure your volumes matches the storage root when using
+    #      # local driver
+    #      - ./packages/cms/uploads:/directus/uploads
+    #      # Make sure to also mount the volume when using SQLite
+    #      # - ./database:/directus/database
+    #      # If you want to load extensions from the host
+    #      - ./packages/cms/extensions:/directus/extensions
     networks:
       - directus
     depends_on:
@@ -86,15 +91,14 @@ services:
       CACHE_STORE: 'redis'
       CACHE_REDIS: 'redis://cache:6379'
 
-      AUTH_PROVIDERS: 'ethereum'
-      AUTH_ETHEREUM_DRIVER: 'openid'
-      AUTH_ETHEREUM_SCOPE: 'openid profile'
-      AUTH_ETHEREUM_IDENTIFIER_KEY: 'sub'
-      AUTH_ETHEREUM_ICON: 'key'
-      AUTH_ETHEREUM_ALLOW_PUBLIC_REGISTRATION: true
-      AUTH_ETHEREUM_CLIENT_ID: ${DIRECTUS_SIWE_CLIENT_ID}
-      AUTH_ETHEREUM_CLIENT_SECRET: ${DIRECTUS_SIWE_CLIENT_SECRET}
-      AUTH_ETHEREUM_ISSUER_URL: ${DIRECTUS_SIWE_ISSUER_URL}
+      # Storage
+      STORAGE_LOCATIONS: 'ipfs'
+      STORAGE_IPFS_DRIVER: 's3'
+      STORAGE_IPFS_KEY: ${STORAGE_IPFS_KEY}
+      STORAGE_IPFS_SECRET: ${STORAGE_IPFS_SECRET}
+      STORAGE_IPFS_BUCKET: ${STORAGE_IPFS_BUCKET}
+      STORAGE_IPFS_REGION: ${STORAGE_IPFS_REGION}
+      STORAGE_IPFS_ENDPOINT: ${STORAGE_IPFS_ENDPOINT}
 
   graphql-engine:
     build:
