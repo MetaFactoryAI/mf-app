@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": "=14"
+    "node": "^14"
   },
   "scripts": {
     "typecheck": "yarn services typecheck",
@@ -14,6 +14,7 @@
     "app": "yarn workspace mf-app",
     "services": "yarn workspace @mf/services",
     "cms": "yarn workspace @mf/cms",
+    "cms:start": "yarn workspace @mf/cms start",
     "prepare": "husky install",
     "test": "yarn workspaces run test",
     "hasura": "hasura --envfile ../.env --project ./hasura"
