@@ -8,6 +8,9 @@
     "snapshot": "npx directus schema snapshot ./snapshot.yaml",
     "snapshot:backup": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
   },
+  "engines": {
+    "node": "14"
+  },
   "dependencies": {
     "directus": "^9.12.1"
   },
