@@ -9,11 +9,7 @@
     "node": "=14"
   },
   "scripts": {
-    "start": "yarn app start",
-    "web": "yarn app web",
-    "deploy": "yarn app deploy",
-    "postinstall": "yarn app postinstall",
-    "typecheck": "yarn app typecheck",
+    "typecheck": "yarn services typecheck",
     "lint": "eslint \"**/*.{ts,tsx,js}\"",
     "app": "yarn workspace mf-app",
     "services": "yarn workspace @mf/services",
