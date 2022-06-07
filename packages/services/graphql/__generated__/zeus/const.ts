@@ -1528,6 +1528,63 @@ export const AllTypesProps: Record<string, any> = {
       required: true,
     },
   },
+  json: 'String',
+  json_comparison_exp: {
+    _eq: {
+      type: 'json',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _gt: {
+      type: 'json',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _gte: {
+      type: 'json',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _in: {
+      type: 'json',
+      array: true,
+      arrayRequired: false,
+      required: true,
+    },
+    _is_null: {
+      type: 'Boolean',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _lt: {
+      type: 'json',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _lte: {
+      type: 'json',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _neq: {
+      type: 'json',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _nin: {
+      type: 'json',
+      array: true,
+      arrayRequired: false,
+      required: true,
+    },
+  },
   jsonb: 'String',
   jsonb_cast_exp: {
     String: {
@@ -1749,6 +1806,22 @@ export const AllTypesProps: Record<string, any> = {
     delete_omni_collaborator_types_enum_by_pk: {
       value: {
         type: 'String',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    delete_omni_directus_files: {
+      where: {
+        type: 'omni_directus_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    delete_omni_directus_files_by_pk: {
+      id: {
+        type: 'uuid',
         array: false,
         arrayRequired: false,
         required: true,
@@ -2026,6 +2099,38 @@ export const AllTypesProps: Record<string, any> = {
         required: true,
       },
     },
+    delete_omni_products_files: {
+      where: {
+        type: 'omni_products_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    delete_omni_products_files_by_pk: {
+      id: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    delete_omni_products_production_materials: {
+      where: {
+        type: 'omni_products_production_materials_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    delete_omni_products_production_materials_by_pk: {
+      id: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
     delete_omni_products_stage_enum: {
       where: {
         type: 'omni_products_stage_enum_bool_exp',
@@ -2133,38 +2238,6 @@ export const AllTypesProps: Record<string, any> = {
     delete_omni_users_by_pk: {
       id: {
         type: 'uuid',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    delete_omni_wearable_files: {
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    delete_omni_wearable_files_by_pk: {
-      id: {
-        type: 'uuid',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    delete_omni_wearable_types_enum: {
-      where: {
-        type: 'omni_wearable_types_enum_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    delete_omni_wearable_types_enum_by_pk: {
-      value: {
-        type: 'String',
         array: false,
         arrayRequired: false,
         required: true,
@@ -2469,6 +2542,34 @@ export const AllTypesProps: Record<string, any> = {
       },
       on_conflict: {
         type: 'omni_collaborator_types_enum_on_conflict',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    insert_omni_directus_files: {
+      objects: {
+        type: 'omni_directus_files_insert_input',
+        array: true,
+        arrayRequired: true,
+        required: true,
+      },
+      on_conflict: {
+        type: 'omni_directus_files_on_conflict',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    insert_omni_directus_files_one: {
+      object: {
+        type: 'omni_directus_files_insert_input',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+      on_conflict: {
+        type: 'omni_directus_files_on_conflict',
         array: false,
         arrayRequired: false,
         required: false,
@@ -2936,6 +3037,34 @@ export const AllTypesProps: Record<string, any> = {
         required: false,
       },
     },
+    insert_omni_products_files: {
+      objects: {
+        type: 'omni_products_files_insert_input',
+        array: true,
+        arrayRequired: true,
+        required: true,
+      },
+      on_conflict: {
+        type: 'omni_products_files_on_conflict',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    insert_omni_products_files_one: {
+      object: {
+        type: 'omni_products_files_insert_input',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+      on_conflict: {
+        type: 'omni_products_files_on_conflict',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
     insert_omni_products_one: {
       object: {
         type: 'omni_products_insert_input',
@@ -2945,6 +3074,34 @@ export const AllTypesProps: Record<string, any> = {
       },
       on_conflict: {
         type: 'omni_products_on_conflict',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    insert_omni_products_production_materials: {
+      objects: {
+        type: 'omni_products_production_materials_insert_input',
+        array: true,
+        arrayRequired: true,
+        required: true,
+      },
+      on_conflict: {
+        type: 'omni_products_production_materials_on_conflict',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    insert_omni_products_production_materials_one: {
+      object: {
+        type: 'omni_products_production_materials_insert_input',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+      on_conflict: {
+        type: 'omni_products_production_materials_on_conflict',
         array: false,
         arrayRequired: false,
         required: false,
@@ -3141,62 +3298,6 @@ export const AllTypesProps: Record<string, any> = {
       },
       on_conflict: {
         type: 'omni_users_on_conflict',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    insert_omni_wearable_files: {
-      objects: {
-        type: 'omni_wearable_files_insert_input',
-        array: true,
-        arrayRequired: true,
-        required: true,
-      },
-      on_conflict: {
-        type: 'omni_wearable_files_on_conflict',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    insert_omni_wearable_files_one: {
-      object: {
-        type: 'omni_wearable_files_insert_input',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-      on_conflict: {
-        type: 'omni_wearable_files_on_conflict',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    insert_omni_wearable_types_enum: {
-      objects: {
-        type: 'omni_wearable_types_enum_insert_input',
-        array: true,
-        arrayRequired: true,
-        required: true,
-      },
-      on_conflict: {
-        type: 'omni_wearable_types_enum_on_conflict',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    insert_omni_wearable_types_enum_one: {
-      object: {
-        type: 'omni_wearable_types_enum_insert_input',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-      on_conflict: {
-        type: 'omni_wearable_types_enum_on_conflict',
         array: false,
         arrayRequired: false,
         required: false,
@@ -3585,6 +3686,46 @@ export const AllTypesProps: Record<string, any> = {
       },
       pk_columns: {
         type: 'omni_collaborator_types_enum_pk_columns_input',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    update_omni_directus_files: {
+      _inc: {
+        type: 'omni_directus_files_inc_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      _set: {
+        type: 'omni_directus_files_set_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      where: {
+        type: 'omni_directus_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    update_omni_directus_files_by_pk: {
+      _inc: {
+        type: 'omni_directus_files_inc_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      _set: {
+        type: 'omni_directus_files_set_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      pk_columns: {
+        type: 'omni_directus_files_pk_columns_input',
         array: false,
         arrayRequired: false,
         required: true,
@@ -4114,6 +4255,86 @@ export const AllTypesProps: Record<string, any> = {
         required: true,
       },
     },
+    update_omni_products_files: {
+      _inc: {
+        type: 'omni_products_files_inc_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      _set: {
+        type: 'omni_products_files_set_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      where: {
+        type: 'omni_products_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    update_omni_products_files_by_pk: {
+      _inc: {
+        type: 'omni_products_files_inc_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      _set: {
+        type: 'omni_products_files_set_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      pk_columns: {
+        type: 'omni_products_files_pk_columns_input',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    update_omni_products_production_materials: {
+      _inc: {
+        type: 'omni_products_production_materials_inc_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      _set: {
+        type: 'omni_products_production_materials_set_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      where: {
+        type: 'omni_products_production_materials_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    update_omni_products_production_materials_by_pk: {
+      _inc: {
+        type: 'omni_products_production_materials_inc_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      _set: {
+        type: 'omni_products_production_materials_set_input',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      pk_columns: {
+        type: 'omni_products_production_materials_pk_columns_input',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
     update_omni_products_stage_enum: {
       _set: {
         type: 'omni_products_stage_enum_set_input',
@@ -4305,62 +4526,6 @@ export const AllTypesProps: Record<string, any> = {
       },
       pk_columns: {
         type: 'omni_users_pk_columns_input',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    update_omni_wearable_files: {
-      _set: {
-        type: 'omni_wearable_files_set_input',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    update_omni_wearable_files_by_pk: {
-      _set: {
-        type: 'omni_wearable_files_set_input',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      pk_columns: {
-        type: 'omni_wearable_files_pk_columns_input',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    update_omni_wearable_types_enum: {
-      _set: {
-        type: 'omni_wearable_types_enum_set_input',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      where: {
-        type: 'omni_wearable_types_enum_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    update_omni_wearable_types_enum_by_pk: {
-      _set: {
-        type: 'omni_wearable_types_enum_set_input',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      pk_columns: {
-        type: 'omni_wearable_types_enum_pk_columns_input',
         array: false,
         arrayRequired: false,
         required: true,
@@ -6140,6 +6305,619 @@ export const AllTypesProps: Record<string, any> = {
     },
   },
   omni_collaborator_types_enum_update_column: 'enum',
+  omni_directus_files: {
+    metadata: {
+      path: {
+        type: 'String',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+  },
+  omni_directus_files_aggregate_fields: {
+    count: {
+      columns: {
+        type: 'omni_directus_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      distinct: {
+        type: 'Boolean',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+  },
+  omni_directus_files_bool_exp: {
+    _and: {
+      type: 'omni_directus_files_bool_exp',
+      array: true,
+      arrayRequired: false,
+      required: true,
+    },
+    _not: {
+      type: 'omni_directus_files_bool_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _or: {
+      type: 'omni_directus_files_bool_exp',
+      array: true,
+      arrayRequired: false,
+      required: true,
+    },
+    charset: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    description: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    duration: {
+      type: 'Int_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    embed: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filename_disk: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filename_download: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filesize: {
+      type: 'bigint_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    folder: {
+      type: 'uuid_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    height: {
+      type: 'Int_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'uuid_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    location: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    metadata: {
+      type: 'json_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    modified_by: {
+      type: 'uuid_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    modified_on: {
+      type: 'timestamptz_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    storage: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    tags: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    title: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    type: {
+      type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    uploaded_by: {
+      type: 'uuid_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    uploaded_on: {
+      type: 'timestamptz_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    width: {
+      type: 'Int_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_directus_files_constraint: 'enum',
+  omni_directus_files_inc_input: {
+    duration: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filesize: {
+      type: 'bigint',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    height: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    width: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_directus_files_insert_input: {
+    charset: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    description: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    duration: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    embed: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filename_disk: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filename_download: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filesize: {
+      type: 'bigint',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    folder: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    height: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    location: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    metadata: {
+      type: 'json',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    modified_by: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    modified_on: {
+      type: 'timestamptz',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    storage: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    tags: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    title: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    type: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    uploaded_by: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    uploaded_on: {
+      type: 'timestamptz',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    width: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_directus_files_on_conflict: {
+    constraint: {
+      type: 'omni_directus_files_constraint',
+      array: false,
+      arrayRequired: false,
+      required: true,
+    },
+    update_columns: {
+      type: 'omni_directus_files_update_column',
+      array: true,
+      arrayRequired: true,
+      required: true,
+    },
+    where: {
+      type: 'omni_directus_files_bool_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_directus_files_order_by: {
+    charset: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    description: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    duration: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    embed: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filename_disk: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filename_download: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filesize: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    folder: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    height: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    location: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    metadata: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    modified_by: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    modified_on: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    storage: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    tags: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    title: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    type: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    uploaded_by: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    uploaded_on: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    width: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_directus_files_pk_columns_input: {
+    id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: true,
+    },
+  },
+  omni_directus_files_select_column: 'enum',
+  omni_directus_files_set_input: {
+    charset: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    description: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    duration: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    embed: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filename_disk: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filename_download: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    filesize: {
+      type: 'bigint',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    folder: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    height: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    location: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    metadata: {
+      type: 'json',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    modified_by: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    modified_on: {
+      type: 'timestamptz',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    storage: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    tags: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    title: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    type: {
+      type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    uploaded_by: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    uploaded_on: {
+      type: 'timestamptz',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    width: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_directus_files_update_column: 'enum',
   omni_fullfillers: {
     products: {
       distinct_on: {
@@ -6503,200 +7281,6 @@ export const AllTypesProps: Record<string, any> = {
     },
   },
   omni_fullfillers_update_column: 'enum',
-  omni_price_currencies: {
-    products: {
-      distinct_on: {
-        type: 'omni_products_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_products_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_products_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    productsByProductionCost: {
-      distinct_on: {
-        type: 'omni_products_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_products_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_products_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    productsByProductionCost_aggregate: {
-      distinct_on: {
-        type: 'omni_products_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_products_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_products_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    productsByTotalSales: {
-      distinct_on: {
-        type: 'omni_products_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_products_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_products_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    productsByTotalSales_aggregate: {
-      distinct_on: {
-        type: 'omni_products_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_products_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_products_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    products_aggregate: {
-      distinct_on: {
-        type: 'omni_products_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_products_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_products_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-  },
   omni_price_currencies_aggregate_fields: {
     count: {
       columns: {
@@ -6750,24 +7334,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    products: {
-      type: 'omni_products_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByProductionCost: {
-      type: 'omni_products_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByTotalSales: {
-      type: 'omni_products_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
   },
   omni_price_currencies_constraint: 'enum',
   omni_price_currencies_inc_input: {
@@ -6793,24 +7359,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     price: {
       type: 'numeric',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
-      type: 'omni_products_arr_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByProductionCost: {
-      type: 'omni_products_arr_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByTotalSales: {
-      type: 'omni_products_arr_rel_insert_input',
       array: false,
       arrayRequired: false,
       required: false,
@@ -6865,24 +7413,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     price: {
       type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByProductionCost_aggregate: {
-      type: 'omni_products_aggregate_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByTotalSales_aggregate: {
-      type: 'omni_products_aggregate_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products_aggregate: {
-      type: 'omni_products_aggregate_order_by',
       array: false,
       arrayRequired: false,
       required: false,
@@ -7727,12 +8257,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    product: {
-      type: 'omni_products_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     production_materials_producers: {
       type: 'omni_production_materials_producers_bool_exp',
       array: false,
@@ -7741,12 +8265,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     production_methods_producers: {
       type: 'omni_production_methods_producers_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
-      type: 'uuid_comparison_exp',
       array: false,
       arrayRequired: false,
       required: false,
@@ -7814,12 +8332,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    product: {
-      type: 'omni_products_obj_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     production_materials_producers: {
       type: 'omni_production_materials_producers_arr_rel_insert_input',
       array: false,
@@ -7828,12 +8340,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     production_methods_producers: {
       type: 'omni_production_methods_producers_arr_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
-      type: 'uuid',
       array: false,
       arrayRequired: false,
       required: false,
@@ -7894,12 +8400,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    products: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     updated_at: {
       type: 'order_by',
       array: false,
@@ -7939,12 +8439,6 @@ export const AllTypesProps: Record<string, any> = {
       required: false,
     },
     name: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
       type: 'order_by',
       array: false,
       arrayRequired: false,
@@ -8034,12 +8528,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    product: {
-      type: 'omni_products_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     production_materials_producers_aggregate: {
       type: 'omni_production_materials_producers_aggregate_order_by',
       array: false,
@@ -8048,12 +8536,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     production_methods_producers_aggregate: {
       type: 'omni_production_methods_producers_aggregate_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
-      type: 'order_by',
       array: false,
       arrayRequired: false,
       required: false,
@@ -8119,12 +8601,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     name: {
       type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
-      type: 'uuid',
       array: false,
       arrayRequired: false,
       required: false,
@@ -9132,9 +9608,9 @@ export const AllTypesProps: Record<string, any> = {
         required: false,
       },
     },
-    productsByProductionMaterial: {
+    used_in_products: {
       distinct_on: {
-        type: 'omni_products_select_column',
+        type: 'omni_products_production_materials_select_column',
         array: true,
         arrayRequired: false,
         required: true,
@@ -9152,21 +9628,21 @@ export const AllTypesProps: Record<string, any> = {
         required: false,
       },
       order_by: {
-        type: 'omni_products_order_by',
+        type: 'omni_products_production_materials_order_by',
         array: true,
         arrayRequired: false,
         required: true,
       },
       where: {
-        type: 'omni_products_bool_exp',
+        type: 'omni_products_production_materials_bool_exp',
         array: false,
         arrayRequired: false,
         required: false,
       },
     },
-    productsByProductionMaterial_aggregate: {
+    used_in_products_aggregate: {
       distinct_on: {
-        type: 'omni_products_select_column',
+        type: 'omni_products_production_materials_select_column',
         array: true,
         arrayRequired: false,
         required: true,
@@ -9184,13 +9660,13 @@ export const AllTypesProps: Record<string, any> = {
         required: false,
       },
       order_by: {
-        type: 'omni_products_order_by',
+        type: 'omni_products_production_materials_order_by',
         array: true,
         arrayRequired: false,
         required: true,
       },
       where: {
-        type: 'omni_products_bool_exp',
+        type: 'omni_products_production_materials_bool_exp',
         array: false,
         arrayRequired: false,
         required: false,
@@ -9388,12 +9864,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    product: {
-      type: 'omni_products_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     product_types_enum: {
       type: 'omni_product_types_enum_bool_exp',
       array: false,
@@ -9430,18 +9900,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    products: {
-      type: 'uuid_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByProductionMaterial: {
-      type: 'omni_products_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     rating: {
       type: 'omni_production_materials_ratings_enum_enum_comparison_exp',
       array: false,
@@ -9474,6 +9932,12 @@ export const AllTypesProps: Record<string, any> = {
     },
     updated_at: {
       type: 'timestamptz_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    used_in_products: {
+      type: 'omni_products_production_materials_bool_exp',
       array: false,
       arrayRequired: false,
       required: false,
@@ -9555,12 +10019,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    product: {
-      type: 'omni_products_obj_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     product_types_enum: {
       type: 'omni_product_types_enum_obj_rel_insert_input',
       array: false,
@@ -9593,18 +10051,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     production_styles_enum: {
       type: 'omni_production_styles_enum_obj_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByProductionMaterial: {
-      type: 'omni_products_arr_rel_insert_input',
       array: false,
       arrayRequired: false,
       required: false,
@@ -9645,6 +10091,12 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
+    used_in_products: {
+      type: 'omni_products_production_materials_arr_rel_insert_input',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
   },
   omni_production_materials_max_order_by: {
     base_price: {
@@ -9678,12 +10130,6 @@ export const AllTypesProps: Record<string, any> = {
       required: false,
     },
     name: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
       type: 'order_by',
       array: false,
       arrayRequired: false,
@@ -9746,12 +10192,6 @@ export const AllTypesProps: Record<string, any> = {
       required: false,
     },
     name: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
       type: 'order_by',
       array: false,
       arrayRequired: false,
@@ -9883,12 +10323,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    product: {
-      type: 'omni_products_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     product_types_enum: {
       type: 'omni_product_types_enum_order_by',
       array: false,
@@ -9925,18 +10359,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    products: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productsByProductionMaterial_aggregate: {
-      type: 'omni_products_aggregate_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     rating: {
       type: 'order_by',
       array: false,
@@ -9969,6 +10391,12 @@ export const AllTypesProps: Record<string, any> = {
     },
     updated_at: {
       type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    used_in_products_aggregate: {
+      type: 'omni_products_production_materials_aggregate_order_by',
       array: false,
       arrayRequired: false,
       required: false,
@@ -10547,12 +10975,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     print_tech: {
       type: 'omni_print_techs_enum_enum',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    products: {
-      type: 'uuid',
       array: false,
       arrayRequired: false,
       required: false,
@@ -12039,9 +12461,9 @@ export const AllTypesProps: Record<string, any> = {
   },
   omni_production_styles_enum_update_column: 'enum',
   omni_products: {
-    producers: {
+    files: {
       distinct_on: {
-        type: 'omni_producers_select_column',
+        type: 'omni_products_files_select_column',
         array: true,
         arrayRequired: false,
         required: true,
@@ -12059,21 +12481,21 @@ export const AllTypesProps: Record<string, any> = {
         required: false,
       },
       order_by: {
-        type: 'omni_producers_order_by',
+        type: 'omni_products_files_order_by',
         array: true,
         arrayRequired: false,
         required: true,
       },
       where: {
-        type: 'omni_producers_bool_exp',
+        type: 'omni_products_files_bool_exp',
         array: false,
         arrayRequired: false,
         required: false,
       },
     },
-    producers_aggregate: {
+    files_aggregate: {
       distinct_on: {
-        type: 'omni_producers_select_column',
+        type: 'omni_products_files_select_column',
         array: true,
         arrayRequired: false,
         required: true,
@@ -12091,13 +12513,13 @@ export const AllTypesProps: Record<string, any> = {
         required: false,
       },
       order_by: {
-        type: 'omni_producers_order_by',
+        type: 'omni_products_files_order_by',
         array: true,
         arrayRequired: false,
         required: true,
       },
       where: {
-        type: 'omni_producers_bool_exp',
+        type: 'omni_products_files_bool_exp',
         array: false,
         arrayRequired: false,
         required: false,
@@ -12169,7 +12591,7 @@ export const AllTypesProps: Record<string, any> = {
     },
     production_materials: {
       distinct_on: {
-        type: 'omni_production_materials_select_column',
+        type: 'omni_products_production_materials_select_column',
         array: true,
         arrayRequired: false,
         required: true,
@@ -12187,13 +12609,13 @@ export const AllTypesProps: Record<string, any> = {
         required: false,
       },
       order_by: {
-        type: 'omni_production_materials_order_by',
+        type: 'omni_products_production_materials_order_by',
         array: true,
         arrayRequired: false,
         required: true,
       },
       where: {
-        type: 'omni_production_materials_bool_exp',
+        type: 'omni_products_production_materials_bool_exp',
         array: false,
         arrayRequired: false,
         required: false,
@@ -12201,7 +12623,7 @@ export const AllTypesProps: Record<string, any> = {
     },
     production_materials_aggregate: {
       distinct_on: {
-        type: 'omni_production_materials_select_column',
+        type: 'omni_products_production_materials_select_column',
         array: true,
         arrayRequired: false,
         required: true,
@@ -12219,13 +12641,13 @@ export const AllTypesProps: Record<string, any> = {
         required: false,
       },
       order_by: {
-        type: 'omni_production_materials_order_by',
+        type: 'omni_products_production_materials_order_by',
         array: true,
         arrayRequired: false,
         required: true,
       },
       where: {
-        type: 'omni_production_materials_bool_exp',
+        type: 'omni_products_production_materials_bool_exp',
         array: false,
         arrayRequired: false,
         required: false,
@@ -12290,70 +12712,6 @@ export const AllTypesProps: Record<string, any> = {
       },
       where: {
         type: 'omni_production_methods_products_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    wearable_files: {
-      distinct_on: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_files_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    wearable_files_aggregate: {
-      distinct_on: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_files_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
         array: false,
         arrayRequired: false,
         required: false,
@@ -12497,12 +12855,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: true,
     },
-    asset_files: {
-      type: 'String_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     brand: {
       type: 'uuid_comparison_exp',
       array: false,
@@ -12535,6 +12887,12 @@ export const AllTypesProps: Record<string, any> = {
     },
     discord_channel_id: {
       type: 'String_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    files: {
+      type: 'omni_products_files_bool_exp',
       array: false,
       arrayRequired: false,
       required: false,
@@ -12581,12 +12939,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    priceCurrencyByTotalSales: {
-      type: 'omni_price_currencies_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     price_currency: {
       type: 'omni_price_currencies_bool_exp',
       array: false,
@@ -12605,20 +12957,8 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    producers: {
-      type: 'omni_producers_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     product_collaborators: {
       type: 'omni_product_collaborators_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productionMaterialByProductionMaterial: {
-      type: 'omni_production_materials_bool_exp',
       array: false,
       arrayRequired: false,
       required: false,
@@ -12629,14 +12969,8 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    production_material: {
-      type: 'uuid_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     production_materials: {
-      type: 'omni_production_materials_bool_exp',
+      type: 'omni_products_production_materials_bool_exp',
       array: false,
       arrayRequired: false,
       required: false,
@@ -12689,26 +13023,353 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    total_sales: {
-      type: 'uuid_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     updated_at: {
       type: 'timestamptz_comparison_exp',
       array: false,
       arrayRequired: false,
       required: false,
     },
-    wearable_files: {
-      type: 'omni_wearable_files_bool_exp',
+  },
+  omni_products_constraint: 'enum',
+  omni_products_files_aggregate_fields: {
+    count: {
+      columns: {
+        type: 'omni_products_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      distinct: {
+        type: 'Boolean',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+  },
+  omni_products_files_aggregate_order_by: {
+    avg: {
+      type: 'omni_products_files_avg_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    count: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    max: {
+      type: 'omni_products_files_max_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    min: {
+      type: 'omni_products_files_min_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    stddev: {
+      type: 'omni_products_files_stddev_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    stddev_pop: {
+      type: 'omni_products_files_stddev_pop_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    stddev_samp: {
+      type: 'omni_products_files_stddev_samp_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    sum: {
+      type: 'omni_products_files_sum_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    var_pop: {
+      type: 'omni_products_files_var_pop_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    var_samp: {
+      type: 'omni_products_files_var_samp_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    variance: {
+      type: 'omni_products_files_variance_order_by',
       array: false,
       arrayRequired: false,
       required: false,
     },
   },
-  omni_products_constraint: 'enum',
+  omni_products_files_arr_rel_insert_input: {
+    data: {
+      type: 'omni_products_files_insert_input',
+      array: true,
+      arrayRequired: true,
+      required: true,
+    },
+    on_conflict: {
+      type: 'omni_products_files_on_conflict',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_avg_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_bool_exp: {
+    _and: {
+      type: 'omni_products_files_bool_exp',
+      array: true,
+      arrayRequired: false,
+      required: true,
+    },
+    _not: {
+      type: 'omni_products_files_bool_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _or: {
+      type: 'omni_products_files_bool_exp',
+      array: true,
+      arrayRequired: false,
+      required: true,
+    },
+    directus_files_id: {
+      type: 'uuid_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'Int_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    products_id: {
+      type: 'uuid_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_constraint: 'enum',
+  omni_products_files_inc_input: {
+    id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_insert_input: {
+    directus_files_id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    products_id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_max_order_by: {
+    directus_files_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    products_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_min_order_by: {
+    directus_files_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    products_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_on_conflict: {
+    constraint: {
+      type: 'omni_products_files_constraint',
+      array: false,
+      arrayRequired: false,
+      required: true,
+    },
+    update_columns: {
+      type: 'omni_products_files_update_column',
+      array: true,
+      arrayRequired: true,
+      required: true,
+    },
+    where: {
+      type: 'omni_products_files_bool_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_order_by: {
+    directus_files_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    products_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_pk_columns_input: {
+    id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: true,
+    },
+  },
+  omni_products_files_select_column: 'enum',
+  omni_products_files_set_input: {
+    directus_files_id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    products_id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_stddev_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_stddev_pop_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_stddev_samp_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_sum_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_update_column: 'enum',
+  omni_products_files_var_pop_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_var_samp_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_files_variance_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
   omni_products_inc_input: {
     brand_reward_share: {
       type: 'numeric',
@@ -12730,12 +13391,6 @@ export const AllTypesProps: Record<string, any> = {
     },
   },
   omni_products_insert_input: {
-    asset_files: {
-      type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     brand: {
       type: 'uuid',
       array: false,
@@ -12768,6 +13423,12 @@ export const AllTypesProps: Record<string, any> = {
     },
     discord_channel_id: {
       type: 'String',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    files: {
+      type: 'omni_products_files_arr_rel_insert_input',
       array: false,
       arrayRequired: false,
       required: false,
@@ -12814,12 +13475,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    priceCurrencyByTotalSales: {
-      type: 'omni_price_currencies_obj_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     price_currency: {
       type: 'omni_price_currencies_obj_rel_insert_input',
       array: false,
@@ -12838,20 +13493,8 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    producers: {
-      type: 'omni_producers_arr_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     product_collaborators: {
       type: 'omni_product_collaborators_arr_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productionMaterialByProductionMaterial: {
-      type: 'omni_production_materials_obj_rel_insert_input',
       array: false,
       arrayRequired: false,
       required: false,
@@ -12862,14 +13505,8 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    production_material: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     production_materials: {
-      type: 'omni_production_materials_arr_rel_insert_input',
+      type: 'omni_products_production_materials_arr_rel_insert_input',
       array: false,
       arrayRequired: false,
       required: false,
@@ -12922,32 +13559,14 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    total_sales: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     updated_at: {
       type: 'timestamptz',
       array: false,
       arrayRequired: false,
       required: false,
     },
-    wearable_files: {
-      type: 'omni_wearable_files_arr_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
   },
   omni_products_max_order_by: {
-    asset_files: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     brand: {
       type: 'order_by',
       array: false,
@@ -13020,12 +13639,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    production_material: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     quantity: {
       type: 'order_by',
       array: false,
@@ -13039,12 +13652,6 @@ export const AllTypesProps: Record<string, any> = {
       required: false,
     },
     shopify_id: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    total_sales: {
       type: 'order_by',
       array: false,
       arrayRequired: false,
@@ -13058,12 +13665,6 @@ export const AllTypesProps: Record<string, any> = {
     },
   },
   omni_products_min_order_by: {
-    asset_files: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     brand: {
       type: 'order_by',
       array: false,
@@ -13136,12 +13737,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    production_material: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     quantity: {
       type: 'order_by',
       array: false,
@@ -13155,12 +13750,6 @@ export const AllTypesProps: Record<string, any> = {
       required: false,
     },
     shopify_id: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    total_sales: {
       type: 'order_by',
       array: false,
       arrayRequired: false,
@@ -13208,12 +13797,6 @@ export const AllTypesProps: Record<string, any> = {
     },
   },
   omni_products_order_by: {
-    asset_files: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     brand: {
       type: 'order_by',
       array: false,
@@ -13246,6 +13829,12 @@ export const AllTypesProps: Record<string, any> = {
     },
     discord_channel_id: {
       type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    files_aggregate: {
+      type: 'omni_products_files_aggregate_order_by',
       array: false,
       arrayRequired: false,
       required: false,
@@ -13292,12 +13881,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    priceCurrencyByTotalSales: {
-      type: 'omni_price_currencies_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     price_currency: {
       type: 'omni_price_currencies_order_by',
       array: false,
@@ -13316,20 +13899,8 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    producers_aggregate: {
-      type: 'omni_producers_aggregate_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     product_collaborators_aggregate: {
       type: 'omni_product_collaborators_aggregate_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productionMaterialByProductionMaterial: {
-      type: 'omni_production_materials_order_by',
       array: false,
       arrayRequired: false,
       required: false,
@@ -13340,14 +13911,8 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    production_material: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     production_materials_aggregate: {
-      type: 'omni_production_materials_aggregate_order_by',
+      type: 'omni_products_production_materials_aggregate_order_by',
       array: false,
       arrayRequired: false,
       required: false,
@@ -13400,20 +13965,8 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    total_sales: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     updated_at: {
       type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    wearable_files_aggregate: {
-      type: 'omni_wearable_files_aggregate_order_by',
       array: false,
       arrayRequired: false,
       required: false,
@@ -13427,14 +13980,347 @@ export const AllTypesProps: Record<string, any> = {
       required: true,
     },
   },
-  omni_products_select_column: 'enum',
-  omni_products_set_input: {
-    asset_files: {
-      type: 'String',
+  omni_products_production_materials_aggregate_fields: {
+    count: {
+      columns: {
+        type: 'omni_products_production_materials_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      distinct: {
+        type: 'Boolean',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+  },
+  omni_products_production_materials_aggregate_order_by: {
+    avg: {
+      type: 'omni_products_production_materials_avg_order_by',
       array: false,
       arrayRequired: false,
       required: false,
     },
+    count: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    max: {
+      type: 'omni_products_production_materials_max_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    min: {
+      type: 'omni_products_production_materials_min_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    stddev: {
+      type: 'omni_products_production_materials_stddev_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    stddev_pop: {
+      type: 'omni_products_production_materials_stddev_pop_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    stddev_samp: {
+      type: 'omni_products_production_materials_stddev_samp_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    sum: {
+      type: 'omni_products_production_materials_sum_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    var_pop: {
+      type: 'omni_products_production_materials_var_pop_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    var_samp: {
+      type: 'omni_products_production_materials_var_samp_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    variance: {
+      type: 'omni_products_production_materials_variance_order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_arr_rel_insert_input: {
+    data: {
+      type: 'omni_products_production_materials_insert_input',
+      array: true,
+      arrayRequired: true,
+      required: true,
+    },
+    on_conflict: {
+      type: 'omni_products_production_materials_on_conflict',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_avg_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_bool_exp: {
+    _and: {
+      type: 'omni_products_production_materials_bool_exp',
+      array: true,
+      arrayRequired: false,
+      required: true,
+    },
+    _not: {
+      type: 'omni_products_production_materials_bool_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    _or: {
+      type: 'omni_products_production_materials_bool_exp',
+      array: true,
+      arrayRequired: false,
+      required: true,
+    },
+    id: {
+      type: 'Int_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    product_id: {
+      type: 'uuid_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    production_material_id: {
+      type: 'uuid_comparison_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_constraint: 'enum',
+  omni_products_production_materials_inc_input: {
+    id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_insert_input: {
+    id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    product_id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    production_material_id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_max_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    product_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    production_material_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_min_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    product_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    production_material_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_on_conflict: {
+    constraint: {
+      type: 'omni_products_production_materials_constraint',
+      array: false,
+      arrayRequired: false,
+      required: true,
+    },
+    update_columns: {
+      type: 'omni_products_production_materials_update_column',
+      array: true,
+      arrayRequired: true,
+      required: true,
+    },
+    where: {
+      type: 'omni_products_production_materials_bool_exp',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    product_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    production_material_id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_pk_columns_input: {
+    id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: true,
+    },
+  },
+  omni_products_production_materials_select_column: 'enum',
+  omni_products_production_materials_set_input: {
+    id: {
+      type: 'Int',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    product_id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+    production_material_id: {
+      type: 'uuid',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_stddev_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_stddev_pop_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_stddev_samp_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_sum_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_update_column: 'enum',
+  omni_products_production_materials_var_pop_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_var_samp_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_production_materials_variance_order_by: {
+    id: {
+      type: 'order_by',
+      array: false,
+      arrayRequired: false,
+      required: false,
+    },
+  },
+  omni_products_select_column: 'enum',
+  omni_products_set_input: {
     brand: {
       type: 'uuid',
       array: false,
@@ -13507,12 +14393,6 @@ export const AllTypesProps: Record<string, any> = {
       arrayRequired: false,
       required: false,
     },
-    production_material: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
     quantity: {
       type: 'bigint',
       array: false,
@@ -13539,12 +14419,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     stage: {
       type: 'omni_products_stage_enum_enum',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    total_sales: {
-      type: 'uuid',
       array: false,
       arrayRequired: false,
       required: false,
@@ -15981,537 +16855,6 @@ export const AllTypesProps: Record<string, any> = {
     },
   },
   omni_users_update_column: 'enum',
-  omni_wearable_files_aggregate_fields: {
-    count: {
-      columns: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      distinct: {
-        type: 'Boolean',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-  },
-  omni_wearable_files_aggregate_order_by: {
-    count: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    max: {
-      type: 'omni_wearable_files_max_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    min: {
-      type: 'omni_wearable_files_min_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_arr_rel_insert_input: {
-    data: {
-      type: 'omni_wearable_files_insert_input',
-      array: true,
-      arrayRequired: true,
-      required: true,
-    },
-    on_conflict: {
-      type: 'omni_wearable_files_on_conflict',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_bool_exp: {
-    _and: {
-      type: 'omni_wearable_files_bool_exp',
-      array: true,
-      arrayRequired: false,
-      required: true,
-    },
-    _not: {
-      type: 'omni_wearable_files_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    _or: {
-      type: 'omni_wearable_files_bool_exp',
-      array: true,
-      arrayRequired: false,
-      required: true,
-    },
-    file: {
-      type: 'String_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    id: {
-      type: 'uuid_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    product: {
-      type: 'uuid_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productByProduct: {
-      type: 'omni_products_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    type: {
-      type: 'omni_wearable_types_enum_enum_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    wearable_types_enum: {
-      type: 'omni_wearable_types_enum_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_constraint: 'enum',
-  omni_wearable_files_insert_input: {
-    file: {
-      type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    id: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    product: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productByProduct: {
-      type: 'omni_products_obj_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    type: {
-      type: 'omni_wearable_types_enum_enum',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    wearable_types_enum: {
-      type: 'omni_wearable_types_enum_obj_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_max_order_by: {
-    file: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    id: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    product: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_min_order_by: {
-    file: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    id: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    product: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_on_conflict: {
-    constraint: {
-      type: 'omni_wearable_files_constraint',
-      array: false,
-      arrayRequired: false,
-      required: true,
-    },
-    update_columns: {
-      type: 'omni_wearable_files_update_column',
-      array: true,
-      arrayRequired: true,
-      required: true,
-    },
-    where: {
-      type: 'omni_wearable_files_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_order_by: {
-    file: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    id: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    product: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    productByProduct: {
-      type: 'omni_products_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    type: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    wearable_types_enum: {
-      type: 'omni_wearable_types_enum_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_pk_columns_input: {
-    id: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: true,
-    },
-  },
-  omni_wearable_files_select_column: 'enum',
-  omni_wearable_files_set_input: {
-    file: {
-      type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    id: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    product: {
-      type: 'uuid',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    type: {
-      type: 'omni_wearable_types_enum_enum',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_files_update_column: 'enum',
-  omni_wearable_types_enum: {
-    wearable_files: {
-      distinct_on: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_files_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    wearable_files_aggregate: {
-      distinct_on: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_files_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-  },
-  omni_wearable_types_enum_aggregate_fields: {
-    count: {
-      columns: {
-        type: 'omni_wearable_types_enum_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      distinct: {
-        type: 'Boolean',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-  },
-  omni_wearable_types_enum_bool_exp: {
-    _and: {
-      type: 'omni_wearable_types_enum_bool_exp',
-      array: true,
-      arrayRequired: false,
-      required: true,
-    },
-    _not: {
-      type: 'omni_wearable_types_enum_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    _or: {
-      type: 'omni_wearable_types_enum_bool_exp',
-      array: true,
-      arrayRequired: false,
-      required: true,
-    },
-    description: {
-      type: 'String_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    value: {
-      type: 'String_comparison_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    wearable_files: {
-      type: 'omni_wearable_files_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_types_enum_constraint: 'enum',
-  omni_wearable_types_enum_enum: 'enum',
-  omni_wearable_types_enum_enum_comparison_exp: {
-    _eq: {
-      type: 'omni_wearable_types_enum_enum',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    _in: {
-      type: 'omni_wearable_types_enum_enum',
-      array: true,
-      arrayRequired: false,
-      required: true,
-    },
-    _is_null: {
-      type: 'Boolean',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    _neq: {
-      type: 'omni_wearable_types_enum_enum',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    _nin: {
-      type: 'omni_wearable_types_enum_enum',
-      array: true,
-      arrayRequired: false,
-      required: true,
-    },
-  },
-  omni_wearable_types_enum_insert_input: {
-    description: {
-      type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    value: {
-      type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    wearable_files: {
-      type: 'omni_wearable_files_arr_rel_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_types_enum_obj_rel_insert_input: {
-    data: {
-      type: 'omni_wearable_types_enum_insert_input',
-      array: false,
-      arrayRequired: false,
-      required: true,
-    },
-    on_conflict: {
-      type: 'omni_wearable_types_enum_on_conflict',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_types_enum_on_conflict: {
-    constraint: {
-      type: 'omni_wearable_types_enum_constraint',
-      array: false,
-      arrayRequired: false,
-      required: true,
-    },
-    update_columns: {
-      type: 'omni_wearable_types_enum_update_column',
-      array: true,
-      arrayRequired: true,
-      required: true,
-    },
-    where: {
-      type: 'omni_wearable_types_enum_bool_exp',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_types_enum_order_by: {
-    description: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    value: {
-      type: 'order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    wearable_files_aggregate: {
-      type: 'omni_wearable_files_aggregate_order_by',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_types_enum_pk_columns_input: {
-    value: {
-      type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: true,
-    },
-  },
-  omni_wearable_types_enum_select_column: 'enum',
-  omni_wearable_types_enum_set_input: {
-    description: {
-      type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-    value: {
-      type: 'String',
-      array: false,
-      arrayRequired: false,
-      required: false,
-    },
-  },
-  omni_wearable_types_enum_update_column: 'enum',
   order_by: 'enum',
   query_root: {
     contribution_votes: {
@@ -17025,6 +17368,78 @@ export const AllTypesProps: Record<string, any> = {
     omni_collaborator_types_enum_by_pk: {
       value: {
         type: 'String',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    omni_directus_files: {
+      distinct_on: {
+        type: 'omni_directus_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_directus_files_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_directus_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_directus_files_aggregate: {
+      distinct_on: {
+        type: 'omni_directus_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_directus_files_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_directus_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_directus_files_by_pk: {
+      id: {
+        type: 'uuid',
         array: false,
         arrayRequired: false,
         required: true,
@@ -18254,6 +18669,150 @@ export const AllTypesProps: Record<string, any> = {
         required: true,
       },
     },
+    omni_products_files: {
+      distinct_on: {
+        type: 'omni_products_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_products_files_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_products_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_products_files_aggregate: {
+      distinct_on: {
+        type: 'omni_products_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_products_files_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_products_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_products_files_by_pk: {
+      id: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    omni_products_production_materials: {
+      distinct_on: {
+        type: 'omni_products_production_materials_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_products_production_materials_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_products_production_materials_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_products_production_materials_aggregate: {
+      distinct_on: {
+        type: 'omni_products_production_materials_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_products_production_materials_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_products_production_materials_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_products_production_materials_by_pk: {
+      id: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
     omni_products_stage_enum: {
       distinct_on: {
         type: 'omni_products_stage_enum_select_column',
@@ -18753,150 +19312,6 @@ export const AllTypesProps: Record<string, any> = {
     omni_users_by_pk: {
       id: {
         type: 'uuid',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    omni_wearable_files: {
-      distinct_on: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_files_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    omni_wearable_files_aggregate: {
-      distinct_on: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_files_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    omni_wearable_files_by_pk: {
-      id: {
-        type: 'uuid',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    omni_wearable_types_enum: {
-      distinct_on: {
-        type: 'omni_wearable_types_enum_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_types_enum_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_types_enum_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    omni_wearable_types_enum_aggregate: {
-      distinct_on: {
-        type: 'omni_wearable_types_enum_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_types_enum_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_types_enum_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    omni_wearable_types_enum_by_pk: {
-      value: {
-        type: 'String',
         array: false,
         arrayRequired: false,
         required: true,
@@ -21281,6 +21696,78 @@ export const AllTypesProps: Record<string, any> = {
         required: true,
       },
     },
+    omni_directus_files: {
+      distinct_on: {
+        type: 'omni_directus_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_directus_files_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_directus_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_directus_files_aggregate: {
+      distinct_on: {
+        type: 'omni_directus_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_directus_files_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_directus_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_directus_files_by_pk: {
+      id: {
+        type: 'uuid',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
     omni_fullfillers: {
       distinct_on: {
         type: 'omni_fullfillers_select_column',
@@ -22505,6 +22992,150 @@ export const AllTypesProps: Record<string, any> = {
         required: true,
       },
     },
+    omni_products_files: {
+      distinct_on: {
+        type: 'omni_products_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_products_files_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_products_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_products_files_aggregate: {
+      distinct_on: {
+        type: 'omni_products_files_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_products_files_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_products_files_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_products_files_by_pk: {
+      id: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
+    omni_products_production_materials: {
+      distinct_on: {
+        type: 'omni_products_production_materials_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_products_production_materials_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_products_production_materials_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_products_production_materials_aggregate: {
+      distinct_on: {
+        type: 'omni_products_production_materials_select_column',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      limit: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      offset: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+      order_by: {
+        type: 'omni_products_production_materials_order_by',
+        array: true,
+        arrayRequired: false,
+        required: true,
+      },
+      where: {
+        type: 'omni_products_production_materials_bool_exp',
+        array: false,
+        arrayRequired: false,
+        required: false,
+      },
+    },
+    omni_products_production_materials_by_pk: {
+      id: {
+        type: 'Int',
+        array: false,
+        arrayRequired: false,
+        required: true,
+      },
+    },
     omni_products_stage_enum: {
       distinct_on: {
         type: 'omni_products_stage_enum_select_column',
@@ -23004,150 +23635,6 @@ export const AllTypesProps: Record<string, any> = {
     omni_users_by_pk: {
       id: {
         type: 'uuid',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    omni_wearable_files: {
-      distinct_on: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_files_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    omni_wearable_files_aggregate: {
-      distinct_on: {
-        type: 'omni_wearable_files_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_files_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_files_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    omni_wearable_files_by_pk: {
-      id: {
-        type: 'uuid',
-        array: false,
-        arrayRequired: false,
-        required: true,
-      },
-    },
-    omni_wearable_types_enum: {
-      distinct_on: {
-        type: 'omni_wearable_types_enum_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_types_enum_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_types_enum_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    omni_wearable_types_enum_aggregate: {
-      distinct_on: {
-        type: 'omni_wearable_types_enum_select_column',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      limit: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      offset: {
-        type: 'Int',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-      order_by: {
-        type: 'omni_wearable_types_enum_order_by',
-        array: true,
-        arrayRequired: false,
-        required: true,
-      },
-      where: {
-        type: 'omni_wearable_types_enum_bool_exp',
-        array: false,
-        arrayRequired: false,
-        required: false,
-      },
-    },
-    omni_wearable_types_enum_by_pk: {
-      value: {
-        type: 'String',
         array: false,
         arrayRequired: false,
         required: true,
@@ -24076,6 +24563,8 @@ export const ReturnTypes: Record<string, any> = {
     delete_omni_collaborator_types_enum:
       'omni_collaborator_types_enum_mutation_response',
     delete_omni_collaborator_types_enum_by_pk: 'omni_collaborator_types_enum',
+    delete_omni_directus_files: 'omni_directus_files_mutation_response',
+    delete_omni_directus_files_by_pk: 'omni_directus_files',
     delete_omni_fullfillers: 'omni_fullfillers_mutation_response',
     delete_omni_fullfillers_by_pk: 'omni_fullfillers',
     delete_omni_price_currencies: 'omni_price_currencies_mutation_response',
@@ -24125,6 +24614,12 @@ export const ReturnTypes: Record<string, any> = {
     delete_omni_production_styles_enum_by_pk: 'omni_production_styles_enum',
     delete_omni_products: 'omni_products_mutation_response',
     delete_omni_products_by_pk: 'omni_products',
+    delete_omni_products_files: 'omni_products_files_mutation_response',
+    delete_omni_products_files_by_pk: 'omni_products_files',
+    delete_omni_products_production_materials:
+      'omni_products_production_materials_mutation_response',
+    delete_omni_products_production_materials_by_pk:
+      'omni_products_production_materials',
     delete_omni_products_stage_enum:
       'omni_products_stage_enum_mutation_response',
     delete_omni_products_stage_enum_by_pk: 'omni_products_stage_enum',
@@ -24141,11 +24636,6 @@ export const ReturnTypes: Record<string, any> = {
     delete_omni_user_statuses_enum_by_pk: 'omni_user_statuses_enum',
     delete_omni_users: 'omni_users_mutation_response',
     delete_omni_users_by_pk: 'omni_users',
-    delete_omni_wearable_files: 'omni_wearable_files_mutation_response',
-    delete_omni_wearable_files_by_pk: 'omni_wearable_files',
-    delete_omni_wearable_types_enum:
-      'omni_wearable_types_enum_mutation_response',
-    delete_omni_wearable_types_enum_by_pk: 'omni_wearable_types_enum',
     delete_robot_order: 'robot_order_mutation_response',
     delete_robot_order_by_pk: 'robot_order',
     delete_robot_product: 'robot_product_mutation_response',
@@ -24174,6 +24664,8 @@ export const ReturnTypes: Record<string, any> = {
     insert_omni_collaborator_types_enum:
       'omni_collaborator_types_enum_mutation_response',
     insert_omni_collaborator_types_enum_one: 'omni_collaborator_types_enum',
+    insert_omni_directus_files: 'omni_directus_files_mutation_response',
+    insert_omni_directus_files_one: 'omni_directus_files',
     insert_omni_fullfillers: 'omni_fullfillers_mutation_response',
     insert_omni_fullfillers_one: 'omni_fullfillers',
     insert_omni_price_currencies: 'omni_price_currencies_mutation_response',
@@ -24221,7 +24713,13 @@ export const ReturnTypes: Record<string, any> = {
       'omni_production_styles_enum_mutation_response',
     insert_omni_production_styles_enum_one: 'omni_production_styles_enum',
     insert_omni_products: 'omni_products_mutation_response',
+    insert_omni_products_files: 'omni_products_files_mutation_response',
+    insert_omni_products_files_one: 'omni_products_files',
     insert_omni_products_one: 'omni_products',
+    insert_omni_products_production_materials:
+      'omni_products_production_materials_mutation_response',
+    insert_omni_products_production_materials_one:
+      'omni_products_production_materials',
     insert_omni_products_stage_enum:
       'omni_products_stage_enum_mutation_response',
     insert_omni_products_stage_enum_one: 'omni_products_stage_enum',
@@ -24238,11 +24736,6 @@ export const ReturnTypes: Record<string, any> = {
     insert_omni_user_statuses_enum_one: 'omni_user_statuses_enum',
     insert_omni_users: 'omni_users_mutation_response',
     insert_omni_users_one: 'omni_users',
-    insert_omni_wearable_files: 'omni_wearable_files_mutation_response',
-    insert_omni_wearable_files_one: 'omni_wearable_files',
-    insert_omni_wearable_types_enum:
-      'omni_wearable_types_enum_mutation_response',
-    insert_omni_wearable_types_enum_one: 'omni_wearable_types_enum',
     insert_robot_order: 'robot_order_mutation_response',
     insert_robot_order_one: 'robot_order',
     insert_robot_product: 'robot_product_mutation_response',
@@ -24271,6 +24764,8 @@ export const ReturnTypes: Record<string, any> = {
     update_omni_collaborator_types_enum:
       'omni_collaborator_types_enum_mutation_response',
     update_omni_collaborator_types_enum_by_pk: 'omni_collaborator_types_enum',
+    update_omni_directus_files: 'omni_directus_files_mutation_response',
+    update_omni_directus_files_by_pk: 'omni_directus_files',
     update_omni_fullfillers: 'omni_fullfillers_mutation_response',
     update_omni_fullfillers_by_pk: 'omni_fullfillers',
     update_omni_price_currencies: 'omni_price_currencies_mutation_response',
@@ -24320,6 +24815,12 @@ export const ReturnTypes: Record<string, any> = {
     update_omni_production_styles_enum_by_pk: 'omni_production_styles_enum',
     update_omni_products: 'omni_products_mutation_response',
     update_omni_products_by_pk: 'omni_products',
+    update_omni_products_files: 'omni_products_files_mutation_response',
+    update_omni_products_files_by_pk: 'omni_products_files',
+    update_omni_products_production_materials:
+      'omni_products_production_materials_mutation_response',
+    update_omni_products_production_materials_by_pk:
+      'omni_products_production_materials',
     update_omni_products_stage_enum:
       'omni_products_stage_enum_mutation_response',
     update_omni_products_stage_enum_by_pk: 'omni_products_stage_enum',
@@ -24336,11 +24837,6 @@ export const ReturnTypes: Record<string, any> = {
     update_omni_user_statuses_enum_by_pk: 'omni_user_statuses_enum',
     update_omni_users: 'omni_users_mutation_response',
     update_omni_users_by_pk: 'omni_users',
-    update_omni_wearable_files: 'omni_wearable_files_mutation_response',
-    update_omni_wearable_files_by_pk: 'omni_wearable_files',
-    update_omni_wearable_types_enum:
-      'omni_wearable_types_enum_mutation_response',
-    update_omni_wearable_types_enum_by_pk: 'omni_wearable_types_enum',
     update_robot_order: 'robot_order_mutation_response',
     update_robot_order_by_pk: 'robot_order',
     update_robot_product: 'robot_product_mutation_response',
@@ -24493,6 +24989,142 @@ export const ReturnTypes: Record<string, any> = {
     affected_rows: 'Int',
     returning: 'omni_collaborator_types_enum',
   },
+  omni_directus_files: {
+    charset: 'String',
+    description: 'String',
+    duration: 'Int',
+    embed: 'String',
+    filename_disk: 'String',
+    filename_download: 'String',
+    filesize: 'bigint',
+    folder: 'uuid',
+    height: 'Int',
+    id: 'uuid',
+    location: 'String',
+    metadata: 'json',
+    modified_by: 'uuid',
+    modified_on: 'timestamptz',
+    storage: 'String',
+    tags: 'String',
+    title: 'String',
+    type: 'String',
+    uploaded_by: 'uuid',
+    uploaded_on: 'timestamptz',
+    width: 'Int',
+  },
+  omni_directus_files_aggregate: {
+    aggregate: 'omni_directus_files_aggregate_fields',
+    nodes: 'omni_directus_files',
+  },
+  omni_directus_files_aggregate_fields: {
+    avg: 'omni_directus_files_avg_fields',
+    count: 'Int',
+    max: 'omni_directus_files_max_fields',
+    min: 'omni_directus_files_min_fields',
+    stddev: 'omni_directus_files_stddev_fields',
+    stddev_pop: 'omni_directus_files_stddev_pop_fields',
+    stddev_samp: 'omni_directus_files_stddev_samp_fields',
+    sum: 'omni_directus_files_sum_fields',
+    var_pop: 'omni_directus_files_var_pop_fields',
+    var_samp: 'omni_directus_files_var_samp_fields',
+    variance: 'omni_directus_files_variance_fields',
+  },
+  omni_directus_files_avg_fields: {
+    duration: 'Float',
+    filesize: 'Float',
+    height: 'Float',
+    width: 'Float',
+  },
+  omni_directus_files_max_fields: {
+    charset: 'String',
+    description: 'String',
+    duration: 'Int',
+    embed: 'String',
+    filename_disk: 'String',
+    filename_download: 'String',
+    filesize: 'bigint',
+    folder: 'uuid',
+    height: 'Int',
+    id: 'uuid',
+    location: 'String',
+    modified_by: 'uuid',
+    modified_on: 'timestamptz',
+    storage: 'String',
+    tags: 'String',
+    title: 'String',
+    type: 'String',
+    uploaded_by: 'uuid',
+    uploaded_on: 'timestamptz',
+    width: 'Int',
+  },
+  omni_directus_files_min_fields: {
+    charset: 'String',
+    description: 'String',
+    duration: 'Int',
+    embed: 'String',
+    filename_disk: 'String',
+    filename_download: 'String',
+    filesize: 'bigint',
+    folder: 'uuid',
+    height: 'Int',
+    id: 'uuid',
+    location: 'String',
+    modified_by: 'uuid',
+    modified_on: 'timestamptz',
+    storage: 'String',
+    tags: 'String',
+    title: 'String',
+    type: 'String',
+    uploaded_by: 'uuid',
+    uploaded_on: 'timestamptz',
+    width: 'Int',
+  },
+  omni_directus_files_mutation_response: {
+    affected_rows: 'Int',
+    returning: 'omni_directus_files',
+  },
+  omni_directus_files_stddev_fields: {
+    duration: 'Float',
+    filesize: 'Float',
+    height: 'Float',
+    width: 'Float',
+  },
+  omni_directus_files_stddev_pop_fields: {
+    duration: 'Float',
+    filesize: 'Float',
+    height: 'Float',
+    width: 'Float',
+  },
+  omni_directus_files_stddev_samp_fields: {
+    duration: 'Float',
+    filesize: 'Float',
+    height: 'Float',
+    width: 'Float',
+  },
+  omni_directus_files_sum_fields: {
+    duration: 'Int',
+    filesize: 'bigint',
+    height: 'Int',
+    width: 'Int',
+  },
+  omni_directus_files_var_pop_fields: {
+    duration: 'Float',
+    filesize: 'Float',
+    height: 'Float',
+    width: 'Float',
+  },
+  omni_directus_files_var_samp_fields: {
+    duration: 'Float',
+    filesize: 'Float',
+    height: 'Float',
+    width: 'Float',
+  },
+  omni_directus_files_variance_fields: {
+    duration: 'Float',
+    filesize: 'Float',
+    height: 'Float',
+    width: 'Float',
+  },
   omni_fullfillers: {
     address: 'String',
     created_at: 'timestamptz',
@@ -24542,12 +25174,6 @@ export const ReturnTypes: Record<string, any> = {
     currency: 'String',
     id: 'uuid',
     price: 'numeric',
-    products: 'omni_products',
-    productsByProductionCost: 'omni_products',
-    productsByProductionCost_aggregate: 'omni_products_aggregate',
-    productsByTotalSales: 'omni_products',
-    productsByTotalSales_aggregate: 'omni_products_aggregate',
-    products_aggregate: 'omni_products_aggregate',
   },
   omni_price_currencies_aggregate: {
     aggregate: 'omni_price_currencies_aggregate_fields',
@@ -24666,14 +25292,12 @@ export const ReturnTypes: Record<string, any> = {
     id: 'uuid',
     name: 'String',
     producer_statuses_enum: 'omni_producer_statuses_enum',
-    product: 'omni_products',
     production_materials_producers: 'omni_production_materials_producers',
     production_materials_producers_aggregate:
       'omni_production_materials_producers_aggregate',
     production_methods_producers: 'omni_production_methods_producers',
     production_methods_producers_aggregate:
       'omni_production_methods_producers_aggregate',
-    products: 'uuid',
     productsByProducer: 'omni_products',
     productsByProducer_aggregate: 'omni_products_aggregate',
     status: 'omni_producer_statuses_enum_enum',
@@ -24695,7 +25319,6 @@ export const ReturnTypes: Record<string, any> = {
     eth_address: 'String',
     id: 'uuid',
     name: 'String',
-    products: 'uuid',
     updated_at: 'timestamptz',
   },
   omni_producers_min_fields: {
@@ -24705,7 +25328,6 @@ export const ReturnTypes: Record<string, any> = {
     eth_address: 'String',
     id: 'uuid',
     name: 'String',
-    products: 'uuid',
     updated_at: 'timestamptz',
   },
   omni_producers_mutation_response: {
@@ -24845,7 +25467,6 @@ export const ReturnTypes: Record<string, any> = {
     pallette: 'omni_production_pallettes_enum_enum',
     print_tech: 'omni_print_techs_enum_enum',
     print_techs_enum: 'omni_print_techs_enum',
-    product: 'omni_products',
     product_types_enum: 'omni_product_types_enum',
     production_genders_enum: 'omni_production_genders_enum',
     production_materials_producers: 'omni_production_materials_producers',
@@ -24854,15 +25475,14 @@ export const ReturnTypes: Record<string, any> = {
     production_materials_ratings_enum: 'omni_production_materials_ratings_enum',
     production_pallettes_enum: 'omni_production_pallettes_enum',
     production_styles_enum: 'omni_production_styles_enum',
-    products: 'uuid',
-    productsByProductionMaterial: 'omni_products',
-    productsByProductionMaterial_aggregate: 'omni_products_aggregate',
     rating: 'omni_production_materials_ratings_enum_enum',
     size_guide: 'String',
     style: 'omni_production_styles_enum_enum',
     style_number: 'String',
     type: 'String',
     updated_at: 'timestamptz',
+    used_in_products: 'omni_products_production_materials',
+    used_in_products_aggregate: 'omni_products_production_materials_aggregate',
   },
   omni_production_materials_aggregate: {
     aggregate: 'omni_production_materials_aggregate_fields',
@@ -24891,7 +25511,6 @@ export const ReturnTypes: Record<string, any> = {
     description: 'String',
     id: 'uuid',
     name: 'String',
-    products: 'uuid',
     size_guide: 'String',
     style_number: 'String',
     type: 'String',
@@ -24904,7 +25523,6 @@ export const ReturnTypes: Record<string, any> = {
     description: 'String',
     id: 'uuid',
     name: 'String',
-    products: 'uuid',
     size_guide: 'String',
     style_number: 'String',
     type: 'String',
@@ -25147,13 +25765,14 @@ export const ReturnTypes: Record<string, any> = {
     returning: 'omni_production_styles_enum',
   },
   omni_products: {
-    asset_files: 'String',
     brand: 'uuid',
     brandByBrand: 'omni_brands',
     brand_reward_share: 'numeric',
     collaborator_reward_share: 'numeric',
     created_at: 'timestamptz',
     discord_channel_id: 'String',
+    files: 'omni_products_files',
+    files_aggregate: 'omni_products_files_aggregate',
     fullfiller: 'omni_fullfillers',
     fullfillment: 'uuid',
     id: 'uuid',
@@ -25161,19 +25780,15 @@ export const ReturnTypes: Record<string, any> = {
     notion_id: 'String',
     price: 'uuid',
     priceCurrencyByProductionCost: 'omni_price_currencies',
-    priceCurrencyByTotalSales: 'omni_price_currencies',
     price_currency: 'omni_price_currencies',
     producer: 'uuid',
     producerByProducer: 'omni_producers',
-    producers: 'omni_producers',
-    producers_aggregate: 'omni_producers_aggregate',
     product_collaborators: 'omni_product_collaborators',
     product_collaborators_aggregate: 'omni_product_collaborators_aggregate',
-    productionMaterialByProductionMaterial: 'omni_production_materials',
     production_cost: 'uuid',
-    production_material: 'uuid',
-    production_materials: 'omni_production_materials',
-    production_materials_aggregate: 'omni_production_materials_aggregate',
+    production_materials: 'omni_products_production_materials',
+    production_materials_aggregate:
+      'omni_products_production_materials_aggregate',
     production_methods_products: 'omni_production_methods_products',
     production_methods_products_aggregate:
       'omni_production_methods_products_aggregate',
@@ -25184,10 +25799,7 @@ export const ReturnTypes: Record<string, any> = {
     shop_description: 'String',
     shopify_id: 'String',
     stage: 'omni_products_stage_enum_enum',
-    total_sales: 'uuid',
     updated_at: 'timestamptz',
-    wearable_files: 'omni_wearable_files',
-    wearable_files_aggregate: 'omni_wearable_files_aggregate',
   },
   omni_products_aggregate: {
     aggregate: 'omni_products_aggregate_fields',
@@ -25211,8 +25823,67 @@ export const ReturnTypes: Record<string, any> = {
     collaborator_reward_share: 'Float',
     quantity: 'Float',
   },
+  omni_products_files: {
+    directus_files_id: 'uuid',
+    id: 'Int',
+    products_id: 'uuid',
+  },
+  omni_products_files_aggregate: {
+    aggregate: 'omni_products_files_aggregate_fields',
+    nodes: 'omni_products_files',
+  },
+  omni_products_files_aggregate_fields: {
+    avg: 'omni_products_files_avg_fields',
+    count: 'Int',
+    max: 'omni_products_files_max_fields',
+    min: 'omni_products_files_min_fields',
+    stddev: 'omni_products_files_stddev_fields',
+    stddev_pop: 'omni_products_files_stddev_pop_fields',
+    stddev_samp: 'omni_products_files_stddev_samp_fields',
+    sum: 'omni_products_files_sum_fields',
+    var_pop: 'omni_products_files_var_pop_fields',
+    var_samp: 'omni_products_files_var_samp_fields',
+    variance: 'omni_products_files_variance_fields',
+  },
+  omni_products_files_avg_fields: {
+    id: 'Float',
+  },
+  omni_products_files_max_fields: {
+    directus_files_id: 'uuid',
+    id: 'Int',
+    products_id: 'uuid',
+  },
+  omni_products_files_min_fields: {
+    directus_files_id: 'uuid',
+    id: 'Int',
+    products_id: 'uuid',
+  },
+  omni_products_files_mutation_response: {
+    affected_rows: 'Int',
+    returning: 'omni_products_files',
+  },
+  omni_products_files_stddev_fields: {
+    id: 'Float',
+  },
+  omni_products_files_stddev_pop_fields: {
+    id: 'Float',
+  },
+  omni_products_files_stddev_samp_fields: {
+    id: 'Float',
+  },
+  omni_products_files_sum_fields: {
+    id: 'Int',
+  },
+  omni_products_files_var_pop_fields: {
+    id: 'Float',
+  },
+  omni_products_files_var_samp_fields: {
+    id: 'Float',
+  },
+  omni_products_files_variance_fields: {
+    id: 'Float',
+  },
   omni_products_max_fields: {
-    asset_files: 'String',
     brand: 'uuid',
     brand_reward_share: 'numeric',
     collaborator_reward_share: 'numeric',
@@ -25225,15 +25896,12 @@ export const ReturnTypes: Record<string, any> = {
     price: 'uuid',
     producer: 'uuid',
     production_cost: 'uuid',
-    production_material: 'uuid',
     quantity: 'bigint',
     shop_description: 'String',
     shopify_id: 'String',
-    total_sales: 'uuid',
     updated_at: 'timestamptz',
   },
   omni_products_min_fields: {
-    asset_files: 'String',
     brand: 'uuid',
     brand_reward_share: 'numeric',
     collaborator_reward_share: 'numeric',
@@ -25246,16 +25914,74 @@ export const ReturnTypes: Record<string, any> = {
     price: 'uuid',
     producer: 'uuid',
     production_cost: 'uuid',
-    production_material: 'uuid',
     quantity: 'bigint',
     shop_description: 'String',
     shopify_id: 'String',
-    total_sales: 'uuid',
     updated_at: 'timestamptz',
   },
   omni_products_mutation_response: {
     affected_rows: 'Int',
     returning: 'omni_products',
+  },
+  omni_products_production_materials: {
+    id: 'Int',
+    product_id: 'uuid',
+    production_material_id: 'uuid',
+  },
+  omni_products_production_materials_aggregate: {
+    aggregate: 'omni_products_production_materials_aggregate_fields',
+    nodes: 'omni_products_production_materials',
+  },
+  omni_products_production_materials_aggregate_fields: {
+    avg: 'omni_products_production_materials_avg_fields',
+    count: 'Int',
+    max: 'omni_products_production_materials_max_fields',
+    min: 'omni_products_production_materials_min_fields',
+    stddev: 'omni_products_production_materials_stddev_fields',
+    stddev_pop: 'omni_products_production_materials_stddev_pop_fields',
+    stddev_samp: 'omni_products_production_materials_stddev_samp_fields',
+    sum: 'omni_products_production_materials_sum_fields',
+    var_pop: 'omni_products_production_materials_var_pop_fields',
+    var_samp: 'omni_products_production_materials_var_samp_fields',
+    variance: 'omni_products_production_materials_variance_fields',
+  },
+  omni_products_production_materials_avg_fields: {
+    id: 'Float',
+  },
+  omni_products_production_materials_max_fields: {
+    id: 'Int',
+    product_id: 'uuid',
+    production_material_id: 'uuid',
+  },
+  omni_products_production_materials_min_fields: {
+    id: 'Int',
+    product_id: 'uuid',
+    production_material_id: 'uuid',
+  },
+  omni_products_production_materials_mutation_response: {
+    affected_rows: 'Int',
+    returning: 'omni_products_production_materials',
+  },
+  omni_products_production_materials_stddev_fields: {
+    id: 'Float',
+  },
+  omni_products_production_materials_stddev_pop_fields: {
+    id: 'Float',
+  },
+  omni_products_production_materials_stddev_samp_fields: {
+    id: 'Float',
+  },
+  omni_products_production_materials_sum_fields: {
+    id: 'Int',
+  },
+  omni_products_production_materials_var_pop_fields: {
+    id: 'Float',
+  },
+  omni_products_production_materials_var_samp_fields: {
+    id: 'Float',
+  },
+  omni_products_production_materials_variance_fields: {
+    id: 'Float',
   },
   omni_products_stage_enum: {
     description: 'String',
@@ -25511,64 +26237,6 @@ export const ReturnTypes: Record<string, any> = {
     affected_rows: 'Int',
     returning: 'omni_users',
   },
-  omni_wearable_files: {
-    file: 'String',
-    id: 'uuid',
-    product: 'uuid',
-    productByProduct: 'omni_products',
-    type: 'omni_wearable_types_enum_enum',
-    wearable_types_enum: 'omni_wearable_types_enum',
-  },
-  omni_wearable_files_aggregate: {
-    aggregate: 'omni_wearable_files_aggregate_fields',
-    nodes: 'omni_wearable_files',
-  },
-  omni_wearable_files_aggregate_fields: {
-    count: 'Int',
-    max: 'omni_wearable_files_max_fields',
-    min: 'omni_wearable_files_min_fields',
-  },
-  omni_wearable_files_max_fields: {
-    file: 'String',
-    id: 'uuid',
-    product: 'uuid',
-  },
-  omni_wearable_files_min_fields: {
-    file: 'String',
-    id: 'uuid',
-    product: 'uuid',
-  },
-  omni_wearable_files_mutation_response: {
-    affected_rows: 'Int',
-    returning: 'omni_wearable_files',
-  },
-  omni_wearable_types_enum: {
-    description: 'String',
-    value: 'String',
-    wearable_files: 'omni_wearable_files',
-    wearable_files_aggregate: 'omni_wearable_files_aggregate',
-  },
-  omni_wearable_types_enum_aggregate: {
-    aggregate: 'omni_wearable_types_enum_aggregate_fields',
-    nodes: 'omni_wearable_types_enum',
-  },
-  omni_wearable_types_enum_aggregate_fields: {
-    count: 'Int',
-    max: 'omni_wearable_types_enum_max_fields',
-    min: 'omni_wearable_types_enum_min_fields',
-  },
-  omni_wearable_types_enum_max_fields: {
-    description: 'String',
-    value: 'String',
-  },
-  omni_wearable_types_enum_min_fields: {
-    description: 'String',
-    value: 'String',
-  },
-  omni_wearable_types_enum_mutation_response: {
-    affected_rows: 'Int',
-    returning: 'omni_wearable_types_enum',
-  },
   query_root: {
     contribution_votes: 'contribution_votes',
     contribution_votes_aggregate: 'contribution_votes_aggregate',
@@ -25592,6 +26260,9 @@ export const ReturnTypes: Record<string, any> = {
     omni_collaborator_types_enum_aggregate:
       'omni_collaborator_types_enum_aggregate',
     omni_collaborator_types_enum_by_pk: 'omni_collaborator_types_enum',
+    omni_directus_files: 'omni_directus_files',
+    omni_directus_files_aggregate: 'omni_directus_files_aggregate',
+    omni_directus_files_by_pk: 'omni_directus_files',
     omni_fullfillers: 'omni_fullfillers',
     omni_fullfillers_aggregate: 'omni_fullfillers_aggregate',
     omni_fullfillers_by_pk: 'omni_fullfillers',
@@ -25656,6 +26327,14 @@ export const ReturnTypes: Record<string, any> = {
     omni_products: 'omni_products',
     omni_products_aggregate: 'omni_products_aggregate',
     omni_products_by_pk: 'omni_products',
+    omni_products_files: 'omni_products_files',
+    omni_products_files_aggregate: 'omni_products_files_aggregate',
+    omni_products_files_by_pk: 'omni_products_files',
+    omni_products_production_materials: 'omni_products_production_materials',
+    omni_products_production_materials_aggregate:
+      'omni_products_production_materials_aggregate',
+    omni_products_production_materials_by_pk:
+      'omni_products_production_materials',
     omni_products_stage_enum: 'omni_products_stage_enum',
     omni_products_stage_enum_aggregate: 'omni_products_stage_enum_aggregate',
     omni_products_stage_enum_by_pk: 'omni_products_stage_enum',
@@ -25678,12 +26357,6 @@ export const ReturnTypes: Record<string, any> = {
     omni_users: 'omni_users',
     omni_users_aggregate: 'omni_users_aggregate',
     omni_users_by_pk: 'omni_users',
-    omni_wearable_files: 'omni_wearable_files',
-    omni_wearable_files_aggregate: 'omni_wearable_files_aggregate',
-    omni_wearable_files_by_pk: 'omni_wearable_files',
-    omni_wearable_types_enum: 'omni_wearable_types_enum',
-    omni_wearable_types_enum_aggregate: 'omni_wearable_types_enum_aggregate',
-    omni_wearable_types_enum_by_pk: 'omni_wearable_types_enum',
     robot_order: 'robot_order',
     robot_order_aggregate: 'robot_order_aggregate',
     robot_order_by_pk: 'robot_order',
@@ -26014,6 +26687,9 @@ export const ReturnTypes: Record<string, any> = {
     omni_collaborator_types_enum_aggregate:
       'omni_collaborator_types_enum_aggregate',
     omni_collaborator_types_enum_by_pk: 'omni_collaborator_types_enum',
+    omni_directus_files: 'omni_directus_files',
+    omni_directus_files_aggregate: 'omni_directus_files_aggregate',
+    omni_directus_files_by_pk: 'omni_directus_files',
     omni_fullfillers: 'omni_fullfillers',
     omni_fullfillers_aggregate: 'omni_fullfillers_aggregate',
     omni_fullfillers_by_pk: 'omni_fullfillers',
@@ -26078,6 +26754,14 @@ export const ReturnTypes: Record<string, any> = {
     omni_products: 'omni_products',
     omni_products_aggregate: 'omni_products_aggregate',
     omni_products_by_pk: 'omni_products',
+    omni_products_files: 'omni_products_files',
+    omni_products_files_aggregate: 'omni_products_files_aggregate',
+    omni_products_files_by_pk: 'omni_products_files',
+    omni_products_production_materials: 'omni_products_production_materials',
+    omni_products_production_materials_aggregate:
+      'omni_products_production_materials_aggregate',
+    omni_products_production_materials_by_pk:
+      'omni_products_production_materials',
     omni_products_stage_enum: 'omni_products_stage_enum',
     omni_products_stage_enum_aggregate: 'omni_products_stage_enum_aggregate',
     omni_products_stage_enum_by_pk: 'omni_products_stage_enum',
@@ -26100,12 +26784,6 @@ export const ReturnTypes: Record<string, any> = {
     omni_users: 'omni_users',
     omni_users_aggregate: 'omni_users_aggregate',
     omni_users_by_pk: 'omni_users',
-    omni_wearable_files: 'omni_wearable_files',
-    omni_wearable_files_aggregate: 'omni_wearable_files_aggregate',
-    omni_wearable_files_by_pk: 'omni_wearable_files',
-    omni_wearable_types_enum: 'omni_wearable_types_enum',
-    omni_wearable_types_enum_aggregate: 'omni_wearable_types_enum_aggregate',
-    omni_wearable_types_enum_by_pk: 'omni_wearable_types_enum',
     robot_order: 'robot_order',
     robot_order_aggregate: 'robot_order_aggregate',
     robot_order_by_pk: 'robot_order',
