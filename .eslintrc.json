@@ -74,6 +74,13 @@
     ]
   },
   "overrides": [
+    // Turn off rules of hooks in non React code so useZeusVariables doesn't show errors
+    {
+      "files": ["packages/services/**/*.ts"],
+      "rules": {
+        "react-hooks/rules-of-hooks": "off"
+      }
+    },
     {
       // assuming Next.js application
       "files": "**/pages/**/*.{ts,tsx}",

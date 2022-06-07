@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { z } from 'zod';
 
-import { $, ValueTypes } from '../graphql/__generated__/zeus';
+import { useZeusVariables, ValueTypes } from '../graphql/__generated__/zeus';
 import { client } from '../graphql/client';
 import { WearableMetadata } from '../types/wearables';
 import { EXTENSION_MIME_TYPES, getFiles } from './filesHelpers';
@@ -27,13 +27,24 @@ export const updateProduct = async (
   _set: ValueTypes['robot_product_set_input'],
   _append: ValueTypes['robot_product_append_input'] = {},
 ) => {
+  const variables = useZeusVariables({
+    shopifyId: 'String!',
+    _set: 'robot_product_set_input',
+    _append: 'robot_product_append_input',
+  })({
+    shopifyId,
+    _set,
+    _append,
+  });
+  const { $ } = variables;
+
   const data = await client.mutate(
     {
       update_robot_product: [
         {
-          where: { shopify_id: { _eq: $`shopifyId` } },
-          _set: $`_set`,
-          _append: $`_append`,
+          where: { shopify_id: { _eq: $('shopifyId') } },
+          _set: $('_set'),
+          _append: $('_append'),
         },
         {
           affected_rows: true,
@@ -46,7 +57,7 @@ export const updateProduct = async (
     },
     {
       operationName: 'updateProduct',
-      variables: { shopifyId, _set, _append },
+      variables,
     },
   );
 

@@ -1,0 +1,7 @@
+table:
+  schema: robot
+  name: merkle_claims
+object_relationships:
+  - name: merkle_root
+    using:
+      foreign_key_constraint_on: merkle_root_hash

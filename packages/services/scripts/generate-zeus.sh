@@ -45,4 +45,4 @@ generate "$GEN_PATH" -h x-hasura-admin-secret:"$GRAPHQL_ADMIN_SECRET"
 #generate $GEN_PATH -h x-hasura-role:user -h "authorization:generate"
 
 # fix formatting of generated files
-#node_modules/.bin/prettier --write $GEN_PATH
+node_modules/.bin/prettier --write $GEN_PATH
