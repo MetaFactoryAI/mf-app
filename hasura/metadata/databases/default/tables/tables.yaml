@@ -26,8 +26,6 @@
 - "!include omni_user_skills.yaml"
 - "!include omni_user_statuses_enum.yaml"
 - "!include omni_users.yaml"
-- "!include omni_wearable_files.yaml"
-- "!include omni_wearable_types_enum.yaml"
 - "!include public_contribution_votes.yaml"
 - "!include public_contributions.yaml"
 - "!include public_contributors.yaml"

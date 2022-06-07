@@ -6,6 +6,7 @@
     "start": "directus bootstrap; directus start",
     "test": "echo 'No tests setup'",
     "snapshot": "npx directus schema snapshot ./snapshot.yaml",
+    "snapshot:apply": "npx directus schema apply ./snapshot.yaml",
     "snapshot:backup": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
   },
   "engines": {

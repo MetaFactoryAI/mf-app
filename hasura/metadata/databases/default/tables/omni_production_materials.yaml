@@ -5,9 +5,6 @@ object_relationships:
   - name: print_techs_enum
     using:
       foreign_key_constraint_on: print_tech
-  - name: product
-    using:
-      foreign_key_constraint_on: products
   - name: product_types_enum
     using:
       foreign_key_constraint_on: type
@@ -31,10 +28,3 @@ array_relationships:
         table:
           schema: omni
           name: production_materials_producers
-  - name: productsByProductionMaterial
-    using:
-      foreign_key_constraint_on:
-        column: production_material
-        table:
-          schema: omni
-          name: products
