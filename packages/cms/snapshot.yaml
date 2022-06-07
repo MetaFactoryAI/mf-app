@@ -33,11 +33,11 @@ collections:
       archive_value: null
       collapse: open
       collection: brand_users
-      color: null
+      color: '#3399FF'
       display_template: null
       group: null
       hidden: false
-      icon: null
+      icon: supervised_user_circle
       item_duplication_fields: null
       note: null
       singleton: false
@@ -74,7 +74,25 @@ collections:
       name: brands
       schema: omni
   - collection: collaborator_types_enum
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: collaborator_types_enum
+      color: null
+      display_template: '{{value}}'
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: collaborator_types_enum
@@ -87,11 +105,11 @@ collections:
       archive_value: null
       collapse: open
       collection: fullfillers
-      color: null
+      color: '#FFC23B'
       display_template: '{{name}}'
       group: null
       hidden: false
-      icon: null
+      icon: local_shipping
       item_duplication_fields: null
       note: null
       singleton: false
@@ -128,7 +146,25 @@ collections:
       name: price_currencies
       schema: omni
   - collection: print_techs_enum
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: print_techs_enum
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: print_techs_enum
@@ -147,11 +183,11 @@ collections:
       archive_value: null
       collapse: open
       collection: producers
-      color: null
+      color: '#FFC23B'
       display_template: '{{name}}'
       group: null
       hidden: false
-      icon: null
+      icon: factory
       item_duplication_fields: null
       note: null
       singleton: false
@@ -171,7 +207,7 @@ collections:
       archive_value: null
       collapse: open
       collection: product_collaborators
-      color: null
+      color: '#E35169'
       display_template: "{{collaborator}}({{type}}) -\_{{collaboration_share}}"
       group: null
       hidden: false
@@ -188,7 +224,25 @@ collections:
       name: product_collaborators
       schema: omni
   - collection: product_types_enum
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: product_types_enum
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: product_types_enum
@@ -200,7 +254,25 @@ collections:
       name: production_genders_enum
       schema: omni
   - collection: production_materials
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: production_materials
+      color: '#6644FF'
+      display_template: null
+      group: null
+      hidden: false
+      icon: content_cut
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: production_materials
@@ -212,7 +284,25 @@ collections:
       name: production_materials_producers
       schema: omni
   - collection: production_materials_ratings_enum
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: production_materials_ratings_enum
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: production_materials_ratings_enum
@@ -236,7 +326,25 @@ collections:
       name: production_methods_products
       schema: omni
   - collection: production_pallettes_enum
-    meta: null
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: production_pallettes_enum
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
     schema:
       comment: null
       name: production_pallettes_enum
@@ -270,6 +378,30 @@ collections:
     schema:
       comment: null
       name: products
+      schema: omni
+  - collection: products_files
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products_files
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: products_files
       schema: omni
   - collection: products_stage_enum
     meta:
@@ -366,18 +498,6 @@ collections:
     schema:
       comment: null
       name: users
-      schema: omni
-  - collection: wearable_files
-    meta: null
-    schema:
-      comment: null
-      name: wearable_files
-      schema: omni
-  - collection: wearable_types_enum
-    meta: null
-    schema:
-      comment: null
-      name: wearable_types_enum
       schema: omni
 fields:
   - collection: brand_statuses_enum
@@ -1063,7 +1183,25 @@ fields:
     type: text
   - collection: collaborator_types_enum
     field: description
-    meta: null
+    meta:
+      collection: collaborator_types_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -1086,7 +1224,25 @@ fields:
     type: text
   - collection: collaborator_types_enum
     field: value
-    meta: null
+    meta:
+      collection: collaborator_types_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: value
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -1555,7 +1711,25 @@ fields:
     type: integer
   - collection: print_techs_enum
     field: description
-    meta: null
+    meta:
+      collection: print_techs_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -1578,7 +1752,25 @@ fields:
     type: text
   - collection: print_techs_enum
     field: value
-    meta: null
+    meta:
+      collection: print_techs_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: value
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2221,7 +2413,25 @@ fields:
     type: text
   - collection: product_types_enum
     field: description
-    meta: null
+    meta:
+      collection: product_types_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2244,7 +2454,25 @@ fields:
     type: text
   - collection: product_types_enum
     field: value
-    meta: null
+    meta:
+      collection: product_types_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: value
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2313,7 +2541,27 @@ fields:
     type: text
   - collection: production_materials
     field: base_price
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: base_price
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: attach_money
+        min: 0
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: numeric
@@ -2336,7 +2584,25 @@ fields:
     type: integer
   - collection: production_materials
     field: composition
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: composition
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2359,7 +2625,26 @@ fields:
     type: text
   - collection: production_materials
     field: created_at
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+      field: created_at
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: on create
       data_type: timestamp with time zone
@@ -2382,7 +2667,25 @@ fields:
     type: timestamp
   - collection: production_materials
     field: description
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2405,7 +2708,26 @@ fields:
     type: text
   - collection: production_materials
     field: gender
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: gender
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2428,7 +2750,25 @@ fields:
     type: text
   - collection: production_materials
     field: id
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: uuid
@@ -2451,7 +2791,25 @@ fields:
     type: uuid
   - collection: production_materials
     field: name
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2474,7 +2832,25 @@ fields:
     type: text
   - collection: production_materials
     field: neck_tag
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: raw
+      display_options: null
+      field: neck_tag
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: boolean
@@ -2497,7 +2873,26 @@ fields:
     type: boolean
   - collection: production_materials
     field: pallette
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: pallette
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2520,7 +2915,26 @@ fields:
     type: text
   - collection: production_materials
     field: print_tech
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: print_tech
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2542,31 +2956,27 @@ fields:
       table: production_materials
     type: text
   - collection: production_materials
-    field: products
-    meta: null
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: products
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: products
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: production_materials
-    type: uuid
-  - collection: production_materials
     field: rating
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: rating
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2589,7 +2999,26 @@ fields:
     type: text
   - collection: production_materials
     field: size_guide
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: size_guide
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Size Guide Image URL
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: link to guide
       data_type: text
@@ -2612,7 +3041,26 @@ fields:
     type: text
   - collection: production_materials
     field: style
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: style
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2635,7 +3083,25 @@ fields:
     type: text
   - collection: production_materials
     field: style_number
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: style_number
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2658,7 +3124,26 @@ fields:
     type: text
   - collection: production_materials
     field: type
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: type
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{value}}'
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2681,7 +3166,27 @@ fields:
     type: text
   - collection: production_materials
     field: updated_at
-    meta: null
+    meta:
+      collection: production_materials
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+        relative: true
+      field: updated_at
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: on touch
       data_type: timestamp with time zone
@@ -2773,7 +3278,25 @@ fields:
     type: uuid
   - collection: production_materials_ratings_enum
     field: description
-    meta: null
+    meta:
+      collection: production_materials_ratings_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -2796,7 +3319,25 @@ fields:
     type: text
   - collection: production_materials_ratings_enum
     field: value
-    meta: null
+    meta:
+      collection: production_materials_ratings_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: value
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3072,7 +3613,25 @@ fields:
     type: uuid
   - collection: production_pallettes_enum
     field: description
-    meta: null
+    meta:
+      collection: production_pallettes_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3095,7 +3654,25 @@ fields:
     type: text
   - collection: production_pallettes_enum
     field: value
-    meta: null
+    meta:
+      collection: production_pallettes_enum
+      conditions: null
+      display: null
+      display_options: null
+      field: value
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
     schema:
       comment: null
       data_type: text
@@ -3429,6 +4006,30 @@ fields:
       table: products
     type: text
   - collection: products
+    field: files
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options: null
+      field: files
+      group: null
+      hidden: false
+      interface: files
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - files
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
     field: fullfillment
     meta:
       collection: products
@@ -3752,47 +4353,6 @@ fields:
       table: products
     type: uuid
   - collection: products
-    field: production_material
-    meta:
-      collection: products
-      conditions: null
-      display: related-values
-      display_options: null
-      field: production_material
-      group: null
-      hidden: false
-      interface: select-dropdown-m2o
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 15
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: production_materials
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: production_material
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: products
-    type: uuid
-  - collection: products
     field: quantity
     meta:
       collection: products
@@ -4064,6 +4624,129 @@ fields:
       schema: omni
       table: products
     type: timestamp
+  - collection: products_files
+    field: directus_files_id
+    meta:
+      collection: products_files
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: directus_files_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products_files
+    type: uuid
+  - collection: products_files
+    field: id
+    meta:
+      collection: products_files
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('products_files_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: omni
+      table: products_files
+    type: integer
+  - collection: products_files
+    field: products_id
+    meta:
+      collection: products_files
+      conditions: null
+      display: null
+      display_options: null
+      field: products_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: products_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products_files
+    type: uuid
   - collection: products_stage_enum
     field: description
     meta:
@@ -4913,144 +5596,6 @@ fields:
       schema: omni
       table: users
     type: timestamp
-  - collection: wearable_files
-    field: file
-    meta: null
-    schema:
-      comment: null
-      data_type: text
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: file
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: wearable_files
-    type: text
-  - collection: wearable_files
-    field: id
-    meta: null
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: false
-      is_primary_key: true
-      is_unique: true
-      max_length: null
-      name: id
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: wearable_files
-    type: uuid
-  - collection: wearable_files
-    field: product
-    meta: null
-    schema:
-      comment: null
-      data_type: uuid
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: products
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: product
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: wearable_files
-    type: uuid
-  - collection: wearable_files
-    field: type
-    meta: null
-    schema:
-      comment: null
-      data_type: text
-      default_value: null
-      foreign_key_column: value
-      foreign_key_schema: omni
-      foreign_key_table: wearable_types_enum
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: type
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: wearable_files
-    type: text
-  - collection: wearable_types_enum
-    field: description
-    meta: null
-    schema:
-      comment: null
-      data_type: text
-      default_value: ''
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: description
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: wearable_types_enum
-    type: text
-  - collection: wearable_types_enum
-    field: value
-    meta: null
-    schema:
-      comment: null
-      data_type: text
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: false
-      is_primary_key: true
-      is_unique: true
-      max_length: null
-      name: value
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: wearable_types_enum
-    type: text
 relations:
   - collection: brand_users
     field: brand
@@ -5197,19 +5742,6 @@ relations:
       foreign_key_column: value
       foreign_key_schema: omni
       foreign_key_table: print_techs_enum
-      on_delete: NO ACTION
-      on_update: NO ACTION
-      table: production_materials
-  - collection: production_materials
-    field: products
-    meta: null
-    related_collection: products
-    schema:
-      column: products
-      constraint_name: production_materials_products_fkey
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: products
       on_delete: NO ACTION
       on_update: NO ACTION
       table: production_materials
@@ -5396,19 +5928,6 @@ relations:
       on_update: NO ACTION
       table: products
   - collection: products
-    field: production_material
-    meta: null
-    related_collection: production_materials
-    schema:
-      column: production_material
-      constraint_name: products_production_material_fkey
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: production_materials
-      on_delete: NO ACTION
-      on_update: NO ACTION
-      table: products
-  - collection: products
     field: sale_type
     meta: null
     related_collection: sale_types_enum
@@ -5434,6 +5953,50 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: products
+  - collection: products_files
+    field: directus_files_id
+    meta:
+      junction_field: products_id
+      many_collection: products_files
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: directus_files_id
+      constraint_name: products_files_directus_files_id_fkey
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: products_files
+  - collection: products_files
+    field: products_id
+    meta:
+      junction_field: directus_files_id
+      many_collection: products_files
+      many_field: products_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: files
+      sort_field: null
+    related_collection: products
+    schema:
+      column: products_id
+      constraint_name: products_files_products_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: products_files
   - collection: user_skills
     field: skill
     meta: null
@@ -5486,29 +6049,3 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: users
-  - collection: wearable_files
-    field: product
-    meta: null
-    related_collection: products
-    schema:
-      column: product
-      constraint_name: wearable_files_product_fkey
-      foreign_key_column: id
-      foreign_key_schema: omni
-      foreign_key_table: products
-      on_delete: NO ACTION
-      on_update: NO ACTION
-      table: wearable_files
-  - collection: wearable_files
-    field: type
-    meta: null
-    related_collection: wearable_types_enum
-    schema:
-      column: type
-      constraint_name: wearable_files_type_fkey
-      foreign_key_column: value
-      foreign_key_schema: omni
-      foreign_key_table: wearable_types_enum
-      on_delete: NO ACTION
-      on_update: NO ACTION
-      table: wearable_files
