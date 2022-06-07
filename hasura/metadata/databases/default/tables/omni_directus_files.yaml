@@ -1,0 +1,3 @@
+table:
+  schema: omni
+  name: directus_files
