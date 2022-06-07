@@ -28,3 +28,10 @@ array_relationships:
         table:
           schema: omni
           name: production_materials_producers
+  - name: used_in_products
+    using:
+      foreign_key_constraint_on:
+        column: production_material_id
+        table:
+          schema: omni
+          name: products_production_materials

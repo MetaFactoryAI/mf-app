@@ -403,6 +403,30 @@ collections:
       comment: null
       name: products_files
       schema: omni
+  - collection: products_production_materials
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products_production_materials
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: products_production_materials
+      schema: omni
   - collection: products_stage_enum
     meta:
       accountability: all
@@ -1615,7 +1639,7 @@ fields:
       generation_expression: null
       has_auto_increment: false
       is_generated: false
-      is_nullable: false
+      is_nullable: true
       is_primary_key: false
       is_unique: false
       max_length: null
@@ -2956,6 +2980,30 @@ fields:
       table: production_materials
     type: text
   - collection: production_materials
+    field: products
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: products
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: production_materials
     field: rating
     meta:
       collection: production_materials
@@ -3740,47 +3788,6 @@ fields:
       table: production_styles_enum
     type: text
   - collection: products
-    field: asset_files
-    meta:
-      collection: products
-      conditions: null
-      display: null
-      display_options: null
-      field: asset_files
-      group: null
-      hidden: true
-      interface: null
-      note: Link to Google Drive of product assets
-      options: null
-      readonly: false
-      required: false
-      sort: 19
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: link to drive of asset files related to project
-      data_type: text
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: asset_files
-      numeric_precision: null
-      numeric_scale: null
-      schema: omni
-      table: products
-    type: text
-  - collection: products
     field: brand
     meta:
       collection: products
@@ -4310,6 +4317,30 @@ fields:
     schema: null
     type: alias
   - collection: products
+    field: product_production_materials
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options: null
+      field: product_production_materials
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
     field: production_cost
     meta:
       collection: products
@@ -4746,6 +4777,129 @@ fields:
       numeric_scale: null
       schema: omni
       table: products_files
+    type: uuid
+  - collection: products_production_materials
+    field: id
+    meta:
+      collection: products_production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('products_production_materials_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: omni
+      table: products_production_materials
+    type: integer
+  - collection: products_production_materials
+    field: product_id
+    meta:
+      collection: products_production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: product_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: product_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products_production_materials
+    type: uuid
+  - collection: products_production_materials
+    field: production_material_id
+    meta:
+      collection: products_production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: production_material_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_materials
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_material_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: omni
+      table: products_production_materials
     type: uuid
   - collection: products_stage_enum
     field: description
@@ -5968,7 +6122,7 @@ relations:
     related_collection: directus_files
     schema:
       column: directus_files_id
-      constraint_name: products_files_directus_files_id_fkey
+      constraint_name: products_files_directus_files_id_foreign
       foreign_key_column: id
       foreign_key_schema: omni
       foreign_key_table: directus_files
@@ -5997,6 +6151,50 @@ relations:
       on_delete: SET NULL
       on_update: NO ACTION
       table: products_files
+  - collection: products_production_materials
+    field: product_id
+    meta:
+      junction_field: production_material_id
+      many_collection: products_production_materials
+      many_field: product_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: product_production_materials
+      sort_field: null
+    related_collection: products
+    schema:
+      column: product_id
+      constraint_name: products_production_materials_product_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: products
+      on_delete: CASCADE
+      on_update: NO ACTION
+      table: products_production_materials
+  - collection: products_production_materials
+    field: production_material_id
+    meta:
+      junction_field: product_id
+      many_collection: products_production_materials
+      many_field: production_material_id
+      one_allowed_collections: null
+      one_collection: production_materials
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: products
+      sort_field: null
+    related_collection: production_materials
+    schema:
+      column: production_material_id
+      constraint_name: products_production_materials_production_material_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: omni
+      foreign_key_table: production_materials
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products_production_materials
   - collection: user_skills
     field: skill
     meta: null
