@@ -5312,6 +5312,13 @@
     anymatch "^3.0.0"
     source-map "^0.6.0"
 
+"@types/ws@^8.5.3":
+  version "8.5.3"
+  resolved "https://registry.yarnpkg.com/@types/ws/-/ws-8.5.3.tgz#7d25a1ffbecd3c4f2d35068d0b283c037003274d"
+  integrity sha512-6YOoWjruKj1uLf3INHH7D3qTXwFfEsg1kf3c0uDdSBJwfa/llkwIjrAGV7j7mVgGNbzTQ3HiHKKDXl6bJPD97w==
+  dependencies:
+    "@types/node" "*"
+
 "@types/yargs-parser@*":
   version "20.2.0"
   resolved "https://registry.yarnpkg.com/@types/yargs-parser/-/yargs-parser-20.2.0.tgz#dd3e6699ba3237f0348cd085e4698780204842f9"
@@ -12581,6 +12588,13 @@ graphql-compose@^9.0.1:
   dependencies:
     graphql-type-json "0.3.2"
 
+graphql-js-tree@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/graphql-js-tree/-/graphql-js-tree-0.1.1.tgz#faacf556e785e21992af2a7368fe29b0a6137f03"
+  integrity sha512-mPEqogLPmsoUzCi0WVddPFHBdCAQikwaYPe8kn6/+ft81ziei5qutP+cpquvFU5eBVHCFzx0PH5Khc9kutOkeQ==
+  dependencies:
+    graphql "^15.4.0"
+
 graphql-request@3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-3.5.0.tgz#7e69574e15875fb3f660a4b4be3996ecd0bbc8b7"
@@ -12606,6 +12620,16 @@ graphql-type-json@0.3.2:
   resolved "https://registry.yarnpkg.com/graphql-type-json/-/graphql-type-json-0.3.2.tgz#f53a851dbfe07bd1c8157d24150064baab41e115"
   integrity sha512-J+vjof74oMlCWXSvt0DOf2APEdZOCdubEvGDUAlqH//VBYcOYsGgRW7Xzorr44LvkjiuvecWc8fChxuZZbChtg==
 
+graphql-zeus@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/graphql-zeus/-/graphql-zeus-5.0.3.tgz#8415c6eafc012c16b49d8343b671bb1603a53688"
+  integrity sha512-zw3XQg+b8ReW8zatyg1Z6scTObl2TK4GaejRK6Ot9PJsrLP6jf/Oi6TjnngDsF0t2WR3iPvM/8+EanJkLoeeEg==
+  dependencies:
+    cross-fetch "^3.0.4"
+    graphql "^15.4.0"
+    graphql-js-tree "^0.1.1"
+    yargs "^16.1.1"
+
 graphql@0.13.2:
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-0.13.2.tgz#4c740ae3c222823e7004096f832e7b93b2108270"
@@ -12618,7 +12642,7 @@ graphql@15.5.1:
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.5.1.tgz#f2f84415d8985e7b84731e7f3536f8bb9d383aad"
   integrity sha512-FeTRX67T3LoE3LWAxxOlW2K3Bz+rMYAC18rRguK4wgXaTZMiJwSUwDmPFo3UadAKbzirKIg5Qy+sNJXbpPRnQw==
 
-graphql@^15.5.0:
+graphql@^15.4.0, graphql@^15.5.0:
   version "15.8.0"
   resolved "https://registry.yarnpkg.com/graphql/-/graphql-15.8.0.tgz#33410e96b012fa3bdb1091cc99a94769db212b38"
   integrity sha512-5gghUc24tP9HRznNpV2+FIoq3xKkj5dTQqf4v0CpdPbFVwFkWoxOM+o+2OC9ZSvjEMTjfmG9QT+gcvggTwW1zw==
@@ -25021,7 +25045,7 @@ yargs@^15.1.0, yargs@^15.4.1:
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
 
-yargs@^16.0.0, yargs@^16.0.3:
+yargs@^16.0.0, yargs@^16.0.3, yargs@^16.1.1:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
   integrity sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==

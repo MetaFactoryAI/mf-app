@@ -33,6 +33,8 @@
 - "!include public_contributions.yaml"
 - "!include public_contributors.yaml"
 - "!include public_users.yaml"
+- "!include robot_merkle_claims.yaml"
+- "!include robot_merkle_roots.yaml"
 - "!include robot_order.yaml"
 - "!include robot_product.yaml"
 - "!include robot_product_designer.yaml"
