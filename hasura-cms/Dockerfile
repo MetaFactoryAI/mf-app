@@ -19,7 +19,7 @@ ENV REMOTE_SCHEMA_ENDPOINT $BACKEND_PROTOCOL://$BACKEND_HOST/$REMOTE_SCHEMA_PATH
 ENV TRIGGERS_ENDPOINT $BACKEND_PROTOCOL://$BACKEND_HOST/$TRIGGERS_PATH
 ## Migrations
 
-COPY migrations /hasura-migrations
+#COPY migrations /hasura-migrations
 COPY metadata /hasura-metadata
 
 ## Execution
