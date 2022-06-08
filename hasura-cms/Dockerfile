@@ -1,4 +1,4 @@
-FROM hasura/graphql-engine:v2.7.0
+FROM hasura/graphql-engine:v2.7.0.cli-migrations-v3
 
 ## Default setup
 
@@ -17,13 +17,11 @@ ENV HASURA_GRAPHQL_AUTH_HOOK $BACKEND_PROTOCOL://$BACKEND_HOST/$AUTH_HOOK_PATH
 ENV ACTION_BASE_ENDPOINT $BACKEND_PROTOCOL://$BACKEND_HOST/$ACTION_BASE_PATH
 ENV REMOTE_SCHEMA_ENDPOINT $BACKEND_PROTOCOL://$BACKEND_HOST/$REMOTE_SCHEMA_PATH
 ENV TRIGGERS_ENDPOINT $BACKEND_PROTOCOL://$BACKEND_HOST/$TRIGGERS_PATH
-## Migrations
 
+
+## Metadata (not applying migrations since there's no DB)
 #COPY migrations /hasura-migrations
 COPY metadata /hasura-metadata
 
 ## Execution
-
-#ENTRYPOINT ["/bin/sh", "-c", "/wait && /bin/docker-entrypoint.sh /bin/sh \"$@\""]
-
 CMD graphql-engine serve --server-port $HASURA_GRAPHQL_SERVER_PORT
