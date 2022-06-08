@@ -17,5 +17,6 @@ ENV AUTH_ETHEREUM_ISSUER_URL $OIDC_ISSUER_URL
 
 COPY extensions /directus/extensions
 COPY uploads /directus/uploads
+COPY snapshot.yaml /directus/snapshot.yaml
 
-#CMD npx directus bootstrap && npx directus start
+CMD npx directus bootstrap && npx directus schema apply --yes ./snapshot.yaml && npx directus start
