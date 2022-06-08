@@ -5,3 +5,14 @@ object_relationships:
   - name: merkle_root
     using:
       foreign_key_constraint_on: merkle_root_hash
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - claim_json
+        - id
+        - merkle_root_hash
+        - recipient_eth_address
+      filter:
+        recipient_eth_address:
+          _ilike: X-Hasura-Eth-Address
