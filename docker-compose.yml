@@ -58,7 +58,6 @@ services:
     depends_on:
       - cache
       - postgres
-      - graphql-engine-cms
     environment:
       # Make sure to set these in production
       # (see https://docs.directus.io/configuration/config-options/#general)
@@ -90,7 +89,7 @@ services:
       STORAGE_IPFS_REGION: ${STORAGE_IPFS_REGION}
       STORAGE_IPFS_ENDPOINT: ${STORAGE_IPFS_ENDPOINT}
 
-  graphql-engine: &graphql_engine
+  graphql-engine:
     profiles: ['db']
     container_name: hasura
     build:
@@ -102,7 +101,7 @@ services:
         REMOTE_SCHEMA_PATH: remote-schemas/graphql
         TRIGGERS_PATH: triggers
     depends_on:
-      - 'postgres'
+      - postgres
     ports:
       - ${LOCAL_HASURA_PORT}:8080
     environment:
@@ -114,7 +113,6 @@ services:
       HASURA_GRAPHQL_DEV_MODE: true
 
   graphql-engine-cms:
-    <<: *graphql_engine
     profiles: ['cms']
     container_name: hasura-cms
     build:
@@ -125,6 +123,9 @@ services:
         ACTION_BASE_PATH: actions
         REMOTE_SCHEMA_PATH: remote-schemas/graphql
         TRIGGERS_PATH: triggers
+    depends_on:
+      - postgres
+      - directus
     ports:
       - ${LOCAL_HASURA_CMS_PORT}:8080
     networks:
