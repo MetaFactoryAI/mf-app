@@ -5,6 +5,7 @@
   "scripts": {
     "start": "directus bootstrap; directus start",
     "test": "echo 'No tests setup'",
+    "bootstrap": "npx directus bootstrap",
     "snapshot": "npx directus schema snapshot ./snapshot.yaml",
     "snapshot:apply": "npx directus schema apply ./snapshot.yaml",
     "snapshot:backup": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
@@ -13,7 +14,8 @@
     "node": "14"
   },
   "dependencies": {
-    "directus": "^9.12.1"
+    "directus": "^9.12.1",
+    "knex": "^2.1.0"
   },
   "devDependencies": {
     "@directus/cli": "^9.12.1"
