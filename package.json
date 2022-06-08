@@ -17,7 +17,11 @@
     "cms:start": "yarn workspace @mf/cms start",
     "prepare": "husky install",
     "test": "yarn workspaces run test",
-    "hasura": "hasura --envfile ../.env --project ./hasura"
+    "hasura": "hasura --envfile ../.env --project ./hasura",
+    "hasura-cms": "hasura --envfile ../.env --endpoint http://localhost:8090 --project ./hasura-cms",
+    "docker:cms:start": "docker compose --profile cms up -d",
+    "docker:cms:stop": "docker compose --profile cms down",
+    "docker:cms:clean": "docker compose --profile cms down -v"
   },
   "devDependencies": {
     "@react-native-community/eslint-config": "3.0.0",
