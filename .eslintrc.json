@@ -76,7 +76,7 @@
   "overrides": [
     // Turn off rules of hooks in non React code so useZeusVariables doesn't show errors
     {
-      "files": ["packages/services/**/*.ts"],
+      "files": ["packages/services/**/*.ts", "packages/cms/scripts/*.ts"],
       "rules": {
         "react-hooks/rules-of-hooks": "off"
       }

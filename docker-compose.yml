@@ -66,6 +66,7 @@ services:
       PUBLIC_URL: ${DIRECTUS_PUBLIC_URL}
       ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL}
       ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
+      LOG_LEVEL: ${DIRECTUS_LOG_LEVEL}
 
       # DB Settings
       DB_CLIENT: 'pg'
@@ -76,7 +77,7 @@ services:
       DB_PASSWORD: ${LOCAL_POSTGRES_PASSWORD}
 
       # Cache Settings
-      CACHE_ENABLED: 'true'
+      CACHE_ENABLED: ${DIRECTUS_CACHE_ENABLED}
       CACHE_STORE: 'redis'
       CACHE_REDIS: 'redis://cache:6379'
 

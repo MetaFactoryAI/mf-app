@@ -2,21 +2,27 @@
   "name": "@mf/cms",
   "private": true,
   "version": "1.0.0",
+  "main": "graphql/client.ts",
   "scripts": {
     "start": "directus bootstrap; directus start",
     "test": "echo 'No tests setup'",
     "bootstrap": "npx directus bootstrap",
     "snapshot": "npx directus schema snapshot ./snapshot.yaml",
     "snapshot:apply": "npx directus schema apply ./snapshot.yaml",
-    "snapshot:backup": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml"
+    "snapshot:backup": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
+    "generate": "./scripts/generate-zeus.sh",
+    "runScript": "node -r @swc-node/register",
+    "seed": "yarn runScript ./scripts/seedDatabase.ts"
   },
   "engines": {
     "node": "14"
   },
   "dependencies": {
-    "directus": "^9.12.1"
+    "directus": "^9.12.1",
+    "graphql-zeus": "^5.0.3"
   },
   "devDependencies": {
-    "@directus/cli": "^9.12.1"
+    "@directus/cli": "^9.12.1",
+    "@swc-node/register": "^1.5.1"
   }
 }

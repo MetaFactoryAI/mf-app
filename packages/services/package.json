@@ -16,6 +16,7 @@
     "@ethersproject/providers": "^5.5.1",
     "@ethersproject/strings": "^5.6.1",
     "@ethersproject/wallet": "^5.6.1",
+    "@mf/cms": "^1.0.0",
     "@notionhq/client": "^0.4.13",
     "@vercel/node": "1.12.1",
     "bcrypt": "5.0.1",
