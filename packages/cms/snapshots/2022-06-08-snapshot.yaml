@@ -1,0 +1,3931 @@
+version: 1
+directus: 9.12.1
+collections:
+  - collection: brands
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: brands
+      color: '#6644FF'
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: stars
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: brands
+      schema: public
+  - collection: brands_users
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: brands_users
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 8
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: brands_users
+      schema: public
+  - collection: fulfillers
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: fulfillers
+      color: '#FFA439'
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: warehouse
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 6
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: fulfillers
+      schema: public
+  - collection: price_currencies
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: price_currencies
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 9
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: price_currencies
+      schema: public
+  - collection: producers
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: producers
+      color: '#FFC23B'
+      display_template: null
+      group: null
+      hidden: false
+      icon: factory
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 5
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: producers
+      schema: public
+  - collection: product_collaborators
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: product_collaborators
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 10
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: product_collaborators
+      schema: public
+  - collection: production_materials
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: production_materials
+      color: '#E35169'
+      display_template: null
+      group: null
+      hidden: false
+      icon: category
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 7
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: production_materials
+      schema: public
+  - collection: production_materials_producers
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: production_materials_producers
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 11
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: production_materials_producers
+      schema: public
+  - collection: production_methods
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: production_methods
+      color: '#A2B5CD'
+      display_template: null
+      group: null
+      hidden: false
+      icon: precision_manufacturing
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 4
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: production_methods
+      schema: public
+  - collection: production_methods_producers
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: production_methods_producers
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 12
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: production_methods_producers
+      schema: public
+  - collection: production_methods_products
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: production_methods_products
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 13
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: production_methods_products
+      schema: public
+  - collection: products
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products
+      color: '#3399FF'
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: checkroom
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 1
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: products
+      schema: public
+  - collection: skills
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: skills
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 14
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: skills
+      schema: public
+  - collection: user_skills
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: user_skills
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 15
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: user_skills
+      schema: public
+  - collection: users
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: users
+      color: '#2ECDA7'
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: person
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 3
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: users
+      schema: public
+fields:
+  - collection: brands
+    field: created_at
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options:
+        format: short
+      field: created_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: timestamp
+  - collection: brands
+    field: description
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options:
+        softLength: 255
+        trim: true
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: text
+  - collection: brands
+    field: discord_url
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: discord_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: discord_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: text
+  - collection: brands
+    field: eth_address
+    meta:
+      collection: brands
+      conditions: null
+      display: formatted-value
+      display_options:
+        conditionalFormatting: null
+      field: eth_address
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: '0x1234'
+        trim: true
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: eth_address
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: text
+  - collection: brands
+    field: id
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('brands_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: brands
+    type: bigInteger
+  - collection: brands
+    field: logo
+    meta:
+      collection: brands
+      conditions: null
+      display: image
+      display_options:
+        circle: true
+      field: logo
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: logo
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: uuid
+  - collection: brands
+    field: members
+    meta:
+      collection: brands
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{users_id}}'
+      field: members
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options:
+        template: '{{users_id}}'
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: brands
+    field: name
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        softLength: 255
+        trim: true
+      readonly: false
+      required: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: text
+  - collection: brands
+    field: products
+    meta:
+      collection: brands
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: products
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: brands
+    field: twitter_url
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: twitter_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: twitter_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: text
+  - collection: brands
+    field: website_url
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: website_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: link
+        trim: true
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: website_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: text
+  - collection: brands_users
+    field: brands_id
+    meta:
+      collection: brands_users
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: brands_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: brands
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: brands_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: brands_users
+    type: bigInteger
+  - collection: brands_users
+    field: id
+    meta:
+      collection: brands_users
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('brands_users_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: brands_users
+    type: integer
+  - collection: brands_users
+    field: users_id
+    meta:
+      collection: brands_users
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: users_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: users_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: brands_users
+    type: bigInteger
+  - collection: directus_dashboards
+    field: color
+    meta: null
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: color
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: directus_dashboards
+    type: string
+  - collection: directus_flows
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: directus_flows
+    type: text
+  - collection: fulfillers
+    field: address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: address
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: fulfillers
+    type: text
+  - collection: fulfillers
+    field: created_at
+    meta: null
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: '2022-06-08 05:04:56.956088+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: fulfillers
+    type: timestamp
+  - collection: fulfillers
+    field: email
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: email
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: fulfillers
+    type: text
+  - collection: fulfillers
+    field: eth_address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: eth_address
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: fulfillers
+    type: text
+  - collection: fulfillers
+    field: id
+    meta:
+      collection: fulfillers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('fulfillers_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: fulfillers
+    type: bigInteger
+  - collection: fulfillers
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: fulfillers
+    type: text
+  - collection: fulfillers
+    field: website_url
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: website_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: fulfillers
+    type: text
+  - collection: price_currencies
+    field: amount
+    meta: null
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: amount
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: price_currencies
+    type: integer
+  - collection: price_currencies
+    field: currency
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: currency
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: price_currencies
+    type: text
+  - collection: price_currencies
+    field: id
+    meta:
+      collection: price_currencies
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('price_currencies_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: price_currencies
+    type: bigInteger
+  - collection: producers
+    field: address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: address
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: producers
+    type: text
+  - collection: producers
+    field: created_at
+    meta: null
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: '2022-06-08 05:04:56.956088+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: producers
+    type: timestamp
+  - collection: producers
+    field: email
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: email
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: producers
+    type: text
+  - collection: producers
+    field: eth_address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: eth_address
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: producers
+    type: text
+  - collection: producers
+    field: id
+    meta:
+      collection: producers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('producers_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: producers
+    type: bigInteger
+  - collection: producers
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: producers
+    type: text
+  - collection: product_collaborators
+    field: collaboration_share
+    meta: null
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: collaboration_share
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: product_collaborators
+    type: integer
+  - collection: product_collaborators
+    field: collaborator_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: collaborator_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: product_collaborators
+    type: bigInteger
+  - collection: product_collaborators
+    field: id
+    meta:
+      collection: product_collaborators
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('product_collaborators_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: product_collaborators
+    type: bigInteger
+  - collection: product_collaborators
+    field: product_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: product_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: product_collaborators
+    type: bigInteger
+  - collection: product_collaborators
+    field: type
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: type
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: product_collaborators
+    type: text
+  - collection: production_materials
+    field: base_price
+    meta: null
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: base_price
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: production_materials
+    type: integer
+  - collection: production_materials
+    field: composition
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: composition
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: created_at
+    meta: null
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: '2022-06-08 05:04:56.956088+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: timestamp
+  - collection: production_materials
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: gender
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: gender
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: id
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('production_materials_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_materials
+    type: bigInteger
+  - collection: production_materials
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: neck_tag
+    meta: null
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: neck_tag
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: boolean
+  - collection: production_materials
+    field: palette
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: palette
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: print_tech
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: print_tech
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: rating
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: rating
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: size_guide
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: size_guide
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: style
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: style
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: style_number
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: style_number
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials
+    field: type
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: type
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: text
+  - collection: production_materials_producers
+    field: id
+    meta:
+      collection: production_materials_producers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('production_materials_producers_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_materials_producers
+    type: bigInteger
+  - collection: production_materials_producers
+    field: producer_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: producers
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: producer_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_materials_producers
+    type: bigInteger
+  - collection: production_materials_producers
+    field: production_material_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: production_materials
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_material_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_materials_producers
+    type: bigInteger
+  - collection: production_methods
+    field: created_at
+    meta: null
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: '2022-06-08 05:04:56.956088+00'
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_methods
+    type: timestamp
+  - collection: production_methods
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_methods
+    type: text
+  - collection: production_methods
+    field: id
+    meta:
+      collection: production_methods
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('production_methods_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_methods
+    type: bigInteger
+  - collection: production_methods
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_methods
+    type: text
+  - collection: production_methods_producers
+    field: id
+    meta:
+      collection: production_methods_producers
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('production_methods_producers_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_methods_producers
+    type: bigInteger
+  - collection: production_methods_producers
+    field: producer_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: producers
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: producer_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_methods_producers
+    type: bigInteger
+  - collection: production_methods_producers
+    field: production_method_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: production_methods
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_method_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_methods_producers
+    type: bigInteger
+  - collection: production_methods_products
+    field: id
+    meta:
+      collection: production_methods_products
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('production_methods_products_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_methods_products
+    type: bigInteger
+  - collection: production_methods_products
+    field: product_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: product_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_methods_products
+    type: bigInteger
+  - collection: production_methods_products
+    field: production_method_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: production_methods
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_method_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: production_methods_products
+    type: bigInteger
+  - collection: products
+    field: brand_id
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: "{{logo}}\_{{name}}"
+      field: brand_id
+      group: product_details
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations:
+        - language: en-US
+          translation: Brand
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: brands
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: brand_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: bigInteger
+  - collection: products
+    field: brand_reward_share
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: brand_reward_share
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: brand_reward_share
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: integer
+  - collection: products
+    field: collaborator_reward_share
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: collaborator_reward_share
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: collaborator_reward_share
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: integer
+  - collection: products
+    field: created_at
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: created_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 11
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: timestamp
+  - collection: products
+    field: discord_channel_id
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: discord_channel_id
+      group: external_references
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: discord_channel_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: text
+  - collection: products
+    field: external_references
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: external_references
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        start: closed
+      readonly: false
+      required: false
+      sort: 10
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
+    field: fulfiller_id
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{name}}'
+      field: fulfiller_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: false
+      sort: 9
+      special: null
+      translations:
+        - language: en-US
+          translation: Fulfiller
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: fulfillers
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: fulfiller_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: bigInteger
+  - collection: products
+    field: id
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('products_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: bigInteger
+  - collection: products
+    field: name
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: text
+  - collection: products
+    field: notion_id
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: notion_id
+      group: external_references
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: notion_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: text
+  - collection: products
+    field: price
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: "{{amount}}\_{{currency}}"
+      field: price
+      group: product_details
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: "{{amount}}\_{{currency}}"
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: price_currencies
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: price
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: bigInteger
+  - collection: products
+    field: producer_id
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: producer_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations:
+        - language: en-US
+          translation: Producer
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: producers
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: producer_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: bigInteger
+  - collection: products
+    field: product_details
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: product_details
+      group: null
+      hidden: false
+      interface: group-detail
+      note: null
+      options:
+        headerColor: null
+        headerIcon: description
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - alias
+        - group
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
+    field: production_cost
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: "{{amount}}\_{{currency}}"
+      field: production_cost
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: "{{amount}}\_{{currency}}"
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: price_currencies
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_cost
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: bigInteger
+  - collection: products
+    field: quantity
+    meta:
+      collection: products
+      conditions:
+        - name: Hide on Open Editions
+          rule:
+            _and:
+              - sale_type:
+                  _eq: open_edition
+          hidden: true
+          options: {}
+      display: null
+      display_options: null
+      field: quantity
+      group: product_details
+      hidden: false
+      interface: input
+      note: null
+      options:
+        min: 0
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: quantity
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: bigInteger
+  - collection: products
+    field: sale_type
+    meta:
+      collection: products
+      conditions: null
+      display: labels
+      display_options: null
+      field: sale_type
+      group: product_details
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Open Edition
+            value: open_edition
+          - text: Limited Edition
+            value: limited_edition
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: sale_type
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: string
+  - collection: products
+    field: shop_description
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: shop_description
+      group: product_details
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        customFormats: null
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - code
+          - customImage
+          - customLink
+          - customMedia
+          - fullscreen
+          - h1
+          - h2
+          - h3
+          - hr
+          - italic
+          - numlist
+          - removeformat
+          - table
+          - underline
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: shop_description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: text
+  - collection: products
+    field: shopify_id
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: shopify_id
+      group: external_references
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: shopify_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: text
+  - collection: products
+    field: status
+    meta:
+      collection: products
+      conditions: null
+      display: labels
+      display_options: {}
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Submitted
+            value: submitted
+          - text: Rejected
+            value: rejected
+          - text: Design
+            value: design
+          - text: Sampling
+            value: sampling
+          - text: Production
+            value: production
+          - text: Sale Live
+            value: sale_live
+          - text: Sale Completed
+            value: sale_completed
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: string
+  - collection: skills
+    field: description
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: skills
+    type: text
+  - collection: skills
+    field: id
+    meta:
+      collection: skills
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('skills_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: skills
+    type: bigInteger
+  - collection: skills
+    field: name
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: skills
+    type: text
+  - collection: user_skills
+    field: id
+    meta:
+      collection: user_skills
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('user_skills_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: user_skills
+    type: bigInteger
+  - collection: user_skills
+    field: skill_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: skills
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: skill_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: user_skills
+    type: bigInteger
+  - collection: user_skills
+    field: user_id
+    meta: null
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: user_skills
+    type: bigInteger
+  - collection: users
+    field: brands
+    meta:
+      collection: users
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{brands_id}}'
+      field: brands
+      group: null
+      hidden: false
+      interface: list-m2m
+      note: null
+      options:
+        template: '{{brands_id}}'
+      readonly: true
+      required: false
+      sort: null
+      special:
+        - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: users
+    field: created_at
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: created_at
+      group: null
+      hidden: false
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: users
+    type: timestamp
+  - collection: users
+    field: discord_handle
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: discord_handle
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: users
+    type: text
+  - collection: users
+    field: discord_id
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: discord_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: users
+    type: text
+  - collection: users
+    field: eth_address
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: eth_address
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: users
+    type: text
+  - collection: users
+    field: github_handle
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: github_handle
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: users
+    type: text
+  - collection: users
+    field: id
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('users_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: users
+    type: bigInteger
+  - collection: users
+    field: name
+    meta:
+      collection: users
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: users
+    type: text
+  - collection: users
+    field: timezone
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: timezone
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: users
+    type: text
+  - collection: users
+    field: twitter_handle
+    meta: null
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: twitter_handle
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: users
+    type: text
+relations:
+  - collection: brands
+    field: logo
+    meta:
+      junction_field: null
+      many_collection: brands
+      many_field: logo
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: logo
+      constraint_name: brands_logo_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: brands
+  - collection: brands_users
+    field: brands_id
+    meta:
+      junction_field: users_id
+      many_collection: brands_users
+      many_field: brands_id
+      one_allowed_collections: null
+      one_collection: brands
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: members
+      sort_field: null
+    related_collection: brands
+    schema:
+      column: brands_id
+      constraint_name: brands_users_brands_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: brands
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: brands_users
+  - collection: brands_users
+    field: users_id
+    meta:
+      junction_field: brands_id
+      many_collection: brands_users
+      many_field: users_id
+      one_allowed_collections: null
+      one_collection: users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: brands
+      sort_field: null
+    related_collection: users
+    schema:
+      column: users_id
+      constraint_name: brands_users_users_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: users
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: brands_users
+  - collection: product_collaborators
+    field: collaborator_id
+    meta:
+      junction_field: null
+      many_collection: product_collaborators
+      many_field: collaborator_id
+      one_allowed_collections: null
+      one_collection: users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: users
+    schema:
+      column: collaborator_id
+      constraint_name: product_collaborators_collaborator_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: product_collaborators
+  - collection: product_collaborators
+    field: product_id
+    meta:
+      junction_field: null
+      many_collection: product_collaborators
+      many_field: product_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: products
+    schema:
+      column: product_id
+      constraint_name: product_collaborators_product_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: product_collaborators
+  - collection: production_materials_producers
+    field: producer_id
+    meta:
+      junction_field: null
+      many_collection: production_materials_producers
+      many_field: producer_id
+      one_allowed_collections: null
+      one_collection: producers
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: producers
+    schema:
+      column: producer_id
+      constraint_name: production_materials_producers_producer_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: producers
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials_producers
+  - collection: production_materials_producers
+    field: production_material_id
+    meta:
+      junction_field: null
+      many_collection: production_materials_producers
+      many_field: production_material_id
+      one_allowed_collections: null
+      one_collection: production_materials
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: production_materials
+    schema:
+      column: production_material_id
+      constraint_name: production_materials_producers_production___1e72a3e7_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: production_materials
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_materials_producers
+  - collection: production_methods_producers
+    field: producer_id
+    meta:
+      junction_field: null
+      many_collection: production_methods_producers
+      many_field: producer_id
+      one_allowed_collections: null
+      one_collection: producers
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: producers
+    schema:
+      column: producer_id
+      constraint_name: production_methods_producers_producer_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: producers
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_methods_producers
+  - collection: production_methods_producers
+    field: production_method_id
+    meta:
+      junction_field: null
+      many_collection: production_methods_producers
+      many_field: production_method_id
+      one_allowed_collections: null
+      one_collection: production_methods
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: production_methods
+    schema:
+      column: production_method_id
+      constraint_name: production_methods_producers_production_method_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: production_methods
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_methods_producers
+  - collection: production_methods_products
+    field: product_id
+    meta:
+      junction_field: null
+      many_collection: production_methods_products
+      many_field: product_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: products
+    schema:
+      column: product_id
+      constraint_name: production_methods_products_product_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_methods_products
+  - collection: production_methods_products
+    field: production_method_id
+    meta:
+      junction_field: null
+      many_collection: production_methods_products
+      many_field: production_method_id
+      one_allowed_collections: null
+      one_collection: production_methods
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: production_methods
+    schema:
+      column: production_method_id
+      constraint_name: production_methods_products_production_method_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: production_methods
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: production_methods_products
+  - collection: products
+    field: brand_id
+    meta:
+      junction_field: null
+      many_collection: products
+      many_field: brand_id
+      one_allowed_collections: null
+      one_collection: brands
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: products
+      sort_field: null
+    related_collection: brands
+    schema:
+      column: brand_id
+      constraint_name: products_brand_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: brands
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: fulfiller_id
+    meta:
+      junction_field: null
+      many_collection: products
+      many_field: fulfiller_id
+      one_allowed_collections: null
+      one_collection: fulfillers
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: fulfillers
+    schema:
+      column: fulfiller_id
+      constraint_name: products_fulfiller_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: fulfillers
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: price
+    meta:
+      junction_field: null
+      many_collection: products
+      many_field: price
+      one_allowed_collections: null
+      one_collection: price_currencies
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: price_currencies
+    schema:
+      column: price
+      constraint_name: products_price_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: price_currencies
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: producer_id
+    meta:
+      junction_field: null
+      many_collection: products
+      many_field: producer_id
+      one_allowed_collections: null
+      one_collection: producers
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: producers
+    schema:
+      column: producer_id
+      constraint_name: products_producer_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: producers
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: production_cost
+    meta:
+      junction_field: null
+      many_collection: products
+      many_field: production_cost
+      one_allowed_collections: null
+      one_collection: price_currencies
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: price_currencies
+    schema:
+      column: production_cost
+      constraint_name: products_production_cost_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: price_currencies
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products
+  - collection: user_skills
+    field: skill_id
+    meta:
+      junction_field: null
+      many_collection: user_skills
+      many_field: skill_id
+      one_allowed_collections: null
+      one_collection: skills
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: skills
+    schema:
+      column: skill_id
+      constraint_name: user_skills_skill_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: skills
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: user_skills
+  - collection: user_skills
+    field: user_id
+    meta:
+      junction_field: null
+      many_collection: user_skills
+      many_field: user_id
+      one_allowed_collections: null
+      one_collection: users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: users
+    schema:
+      column: user_id
+      constraint_name: user_skills_user_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: user_skills

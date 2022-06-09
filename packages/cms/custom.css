@@ -1,0 +1,95 @@
+body {
+  --primary-10: #1d2f30 !important;
+  --primary-25: #295254 !important;
+  --primary-50: #3e888c !important;
+  --primary-75: #49adb3 !important;
+  --primary-90: #4cb8c2 !important;
+  --primary: #41c8cf !important;
+  --primary-110: #64dede !important;
+  --primary-125: #85edf2 !important;
+  --primary-150: #abf5f5 !important;
+  --primary-175: #d9fdff !important;
+  --primary-190: #f0feff !important;
+
+  --border-normal: #343d3d !important;
+  --border-normal-alt: #575959 !important;
+  --border-subdued: #252d2e !important;
+  --foreground-normal: #ced8d9 !important;
+  --foreground-normal-alt: #f0fcfc !important;
+  --foreground-subdued: #667273 !important;
+  --foreground-inverted: #101717 !important;
+  --background-normal: #252d2e !important;
+  --background-normal-alt: #353d3d !important;
+  --background-subdued: #1a2121 !important;
+  --background-highlight: #1e2121 !important;
+  --background-page: #101717 !important;
+  --background-input: #0d1617 !important;
+  --background-page-rgb: 13, 22, 23 !important;
+  --background-inverted: #fff !important;
+}
+
+body.alt {
+  --primary-10: #2f301b !important;
+  --primary-25: #4e5422 !important;
+  --primary-50: #818c2a !important;
+  --primary-75: #a6b825 !important;
+  --primary-90: #bdd415 !important;
+  --primary: #cee32d !important;
+  --primary-110: #d9f048 !important;
+  --primary-125: #e6f763 !important;
+  --primary-150: #f3ff99 !important;
+  --primary-175: #f8ffbf !important;
+  --primary-190: #fcffe6 !important;
+
+  --border-normal: #3c3d34 !important;
+  --border-normal-alt: #595957 !important;
+  --border-subdued: #2d2e25 !important;
+  --foreground-normal: #d7d9ce !important;
+  --foreground-normal-alt: #fbfcf0 !important;
+  --foreground-subdued: #717366 !important;
+  --foreground-inverted: #161710 !important;
+  --background-normal: #2d2e25 !important;
+  --background-normal-alt: #3c3d35 !important;
+  --background-subdued: #20211a !important;
+  --background-highlight: #21211e !important;
+  --background-page: #161710 !important;
+  --background-input: #16170d !important;
+  --background-page-rgb: 22, 23, 16 !important;
+  --background-inverted: #fff !important;
+}
+
+body.light {
+  --primary-10: #edfeff !important;
+  --primary-25: #cfffff !important;
+  --primary-50: #9ef1f7 !important;
+  --primary-75: #78eaf0 !important;
+  --primary-90: #5cdae6 !important;
+  --primary: #41c8cf !important;
+  --primary-110: #43b7bf !important;
+  --primary-125: #44a1a6 !important;
+  --primary-150: #407c80 !important;
+  --primary-175: #375859 !important;
+  --primary-190: #2d3b40 !important;
+
+  --border-normal: #d3e3e2 !important;
+  --border-normal-alt: #b8ccca !important;
+  --border-subdued: #f0faf9 !important;
+  --foreground-normal: #5a6363 !important;
+  --foreground-normal-alt: #21403d !important;
+  --foreground-subdued: #a1b3b1 !important;
+  --foreground-inverted: #fff !important;
+
+  --card-face-color: #fafcfc !important;
+  --overlay-color: rgba(45, 56, 56, 0.8) !important;
+  --module-background: #121a19 !important;
+  --module-icon: #8db0ad !important;
+
+  --background-normal: #dfe6e5 !important;
+  --background-normal-alt: #d5dedd !important;
+  --background-subdued: #e8eded !important;
+  --background-highlight: #f0f5f5 !important;
+  --background-page: #ffffff !important;
+  --background-input: #ffffff !important;
+  --background-page-rgb: 255, 255, 255 !important;
+  --background-inverted: #2d3838 !important;
+}
