@@ -15605,7 +15605,7 @@ knex-schema-inspector@1.7.3:
     lodash.flatten "^4.4.0"
     lodash.isnil "^4.0.0"
 
-knex@^2.0.0, knex@^2.1.0:
+knex@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/knex/-/knex-2.1.0.tgz#9348aace3a08ff5be26eb1c8e838416ddf1aa216"
   integrity sha512-vVsnD6UJdSJy55TvCXfFF9syfwyXNxfE9mvr2hJL/4Obciy2EPGoqjDpgRSlMruHuPWDOeYAG25nyrGvU+jJog==

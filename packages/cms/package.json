@@ -14,8 +14,7 @@
     "node": "14"
   },
   "dependencies": {
-    "directus": "^9.12.1",
-    "knex": "^2.1.0"
+    "directus": "^9.12.1"
   },
   "devDependencies": {
     "@directus/cli": "^9.12.1"
