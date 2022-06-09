@@ -15,3 +15,5 @@ tags
 packages/app/mf-app-kv-storage-db
 .vercel
 **/.env
+
+db_dumps

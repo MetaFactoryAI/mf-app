@@ -396,10 +396,10 @@ collections:
       color: null
       display_template: '{{name}}'
       group: null
-      hidden: true
+      hidden: false
       icon: approval
       item_duplication_fields: null
-      note: null
+      note: Stages of product development / production
       singleton: false
       sort: null
       sort_field: sort
@@ -5003,7 +5003,7 @@ fields:
             foreground: '#E35169'
           - text: Design
             value: design
-            foreground: '#FFC23B'
+            foreground: '#6644FF'
           - text: Sampling
             value: sampling
             foreground: '#3399FF'
@@ -5023,13 +5023,17 @@ fields:
             value: fulfillment_completed
             foreground: '#1F7A67'
             background: '#18222F'
+          - text: Scheduled
+            value: scheduled
+            foreground: '#18222F'
+            background: '#FFC23B'
       field: name
       group: null
       hidden: false
       interface: input
       note: null
       options: null
-      readonly: false
+      readonly: true
       required: true
       sort: null
       special: null
@@ -5046,6 +5050,7 @@ fields:
                 - production
                 - shipping
                 - fulfillment_completed
+                - scheduled
       validation_message: null
       width: full
     schema:
@@ -5060,7 +5065,7 @@ fields:
       is_generated: false
       is_nullable: true
       is_primary_key: false
-      is_unique: false
+      is_unique: true
       max_length: 255
       name: name
       numeric_precision: null
