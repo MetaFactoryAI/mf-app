@@ -21,7 +21,7 @@ export default async (
         ],
       },
       {
-        operationName: 'getProductNftMetadata  @cached(ttl: 600)',
+        operationName: 'getProductNftMetadata',
       },
     );
 
@@ -41,11 +41,12 @@ export default async (
         ],
       },
       {
-        operationName: 'getProductNftMetadataById  @cached(ttl: 600)',
+        operationName: 'getProductNftMetadataById',
       },
     );
 
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+    res.setHeader('Cache-Control', 's-maxage=86400');
     res.status(200).send(data.robot_product[0]?.nft_metadata || null);
   } catch (e) {
     res.status(400).send(`Error getting metadata`);
