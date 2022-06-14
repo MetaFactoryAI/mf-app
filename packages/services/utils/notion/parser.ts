@@ -16,7 +16,7 @@ export const TextBlock = z.object({
 });
 
 const EthereumAddress = TextBlock.refine(
-  ({ plain_text }) => isAddress(plain_text),
+  ({ plain_text }) => isAddress(plain_text) || plain_text.endsWith('.eth'),
   { message: 'Invalid Ethereum Address ' },
 );
 
@@ -54,6 +54,12 @@ const DateProperty = z.object({
       time_zone: z.string().nullable(),
     })
     .nullable(),
+});
+
+const CreatedTime = z.object({
+  id: z.string(),
+  type: z.literal('created_time'),
+  created_time: z.string(),
 });
 
 const SelectProperty = z.object({
@@ -113,16 +119,16 @@ const ExternalFilesProperty = z.object({
   files: z.array(ExternalFileBlock),
 });
 
+const ExternalOrLocalFilesProperty = z.object({
+  id: z.string(),
+  type: z.literal('files'),
+  files: z.array(ExternalFileBlock.or(FileBlock)),
+});
+
 const URLProperty = z.object({
   id: z.string(),
   type: z.literal('url'),
   url: URLValue.nullable(),
-});
-
-const RequiredURLProperty = z.object({
-  id: z.string(),
-  type: z.literal('url'),
-  url: URLValue,
 });
 
 const resolveRelation = async ({ id }: { id: string }) => ({
@@ -326,48 +332,25 @@ export const ProductPage = BasePage.extend({
     'Wearable Status': MultiSelectProperty,
     SKU: RichTextProperty,
     // Producer: RelationProperty,
-    '3D Static': FilesProperty,
+    '3D Static': FilesProperty.or(ExternalFilesProperty),
     'Social Assets': FilesProperty,
-    'Shopify Link': RequiredURLProperty,
-    // 'Related to Customer Service (Column)': z.object({
-    //   id: z.string(),
-    //   type: z.string(),
-    //   relation: z.array(z.object({ id: z.string() })),
-    // }),
-    // 'Designer Rel [OLD]': z.object({
-    //   id: z.string(),
-    //   type: z.string(),
-    //   relation: z.array(z.unknown()),
-    // }),
-    // 'Inv Mng By Changed': CheckboxProperty,
-    // 'Asset Completion': z.object({
-    //   id: z.string(),
-    //   type: z.string(),
-    //   formula: z.object({ type: z.string(), string: z.string() }),
-    // }),
-    // Event: z.object({
-    //   id: z.string(),
-    //   type: z.string(),
-    //   multi_select: z.array(z.unknown()),
-    // }),
-    // 'Related to Invoices (Column)': z.object({
-    //   id: z.string(),
-    //   type: z.string(),
-    //   relation: z.array(z.unknown()),
-    // }),
-    // 'Neck Tag Roll-up': z.object({
-    //   id: z.string(),
-    //   type: z.string(),
-    //   rollup: z.object({
-    //     type: z.string(),
-    //     number: z.number(),
-    //     function: z.string(),
-    //   }),
-    // }),
+    'Shopify Link': URLProperty,
+
     Price: NumberProperty,
     'QTY/Edition': RichTextProperty,
-    '3D Animation': SingleFileProperty,
-    // 'Related to Manufacturers (Property)': RelationProperty,
+    '3D Animation': FilesProperty,
+    Name: TitleProperty,
+  }),
+});
+
+export const ProductPageFiles = BasePage.extend({
+  properties: z.object({
+    'CLO3d Model': SingleFileProperty,
+    'Wearable Files': ExternalFilesProperty,
+    'Design File(s)': FilesProperty,
+    '3D Static': FilesProperty.or(ExternalFilesProperty),
+    'Social Assets': FilesProperty,
+    '3D Animation': FilesProperty,
     Name: TitleProperty,
   }),
 });
@@ -386,7 +369,7 @@ export const BrandPage = BasePage.extend({
       type: z.string(),
       rich_text: z.array(EthereumAddress),
     }),
-    Logo: FilesProperty.or(ExternalFilesProperty),
+    Logo: ExternalOrLocalFilesProperty,
     // Website: URLProperty,
     // Twitter: URLProperty,
     // Instagram: URLProperty,
@@ -400,11 +383,7 @@ export const BrandPage = BasePage.extend({
     //   type: z.string(),
     //   relation: z.array(z.object({ id: z.string() })),
     // }),
-    Created: z.object({
-      id: z.string(),
-      type: z.string(),
-      created_time: z.string(),
-    }),
+    Created: CreatedTime,
     Name: TitleProperty,
   }),
 });

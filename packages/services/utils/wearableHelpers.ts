@@ -80,9 +80,9 @@ export const generateWearableMetadata = async (
     description: getProductDescription(p),
     animation_url: files.find((f) => f.mimeType === EXTENSION_MIME_TYPES.glb)
       ?.uri,
-    external_url: getProductShopLink(p),
+    external_url: getProductShopLink(p) || undefined,
     properties: {
-      brand: getProductBrand(p).name,
+      brand: getProductBrand(p)?.name || undefined,
       style: blank?.style,
       composition: blank?.composition,
       madeIn: blank?.madeIn

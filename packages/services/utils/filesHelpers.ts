@@ -3,6 +3,7 @@ import fetch from 'node-fetch';
 import { z } from 'zod';
 
 import { FileData } from '../types/wearables';
+import { logger } from './logger';
 
 export const githubContentsSchema = z.array(
   z.object({
@@ -35,7 +36,10 @@ export const getFiles = async (wearableUrl: string): Promise<FileData[]> => {
     const files = githubContentsSchema.parse(json);
     return files.map(formatFileMetadata);
   } catch (e) {
-    console.warn('Unable to get files from URL', wearableUrl, e);
+    logger.warn('Unable to get files from URL', {
+      wearableUrl,
+      error: e,
+    });
     return [];
   }
 };
@@ -46,16 +50,18 @@ export const EXTENSION_MIME_TYPES = {
   png: 'image/png',
   jpg: 'image/jpg',
   fbx: 'application/octet-stream',
+  zprj: 'application/octet-stream',
 };
 
-type FileExtension = keyof typeof EXTENSION_MIME_TYPES;
+export type FileExtension = keyof typeof EXTENSION_MIME_TYPES;
 
-const EXTENSION_DESCRIPTIONS: Record<FileExtension, string> = {
+export const EXTENSION_DESCRIPTIONS: Record<FileExtension, string> = {
   glb: 'a GLTF file for Webaverse, NeosVR, etc',
   usdz: 'a USD file for AR',
   png: 'a texture file for VRoid Studio',
   jpg: 'Texture file of original design',
   fbx: 'FBX file for 3D software (Blender, Unreal Engine, etc)',
+  zprj: 'a project file for CLO3D / Marvelous Designer',
 };
 
 export const formatFileMetadata = (
@@ -69,7 +75,9 @@ export const formatFileMetadata = (
 
   return {
     mimeType,
+    name: data.name,
     uri: data.download_url,
+    extension: fileExtension,
     properties: {
       description: EXTENSION_DESCRIPTIONS[fileExtension],
     },

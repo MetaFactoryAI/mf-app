@@ -11,7 +11,7 @@ export interface WearableMetadata {
   external_url?: string;
   animation_url?: string;
   properties: {
-    brand: string;
+    brand: string | undefined;
     // season: string | undefined,
     style: string | undefined;
     composition: string | undefined;
@@ -28,6 +28,7 @@ export interface WearableMetadata {
 export interface Creator {
   name: string;
   role: string;
+  ethAddress: string;
   share?: number;
   url?: string | null;
 }
@@ -35,6 +36,8 @@ export interface Creator {
 export type FileData = {
   mimeType: string;
   uri: string;
+  name: string;
+  extension: string;
   properties: {
     description: string;
   };

@@ -2,17 +2,17 @@
   "name": "@mf/cms",
   "private": true,
   "version": "1.0.0",
-  "main": "graphql/client.ts",
+  "main": "./graphql/index.ts",
   "scripts": {
     "start": "directus bootstrap; directus start",
     "test": "echo 'No tests setup'",
     "bootstrap": "npx directus bootstrap",
+    "update": "yarn snapshot && yarn generate",
     "snapshot": "npx directus schema snapshot ./snapshot.yaml",
     "snapshot:apply": "npx directus schema apply ./snapshot.yaml",
     "snapshot:backup": "npx directus schema snapshot ./snapshots/\"$(date \"+%F\")\"-snapshot-\"$(date \"+%s\")\".yaml",
-    "generate": "./scripts/generate-zeus.sh",
-    "runScript": "node -r @swc-node/register",
-    "seed": "yarn runScript ./scripts/seedDatabase.ts"
+    "generate": "scripts/generate-zeus.sh",
+    "runScript": "node -r @swc-node/register"
   },
   "engines": {
     "node": "14"
