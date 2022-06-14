@@ -6,6 +6,7 @@ interface IConfig {
   graphqlURL: string;
   graphqlAdminSecret: string;
   mfosGraphqlUrl: string;
+  mfosSystemGraphqlUrl: string;
   mfosGraphqlToken: string;
   locksmithAccessToken: string;
   locksmithEndpoint: string;
@@ -32,6 +33,7 @@ export const CONFIG: IConfig = {
   graphqlURL: parseEnv(process.env.GRAPHQL_URL),
   graphqlAdminSecret: parseEnv(process.env.GRAPHQL_ADMIN_SECRET),
   mfosGraphqlUrl: parseEnv(process.env.MFOS_GRAPHQL_URL),
+  mfosSystemGraphqlUrl: parseEnv(process.env.MFOS_SYSTEM_GRAPHQL_URL),
   mfosGraphqlToken: parseEnv(process.env.MFOS_GRAPHQL_TOKEN),
   locksmithAccessToken: parseEnv(process.env.LS_ACCESS_TOKEN),
   locksmithEndpoint: parseEnv(process.env.LS_ENDPOINT),

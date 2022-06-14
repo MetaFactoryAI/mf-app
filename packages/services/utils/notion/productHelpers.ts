@@ -5,6 +5,7 @@ import {
   BrandPage,
   DesignerPage,
   ProductPage,
+  ProductPageFiles,
   TemplatePage,
   TextBlock,
 } from './parser';
@@ -25,12 +26,13 @@ const getTextValue = (blocks: Array<z.infer<typeof TextBlock>>): string =>
 export const getProductTitle = (page: z.infer<typeof ProductPage>): string =>
   getTextValue(page.properties.Name.title);
 
-export const getProductShopLink = (page: z.infer<typeof ProductPage>): string =>
-  page.properties['Shopify Link'].url;
+export const getProductShopLink = (
+  page: z.infer<typeof ProductPage>,
+): string | null => page.properties['Shopify Link'].url;
 
 export const getProductShopifyId = (
   page: z.infer<typeof ProductPage>,
-): string => getProductShopLink(page)?.split(/\S*\//g)[1];
+): string | undefined => getProductShopLink(page)?.split(/\S*\//g)[1];
 
 export const getProductReleaseDate = (
   page: z.infer<typeof ProductPage>,
@@ -44,22 +46,48 @@ export const getSiloChipVersion = (
   page: z.infer<typeof ProductPage>,
 ): string | undefined => page.properties['SiLo Chip'].select?.name;
 
+export const getProductPrice = (
+  page: z.infer<typeof ProductPage>,
+): number | null => page.properties.Price.number;
+
 export const getProductDescription = (
   page: z.infer<typeof ProductPage>,
 ): string => getTextValue(page.properties.Description.rich_text);
 
-export const getProductBrand = (
+export const getProductStatus = (
   page: z.infer<typeof ProductPage>,
-): { id: string; url: string; name: string } => {
-  const brandPage = BrandPage.parse(
-    page.properties['Brand Rel'].relation[0].value,
-  );
+): string | undefined => page.properties.Status.select?.name;
 
-  return {
-    id: brandPage.id,
-    url: brandPage.url,
-    name: getTextValue(brandPage.properties.Name.title),
-  };
+export const getProductBrandId = (
+  page: z.infer<typeof ProductPage>,
+): string | undefined => page.properties['Brand Rel'].relation[0]?.id;
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const getProductBrand = (page: z.infer<typeof ProductPage>) => {
+  try {
+    const brandPage = BrandPage.nullable().parse(
+      page.properties['Brand Rel'].relation[0]?.value || null,
+    );
+    return (
+      brandPage && {
+        id: brandPage.id,
+        url: brandPage.url,
+        name: getTextValue(brandPage.properties.Name.title),
+        discordUrl: brandPage.properties['Discord Link'].url,
+        description: getTextValue(brandPage.properties.Description.rich_text),
+        createdAt: brandPage.created_time,
+        ethAddress: getTextValue(brandPage.properties['ETH Address'].rich_text),
+      }
+    );
+  } catch (e) {
+    throw new Error(
+      `Unable to parse brand:  ${JSON.stringify(
+        page.properties['Brand Rel'],
+        null,
+        2,
+      )}`,
+    );
+  }
 };
 
 export const getProductDesigner = (
@@ -74,6 +102,7 @@ export const getProductDesigner = (
 
   return {
     name: getTextValue(designerPage.properties.Name.title),
+    ethAddress: getTextValue(designerPage.properties['Eth Address'].rich_text),
     url: designerPage.properties.Social.url,
     role: 'Designer',
   };
@@ -90,6 +119,7 @@ export const getProductTechnician = (
 
   return {
     name: getTextValue(techPage.properties.Name.title),
+    ethAddress: getTextValue(techPage.properties['Eth Address'].rich_text),
     url: techPage.properties.Social.url,
     role: 'Technician',
   };
@@ -97,6 +127,8 @@ export const getProductTechnician = (
 
 export const getClo3dModel = (page: z.infer<typeof ProductPage>): FileData => ({
   uri: page.properties['CLO3d Model'].files[0]?.file.url,
+  name: page.properties['CLO3d Model'].files[0]?.name,
+  extension: 'zprj',
   mimeType: 'application/octet-stream',
   properties: {
     description: 'CLO3D / Marvelous Designer Project File',
@@ -104,10 +136,19 @@ export const getClo3dModel = (page: z.infer<typeof ProductPage>): FileData => ({
 });
 
 export const getProductImages = (page: z.infer<typeof ProductPage>): string[] =>
-  page.properties['3D Static'].files.map((f) => f.file.url);
+  page.properties['3D Static'].files.map((f) => {
+    if (f.type === 'file') {
+      return f.file.url;
+    }
+    return f.external.url;
+  });
+
+export const getProductFulfillment = (
+  page: z.infer<typeof ProductPage>,
+): string | undefined => page.properties.Fulfillment.select?.name;
 
 export const getWearablesFolder = (
-  page: z.infer<typeof ProductPage>,
+  page: z.infer<typeof ProductPage> | z.infer<typeof ProductPageFiles>,
 ): string | undefined =>
   page.properties['Wearable Files'].files[0]?.external.url;
 

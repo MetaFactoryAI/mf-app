@@ -5,16 +5,18 @@ set -o allexport
 source .env
 set +o allexport
 
-GEN_PATH=./graphql
+SYSTEM_PATH=./graphql/system
+USER_PATH=./graphql/user
 
 function generate() {
   # use the first argument as the path to move files to
+  local TYPE=$1; shift
   local GEN_PATH=$1; shift
-
-  test -d "$GEN_PATH" && rm -r "$GEN_PATH/zeus"
+  local ENDPOINT=$1; shift
+  local TMP_GEN_PATH=${TMPDIR:-/tmp}/${TYPE}_`date +%s`
 
   # pass the rest of the arguments to zeus
-  (set -x; zeus "$GRAPHQL_URL" "$GEN_PATH" --node --ts "$@")
+  (set -x; zeus "$ENDPOINT" $TMP_GEN_PATH --ts "$@")
 
   # shamelessly borrowed from
   # https://gist.github.com/maxpoletaev/4ed25183427a2cd7e57a
@@ -28,19 +30,24 @@ function generate() {
   # for other seds try removing -i '' -e
   # use `brew install gsed` on macos to get this
   if [[ "$PLATFORM" == "OSX" || "$PLATFORM" == "BSD" ]]; then
-    sed -i "" 's,bigint"]:any,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
-    sed -i "" 's,bigint"]:unknown,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
+    sed -i "" 's,bigint"]:any,bigint"]:number,g' "$TMP_GEN_PATH"/zeus/index.ts
+    sed -i "" 's,bigint"]:unknown,bigint"]:number,g' "$TMP_GEN_PATH"/zeus/index.ts
+    sed -i "" 's/console\.error(response)/\/\/ eslint-disable-next-line no-console\nconsole\.info(JSON\.stringify(response))/g' "$TMP_GEN_PATH"/zeus/index.ts
   elif [ "$PLATFORM" == "LINUX" ]; then
-    sed -i 's,bigint"]:any,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
-    sed -i 's,bigint"]:unknown,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
+    sed -i 's,bigint"]:any,bigint"]:number,g' "$TMP_GEN_PATH"/zeus/index.ts
+    sed -i 's,bigint"]:unknown,bigint"]:number,g' "$TMP_GEN_PATH"/zeus/index.ts
+    sed -i 's/console\.error(response)/\/\/ eslint-disable-next-line no-console\nconsole\.info(JSON\.stringify(response, null, 2))/g' "$TMP_GEN_PATH"/zeus/index.ts
   else
     echo "unknown platform; exiting"
     exit 1
   fi
+
+  test -d $GEN_PATH && rm -r $GEN_PATH
+  mv -f $TMP_GEN_PATH $GEN_PATH
 }
 
-generate "$GEN_PATH" -h "Authorization: Bearer $GRAPHQL_TOKEN"
-#generate $GEN_PATH -h x-hasura-role:user -h "authorization:generate"
+generate system $SYSTEM_PATH $GRAPHQL_SYSTEM_URL --node -h "Authorization: Bearer $GRAPHQL_TOKEN"
+generate user $USER_PATH $GRAPHQL_URL --node -h "Authorization: Bearer $GRAPHQL_TOKEN"
 
 # fix formatting of generated files
-#node_modules/.bin/prettier --write $GEN_PATH
+#node_modules/.bin/prettier --write {$SYSTEM_PATH,$USER_PATH}

@@ -73,6 +73,30 @@ collections:
       comment: null
       name: collaborator_roles
       schema: public
+  - collection: file_formats
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: file_formats
+      color: null
+      display_template: "{{name}}\_({{mime_type}})"
+      group: null
+      hidden: false
+      icon: save
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: file_formats
+      schema: public
   - collection: fulfillers
     meta:
       accountability: all
@@ -209,7 +233,7 @@ collections:
       item_duplication_fields: null
       note: The people that contributed to the product drop
       singleton: false
-      sort: 3
+      sort: 4
       sort_field: null
       translations: null
       unarchive_value: null
@@ -292,7 +316,7 @@ collections:
   - collection: products
     meta:
       accountability: all
-      archive_app_filter: true
+      archive_app_filter: false
       archive_field: null
       archive_value: null
       collapse: open
@@ -313,6 +337,54 @@ collections:
       comment: null
       name: products
       schema: public
+  - collection: products_content
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products_content
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: products_content
+      schema: public
+  - collection: products_design_files
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products_design_files
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: products_design_files
+      schema: public
   - collection: products_files
     meta:
       accountability: all
@@ -329,13 +401,41 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 2
+      sort: 3
+      sort_field: null
+      translations:
+        - language: en-US
+          translation: Product Images
+          singular: Image
+          plural: Images
+      unarchive_value: null
+    schema:
+      comment: null
+      name: products_files
+      schema: public
+  - collection: products_production_materials
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products_production_materials
+      color: null
+      display_template: null
+      group: null
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
       sort_field: null
       translations: null
       unarchive_value: null
     schema:
       comment: null
-      name: products_files
+      name: products_production_materials
       schema: public
   - collection: products_production_methods
     meta:
@@ -360,6 +460,30 @@ collections:
     schema:
       comment: null
       name: products_production_methods
+      schema: public
+  - collection: products_wearables
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: products_wearables
+      color: null
+      display_template: null
+      group: products
+      hidden: true
+      icon: import_export
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 2
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: products_wearables
       schema: public
   - collection: skills
     meta:
@@ -396,10 +520,34 @@ collections:
       color: null
       display_template: '{{name}}'
       group: null
-      hidden: false
+      hidden: true
       icon: approval
       item_duplication_fields: null
       note: Stages of product development / production
+      singleton: false
+      sort: 11
+      sort_field: sort
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: stage
+      schema: public
+  - collection: stages
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: stages
+      color: null
+      display_template: '{{name}}'
+      group: null
+      hidden: false
+      icon: approval
+      item_duplication_fields: null
+      note: null
       singleton: false
       sort: null
       sort_field: sort
@@ -407,7 +555,7 @@ collections:
       unarchive_value: null
     schema:
       comment: null
-      name: stage
+      name: stages
       schema: public
   - collection: users
     meta:
@@ -470,8 +618,7 @@ fields:
       hidden: false
       interface: group-detail
       note: null
-      options:
-        start: closed
+      options: {}
       readonly: false
       required: false
       sort: 4
@@ -507,7 +654,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: timestamp with time zone
@@ -518,7 +665,7 @@ fields:
       generation_expression: null
       has_auto_increment: false
       is_generated: false
-      is_nullable: false
+      is_nullable: true
       is_primary_key: false
       is_unique: false
       max_length: null
@@ -809,6 +956,47 @@ fields:
       schema: public
       table: brands
     type: text
+  - collection: brands
+    field: notion_id
+    meta:
+      collection: brands
+      conditions: null
+      display: null
+      display_options: null
+      field: notion_id
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: true
+      max_length: 255
+      name: notion_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: brands
+    type: string
   - collection: brands
     field: products
     meta:
@@ -1216,6 +1404,213 @@ fields:
       schema: public
       table: directus_flows
     type: text
+  - collection: file_formats
+    field: description
+    meta:
+      collection: file_formats
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: file_formats
+    type: string
+  - collection: file_formats
+    field: extension
+    meta:
+      collection: file_formats
+      conditions: null
+      display: null
+      display_options: null
+      field: extension
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: null
+      readonly: false
+      required: false
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: true
+      max_length: 255
+      name: extension
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: file_formats
+    type: string
+  - collection: file_formats
+    field: id
+    meta:
+      collection: file_formats
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('file_formats_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: file_formats
+    type: integer
+  - collection: file_formats
+    field: mime_type
+    meta:
+      collection: file_formats
+      conditions: null
+      display: mime-type
+      display_options: null
+      field: mime_type
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: e.g. model/gltf-binary
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: mime_type
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: file_formats
+    type: string
+  - collection: file_formats
+    field: name
+    meta:
+      collection: file_formats
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: file_formats
+    type: string
   - collection: fulfillers
     field: address
     meta: null
@@ -2619,7 +3014,8 @@ fields:
       collection: production_materials
       conditions: null
       display: related-values
-      display_options: null
+      display_options:
+        template: "{{first_name}}\_{{last_name}}"
       field: created_by
       group: null
       hidden: false
@@ -3480,7 +3876,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special:
         - alias
         - group
@@ -3506,7 +3902,7 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special:
         - alias
         - group
@@ -3530,10 +3926,39 @@ fields:
       interface: group-accordion
       note: null
       options:
+        accordionMode: false
         start: first
       readonly: false
       required: false
-      sort: 5
+      sort: 6
+      special:
+        - alias
+        - group
+        - no-data
+      translations:
+        - language: en-US
+          translation: Details
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
+    field: assets
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: assets
+      group: accordion-ddvsau
+      hidden: false
+      interface: group-raw
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 2
       special:
         - alias
         - group
@@ -3636,6 +4061,49 @@ fields:
       table: products
     type: integer
   - collection: products
+    field: clo3d_file
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: clo3d_file
+      group: assets
+      hidden: false
+      interface: file
+      note: null
+      options:
+        folder: 6750798c-fae7-458a-bad3-70baf9cb3f4e
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: clo3d_file
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: uuid
+  - collection: products
     field: collaborator_reward_share
     meta:
       collection: products
@@ -3696,9 +4164,34 @@ fields:
       options: null
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special:
         - m2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
+    field: content
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: content
+      group: assets
+      hidden: false
+      interface: files
+      note: null
+      options:
+        folder: 61a8aede-df79-4d17-8264-4047ad87ea2a
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - files
       translations: null
       validation: null
       validation_message: null
@@ -3720,7 +4213,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 7
+      sort: 8
       special:
         - date-created
       translations: null
@@ -3737,7 +4230,7 @@ fields:
       generation_expression: null
       has_auto_increment: false
       is_generated: false
-      is_nullable: false
+      is_nullable: true
       is_primary_key: false
       is_unique: false
       max_length: null
@@ -3762,7 +4255,7 @@ fields:
       options: {}
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -3788,6 +4281,31 @@ fields:
       schema: public
       table: products
     type: text
+  - collection: products
+    field: design_files
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: design_files
+      group: assets
+      hidden: false
+      interface: files
+      note: null
+      options:
+        folder: 6750798c-fae7-458a-bad3-70baf9cb3f4e
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - files
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
   - collection: products
     field: discord_channel_id
     meta:
@@ -3845,7 +4363,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special:
         - alias
         - group
@@ -3873,7 +4391,7 @@ fields:
         template: '{{name}}'
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations:
         - language: en-US
@@ -3949,19 +4467,45 @@ fields:
       conditions: null
       display: related-values
       display_options:
-        template: '{{directus_files_id}}'
+        template: '{{directus_files_id.$thumbnail}}'
       field: images
       group: product_details
       hidden: false
       interface: files
       note: null
       options:
-        template: '{{directus_files_id}}'
+        template: null
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special:
         - files
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
+    field: materials
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: '{{production_materials_id.name}}'
+      field: materials
+      group: Production
+      hidden: false
+      interface: list-m2m
+      note: null
+      options:
+        template: '{{production_materials_id.name}}'
+      readonly: false
+      required: false
+      sort: 1
+      special:
+        - m2m
       translations: null
       validation: null
       validation_message: null
@@ -4110,7 +4654,7 @@ fields:
         template: '{{name}}'
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special: null
       translations:
         - language: en-US
@@ -4166,6 +4710,49 @@ fields:
       width: full
     schema: null
     type: alias
+  - collection: products
+    field: product_stage
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options: null
+      field: product_stage
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{name}}'
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: name
+      foreign_key_schema: public
+      foreign_key_table: stages
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: product_stage
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: string
   - collection: products
     field: production_cost
     meta:
@@ -4226,7 +4813,7 @@ fields:
         enableCreate: false
       readonly: false
       required: false
-      sort: 1
+      sort: 2
       special:
         - m2m
       translations: null
@@ -4239,19 +4826,7 @@ fields:
     field: quantity
     meta:
       collection: products
-      conditions:
-        - name: Hide on Open Editions
-          rule:
-            _and:
-              - sale_type:
-                  _neq: limited_edition
-          hidden: true
-          options:
-            font: sans-serif
-            trim: false
-            masked: false
-            clear: false
-            slug: false
+      conditions: []
       display: null
       display_options: null
       field: quantity
@@ -4289,6 +4864,48 @@ fields:
       schema: public
       table: products
     type: bigInteger
+  - collection: products
+    field: release_date
+    meta:
+      collection: products
+      conditions: null
+      display: datetime
+      display_options:
+        format: short
+      field: release_date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp without time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: release_date
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: dateTime
   - collection: products
     field: sale_type
     meta:
@@ -4336,6 +4953,48 @@ fields:
       table: products
     type: string
   - collection: products
+    field: season
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: season
+      group: product_details
+      hidden: false
+      interface: input
+      note: null
+      options:
+        min: 0
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: season
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: integer
+  - collection: products
     field: shopify_id
     meta:
       collection: products
@@ -4377,50 +5036,6 @@ fields:
       table: products
     type: text
   - collection: products
-    field: stage
-    meta:
-      collection: products
-      conditions: null
-      display: related-values
-      display_options:
-        template: '{{name}}'
-      field: stage
-      group: null
-      hidden: false
-      interface: select-dropdown-m2o
-      note: What stage of production the product is in
-      options:
-        template: '{{name}}'
-      readonly: false
-      required: false
-      sort: 3
-      special:
-        - m2o
-      translations: null
-      validation: null
-      validation_message: null
-      width: half
-    schema:
-      comment: null
-      data_type: integer
-      default_value: null
-      foreign_key_column: id
-      foreign_key_schema: public
-      foreign_key_table: stage
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: stage
-      numeric_precision: 32
-      numeric_scale: 0
-      schema: public
-      table: products
-    type: integer
-  - collection: products
     field: status
     meta:
       collection: products
@@ -4428,32 +5043,16 @@ fields:
       display: labels
       display_options:
         choices:
-          - text: Submitted
-            value: submitted
-            foreground: '#A2B5CD'
-          - text: Rejected
-            value: rejected
-            foreground: '#E35169'
-          - text: Design
-            value: design
-            foreground: '#FFC23B'
-          - text: Sampling
-            foreground: '#3399FF'
-            value: sampling
-          - text: Sale Live
-            value: sale_live
+          - text: Draft
+            value: draft
             foreground: '#18222F'
+            background: '#A2B5CD'
+          - text: Published
+            value: published
+            foreground: '#FFFFFF'
             background: '#2ECDA7'
-          - text: Production
-            value: production
-            foreground: '#18222F'
-            background: '#3399FF'
-          - text: Shipping
-            value: shipping
-            foreground: '#18222F'
-            background: '#FFFFFF'
-          - text: Fulfillment Completed
-            value: fulfillment_completed
+          - text: Archived
+            value: archived
             foreground: '#A2B5CD'
             background: '#18222F'
       field: status
@@ -4463,25 +5062,15 @@ fields:
       note: null
       options:
         choices:
-          - text: Submitted
-            value: submitted
-          - text: Rejected
-            value: rejected
-          - text: Design
-            value: design
-          - text: Sampling
-            value: sampling
-          - text: Sale Live
-            value: sale_live
-          - text: Production
-            value: production
-          - text: Shipping
-            value: shipping
-          - text: Fulfillment Completed
-            value: fulfillment_completed
+          - text: Draft
+            value: draft
+          - text: Published
+            value: published
+          - text: Archived
+            value: archived
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -4507,6 +5096,277 @@ fields:
       schema: public
       table: products
     type: string
+  - collection: products
+    field: wearable_files
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options: null
+      field: wearable_files
+      group: assets
+      hidden: false
+      interface: files
+      note: null
+      options:
+        folder: 8cdd964b-8199-4515-bb4a-0127bf2943cc
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - files
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products_content
+    field: directus_files_id
+    meta:
+      collection: products_content
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: directus_files_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products_content
+    type: uuid
+  - collection: products_content
+    field: id
+    meta:
+      collection: products_content
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('products_content_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products_content
+    type: integer
+  - collection: products_content
+    field: products_id
+    meta:
+      collection: products_content
+      conditions: null
+      display: null
+      display_options: null
+      field: products_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: products_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products_content
+    type: bigInteger
+  - collection: products_design_files
+    field: directus_files_id
+    meta:
+      collection: products_design_files
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: directus_files_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products_design_files
+    type: uuid
+  - collection: products_design_files
+    field: id
+    meta:
+      collection: products_design_files
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('products_design_files_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products_design_files
+    type: integer
+  - collection: products_design_files
+    field: products_id
+    meta:
+      collection: products_design_files
+      conditions: null
+      display: null
+      display_options: null
+      field: products_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: products_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products_design_files
+    type: bigInteger
   - collection: products_files
     field: directus_files_id
     meta:
@@ -4630,6 +5490,129 @@ fields:
       schema: public
       table: products_files
     type: bigInteger
+  - collection: products_production_materials
+    field: id
+    meta:
+      collection: products_production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('products_production_materials_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products_production_materials
+    type: integer
+  - collection: products_production_materials
+    field: production_materials_id
+    meta:
+      collection: products_production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: production_materials_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: production_materials
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_materials_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products_production_materials
+    type: bigInteger
+  - collection: products_production_materials
+    field: products_id
+    meta:
+      collection: products_production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: products_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: products_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products_production_materials
+    type: bigInteger
   - collection: products_production_methods
     field: id
     meta:
@@ -4752,6 +5735,172 @@ fields:
       numeric_scale: 0
       schema: public
       table: products_production_methods
+    type: bigInteger
+  - collection: products_wearables
+    field: directus_files_id
+    meta:
+      collection: products_wearables
+      conditions: null
+      display: null
+      display_options: null
+      field: directus_files_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: directus_files_id
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products_wearables
+    type: uuid
+  - collection: products_wearables
+    field: file_format
+    meta:
+      collection: products_wearables
+      conditions: null
+      display: null
+      display_options: null
+      field: file_format
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: "{{name}}\_({{extension}})"
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: file_formats
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: file_format
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products_wearables
+    type: integer
+  - collection: products_wearables
+    field: id
+    meta:
+      collection: products_wearables
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('products_wearables_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products_wearables
+    type: integer
+  - collection: products_wearables
+    field: products_id
+    meta:
+      collection: products_wearables
+      conditions: null
+      display: null
+      display_options: null
+      field: products_id
+      group: null
+      hidden: true
+      interface: null
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: products_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: products_wearables
     type: bigInteger
   - collection: skills
     field: description
@@ -4955,7 +6104,7 @@ fields:
       display_options: null
       field: id
       group: null
-      hidden: true
+      hidden: false
       interface: input
       note: null
       options: null
@@ -5113,6 +6262,162 @@ fields:
       numeric_scale: 0
       schema: public
       table: stage
+    type: integer
+  - collection: stages
+    field: description
+    meta:
+      collection: stages
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: stages
+    type: string
+  - collection: stages
+    field: name
+    meta:
+      collection: stages
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: Submitted
+            value: submitted
+            foreground: '#A2B5CD'
+          - text: Rejected
+            value: rejected
+            foreground: '#E35169'
+          - text: Design
+            value: design
+            foreground: '#6644FF'
+          - text: Sampling
+            value: sampling
+            foreground: '#3399FF'
+          - text: Scheduled
+            value: scheduled
+            foreground: '#18222F'
+            background: '#FFC23B'
+          - text: Sale Live
+            value: sale_live
+            foreground: '#18222F'
+            background: '#2ECDA7'
+          - text: Production
+            value: production
+            foreground: '#18222F'
+            background: '#3399FF'
+          - text: Shipping
+            value: shipping
+            foreground: '#18222F'
+            background: '#FFFFFF'
+          - text: Fulfillment Completed
+            value: fulfillment_completed
+            foreground: '#1F7A67'
+            background: '#18222F'
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: 255
+      name: name
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: stages
+    type: string
+  - collection: stages
+    field: sort
+    meta:
+      collection: stages
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sort
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: stages
     type: integer
   - collection: users
     field: about
@@ -6090,6 +7395,28 @@ relations:
       on_update: NO ACTION
       table: products
   - collection: products
+    field: clo3d_file
+    meta:
+      junction_field: null
+      many_collection: products
+      many_field: clo3d_file
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: clo3d_file
+      constraint_name: products_clo3d_file_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: products
+  - collection: products
     field: fulfiller_id
     meta:
       junction_field: null
@@ -6156,27 +7483,115 @@ relations:
       on_update: NO ACTION
       table: products
   - collection: products
-    field: stage
+    field: product_stage
     meta:
       junction_field: null
       many_collection: products
-      many_field: stage
+      many_field: product_stage
       one_allowed_collections: null
-      one_collection: stage
+      one_collection: stages
       one_collection_field: null
       one_deselect_action: nullify
       one_field: null
       sort_field: null
-    related_collection: stage
+    related_collection: stages
     schema:
-      column: stage
-      constraint_name: products_stage_foreign
-      foreign_key_column: id
+      column: product_stage
+      constraint_name: products_product_stage_foreign
+      foreign_key_column: name
       foreign_key_schema: public
-      foreign_key_table: stage
+      foreign_key_table: stages
       on_delete: SET NULL
       on_update: NO ACTION
       table: products
+  - collection: products_content
+    field: directus_files_id
+    meta:
+      junction_field: products_id
+      many_collection: products_content
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: directus_files_id
+      constraint_name: products_content_directus_files_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products_content
+  - collection: products_content
+    field: products_id
+    meta:
+      junction_field: directus_files_id
+      many_collection: products_content
+      many_field: products_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: content
+      sort_field: null
+    related_collection: products
+    schema:
+      column: products_id
+      constraint_name: products_content_products_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      on_delete: CASCADE
+      on_update: NO ACTION
+      table: products_content
+  - collection: products_design_files
+    field: directus_files_id
+    meta:
+      junction_field: products_id
+      many_collection: products_design_files
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: directus_files_id
+      constraint_name: products_design_files_directus_files_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products_design_files
+  - collection: products_design_files
+    field: products_id
+    meta:
+      junction_field: directus_files_id
+      many_collection: products_design_files
+      many_field: products_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: design_files
+      sort_field: null
+    related_collection: products
+    schema:
+      column: products_id
+      constraint_name: products_design_files_products_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      on_delete: CASCADE
+      on_update: NO ACTION
+      table: products_design_files
   - collection: products_files
     field: directus_files_id
     meta:
@@ -6221,6 +7636,50 @@ relations:
       on_delete: CASCADE
       on_update: NO ACTION
       table: products_files
+  - collection: products_production_materials
+    field: production_materials_id
+    meta:
+      junction_field: products_id
+      many_collection: products_production_materials
+      many_field: production_materials_id
+      one_allowed_collections: null
+      one_collection: production_materials
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: production_materials
+    schema:
+      column: production_materials_id
+      constraint_name: products_production_materials_production_m__17bc74b5_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: production_materials
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products_production_materials
+  - collection: products_production_materials
+    field: products_id
+    meta:
+      junction_field: production_materials_id
+      many_collection: products_production_materials
+      many_field: products_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: materials
+      sort_field: null
+    related_collection: products
+    schema:
+      column: products_id
+      constraint_name: products_production_materials_products_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      on_delete: CASCADE
+      on_update: NO ACTION
+      table: products_production_materials
   - collection: products_production_methods
     field: production_methods_id
     meta:
@@ -6265,6 +7724,72 @@ relations:
       on_delete: CASCADE
       on_update: NO ACTION
       table: products_production_methods
+  - collection: products_wearables
+    field: directus_files_id
+    meta:
+      junction_field: products_id
+      many_collection: products_wearables
+      many_field: directus_files_id
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_files
+    schema:
+      column: directus_files_id
+      constraint_name: products_wearables_directus_files_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_files
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: products_wearables
+  - collection: products_wearables
+    field: file_format
+    meta:
+      junction_field: null
+      many_collection: products_wearables
+      many_field: file_format
+      one_allowed_collections: null
+      one_collection: file_formats
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: file_formats
+    schema:
+      column: file_format
+      constraint_name: products_wearables_file_format_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: file_formats
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: products_wearables
+  - collection: products_wearables
+    field: products_id
+    meta:
+      junction_field: directus_files_id
+      many_collection: products_wearables
+      many_field: products_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: delete
+      one_field: wearable_files
+      sort_field: null
+    related_collection: products
+    schema:
+      column: products_id
+      constraint_name: products_wearables_products_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      on_delete: CASCADE
+      on_update: NO ACTION
+      table: products_wearables
   - collection: users_skills
     field: skills_id
     meta:
