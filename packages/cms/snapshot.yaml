@@ -89,7 +89,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: null
+      sort: 12
       sort_field: null
       translations: null
       unarchive_value: null
@@ -233,7 +233,7 @@ collections:
       item_duplication_fields: null
       note: The people that contributed to the product drop
       singleton: false
-      sort: 4
+      sort: 5
       sort_field: null
       translations: null
       unarchive_value: null
@@ -353,7 +353,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: null
+      sort: 13
       sort_field: null
       translations: null
       unarchive_value: null
@@ -377,7 +377,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: null
+      sort: 14
       sort_field: null
       translations: null
       unarchive_value: null
@@ -401,7 +401,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 3
+      sort: 4
       sort_field: null
       translations:
         - language: en-US
@@ -423,13 +423,13 @@ collections:
       collection: products_production_materials
       color: null
       display_template: null
-      group: null
+      group: products
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: null
+      sort: 2
       sort_field: null
       translations: null
       unarchive_value: null
@@ -477,7 +477,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 2
+      sort: 3
       sort_field: null
       translations: null
       unarchive_value: null
@@ -549,7 +549,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: null
+      sort: 15
       sort_field: sort
       translations: null
       unarchive_value: null
@@ -2805,7 +2805,7 @@ fields:
       options: {}
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - alias
         - group
@@ -2981,7 +2981,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 7
+      sort: 8
       special:
         - date-created
       translations: null
@@ -3025,7 +3025,7 @@ fields:
         template: "{{first_name}}\_{{last_name}}"
       readonly: true
       required: false
-      sort: null
+      sort: 9
       special:
         - m2o
         - user-created
@@ -3185,6 +3185,48 @@ fields:
       schema: public
       table: production_materials
     type: bigInteger
+  - collection: production_materials
+    field: made_in
+    meta:
+      collection: production_materials
+      conditions: null
+      display: null
+      display_options: null
+      field: made_in
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: e.g. Berlin
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: made_in
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: production_materials
+    type: string
   - collection: production_materials
     field: name
     meta:
@@ -3495,7 +3537,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: json
@@ -4553,6 +4595,48 @@ fields:
       schema: public
       table: products
     type: text
+  - collection: products
+    field: nft_token_id
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: nft_token_id
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        min: 1
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: true
+      max_length: null
+      name: nft_token_id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: integer
   - collection: products
     field: notion_id
     meta:
@@ -5861,6 +5945,48 @@ fields:
       schema: public
       table: products_wearables
     type: integer
+  - collection: products_wearables
+    field: primary
+    meta:
+      collection: products_wearables
+      conditions: null
+      display: null
+      display_options: null
+      field: primary
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: boolean
+      default_value: false
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: primary
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products_wearables
+    type: boolean
   - collection: products_wearables
     field: products_id
     meta:
