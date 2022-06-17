@@ -16,13 +16,25 @@ export const createClient = (endpoint: string, token: string) => {
     ])(...params),
   );
 
-  return {
-    query: thunder('query'),
-    mutate: thunder('mutation'),
-  };
+  return thunder;
 };
 
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+export const createThunderClient = (endpoint: string, token: string) =>
+  userZeus.Thunder((...params) =>
+    userZeus.apiFetch([
+      endpoint,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      },
+    ])(...params),
+  );
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,@typescript-eslint/ban-ts-comment
+// @ts-ignore infer problem
 export const createSystemClient = (endpoint: string, token: string) => {
   const thunder = systemZeus.Thunder((...params) =>
     systemZeus.apiFetch([
@@ -37,15 +49,8 @@ export const createSystemClient = (endpoint: string, token: string) => {
     ])(...params),
   );
 
-  return {
-    query: thunder('query'),
-    mutate: thunder('mutation'),
-  };
+  return thunder;
 };
 
 export type Client = ReturnType<typeof createClient>;
 export type SystemClient = ReturnType<typeof createSystemClient>;
-
-export * from '../constants';
-export * as SystemZeus from './system/zeus';
-export * from './user/zeus';

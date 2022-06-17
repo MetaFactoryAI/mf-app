@@ -1,5 +1,4 @@
-import { Client, PRODUCT_STAGES, useZeusVariables } from '@mf/cms';
-
+import { Client, PRODUCT_STAGES, useZeusVariables } from '../mfos';
 import {
   EXTENSION_DESCRIPTIONS,
   EXTENSION_MIME_TYPES,
@@ -10,7 +9,7 @@ import { fileFormatsSelector } from './selectors';
 
 export async function seedStages(client: Client): Promise<void> {
   const stages = Object.values(PRODUCT_STAGES);
-  const existingStages = await client.query({
+  const existingStages = await client('query')({
     stages: [{}, { name: true }],
   });
   const stagesToCreate = stages.filter(
@@ -27,7 +26,7 @@ export async function seedStages(client: Client): Promise<void> {
   const { $ } = variables;
 
   try {
-    await client.mutate(
+    await client('mutation')(
       {
         create_stages_items: [
           { data: $('data') },
@@ -55,7 +54,7 @@ export async function seedFileFormats(client: Client): Promise<void> {
       extension: name,
     }),
   );
-  const existingFormats = await client.query({
+  const existingFormats = await client('query')({
     file_formats: [{}, fileFormatsSelector],
   });
 
@@ -75,7 +74,7 @@ export async function seedFileFormats(client: Client): Promise<void> {
   const { $ } = variables;
 
   try {
-    await client.mutate(
+    await client('mutation')(
       {
         create_file_formats_items: [{ data: $('data') }, fileFormatsSelector],
       },

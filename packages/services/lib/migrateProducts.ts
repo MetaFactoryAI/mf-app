@@ -1,7 +1,7 @@
-import { Client, PRODUCT_STAGES, ValueTypes } from '@mf/cms';
 import assert from 'assert';
 import uniqBy from 'lodash/uniqBy';
 
+import { Client, PRODUCT_STAGES, ValueTypes } from '../mfos';
 import { logger } from '../utils/logger';
 import {
   getProductBrand,

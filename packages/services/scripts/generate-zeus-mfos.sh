@@ -5,8 +5,8 @@ set -o allexport
 source .env
 set +o allexport
 
-SYSTEM_PATH=./src/graphql/system
-USER_PATH=./src/graphql/user
+SYSTEM_PATH=./mfos/graphql/system
+USER_PATH=./mfos/graphql/user
 
 function generate() {
   # use the first argument as the path to move files to
@@ -46,8 +46,8 @@ function generate() {
   mv -f $TMP_GEN_PATH $GEN_PATH
 }
 
-generate system $SYSTEM_PATH $GRAPHQL_SYSTEM_URL --node -h "Authorization: Bearer $GRAPHQL_TOKEN"
-generate user $USER_PATH $GRAPHQL_URL --node -h "Authorization: Bearer $GRAPHQL_TOKEN"
+generate system $SYSTEM_PATH $MFOS_SYSTEM_GRAPHQL_URL --node -h "Authorization: Bearer $MFOS_GRAPHQL_TOKEN"
+generate user $USER_PATH $MFOS_GRAPHQL_URL --node -h "Authorization: Bearer $MFOS_GRAPHQL_TOKEN"
 
 # fix formatting of generated files
 #node_modules/.bin/prettier --write {$SYSTEM_PATH,$USER_PATH}

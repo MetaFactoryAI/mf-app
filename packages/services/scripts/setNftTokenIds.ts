@@ -1,11 +1,10 @@
-import { createClient } from '@mf/cms';
-
+import { createClient } from '../mfos';
 import { CONFIG } from '../utils/config';
 
 const client = createClient(CONFIG.mfosGraphqlUrl, CONFIG.mfosGraphqlToken);
 
 async function setNftTokenIds(): Promise<void> {
-  const data = await client.query({
+  const data = await client('query')({
     products: [
       {
         filter: {
@@ -27,7 +26,7 @@ async function setNftTokenIds(): Promise<void> {
     const { id } = products[i];
     if (id) {
       // eslint-disable-next-line no-await-in-loop
-      await client.mutate({
+      await client('mutation')({
         update_products_item: [
           {
             id,

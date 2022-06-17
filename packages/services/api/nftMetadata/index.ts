@@ -9,7 +9,7 @@ export default async (
   res: VercelResponse,
 ): Promise<void> => {
   try {
-    const productQuery = await mfosClient.query({
+    const productQuery = await mfosClient('query')({
       products: [
         { filter: { nft_token_id: { _nnull: true } } },
         productNftMetadataSelector,

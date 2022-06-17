@@ -1,4 +1,4 @@
-import { GraphQLTypes, InputType, Selector } from '@mf/cms';
+import { GraphQLTypes, InputType, Selector } from '../mfos';
 
 export const fileSelector = Selector('directus_files')({
   id: true,

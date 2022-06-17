@@ -1,8 +1,8 @@
 /* eslint-disable no-await-in-loop */
-import { Client, createSystemClient, ValueTypes } from '@mf/cms';
 import assert from 'assert';
 
 import { useZeusVariables } from '../graphql/__generated__/zeus';
+import { Client, createSystemClient, ValueTypes } from '../mfos';
 import { CONFIG } from '../utils/config';
 import { getFiles } from '../utils/filesHelpers';
 import { logger } from '../utils/logger';
@@ -33,7 +33,7 @@ export const createBrandIfNotExists = async (
     brand,
   });
 
-  const existingBrand = await client.query({
+  const existingBrand = await client('query')({
     brands: [
       { filter: { notion_id: { _eq: brand.notion_id } } },
       brandSelector,
@@ -44,7 +44,7 @@ export const createBrandIfNotExists = async (
     return existingBrand.brands[0];
   }
 
-  const createBrandRes = await client.mutate(
+  const createBrandRes = await client('mutation')(
     {
       create_brands_item: [
         {
@@ -77,7 +77,7 @@ export const createProductIfNotExists = async (
     product,
   });
 
-  const existingQuery = await client.query({
+  const existingQuery = await client('query')({
     products: [
       { filter: { notion_id: { _eq: product.notion_id } } },
       productsSelector,
@@ -93,7 +93,7 @@ export const createProductIfNotExists = async (
       product,
     });
 
-    const updatedRes = await client.mutate(
+    const updatedRes = await client('mutation')(
       {
         update_products_item: [
           { id: existing.id, data: variables.$('product') },
@@ -109,7 +109,7 @@ export const createProductIfNotExists = async (
     return updatedRes.update_products_item;
   }
 
-  const createRes = await client.mutate(
+  const createRes = await client('mutation')(
     {
       create_products_item: [
         {
@@ -148,7 +148,7 @@ async function uploadFile(
     },
   });
 
-  const uploaded = await systemClient.mutate(
+  const uploaded = await systemClient('mutation')(
     {
       import_file: [
         {
@@ -212,7 +212,7 @@ export const uploadImagesForProduct = async (
         },
       });
 
-      const linkedToFile = await client.mutate(
+      const linkedToFile = await client('mutation')(
         {
           create_products_files_item: [
             {
@@ -259,7 +259,7 @@ export const uploadWearablesForProduct = async (
       ),
   );
 
-  const { file_formats: formats } = await client.query({
+  const { file_formats: formats } = await client('query')({
     file_formats: [{}, fileFormatsSelector],
   });
 
@@ -289,7 +289,7 @@ export const uploadWearablesForProduct = async (
         },
       });
 
-      await client.mutate(
+      await client('mutation')(
         {
           create_products_wearables_item: [
             {

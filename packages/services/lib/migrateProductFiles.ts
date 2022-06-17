@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
-import { Client } from '@mf/cms';
 import assert from 'assert';
 
+import { Client } from '../mfos';
 import { logger } from '../utils/logger';
 import {
   uploadImagesForProduct,
@@ -11,7 +11,7 @@ import { getProductPageFiles } from './notionHelpers';
 import { productsFilesSelector } from './selectors';
 
 export async function migrateProductFiles(client: Client): Promise<void> {
-  const productsQuery = await client.query({
+  const productsQuery = await client('query')({
     products: [{ limit: 200 }, productsFilesSelector],
   });
   assert(productsQuery.products, 'Failed to get products');
