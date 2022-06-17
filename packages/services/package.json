@@ -5,7 +5,6 @@
   "scripts": {
     "test": "echo 'No tests setup'",
     "start": "yarn --cwd ../../ vercel dev -l 3003",
-    "build": "yarn --cwd ../../ vercel build -l 3003",
     "typecheck": "tsc",
     "generate": "./scripts/generate-zeus.sh",
     "generate-mfos": "./scripts/generate-zeus-mfos.sh"
