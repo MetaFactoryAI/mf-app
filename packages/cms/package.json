@@ -1,7 +1,6 @@
 {
-  "name": "@mf/cms",
-  "private": true,
-  "version": "1.0.0",
+  "name": "@meta-factory/cms",
+  "version": "0.1.1",
   "main": "./graphql/index.ts",
   "scripts": {
     "start": "directus bootstrap; directus start",
