@@ -81,6 +81,8 @@ export type FileFormat = InputType<
 >;
 
 export const productNftMetadataSelector = Selector('products')({
+  id: true,
+  nft_token_id: true,
   name: true,
   description: true,
   brand_id: [

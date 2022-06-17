@@ -15,11 +15,12 @@ export default async (
         productNftMetadataSelector,
       ],
     });
-
-    const productMetadata = (productQuery.products || []).map(
-      getMetadataForProduct,
-    );
-    res.status(200).send(productMetadata);
+    const data = (productQuery.products || []).map((p) => ({
+      id: p.id,
+      nft_token_id: p.nft_token_id,
+      nft_metadata: getMetadataForProduct(p),
+    }));
+    res.status(200).send(data);
   } catch (e) {
     res.status(400).send(`Error getting metadata: ${e as string}`);
   }

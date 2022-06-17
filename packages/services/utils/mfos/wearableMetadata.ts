@@ -13,7 +13,7 @@ export const getUrlForFile = (file: FileRes | null | undefined): string => {
 };
 
 export const getWearableShopLink = (shopifyId: string): string =>
-  `https://shop.metafactory/ai/products/${shopifyId}`;
+  `https://shop.metafactory.ai/products/${shopifyId}`;
 
 export const getMetadataForProduct = (
   product: ProductNftMetadataInfo,
