@@ -13,7 +13,7 @@ export interface WearableMetadata {
   properties: {
     brand: string | undefined;
     // season: string | undefined,
-    style: string | undefined;
+    style?: string | undefined;
     composition: string | undefined;
     madeIn: RichProperty | undefined;
     releaseDate: RichProperty | undefined;
@@ -28,7 +28,7 @@ export interface WearableMetadata {
 export interface Creator {
   name: string;
   role: string;
-  ethAddress: string;
+  ethAddress?: string;
   share?: number;
   url?: string | null;
 }

@@ -1,24 +1,25 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
-import { client } from '../../graphql/client';
+import { productNftMetadataSelector } from '../../lib/selectors';
+import { mfosClient } from '../../utils/mfos/client';
+import { getMetadataForProduct } from '../../utils/mfos/wearableMetadata';
 
 export default async (
   req: VercelRequest,
   res: VercelResponse,
 ): Promise<void> => {
   try {
-    const data = await client.query({
-      robot_product: [
-        { where: { nft_metadata: { _is_null: false } } },
-        {
-          id: true,
-          nft_token_id: true,
-          nft_metadata: [{}, true],
-        },
+    const productQuery = await mfosClient.query({
+      products: [
+        { filter: { nft_token_id: { _nnull: true } } },
+        productNftMetadataSelector,
       ],
     });
 
-    res.status(200).send(data.robot_product);
+    const productMetadata = (productQuery.products || []).map(
+      getMetadataForProduct,
+    );
+    res.status(200).send(productMetadata);
   } catch (e) {
     res.status(400).send(`Error getting metadata: ${e as string}`);
   }

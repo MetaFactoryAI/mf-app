@@ -103,7 +103,7 @@ export async function migrateProducts(client: Client): Promise<void> {
 
       if (price)
         product.price = {
-          amount: price,
+          amount: parseInt(price.toString(), 10),
           currency: 'USD',
         };
 

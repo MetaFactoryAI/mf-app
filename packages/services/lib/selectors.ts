@@ -1,5 +1,15 @@
 import { GraphQLTypes, InputType, Selector } from '@mf/cms';
 
+export const fileSelector = Selector('directus_files')({
+  id: true,
+  filename_download: true,
+});
+
+export type FileRes = InputType<
+  GraphQLTypes['directus_files'],
+  typeof fileSelector
+>;
+
 export const brandSelector = Selector('brands')({
   id: true,
   name: true,
@@ -68,4 +78,73 @@ export const fileFormatsSelector = Selector('file_formats')({
 export type FileFormat = InputType<
   GraphQLTypes['file_formats'],
   typeof fileFormatsSelector
+>;
+
+export const productNftMetadataSelector = Selector('products')({
+  name: true,
+  description: true,
+  brand_id: [
+    {},
+    {
+      name: true,
+    },
+  ],
+  clo3d_file: [{}, fileSelector],
+  season: true,
+  release_date: true,
+  shopify_id: true,
+  materials: [
+    {},
+    {
+      production_materials_id: [
+        {},
+        {
+          composition: true,
+          made_in: true,
+          name: true,
+        },
+      ],
+    },
+  ],
+  collaborators: [
+    { sort: ['-collaboration_share'] },
+    {
+      collaboration_share: true,
+      role: [{}, { name: true }],
+      collaborator_id: [
+        {},
+        {
+          name: true,
+        },
+      ],
+    },
+  ],
+  wearable_files: [
+    {},
+    {
+      id: true,
+      file_format: [
+        {},
+        {
+          extension: true,
+          mime_type: true,
+          description: true,
+          name: true,
+          id: true,
+        },
+      ],
+      directus_files_id: [{}, fileSelector],
+    },
+  ],
+  images: [
+    {},
+    {
+      directus_files_id: [{}, fileSelector],
+    },
+  ],
+});
+
+export type ProductNftMetadataInfo = InputType<
+  GraphQLTypes['products'],
+  typeof productNftMetadataSelector
 >;
