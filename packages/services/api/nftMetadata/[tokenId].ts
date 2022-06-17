@@ -1,6 +1,8 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
-import { client } from '../../graphql/client';
+import { productNftMetadataSelector } from '../../lib/selectors';
+import { mfosClient } from '../../utils/mfos/client';
+import { getMetadataForProduct } from '../../utils/mfos/wearableMetadata';
 
 export default async (
   req: VercelRequest,
@@ -9,45 +11,44 @@ export default async (
   const { tokenId } = req.query;
 
   if (tokenId === 'nftMetadata') {
-    const data = await client.query(
+    const productQuery = await mfosClient.query(
       {
-        robot_product: [
-          { where: { nft_metadata: { _is_null: false } } },
-          {
-            id: true,
-            nft_token_id: true,
-            nft_metadata: [{}, true],
-          },
+        products: [
+          { filter: { nft_token_id: { _nnull: true } } },
+          productNftMetadataSelector,
         ],
       },
       {
-        operationName: 'getProductNftMetadata',
+        operationName: 'getNftMetadataForAllProducts',
       },
     );
 
-    res.status(200).send(data.robot_product);
+    const productMetadata = (productQuery.products || []).map(
+      getMetadataForProduct,
+    );
+    res.status(200).send(productMetadata);
   }
 
   try {
     const nftTokenId = parseInt(tokenId as string, 10);
-    const data = await client.query(
+    const productQuery = await mfosClient.query(
       {
-        robot_product: [
-          { where: { nft_token_id: { _eq: nftTokenId } } },
-          {
-            id: true,
-            nft_metadata: [{}, true],
-          },
+        products: [
+          { filter: { nft_token_id: { _eq: nftTokenId } } },
+          productNftMetadataSelector,
         ],
       },
       {
-        operationName: 'getProductNftMetadataById',
+        operationName: 'getNftMetadataById',
       },
     );
 
+    const product = productQuery.products?.[0];
+    const productMetadata = product ? getMetadataForProduct(product) : null;
+
     // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     res.setHeader('Cache-Control', 's-maxage=86400');
-    res.status(200).send(data.robot_product[0]?.nft_metadata || null);
+    res.status(200).send(productMetadata);
   } catch (e) {
     res.status(400).send(`Error getting metadata`);
   }

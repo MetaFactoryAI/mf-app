@@ -5,6 +5,7 @@ interface IConfig {
   appName: string;
   graphqlURL: string;
   graphqlAdminSecret: string;
+  mfosUrl: string;
   mfosGraphqlUrl: string;
   mfosSystemGraphqlUrl: string;
   mfosGraphqlToken: string;
@@ -32,6 +33,7 @@ export const CONFIG: IConfig = {
   appName: 'mf-dashboard',
   graphqlURL: parseEnv(process.env.GRAPHQL_URL),
   graphqlAdminSecret: parseEnv(process.env.GRAPHQL_ADMIN_SECRET),
+  mfosUrl: parseEnv(process.env.MFOS_URL),
   mfosGraphqlUrl: parseEnv(process.env.MFOS_GRAPHQL_URL),
   mfosSystemGraphqlUrl: parseEnv(process.env.MFOS_SYSTEM_GRAPHQL_URL),
   mfosGraphqlToken: parseEnv(process.env.MFOS_GRAPHQL_TOKEN),
