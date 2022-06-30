@@ -96,7 +96,7 @@ services:
     build:
       context: ./hasura
       args:
-        BACKEND_HOST: host.docker.internal:3000/api
+        BACKEND_HOST: host.docker.internal:3003/api
         AUTH_HOOK_PATH: hasuraAuthWebhook
         ACTION_BASE_PATH: actions
         REMOTE_SCHEMA_PATH: remote-schemas/graphql
@@ -119,7 +119,7 @@ services:
     build:
       context: ./hasura-cms
       args:
-        BACKEND_HOST: host.docker.internal:3000/api
+        BACKEND_HOST: host.docker.internal:3003/api
         AUTH_HOOK_PATH: hasuraAuthWebhook
         ACTION_BASE_PATH: actions
         REMOTE_SCHEMA_PATH: remote-schemas/graphql
