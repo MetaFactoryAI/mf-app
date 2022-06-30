@@ -305,17 +305,17 @@ export const ProductPage = BasePage.extend({
     // }),
     // 'Added to Shop': CheckboxProperty,
     Priority: SelectProperty,
-    // 'Neck Tag design': z.object({
-    //   id: z.string(),
-    //   type: z.string(),
-    //   files: z.array(
-    //     z.object({
-    //       name: z.string(),
-    //       type: z.string(),
-    //       file: z.object({ url: z.string(), expiry_time: z.string() }),
-    //     }),
-    //   ),
-    // }),
+    'Neck Tag design': z.object({
+      id: z.string(),
+      type: z.string(),
+      files: z.array(
+        z.object({
+          name: z.string(),
+          type: z.string(),
+          file: z.object({ url: z.string(), expiry_time: z.string() }),
+        }),
+      ),
+    }),
     // 'Last Edit Date': z.object({
     //   id: z.string(),
     //   type: z.string(),
@@ -348,6 +348,7 @@ export const ProductPageFiles = BasePage.extend({
     'CLO3d Model': SingleFileProperty,
     'Wearable Files': ExternalFilesProperty,
     'Design File(s)': FilesProperty,
+    'Neck Tag design': FilesProperty,
     '3D Static': FilesProperty.or(ExternalFilesProperty),
     'Social Assets': FilesProperty,
     '3D Animation': FilesProperty,

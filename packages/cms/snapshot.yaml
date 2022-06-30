@@ -89,7 +89,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 12
+      sort: 11
       sort_field: null
       translations: null
       unarchive_value: null
@@ -233,7 +233,7 @@ collections:
       item_duplication_fields: null
       note: The people that contributed to the product drop
       singleton: false
-      sort: 5
+      sort: 7
       sort_field: null
       translations: null
       unarchive_value: null
@@ -347,13 +347,13 @@ collections:
       collection: products_content
       color: null
       display_template: null
-      group: null
+      group: products
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 13
+      sort: 4
       sort_field: null
       translations: null
       unarchive_value: null
@@ -371,13 +371,13 @@ collections:
       collection: products_design_files
       color: null
       display_template: null
-      group: null
+      group: products
       hidden: true
       icon: import_export
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 14
+      sort: 2
       sort_field: null
       translations: null
       unarchive_value: null
@@ -401,7 +401,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 4
+      sort: 6
       sort_field: null
       translations:
         - language: en-US
@@ -429,7 +429,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 2
+      sort: 3
       sort_field: null
       translations: null
       unarchive_value: null
@@ -477,7 +477,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 3
+      sort: 5
       sort_field: null
       translations: null
       unarchive_value: null
@@ -509,30 +509,6 @@ collections:
       comment: null
       name: skills
       schema: public
-  - collection: stage
-    meta:
-      accountability: all
-      archive_app_filter: true
-      archive_field: null
-      archive_value: null
-      collapse: open
-      collection: stage
-      color: null
-      display_template: '{{name}}'
-      group: null
-      hidden: true
-      icon: approval
-      item_duplication_fields: null
-      note: Stages of product development / production
-      singleton: false
-      sort: 11
-      sort_field: sort
-      translations: null
-      unarchive_value: null
-    schema:
-      comment: null
-      name: stage
-      schema: public
   - collection: stages
     meta:
       accountability: all
@@ -549,7 +525,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 15
+      sort: 12
       sort_field: sort
       translations: null
       unarchive_value: null
@@ -6180,215 +6156,6 @@ fields:
       width: full
     schema: null
     type: alias
-  - collection: stage
-    field: description
-    meta:
-      collection: stage
-      conditions: null
-      display: null
-      display_options: null
-      field: description
-      group: null
-      hidden: false
-      interface: input
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: 255
-      name: description
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: stage
-    type: string
-  - collection: stage
-    field: id
-    meta:
-      collection: stage
-      conditions: null
-      display: null
-      display_options: null
-      field: id
-      group: null
-      hidden: false
-      interface: input
-      note: null
-      options: null
-      readonly: true
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: integer
-      default_value: nextval('stage_id_seq'::regclass)
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: true
-      is_generated: false
-      is_nullable: false
-      is_primary_key: true
-      is_unique: true
-      max_length: null
-      name: id
-      numeric_precision: 32
-      numeric_scale: 0
-      schema: public
-      table: stage
-    type: integer
-  - collection: stage
-    field: name
-    meta:
-      collection: stage
-      conditions: null
-      display: labels
-      display_options:
-        choices:
-          - text: Submitted
-            value: submitted
-            foreground: '#A2B5CD'
-          - text: Rejected
-            value: rejected
-            foreground: '#E35169'
-          - text: Design
-            value: design
-            foreground: '#6644FF'
-          - text: Sampling
-            value: sampling
-            foreground: '#3399FF'
-          - text: Sale Live
-            value: sale_live
-            foreground: '#18222F'
-            background: '#2ECDA7'
-          - text: Production
-            value: production
-            foreground: '#18222F'
-            background: '#3399FF'
-          - text: Shipping
-            value: shipping
-            foreground: '#18222F'
-            background: '#FFFFFF'
-          - text: Fulfillment Completed
-            value: fulfillment_completed
-            foreground: '#1F7A67'
-            background: '#18222F'
-          - text: Scheduled
-            value: scheduled
-            foreground: '#18222F'
-            background: '#FFC23B'
-      field: name
-      group: null
-      hidden: false
-      interface: input
-      note: null
-      options: null
-      readonly: true
-      required: true
-      sort: null
-      special: null
-      translations: null
-      validation:
-        _and:
-          - name:
-              _in:
-                - submitted
-                - rejected
-                - design
-                - sampling
-                - sale_live
-                - production
-                - shipping
-                - fulfillment_completed
-                - scheduled
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: character varying
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: true
-      max_length: 255
-      name: name
-      numeric_precision: null
-      numeric_scale: null
-      schema: public
-      table: stage
-    type: string
-  - collection: stage
-    field: sort
-    meta:
-      collection: stage
-      conditions: null
-      display: null
-      display_options: null
-      field: sort
-      group: null
-      hidden: true
-      interface: input
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: null
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      comment: null
-      data_type: integer
-      default_value: null
-      foreign_key_column: null
-      foreign_key_schema: null
-      foreign_key_table: null
-      generation_expression: null
-      has_auto_increment: false
-      is_generated: false
-      is_nullable: true
-      is_primary_key: false
-      is_unique: false
-      max_length: null
-      name: sort
-      numeric_precision: 32
-      numeric_scale: 0
-      schema: public
-      table: stage
-    type: integer
   - collection: stages
     field: description
     meta:

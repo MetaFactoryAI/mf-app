@@ -176,11 +176,11 @@ export const Properties = {
     type: 'select',
     propertyName: 'Priority' as const,
   },
-  // 'Neck Tag design': {
-  //   id: 'Zyrm' as const,
-  //   type: 'files',
-  //   propertyName: 'Neck Tag design' as const,
-  // },
+  'Neck Tag design': {
+    id: 'Zyrm' as const,
+    type: 'files',
+    propertyName: 'Neck Tag design' as const,
+  },
   // 'Last Edit Date': {
   //   id: '%5BQBF' as const,
   //   type: 'last_edited_time',

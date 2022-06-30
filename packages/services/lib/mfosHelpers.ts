@@ -314,3 +314,200 @@ export const uploadWearablesForProduct = async (
     });
   }
 };
+
+export const uploadClo3dFileForProduct = async (
+  client: Client,
+  product: ProductWithFiles,
+  productPage: ProductPageFile,
+): Promise<void> => {
+  const notionCloFile = productPage.properties['CLO3d Model'].files[0];
+  assert(product.id, 'Invalid product ID');
+  if (!notionCloFile) return;
+  if (product.clo3d_file?.filename_download === notionCloFile.name) {
+    logger.info(`${notionCloFile.name} already uploaded for ${product.name}.`);
+    return;
+  }
+  logger.info(`Uploading Clo File ${notionCloFile.name} for ${product.name}.`);
+
+  try {
+    const file = await uploadFile(
+      { name: notionCloFile.name, url: notionCloFile.file.url },
+      ['productCloFile'],
+    );
+
+    const linkFileVariables = useZeusVariables({
+      data: 'update_products_input!',
+      id: 'ID!',
+    })({
+      id: product.id,
+      data: {
+        clo3d_file: file,
+      },
+    });
+
+    const linkedToFile = await client('mutation')(
+      {
+        update_products_item: [
+          {
+            id: linkFileVariables.$('id'),
+            data: linkFileVariables.$('data'),
+          },
+          {
+            id: true,
+          },
+        ],
+      },
+      {
+        operationName: 'LinkCloFileToProduct',
+        variables: linkFileVariables,
+      },
+    );
+    logger.info(
+      `uploaded CLO3d File and linked to product`,
+      linkedToFile.update_products_item,
+    );
+  } catch (e) {
+    logger.warn('Failed to upload CLO3d file', {
+      error: e,
+      product,
+      productPage,
+    });
+  }
+};
+
+export const uploadDesignFilesForProduct = async (
+  client: Client,
+  product: ProductWithFiles,
+  productPage: ProductPageFile,
+): Promise<void> => {
+  const designFiles = productPage.properties['Design File(s)'].files.map(
+    (f) => ({ name: f.name, url: f.file.url }),
+  );
+  const neckTagFiles = productPage.properties['Neck Tag design'].files.map(
+    (f) => ({ name: f.name, url: f.file.url }),
+  );
+  const allFiles = [...designFiles, ...neckTagFiles];
+
+  const filesToUpload = allFiles.filter(
+    (i) =>
+      !product.images?.find(
+        (img) => img.directus_files_id?.filename_download === i.name,
+      ),
+  );
+
+  logger.info(
+    `Uploading ${filesToUpload.length} out of ${allFiles.length} images for ${product.name}.`,
+  );
+
+  try {
+    for (const i of filesToUpload) {
+      const file = await uploadFile(i, ['productDesignFile']);
+
+      const linkFileVariables = useZeusVariables({
+        data: 'create_products_design_files_input!',
+      })({
+        data: {
+          directus_files_id: file,
+          products_id: {
+            id: product.id,
+            name: product.name,
+          },
+        },
+      });
+
+      const linkedToFile = await client('mutation')(
+        {
+          create_products_design_files_item: [
+            {
+              data: linkFileVariables.$('data'),
+            },
+            {
+              id: true,
+            },
+          ],
+        },
+        {
+          operationName: 'LinkDesignFileToProduct',
+          variables: linkFileVariables,
+        },
+      );
+      logger.info(
+        `uploaded design file ${i.name} and linked to product`,
+        linkedToFile.create_products_design_files_item,
+      );
+    }
+  } catch (e) {
+    logger.warn('Failed to upload design file', {
+      error: e,
+      product,
+      productPage,
+    });
+  }
+};
+
+export const uploadContentForProduct = async (
+  client: Client,
+  product: ProductWithFiles,
+  productPage: ProductPageFile,
+): Promise<void> => {
+  const animations = productPage.properties['3D Animation'].files.map((f) => ({
+    name: f.name,
+    url: f.file.url,
+  }));
+
+  const filesToUpload = animations.filter(
+    (i) =>
+      !product.content?.find(
+        (img) => img.directus_files_id?.filename_download === i.name,
+      ),
+  );
+
+  logger.info(
+    `Uploading ${filesToUpload.length} out of ${animations.length} animation content for ${product.name}.`,
+  );
+
+  try {
+    for (const i of filesToUpload) {
+      const file = await uploadFile(i, ['productContentFile']);
+
+      const linkFileVariables = useZeusVariables({
+        data: 'create_products_content_input!',
+      })({
+        data: {
+          directus_files_id: file,
+          products_id: {
+            id: product.id,
+            name: product.name,
+          },
+        },
+      });
+
+      const linkedToFile = await client('mutation')(
+        {
+          create_products_content_item: [
+            {
+              data: linkFileVariables.$('data'),
+            },
+            {
+              id: true,
+            },
+          ],
+        },
+        {
+          operationName: 'LinkContentFileToProduct',
+          variables: linkFileVariables,
+        },
+      );
+      logger.info(
+        `uploaded content file ${i.name} and linked to product`,
+        linkedToFile.create_products_content_item,
+      );
+    }
+  } catch (e) {
+    logger.warn('Failed to upload content file', {
+      error: e,
+      product,
+      productPage,
+    });
+  }
+};

@@ -21,9 +21,6 @@
     "preserveWatchOutput": true,
     "pretty": false,
     "sourceMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "@meta-factory/cms/*": ["../cms/src/*"]
-    }
+    "baseUrl": "."
   }
 }

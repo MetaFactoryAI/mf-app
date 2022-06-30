@@ -86,13 +86,6 @@ export const AllTypesProps: Record<string, any> = {
     price_currencies_aggregated: {
       filter: 'price_currencies_filter',
     },
-    stage: {
-      filter: 'stage_filter',
-    },
-    stage_by_id: {},
-    stage_aggregated: {
-      filter: 'stage_filter',
-    },
     products_files: {
       filter: 'products_files_filter',
     },
@@ -142,6 +135,13 @@ export const AllTypesProps: Record<string, any> = {
     products_production_materials_aggregated: {
       filter: 'products_production_materials_filter',
     },
+    products_wearables: {
+      filter: 'products_wearables_filter',
+    },
+    products_wearables_by_id: {},
+    products_wearables_aggregated: {
+      filter: 'products_wearables_filter',
+    },
     file_formats: {
       filter: 'file_formats_filter',
     },
@@ -162,13 +162,6 @@ export const AllTypesProps: Record<string, any> = {
     products_content_by_id: {},
     products_content_aggregated: {
       filter: 'products_content_filter',
-    },
-    products_wearables: {
-      filter: 'products_wearables_filter',
-    },
-    products_wearables_by_id: {},
-    products_wearables_aggregated: {
-      filter: 'products_wearables_filter',
     },
     stages: {
       filter: 'stages_filter',
@@ -788,14 +781,6 @@ export const AllTypesProps: Record<string, any> = {
       filter: 'directus_files_filter',
     },
   },
-  stage_filter: {
-    description: 'string_filter_operators',
-    id: 'number_filter_operators',
-    name: 'string_filter_operators',
-    sort: 'number_filter_operators',
-    _and: 'stage_filter',
-    _or: 'stage_filter',
-  },
   Mutation: {
     create_brands_items: {
       filter: 'brands_filter',
@@ -881,13 +866,6 @@ export const AllTypesProps: Record<string, any> = {
     create_price_currencies_item: {
       data: 'create_price_currencies_input',
     },
-    create_stage_items: {
-      filter: 'stage_filter',
-      data: 'create_stage_input',
-    },
-    create_stage_item: {
-      data: 'create_stage_input',
-    },
     create_products_files_items: {
       filter: 'products_files_filter',
       data: 'create_products_files_input',
@@ -937,6 +915,13 @@ export const AllTypesProps: Record<string, any> = {
     create_products_production_materials_item: {
       data: 'create_products_production_materials_input',
     },
+    create_products_wearables_items: {
+      filter: 'products_wearables_filter',
+      data: 'create_products_wearables_input',
+    },
+    create_products_wearables_item: {
+      data: 'create_products_wearables_input',
+    },
     create_file_formats_items: {
       filter: 'file_formats_filter',
       data: 'create_file_formats_input',
@@ -957,13 +942,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     create_products_content_item: {
       data: 'create_products_content_input',
-    },
-    create_products_wearables_items: {
-      filter: 'products_wearables_filter',
-      data: 'create_products_wearables_input',
-    },
-    create_products_wearables_item: {
-      data: 'create_products_wearables_input',
     },
     create_stages_items: {
       filter: 'stages_filter',
@@ -1056,13 +1034,6 @@ export const AllTypesProps: Record<string, any> = {
     update_price_currencies_item: {
       data: 'update_price_currencies_input',
     },
-    update_stage_items: {
-      filter: 'stage_filter',
-      data: 'update_stage_input',
-    },
-    update_stage_item: {
-      data: 'update_stage_input',
-    },
     update_products_files_items: {
       filter: 'products_files_filter',
       data: 'update_products_files_input',
@@ -1112,6 +1083,13 @@ export const AllTypesProps: Record<string, any> = {
     update_products_production_materials_item: {
       data: 'update_products_production_materials_input',
     },
+    update_products_wearables_items: {
+      filter: 'products_wearables_filter',
+      data: 'update_products_wearables_input',
+    },
+    update_products_wearables_item: {
+      data: 'update_products_wearables_input',
+    },
     update_file_formats_items: {
       filter: 'file_formats_filter',
       data: 'update_file_formats_input',
@@ -1132,13 +1110,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     update_products_content_item: {
       data: 'update_products_content_input',
-    },
-    update_products_wearables_items: {
-      filter: 'products_wearables_filter',
-      data: 'update_products_wearables_input',
-    },
-    update_products_wearables_item: {
-      data: 'update_products_wearables_input',
     },
     update_stages_items: {
       filter: 'stages_filter',
@@ -1171,8 +1142,6 @@ export const AllTypesProps: Record<string, any> = {
     delete_fulfillers_item: {},
     delete_price_currencies_items: {},
     delete_price_currencies_item: {},
-    delete_stage_items: {},
-    delete_stage_item: {},
     delete_products_files_items: {},
     delete_products_files_item: {},
     delete_products_production_methods_items: {},
@@ -1187,14 +1156,14 @@ export const AllTypesProps: Record<string, any> = {
     delete_products_item: {},
     delete_products_production_materials_items: {},
     delete_products_production_materials_item: {},
+    delete_products_wearables_items: {},
+    delete_products_wearables_item: {},
     delete_file_formats_items: {},
     delete_file_formats_item: {},
     delete_products_design_files_items: {},
     delete_products_design_files_item: {},
     delete_products_content_items: {},
     delete_products_content_item: {},
-    delete_products_wearables_items: {},
-    delete_products_wearables_item: {},
     delete_stages_items: {},
     delete_stages_item: {},
   },
@@ -1371,7 +1340,6 @@ export const AllTypesProps: Record<string, any> = {
     products_id: 'create_products_input',
     directus_files_id: 'create_directus_files_input',
   },
-  create_stage_input: {},
   update_brands_input: {
     created_at: 'Date',
     created_at_func: 'datetime_functionsInput',
@@ -1543,7 +1511,6 @@ export const AllTypesProps: Record<string, any> = {
     products_id: 'update_products_input',
     directus_files_id: 'update_directus_files_input',
   },
-  update_stage_input: {},
 };
 
 export const ReturnTypes: Record<string, any> = {
@@ -1589,9 +1556,6 @@ export const ReturnTypes: Record<string, any> = {
     price_currencies: 'price_currencies',
     price_currencies_by_id: 'price_currencies',
     price_currencies_aggregated: 'price_currencies_aggregated',
-    stage: 'stage',
-    stage_by_id: 'stage',
-    stage_aggregated: 'stage_aggregated',
     products_files: 'products_files',
     products_files_by_id: 'products_files',
     products_files_aggregated: 'products_files_aggregated',
@@ -1615,6 +1579,9 @@ export const ReturnTypes: Record<string, any> = {
     products_production_materials_by_id: 'products_production_materials',
     products_production_materials_aggregated:
       'products_production_materials_aggregated',
+    products_wearables: 'products_wearables',
+    products_wearables_by_id: 'products_wearables',
+    products_wearables_aggregated: 'products_wearables_aggregated',
     file_formats: 'file_formats',
     file_formats_by_id: 'file_formats',
     file_formats_aggregated: 'file_formats_aggregated',
@@ -1624,9 +1591,6 @@ export const ReturnTypes: Record<string, any> = {
     products_content: 'products_content',
     products_content_by_id: 'products_content',
     products_content_aggregated: 'products_content_aggregated',
-    products_wearables: 'products_wearables',
-    products_wearables_by_id: 'products_wearables',
-    products_wearables_aggregated: 'products_wearables_aggregated',
     stages: 'stages',
     stages_by_id: 'stages',
     stages_aggregated: 'stages_aggregated',
@@ -2172,34 +2136,6 @@ export const ReturnTypes: Record<string, any> = {
   price_currencies_aggregated_fields: {
     amount: 'Float',
   },
-  stage: {
-    description: 'String',
-    id: 'ID',
-    name: 'String',
-    sort: 'Int',
-  },
-  stage_aggregated: {
-    group: 'JSON',
-    countAll: 'Int',
-    count: 'stage_aggregated_count',
-    avg: 'stage_aggregated_fields',
-    sum: 'stage_aggregated_fields',
-    countDistinct: 'stage_aggregated_fields',
-    avgDistinct: 'stage_aggregated_fields',
-    sumDistinct: 'stage_aggregated_fields',
-    min: 'stage_aggregated_fields',
-    max: 'stage_aggregated_fields',
-  },
-  stage_aggregated_count: {
-    description: 'Int',
-    id: 'Int',
-    name: 'Int',
-    sort: 'Int',
-  },
-  stage_aggregated_fields: {
-    id: 'Float',
-    sort: 'Float',
-  },
   products_files_aggregated: {
     group: 'JSON',
     countAll: 'Int',
@@ -2375,6 +2311,29 @@ export const ReturnTypes: Record<string, any> = {
   products_production_materials_aggregated_fields: {
     id: 'Float',
   },
+  products_wearables_aggregated: {
+    group: 'JSON',
+    countAll: 'Int',
+    count: 'products_wearables_aggregated_count',
+    avg: 'products_wearables_aggregated_fields',
+    sum: 'products_wearables_aggregated_fields',
+    countDistinct: 'products_wearables_aggregated_fields',
+    avgDistinct: 'products_wearables_aggregated_fields',
+    sumDistinct: 'products_wearables_aggregated_fields',
+    min: 'products_wearables_aggregated_fields',
+    max: 'products_wearables_aggregated_fields',
+  },
+  products_wearables_aggregated_count: {
+    id: 'Int',
+    products_id: 'Int',
+    directus_files_id: 'Int',
+    file_format: 'Int',
+    primary: 'Int',
+  },
+  products_wearables_aggregated_fields: {
+    id: 'Float',
+    file_format: 'Float',
+  },
   file_formats_aggregated: {
     group: 'JSON',
     countAll: 'Int',
@@ -2437,29 +2396,6 @@ export const ReturnTypes: Record<string, any> = {
   products_content_aggregated_fields: {
     id: 'Float',
   },
-  products_wearables_aggregated: {
-    group: 'JSON',
-    countAll: 'Int',
-    count: 'products_wearables_aggregated_count',
-    avg: 'products_wearables_aggregated_fields',
-    sum: 'products_wearables_aggregated_fields',
-    countDistinct: 'products_wearables_aggregated_fields',
-    avgDistinct: 'products_wearables_aggregated_fields',
-    sumDistinct: 'products_wearables_aggregated_fields',
-    min: 'products_wearables_aggregated_fields',
-    max: 'products_wearables_aggregated_fields',
-  },
-  products_wearables_aggregated_count: {
-    id: 'Int',
-    products_id: 'Int',
-    directus_files_id: 'Int',
-    file_format: 'Int',
-    primary: 'Int',
-  },
-  products_wearables_aggregated_fields: {
-    id: 'Float',
-    file_format: 'Float',
-  },
   stages_aggregated: {
     group: 'JSON',
     countAll: 'Int',
@@ -2509,8 +2445,6 @@ export const ReturnTypes: Record<string, any> = {
     create_fulfillers_item: 'fulfillers',
     create_price_currencies_items: 'price_currencies',
     create_price_currencies_item: 'price_currencies',
-    create_stage_items: 'stage',
-    create_stage_item: 'stage',
     create_products_files_items: 'products_files',
     create_products_files_item: 'products_files',
     create_products_production_methods_items: 'products_production_methods',
@@ -2525,14 +2459,14 @@ export const ReturnTypes: Record<string, any> = {
     create_products_item: 'products',
     create_products_production_materials_items: 'products_production_materials',
     create_products_production_materials_item: 'products_production_materials',
+    create_products_wearables_items: 'products_wearables',
+    create_products_wearables_item: 'products_wearables',
     create_file_formats_items: 'file_formats',
     create_file_formats_item: 'file_formats',
     create_products_design_files_items: 'products_design_files',
     create_products_design_files_item: 'products_design_files',
     create_products_content_items: 'products_content',
     create_products_content_item: 'products_content',
-    create_products_wearables_items: 'products_wearables',
-    create_products_wearables_item: 'products_wearables',
     create_stages_items: 'stages',
     create_stages_item: 'stages',
     update_brands_items: 'brands',
@@ -2563,8 +2497,6 @@ export const ReturnTypes: Record<string, any> = {
     update_fulfillers_item: 'fulfillers',
     update_price_currencies_items: 'price_currencies',
     update_price_currencies_item: 'price_currencies',
-    update_stage_items: 'stage',
-    update_stage_item: 'stage',
     update_products_files_items: 'products_files',
     update_products_files_item: 'products_files',
     update_products_production_methods_items: 'products_production_methods',
@@ -2579,14 +2511,14 @@ export const ReturnTypes: Record<string, any> = {
     update_products_item: 'products',
     update_products_production_materials_items: 'products_production_materials',
     update_products_production_materials_item: 'products_production_materials',
+    update_products_wearables_items: 'products_wearables',
+    update_products_wearables_item: 'products_wearables',
     update_file_formats_items: 'file_formats',
     update_file_formats_item: 'file_formats',
     update_products_design_files_items: 'products_design_files',
     update_products_design_files_item: 'products_design_files',
     update_products_content_items: 'products_content',
     update_products_content_item: 'products_content',
-    update_products_wearables_items: 'products_wearables',
-    update_products_wearables_item: 'products_wearables',
     update_stages_items: 'stages',
     update_stages_item: 'stages',
     delete_brands_items: 'delete_many',
@@ -2613,8 +2545,6 @@ export const ReturnTypes: Record<string, any> = {
     delete_fulfillers_item: 'delete_one',
     delete_price_currencies_items: 'delete_many',
     delete_price_currencies_item: 'delete_one',
-    delete_stage_items: 'delete_many',
-    delete_stage_item: 'delete_one',
     delete_products_files_items: 'delete_many',
     delete_products_files_item: 'delete_one',
     delete_products_production_methods_items: 'delete_many',
@@ -2629,14 +2559,14 @@ export const ReturnTypes: Record<string, any> = {
     delete_products_item: 'delete_one',
     delete_products_production_materials_items: 'delete_many',
     delete_products_production_materials_item: 'delete_one',
+    delete_products_wearables_items: 'delete_many',
+    delete_products_wearables_item: 'delete_one',
     delete_file_formats_items: 'delete_many',
     delete_file_formats_item: 'delete_one',
     delete_products_design_files_items: 'delete_many',
     delete_products_design_files_item: 'delete_one',
     delete_products_content_items: 'delete_many',
     delete_products_content_item: 'delete_one',
-    delete_products_wearables_items: 'delete_many',
-    delete_products_wearables_item: 'delete_one',
     delete_stages_items: 'delete_many',
     delete_stages_item: 'delete_one',
   },
