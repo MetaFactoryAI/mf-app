@@ -1180,28 +1180,6 @@ export type ValueTypes = {
       },
       ValueTypes['price_currencies_aggregated'],
     ];
-    stage?: [
-      {
-        filter?: ValueTypes['stage_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['stage'],
-    ];
-    stage_by_id?: [{ id: string }, ValueTypes['stage']];
-    stage_aggregated?: [
-      {
-        groupBy?: Array<string | undefined | null> | undefined | null;
-        filter?: ValueTypes['stage_filter'] | undefined | null;
-        limit?: number | undefined | null;
-        search?: string | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-      },
-      ValueTypes['stage_aggregated'],
-    ];
     products_files?: [
       {
         filter?: ValueTypes['products_files_filter'] | undefined | null;
@@ -1377,6 +1355,31 @@ export type ValueTypes = {
       },
       ValueTypes['products_production_materials_aggregated'],
     ];
+    products_wearables?: [
+      {
+        filter?: ValueTypes['products_wearables_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['products_wearables'],
+    ];
+    products_wearables_by_id?: [
+      { id: string },
+      ValueTypes['products_wearables'],
+    ];
+    products_wearables_aggregated?: [
+      {
+        groupBy?: Array<string | undefined | null> | undefined | null;
+        filter?: ValueTypes['products_wearables_filter'] | undefined | null;
+        limit?: number | undefined | null;
+        search?: string | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+      },
+      ValueTypes['products_wearables_aggregated'],
+    ];
     file_formats?: [
       {
         filter?: ValueTypes['file_formats_filter'] | undefined | null;
@@ -1445,31 +1448,6 @@ export type ValueTypes = {
         sort?: Array<string | undefined | null> | undefined | null;
       },
       ValueTypes['products_content_aggregated'],
-    ];
-    products_wearables?: [
-      {
-        filter?: ValueTypes['products_wearables_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['products_wearables'],
-    ];
-    products_wearables_by_id?: [
-      { id: string },
-      ValueTypes['products_wearables'],
-    ];
-    products_wearables_aggregated?: [
-      {
-        groupBy?: Array<string | undefined | null> | undefined | null;
-        filter?: ValueTypes['products_wearables_filter'] | undefined | null;
-        limit?: number | undefined | null;
-        search?: string | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-      },
-      ValueTypes['products_wearables_aggregated'],
     ];
     stages?: [
       {
@@ -3549,52 +3527,6 @@ export type ValueTypes = {
     amount?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
-  ['stage']: AliasType<{
-    description?: boolean | `@${string}`;
-    id?: boolean | `@${string}`;
-    name?: boolean | `@${string}`;
-    sort?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['stage_filter']: {
-    description?: ValueTypes['string_filter_operators'] | undefined | null;
-    id?: ValueTypes['number_filter_operators'] | undefined | null;
-    name?: ValueTypes['string_filter_operators'] | undefined | null;
-    sort?: ValueTypes['number_filter_operators'] | undefined | null;
-    _and?:
-      | Array<ValueTypes['stage_filter'] | undefined | null>
-      | undefined
-      | null;
-    _or?:
-      | Array<ValueTypes['stage_filter'] | undefined | null>
-      | undefined
-      | null;
-  };
-  ['stage_aggregated']: AliasType<{
-    group?: boolean | `@${string}`;
-    countAll?: boolean | `@${string}`;
-    count?: ValueTypes['stage_aggregated_count'];
-    avg?: ValueTypes['stage_aggregated_fields'];
-    sum?: ValueTypes['stage_aggregated_fields'];
-    countDistinct?: ValueTypes['stage_aggregated_fields'];
-    avgDistinct?: ValueTypes['stage_aggregated_fields'];
-    sumDistinct?: ValueTypes['stage_aggregated_fields'];
-    min?: ValueTypes['stage_aggregated_fields'];
-    max?: ValueTypes['stage_aggregated_fields'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['stage_aggregated_count']: AliasType<{
-    description?: boolean | `@${string}`;
-    id?: boolean | `@${string}`;
-    name?: boolean | `@${string}`;
-    sort?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['stage_aggregated_fields']: AliasType<{
-    id?: boolean | `@${string}`;
-    sort?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
   ['products_files_aggregated']: AliasType<{
     group?: boolean | `@${string}`;
     countAll?: boolean | `@${string}`;
@@ -3790,6 +3722,32 @@ export type ValueTypes = {
     id?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
+  ['products_wearables_aggregated']: AliasType<{
+    group?: boolean | `@${string}`;
+    countAll?: boolean | `@${string}`;
+    count?: ValueTypes['products_wearables_aggregated_count'];
+    avg?: ValueTypes['products_wearables_aggregated_fields'];
+    sum?: ValueTypes['products_wearables_aggregated_fields'];
+    countDistinct?: ValueTypes['products_wearables_aggregated_fields'];
+    avgDistinct?: ValueTypes['products_wearables_aggregated_fields'];
+    sumDistinct?: ValueTypes['products_wearables_aggregated_fields'];
+    min?: ValueTypes['products_wearables_aggregated_fields'];
+    max?: ValueTypes['products_wearables_aggregated_fields'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['products_wearables_aggregated_count']: AliasType<{
+    id?: boolean | `@${string}`;
+    products_id?: boolean | `@${string}`;
+    directus_files_id?: boolean | `@${string}`;
+    file_format?: boolean | `@${string}`;
+    primary?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['products_wearables_aggregated_fields']: AliasType<{
+    id?: boolean | `@${string}`;
+    file_format?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
   ['file_formats_aggregated']: AliasType<{
     group?: boolean | `@${string}`;
     countAll?: boolean | `@${string}`;
@@ -3859,32 +3817,6 @@ export type ValueTypes = {
   }>;
   ['products_content_aggregated_fields']: AliasType<{
     id?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['products_wearables_aggregated']: AliasType<{
-    group?: boolean | `@${string}`;
-    countAll?: boolean | `@${string}`;
-    count?: ValueTypes['products_wearables_aggregated_count'];
-    avg?: ValueTypes['products_wearables_aggregated_fields'];
-    sum?: ValueTypes['products_wearables_aggregated_fields'];
-    countDistinct?: ValueTypes['products_wearables_aggregated_fields'];
-    avgDistinct?: ValueTypes['products_wearables_aggregated_fields'];
-    sumDistinct?: ValueTypes['products_wearables_aggregated_fields'];
-    min?: ValueTypes['products_wearables_aggregated_fields'];
-    max?: ValueTypes['products_wearables_aggregated_fields'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['products_wearables_aggregated_count']: AliasType<{
-    id?: boolean | `@${string}`;
-    products_id?: boolean | `@${string}`;
-    directus_files_id?: boolean | `@${string}`;
-    file_format?: boolean | `@${string}`;
-    primary?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['products_wearables_aggregated_fields']: AliasType<{
-    id?: boolean | `@${string}`;
-    file_format?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['stages_aggregated']: AliasType<{
@@ -4140,22 +4072,6 @@ export type ValueTypes = {
       { data: ValueTypes['create_price_currencies_input'] },
       ValueTypes['price_currencies'],
     ];
-    create_stage_items?: [
-      {
-        filter?: ValueTypes['stage_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        data?: Array<ValueTypes['create_stage_input']> | undefined | null;
-      },
-      ValueTypes['stage'],
-    ];
-    create_stage_item?: [
-      { data: ValueTypes['create_stage_input'] },
-      ValueTypes['stage'],
-    ];
     create_products_files_items?: [
       {
         filter?: ValueTypes['products_files_filter'] | undefined | null;
@@ -4289,6 +4205,25 @@ export type ValueTypes = {
       { data: ValueTypes['create_products_production_materials_input'] },
       ValueTypes['products_production_materials'],
     ];
+    create_products_wearables_items?: [
+      {
+        filter?: ValueTypes['products_wearables_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        data?:
+          | Array<ValueTypes['create_products_wearables_input']>
+          | undefined
+          | null;
+      },
+      ValueTypes['products_wearables'],
+    ];
+    create_products_wearables_item?: [
+      { data: ValueTypes['create_products_wearables_input'] },
+      ValueTypes['products_wearables'],
+    ];
     create_file_formats_items?: [
       {
         filter?: ValueTypes['file_formats_filter'] | undefined | null;
@@ -4345,25 +4280,6 @@ export type ValueTypes = {
     create_products_content_item?: [
       { data: ValueTypes['create_products_content_input'] },
       ValueTypes['products_content'],
-    ];
-    create_products_wearables_items?: [
-      {
-        filter?: ValueTypes['products_wearables_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        data?:
-          | Array<ValueTypes['create_products_wearables_input']>
-          | undefined
-          | null;
-      },
-      ValueTypes['products_wearables'],
-    ];
-    create_products_wearables_item?: [
-      { data: ValueTypes['create_products_wearables_input'] },
-      ValueTypes['products_wearables'],
     ];
     create_stages_items?: [
       {
@@ -4603,23 +4519,6 @@ export type ValueTypes = {
       { id: string; data: ValueTypes['update_price_currencies_input'] },
       ValueTypes['price_currencies'],
     ];
-    update_stage_items?: [
-      {
-        filter?: ValueTypes['stage_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        ids: Array<string | undefined | null>;
-        data: ValueTypes['update_stage_input'];
-      },
-      ValueTypes['stage'],
-    ];
-    update_stage_item?: [
-      { id: string; data: ValueTypes['update_stage_input'] },
-      ValueTypes['stage'],
-    ];
     update_products_files_items?: [
       {
         filter?: ValueTypes['products_files_filter'] | undefined | null;
@@ -4751,6 +4650,23 @@ export type ValueTypes = {
       },
       ValueTypes['products_production_materials'],
     ];
+    update_products_wearables_items?: [
+      {
+        filter?: ValueTypes['products_wearables_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        ids: Array<string | undefined | null>;
+        data: ValueTypes['update_products_wearables_input'];
+      },
+      ValueTypes['products_wearables'],
+    ];
+    update_products_wearables_item?: [
+      { id: string; data: ValueTypes['update_products_wearables_input'] },
+      ValueTypes['products_wearables'],
+    ];
     update_file_formats_items?: [
       {
         filter?: ValueTypes['file_formats_filter'] | undefined | null;
@@ -4801,23 +4717,6 @@ export type ValueTypes = {
     update_products_content_item?: [
       { id: string; data: ValueTypes['update_products_content_input'] },
       ValueTypes['products_content'],
-    ];
-    update_products_wearables_items?: [
-      {
-        filter?: ValueTypes['products_wearables_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        ids: Array<string | undefined | null>;
-        data: ValueTypes['update_products_wearables_input'];
-      },
-      ValueTypes['products_wearables'],
-    ];
-    update_products_wearables_item?: [
-      { id: string; data: ValueTypes['update_products_wearables_input'] },
-      ValueTypes['products_wearables'],
     ];
     update_stages_items?: [
       {
@@ -4908,11 +4807,6 @@ export type ValueTypes = {
       ValueTypes['delete_many'],
     ];
     delete_price_currencies_item?: [{ id: string }, ValueTypes['delete_one']];
-    delete_stage_items?: [
-      { ids: Array<string | undefined | null> },
-      ValueTypes['delete_many'],
-    ];
-    delete_stage_item?: [{ id: string }, ValueTypes['delete_one']];
     delete_products_files_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
@@ -4957,6 +4851,11 @@ export type ValueTypes = {
       { id: string },
       ValueTypes['delete_one'],
     ];
+    delete_products_wearables_items?: [
+      { ids: Array<string | undefined | null> },
+      ValueTypes['delete_many'],
+    ];
+    delete_products_wearables_item?: [{ id: string }, ValueTypes['delete_one']];
     delete_file_formats_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
@@ -4975,11 +4874,6 @@ export type ValueTypes = {
       ValueTypes['delete_many'],
     ];
     delete_products_content_item?: [{ id: string }, ValueTypes['delete_one']];
-    delete_products_wearables_items?: [
-      { ids: Array<string | undefined | null> },
-      ValueTypes['delete_many'],
-    ];
-    delete_products_wearables_item?: [{ id: string }, ValueTypes['delete_one']];
     delete_stages_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
@@ -5454,12 +5348,6 @@ export type ValueTypes = {
       | undefined
       | null;
   };
-  ['create_stage_input']: {
-    description?: string | undefined | null;
-    id?: string | undefined | null;
-    name?: string | undefined | null;
-    sort?: number | undefined | null;
-  };
   ['update_brands_input']: {
     created_at?: ValueTypes['Date'] | undefined | null;
     created_at_func?: ValueTypes['datetime_functionsInput'] | undefined | null;
@@ -5914,12 +5802,6 @@ export type ValueTypes = {
       | undefined
       | null;
   };
-  ['update_stage_input']: {
-    description?: string | undefined | null;
-    id?: string | undefined | null;
-    name?: string | undefined | null;
-    sort?: number | undefined | null;
-  };
   ['delete_many']: AliasType<{
     ids?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
@@ -6023,11 +5905,6 @@ export type ModelTypes = {
     price_currencies_aggregated?:
       | Array<GraphQLTypes['price_currencies_aggregated'] | undefined>
       | undefined;
-    stage?: Array<GraphQLTypes['stage'] | undefined> | undefined;
-    stage_by_id?: GraphQLTypes['stage'] | undefined;
-    stage_aggregated?:
-      | Array<GraphQLTypes['stage_aggregated'] | undefined>
-      | undefined;
     products_files?:
       | Array<GraphQLTypes['products_files'] | undefined>
       | undefined;
@@ -6081,6 +5958,13 @@ export type ModelTypes = {
           GraphQLTypes['products_production_materials_aggregated'] | undefined
         >
       | undefined;
+    products_wearables?:
+      | Array<GraphQLTypes['products_wearables'] | undefined>
+      | undefined;
+    products_wearables_by_id?: GraphQLTypes['products_wearables'] | undefined;
+    products_wearables_aggregated?:
+      | Array<GraphQLTypes['products_wearables_aggregated'] | undefined>
+      | undefined;
     file_formats?: Array<GraphQLTypes['file_formats'] | undefined> | undefined;
     file_formats_by_id?: GraphQLTypes['file_formats'] | undefined;
     file_formats_aggregated?:
@@ -6101,13 +5985,6 @@ export type ModelTypes = {
     products_content_by_id?: GraphQLTypes['products_content'] | undefined;
     products_content_aggregated?:
       | Array<GraphQLTypes['products_content_aggregated'] | undefined>
-      | undefined;
-    products_wearables?:
-      | Array<GraphQLTypes['products_wearables'] | undefined>
-      | undefined;
-    products_wearables_by_id?: GraphQLTypes['products_wearables'] | undefined;
-    products_wearables_aggregated?:
-      | Array<GraphQLTypes['products_wearables_aggregated'] | undefined>
       | undefined;
     stages?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     stages_by_id?: GraphQLTypes['stages'] | undefined;
@@ -6795,35 +6672,6 @@ export type ModelTypes = {
   ['price_currencies_aggregated_fields']: {
     amount?: number | undefined;
   };
-  ['stage']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    sort?: number | undefined;
-  };
-  ['stage_filter']: GraphQLTypes['stage_filter'];
-  ['stage_aggregated']: {
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['stage_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    countDistinct?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    avgDistinct?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    sumDistinct?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    min?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-  };
-  ['stage_aggregated_count']: {
-    description?: number | undefined;
-    id?: number | undefined;
-    name?: number | undefined;
-    sort?: number | undefined;
-  };
-  ['stage_aggregated_fields']: {
-    id?: number | undefined;
-    sort?: number | undefined;
-  };
   ['products_files_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
     countAll?: number | undefined;
@@ -7039,6 +6887,35 @@ export type ModelTypes = {
   ['products_production_materials_aggregated_fields']: {
     id?: number | undefined;
   };
+  ['products_wearables_aggregated']: {
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['products_wearables_aggregated_count'] | undefined;
+    avg?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
+    sum?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
+    countDistinct?:
+      | GraphQLTypes['products_wearables_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['products_wearables_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['products_wearables_aggregated_fields']
+      | undefined;
+    min?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
+    max?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
+  };
+  ['products_wearables_aggregated_count']: {
+    id?: number | undefined;
+    products_id?: number | undefined;
+    directus_files_id?: number | undefined;
+    file_format?: number | undefined;
+    primary?: number | undefined;
+  };
+  ['products_wearables_aggregated_fields']: {
+    id?: number | undefined;
+    file_format?: number | undefined;
+  };
   ['file_formats_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
     countAll?: number | undefined;
@@ -7112,35 +6989,6 @@ export type ModelTypes = {
   };
   ['products_content_aggregated_fields']: {
     id?: number | undefined;
-  };
-  ['products_wearables_aggregated']: {
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['products_wearables_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
-    countDistinct?:
-      | GraphQLTypes['products_wearables_aggregated_fields']
-      | undefined;
-    avgDistinct?:
-      | GraphQLTypes['products_wearables_aggregated_fields']
-      | undefined;
-    sumDistinct?:
-      | GraphQLTypes['products_wearables_aggregated_fields']
-      | undefined;
-    min?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
-  };
-  ['products_wearables_aggregated_count']: {
-    id?: number | undefined;
-    products_id?: number | undefined;
-    directus_files_id?: number | undefined;
-    file_format?: number | undefined;
-    primary?: number | undefined;
-  };
-  ['products_wearables_aggregated_fields']: {
-    id?: number | undefined;
-    file_format?: number | undefined;
   };
   ['stages_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
@@ -7221,8 +7069,6 @@ export type ModelTypes = {
       | Array<GraphQLTypes['price_currencies'] | undefined>
       | undefined;
     create_price_currencies_item?: GraphQLTypes['price_currencies'] | undefined;
-    create_stage_items?: Array<GraphQLTypes['stage'] | undefined> | undefined;
-    create_stage_item?: GraphQLTypes['stage'] | undefined;
     create_products_files_items?:
       | Array<GraphQLTypes['products_files'] | undefined>
       | undefined;
@@ -7255,6 +7101,12 @@ export type ModelTypes = {
     create_products_production_materials_item?:
       | GraphQLTypes['products_production_materials']
       | undefined;
+    create_products_wearables_items?:
+      | Array<GraphQLTypes['products_wearables'] | undefined>
+      | undefined;
+    create_products_wearables_item?:
+      | GraphQLTypes['products_wearables']
+      | undefined;
     create_file_formats_items?:
       | Array<GraphQLTypes['file_formats'] | undefined>
       | undefined;
@@ -7269,12 +7121,6 @@ export type ModelTypes = {
       | Array<GraphQLTypes['products_content'] | undefined>
       | undefined;
     create_products_content_item?: GraphQLTypes['products_content'] | undefined;
-    create_products_wearables_items?:
-      | Array<GraphQLTypes['products_wearables'] | undefined>
-      | undefined;
-    create_products_wearables_item?:
-      | GraphQLTypes['products_wearables']
-      | undefined;
     create_stages_items?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     create_stages_item?: GraphQLTypes['stages'] | undefined;
     update_brands_items?: Array<GraphQLTypes['brands'] | undefined> | undefined;
@@ -7335,8 +7181,6 @@ export type ModelTypes = {
       | Array<GraphQLTypes['price_currencies'] | undefined>
       | undefined;
     update_price_currencies_item?: GraphQLTypes['price_currencies'] | undefined;
-    update_stage_items?: Array<GraphQLTypes['stage'] | undefined> | undefined;
-    update_stage_item?: GraphQLTypes['stage'] | undefined;
     update_products_files_items?:
       | Array<GraphQLTypes['products_files'] | undefined>
       | undefined;
@@ -7369,6 +7213,12 @@ export type ModelTypes = {
     update_products_production_materials_item?:
       | GraphQLTypes['products_production_materials']
       | undefined;
+    update_products_wearables_items?:
+      | Array<GraphQLTypes['products_wearables'] | undefined>
+      | undefined;
+    update_products_wearables_item?:
+      | GraphQLTypes['products_wearables']
+      | undefined;
     update_file_formats_items?:
       | Array<GraphQLTypes['file_formats'] | undefined>
       | undefined;
@@ -7383,12 +7233,6 @@ export type ModelTypes = {
       | Array<GraphQLTypes['products_content'] | undefined>
       | undefined;
     update_products_content_item?: GraphQLTypes['products_content'] | undefined;
-    update_products_wearables_items?:
-      | Array<GraphQLTypes['products_wearables'] | undefined>
-      | undefined;
-    update_products_wearables_item?:
-      | GraphQLTypes['products_wearables']
-      | undefined;
     update_stages_items?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     update_stages_item?: GraphQLTypes['stages'] | undefined;
     delete_brands_items?: GraphQLTypes['delete_many'] | undefined;
@@ -7429,8 +7273,6 @@ export type ModelTypes = {
     delete_fulfillers_item?: GraphQLTypes['delete_one'] | undefined;
     delete_price_currencies_items?: GraphQLTypes['delete_many'] | undefined;
     delete_price_currencies_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_stage_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_stage_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_files_items?: GraphQLTypes['delete_many'] | undefined;
     delete_products_files_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_production_methods_items?:
@@ -7453,6 +7295,8 @@ export type ModelTypes = {
     delete_products_production_materials_item?:
       | GraphQLTypes['delete_one']
       | undefined;
+    delete_products_wearables_items?: GraphQLTypes['delete_many'] | undefined;
+    delete_products_wearables_item?: GraphQLTypes['delete_one'] | undefined;
     delete_file_formats_items?: GraphQLTypes['delete_many'] | undefined;
     delete_file_formats_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_design_files_items?:
@@ -7461,8 +7305,6 @@ export type ModelTypes = {
     delete_products_design_files_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_content_items?: GraphQLTypes['delete_many'] | undefined;
     delete_products_content_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_products_wearables_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_products_wearables_item?: GraphQLTypes['delete_one'] | undefined;
     delete_stages_items?: GraphQLTypes['delete_many'] | undefined;
     delete_stages_item?: GraphQLTypes['delete_one'] | undefined;
   };
@@ -7496,7 +7338,6 @@ export type ModelTypes = {
   ['create_file_formats_input']: GraphQLTypes['create_file_formats_input'];
   ['create_products_content_input']: GraphQLTypes['create_products_content_input'];
   ['create_products_design_files_input']: GraphQLTypes['create_products_design_files_input'];
-  ['create_stage_input']: GraphQLTypes['create_stage_input'];
   ['update_brands_input']: GraphQLTypes['update_brands_input'];
   ['update_directus_files_input']: GraphQLTypes['update_directus_files_input'];
   ['update_directus_folders_input']: GraphQLTypes['update_directus_folders_input'];
@@ -7525,7 +7366,6 @@ export type ModelTypes = {
   ['update_file_formats_input']: GraphQLTypes['update_file_formats_input'];
   ['update_products_content_input']: GraphQLTypes['update_products_content_input'];
   ['update_products_design_files_input']: GraphQLTypes['update_products_design_files_input'];
-  ['update_stage_input']: GraphQLTypes['update_stage_input'];
   ['delete_many']: {
     ids: Array<string | undefined>;
   };
@@ -7628,11 +7468,6 @@ export type GraphQLTypes = {
     price_currencies_aggregated?:
       | Array<GraphQLTypes['price_currencies_aggregated'] | undefined>
       | undefined;
-    stage?: Array<GraphQLTypes['stage'] | undefined> | undefined;
-    stage_by_id?: GraphQLTypes['stage'] | undefined;
-    stage_aggregated?:
-      | Array<GraphQLTypes['stage_aggregated'] | undefined>
-      | undefined;
     products_files?:
       | Array<GraphQLTypes['products_files'] | undefined>
       | undefined;
@@ -7686,6 +7521,13 @@ export type GraphQLTypes = {
           GraphQLTypes['products_production_materials_aggregated'] | undefined
         >
       | undefined;
+    products_wearables?:
+      | Array<GraphQLTypes['products_wearables'] | undefined>
+      | undefined;
+    products_wearables_by_id?: GraphQLTypes['products_wearables'] | undefined;
+    products_wearables_aggregated?:
+      | Array<GraphQLTypes['products_wearables_aggregated'] | undefined>
+      | undefined;
     file_formats?: Array<GraphQLTypes['file_formats'] | undefined> | undefined;
     file_formats_by_id?: GraphQLTypes['file_formats'] | undefined;
     file_formats_aggregated?:
@@ -7706,13 +7548,6 @@ export type GraphQLTypes = {
     products_content_by_id?: GraphQLTypes['products_content'] | undefined;
     products_content_aggregated?:
       | Array<GraphQLTypes['products_content_aggregated'] | undefined>
-      | undefined;
-    products_wearables?:
-      | Array<GraphQLTypes['products_wearables'] | undefined>
-      | undefined;
-    products_wearables_by_id?: GraphQLTypes['products_wearables'] | undefined;
-    products_wearables_aggregated?:
-      | Array<GraphQLTypes['products_wearables_aggregated'] | undefined>
       | undefined;
     stages?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     stages_by_id?: GraphQLTypes['stages'] | undefined;
@@ -8982,46 +8817,6 @@ export type GraphQLTypes = {
     __typename: 'price_currencies_aggregated_fields';
     amount?: number | undefined;
   };
-  ['stage']: {
-    __typename: 'stage';
-    description?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    sort?: number | undefined;
-  };
-  ['stage_filter']: {
-    description?: GraphQLTypes['string_filter_operators'] | undefined;
-    id?: GraphQLTypes['number_filter_operators'] | undefined;
-    name?: GraphQLTypes['string_filter_operators'] | undefined;
-    sort?: GraphQLTypes['number_filter_operators'] | undefined;
-    _and?: Array<GraphQLTypes['stage_filter'] | undefined> | undefined;
-    _or?: Array<GraphQLTypes['stage_filter'] | undefined> | undefined;
-  };
-  ['stage_aggregated']: {
-    __typename: 'stage_aggregated';
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['stage_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    countDistinct?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    avgDistinct?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    sumDistinct?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    min?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['stage_aggregated_fields'] | undefined;
-  };
-  ['stage_aggregated_count']: {
-    __typename: 'stage_aggregated_count';
-    description?: number | undefined;
-    id?: number | undefined;
-    name?: number | undefined;
-    sort?: number | undefined;
-  };
-  ['stage_aggregated_fields']: {
-    __typename: 'stage_aggregated_fields';
-    id?: number | undefined;
-    sort?: number | undefined;
-  };
   ['products_files_aggregated']: {
     __typename: 'products_files_aggregated';
     group?: GraphQLTypes['JSON'] | undefined;
@@ -9257,6 +9052,38 @@ export type GraphQLTypes = {
     __typename: 'products_production_materials_aggregated_fields';
     id?: number | undefined;
   };
+  ['products_wearables_aggregated']: {
+    __typename: 'products_wearables_aggregated';
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['products_wearables_aggregated_count'] | undefined;
+    avg?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
+    sum?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
+    countDistinct?:
+      | GraphQLTypes['products_wearables_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['products_wearables_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['products_wearables_aggregated_fields']
+      | undefined;
+    min?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
+    max?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
+  };
+  ['products_wearables_aggregated_count']: {
+    __typename: 'products_wearables_aggregated_count';
+    id?: number | undefined;
+    products_id?: number | undefined;
+    directus_files_id?: number | undefined;
+    file_format?: number | undefined;
+    primary?: number | undefined;
+  };
+  ['products_wearables_aggregated_fields']: {
+    __typename: 'products_wearables_aggregated_fields';
+    id?: number | undefined;
+    file_format?: number | undefined;
+  };
   ['file_formats_aggregated']: {
     __typename: 'file_formats_aggregated';
     group?: GraphQLTypes['JSON'] | undefined;
@@ -9339,38 +9166,6 @@ export type GraphQLTypes = {
   ['products_content_aggregated_fields']: {
     __typename: 'products_content_aggregated_fields';
     id?: number | undefined;
-  };
-  ['products_wearables_aggregated']: {
-    __typename: 'products_wearables_aggregated';
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['products_wearables_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
-    countDistinct?:
-      | GraphQLTypes['products_wearables_aggregated_fields']
-      | undefined;
-    avgDistinct?:
-      | GraphQLTypes['products_wearables_aggregated_fields']
-      | undefined;
-    sumDistinct?:
-      | GraphQLTypes['products_wearables_aggregated_fields']
-      | undefined;
-    min?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['products_wearables_aggregated_fields'] | undefined;
-  };
-  ['products_wearables_aggregated_count']: {
-    __typename: 'products_wearables_aggregated_count';
-    id?: number | undefined;
-    products_id?: number | undefined;
-    directus_files_id?: number | undefined;
-    file_format?: number | undefined;
-    primary?: number | undefined;
-  };
-  ['products_wearables_aggregated_fields']: {
-    __typename: 'products_wearables_aggregated_fields';
-    id?: number | undefined;
-    file_format?: number | undefined;
   };
   ['stages_aggregated']: {
     __typename: 'stages_aggregated';
@@ -9455,8 +9250,6 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['price_currencies'] | undefined>
       | undefined;
     create_price_currencies_item?: GraphQLTypes['price_currencies'] | undefined;
-    create_stage_items?: Array<GraphQLTypes['stage'] | undefined> | undefined;
-    create_stage_item?: GraphQLTypes['stage'] | undefined;
     create_products_files_items?:
       | Array<GraphQLTypes['products_files'] | undefined>
       | undefined;
@@ -9489,6 +9282,12 @@ export type GraphQLTypes = {
     create_products_production_materials_item?:
       | GraphQLTypes['products_production_materials']
       | undefined;
+    create_products_wearables_items?:
+      | Array<GraphQLTypes['products_wearables'] | undefined>
+      | undefined;
+    create_products_wearables_item?:
+      | GraphQLTypes['products_wearables']
+      | undefined;
     create_file_formats_items?:
       | Array<GraphQLTypes['file_formats'] | undefined>
       | undefined;
@@ -9503,12 +9302,6 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['products_content'] | undefined>
       | undefined;
     create_products_content_item?: GraphQLTypes['products_content'] | undefined;
-    create_products_wearables_items?:
-      | Array<GraphQLTypes['products_wearables'] | undefined>
-      | undefined;
-    create_products_wearables_item?:
-      | GraphQLTypes['products_wearables']
-      | undefined;
     create_stages_items?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     create_stages_item?: GraphQLTypes['stages'] | undefined;
     update_brands_items?: Array<GraphQLTypes['brands'] | undefined> | undefined;
@@ -9569,8 +9362,6 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['price_currencies'] | undefined>
       | undefined;
     update_price_currencies_item?: GraphQLTypes['price_currencies'] | undefined;
-    update_stage_items?: Array<GraphQLTypes['stage'] | undefined> | undefined;
-    update_stage_item?: GraphQLTypes['stage'] | undefined;
     update_products_files_items?:
       | Array<GraphQLTypes['products_files'] | undefined>
       | undefined;
@@ -9603,6 +9394,12 @@ export type GraphQLTypes = {
     update_products_production_materials_item?:
       | GraphQLTypes['products_production_materials']
       | undefined;
+    update_products_wearables_items?:
+      | Array<GraphQLTypes['products_wearables'] | undefined>
+      | undefined;
+    update_products_wearables_item?:
+      | GraphQLTypes['products_wearables']
+      | undefined;
     update_file_formats_items?:
       | Array<GraphQLTypes['file_formats'] | undefined>
       | undefined;
@@ -9617,12 +9414,6 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['products_content'] | undefined>
       | undefined;
     update_products_content_item?: GraphQLTypes['products_content'] | undefined;
-    update_products_wearables_items?:
-      | Array<GraphQLTypes['products_wearables'] | undefined>
-      | undefined;
-    update_products_wearables_item?:
-      | GraphQLTypes['products_wearables']
-      | undefined;
     update_stages_items?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     update_stages_item?: GraphQLTypes['stages'] | undefined;
     delete_brands_items?: GraphQLTypes['delete_many'] | undefined;
@@ -9663,8 +9454,6 @@ export type GraphQLTypes = {
     delete_fulfillers_item?: GraphQLTypes['delete_one'] | undefined;
     delete_price_currencies_items?: GraphQLTypes['delete_many'] | undefined;
     delete_price_currencies_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_stage_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_stage_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_files_items?: GraphQLTypes['delete_many'] | undefined;
     delete_products_files_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_production_methods_items?:
@@ -9687,6 +9476,8 @@ export type GraphQLTypes = {
     delete_products_production_materials_item?:
       | GraphQLTypes['delete_one']
       | undefined;
+    delete_products_wearables_items?: GraphQLTypes['delete_many'] | undefined;
+    delete_products_wearables_item?: GraphQLTypes['delete_one'] | undefined;
     delete_file_formats_items?: GraphQLTypes['delete_many'] | undefined;
     delete_file_formats_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_design_files_items?:
@@ -9695,8 +9486,6 @@ export type GraphQLTypes = {
     delete_products_design_files_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_content_items?: GraphQLTypes['delete_many'] | undefined;
     delete_products_content_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_products_wearables_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_products_wearables_item?: GraphQLTypes['delete_one'] | undefined;
     delete_stages_items?: GraphQLTypes['delete_many'] | undefined;
     delete_stages_item?: GraphQLTypes['delete_one'] | undefined;
   };
@@ -10091,12 +9880,6 @@ export type GraphQLTypes = {
     products_id?: GraphQLTypes['create_products_input'] | undefined;
     directus_files_id?: GraphQLTypes['create_directus_files_input'] | undefined;
   };
-  ['create_stage_input']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    sort?: number | undefined;
-  };
   ['update_brands_input']: {
     created_at?: GraphQLTypes['Date'] | undefined;
     created_at_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
@@ -10474,12 +10257,6 @@ export type GraphQLTypes = {
     id?: string | undefined;
     products_id?: GraphQLTypes['update_products_input'] | undefined;
     directus_files_id?: GraphQLTypes['update_directus_files_input'] | undefined;
-  };
-  ['update_stage_input']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    sort?: number | undefined;
   };
   ['delete_many']: {
     __typename: 'delete_many';

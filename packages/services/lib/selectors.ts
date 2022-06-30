@@ -41,6 +41,27 @@ export const productsFilesSelector = Selector('products')({
   id: true,
   name: true,
   notion_id: true,
+  clo3d_file: [
+    {},
+    {
+      id: true,
+      filename_download: true,
+    },
+  ],
+  content: [
+    {},
+    {
+      id: true,
+      directus_files_id: [{}, { id: true, filename_download: true }],
+    },
+  ],
+  design_files: [
+    {},
+    {
+      id: true,
+      directus_files_id: [{}, { id: true, filename_download: true }],
+    },
+  ],
   wearable_files: [
     {},
     {
