@@ -13,6 +13,7 @@ tags
 .vscode
 
 packages/app/mf-app-kv-storage-db
+packages/cms/.envrc
 .vercel
 **/.env
 
