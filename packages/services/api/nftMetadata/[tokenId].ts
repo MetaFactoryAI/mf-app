@@ -1,8 +1,8 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
 import { productNftMetadataSelector } from '../../lib/selectors';
-import { mfosClient } from '../../utils/mfos/client';
-import { getMetadataForProduct } from '../../utils/mfos/wearableMetadata';
+import { mfosClient } from '../../mfos/client';
+import { getMetadataForProduct } from '../../utils/wearableMetadata';
 
 export default async (
   req: VercelRequest,

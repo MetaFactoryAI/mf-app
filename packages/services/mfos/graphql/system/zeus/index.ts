@@ -913,6 +913,28 @@ export type ValueTypes = {
       ValueTypes['directus_relations'],
     ];
     users_me?: ValueTypes['directus_users'];
+    users?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    users_by_id?: [{ id: string }, ValueTypes['directus_users']];
+    users_aggregated?: [
+      {
+        groupBy?: Array<string | undefined | null> | undefined | null;
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        limit?: number | undefined | null;
+        search?: string | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+      },
+      ValueTypes['directus_users_aggregated'],
+    ];
     roles?: [
       {
         filter?: ValueTypes['directus_roles_filter'] | undefined | null;
@@ -1022,28 +1044,6 @@ export type ValueTypes = {
         sort?: Array<string | undefined | null> | undefined | null;
       },
       ValueTypes['directus_permissions_aggregated'],
-    ];
-    users?: [
-      {
-        filter?: ValueTypes['directus_users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['directus_users'],
-    ];
-    users_by_id?: [{ id: string }, ValueTypes['directus_users']];
-    users_aggregated?: [
-      {
-        groupBy?: Array<string | undefined | null> | undefined | null;
-        filter?: ValueTypes['directus_users_filter'] | undefined | null;
-        limit?: number | undefined | null;
-        search?: string | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-      },
-      ValueTypes['directus_users_aggregated'],
     ];
     presets?: [
       {
@@ -1444,6 +1444,37 @@ export type ValueTypes = {
     auth_data?: boolean | `@${string}`;
     auth_data_func?: ValueTypes['count_functions'];
     email_notifications?: boolean | `@${string}`;
+    timezone?: boolean | `@${string}`;
+    discord_handle?: boolean | `@${string}`;
+    twitter_handle?: boolean | `@${string}`;
+    discord_id?: boolean | `@${string}`;
+    collaborators?: [
+      {
+        filter?: ValueTypes['collaborators_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['collaborators'],
+    ];
+    collaborators_func?: ValueTypes['count_functions'];
+    skills?: [
+      {
+        filter?:
+          | ValueTypes['junction_directus_users_skills_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['junction_directus_users_skills'],
+    ];
+    skills_func?: ValueTypes['count_functions'];
     __typename?: boolean | `@${string}`;
   }>;
   ['count_functions']: AliasType<{
@@ -1594,6 +1625,23 @@ export type ValueTypes = {
       | ValueTypes['boolean_filter_operators']
       | undefined
       | null;
+    timezone?: ValueTypes['string_filter_operators'] | undefined | null;
+    discord_handle?: ValueTypes['string_filter_operators'] | undefined | null;
+    twitter_handle?: ValueTypes['string_filter_operators'] | undefined | null;
+    discord_id?: ValueTypes['string_filter_operators'] | undefined | null;
+    collaborators?: ValueTypes['collaborators_filter'] | undefined | null;
+    collaborators_func?:
+      | ValueTypes['count_function_filter_operators']
+      | undefined
+      | null;
+    skills?:
+      | ValueTypes['junction_directus_users_skills_filter']
+      | undefined
+      | null;
+    skills_func?:
+      | ValueTypes['count_function_filter_operators']
+      | undefined
+      | null;
     _and?:
       | Array<ValueTypes['directus_users_filter'] | undefined | null>
       | undefined
@@ -1717,6 +1765,78 @@ export type ValueTypes = {
     _null?: boolean | undefined | null;
     _nnull?: boolean | undefined | null;
   };
+  ['collaborators_filter']: {
+    id?: ValueTypes['number_filter_operators'] | undefined | null;
+    user_created?: ValueTypes['directus_users_filter'] | undefined | null;
+    date_created?: ValueTypes['date_filter_operators'] | undefined | null;
+    date_created_func?:
+      | ValueTypes['datetime_function_filter_operators']
+      | undefined
+      | null;
+    date_updated?: ValueTypes['date_filter_operators'] | undefined | null;
+    date_updated_func?:
+      | ValueTypes['datetime_function_filter_operators']
+      | undefined
+      | null;
+    account?: ValueTypes['directus_users_filter'] | undefined | null;
+    display_name?: ValueTypes['string_filter_operators'] | undefined | null;
+    payment_eth_address?:
+      | ValueTypes['string_filter_operators']
+      | undefined
+      | null;
+    role?: ValueTypes['collaborator_roles_filter'] | undefined | null;
+    _and?:
+      | Array<ValueTypes['collaborators_filter'] | undefined | null>
+      | undefined
+      | null;
+    _or?:
+      | Array<ValueTypes['collaborators_filter'] | undefined | null>
+      | undefined
+      | null;
+  };
+  ['collaborator_roles_filter']: {
+    description?: ValueTypes['string_filter_operators'] | undefined | null;
+    id?: ValueTypes['number_filter_operators'] | undefined | null;
+    name?: ValueTypes['string_filter_operators'] | undefined | null;
+    _and?:
+      | Array<ValueTypes['collaborator_roles_filter'] | undefined | null>
+      | undefined
+      | null;
+    _or?:
+      | Array<ValueTypes['collaborator_roles_filter'] | undefined | null>
+      | undefined
+      | null;
+  };
+  ['junction_directus_users_skills_filter']: {
+    id?: ValueTypes['number_filter_operators'] | undefined | null;
+    directus_users_id?: ValueTypes['directus_users_filter'] | undefined | null;
+    skills_id?: ValueTypes['skills_filter'] | undefined | null;
+    _and?:
+      | Array<
+          ValueTypes['junction_directus_users_skills_filter'] | undefined | null
+        >
+      | undefined
+      | null;
+    _or?:
+      | Array<
+          ValueTypes['junction_directus_users_skills_filter'] | undefined | null
+        >
+      | undefined
+      | null;
+  };
+  ['skills_filter']: {
+    description?: ValueTypes['string_filter_operators'] | undefined | null;
+    id?: ValueTypes['string_filter_operators'] | undefined | null;
+    name?: ValueTypes['string_filter_operators'] | undefined | null;
+    _and?:
+      | Array<ValueTypes['skills_filter'] | undefined | null>
+      | undefined
+      | null;
+    _or?:
+      | Array<ValueTypes['skills_filter'] | undefined | null>
+      | undefined
+      | null;
+  };
   /** ISO8601 Date values */
   ['Date']: unknown;
   ['datetime_functions']: AliasType<{
@@ -1751,6 +1871,124 @@ export type ValueTypes = {
       ValueTypes['directus_users'],
     ];
     users_func?: ValueTypes['count_functions'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['collaborators']: AliasType<{
+    id?: boolean | `@${string}`;
+    user_created?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    date_created?: boolean | `@${string}`;
+    date_created_func?: ValueTypes['datetime_functions'];
+    date_updated?: boolean | `@${string}`;
+    date_updated_func?: ValueTypes['datetime_functions'];
+    account?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    display_name?: boolean | `@${string}`;
+    payment_eth_address?: boolean | `@${string}`;
+    role?: [
+      {
+        filter?: ValueTypes['collaborator_roles_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['collaborator_roles'],
+    ];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['collaborator_roles']: AliasType<{
+    description?: boolean | `@${string}`;
+    id?: boolean | `@${string}`;
+    name?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['junction_directus_users_skills']: AliasType<{
+    id?: boolean | `@${string}`;
+    directus_users_id?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    skills_id?: [
+      {
+        filter?: ValueTypes['skills_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['skills'],
+    ];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['skills']: AliasType<{
+    description?: boolean | `@${string}`;
+    id?: boolean | `@${string}`;
+    name?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['directus_users_aggregated']: AliasType<{
+    group?: boolean | `@${string}`;
+    countAll?: boolean | `@${string}`;
+    count?: ValueTypes['directus_users_aggregated_count'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['directus_users_aggregated_count']: AliasType<{
+    id?: boolean | `@${string}`;
+    first_name?: boolean | `@${string}`;
+    last_name?: boolean | `@${string}`;
+    email?: boolean | `@${string}`;
+    password?: boolean | `@${string}`;
+    location?: boolean | `@${string}`;
+    title?: boolean | `@${string}`;
+    description?: boolean | `@${string}`;
+    tags?: boolean | `@${string}`;
+    avatar?: boolean | `@${string}`;
+    language?: boolean | `@${string}`;
+    theme?: boolean | `@${string}`;
+    tfa_secret?: boolean | `@${string}`;
+    status?: boolean | `@${string}`;
+    role?: boolean | `@${string}`;
+    token?: boolean | `@${string}`;
+    last_access?: boolean | `@${string}`;
+    last_page?: boolean | `@${string}`;
+    provider?: boolean | `@${string}`;
+    external_identifier?: boolean | `@${string}`;
+    auth_data?: boolean | `@${string}`;
+    email_notifications?: boolean | `@${string}`;
+    timezone?: boolean | `@${string}`;
+    discord_handle?: boolean | `@${string}`;
+    twitter_handle?: boolean | `@${string}`;
+    discord_id?: boolean | `@${string}`;
+    collaborators?: boolean | `@${string}`;
+    skills?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['directus_roles_aggregated']: AliasType<{
@@ -2056,37 +2294,6 @@ export type ValueTypes = {
   }>;
   ['directus_permissions_aggregated_fields']: AliasType<{
     id?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['directus_users_aggregated']: AliasType<{
-    group?: boolean | `@${string}`;
-    countAll?: boolean | `@${string}`;
-    count?: ValueTypes['directus_users_aggregated_count'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['directus_users_aggregated_count']: AliasType<{
-    id?: boolean | `@${string}`;
-    first_name?: boolean | `@${string}`;
-    last_name?: boolean | `@${string}`;
-    email?: boolean | `@${string}`;
-    password?: boolean | `@${string}`;
-    location?: boolean | `@${string}`;
-    title?: boolean | `@${string}`;
-    description?: boolean | `@${string}`;
-    tags?: boolean | `@${string}`;
-    avatar?: boolean | `@${string}`;
-    language?: boolean | `@${string}`;
-    theme?: boolean | `@${string}`;
-    tfa_secret?: boolean | `@${string}`;
-    status?: boolean | `@${string}`;
-    role?: boolean | `@${string}`;
-    token?: boolean | `@${string}`;
-    last_access?: boolean | `@${string}`;
-    last_page?: boolean | `@${string}`;
-    provider?: boolean | `@${string}`;
-    external_identifier?: boolean | `@${string}`;
-    auth_data?: boolean | `@${string}`;
-    email_notifications?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['directus_presets']: AliasType<{
@@ -3095,6 +3302,25 @@ export type ValueTypes = {
       { email: string; role: string; invite_url?: string | undefined | null },
       boolean | `@${string}`,
     ];
+    create_users_items?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        data?:
+          | Array<ValueTypes['create_directus_users_input']>
+          | undefined
+          | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    create_users_item?: [
+      { data: ValueTypes['create_directus_users_input'] },
+      ValueTypes['directus_users'],
+    ];
     create_roles_items?: [
       {
         filter?: ValueTypes['directus_roles_filter'] | undefined | null;
@@ -3170,25 +3396,6 @@ export type ValueTypes = {
     create_permissions_item?: [
       { data: ValueTypes['create_directus_permissions_input'] },
       ValueTypes['directus_permissions'],
-    ];
-    create_users_items?: [
-      {
-        filter?: ValueTypes['directus_users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        data?:
-          | Array<ValueTypes['create_directus_users_input']>
-          | undefined
-          | null;
-      },
-      ValueTypes['directus_users'],
-    ];
-    create_users_item?: [
-      { data: ValueTypes['create_directus_users_input'] },
-      ValueTypes['directus_users'],
     ];
     create_presets_items?: [
       {
@@ -3342,6 +3549,23 @@ export type ValueTypes = {
       { data: ValueTypes['create_directus_dashboards_input'] },
       ValueTypes['directus_dashboards'],
     ];
+    update_users_items?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        ids: Array<string | undefined | null>;
+        data: ValueTypes['update_directus_users_input'];
+      },
+      ValueTypes['directus_users'],
+    ];
+    update_users_item?: [
+      { id: string; data: ValueTypes['update_directus_users_input'] },
+      ValueTypes['directus_users'],
+    ];
     update_roles_items?: [
       {
         filter?: ValueTypes['directus_roles_filter'] | undefined | null;
@@ -3409,23 +3633,6 @@ export type ValueTypes = {
     update_permissions_item?: [
       { id: string; data: ValueTypes['update_directus_permissions_input'] },
       ValueTypes['directus_permissions'],
-    ];
-    update_users_items?: [
-      {
-        filter?: ValueTypes['directus_users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        ids: Array<string | undefined | null>;
-        data: ValueTypes['update_directus_users_input'];
-      },
-      ValueTypes['directus_users'],
-    ];
-    update_users_item?: [
-      { id: string; data: ValueTypes['update_directus_users_input'] },
-      ValueTypes['directus_users'],
     ];
     update_presets_items?: [
       {
@@ -3567,6 +3774,11 @@ export type ValueTypes = {
       { id: string; data: ValueTypes['update_directus_dashboards_input'] },
       ValueTypes['directus_dashboards'],
     ];
+    delete_users_items?: [
+      { ids: Array<string | undefined | null> },
+      ValueTypes['delete_many'],
+    ];
+    delete_users_item?: [{ id: string }, ValueTypes['delete_one']];
     delete_roles_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
@@ -3587,11 +3799,6 @@ export type ValueTypes = {
       ValueTypes['delete_many'],
     ];
     delete_permissions_item?: [{ id: string }, ValueTypes['delete_one']];
-    delete_users_items?: [
-      { ids: Array<string | undefined | null> },
-      ValueTypes['delete_many'],
-    ];
-    delete_users_item?: [{ id: string }, ValueTypes['delete_one']];
     delete_presets_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
@@ -3820,6 +4027,24 @@ export type ValueTypes = {
     auth_data?: ValueTypes['JSON'] | undefined | null;
     auth_data_func?: ValueTypes['count_functionsInput'] | undefined | null;
     email_notifications?: boolean | undefined | null;
+    timezone?: string | undefined | null;
+    discord_handle?: string | undefined | null;
+    twitter_handle?: string | undefined | null;
+    discord_id?: string | undefined | null;
+    collaborators?:
+      | Array<ValueTypes['update_collaborators_input'] | undefined | null>
+      | undefined
+      | null;
+    collaborators_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    skills?:
+      | Array<
+          | ValueTypes['update_junction_directus_users_skills_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+    skills_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
   ['count_functionsInput']: {
     count?: number | undefined | null;
@@ -3880,6 +4105,42 @@ export type ValueTypes = {
       | undefined
       | null;
     users_func?: ValueTypes['count_functionsInput'] | undefined | null;
+  };
+  ['update_collaborators_input']: {
+    id?: string | undefined | null;
+    user_created?: ValueTypes['update_directus_users_input'] | undefined | null;
+    date_created?: ValueTypes['Date'] | undefined | null;
+    date_created_func?:
+      | ValueTypes['datetime_functionsInput']
+      | undefined
+      | null;
+    date_updated?: ValueTypes['Date'] | undefined | null;
+    date_updated_func?:
+      | ValueTypes['datetime_functionsInput']
+      | undefined
+      | null;
+    account?: ValueTypes['update_directus_users_input'] | undefined | null;
+    display_name?: string | undefined | null;
+    payment_eth_address?: string | undefined | null;
+    role?: ValueTypes['update_collaborator_roles_input'] | undefined | null;
+  };
+  ['update_collaborator_roles_input']: {
+    description?: string | undefined | null;
+    id?: string | undefined | null;
+    name?: string | undefined | null;
+  };
+  ['update_junction_directus_users_skills_input']: {
+    id?: string | undefined | null;
+    directus_users_id?:
+      | ValueTypes['update_directus_users_input']
+      | undefined
+      | null;
+    skills_id?: ValueTypes['update_skills_input'] | undefined | null;
+  };
+  ['update_skills_input']: {
+    description?: string | undefined | null;
+    id?: string | undefined | null;
+    name?: string | undefined | null;
   };
   ['delete_one']: AliasType<{
     id?: boolean | `@${string}`;
@@ -3943,6 +4204,24 @@ export type ValueTypes = {
     auth_data?: ValueTypes['JSON'] | undefined | null;
     auth_data_func?: ValueTypes['count_functionsInput'] | undefined | null;
     email_notifications?: boolean | undefined | null;
+    timezone?: string | undefined | null;
+    discord_handle?: string | undefined | null;
+    twitter_handle?: string | undefined | null;
+    discord_id?: string | undefined | null;
+    collaborators?:
+      | Array<ValueTypes['create_collaborators_input'] | undefined | null>
+      | undefined
+      | null;
+    collaborators_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    skills?:
+      | Array<
+          | ValueTypes['create_junction_directus_users_skills_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+    skills_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
   ['create_directus_roles_input']: {
     id?: string | undefined | null;
@@ -3958,6 +4237,42 @@ export type ValueTypes = {
       | undefined
       | null;
     users_func?: ValueTypes['count_functionsInput'] | undefined | null;
+  };
+  ['create_collaborators_input']: {
+    id?: string | undefined | null;
+    user_created?: ValueTypes['create_directus_users_input'] | undefined | null;
+    date_created?: ValueTypes['Date'] | undefined | null;
+    date_created_func?:
+      | ValueTypes['datetime_functionsInput']
+      | undefined
+      | null;
+    date_updated?: ValueTypes['Date'] | undefined | null;
+    date_updated_func?:
+      | ValueTypes['datetime_functionsInput']
+      | undefined
+      | null;
+    account?: ValueTypes['create_directus_users_input'] | undefined | null;
+    display_name?: string | undefined | null;
+    payment_eth_address?: string | undefined | null;
+    role?: ValueTypes['create_collaborator_roles_input'] | undefined | null;
+  };
+  ['create_collaborator_roles_input']: {
+    description?: string | undefined | null;
+    id?: string | undefined | null;
+    name?: string | undefined | null;
+  };
+  ['create_junction_directus_users_skills_input']: {
+    id?: string | undefined | null;
+    directus_users_id?:
+      | ValueTypes['create_directus_users_input']
+      | undefined
+      | null;
+    skills_id?: ValueTypes['create_skills_input'] | undefined | null;
+  };
+  ['create_skills_input']: {
+    description?: string | undefined | null;
+    id?: string | undefined | null;
+    name: string;
   };
   ['create_directus_permissions_input']: {
     id?: string | undefined | null;
@@ -4368,6 +4683,11 @@ export type ModelTypes = {
       | undefined;
     relations_by_name?: GraphQLTypes['directus_relations'] | undefined;
     users_me?: GraphQLTypes['directus_users'] | undefined;
+    users?: Array<GraphQLTypes['directus_users'] | undefined> | undefined;
+    users_by_id?: GraphQLTypes['directus_users'] | undefined;
+    users_aggregated?:
+      | Array<GraphQLTypes['directus_users_aggregated'] | undefined>
+      | undefined;
     roles?: Array<GraphQLTypes['directus_roles'] | undefined> | undefined;
     roles_by_id?: GraphQLTypes['directus_roles'] | undefined;
     roles_aggregated?:
@@ -4394,11 +4714,6 @@ export type ModelTypes = {
     permissions_by_id?: GraphQLTypes['directus_permissions'] | undefined;
     permissions_aggregated?:
       | Array<GraphQLTypes['directus_permissions_aggregated'] | undefined>
-      | undefined;
-    users?: Array<GraphQLTypes['directus_users'] | undefined> | undefined;
-    users_by_id?: GraphQLTypes['directus_users'] | undefined;
-    users_aggregated?:
-      | Array<GraphQLTypes['directus_users_aggregated'] | undefined>
       | undefined;
     presets?: Array<GraphQLTypes['directus_presets'] | undefined> | undefined;
     presets_by_id?: GraphQLTypes['directus_presets'] | undefined;
@@ -4616,6 +4931,18 @@ export type ModelTypes = {
     auth_data?: GraphQLTypes['JSON'] | undefined;
     auth_data_func?: GraphQLTypes['count_functions'] | undefined;
     email_notifications?: boolean | undefined;
+    timezone?: string | undefined;
+    discord_handle?: string | undefined;
+    twitter_handle?: string | undefined;
+    discord_id?: string | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    collaborators_func?: GraphQLTypes['count_functions'] | undefined;
+    skills?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    skills_func?: GraphQLTypes['count_functions'] | undefined;
   };
   ['count_functions']: {
     count?: number | undefined;
@@ -4662,6 +4989,10 @@ export type ModelTypes = {
   ['datetime_function_filter_operators']: GraphQLTypes['datetime_function_filter_operators'];
   ['directus_roles_filter']: GraphQLTypes['directus_roles_filter'];
   ['boolean_filter_operators']: GraphQLTypes['boolean_filter_operators'];
+  ['collaborators_filter']: GraphQLTypes['collaborators_filter'];
+  ['collaborator_roles_filter']: GraphQLTypes['collaborator_roles_filter'];
+  ['junction_directus_users_skills_filter']: GraphQLTypes['junction_directus_users_skills_filter'];
+  ['skills_filter']: GraphQLTypes['skills_filter'];
   /** ISO8601 Date values */
   ['Date']: any;
   ['datetime_functions']: {
@@ -4685,6 +5016,68 @@ export type ModelTypes = {
     app_access: boolean;
     users?: Array<GraphQLTypes['directus_users'] | undefined> | undefined;
     users_func?: GraphQLTypes['count_functions'] | undefined;
+  };
+  ['collaborators']: {
+    id?: string | undefined;
+    user_created?: GraphQLTypes['directus_users'] | undefined;
+    date_created?: GraphQLTypes['Date'] | undefined;
+    date_created_func?: GraphQLTypes['datetime_functions'] | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functions'] | undefined;
+    account?: GraphQLTypes['directus_users'] | undefined;
+    display_name?: string | undefined;
+    payment_eth_address?: string | undefined;
+    role?: GraphQLTypes['collaborator_roles'] | undefined;
+  };
+  ['collaborator_roles']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
+  ['junction_directus_users_skills']: {
+    id?: string | undefined;
+    directus_users_id?: GraphQLTypes['directus_users'] | undefined;
+    skills_id?: GraphQLTypes['skills'] | undefined;
+  };
+  ['skills']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name: string;
+  };
+  ['directus_users_aggregated']: {
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['directus_users_aggregated_count'] | undefined;
+  };
+  ['directus_users_aggregated_count']: {
+    id?: number | undefined;
+    first_name?: number | undefined;
+    last_name?: number | undefined;
+    email?: number | undefined;
+    password?: number | undefined;
+    location?: number | undefined;
+    title?: number | undefined;
+    description?: number | undefined;
+    tags?: number | undefined;
+    avatar?: number | undefined;
+    language?: number | undefined;
+    theme?: number | undefined;
+    tfa_secret?: number | undefined;
+    status?: number | undefined;
+    role?: number | undefined;
+    token?: number | undefined;
+    last_access?: number | undefined;
+    last_page?: number | undefined;
+    provider?: number | undefined;
+    external_identifier?: number | undefined;
+    auth_data?: number | undefined;
+    email_notifications?: number | undefined;
+    timezone?: number | undefined;
+    discord_handle?: number | undefined;
+    twitter_handle?: number | undefined;
+    discord_id?: number | undefined;
+    collaborators?: number | undefined;
+    skills?: number | undefined;
   };
   ['directus_roles_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
@@ -4860,35 +5253,6 @@ export type ModelTypes = {
   };
   ['directus_permissions_aggregated_fields']: {
     id?: number | undefined;
-  };
-  ['directus_users_aggregated']: {
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['directus_users_aggregated_count'] | undefined;
-  };
-  ['directus_users_aggregated_count']: {
-    id?: number | undefined;
-    first_name?: number | undefined;
-    last_name?: number | undefined;
-    email?: number | undefined;
-    password?: number | undefined;
-    location?: number | undefined;
-    title?: number | undefined;
-    description?: number | undefined;
-    tags?: number | undefined;
-    avatar?: number | undefined;
-    language?: number | undefined;
-    theme?: number | undefined;
-    tfa_secret?: number | undefined;
-    status?: number | undefined;
-    role?: number | undefined;
-    token?: number | undefined;
-    last_access?: number | undefined;
-    last_page?: number | undefined;
-    provider?: number | undefined;
-    external_identifier?: number | undefined;
-    auth_data?: number | undefined;
-    email_notifications?: number | undefined;
   };
   ['directus_presets']: {
     id?: string | undefined;
@@ -5365,6 +5729,10 @@ export type ModelTypes = {
     delete_comment?: GraphQLTypes['delete_one'] | undefined;
     import_file?: GraphQLTypes['directus_files'] | undefined;
     users_invite?: boolean | undefined;
+    create_users_items?:
+      | Array<GraphQLTypes['directus_users'] | undefined>
+      | undefined;
+    create_users_item?: GraphQLTypes['directus_users'] | undefined;
     create_roles_items?:
       | Array<GraphQLTypes['directus_roles'] | undefined>
       | undefined;
@@ -5381,10 +5749,6 @@ export type ModelTypes = {
       | Array<GraphQLTypes['directus_permissions'] | undefined>
       | undefined;
     create_permissions_item?: GraphQLTypes['directus_permissions'] | undefined;
-    create_users_items?:
-      | Array<GraphQLTypes['directus_users'] | undefined>
-      | undefined;
-    create_users_item?: GraphQLTypes['directus_users'] | undefined;
     create_presets_items?:
       | Array<GraphQLTypes['directus_presets'] | undefined>
       | undefined;
@@ -5419,6 +5783,10 @@ export type ModelTypes = {
       | Array<GraphQLTypes['directus_dashboards'] | undefined>
       | undefined;
     create_dashboards_item?: GraphQLTypes['directus_dashboards'] | undefined;
+    update_users_items?:
+      | Array<GraphQLTypes['directus_users'] | undefined>
+      | undefined;
+    update_users_item?: GraphQLTypes['directus_users'] | undefined;
     update_roles_items?:
       | Array<GraphQLTypes['directus_roles'] | undefined>
       | undefined;
@@ -5435,10 +5803,6 @@ export type ModelTypes = {
       | Array<GraphQLTypes['directus_permissions'] | undefined>
       | undefined;
     update_permissions_item?: GraphQLTypes['directus_permissions'] | undefined;
-    update_users_items?:
-      | Array<GraphQLTypes['directus_users'] | undefined>
-      | undefined;
-    update_users_item?: GraphQLTypes['directus_users'] | undefined;
     update_presets_items?:
       | Array<GraphQLTypes['directus_presets'] | undefined>
       | undefined;
@@ -5474,6 +5838,8 @@ export type ModelTypes = {
       | Array<GraphQLTypes['directus_dashboards'] | undefined>
       | undefined;
     update_dashboards_item?: GraphQLTypes['directus_dashboards'] | undefined;
+    delete_users_items?: GraphQLTypes['delete_many'] | undefined;
+    delete_users_item?: GraphQLTypes['delete_one'] | undefined;
     delete_roles_items?: GraphQLTypes['delete_many'] | undefined;
     delete_roles_item?: GraphQLTypes['delete_one'] | undefined;
     delete_files_items?: GraphQLTypes['delete_many'] | undefined;
@@ -5482,8 +5848,6 @@ export type ModelTypes = {
     delete_folders_item?: GraphQLTypes['delete_one'] | undefined;
     delete_permissions_items?: GraphQLTypes['delete_many'] | undefined;
     delete_permissions_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_users_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_users_item?: GraphQLTypes['delete_one'] | undefined;
     delete_presets_items?: GraphQLTypes['delete_many'] | undefined;
     delete_presets_item?: GraphQLTypes['delete_one'] | undefined;
     delete_webhooks_items?: GraphQLTypes['delete_many'] | undefined;
@@ -5543,6 +5907,10 @@ export type ModelTypes = {
   ['update_directus_folders_input']: GraphQLTypes['update_directus_folders_input'];
   ['datetime_functionsInput']: GraphQLTypes['datetime_functionsInput'];
   ['update_directus_roles_input']: GraphQLTypes['update_directus_roles_input'];
+  ['update_collaborators_input']: GraphQLTypes['update_collaborators_input'];
+  ['update_collaborator_roles_input']: GraphQLTypes['update_collaborator_roles_input'];
+  ['update_junction_directus_users_skills_input']: GraphQLTypes['update_junction_directus_users_skills_input'];
+  ['update_skills_input']: GraphQLTypes['update_skills_input'];
   ['delete_one']: {
     id: string;
   };
@@ -5550,6 +5918,10 @@ export type ModelTypes = {
   ['create_directus_folders_input']: GraphQLTypes['create_directus_folders_input'];
   ['create_directus_users_input']: GraphQLTypes['create_directus_users_input'];
   ['create_directus_roles_input']: GraphQLTypes['create_directus_roles_input'];
+  ['create_collaborators_input']: GraphQLTypes['create_collaborators_input'];
+  ['create_collaborator_roles_input']: GraphQLTypes['create_collaborator_roles_input'];
+  ['create_junction_directus_users_skills_input']: GraphQLTypes['create_junction_directus_users_skills_input'];
+  ['create_skills_input']: GraphQLTypes['create_skills_input'];
   ['create_directus_permissions_input']: GraphQLTypes['create_directus_permissions_input'];
   ['create_directus_presets_input']: GraphQLTypes['create_directus_presets_input'];
   ['create_directus_webhooks_input']: GraphQLTypes['create_directus_webhooks_input'];
@@ -5600,6 +5972,11 @@ export type GraphQLTypes = {
       | undefined;
     relations_by_name?: GraphQLTypes['directus_relations'] | undefined;
     users_me?: GraphQLTypes['directus_users'] | undefined;
+    users?: Array<GraphQLTypes['directus_users'] | undefined> | undefined;
+    users_by_id?: GraphQLTypes['directus_users'] | undefined;
+    users_aggregated?:
+      | Array<GraphQLTypes['directus_users_aggregated'] | undefined>
+      | undefined;
     roles?: Array<GraphQLTypes['directus_roles'] | undefined> | undefined;
     roles_by_id?: GraphQLTypes['directus_roles'] | undefined;
     roles_aggregated?:
@@ -5626,11 +6003,6 @@ export type GraphQLTypes = {
     permissions_by_id?: GraphQLTypes['directus_permissions'] | undefined;
     permissions_aggregated?:
       | Array<GraphQLTypes['directus_permissions_aggregated'] | undefined>
-      | undefined;
-    users?: Array<GraphQLTypes['directus_users'] | undefined> | undefined;
-    users_by_id?: GraphQLTypes['directus_users'] | undefined;
-    users_aggregated?:
-      | Array<GraphQLTypes['directus_users_aggregated'] | undefined>
       | undefined;
     presets?: Array<GraphQLTypes['directus_presets'] | undefined> | undefined;
     presets_by_id?: GraphQLTypes['directus_presets'] | undefined;
@@ -5863,6 +6235,18 @@ export type GraphQLTypes = {
     auth_data?: GraphQLTypes['JSON'] | undefined;
     auth_data_func?: GraphQLTypes['count_functions'] | undefined;
     email_notifications?: boolean | undefined;
+    timezone?: string | undefined;
+    discord_handle?: string | undefined;
+    twitter_handle?: string | undefined;
+    discord_id?: string | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    collaborators_func?: GraphQLTypes['count_functions'] | undefined;
+    skills?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    skills_func?: GraphQLTypes['count_functions'] | undefined;
   };
   ['count_functions']: {
     __typename: 'count_functions';
@@ -5959,6 +6343,16 @@ export type GraphQLTypes = {
       | GraphQLTypes['count_function_filter_operators']
       | undefined;
     email_notifications?: GraphQLTypes['boolean_filter_operators'] | undefined;
+    timezone?: GraphQLTypes['string_filter_operators'] | undefined;
+    discord_handle?: GraphQLTypes['string_filter_operators'] | undefined;
+    twitter_handle?: GraphQLTypes['string_filter_operators'] | undefined;
+    discord_id?: GraphQLTypes['string_filter_operators'] | undefined;
+    collaborators?: GraphQLTypes['collaborators_filter'] | undefined;
+    collaborators_func?:
+      | GraphQLTypes['count_function_filter_operators']
+      | undefined;
+    skills?: GraphQLTypes['junction_directus_users_skills_filter'] | undefined;
+    skills_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
     _and?: Array<GraphQLTypes['directus_users_filter'] | undefined> | undefined;
     _or?: Array<GraphQLTypes['directus_users_filter'] | undefined> | undefined;
   };
@@ -6050,6 +6444,53 @@ export type GraphQLTypes = {
     _null?: boolean | undefined;
     _nnull?: boolean | undefined;
   };
+  ['collaborators_filter']: {
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    user_created?: GraphQLTypes['directus_users_filter'] | undefined;
+    date_created?: GraphQLTypes['date_filter_operators'] | undefined;
+    date_created_func?:
+      | GraphQLTypes['datetime_function_filter_operators']
+      | undefined;
+    date_updated?: GraphQLTypes['date_filter_operators'] | undefined;
+    date_updated_func?:
+      | GraphQLTypes['datetime_function_filter_operators']
+      | undefined;
+    account?: GraphQLTypes['directus_users_filter'] | undefined;
+    display_name?: GraphQLTypes['string_filter_operators'] | undefined;
+    payment_eth_address?: GraphQLTypes['string_filter_operators'] | undefined;
+    role?: GraphQLTypes['collaborator_roles_filter'] | undefined;
+    _and?: Array<GraphQLTypes['collaborators_filter'] | undefined> | undefined;
+    _or?: Array<GraphQLTypes['collaborators_filter'] | undefined> | undefined;
+  };
+  ['collaborator_roles_filter']: {
+    description?: GraphQLTypes['string_filter_operators'] | undefined;
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    name?: GraphQLTypes['string_filter_operators'] | undefined;
+    _and?:
+      | Array<GraphQLTypes['collaborator_roles_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<GraphQLTypes['collaborator_roles_filter'] | undefined>
+      | undefined;
+  };
+  ['junction_directus_users_skills_filter']: {
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    directus_users_id?: GraphQLTypes['directus_users_filter'] | undefined;
+    skills_id?: GraphQLTypes['skills_filter'] | undefined;
+    _and?:
+      | Array<GraphQLTypes['junction_directus_users_skills_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<GraphQLTypes['junction_directus_users_skills_filter'] | undefined>
+      | undefined;
+  };
+  ['skills_filter']: {
+    description?: GraphQLTypes['string_filter_operators'] | undefined;
+    id?: GraphQLTypes['string_filter_operators'] | undefined;
+    name?: GraphQLTypes['string_filter_operators'] | undefined;
+    _and?: Array<GraphQLTypes['skills_filter'] | undefined> | undefined;
+    _or?: Array<GraphQLTypes['skills_filter'] | undefined> | undefined;
+  };
   /** ISO8601 Date values */
   ['Date']: 'scalar' & { name: 'Date' };
   ['datetime_functions']: {
@@ -6075,6 +6516,74 @@ export type GraphQLTypes = {
     app_access: boolean;
     users?: Array<GraphQLTypes['directus_users'] | undefined> | undefined;
     users_func?: GraphQLTypes['count_functions'] | undefined;
+  };
+  ['collaborators']: {
+    __typename: 'collaborators';
+    id?: string | undefined;
+    user_created?: GraphQLTypes['directus_users'] | undefined;
+    date_created?: GraphQLTypes['Date'] | undefined;
+    date_created_func?: GraphQLTypes['datetime_functions'] | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functions'] | undefined;
+    account?: GraphQLTypes['directus_users'] | undefined;
+    display_name?: string | undefined;
+    payment_eth_address?: string | undefined;
+    role?: GraphQLTypes['collaborator_roles'] | undefined;
+  };
+  ['collaborator_roles']: {
+    __typename: 'collaborator_roles';
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
+  ['junction_directus_users_skills']: {
+    __typename: 'junction_directus_users_skills';
+    id?: string | undefined;
+    directus_users_id?: GraphQLTypes['directus_users'] | undefined;
+    skills_id?: GraphQLTypes['skills'] | undefined;
+  };
+  ['skills']: {
+    __typename: 'skills';
+    description?: string | undefined;
+    id?: string | undefined;
+    name: string;
+  };
+  ['directus_users_aggregated']: {
+    __typename: 'directus_users_aggregated';
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['directus_users_aggregated_count'] | undefined;
+  };
+  ['directus_users_aggregated_count']: {
+    __typename: 'directus_users_aggregated_count';
+    id?: number | undefined;
+    first_name?: number | undefined;
+    last_name?: number | undefined;
+    email?: number | undefined;
+    password?: number | undefined;
+    location?: number | undefined;
+    title?: number | undefined;
+    description?: number | undefined;
+    tags?: number | undefined;
+    avatar?: number | undefined;
+    language?: number | undefined;
+    theme?: number | undefined;
+    tfa_secret?: number | undefined;
+    status?: number | undefined;
+    role?: number | undefined;
+    token?: number | undefined;
+    last_access?: number | undefined;
+    last_page?: number | undefined;
+    provider?: number | undefined;
+    external_identifier?: number | undefined;
+    auth_data?: number | undefined;
+    email_notifications?: number | undefined;
+    timezone?: number | undefined;
+    discord_handle?: number | undefined;
+    twitter_handle?: number | undefined;
+    discord_id?: number | undefined;
+    collaborators?: number | undefined;
+    skills?: number | undefined;
   };
   ['directus_roles_aggregated']: {
     __typename: 'directus_roles_aggregated';
@@ -6327,37 +6836,6 @@ export type GraphQLTypes = {
   ['directus_permissions_aggregated_fields']: {
     __typename: 'directus_permissions_aggregated_fields';
     id?: number | undefined;
-  };
-  ['directus_users_aggregated']: {
-    __typename: 'directus_users_aggregated';
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['directus_users_aggregated_count'] | undefined;
-  };
-  ['directus_users_aggregated_count']: {
-    __typename: 'directus_users_aggregated_count';
-    id?: number | undefined;
-    first_name?: number | undefined;
-    last_name?: number | undefined;
-    email?: number | undefined;
-    password?: number | undefined;
-    location?: number | undefined;
-    title?: number | undefined;
-    description?: number | undefined;
-    tags?: number | undefined;
-    avatar?: number | undefined;
-    language?: number | undefined;
-    theme?: number | undefined;
-    tfa_secret?: number | undefined;
-    status?: number | undefined;
-    role?: number | undefined;
-    token?: number | undefined;
-    last_access?: number | undefined;
-    last_page?: number | undefined;
-    provider?: number | undefined;
-    external_identifier?: number | undefined;
-    auth_data?: number | undefined;
-    email_notifications?: number | undefined;
   };
   ['directus_presets']: {
     __typename: 'directus_presets';
@@ -7047,6 +7525,10 @@ export type GraphQLTypes = {
     delete_comment?: GraphQLTypes['delete_one'] | undefined;
     import_file?: GraphQLTypes['directus_files'] | undefined;
     users_invite?: boolean | undefined;
+    create_users_items?:
+      | Array<GraphQLTypes['directus_users'] | undefined>
+      | undefined;
+    create_users_item?: GraphQLTypes['directus_users'] | undefined;
     create_roles_items?:
       | Array<GraphQLTypes['directus_roles'] | undefined>
       | undefined;
@@ -7063,10 +7545,6 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['directus_permissions'] | undefined>
       | undefined;
     create_permissions_item?: GraphQLTypes['directus_permissions'] | undefined;
-    create_users_items?:
-      | Array<GraphQLTypes['directus_users'] | undefined>
-      | undefined;
-    create_users_item?: GraphQLTypes['directus_users'] | undefined;
     create_presets_items?:
       | Array<GraphQLTypes['directus_presets'] | undefined>
       | undefined;
@@ -7101,6 +7579,10 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['directus_dashboards'] | undefined>
       | undefined;
     create_dashboards_item?: GraphQLTypes['directus_dashboards'] | undefined;
+    update_users_items?:
+      | Array<GraphQLTypes['directus_users'] | undefined>
+      | undefined;
+    update_users_item?: GraphQLTypes['directus_users'] | undefined;
     update_roles_items?:
       | Array<GraphQLTypes['directus_roles'] | undefined>
       | undefined;
@@ -7117,10 +7599,6 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['directus_permissions'] | undefined>
       | undefined;
     update_permissions_item?: GraphQLTypes['directus_permissions'] | undefined;
-    update_users_items?:
-      | Array<GraphQLTypes['directus_users'] | undefined>
-      | undefined;
-    update_users_item?: GraphQLTypes['directus_users'] | undefined;
     update_presets_items?:
       | Array<GraphQLTypes['directus_presets'] | undefined>
       | undefined;
@@ -7156,6 +7634,8 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['directus_dashboards'] | undefined>
       | undefined;
     update_dashboards_item?: GraphQLTypes['directus_dashboards'] | undefined;
+    delete_users_items?: GraphQLTypes['delete_many'] | undefined;
+    delete_users_item?: GraphQLTypes['delete_one'] | undefined;
     delete_roles_items?: GraphQLTypes['delete_many'] | undefined;
     delete_roles_item?: GraphQLTypes['delete_one'] | undefined;
     delete_files_items?: GraphQLTypes['delete_many'] | undefined;
@@ -7164,8 +7644,6 @@ export type GraphQLTypes = {
     delete_folders_item?: GraphQLTypes['delete_one'] | undefined;
     delete_permissions_items?: GraphQLTypes['delete_many'] | undefined;
     delete_permissions_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_users_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_users_item?: GraphQLTypes['delete_one'] | undefined;
     delete_presets_items?: GraphQLTypes['delete_many'] | undefined;
     delete_presets_item?: GraphQLTypes['delete_one'] | undefined;
     delete_webhooks_items?: GraphQLTypes['delete_many'] | undefined;
@@ -7365,6 +7843,21 @@ export type GraphQLTypes = {
     auth_data?: GraphQLTypes['JSON'] | undefined;
     auth_data_func?: GraphQLTypes['count_functionsInput'] | undefined;
     email_notifications?: boolean | undefined;
+    timezone?: string | undefined;
+    discord_handle?: string | undefined;
+    twitter_handle?: string | undefined;
+    discord_id?: string | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['update_collaborators_input'] | undefined>
+      | undefined;
+    collaborators_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    skills?:
+      | Array<
+          | GraphQLTypes['update_junction_directus_users_skills_input']
+          | undefined
+        >
+      | undefined;
+    skills_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
   ['count_functionsInput']: {
     count?: number | undefined;
@@ -7424,6 +7917,33 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['update_directus_users_input'] | undefined>
       | undefined;
     users_func?: GraphQLTypes['count_functionsInput'] | undefined;
+  };
+  ['update_collaborators_input']: {
+    id?: string | undefined;
+    user_created?: GraphQLTypes['update_directus_users_input'] | undefined;
+    date_created?: GraphQLTypes['Date'] | undefined;
+    date_created_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
+    account?: GraphQLTypes['update_directus_users_input'] | undefined;
+    display_name?: string | undefined;
+    payment_eth_address?: string | undefined;
+    role?: GraphQLTypes['update_collaborator_roles_input'] | undefined;
+  };
+  ['update_collaborator_roles_input']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
+  ['update_junction_directus_users_skills_input']: {
+    id?: string | undefined;
+    directus_users_id?: GraphQLTypes['update_directus_users_input'] | undefined;
+    skills_id?: GraphQLTypes['update_skills_input'] | undefined;
+  };
+  ['update_skills_input']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
   };
   ['delete_one']: {
     __typename: 'delete_one';
@@ -7487,6 +8007,21 @@ export type GraphQLTypes = {
     auth_data?: GraphQLTypes['JSON'] | undefined;
     auth_data_func?: GraphQLTypes['count_functionsInput'] | undefined;
     email_notifications?: boolean | undefined;
+    timezone?: string | undefined;
+    discord_handle?: string | undefined;
+    twitter_handle?: string | undefined;
+    discord_id?: string | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['create_collaborators_input'] | undefined>
+      | undefined;
+    collaborators_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    skills?:
+      | Array<
+          | GraphQLTypes['create_junction_directus_users_skills_input']
+          | undefined
+        >
+      | undefined;
+    skills_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
   ['create_directus_roles_input']: {
     id?: string | undefined;
@@ -7501,6 +8036,33 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['create_directus_users_input'] | undefined>
       | undefined;
     users_func?: GraphQLTypes['count_functionsInput'] | undefined;
+  };
+  ['create_collaborators_input']: {
+    id?: string | undefined;
+    user_created?: GraphQLTypes['create_directus_users_input'] | undefined;
+    date_created?: GraphQLTypes['Date'] | undefined;
+    date_created_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
+    account?: GraphQLTypes['create_directus_users_input'] | undefined;
+    display_name?: string | undefined;
+    payment_eth_address?: string | undefined;
+    role?: GraphQLTypes['create_collaborator_roles_input'] | undefined;
+  };
+  ['create_collaborator_roles_input']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
+  ['create_junction_directus_users_skills_input']: {
+    id?: string | undefined;
+    directus_users_id?: GraphQLTypes['create_directus_users_input'] | undefined;
+    skills_id?: GraphQLTypes['create_skills_input'] | undefined;
+  };
+  ['create_skills_input']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name: string;
   };
   ['create_directus_permissions_input']: {
     id?: string | undefined;

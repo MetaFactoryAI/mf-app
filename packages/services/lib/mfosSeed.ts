@@ -1,4 +1,9 @@
-import { Client, PRODUCT_STAGES, useZeusVariables } from '../mfos';
+import {
+  Client,
+  COLLABORATOR_ROLES,
+  PRODUCT_STAGES,
+  useZeusVariables,
+} from '../mfos';
 import {
   EXTENSION_DESCRIPTIONS,
   EXTENSION_MIME_TYPES,
@@ -85,5 +90,43 @@ export async function seedFileFormats(client: Client): Promise<void> {
     );
   } catch (e) {
     logger.warn('failed to seed file formats', { error: e });
+  }
+}
+
+export async function seedCollaboratorRoles(client: Client): Promise<void> {
+  const roles = Object.values(COLLABORATOR_ROLES);
+  const existingRoles = await client('query')({
+    collaborator_roles: [{}, { name: true }],
+  });
+  const rolesToCreate = roles.filter(
+    (role) =>
+      !existingRoles.collaborator_roles?.find((s) => s.name === role.name),
+  );
+
+  if (!rolesToCreate.length) return;
+
+  const variables = useZeusVariables({
+    data: '[create_collaborator_roles_input!]',
+  })({
+    data: rolesToCreate,
+  });
+
+  try {
+    await client('mutation')(
+      {
+        create_collaborator_roles_items: [
+          { data: variables.$('data') },
+          {
+            name: true,
+          },
+        ],
+      },
+      {
+        operationName: 'initCollaboratorRoles',
+        variables,
+      },
+    );
+  } catch (e) {
+    logger.warn('failed to seed collaborator roles', { error: e });
   }
 }

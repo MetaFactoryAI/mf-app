@@ -90,6 +90,12 @@ export const getProductBrand = (page: z.infer<typeof ProductPage>) => {
   }
 };
 
+export const getRobot = (page: z.infer<typeof DesignerPage>): Creator => ({
+  id: page.id,
+  name: getTextValue(page.properties.Name.title),
+  ethAddress: getTextValue(page.properties['Eth Address'].rich_text),
+});
+
 export const getProductDesigner = (
   page: z.infer<typeof ProductPage>,
 ): Creator | null => {
@@ -101,9 +107,7 @@ export const getProductDesigner = (
   const designerPage = DesignerPage.parse(designerRelation);
 
   return {
-    name: getTextValue(designerPage.properties.Name.title),
-    ethAddress: getTextValue(designerPage.properties['Eth Address'].rich_text),
-    url: designerPage.properties.Social.url,
+    ...getRobot(designerPage),
     role: 'Designer',
   };
 };
@@ -118,11 +122,27 @@ export const getProductTechnician = (
   const techPage = DesignerPage.parse(techRelation);
 
   return {
-    name: getTextValue(techPage.properties.Name.title),
-    ethAddress: getTextValue(techPage.properties['Eth Address'].rich_text),
-    url: techPage.properties.Social.url,
+    ...getRobot(techPage),
     role: 'Technician',
   };
+};
+export const getProductDesigners = (
+  page: z.infer<typeof ProductPage>,
+): Creator[] => {
+  const designerPages = page.properties['Designer Rel [NEW]'].relation.map(
+    (r) => DesignerPage.parse(r.value),
+  );
+
+  return designerPages.map(getRobot);
+};
+export const getProductTechs = (
+  page: z.infer<typeof ProductPage>,
+): Creator[] => {
+  const techPages = page.properties['Technician Rel'].relation.map((r) =>
+    DesignerPage.parse(r.value),
+  );
+
+  return techPages.map(getRobot);
 };
 
 export const getClo3dModel = (page: z.infer<typeof ProductPage>): FileData => ({
@@ -142,6 +162,10 @@ export const getProductImages = (page: z.infer<typeof ProductPage>): string[] =>
     }
     return f.external.url;
   });
+
+export const getProductProductionCost = (
+  page: z.infer<typeof ProductPage>,
+): number | null => page.properties['Cost ea.'].number;
 
 export const getProductFulfillment = (
   page: z.infer<typeof ProductPage>,

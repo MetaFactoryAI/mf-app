@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { gql } from 'graphql-request';
 import shortid from 'shortid';
 

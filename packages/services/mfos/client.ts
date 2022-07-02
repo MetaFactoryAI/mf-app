@@ -1,5 +1,5 @@
-import { createClient } from '../../mfos';
-import { CONFIG } from '../config';
+import { CONFIG } from '../utils/config';
+import { createClient } from './index';
 
 export const mfosClient = createClient(
   CONFIG.mfosGraphqlUrl,

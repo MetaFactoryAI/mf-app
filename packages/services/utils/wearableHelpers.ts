@@ -2,7 +2,7 @@
 import { z } from 'zod';
 
 import { useZeusVariables, ValueTypes } from '../graphql/__generated__/zeus';
-import { client } from '../graphql/client';
+import { hasuraClient } from '../graphql/client';
 import { WearableMetadata } from '../types/wearables';
 import { EXTENSION_MIME_TYPES, getFiles } from './filesHelpers';
 import { ProductPage } from './notion/parser';
@@ -38,7 +38,7 @@ export const updateProduct = async (
   });
   const { $ } = variables;
 
-  const data = await client.mutate(
+  const data = await hasuraClient.mutate(
     {
       update_robot_product: [
         {

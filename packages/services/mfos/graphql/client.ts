@@ -16,20 +16,6 @@ export const createClient = (endpoint: string, token: string) =>
     ])(...params),
   );
 
-export const createThunderClient = (endpoint: string, token: string) =>
-  userZeus.Thunder((...params) =>
-    userZeus.apiFetch([
-      endpoint,
-      {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      },
-    ])(...params),
-  );
-
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types,@typescript-eslint/ban-ts-comment
 // @ts-ignore infer problem
 export const createSystemClient = (endpoint: string, token: string) =>
