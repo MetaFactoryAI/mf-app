@@ -26,10 +26,12 @@ export interface WearableMetadata {
 }
 
 export interface Creator {
+  id?: string;
   name: string;
-  role: string;
+  role?: string;
   ethAddress?: string;
   share?: number;
+  robotEarned?: number;
   url?: string | null;
 }
 

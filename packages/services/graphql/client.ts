@@ -14,7 +14,7 @@ const thunder = Thunder((...params) =>
   ])(...params),
 );
 
-export const client = {
+export const hasuraClient = {
   query: thunder('query'),
   mutate: thunder('mutation'),
   subscribe: thunder('subscription'),

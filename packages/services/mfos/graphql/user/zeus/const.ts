@@ -9,20 +9,6 @@ export const AllTypesProps: Record<string, any> = {
     brands_aggregated: {
       filter: 'brands_filter',
     },
-    brands_users: {
-      filter: 'brands_users_filter',
-    },
-    brands_users_by_id: {},
-    brands_users_aggregated: {
-      filter: 'brands_users_filter',
-    },
-    users: {
-      filter: 'users_filter',
-    },
-    users_by_id: {},
-    users_aggregated: {
-      filter: 'users_filter',
-    },
     producers: {
       filter: 'producers_filter',
     },
@@ -50,13 +36,6 @@ export const AllTypesProps: Record<string, any> = {
     production_methods_by_id: {},
     production_methods_aggregated: {
       filter: 'production_methods_filter',
-    },
-    product_collaborators: {
-      filter: 'product_collaborators_filter',
-    },
-    product_collaborators_by_id: {},
-    product_collaborators_aggregated: {
-      filter: 'product_collaborators_filter',
     },
     collaborator_roles: {
       filter: 'collaborator_roles_filter',
@@ -106,13 +85,6 @@ export const AllTypesProps: Record<string, any> = {
     skills_by_id: {},
     skills_aggregated: {
       filter: 'skills_filter',
-    },
-    users_skills: {
-      filter: 'users_skills_filter',
-    },
-    users_skills_by_id: {},
-    users_skills_aggregated: {
-      filter: 'users_skills_filter',
     },
     production_materials: {
       filter: 'production_materials_filter',
@@ -170,6 +142,34 @@ export const AllTypesProps: Record<string, any> = {
     stages_aggregated: {
       filter: 'stages_filter',
     },
+    junction_directus_users_skills: {
+      filter: 'junction_directus_users_skills_filter',
+    },
+    junction_directus_users_skills_by_id: {},
+    junction_directus_users_skills_aggregated: {
+      filter: 'junction_directus_users_skills_filter',
+    },
+    collaborators: {
+      filter: 'collaborators_filter',
+    },
+    collaborators_by_id: {},
+    collaborators_aggregated: {
+      filter: 'collaborators_filter',
+    },
+    brands_directus_users: {
+      filter: 'brands_directus_users_filter',
+    },
+    brands_directus_users_by_id: {},
+    brands_directus_users_aggregated: {
+      filter: 'brands_directus_users_filter',
+    },
+    products_contributors: {
+      filter: 'products_contributors_filter',
+    },
+    products_contributors_by_id: {},
+    products_contributors_aggregated: {
+      filter: 'products_contributors_filter',
+    },
   },
   brands: {
     logo: {
@@ -178,8 +178,8 @@ export const AllTypesProps: Record<string, any> = {
     products: {
       filter: 'products_filter',
     },
-    members: {
-      filter: 'brands_users_filter',
+    users: {
+      filter: 'brands_directus_users_filter',
     },
   },
   Date: `scalar.Date` as const,
@@ -213,6 +213,12 @@ export const AllTypesProps: Record<string, any> = {
     },
     role: {
       filter: 'directus_roles_filter',
+    },
+    collaborators: {
+      filter: 'collaborators_filter',
+    },
+    skills: {
+      filter: 'junction_directus_users_skills_filter',
     },
   },
   JSON: `scalar.JSON` as const,
@@ -271,6 +277,14 @@ export const AllTypesProps: Record<string, any> = {
     auth_data: 'string_filter_operators',
     auth_data_func: 'count_function_filter_operators',
     email_notifications: 'boolean_filter_operators',
+    timezone: 'string_filter_operators',
+    discord_handle: 'string_filter_operators',
+    twitter_handle: 'string_filter_operators',
+    discord_id: 'string_filter_operators',
+    collaborators: 'collaborators_filter',
+    collaborators_func: 'count_function_filter_operators',
+    skills: 'junction_directus_users_skills_filter',
+    skills_func: 'count_function_filter_operators',
     _and: 'directus_users_filter',
     _or: 'directus_users_filter',
   },
@@ -304,9 +318,63 @@ export const AllTypesProps: Record<string, any> = {
     minute: 'number_filter_operators',
     second: 'number_filter_operators',
   },
+  collaborators_filter: {
+    id: 'number_filter_operators',
+    user_created: 'directus_users_filter',
+    date_created: 'date_filter_operators',
+    date_created_func: 'datetime_function_filter_operators',
+    date_updated: 'date_filter_operators',
+    date_updated_func: 'datetime_function_filter_operators',
+    account: 'directus_users_filter',
+    display_name: 'string_filter_operators',
+    payment_eth_address: 'string_filter_operators',
+    role: 'collaborator_roles_filter',
+    _and: 'collaborators_filter',
+    _or: 'collaborators_filter',
+  },
+  collaborator_roles_filter: {
+    description: 'string_filter_operators',
+    id: 'number_filter_operators',
+    name: 'string_filter_operators',
+    _and: 'collaborator_roles_filter',
+    _or: 'collaborator_roles_filter',
+  },
+  junction_directus_users_skills_filter: {
+    id: 'number_filter_operators',
+    directus_users_id: 'directus_users_filter',
+    skills_id: 'skills_filter',
+    _and: 'junction_directus_users_skills_filter',
+    _or: 'junction_directus_users_skills_filter',
+  },
+  skills_filter: {
+    description: 'string_filter_operators',
+    id: 'string_filter_operators',
+    name: 'string_filter_operators',
+    _and: 'skills_filter',
+    _or: 'skills_filter',
+  },
   directus_roles: {
     users: {
       filter: 'directus_users_filter',
+    },
+  },
+  collaborators: {
+    user_created: {
+      filter: 'directus_users_filter',
+    },
+    account: {
+      filter: 'directus_users_filter',
+    },
+    role: {
+      filter: 'collaborator_roles_filter',
+    },
+  },
+  junction_directus_users_skills: {
+    directus_users_id: {
+      filter: 'directus_users_filter',
+    },
+    skills_id: {
+      filter: 'skills_filter',
     },
   },
   products: {
@@ -328,9 +396,6 @@ export const AllTypesProps: Record<string, any> = {
     product_stage: {
       filter: 'stages_filter',
     },
-    collaborators: {
-      filter: 'product_collaborators_filter',
-    },
     production_methods: {
       filter: 'products_production_methods_filter',
     },
@@ -349,6 +414,9 @@ export const AllTypesProps: Record<string, any> = {
     design_files: {
       filter: 'products_design_files_filter',
     },
+    contributors: {
+      filter: 'products_contributors_filter',
+    },
   },
   brands_filter: {
     created_at: 'date_filter_operators',
@@ -364,15 +432,14 @@ export const AllTypesProps: Record<string, any> = {
     notion_id: 'string_filter_operators',
     products: 'products_filter',
     products_func: 'count_function_filter_operators',
-    members: 'brands_users_filter',
-    members_func: 'count_function_filter_operators',
+    users: 'brands_directus_users_filter',
+    users_func: 'count_function_filter_operators',
     _and: 'brands_filter',
     _or: 'brands_filter',
   },
   products_filter: {
     brand_id: 'brands_filter',
     brand_reward_share: 'number_filter_operators',
-    collaborator_reward_share: 'number_filter_operators',
     created_at: 'date_filter_operators',
     created_at_func: 'datetime_function_filter_operators',
     description: 'string_filter_operators',
@@ -394,8 +461,7 @@ export const AllTypesProps: Record<string, any> = {
     clo3d_file: 'directus_files_filter',
     product_stage: 'stages_filter',
     nft_token_id: 'number_filter_operators',
-    collaborators: 'product_collaborators_filter',
-    collaborators_func: 'count_function_filter_operators',
+    contributor_reward_share: 'number_filter_operators',
     production_methods: 'products_production_methods_filter',
     production_methods_func: 'count_function_filter_operators',
     images: 'products_files_filter',
@@ -408,6 +474,8 @@ export const AllTypesProps: Record<string, any> = {
     content_func: 'count_function_filter_operators',
     design_files: 'products_design_files_filter',
     design_files_func: 'count_function_filter_operators',
+    contributors: 'products_contributors_filter',
+    contributors_func: 'count_function_filter_operators',
     _and: 'products_filter',
     _or: 'products_filter',
   },
@@ -515,65 +583,6 @@ export const AllTypesProps: Record<string, any> = {
     _and: 'stages_filter',
     _or: 'stages_filter',
   },
-  product_collaborators_filter: {
-    collaboration_share: 'number_filter_operators',
-    collaborator_id: 'users_filter',
-    id: 'string_filter_operators',
-    product_id: 'products_filter',
-    role: 'collaborator_roles_filter',
-    _and: 'product_collaborators_filter',
-    _or: 'product_collaborators_filter',
-  },
-  users_filter: {
-    created_at: 'date_filter_operators',
-    created_at_func: 'datetime_function_filter_operators',
-    discord_handle: 'string_filter_operators',
-    discord_id: 'string_filter_operators',
-    eth_address: 'string_filter_operators',
-    github_handle: 'string_filter_operators',
-    id: 'string_filter_operators',
-    name: 'string_filter_operators',
-    timezone: 'string_filter_operators',
-    twitter_handle: 'string_filter_operators',
-    brands: 'brands_users_filter',
-    brands_func: 'count_function_filter_operators',
-    products: 'product_collaborators_filter',
-    products_func: 'count_function_filter_operators',
-    skills: 'users_skills_filter',
-    skills_func: 'count_function_filter_operators',
-    _and: 'users_filter',
-    _or: 'users_filter',
-  },
-  brands_users_filter: {
-    brands_id: 'brands_filter',
-    id: 'number_filter_operators',
-    users_id: 'users_filter',
-    _and: 'brands_users_filter',
-    _or: 'brands_users_filter',
-  },
-  users_skills_filter: {
-    id: 'number_filter_operators',
-    skills_id: 'skills_filter',
-    users_id: 'users_filter',
-    _and: 'users_skills_filter',
-    _or: 'users_skills_filter',
-  },
-  skills_filter: {
-    description: 'string_filter_operators',
-    id: 'string_filter_operators',
-    name: 'string_filter_operators',
-    users: 'users_skills_filter',
-    users_func: 'count_function_filter_operators',
-    _and: 'skills_filter',
-    _or: 'skills_filter',
-  },
-  collaborator_roles_filter: {
-    description: 'string_filter_operators',
-    id: 'number_filter_operators',
-    name: 'string_filter_operators',
-    _and: 'collaborator_roles_filter',
-    _or: 'collaborator_roles_filter',
-  },
   products_production_methods_filter: {
     id: 'number_filter_operators',
     production_methods_id: 'production_methods_filter',
@@ -626,6 +635,22 @@ export const AllTypesProps: Record<string, any> = {
     directus_files_id: 'directus_files_filter',
     _and: 'products_design_files_filter',
     _or: 'products_design_files_filter',
+  },
+  products_contributors_filter: {
+    id: 'number_filter_operators',
+    products_id: 'products_filter',
+    collaborators_id: 'collaborators_filter',
+    contribution_share: 'number_filter_operators',
+    robot_earned: 'number_filter_operators',
+    _and: 'products_contributors_filter',
+    _or: 'products_contributors_filter',
+  },
+  brands_directus_users_filter: {
+    id: 'number_filter_operators',
+    brands_id: 'brands_filter',
+    directus_users_id: 'directus_users_filter',
+    _and: 'brands_directus_users_filter',
+    _or: 'brands_directus_users_filter',
   },
   producers: {
     production_materials_stocked: {
@@ -687,49 +712,6 @@ export const AllTypesProps: Record<string, any> = {
       filter: 'production_methods_filter',
     },
   },
-  product_collaborators: {
-    collaborator_id: {
-      filter: 'users_filter',
-    },
-    product_id: {
-      filter: 'products_filter',
-    },
-    role: {
-      filter: 'collaborator_roles_filter',
-    },
-  },
-  users: {
-    brands: {
-      filter: 'brands_users_filter',
-    },
-    products: {
-      filter: 'product_collaborators_filter',
-    },
-    skills: {
-      filter: 'users_skills_filter',
-    },
-  },
-  brands_users: {
-    brands_id: {
-      filter: 'brands_filter',
-    },
-    users_id: {
-      filter: 'users_filter',
-    },
-  },
-  users_skills: {
-    skills_id: {
-      filter: 'skills_filter',
-    },
-    users_id: {
-      filter: 'users_filter',
-    },
-  },
-  skills: {
-    users: {
-      filter: 'users_skills_filter',
-    },
-  },
   products_production_methods: {
     production_methods_id: {
       filter: 'production_methods_filter',
@@ -781,6 +763,22 @@ export const AllTypesProps: Record<string, any> = {
       filter: 'directus_files_filter',
     },
   },
+  products_contributors: {
+    products_id: {
+      filter: 'products_filter',
+    },
+    collaborators_id: {
+      filter: 'collaborators_filter',
+    },
+  },
+  brands_directus_users: {
+    brands_id: {
+      filter: 'brands_filter',
+    },
+    directus_users_id: {
+      filter: 'directus_users_filter',
+    },
+  },
   Mutation: {
     create_brands_items: {
       filter: 'brands_filter',
@@ -788,20 +786,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     create_brands_item: {
       data: 'create_brands_input',
-    },
-    create_brands_users_items: {
-      filter: 'brands_users_filter',
-      data: 'create_brands_users_input',
-    },
-    create_brands_users_item: {
-      data: 'create_brands_users_input',
-    },
-    create_users_items: {
-      filter: 'users_filter',
-      data: 'create_users_input',
-    },
-    create_users_item: {
-      data: 'create_users_input',
     },
     create_producers_items: {
       filter: 'producers_filter',
@@ -830,13 +814,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     create_production_methods_item: {
       data: 'create_production_methods_input',
-    },
-    create_product_collaborators_items: {
-      filter: 'product_collaborators_filter',
-      data: 'create_product_collaborators_input',
-    },
-    create_product_collaborators_item: {
-      data: 'create_product_collaborators_input',
     },
     create_collaborator_roles_items: {
       filter: 'collaborator_roles_filter',
@@ -886,13 +863,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     create_skills_item: {
       data: 'create_skills_input',
-    },
-    create_users_skills_items: {
-      filter: 'users_skills_filter',
-      data: 'create_users_skills_input',
-    },
-    create_users_skills_item: {
-      data: 'create_users_skills_input',
     },
     create_production_materials_items: {
       filter: 'production_materials_filter',
@@ -950,26 +920,40 @@ export const AllTypesProps: Record<string, any> = {
     create_stages_item: {
       data: 'create_stages_input',
     },
+    create_junction_directus_users_skills_items: {
+      filter: 'junction_directus_users_skills_filter',
+      data: 'create_junction_directus_users_skills_input',
+    },
+    create_junction_directus_users_skills_item: {
+      data: 'create_junction_directus_users_skills_input',
+    },
+    create_collaborators_items: {
+      filter: 'collaborators_filter',
+      data: 'create_collaborators_input',
+    },
+    create_collaborators_item: {
+      data: 'create_collaborators_input',
+    },
+    create_brands_directus_users_items: {
+      filter: 'brands_directus_users_filter',
+      data: 'create_brands_directus_users_input',
+    },
+    create_brands_directus_users_item: {
+      data: 'create_brands_directus_users_input',
+    },
+    create_products_contributors_items: {
+      filter: 'products_contributors_filter',
+      data: 'create_products_contributors_input',
+    },
+    create_products_contributors_item: {
+      data: 'create_products_contributors_input',
+    },
     update_brands_items: {
       filter: 'brands_filter',
       data: 'update_brands_input',
     },
     update_brands_item: {
       data: 'update_brands_input',
-    },
-    update_brands_users_items: {
-      filter: 'brands_users_filter',
-      data: 'update_brands_users_input',
-    },
-    update_brands_users_item: {
-      data: 'update_brands_users_input',
-    },
-    update_users_items: {
-      filter: 'users_filter',
-      data: 'update_users_input',
-    },
-    update_users_item: {
-      data: 'update_users_input',
     },
     update_producers_items: {
       filter: 'producers_filter',
@@ -998,13 +982,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     update_production_methods_item: {
       data: 'update_production_methods_input',
-    },
-    update_product_collaborators_items: {
-      filter: 'product_collaborators_filter',
-      data: 'update_product_collaborators_input',
-    },
-    update_product_collaborators_item: {
-      data: 'update_product_collaborators_input',
     },
     update_collaborator_roles_items: {
       filter: 'collaborator_roles_filter',
@@ -1054,13 +1031,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     update_skills_item: {
       data: 'update_skills_input',
-    },
-    update_users_skills_items: {
-      filter: 'users_skills_filter',
-      data: 'update_users_skills_input',
-    },
-    update_users_skills_item: {
-      data: 'update_users_skills_input',
     },
     update_production_materials_items: {
       filter: 'production_materials_filter',
@@ -1118,12 +1088,36 @@ export const AllTypesProps: Record<string, any> = {
     update_stages_item: {
       data: 'update_stages_input',
     },
+    update_junction_directus_users_skills_items: {
+      filter: 'junction_directus_users_skills_filter',
+      data: 'update_junction_directus_users_skills_input',
+    },
+    update_junction_directus_users_skills_item: {
+      data: 'update_junction_directus_users_skills_input',
+    },
+    update_collaborators_items: {
+      filter: 'collaborators_filter',
+      data: 'update_collaborators_input',
+    },
+    update_collaborators_item: {
+      data: 'update_collaborators_input',
+    },
+    update_brands_directus_users_items: {
+      filter: 'brands_directus_users_filter',
+      data: 'update_brands_directus_users_input',
+    },
+    update_brands_directus_users_item: {
+      data: 'update_brands_directus_users_input',
+    },
+    update_products_contributors_items: {
+      filter: 'products_contributors_filter',
+      data: 'update_products_contributors_input',
+    },
+    update_products_contributors_item: {
+      data: 'update_products_contributors_input',
+    },
     delete_brands_items: {},
     delete_brands_item: {},
-    delete_brands_users_items: {},
-    delete_brands_users_item: {},
-    delete_users_items: {},
-    delete_users_item: {},
     delete_producers_items: {},
     delete_producers_item: {},
     delete_producers_production_materials_items: {},
@@ -1132,8 +1126,6 @@ export const AllTypesProps: Record<string, any> = {
     delete_producers_production_methods_item: {},
     delete_production_methods_items: {},
     delete_production_methods_item: {},
-    delete_product_collaborators_items: {},
-    delete_product_collaborators_item: {},
     delete_collaborator_roles_items: {},
     delete_collaborator_roles_item: {},
     delete_production_materials_production_methods_items: {},
@@ -1148,8 +1140,6 @@ export const AllTypesProps: Record<string, any> = {
     delete_products_production_methods_item: {},
     delete_skills_items: {},
     delete_skills_item: {},
-    delete_users_skills_items: {},
-    delete_users_skills_item: {},
     delete_production_materials_items: {},
     delete_production_materials_item: {},
     delete_products_items: {},
@@ -1166,6 +1156,14 @@ export const AllTypesProps: Record<string, any> = {
     delete_products_content_item: {},
     delete_stages_items: {},
     delete_stages_item: {},
+    delete_junction_directus_users_skills_items: {},
+    delete_junction_directus_users_skills_item: {},
+    delete_collaborators_items: {},
+    delete_collaborators_item: {},
+    delete_brands_directus_users_items: {},
+    delete_brands_directus_users_item: {},
+    delete_products_contributors_items: {},
+    delete_products_contributors_item: {},
   },
   create_brands_input: {
     created_at: 'Date',
@@ -1173,8 +1171,8 @@ export const AllTypesProps: Record<string, any> = {
     logo: 'create_directus_files_input',
     products: 'create_products_input',
     products_func: 'count_functionsInput',
-    members: 'create_brands_users_input',
-    members_func: 'count_functionsInput',
+    users: 'create_brands_directus_users_input',
+    users_func: 'count_functionsInput',
   },
   datetime_functionsInput: {},
   create_directus_files_input: {
@@ -1202,12 +1200,31 @@ export const AllTypesProps: Record<string, any> = {
     last_access_func: 'datetime_functionsInput',
     auth_data: 'JSON',
     auth_data_func: 'count_functionsInput',
+    collaborators: 'create_collaborators_input',
+    collaborators_func: 'count_functionsInput',
+    skills: 'create_junction_directus_users_skills_input',
+    skills_func: 'count_functionsInput',
   },
   count_functionsInput: {},
   create_directus_roles_input: {
     users: 'create_directus_users_input',
     users_func: 'count_functionsInput',
   },
+  create_collaborators_input: {
+    user_created: 'create_directus_users_input',
+    date_created: 'Date',
+    date_created_func: 'datetime_functionsInput',
+    date_updated: 'Date',
+    date_updated_func: 'datetime_functionsInput',
+    account: 'create_directus_users_input',
+    role: 'create_collaborator_roles_input',
+  },
+  create_collaborator_roles_input: {},
+  create_junction_directus_users_skills_input: {
+    directus_users_id: 'create_directus_users_input',
+    skills_id: 'create_skills_input',
+  },
+  create_skills_input: {},
   create_products_input: {
     brand_id: 'create_brands_input',
     created_at: 'Date',
@@ -1219,8 +1236,6 @@ export const AllTypesProps: Record<string, any> = {
     release_date_func: 'datetime_functionsInput',
     clo3d_file: 'create_directus_files_input',
     product_stage: 'create_stages_input',
-    collaborators: 'create_product_collaborators_input',
-    collaborators_func: 'count_functionsInput',
     production_methods: 'create_products_production_methods_input',
     production_methods_func: 'count_functionsInput',
     images: 'create_products_files_input',
@@ -1233,6 +1248,8 @@ export const AllTypesProps: Record<string, any> = {
     content_func: 'count_functionsInput',
     design_files: 'create_products_design_files_input',
     design_files_func: 'count_functionsInput',
+    contributors: 'create_products_contributors_input',
+    contributors_func: 'count_functionsInput',
   },
   create_fulfillers_input: {
     created_at: 'Date',
@@ -1286,34 +1303,6 @@ export const AllTypesProps: Record<string, any> = {
     production_methods_id: 'create_production_methods_input',
   },
   create_stages_input: {},
-  create_product_collaborators_input: {
-    collaborator_id: 'create_users_input',
-    product_id: 'create_products_input',
-    role: 'create_collaborator_roles_input',
-  },
-  create_users_input: {
-    created_at: 'Date',
-    created_at_func: 'datetime_functionsInput',
-    brands: 'create_brands_users_input',
-    brands_func: 'count_functionsInput',
-    products: 'create_product_collaborators_input',
-    products_func: 'count_functionsInput',
-    skills: 'create_users_skills_input',
-    skills_func: 'count_functionsInput',
-  },
-  create_brands_users_input: {
-    brands_id: 'create_brands_input',
-    users_id: 'create_users_input',
-  },
-  create_users_skills_input: {
-    skills_id: 'create_skills_input',
-    users_id: 'create_users_input',
-  },
-  create_skills_input: {
-    users: 'create_users_skills_input',
-    users_func: 'count_functionsInput',
-  },
-  create_collaborator_roles_input: {},
   create_products_production_methods_input: {
     production_methods_id: 'create_production_methods_input',
     products_id: 'create_products_input',
@@ -1340,14 +1329,22 @@ export const AllTypesProps: Record<string, any> = {
     products_id: 'create_products_input',
     directus_files_id: 'create_directus_files_input',
   },
+  create_products_contributors_input: {
+    products_id: 'create_products_input',
+    collaborators_id: 'create_collaborators_input',
+  },
+  create_brands_directus_users_input: {
+    brands_id: 'create_brands_input',
+    directus_users_id: 'create_directus_users_input',
+  },
   update_brands_input: {
     created_at: 'Date',
     created_at_func: 'datetime_functionsInput',
     logo: 'update_directus_files_input',
     products: 'update_products_input',
     products_func: 'count_functionsInput',
-    members: 'update_brands_users_input',
-    members_func: 'count_functionsInput',
+    users: 'update_brands_directus_users_input',
+    users_func: 'count_functionsInput',
   },
   update_directus_files_input: {
     folder: 'update_directus_folders_input',
@@ -1374,11 +1371,30 @@ export const AllTypesProps: Record<string, any> = {
     last_access_func: 'datetime_functionsInput',
     auth_data: 'JSON',
     auth_data_func: 'count_functionsInput',
+    collaborators: 'update_collaborators_input',
+    collaborators_func: 'count_functionsInput',
+    skills: 'update_junction_directus_users_skills_input',
+    skills_func: 'count_functionsInput',
   },
   update_directus_roles_input: {
     users: 'update_directus_users_input',
     users_func: 'count_functionsInput',
   },
+  update_collaborators_input: {
+    user_created: 'update_directus_users_input',
+    date_created: 'Date',
+    date_created_func: 'datetime_functionsInput',
+    date_updated: 'Date',
+    date_updated_func: 'datetime_functionsInput',
+    account: 'update_directus_users_input',
+    role: 'update_collaborator_roles_input',
+  },
+  update_collaborator_roles_input: {},
+  update_junction_directus_users_skills_input: {
+    directus_users_id: 'update_directus_users_input',
+    skills_id: 'update_skills_input',
+  },
+  update_skills_input: {},
   update_products_input: {
     brand_id: 'update_brands_input',
     created_at: 'Date',
@@ -1390,8 +1406,6 @@ export const AllTypesProps: Record<string, any> = {
     release_date_func: 'datetime_functionsInput',
     clo3d_file: 'update_directus_files_input',
     product_stage: 'update_stages_input',
-    collaborators: 'update_product_collaborators_input',
-    collaborators_func: 'count_functionsInput',
     production_methods: 'update_products_production_methods_input',
     production_methods_func: 'count_functionsInput',
     images: 'update_products_files_input',
@@ -1404,6 +1418,8 @@ export const AllTypesProps: Record<string, any> = {
     content_func: 'count_functionsInput',
     design_files: 'update_products_design_files_input',
     design_files_func: 'count_functionsInput',
+    contributors: 'update_products_contributors_input',
+    contributors_func: 'count_functionsInput',
   },
   update_fulfillers_input: {
     created_at: 'Date',
@@ -1457,34 +1473,6 @@ export const AllTypesProps: Record<string, any> = {
     production_methods_id: 'update_production_methods_input',
   },
   update_stages_input: {},
-  update_product_collaborators_input: {
-    collaborator_id: 'update_users_input',
-    product_id: 'update_products_input',
-    role: 'update_collaborator_roles_input',
-  },
-  update_users_input: {
-    created_at: 'Date',
-    created_at_func: 'datetime_functionsInput',
-    brands: 'update_brands_users_input',
-    brands_func: 'count_functionsInput',
-    products: 'update_product_collaborators_input',
-    products_func: 'count_functionsInput',
-    skills: 'update_users_skills_input',
-    skills_func: 'count_functionsInput',
-  },
-  update_brands_users_input: {
-    brands_id: 'update_brands_input',
-    users_id: 'update_users_input',
-  },
-  update_users_skills_input: {
-    skills_id: 'update_skills_input',
-    users_id: 'update_users_input',
-  },
-  update_skills_input: {
-    users: 'update_users_skills_input',
-    users_func: 'count_functionsInput',
-  },
-  update_collaborator_roles_input: {},
   update_products_production_methods_input: {
     production_methods_id: 'update_production_methods_input',
     products_id: 'update_products_input',
@@ -1511,6 +1499,14 @@ export const AllTypesProps: Record<string, any> = {
     products_id: 'update_products_input',
     directus_files_id: 'update_directus_files_input',
   },
+  update_products_contributors_input: {
+    products_id: 'update_products_input',
+    collaborators_id: 'update_collaborators_input',
+  },
+  update_brands_directus_users_input: {
+    brands_id: 'update_brands_input',
+    directus_users_id: 'update_directus_users_input',
+  },
 };
 
 export const ReturnTypes: Record<string, any> = {
@@ -1518,12 +1514,6 @@ export const ReturnTypes: Record<string, any> = {
     brands: 'brands',
     brands_by_id: 'brands',
     brands_aggregated: 'brands_aggregated',
-    brands_users: 'brands_users',
-    brands_users_by_id: 'brands_users',
-    brands_users_aggregated: 'brands_users_aggregated',
-    users: 'users',
-    users_by_id: 'users',
-    users_aggregated: 'users_aggregated',
     producers: 'producers',
     producers_by_id: 'producers',
     producers_aggregated: 'producers_aggregated',
@@ -1538,9 +1528,6 @@ export const ReturnTypes: Record<string, any> = {
     production_methods: 'production_methods',
     production_methods_by_id: 'production_methods',
     production_methods_aggregated: 'production_methods_aggregated',
-    product_collaborators: 'product_collaborators',
-    product_collaborators_by_id: 'product_collaborators',
-    product_collaborators_aggregated: 'product_collaborators_aggregated',
     collaborator_roles: 'collaborator_roles',
     collaborator_roles_by_id: 'collaborator_roles',
     collaborator_roles_aggregated: 'collaborator_roles_aggregated',
@@ -1566,9 +1553,6 @@ export const ReturnTypes: Record<string, any> = {
     skills: 'skills',
     skills_by_id: 'skills',
     skills_aggregated: 'skills_aggregated',
-    users_skills: 'users_skills',
-    users_skills_by_id: 'users_skills',
-    users_skills_aggregated: 'users_skills_aggregated',
     production_materials: 'production_materials',
     production_materials_by_id: 'production_materials',
     production_materials_aggregated: 'production_materials_aggregated',
@@ -1594,6 +1578,19 @@ export const ReturnTypes: Record<string, any> = {
     stages: 'stages',
     stages_by_id: 'stages',
     stages_aggregated: 'stages_aggregated',
+    junction_directus_users_skills: 'junction_directus_users_skills',
+    junction_directus_users_skills_by_id: 'junction_directus_users_skills',
+    junction_directus_users_skills_aggregated:
+      'junction_directus_users_skills_aggregated',
+    collaborators: 'collaborators',
+    collaborators_by_id: 'collaborators',
+    collaborators_aggregated: 'collaborators_aggregated',
+    brands_directus_users: 'brands_directus_users',
+    brands_directus_users_by_id: 'brands_directus_users',
+    brands_directus_users_aggregated: 'brands_directus_users_aggregated',
+    products_contributors: 'products_contributors',
+    products_contributors_by_id: 'products_contributors',
+    products_contributors_aggregated: 'products_contributors_aggregated',
   },
   brands: {
     created_at: 'Date',
@@ -1609,8 +1606,8 @@ export const ReturnTypes: Record<string, any> = {
     notion_id: 'String',
     products: 'products',
     products_func: 'count_functions',
-    members: 'brands_users',
-    members_func: 'count_functions',
+    users: 'brands_directus_users',
+    users_func: 'count_functions',
   },
   Date: `scalar.Date` as const,
   datetime_functions: {
@@ -1681,6 +1678,14 @@ export const ReturnTypes: Record<string, any> = {
     auth_data: 'JSON',
     auth_data_func: 'count_functions',
     email_notifications: 'Boolean',
+    timezone: 'String',
+    discord_handle: 'String',
+    twitter_handle: 'String',
+    discord_id: 'String',
+    collaborators: 'collaborators',
+    collaborators_func: 'count_functions',
+    skills: 'junction_directus_users_skills',
+    skills_func: 'count_functions',
   },
   JSON: `scalar.JSON` as const,
   count_functions: {
@@ -1698,10 +1703,36 @@ export const ReturnTypes: Record<string, any> = {
     users: 'directus_users',
     users_func: 'count_functions',
   },
+  collaborators: {
+    id: 'ID',
+    user_created: 'directus_users',
+    date_created: 'Date',
+    date_created_func: 'datetime_functions',
+    date_updated: 'Date',
+    date_updated_func: 'datetime_functions',
+    account: 'directus_users',
+    display_name: 'String',
+    payment_eth_address: 'String',
+    role: 'collaborator_roles',
+  },
+  collaborator_roles: {
+    description: 'String',
+    id: 'ID',
+    name: 'String',
+  },
+  junction_directus_users_skills: {
+    id: 'ID',
+    directus_users_id: 'directus_users',
+    skills_id: 'skills',
+  },
+  skills: {
+    description: 'String',
+    id: 'ID',
+    name: 'String',
+  },
   products: {
     brand_id: 'brands',
     brand_reward_share: 'Int',
-    collaborator_reward_share: 'Int',
     created_at: 'Date',
     created_at_func: 'datetime_functions',
     description: 'String',
@@ -1723,8 +1754,7 @@ export const ReturnTypes: Record<string, any> = {
     clo3d_file: 'directus_files',
     product_stage: 'stages',
     nft_token_id: 'Int',
-    collaborators: 'product_collaborators',
-    collaborators_func: 'count_functions',
+    contributor_reward_share: 'Int',
     production_methods: 'products_production_methods',
     production_methods_func: 'count_functions',
     images: 'products_files',
@@ -1737,6 +1767,8 @@ export const ReturnTypes: Record<string, any> = {
     content_func: 'count_functions',
     design_files: 'products_design_files',
     design_files_func: 'count_functions',
+    contributors: 'products_contributors',
+    contributors_func: 'count_functions',
   },
   fulfillers: {
     address: 'String',
@@ -1824,53 +1856,6 @@ export const ReturnTypes: Record<string, any> = {
     sort: 'Int',
     description: 'String',
   },
-  product_collaborators: {
-    collaboration_share: 'Int',
-    collaborator_id: 'users',
-    id: 'ID',
-    product_id: 'products',
-    role: 'collaborator_roles',
-  },
-  users: {
-    created_at: 'Date',
-    created_at_func: 'datetime_functions',
-    discord_handle: 'String',
-    discord_id: 'String',
-    eth_address: 'String',
-    github_handle: 'String',
-    id: 'ID',
-    name: 'String',
-    timezone: 'String',
-    twitter_handle: 'String',
-    brands: 'brands_users',
-    brands_func: 'count_functions',
-    products: 'product_collaborators',
-    products_func: 'count_functions',
-    skills: 'users_skills',
-    skills_func: 'count_functions',
-  },
-  brands_users: {
-    brands_id: 'brands',
-    id: 'ID',
-    users_id: 'users',
-  },
-  users_skills: {
-    id: 'ID',
-    skills_id: 'skills',
-    users_id: 'users',
-  },
-  skills: {
-    description: 'String',
-    id: 'ID',
-    name: 'String',
-    users: 'users_skills',
-    users_func: 'count_functions',
-  },
-  collaborator_roles: {
-    description: 'String',
-    id: 'ID',
-    name: 'String',
-  },
   products_production_methods: {
     id: 'ID',
     production_methods_id: 'production_methods',
@@ -1910,6 +1895,18 @@ export const ReturnTypes: Record<string, any> = {
     products_id: 'products',
     directus_files_id: 'directus_files',
   },
+  products_contributors: {
+    id: 'ID',
+    products_id: 'products',
+    collaborators_id: 'collaborators',
+    contribution_share: 'Int',
+    robot_earned: 'Float',
+  },
+  brands_directus_users: {
+    id: 'ID',
+    brands_id: 'brands',
+    directus_users_id: 'directus_users',
+  },
   brands_aggregated: {
     group: 'JSON',
     countAll: 'Int',
@@ -1927,46 +1924,7 @@ export const ReturnTypes: Record<string, any> = {
     website_url: 'Int',
     notion_id: 'Int',
     products: 'Int',
-    members: 'Int',
-  },
-  brands_users_aggregated: {
-    group: 'JSON',
-    countAll: 'Int',
-    count: 'brands_users_aggregated_count',
-    avg: 'brands_users_aggregated_fields',
-    sum: 'brands_users_aggregated_fields',
-    countDistinct: 'brands_users_aggregated_fields',
-    avgDistinct: 'brands_users_aggregated_fields',
-    sumDistinct: 'brands_users_aggregated_fields',
-    min: 'brands_users_aggregated_fields',
-    max: 'brands_users_aggregated_fields',
-  },
-  brands_users_aggregated_count: {
-    brands_id: 'Int',
-    id: 'Int',
-    users_id: 'Int',
-  },
-  brands_users_aggregated_fields: {
-    id: 'Float',
-  },
-  users_aggregated: {
-    group: 'JSON',
-    countAll: 'Int',
-    count: 'users_aggregated_count',
-  },
-  users_aggregated_count: {
-    created_at: 'Int',
-    discord_handle: 'Int',
-    discord_id: 'Int',
-    eth_address: 'Int',
-    github_handle: 'Int',
-    id: 'Int',
-    name: 'Int',
-    timezone: 'Int',
-    twitter_handle: 'Int',
-    brands: 'Int',
-    products: 'Int',
-    skills: 'Int',
+    users: 'Int',
   },
   producers_aggregated: {
     group: 'JSON',
@@ -2038,29 +1996,6 @@ export const ReturnTypes: Record<string, any> = {
     name: 'Int',
     producers: 'Int',
     production_materials: 'Int',
-  },
-  product_collaborators_aggregated: {
-    group: 'JSON',
-    countAll: 'Int',
-    count: 'product_collaborators_aggregated_count',
-    avg: 'product_collaborators_aggregated_fields',
-    sum: 'product_collaborators_aggregated_fields',
-    countDistinct: 'product_collaborators_aggregated_fields',
-    avgDistinct: 'product_collaborators_aggregated_fields',
-    sumDistinct: 'product_collaborators_aggregated_fields',
-    min: 'product_collaborators_aggregated_fields',
-    max: 'product_collaborators_aggregated_fields',
-  },
-  product_collaborators_aggregated_count: {
-    collaboration_share: 'Int',
-    collaborator_id: 'Int',
-    id: 'Int',
-    product_id: 'Int',
-    role: 'Int',
-  },
-  product_collaborators_aggregated_fields: {
-    collaboration_share: 'Float',
-    role: 'Float',
   },
   collaborator_roles_aggregated: {
     group: 'JSON',
@@ -2185,27 +2120,6 @@ export const ReturnTypes: Record<string, any> = {
     description: 'Int',
     id: 'Int',
     name: 'Int',
-    users: 'Int',
-  },
-  users_skills_aggregated: {
-    group: 'JSON',
-    countAll: 'Int',
-    count: 'users_skills_aggregated_count',
-    avg: 'users_skills_aggregated_fields',
-    sum: 'users_skills_aggregated_fields',
-    countDistinct: 'users_skills_aggregated_fields',
-    avgDistinct: 'users_skills_aggregated_fields',
-    sumDistinct: 'users_skills_aggregated_fields',
-    min: 'users_skills_aggregated_fields',
-    max: 'users_skills_aggregated_fields',
-  },
-  users_skills_aggregated_count: {
-    id: 'Int',
-    skills_id: 'Int',
-    users_id: 'Int',
-  },
-  users_skills_aggregated_fields: {
-    id: 'Float',
   },
   production_materials_aggregated: {
     group: 'JSON',
@@ -2256,7 +2170,6 @@ export const ReturnTypes: Record<string, any> = {
   products_aggregated_count: {
     brand_id: 'Int',
     brand_reward_share: 'Int',
-    collaborator_reward_share: 'Int',
     created_at: 'Int',
     description: 'Int',
     discord_channel_id: 'Int',
@@ -2276,20 +2189,21 @@ export const ReturnTypes: Record<string, any> = {
     clo3d_file: 'Int',
     product_stage: 'Int',
     nft_token_id: 'Int',
-    collaborators: 'Int',
+    contributor_reward_share: 'Int',
     production_methods: 'Int',
     images: 'Int',
     materials: 'Int',
     wearable_files: 'Int',
     content: 'Int',
     design_files: 'Int',
+    contributors: 'Int',
   },
   products_aggregated_fields: {
     brand_reward_share: 'Float',
-    collaborator_reward_share: 'Float',
     production_cost: 'Float',
     season: 'Float',
     nft_token_id: 'Float',
+    contributor_reward_share: 'Float',
   },
   products_production_materials_aggregated: {
     group: 'JSON',
@@ -2416,13 +2330,100 @@ export const ReturnTypes: Record<string, any> = {
   stages_aggregated_fields: {
     sort: 'Float',
   },
+  junction_directus_users_skills_aggregated: {
+    group: 'JSON',
+    countAll: 'Int',
+    count: 'junction_directus_users_skills_aggregated_count',
+    avg: 'junction_directus_users_skills_aggregated_fields',
+    sum: 'junction_directus_users_skills_aggregated_fields',
+    countDistinct: 'junction_directus_users_skills_aggregated_fields',
+    avgDistinct: 'junction_directus_users_skills_aggregated_fields',
+    sumDistinct: 'junction_directus_users_skills_aggregated_fields',
+    min: 'junction_directus_users_skills_aggregated_fields',
+    max: 'junction_directus_users_skills_aggregated_fields',
+  },
+  junction_directus_users_skills_aggregated_count: {
+    id: 'Int',
+    directus_users_id: 'Int',
+    skills_id: 'Int',
+  },
+  junction_directus_users_skills_aggregated_fields: {
+    id: 'Float',
+  },
+  collaborators_aggregated: {
+    group: 'JSON',
+    countAll: 'Int',
+    count: 'collaborators_aggregated_count',
+    avg: 'collaborators_aggregated_fields',
+    sum: 'collaborators_aggregated_fields',
+    countDistinct: 'collaborators_aggregated_fields',
+    avgDistinct: 'collaborators_aggregated_fields',
+    sumDistinct: 'collaborators_aggregated_fields',
+    min: 'collaborators_aggregated_fields',
+    max: 'collaborators_aggregated_fields',
+  },
+  collaborators_aggregated_count: {
+    id: 'Int',
+    user_created: 'Int',
+    date_created: 'Int',
+    date_updated: 'Int',
+    account: 'Int',
+    display_name: 'Int',
+    payment_eth_address: 'Int',
+    role: 'Int',
+  },
+  collaborators_aggregated_fields: {
+    id: 'Float',
+    role: 'Float',
+  },
+  brands_directus_users_aggregated: {
+    group: 'JSON',
+    countAll: 'Int',
+    count: 'brands_directus_users_aggregated_count',
+    avg: 'brands_directus_users_aggregated_fields',
+    sum: 'brands_directus_users_aggregated_fields',
+    countDistinct: 'brands_directus_users_aggregated_fields',
+    avgDistinct: 'brands_directus_users_aggregated_fields',
+    sumDistinct: 'brands_directus_users_aggregated_fields',
+    min: 'brands_directus_users_aggregated_fields',
+    max: 'brands_directus_users_aggregated_fields',
+  },
+  brands_directus_users_aggregated_count: {
+    id: 'Int',
+    brands_id: 'Int',
+    directus_users_id: 'Int',
+  },
+  brands_directus_users_aggregated_fields: {
+    id: 'Float',
+  },
+  products_contributors_aggregated: {
+    group: 'JSON',
+    countAll: 'Int',
+    count: 'products_contributors_aggregated_count',
+    avg: 'products_contributors_aggregated_fields',
+    sum: 'products_contributors_aggregated_fields',
+    countDistinct: 'products_contributors_aggregated_fields',
+    avgDistinct: 'products_contributors_aggregated_fields',
+    sumDistinct: 'products_contributors_aggregated_fields',
+    min: 'products_contributors_aggregated_fields',
+    max: 'products_contributors_aggregated_fields',
+  },
+  products_contributors_aggregated_count: {
+    id: 'Int',
+    products_id: 'Int',
+    collaborators_id: 'Int',
+    contribution_share: 'Int',
+    robot_earned: 'Int',
+  },
+  products_contributors_aggregated_fields: {
+    id: 'Float',
+    collaborators_id: 'Float',
+    contribution_share: 'Float',
+    robot_earned: 'Float',
+  },
   Mutation: {
     create_brands_items: 'brands',
     create_brands_item: 'brands',
-    create_brands_users_items: 'brands_users',
-    create_brands_users_item: 'brands_users',
-    create_users_items: 'users',
-    create_users_item: 'users',
     create_producers_items: 'producers',
     create_producers_item: 'producers',
     create_producers_production_materials_items:
@@ -2433,8 +2434,6 @@ export const ReturnTypes: Record<string, any> = {
     create_producers_production_methods_item: 'producers_production_methods',
     create_production_methods_items: 'production_methods',
     create_production_methods_item: 'production_methods',
-    create_product_collaborators_items: 'product_collaborators',
-    create_product_collaborators_item: 'product_collaborators',
     create_collaborator_roles_items: 'collaborator_roles',
     create_collaborator_roles_item: 'collaborator_roles',
     create_production_materials_production_methods_items:
@@ -2451,8 +2450,6 @@ export const ReturnTypes: Record<string, any> = {
     create_products_production_methods_item: 'products_production_methods',
     create_skills_items: 'skills',
     create_skills_item: 'skills',
-    create_users_skills_items: 'users_skills',
-    create_users_skills_item: 'users_skills',
     create_production_materials_items: 'production_materials',
     create_production_materials_item: 'production_materials',
     create_products_items: 'products',
@@ -2469,12 +2466,18 @@ export const ReturnTypes: Record<string, any> = {
     create_products_content_item: 'products_content',
     create_stages_items: 'stages',
     create_stages_item: 'stages',
+    create_junction_directus_users_skills_items:
+      'junction_directus_users_skills',
+    create_junction_directus_users_skills_item:
+      'junction_directus_users_skills',
+    create_collaborators_items: 'collaborators',
+    create_collaborators_item: 'collaborators',
+    create_brands_directus_users_items: 'brands_directus_users',
+    create_brands_directus_users_item: 'brands_directus_users',
+    create_products_contributors_items: 'products_contributors',
+    create_products_contributors_item: 'products_contributors',
     update_brands_items: 'brands',
     update_brands_item: 'brands',
-    update_brands_users_items: 'brands_users',
-    update_brands_users_item: 'brands_users',
-    update_users_items: 'users',
-    update_users_item: 'users',
     update_producers_items: 'producers',
     update_producers_item: 'producers',
     update_producers_production_materials_items:
@@ -2485,8 +2488,6 @@ export const ReturnTypes: Record<string, any> = {
     update_producers_production_methods_item: 'producers_production_methods',
     update_production_methods_items: 'production_methods',
     update_production_methods_item: 'production_methods',
-    update_product_collaborators_items: 'product_collaborators',
-    update_product_collaborators_item: 'product_collaborators',
     update_collaborator_roles_items: 'collaborator_roles',
     update_collaborator_roles_item: 'collaborator_roles',
     update_production_materials_production_methods_items:
@@ -2503,8 +2504,6 @@ export const ReturnTypes: Record<string, any> = {
     update_products_production_methods_item: 'products_production_methods',
     update_skills_items: 'skills',
     update_skills_item: 'skills',
-    update_users_skills_items: 'users_skills',
-    update_users_skills_item: 'users_skills',
     update_production_materials_items: 'production_materials',
     update_production_materials_item: 'production_materials',
     update_products_items: 'products',
@@ -2521,12 +2520,18 @@ export const ReturnTypes: Record<string, any> = {
     update_products_content_item: 'products_content',
     update_stages_items: 'stages',
     update_stages_item: 'stages',
+    update_junction_directus_users_skills_items:
+      'junction_directus_users_skills',
+    update_junction_directus_users_skills_item:
+      'junction_directus_users_skills',
+    update_collaborators_items: 'collaborators',
+    update_collaborators_item: 'collaborators',
+    update_brands_directus_users_items: 'brands_directus_users',
+    update_brands_directus_users_item: 'brands_directus_users',
+    update_products_contributors_items: 'products_contributors',
+    update_products_contributors_item: 'products_contributors',
     delete_brands_items: 'delete_many',
     delete_brands_item: 'delete_one',
-    delete_brands_users_items: 'delete_many',
-    delete_brands_users_item: 'delete_one',
-    delete_users_items: 'delete_many',
-    delete_users_item: 'delete_one',
     delete_producers_items: 'delete_many',
     delete_producers_item: 'delete_one',
     delete_producers_production_materials_items: 'delete_many',
@@ -2535,8 +2540,6 @@ export const ReturnTypes: Record<string, any> = {
     delete_producers_production_methods_item: 'delete_one',
     delete_production_methods_items: 'delete_many',
     delete_production_methods_item: 'delete_one',
-    delete_product_collaborators_items: 'delete_many',
-    delete_product_collaborators_item: 'delete_one',
     delete_collaborator_roles_items: 'delete_many',
     delete_collaborator_roles_item: 'delete_one',
     delete_production_materials_production_methods_items: 'delete_many',
@@ -2551,8 +2554,6 @@ export const ReturnTypes: Record<string, any> = {
     delete_products_production_methods_item: 'delete_one',
     delete_skills_items: 'delete_many',
     delete_skills_item: 'delete_one',
-    delete_users_skills_items: 'delete_many',
-    delete_users_skills_item: 'delete_one',
     delete_production_materials_items: 'delete_many',
     delete_production_materials_item: 'delete_one',
     delete_products_items: 'delete_many',
@@ -2569,6 +2570,14 @@ export const ReturnTypes: Record<string, any> = {
     delete_products_content_item: 'delete_one',
     delete_stages_items: 'delete_many',
     delete_stages_item: 'delete_one',
+    delete_junction_directus_users_skills_items: 'delete_many',
+    delete_junction_directus_users_skills_item: 'delete_one',
+    delete_collaborators_items: 'delete_many',
+    delete_collaborators_item: 'delete_one',
+    delete_brands_directus_users_items: 'delete_many',
+    delete_brands_directus_users_item: 'delete_one',
+    delete_products_contributors_items: 'delete_many',
+    delete_products_contributors_item: 'delete_one',
   },
   delete_many: {
     ids: 'ID',

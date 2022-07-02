@@ -8,7 +8,7 @@ interface GetClientParams {
   backendOnly?: boolean;
 }
 
-export const getClient = (params: GetClientParams = {}) =>
+export const getClient = (params: GetClientParams = {}): GraphQLClient =>
   new GraphQLClient(CONFIG.graphqlURL, {
     headers: {
       'Content-Type': 'application/json',

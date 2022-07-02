@@ -38,7 +38,6 @@ async function validateHeaderToken(
 export default async (req: VercelRequest, res: VercelResponse) => {
   try {
     const tokenResult = await validateHeaderToken(req);
-    console.log(tokenResult);
 
     if (!tokenResult || ('isValid' in tokenResult && !tokenResult.isValid)) {
       res.json(unauthorizedVariables);

@@ -1,24 +1,27 @@
+/* eslint-disable no-await-in-loop */
 import assert from 'assert';
 import uniqBy from 'lodash/uniqBy';
 
-import { Client, PRODUCT_STAGES, ValueTypes } from '../mfos';
-import { logger } from '../utils/logger';
+import { PRODUCT_STAGES, ValueTypes } from '../../mfos';
+import { logger } from '../../utils/logger';
 import {
   getProductBrand,
   getProductDescription,
+  getProductEditionOf,
   getProductPrice,
+  getProductProductionCost,
   getProductReleaseDate,
   getProductShopifyId,
   getProductStatus,
   getProductTitle,
-} from '../utils/notion/productHelpers';
-import { isNotNullOrUndefined } from '../utils/typeHelpers';
+} from '../../utils/notion/productHelpers';
+import { isNotNullOrUndefined } from '../../utils/typeHelpers';
 import {
   createBrandIfNotExists,
   createProductIfNotExists,
-} from './mfosHelpers';
-import { getNotionProducts } from './notionHelpers';
-import { CreateBrandRes } from './selectors';
+} from '../mfosHelpers';
+import { getNotionProducts } from '../notionHelpers';
+import { CreateBrandRes } from '../selectors';
 
 const PRODUCT_STATUS_TO_STAGE: Record<
   string,
@@ -31,7 +34,15 @@ const PRODUCT_STATUS_TO_STAGE: Record<
   'Open Edition Live': PRODUCT_STAGES.sale_live,
 };
 
-export async function migrateProducts(client: Client): Promise<void> {
+const toNumber = (numString: string): number | null => {
+  try {
+    return parseInt(numString, 10);
+  } catch (e) {
+    return null;
+  }
+};
+
+export async function migrateProducts(): Promise<void> {
   const products = await getNotionProducts({
     or: [
       {
@@ -65,8 +76,7 @@ export async function migrateProducts(client: Client): Promise<void> {
   const brandsRes: Record<string, CreateBrandRes> = {};
   for (const b of brands) {
     try {
-      // eslint-disable-next-line no-await-in-loop
-      brandsRes[b.id] = await createBrandIfNotExists(client, {
+      brandsRes[b.id] = await createBrandIfNotExists({
         created_at: b.createdAt,
         eth_address: b.ethAddress,
         discord_url: b.discordUrl,
@@ -75,7 +85,7 @@ export async function migrateProducts(client: Client): Promise<void> {
         notion_id: b.id,
       });
     } catch (e) {
-      logger.warn('Error creating brand', { error: e });
+      logger.warn('Error creating brand', { error: (e as Error).message });
     }
   }
 
@@ -84,12 +94,28 @@ export async function migrateProducts(client: Client): Promise<void> {
   for (const p of products) {
     try {
       const brand = getProductBrand(p);
+      // const designer = getProductDesigner(p);
+      // const tech = getProductTechnician(p);
+      const cost = getProductProductionCost(p);
       const status = getProductStatus(p);
       const price = getProductPrice(p);
       const releaseDate = getProductReleaseDate(p);
+      const editionOf = getProductEditionOf(p);
+      const saleType =
+        editionOf?.toLowerCase().indexOf('open') >= 0
+          ? 'open_edition'
+          : 'limited_edition';
+      const quantity = toNumber(editionOf);
+
       assert(status);
       const stage = PRODUCT_STATUS_TO_STAGE[status];
       assert(stage, `Invalid product status ${status}`);
+      // const designerUser = designer
+      //   ? await getSystemUserByAddress(designer?.ethAddress)
+      //   : null;
+      // const techUser = tech
+      //   ? await getSystemUserByAddress(tech?.ethAddress)
+      //   : null;
 
       const product: ValueTypes['create_products_input'] = {
         created_at: p.created_time,
@@ -97,7 +123,9 @@ export async function migrateProducts(client: Client): Promise<void> {
         description: getProductDescription(p),
         shopify_id: getProductShopifyId(p),
         notion_id: p.id,
-        // quantity: getProductEditionOf(p),
+        sale_type: saleType,
+        quantity: quantity?.toString(),
+        production_cost: cost,
         product_stage: stage,
       };
 
@@ -115,8 +143,7 @@ export async function migrateProducts(client: Client): Promise<void> {
           name: brand.name,
         };
 
-      // eslint-disable-next-line no-await-in-loop
-      const createProductRes = await createProductIfNotExists(client, product);
+      const createProductRes = await createProductIfNotExists(product);
       createdProducts.push(createProductRes);
     } catch (e) {
       logger.warn('Error creating product', { error: e, product: p });

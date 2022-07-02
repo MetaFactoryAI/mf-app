@@ -902,50 +902,6 @@ export type ValueTypes = {
       },
       ValueTypes['brands_aggregated'],
     ];
-    brands_users?: [
-      {
-        filter?: ValueTypes['brands_users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['brands_users'],
-    ];
-    brands_users_by_id?: [{ id: string }, ValueTypes['brands_users']];
-    brands_users_aggregated?: [
-      {
-        groupBy?: Array<string | undefined | null> | undefined | null;
-        filter?: ValueTypes['brands_users_filter'] | undefined | null;
-        limit?: number | undefined | null;
-        search?: string | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-      },
-      ValueTypes['brands_users_aggregated'],
-    ];
-    users?: [
-      {
-        filter?: ValueTypes['users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['users'],
-    ];
-    users_by_id?: [{ id: string }, ValueTypes['users']];
-    users_aggregated?: [
-      {
-        groupBy?: Array<string | undefined | null> | undefined | null;
-        filter?: ValueTypes['users_filter'] | undefined | null;
-        limit?: number | undefined | null;
-        search?: string | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-      },
-      ValueTypes['users_aggregated'],
-    ];
     producers?: [
       {
         filter?: ValueTypes['producers_filter'] | undefined | null;
@@ -1054,31 +1010,6 @@ export type ValueTypes = {
         sort?: Array<string | undefined | null> | undefined | null;
       },
       ValueTypes['production_methods_aggregated'],
-    ];
-    product_collaborators?: [
-      {
-        filter?: ValueTypes['product_collaborators_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['product_collaborators'],
-    ];
-    product_collaborators_by_id?: [
-      { id: string },
-      ValueTypes['product_collaborators'],
-    ];
-    product_collaborators_aggregated?: [
-      {
-        groupBy?: Array<string | undefined | null> | undefined | null;
-        filter?: ValueTypes['product_collaborators_filter'] | undefined | null;
-        limit?: number | undefined | null;
-        search?: string | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-      },
-      ValueTypes['product_collaborators_aggregated'],
     ];
     collaborator_roles?: [
       {
@@ -1254,28 +1185,6 @@ export type ValueTypes = {
         sort?: Array<string | undefined | null> | undefined | null;
       },
       ValueTypes['skills_aggregated'],
-    ];
-    users_skills?: [
-      {
-        filter?: ValueTypes['users_skills_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['users_skills'],
-    ];
-    users_skills_by_id?: [{ id: string }, ValueTypes['users_skills']];
-    users_skills_aggregated?: [
-      {
-        groupBy?: Array<string | undefined | null> | undefined | null;
-        filter?: ValueTypes['users_skills_filter'] | undefined | null;
-        limit?: number | undefined | null;
-        search?: string | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-      },
-      ValueTypes['users_skills_aggregated'],
     ];
     production_materials?: [
       {
@@ -1471,6 +1380,109 @@ export type ValueTypes = {
       },
       ValueTypes['stages_aggregated'],
     ];
+    junction_directus_users_skills?: [
+      {
+        filter?:
+          | ValueTypes['junction_directus_users_skills_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['junction_directus_users_skills'],
+    ];
+    junction_directus_users_skills_by_id?: [
+      { id: string },
+      ValueTypes['junction_directus_users_skills'],
+    ];
+    junction_directus_users_skills_aggregated?: [
+      {
+        groupBy?: Array<string | undefined | null> | undefined | null;
+        filter?:
+          | ValueTypes['junction_directus_users_skills_filter']
+          | undefined
+          | null;
+        limit?: number | undefined | null;
+        search?: string | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+      },
+      ValueTypes['junction_directus_users_skills_aggregated'],
+    ];
+    collaborators?: [
+      {
+        filter?: ValueTypes['collaborators_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['collaborators'],
+    ];
+    collaborators_by_id?: [{ id: string }, ValueTypes['collaborators']];
+    collaborators_aggregated?: [
+      {
+        groupBy?: Array<string | undefined | null> | undefined | null;
+        filter?: ValueTypes['collaborators_filter'] | undefined | null;
+        limit?: number | undefined | null;
+        search?: string | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+      },
+      ValueTypes['collaborators_aggregated'],
+    ];
+    brands_directus_users?: [
+      {
+        filter?: ValueTypes['brands_directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['brands_directus_users'],
+    ];
+    brands_directus_users_by_id?: [
+      { id: string },
+      ValueTypes['brands_directus_users'],
+    ];
+    brands_directus_users_aggregated?: [
+      {
+        groupBy?: Array<string | undefined | null> | undefined | null;
+        filter?: ValueTypes['brands_directus_users_filter'] | undefined | null;
+        limit?: number | undefined | null;
+        search?: string | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+      },
+      ValueTypes['brands_directus_users_aggregated'],
+    ];
+    products_contributors?: [
+      {
+        filter?: ValueTypes['products_contributors_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['products_contributors'],
+    ];
+    products_contributors_by_id?: [
+      { id: string },
+      ValueTypes['products_contributors'],
+    ];
+    products_contributors_aggregated?: [
+      {
+        groupBy?: Array<string | undefined | null> | undefined | null;
+        filter?: ValueTypes['products_contributors_filter'] | undefined | null;
+        limit?: number | undefined | null;
+        search?: string | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+      },
+      ValueTypes['products_contributors_aggregated'],
+    ];
     __typename?: boolean | `@${string}`;
   }>;
   ['brands']: AliasType<{
@@ -1507,18 +1519,18 @@ export type ValueTypes = {
       ValueTypes['products'],
     ];
     products_func?: ValueTypes['count_functions'];
-    members?: [
+    users?: [
       {
-        filter?: ValueTypes['brands_users_filter'] | undefined | null;
+        filter?: ValueTypes['brands_directus_users_filter'] | undefined | null;
         sort?: Array<string | undefined | null> | undefined | null;
         limit?: number | undefined | null;
         offset?: number | undefined | null;
         page?: number | undefined | null;
         search?: string | undefined | null;
       },
-      ValueTypes['brands_users'],
+      ValueTypes['brands_directus_users'],
     ];
-    members_func?: ValueTypes['count_functions'];
+    users_func?: ValueTypes['count_functions'];
     __typename?: boolean | `@${string}`;
   }>;
   /** ISO8601 Date values */
@@ -1683,6 +1695,37 @@ export type ValueTypes = {
     auth_data?: boolean | `@${string}`;
     auth_data_func?: ValueTypes['count_functions'];
     email_notifications?: boolean | `@${string}`;
+    timezone?: boolean | `@${string}`;
+    discord_handle?: boolean | `@${string}`;
+    twitter_handle?: boolean | `@${string}`;
+    discord_id?: boolean | `@${string}`;
+    collaborators?: [
+      {
+        filter?: ValueTypes['collaborators_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['collaborators'],
+    ];
+    collaborators_func?: ValueTypes['count_functions'];
+    skills?: [
+      {
+        filter?:
+          | ValueTypes['junction_directus_users_skills_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['junction_directus_users_skills'],
+    ];
+    skills_func?: ValueTypes['count_functions'];
     __typename?: boolean | `@${string}`;
   }>;
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
@@ -1782,6 +1825,23 @@ export type ValueTypes = {
       | ValueTypes['boolean_filter_operators']
       | undefined
       | null;
+    timezone?: ValueTypes['string_filter_operators'] | undefined | null;
+    discord_handle?: ValueTypes['string_filter_operators'] | undefined | null;
+    twitter_handle?: ValueTypes['string_filter_operators'] | undefined | null;
+    discord_id?: ValueTypes['string_filter_operators'] | undefined | null;
+    collaborators?: ValueTypes['collaborators_filter'] | undefined | null;
+    collaborators_func?:
+      | ValueTypes['count_function_filter_operators']
+      | undefined
+      | null;
+    skills?:
+      | ValueTypes['junction_directus_users_skills_filter']
+      | undefined
+      | null;
+    skills_func?:
+      | ValueTypes['count_function_filter_operators']
+      | undefined
+      | null;
     _and?:
       | Array<ValueTypes['directus_users_filter'] | undefined | null>
       | undefined
@@ -1855,6 +1915,78 @@ export type ValueTypes = {
     minute?: ValueTypes['number_filter_operators'] | undefined | null;
     second?: ValueTypes['number_filter_operators'] | undefined | null;
   };
+  ['collaborators_filter']: {
+    id?: ValueTypes['number_filter_operators'] | undefined | null;
+    user_created?: ValueTypes['directus_users_filter'] | undefined | null;
+    date_created?: ValueTypes['date_filter_operators'] | undefined | null;
+    date_created_func?:
+      | ValueTypes['datetime_function_filter_operators']
+      | undefined
+      | null;
+    date_updated?: ValueTypes['date_filter_operators'] | undefined | null;
+    date_updated_func?:
+      | ValueTypes['datetime_function_filter_operators']
+      | undefined
+      | null;
+    account?: ValueTypes['directus_users_filter'] | undefined | null;
+    display_name?: ValueTypes['string_filter_operators'] | undefined | null;
+    payment_eth_address?:
+      | ValueTypes['string_filter_operators']
+      | undefined
+      | null;
+    role?: ValueTypes['collaborator_roles_filter'] | undefined | null;
+    _and?:
+      | Array<ValueTypes['collaborators_filter'] | undefined | null>
+      | undefined
+      | null;
+    _or?:
+      | Array<ValueTypes['collaborators_filter'] | undefined | null>
+      | undefined
+      | null;
+  };
+  ['collaborator_roles_filter']: {
+    description?: ValueTypes['string_filter_operators'] | undefined | null;
+    id?: ValueTypes['number_filter_operators'] | undefined | null;
+    name?: ValueTypes['string_filter_operators'] | undefined | null;
+    _and?:
+      | Array<ValueTypes['collaborator_roles_filter'] | undefined | null>
+      | undefined
+      | null;
+    _or?:
+      | Array<ValueTypes['collaborator_roles_filter'] | undefined | null>
+      | undefined
+      | null;
+  };
+  ['junction_directus_users_skills_filter']: {
+    id?: ValueTypes['number_filter_operators'] | undefined | null;
+    directus_users_id?: ValueTypes['directus_users_filter'] | undefined | null;
+    skills_id?: ValueTypes['skills_filter'] | undefined | null;
+    _and?:
+      | Array<
+          ValueTypes['junction_directus_users_skills_filter'] | undefined | null
+        >
+      | undefined
+      | null;
+    _or?:
+      | Array<
+          ValueTypes['junction_directus_users_skills_filter'] | undefined | null
+        >
+      | undefined
+      | null;
+  };
+  ['skills_filter']: {
+    description?: ValueTypes['string_filter_operators'] | undefined | null;
+    id?: ValueTypes['string_filter_operators'] | undefined | null;
+    name?: ValueTypes['string_filter_operators'] | undefined | null;
+    _and?:
+      | Array<ValueTypes['skills_filter'] | undefined | null>
+      | undefined
+      | null;
+    _or?:
+      | Array<ValueTypes['skills_filter'] | undefined | null>
+      | undefined
+      | null;
+  };
   ['directus_roles']: AliasType<{
     id?: boolean | `@${string}`;
     name?: boolean | `@${string}`;
@@ -1878,6 +2010,87 @@ export type ValueTypes = {
     users_func?: ValueTypes['count_functions'];
     __typename?: boolean | `@${string}`;
   }>;
+  ['collaborators']: AliasType<{
+    id?: boolean | `@${string}`;
+    user_created?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    date_created?: boolean | `@${string}`;
+    date_created_func?: ValueTypes['datetime_functions'];
+    date_updated?: boolean | `@${string}`;
+    date_updated_func?: ValueTypes['datetime_functions'];
+    account?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    display_name?: boolean | `@${string}`;
+    payment_eth_address?: boolean | `@${string}`;
+    role?: [
+      {
+        filter?: ValueTypes['collaborator_roles_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['collaborator_roles'],
+    ];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['collaborator_roles']: AliasType<{
+    description?: boolean | `@${string}`;
+    id?: boolean | `@${string}`;
+    name?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['junction_directus_users_skills']: AliasType<{
+    id?: boolean | `@${string}`;
+    directus_users_id?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    skills_id?: [
+      {
+        filter?: ValueTypes['skills_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['skills'],
+    ];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['skills']: AliasType<{
+    description?: boolean | `@${string}`;
+    id?: boolean | `@${string}`;
+    name?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
   ['products']: AliasType<{
     brand_id?: [
       {
@@ -1891,7 +2104,6 @@ export type ValueTypes = {
       ValueTypes['brands'],
     ];
     brand_reward_share?: boolean | `@${string}`;
-    collaborator_reward_share?: boolean | `@${string}`;
     created_at?: boolean | `@${string}`;
     created_at_func?: ValueTypes['datetime_functions'];
     description?: boolean | `@${string}`;
@@ -1963,18 +2175,7 @@ export type ValueTypes = {
       ValueTypes['stages'],
     ];
     nft_token_id?: boolean | `@${string}`;
-    collaborators?: [
-      {
-        filter?: ValueTypes['product_collaborators_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['product_collaborators'],
-    ];
-    collaborators_func?: ValueTypes['count_functions'];
+    contributor_reward_share?: boolean | `@${string}`;
     production_methods?: [
       {
         filter?:
@@ -2053,6 +2254,18 @@ export type ValueTypes = {
       ValueTypes['products_design_files'],
     ];
     design_files_func?: ValueTypes['count_functions'];
+    contributors?: [
+      {
+        filter?: ValueTypes['products_contributors_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['products_contributors'],
+    ];
+    contributors_func?: ValueTypes['count_functions'];
     __typename?: boolean | `@${string}`;
   }>;
   ['brands_filter']: {
@@ -2075,8 +2288,8 @@ export type ValueTypes = {
       | ValueTypes['count_function_filter_operators']
       | undefined
       | null;
-    members?: ValueTypes['brands_users_filter'] | undefined | null;
-    members_func?:
+    users?: ValueTypes['brands_directus_users_filter'] | undefined | null;
+    users_func?:
       | ValueTypes['count_function_filter_operators']
       | undefined
       | null;
@@ -2092,10 +2305,6 @@ export type ValueTypes = {
   ['products_filter']: {
     brand_id?: ValueTypes['brands_filter'] | undefined | null;
     brand_reward_share?:
-      | ValueTypes['number_filter_operators']
-      | undefined
-      | null;
-    collaborator_reward_share?:
       | ValueTypes['number_filter_operators']
       | undefined
       | null;
@@ -2129,12 +2338,8 @@ export type ValueTypes = {
     clo3d_file?: ValueTypes['directus_files_filter'] | undefined | null;
     product_stage?: ValueTypes['stages_filter'] | undefined | null;
     nft_token_id?: ValueTypes['number_filter_operators'] | undefined | null;
-    collaborators?:
-      | ValueTypes['product_collaborators_filter']
-      | undefined
-      | null;
-    collaborators_func?:
-      | ValueTypes['count_function_filter_operators']
+    contributor_reward_share?:
+      | ValueTypes['number_filter_operators']
       | undefined
       | null;
     production_methods?:
@@ -2173,6 +2378,14 @@ export type ValueTypes = {
       | undefined
       | null;
     design_files_func?:
+      | ValueTypes['count_function_filter_operators']
+      | undefined
+      | null;
+    contributors?:
+      | ValueTypes['products_contributors_filter']
+      | undefined
+      | null;
+    contributors_func?:
       | ValueTypes['count_function_filter_operators']
       | undefined
       | null;
@@ -2431,119 +2644,6 @@ export type ValueTypes = {
       | undefined
       | null;
   };
-  ['product_collaborators_filter']: {
-    collaboration_share?:
-      | ValueTypes['number_filter_operators']
-      | undefined
-      | null;
-    collaborator_id?: ValueTypes['users_filter'] | undefined | null;
-    id?: ValueTypes['string_filter_operators'] | undefined | null;
-    product_id?: ValueTypes['products_filter'] | undefined | null;
-    role?: ValueTypes['collaborator_roles_filter'] | undefined | null;
-    _and?:
-      | Array<ValueTypes['product_collaborators_filter'] | undefined | null>
-      | undefined
-      | null;
-    _or?:
-      | Array<ValueTypes['product_collaborators_filter'] | undefined | null>
-      | undefined
-      | null;
-  };
-  ['users_filter']: {
-    created_at?: ValueTypes['date_filter_operators'] | undefined | null;
-    created_at_func?:
-      | ValueTypes['datetime_function_filter_operators']
-      | undefined
-      | null;
-    discord_handle?: ValueTypes['string_filter_operators'] | undefined | null;
-    discord_id?: ValueTypes['string_filter_operators'] | undefined | null;
-    eth_address?: ValueTypes['string_filter_operators'] | undefined | null;
-    github_handle?: ValueTypes['string_filter_operators'] | undefined | null;
-    id?: ValueTypes['string_filter_operators'] | undefined | null;
-    name?: ValueTypes['string_filter_operators'] | undefined | null;
-    timezone?: ValueTypes['string_filter_operators'] | undefined | null;
-    twitter_handle?: ValueTypes['string_filter_operators'] | undefined | null;
-    brands?: ValueTypes['brands_users_filter'] | undefined | null;
-    brands_func?:
-      | ValueTypes['count_function_filter_operators']
-      | undefined
-      | null;
-    products?: ValueTypes['product_collaborators_filter'] | undefined | null;
-    products_func?:
-      | ValueTypes['count_function_filter_operators']
-      | undefined
-      | null;
-    skills?: ValueTypes['users_skills_filter'] | undefined | null;
-    skills_func?:
-      | ValueTypes['count_function_filter_operators']
-      | undefined
-      | null;
-    _and?:
-      | Array<ValueTypes['users_filter'] | undefined | null>
-      | undefined
-      | null;
-    _or?:
-      | Array<ValueTypes['users_filter'] | undefined | null>
-      | undefined
-      | null;
-  };
-  ['brands_users_filter']: {
-    brands_id?: ValueTypes['brands_filter'] | undefined | null;
-    id?: ValueTypes['number_filter_operators'] | undefined | null;
-    users_id?: ValueTypes['users_filter'] | undefined | null;
-    _and?:
-      | Array<ValueTypes['brands_users_filter'] | undefined | null>
-      | undefined
-      | null;
-    _or?:
-      | Array<ValueTypes['brands_users_filter'] | undefined | null>
-      | undefined
-      | null;
-  };
-  ['users_skills_filter']: {
-    id?: ValueTypes['number_filter_operators'] | undefined | null;
-    skills_id?: ValueTypes['skills_filter'] | undefined | null;
-    users_id?: ValueTypes['users_filter'] | undefined | null;
-    _and?:
-      | Array<ValueTypes['users_skills_filter'] | undefined | null>
-      | undefined
-      | null;
-    _or?:
-      | Array<ValueTypes['users_skills_filter'] | undefined | null>
-      | undefined
-      | null;
-  };
-  ['skills_filter']: {
-    description?: ValueTypes['string_filter_operators'] | undefined | null;
-    id?: ValueTypes['string_filter_operators'] | undefined | null;
-    name?: ValueTypes['string_filter_operators'] | undefined | null;
-    users?: ValueTypes['users_skills_filter'] | undefined | null;
-    users_func?:
-      | ValueTypes['count_function_filter_operators']
-      | undefined
-      | null;
-    _and?:
-      | Array<ValueTypes['skills_filter'] | undefined | null>
-      | undefined
-      | null;
-    _or?:
-      | Array<ValueTypes['skills_filter'] | undefined | null>
-      | undefined
-      | null;
-  };
-  ['collaborator_roles_filter']: {
-    description?: ValueTypes['string_filter_operators'] | undefined | null;
-    id?: ValueTypes['number_filter_operators'] | undefined | null;
-    name?: ValueTypes['string_filter_operators'] | undefined | null;
-    _and?:
-      | Array<ValueTypes['collaborator_roles_filter'] | undefined | null>
-      | undefined
-      | null;
-    _or?:
-      | Array<ValueTypes['collaborator_roles_filter'] | undefined | null>
-      | undefined
-      | null;
-  };
   ['products_production_methods_filter']: {
     id?: ValueTypes['number_filter_operators'] | undefined | null;
     production_methods_id?:
@@ -2650,6 +2750,37 @@ export type ValueTypes = {
       | null;
     _or?:
       | Array<ValueTypes['products_design_files_filter'] | undefined | null>
+      | undefined
+      | null;
+  };
+  ['products_contributors_filter']: {
+    id?: ValueTypes['number_filter_operators'] | undefined | null;
+    products_id?: ValueTypes['products_filter'] | undefined | null;
+    collaborators_id?: ValueTypes['collaborators_filter'] | undefined | null;
+    contribution_share?:
+      | ValueTypes['number_filter_operators']
+      | undefined
+      | null;
+    robot_earned?: ValueTypes['number_filter_operators'] | undefined | null;
+    _and?:
+      | Array<ValueTypes['products_contributors_filter'] | undefined | null>
+      | undefined
+      | null;
+    _or?:
+      | Array<ValueTypes['products_contributors_filter'] | undefined | null>
+      | undefined
+      | null;
+  };
+  ['brands_directus_users_filter']: {
+    id?: ValueTypes['number_filter_operators'] | undefined | null;
+    brands_id?: ValueTypes['brands_filter'] | undefined | null;
+    directus_users_id?: ValueTypes['directus_users_filter'] | undefined | null;
+    _and?:
+      | Array<ValueTypes['brands_directus_users_filter'] | undefined | null>
+      | undefined
+      | null;
+    _or?:
+      | Array<ValueTypes['brands_directus_users_filter'] | undefined | null>
       | undefined
       | null;
   };
@@ -2926,169 +3057,6 @@ export type ValueTypes = {
     description?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
-  ['product_collaborators']: AliasType<{
-    collaboration_share?: boolean | `@${string}`;
-    collaborator_id?: [
-      {
-        filter?: ValueTypes['users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['users'],
-    ];
-    id?: boolean | `@${string}`;
-    product_id?: [
-      {
-        filter?: ValueTypes['products_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['products'],
-    ];
-    role?: [
-      {
-        filter?: ValueTypes['collaborator_roles_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['collaborator_roles'],
-    ];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['users']: AliasType<{
-    created_at?: boolean | `@${string}`;
-    created_at_func?: ValueTypes['datetime_functions'];
-    discord_handle?: boolean | `@${string}`;
-    discord_id?: boolean | `@${string}`;
-    eth_address?: boolean | `@${string}`;
-    github_handle?: boolean | `@${string}`;
-    id?: boolean | `@${string}`;
-    name?: boolean | `@${string}`;
-    timezone?: boolean | `@${string}`;
-    twitter_handle?: boolean | `@${string}`;
-    brands?: [
-      {
-        filter?: ValueTypes['brands_users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['brands_users'],
-    ];
-    brands_func?: ValueTypes['count_functions'];
-    products?: [
-      {
-        filter?: ValueTypes['product_collaborators_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['product_collaborators'],
-    ];
-    products_func?: ValueTypes['count_functions'];
-    skills?: [
-      {
-        filter?: ValueTypes['users_skills_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['users_skills'],
-    ];
-    skills_func?: ValueTypes['count_functions'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['brands_users']: AliasType<{
-    brands_id?: [
-      {
-        filter?: ValueTypes['brands_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['brands'],
-    ];
-    id?: boolean | `@${string}`;
-    users_id?: [
-      {
-        filter?: ValueTypes['users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['users'],
-    ];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['users_skills']: AliasType<{
-    id?: boolean | `@${string}`;
-    skills_id?: [
-      {
-        filter?: ValueTypes['skills_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['skills'],
-    ];
-    users_id?: [
-      {
-        filter?: ValueTypes['users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['users'],
-    ];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['skills']: AliasType<{
-    description?: boolean | `@${string}`;
-    id?: boolean | `@${string}`;
-    name?: boolean | `@${string}`;
-    users?: [
-      {
-        filter?: ValueTypes['users_skills_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ValueTypes['users_skills'],
-    ];
-    users_func?: ValueTypes['count_functions'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['collaborator_roles']: AliasType<{
-    description?: boolean | `@${string}`;
-    id?: boolean | `@${string}`;
-    name?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
   ['products_production_methods']: AliasType<{
     id?: boolean | `@${string}`;
     production_methods_id?: [
@@ -3265,6 +3233,60 @@ export type ValueTypes = {
     ];
     __typename?: boolean | `@${string}`;
   }>;
+  ['products_contributors']: AliasType<{
+    id?: boolean | `@${string}`;
+    products_id?: [
+      {
+        filter?: ValueTypes['products_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['products'],
+    ];
+    collaborators_id?: [
+      {
+        filter?: ValueTypes['collaborators_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['collaborators'],
+    ];
+    contribution_share?: boolean | `@${string}`;
+    robot_earned?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['brands_directus_users']: AliasType<{
+    id?: boolean | `@${string}`;
+    brands_id?: [
+      {
+        filter?: ValueTypes['brands_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['brands'],
+    ];
+    directus_users_id?: [
+      {
+        filter?: ValueTypes['directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ValueTypes['directus_users'],
+    ];
+    __typename?: boolean | `@${string}`;
+  }>;
   ['brands_aggregated']: AliasType<{
     group?: boolean | `@${string}`;
     countAll?: boolean | `@${string}`;
@@ -3283,51 +3305,7 @@ export type ValueTypes = {
     website_url?: boolean | `@${string}`;
     notion_id?: boolean | `@${string}`;
     products?: boolean | `@${string}`;
-    members?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['brands_users_aggregated']: AliasType<{
-    group?: boolean | `@${string}`;
-    countAll?: boolean | `@${string}`;
-    count?: ValueTypes['brands_users_aggregated_count'];
-    avg?: ValueTypes['brands_users_aggregated_fields'];
-    sum?: ValueTypes['brands_users_aggregated_fields'];
-    countDistinct?: ValueTypes['brands_users_aggregated_fields'];
-    avgDistinct?: ValueTypes['brands_users_aggregated_fields'];
-    sumDistinct?: ValueTypes['brands_users_aggregated_fields'];
-    min?: ValueTypes['brands_users_aggregated_fields'];
-    max?: ValueTypes['brands_users_aggregated_fields'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['brands_users_aggregated_count']: AliasType<{
-    brands_id?: boolean | `@${string}`;
-    id?: boolean | `@${string}`;
-    users_id?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['brands_users_aggregated_fields']: AliasType<{
-    id?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['users_aggregated']: AliasType<{
-    group?: boolean | `@${string}`;
-    countAll?: boolean | `@${string}`;
-    count?: ValueTypes['users_aggregated_count'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['users_aggregated_count']: AliasType<{
-    created_at?: boolean | `@${string}`;
-    discord_handle?: boolean | `@${string}`;
-    discord_id?: boolean | `@${string}`;
-    eth_address?: boolean | `@${string}`;
-    github_handle?: boolean | `@${string}`;
-    id?: boolean | `@${string}`;
-    name?: boolean | `@${string}`;
-    timezone?: boolean | `@${string}`;
-    twitter_handle?: boolean | `@${string}`;
-    brands?: boolean | `@${string}`;
-    products?: boolean | `@${string}`;
-    skills?: boolean | `@${string}`;
+    users?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['producers_aggregated']: AliasType<{
@@ -3412,34 +3390,6 @@ export type ValueTypes = {
     /** List of producers that are cable of this production method */
     producers?: boolean | `@${string}`;
     production_materials?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['product_collaborators_aggregated']: AliasType<{
-    group?: boolean | `@${string}`;
-    countAll?: boolean | `@${string}`;
-    count?: ValueTypes['product_collaborators_aggregated_count'];
-    avg?: ValueTypes['product_collaborators_aggregated_fields'];
-    sum?: ValueTypes['product_collaborators_aggregated_fields'];
-    countDistinct?: ValueTypes['product_collaborators_aggregated_fields'];
-    avgDistinct?: ValueTypes['product_collaborators_aggregated_fields'];
-    sumDistinct?: ValueTypes['product_collaborators_aggregated_fields'];
-    min?: ValueTypes['product_collaborators_aggregated_fields'];
-    max?: ValueTypes['product_collaborators_aggregated_fields'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['product_collaborators_aggregated_count']: AliasType<{
-    collaboration_share?: boolean | `@${string}`;
-    collaborator_id?: boolean | `@${string}`;
-    id?: boolean | `@${string}`;
-    product_id?: boolean | `@${string}`;
-    /** Designer, Technician, etc. */
-    role?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['product_collaborators_aggregated_fields']: AliasType<{
-    collaboration_share?: boolean | `@${string}`;
-    /** Designer, Technician, etc. */
-    role?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['collaborator_roles_aggregated']: AliasType<{
@@ -3583,30 +3533,6 @@ export type ValueTypes = {
     description?: boolean | `@${string}`;
     id?: boolean | `@${string}`;
     name?: boolean | `@${string}`;
-    users?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['users_skills_aggregated']: AliasType<{
-    group?: boolean | `@${string}`;
-    countAll?: boolean | `@${string}`;
-    count?: ValueTypes['users_skills_aggregated_count'];
-    avg?: ValueTypes['users_skills_aggregated_fields'];
-    sum?: ValueTypes['users_skills_aggregated_fields'];
-    countDistinct?: ValueTypes['users_skills_aggregated_fields'];
-    avgDistinct?: ValueTypes['users_skills_aggregated_fields'];
-    sumDistinct?: ValueTypes['users_skills_aggregated_fields'];
-    min?: ValueTypes['users_skills_aggregated_fields'];
-    max?: ValueTypes['users_skills_aggregated_fields'];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['users_skills_aggregated_count']: AliasType<{
-    id?: boolean | `@${string}`;
-    skills_id?: boolean | `@${string}`;
-    users_id?: boolean | `@${string}`;
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['users_skills_aggregated_fields']: AliasType<{
-    id?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['production_materials_aggregated']: AliasType<{
@@ -3662,7 +3588,6 @@ export type ValueTypes = {
   ['products_aggregated_count']: AliasType<{
     brand_id?: boolean | `@${string}`;
     brand_reward_share?: boolean | `@${string}`;
-    collaborator_reward_share?: boolean | `@${string}`;
     created_at?: boolean | `@${string}`;
     description?: boolean | `@${string}`;
     discord_channel_id?: boolean | `@${string}`;
@@ -3682,21 +3607,22 @@ export type ValueTypes = {
     clo3d_file?: boolean | `@${string}`;
     product_stage?: boolean | `@${string}`;
     nft_token_id?: boolean | `@${string}`;
-    collaborators?: boolean | `@${string}`;
+    contributor_reward_share?: boolean | `@${string}`;
     production_methods?: boolean | `@${string}`;
     images?: boolean | `@${string}`;
     materials?: boolean | `@${string}`;
     wearable_files?: boolean | `@${string}`;
     content?: boolean | `@${string}`;
     design_files?: boolean | `@${string}`;
+    contributors?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['products_aggregated_fields']: AliasType<{
     brand_reward_share?: boolean | `@${string}`;
-    collaborator_reward_share?: boolean | `@${string}`;
     production_cost?: boolean | `@${string}`;
     season?: boolean | `@${string}`;
     nft_token_id?: boolean | `@${string}`;
+    contributor_reward_share?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['products_production_materials_aggregated']: AliasType<{
@@ -3842,6 +3768,109 @@ export type ValueTypes = {
     sort?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
+  ['junction_directus_users_skills_aggregated']: AliasType<{
+    group?: boolean | `@${string}`;
+    countAll?: boolean | `@${string}`;
+    count?: ValueTypes['junction_directus_users_skills_aggregated_count'];
+    avg?: ValueTypes['junction_directus_users_skills_aggregated_fields'];
+    sum?: ValueTypes['junction_directus_users_skills_aggregated_fields'];
+    countDistinct?: ValueTypes['junction_directus_users_skills_aggregated_fields'];
+    avgDistinct?: ValueTypes['junction_directus_users_skills_aggregated_fields'];
+    sumDistinct?: ValueTypes['junction_directus_users_skills_aggregated_fields'];
+    min?: ValueTypes['junction_directus_users_skills_aggregated_fields'];
+    max?: ValueTypes['junction_directus_users_skills_aggregated_fields'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['junction_directus_users_skills_aggregated_count']: AliasType<{
+    id?: boolean | `@${string}`;
+    directus_users_id?: boolean | `@${string}`;
+    skills_id?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['junction_directus_users_skills_aggregated_fields']: AliasType<{
+    id?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['collaborators_aggregated']: AliasType<{
+    group?: boolean | `@${string}`;
+    countAll?: boolean | `@${string}`;
+    count?: ValueTypes['collaborators_aggregated_count'];
+    avg?: ValueTypes['collaborators_aggregated_fields'];
+    sum?: ValueTypes['collaborators_aggregated_fields'];
+    countDistinct?: ValueTypes['collaborators_aggregated_fields'];
+    avgDistinct?: ValueTypes['collaborators_aggregated_fields'];
+    sumDistinct?: ValueTypes['collaborators_aggregated_fields'];
+    min?: ValueTypes['collaborators_aggregated_fields'];
+    max?: ValueTypes['collaborators_aggregated_fields'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['collaborators_aggregated_count']: AliasType<{
+    id?: boolean | `@${string}`;
+    user_created?: boolean | `@${string}`;
+    date_created?: boolean | `@${string}`;
+    date_updated?: boolean | `@${string}`;
+    account?: boolean | `@${string}`;
+    display_name?: boolean | `@${string}`;
+    payment_eth_address?: boolean | `@${string}`;
+    role?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['collaborators_aggregated_fields']: AliasType<{
+    id?: boolean | `@${string}`;
+    role?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['brands_directus_users_aggregated']: AliasType<{
+    group?: boolean | `@${string}`;
+    countAll?: boolean | `@${string}`;
+    count?: ValueTypes['brands_directus_users_aggregated_count'];
+    avg?: ValueTypes['brands_directus_users_aggregated_fields'];
+    sum?: ValueTypes['brands_directus_users_aggregated_fields'];
+    countDistinct?: ValueTypes['brands_directus_users_aggregated_fields'];
+    avgDistinct?: ValueTypes['brands_directus_users_aggregated_fields'];
+    sumDistinct?: ValueTypes['brands_directus_users_aggregated_fields'];
+    min?: ValueTypes['brands_directus_users_aggregated_fields'];
+    max?: ValueTypes['brands_directus_users_aggregated_fields'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['brands_directus_users_aggregated_count']: AliasType<{
+    id?: boolean | `@${string}`;
+    brands_id?: boolean | `@${string}`;
+    directus_users_id?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['brands_directus_users_aggregated_fields']: AliasType<{
+    id?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['products_contributors_aggregated']: AliasType<{
+    group?: boolean | `@${string}`;
+    countAll?: boolean | `@${string}`;
+    count?: ValueTypes['products_contributors_aggregated_count'];
+    avg?: ValueTypes['products_contributors_aggregated_fields'];
+    sum?: ValueTypes['products_contributors_aggregated_fields'];
+    countDistinct?: ValueTypes['products_contributors_aggregated_fields'];
+    avgDistinct?: ValueTypes['products_contributors_aggregated_fields'];
+    sumDistinct?: ValueTypes['products_contributors_aggregated_fields'];
+    min?: ValueTypes['products_contributors_aggregated_fields'];
+    max?: ValueTypes['products_contributors_aggregated_fields'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['products_contributors_aggregated_count']: AliasType<{
+    id?: boolean | `@${string}`;
+    products_id?: boolean | `@${string}`;
+    collaborators_id?: boolean | `@${string}`;
+    contribution_share?: boolean | `@${string}`;
+    robot_earned?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['products_contributors_aggregated_fields']: AliasType<{
+    id?: boolean | `@${string}`;
+    collaborators_id?: boolean | `@${string}`;
+    contribution_share?: boolean | `@${string}`;
+    robot_earned?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
   ['Mutation']: AliasType<{
     create_brands_items?: [
       {
@@ -3858,41 +3887,6 @@ export type ValueTypes = {
     create_brands_item?: [
       { data: ValueTypes['create_brands_input'] },
       ValueTypes['brands'],
-    ];
-    create_brands_users_items?: [
-      {
-        filter?: ValueTypes['brands_users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        data?:
-          | Array<ValueTypes['create_brands_users_input']>
-          | undefined
-          | null;
-      },
-      ValueTypes['brands_users'],
-    ];
-    create_brands_users_item?: [
-      { data: ValueTypes['create_brands_users_input'] },
-      ValueTypes['brands_users'],
-    ];
-    create_users_items?: [
-      {
-        filter?: ValueTypes['users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        data?: Array<ValueTypes['create_users_input']> | undefined | null;
-      },
-      ValueTypes['users'],
-    ];
-    create_users_item?: [
-      { data: ValueTypes['create_users_input'] },
-      ValueTypes['users'],
     ];
     create_producers_items?: [
       {
@@ -3972,25 +3966,6 @@ export type ValueTypes = {
     create_production_methods_item?: [
       { data: ValueTypes['create_production_methods_input'] },
       ValueTypes['production_methods'],
-    ];
-    create_product_collaborators_items?: [
-      {
-        filter?: ValueTypes['product_collaborators_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        data?:
-          | Array<ValueTypes['create_product_collaborators_input']>
-          | undefined
-          | null;
-      },
-      ValueTypes['product_collaborators'],
-    ];
-    create_product_collaborators_item?: [
-      { data: ValueTypes['create_product_collaborators_input'] },
-      ValueTypes['product_collaborators'],
     ];
     create_collaborator_roles_items?: [
       {
@@ -4128,25 +4103,6 @@ export type ValueTypes = {
     create_skills_item?: [
       { data: ValueTypes['create_skills_input'] },
       ValueTypes['skills'],
-    ];
-    create_users_skills_items?: [
-      {
-        filter?: ValueTypes['users_skills_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        data?:
-          | Array<ValueTypes['create_users_skills_input']>
-          | undefined
-          | null;
-      },
-      ValueTypes['users_skills'],
-    ];
-    create_users_skills_item?: [
-      { data: ValueTypes['create_users_skills_input'] },
-      ValueTypes['users_skills'],
     ];
     create_production_materials_items?: [
       {
@@ -4297,6 +4253,85 @@ export type ValueTypes = {
       { data: ValueTypes['create_stages_input'] },
       ValueTypes['stages'],
     ];
+    create_junction_directus_users_skills_items?: [
+      {
+        filter?:
+          | ValueTypes['junction_directus_users_skills_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        data?:
+          | Array<ValueTypes['create_junction_directus_users_skills_input']>
+          | undefined
+          | null;
+      },
+      ValueTypes['junction_directus_users_skills'],
+    ];
+    create_junction_directus_users_skills_item?: [
+      { data: ValueTypes['create_junction_directus_users_skills_input'] },
+      ValueTypes['junction_directus_users_skills'],
+    ];
+    create_collaborators_items?: [
+      {
+        filter?: ValueTypes['collaborators_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        data?:
+          | Array<ValueTypes['create_collaborators_input']>
+          | undefined
+          | null;
+      },
+      ValueTypes['collaborators'],
+    ];
+    create_collaborators_item?: [
+      { data: ValueTypes['create_collaborators_input'] },
+      ValueTypes['collaborators'],
+    ];
+    create_brands_directus_users_items?: [
+      {
+        filter?: ValueTypes['brands_directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        data?:
+          | Array<ValueTypes['create_brands_directus_users_input']>
+          | undefined
+          | null;
+      },
+      ValueTypes['brands_directus_users'],
+    ];
+    create_brands_directus_users_item?: [
+      { data: ValueTypes['create_brands_directus_users_input'] },
+      ValueTypes['brands_directus_users'],
+    ];
+    create_products_contributors_items?: [
+      {
+        filter?: ValueTypes['products_contributors_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        data?:
+          | Array<ValueTypes['create_products_contributors_input']>
+          | undefined
+          | null;
+      },
+      ValueTypes['products_contributors'],
+    ];
+    create_products_contributors_item?: [
+      { data: ValueTypes['create_products_contributors_input'] },
+      ValueTypes['products_contributors'],
+    ];
     update_brands_items?: [
       {
         filter?: ValueTypes['brands_filter'] | undefined | null;
@@ -4313,40 +4348,6 @@ export type ValueTypes = {
     update_brands_item?: [
       { id: string; data: ValueTypes['update_brands_input'] },
       ValueTypes['brands'],
-    ];
-    update_brands_users_items?: [
-      {
-        filter?: ValueTypes['brands_users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        ids: Array<string | undefined | null>;
-        data: ValueTypes['update_brands_users_input'];
-      },
-      ValueTypes['brands_users'],
-    ];
-    update_brands_users_item?: [
-      { id: string; data: ValueTypes['update_brands_users_input'] },
-      ValueTypes['brands_users'],
-    ];
-    update_users_items?: [
-      {
-        filter?: ValueTypes['users_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        ids: Array<string | undefined | null>;
-        data: ValueTypes['update_users_input'];
-      },
-      ValueTypes['users'],
-    ];
-    update_users_item?: [
-      { id: string; data: ValueTypes['update_users_input'] },
-      ValueTypes['users'],
     ];
     update_producers_items?: [
       {
@@ -4427,23 +4428,6 @@ export type ValueTypes = {
     update_production_methods_item?: [
       { id: string; data: ValueTypes['update_production_methods_input'] },
       ValueTypes['production_methods'],
-    ];
-    update_product_collaborators_items?: [
-      {
-        filter?: ValueTypes['product_collaborators_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        ids: Array<string | undefined | null>;
-        data: ValueTypes['update_product_collaborators_input'];
-      },
-      ValueTypes['product_collaborators'],
-    ];
-    update_product_collaborators_item?: [
-      { id: string; data: ValueTypes['update_product_collaborators_input'] },
-      ValueTypes['product_collaborators'],
     ];
     update_collaborator_roles_items?: [
       {
@@ -4575,23 +4559,6 @@ export type ValueTypes = {
     update_skills_item?: [
       { id: string; data: ValueTypes['update_skills_input'] },
       ValueTypes['skills'],
-    ];
-    update_users_skills_items?: [
-      {
-        filter?: ValueTypes['users_skills_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-        ids: Array<string | undefined | null>;
-        data: ValueTypes['update_users_skills_input'];
-      },
-      ValueTypes['users_skills'],
-    ];
-    update_users_skills_item?: [
-      { id: string; data: ValueTypes['update_users_skills_input'] },
-      ValueTypes['users_skills'],
     ];
     update_production_materials_items?: [
       {
@@ -4735,21 +4702,85 @@ export type ValueTypes = {
       { id: string; data: ValueTypes['update_stages_input'] },
       ValueTypes['stages'],
     ];
+    update_junction_directus_users_skills_items?: [
+      {
+        filter?:
+          | ValueTypes['junction_directus_users_skills_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        ids: Array<string | undefined | null>;
+        data: ValueTypes['update_junction_directus_users_skills_input'];
+      },
+      ValueTypes['junction_directus_users_skills'],
+    ];
+    update_junction_directus_users_skills_item?: [
+      {
+        id: string;
+        data: ValueTypes['update_junction_directus_users_skills_input'];
+      },
+      ValueTypes['junction_directus_users_skills'],
+    ];
+    update_collaborators_items?: [
+      {
+        filter?: ValueTypes['collaborators_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        ids: Array<string | undefined | null>;
+        data: ValueTypes['update_collaborators_input'];
+      },
+      ValueTypes['collaborators'],
+    ];
+    update_collaborators_item?: [
+      { id: string; data: ValueTypes['update_collaborators_input'] },
+      ValueTypes['collaborators'],
+    ];
+    update_brands_directus_users_items?: [
+      {
+        filter?: ValueTypes['brands_directus_users_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        ids: Array<string | undefined | null>;
+        data: ValueTypes['update_brands_directus_users_input'];
+      },
+      ValueTypes['brands_directus_users'],
+    ];
+    update_brands_directus_users_item?: [
+      { id: string; data: ValueTypes['update_brands_directus_users_input'] },
+      ValueTypes['brands_directus_users'],
+    ];
+    update_products_contributors_items?: [
+      {
+        filter?: ValueTypes['products_contributors_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        ids: Array<string | undefined | null>;
+        data: ValueTypes['update_products_contributors_input'];
+      },
+      ValueTypes['products_contributors'],
+    ];
+    update_products_contributors_item?: [
+      { id: string; data: ValueTypes['update_products_contributors_input'] },
+      ValueTypes['products_contributors'],
+    ];
     delete_brands_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
     ];
     delete_brands_item?: [{ id: string }, ValueTypes['delete_one']];
-    delete_brands_users_items?: [
-      { ids: Array<string | undefined | null> },
-      ValueTypes['delete_many'],
-    ];
-    delete_brands_users_item?: [{ id: string }, ValueTypes['delete_one']];
-    delete_users_items?: [
-      { ids: Array<string | undefined | null> },
-      ValueTypes['delete_many'],
-    ];
-    delete_users_item?: [{ id: string }, ValueTypes['delete_one']];
     delete_producers_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
@@ -4776,14 +4807,6 @@ export type ValueTypes = {
       ValueTypes['delete_many'],
     ];
     delete_production_methods_item?: [{ id: string }, ValueTypes['delete_one']];
-    delete_product_collaborators_items?: [
-      { ids: Array<string | undefined | null> },
-      ValueTypes['delete_many'],
-    ];
-    delete_product_collaborators_item?: [
-      { id: string },
-      ValueTypes['delete_one'],
-    ];
     delete_collaborator_roles_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
@@ -4825,11 +4848,6 @@ export type ValueTypes = {
       ValueTypes['delete_many'],
     ];
     delete_skills_item?: [{ id: string }, ValueTypes['delete_one']];
-    delete_users_skills_items?: [
-      { ids: Array<string | undefined | null> },
-      ValueTypes['delete_many'],
-    ];
-    delete_users_skills_item?: [{ id: string }, ValueTypes['delete_one']];
     delete_production_materials_items?: [
       { ids: Array<string | undefined | null> },
       ValueTypes['delete_many'],
@@ -4879,6 +4897,35 @@ export type ValueTypes = {
       ValueTypes['delete_many'],
     ];
     delete_stages_item?: [{ id: string }, ValueTypes['delete_one']];
+    delete_junction_directus_users_skills_items?: [
+      { ids: Array<string | undefined | null> },
+      ValueTypes['delete_many'],
+    ];
+    delete_junction_directus_users_skills_item?: [
+      { id: string },
+      ValueTypes['delete_one'],
+    ];
+    delete_collaborators_items?: [
+      { ids: Array<string | undefined | null> },
+      ValueTypes['delete_many'],
+    ];
+    delete_collaborators_item?: [{ id: string }, ValueTypes['delete_one']];
+    delete_brands_directus_users_items?: [
+      { ids: Array<string | undefined | null> },
+      ValueTypes['delete_many'],
+    ];
+    delete_brands_directus_users_item?: [
+      { id: string },
+      ValueTypes['delete_one'],
+    ];
+    delete_products_contributors_items?: [
+      { ids: Array<string | undefined | null> },
+      ValueTypes['delete_many'],
+    ];
+    delete_products_contributors_item?: [
+      { id: string },
+      ValueTypes['delete_one'],
+    ];
     __typename?: boolean | `@${string}`;
   }>;
   ['create_brands_input']: {
@@ -4898,11 +4945,13 @@ export type ValueTypes = {
       | undefined
       | null;
     products_func?: ValueTypes['count_functionsInput'] | undefined | null;
-    members?:
-      | Array<ValueTypes['create_brands_users_input'] | undefined | null>
+    users?:
+      | Array<
+          ValueTypes['create_brands_directus_users_input'] | undefined | null
+        >
       | undefined
       | null;
-    members_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    users_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
   ['datetime_functionsInput']: {
     year?: number | undefined | null;
@@ -4972,6 +5021,24 @@ export type ValueTypes = {
     auth_data?: ValueTypes['JSON'] | undefined | null;
     auth_data_func?: ValueTypes['count_functionsInput'] | undefined | null;
     email_notifications?: boolean | undefined | null;
+    timezone?: string | undefined | null;
+    discord_handle?: string | undefined | null;
+    twitter_handle?: string | undefined | null;
+    discord_id?: string | undefined | null;
+    collaborators?:
+      | Array<ValueTypes['create_collaborators_input'] | undefined | null>
+      | undefined
+      | null;
+    collaborators_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    skills?:
+      | Array<
+          | ValueTypes['create_junction_directus_users_skills_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+    skills_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
   ['count_functionsInput']: {
     count?: number | undefined | null;
@@ -4991,10 +5058,45 @@ export type ValueTypes = {
       | null;
     users_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
+  ['create_collaborators_input']: {
+    id?: string | undefined | null;
+    user_created?: ValueTypes['create_directus_users_input'] | undefined | null;
+    date_created?: ValueTypes['Date'] | undefined | null;
+    date_created_func?:
+      | ValueTypes['datetime_functionsInput']
+      | undefined
+      | null;
+    date_updated?: ValueTypes['Date'] | undefined | null;
+    date_updated_func?:
+      | ValueTypes['datetime_functionsInput']
+      | undefined
+      | null;
+    account?: ValueTypes['create_directus_users_input'] | undefined | null;
+    display_name?: string | undefined | null;
+    payment_eth_address?: string | undefined | null;
+    role?: ValueTypes['create_collaborator_roles_input'] | undefined | null;
+  };
+  ['create_collaborator_roles_input']: {
+    description?: string | undefined | null;
+    id?: string | undefined | null;
+    name?: string | undefined | null;
+  };
+  ['create_junction_directus_users_skills_input']: {
+    id?: string | undefined | null;
+    directus_users_id?:
+      | ValueTypes['create_directus_users_input']
+      | undefined
+      | null;
+    skills_id?: ValueTypes['create_skills_input'] | undefined | null;
+  };
+  ['create_skills_input']: {
+    description?: string | undefined | null;
+    id?: string | undefined | null;
+    name: string;
+  };
   ['create_products_input']: {
     brand_id?: ValueTypes['create_brands_input'] | undefined | null;
     brand_reward_share?: number | undefined | null;
-    collaborator_reward_share?: number | undefined | null;
     created_at?: ValueTypes['Date'] | undefined | null;
     created_at_func?: ValueTypes['datetime_functionsInput'] | undefined | null;
     description?: string | undefined | null;
@@ -5019,13 +5121,7 @@ export type ValueTypes = {
     clo3d_file?: ValueTypes['create_directus_files_input'] | undefined | null;
     product_stage?: ValueTypes['create_stages_input'] | undefined | null;
     nft_token_id?: number | undefined | null;
-    collaborators?:
-      | Array<
-          ValueTypes['create_product_collaborators_input'] | undefined | null
-        >
-      | undefined
-      | null;
-    collaborators_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    contributor_reward_share?: number | undefined | null;
     production_methods?:
       | Array<
           | ValueTypes['create_products_production_methods_input']
@@ -5069,6 +5165,13 @@ export type ValueTypes = {
       | undefined
       | null;
     design_files_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    contributors?:
+      | Array<
+          ValueTypes['create_products_contributors_input'] | undefined | null
+        >
+      | undefined
+      | null;
+    contributors_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
   ['create_fulfillers_input']: {
     address?: string | undefined | null;
@@ -5230,67 +5333,6 @@ export type ValueTypes = {
     sort?: number | undefined | null;
     description?: string | undefined | null;
   };
-  ['create_product_collaborators_input']: {
-    collaboration_share?: number | undefined | null;
-    collaborator_id?: ValueTypes['create_users_input'] | undefined | null;
-    id?: string | undefined | null;
-    product_id?: ValueTypes['create_products_input'] | undefined | null;
-    role?: ValueTypes['create_collaborator_roles_input'] | undefined | null;
-  };
-  ['create_users_input']: {
-    created_at: ValueTypes['Date'];
-    created_at_func?: ValueTypes['datetime_functionsInput'] | undefined | null;
-    discord_handle?: string | undefined | null;
-    discord_id?: string | undefined | null;
-    eth_address?: string | undefined | null;
-    github_handle?: string | undefined | null;
-    id?: string | undefined | null;
-    name?: string | undefined | null;
-    timezone?: string | undefined | null;
-    twitter_handle?: string | undefined | null;
-    brands?:
-      | Array<ValueTypes['create_brands_users_input'] | undefined | null>
-      | undefined
-      | null;
-    brands_func?: ValueTypes['count_functionsInput'] | undefined | null;
-    products?:
-      | Array<
-          ValueTypes['create_product_collaborators_input'] | undefined | null
-        >
-      | undefined
-      | null;
-    products_func?: ValueTypes['count_functionsInput'] | undefined | null;
-    skills?:
-      | Array<ValueTypes['create_users_skills_input'] | undefined | null>
-      | undefined
-      | null;
-    skills_func?: ValueTypes['count_functionsInput'] | undefined | null;
-  };
-  ['create_brands_users_input']: {
-    brands_id?: ValueTypes['create_brands_input'] | undefined | null;
-    id?: string | undefined | null;
-    users_id?: ValueTypes['create_users_input'] | undefined | null;
-  };
-  ['create_users_skills_input']: {
-    id?: string | undefined | null;
-    skills_id?: ValueTypes['create_skills_input'] | undefined | null;
-    users_id?: ValueTypes['create_users_input'] | undefined | null;
-  };
-  ['create_skills_input']: {
-    description?: string | undefined | null;
-    id?: string | undefined | null;
-    name: string;
-    users?:
-      | Array<ValueTypes['create_users_skills_input'] | undefined | null>
-      | undefined
-      | null;
-    users_func?: ValueTypes['count_functionsInput'] | undefined | null;
-  };
-  ['create_collaborator_roles_input']: {
-    description?: string | undefined | null;
-    id?: string | undefined | null;
-    name: string;
-  };
   ['create_products_production_methods_input']: {
     id?: string | undefined | null;
     production_methods_id?:
@@ -5348,6 +5390,24 @@ export type ValueTypes = {
       | undefined
       | null;
   };
+  ['create_products_contributors_input']: {
+    id?: string | undefined | null;
+    products_id?: ValueTypes['create_products_input'] | undefined | null;
+    collaborators_id?:
+      | ValueTypes['create_collaborators_input']
+      | undefined
+      | null;
+    contribution_share?: number | undefined | null;
+    robot_earned?: number | undefined | null;
+  };
+  ['create_brands_directus_users_input']: {
+    id?: string | undefined | null;
+    brands_id?: ValueTypes['create_brands_input'] | undefined | null;
+    directus_users_id?:
+      | ValueTypes['create_directus_users_input']
+      | undefined
+      | null;
+  };
   ['update_brands_input']: {
     created_at?: ValueTypes['Date'] | undefined | null;
     created_at_func?: ValueTypes['datetime_functionsInput'] | undefined | null;
@@ -5365,11 +5425,13 @@ export type ValueTypes = {
       | undefined
       | null;
     products_func?: ValueTypes['count_functionsInput'] | undefined | null;
-    members?:
-      | Array<ValueTypes['update_brands_users_input'] | undefined | null>
+    users?:
+      | Array<
+          ValueTypes['update_brands_directus_users_input'] | undefined | null
+        >
       | undefined
       | null;
-    members_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    users_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
   ['update_directus_files_input']: {
     id?: string | undefined | null;
@@ -5429,6 +5491,24 @@ export type ValueTypes = {
     auth_data?: ValueTypes['JSON'] | undefined | null;
     auth_data_func?: ValueTypes['count_functionsInput'] | undefined | null;
     email_notifications?: boolean | undefined | null;
+    timezone?: string | undefined | null;
+    discord_handle?: string | undefined | null;
+    twitter_handle?: string | undefined | null;
+    discord_id?: string | undefined | null;
+    collaborators?:
+      | Array<ValueTypes['update_collaborators_input'] | undefined | null>
+      | undefined
+      | null;
+    collaborators_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    skills?:
+      | Array<
+          | ValueTypes['update_junction_directus_users_skills_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+    skills_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
   ['update_directus_roles_input']: {
     id?: string | undefined | null;
@@ -5445,10 +5525,45 @@ export type ValueTypes = {
       | null;
     users_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
+  ['update_collaborators_input']: {
+    id?: string | undefined | null;
+    user_created?: ValueTypes['update_directus_users_input'] | undefined | null;
+    date_created?: ValueTypes['Date'] | undefined | null;
+    date_created_func?:
+      | ValueTypes['datetime_functionsInput']
+      | undefined
+      | null;
+    date_updated?: ValueTypes['Date'] | undefined | null;
+    date_updated_func?:
+      | ValueTypes['datetime_functionsInput']
+      | undefined
+      | null;
+    account?: ValueTypes['update_directus_users_input'] | undefined | null;
+    display_name?: string | undefined | null;
+    payment_eth_address?: string | undefined | null;
+    role?: ValueTypes['update_collaborator_roles_input'] | undefined | null;
+  };
+  ['update_collaborator_roles_input']: {
+    description?: string | undefined | null;
+    id?: string | undefined | null;
+    name?: string | undefined | null;
+  };
+  ['update_junction_directus_users_skills_input']: {
+    id?: string | undefined | null;
+    directus_users_id?:
+      | ValueTypes['update_directus_users_input']
+      | undefined
+      | null;
+    skills_id?: ValueTypes['update_skills_input'] | undefined | null;
+  };
+  ['update_skills_input']: {
+    description?: string | undefined | null;
+    id?: string | undefined | null;
+    name?: string | undefined | null;
+  };
   ['update_products_input']: {
     brand_id?: ValueTypes['update_brands_input'] | undefined | null;
     brand_reward_share?: number | undefined | null;
-    collaborator_reward_share?: number | undefined | null;
     created_at?: ValueTypes['Date'] | undefined | null;
     created_at_func?: ValueTypes['datetime_functionsInput'] | undefined | null;
     description?: string | undefined | null;
@@ -5473,13 +5588,7 @@ export type ValueTypes = {
     clo3d_file?: ValueTypes['update_directus_files_input'] | undefined | null;
     product_stage?: ValueTypes['update_stages_input'] | undefined | null;
     nft_token_id?: number | undefined | null;
-    collaborators?:
-      | Array<
-          ValueTypes['update_product_collaborators_input'] | undefined | null
-        >
-      | undefined
-      | null;
-    collaborators_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    contributor_reward_share?: number | undefined | null;
     production_methods?:
       | Array<
           | ValueTypes['update_products_production_methods_input']
@@ -5523,6 +5632,13 @@ export type ValueTypes = {
       | undefined
       | null;
     design_files_func?: ValueTypes['count_functionsInput'] | undefined | null;
+    contributors?:
+      | Array<
+          ValueTypes['update_products_contributors_input'] | undefined | null
+        >
+      | undefined
+      | null;
+    contributors_func?: ValueTypes['count_functionsInput'] | undefined | null;
   };
   ['update_fulfillers_input']: {
     address?: string | undefined | null;
@@ -5684,67 +5800,6 @@ export type ValueTypes = {
     sort?: number | undefined | null;
     description?: string | undefined | null;
   };
-  ['update_product_collaborators_input']: {
-    collaboration_share?: number | undefined | null;
-    collaborator_id?: ValueTypes['update_users_input'] | undefined | null;
-    id?: string | undefined | null;
-    product_id?: ValueTypes['update_products_input'] | undefined | null;
-    role?: ValueTypes['update_collaborator_roles_input'] | undefined | null;
-  };
-  ['update_users_input']: {
-    created_at?: ValueTypes['Date'] | undefined | null;
-    created_at_func?: ValueTypes['datetime_functionsInput'] | undefined | null;
-    discord_handle?: string | undefined | null;
-    discord_id?: string | undefined | null;
-    eth_address?: string | undefined | null;
-    github_handle?: string | undefined | null;
-    id?: string | undefined | null;
-    name?: string | undefined | null;
-    timezone?: string | undefined | null;
-    twitter_handle?: string | undefined | null;
-    brands?:
-      | Array<ValueTypes['update_brands_users_input'] | undefined | null>
-      | undefined
-      | null;
-    brands_func?: ValueTypes['count_functionsInput'] | undefined | null;
-    products?:
-      | Array<
-          ValueTypes['update_product_collaborators_input'] | undefined | null
-        >
-      | undefined
-      | null;
-    products_func?: ValueTypes['count_functionsInput'] | undefined | null;
-    skills?:
-      | Array<ValueTypes['update_users_skills_input'] | undefined | null>
-      | undefined
-      | null;
-    skills_func?: ValueTypes['count_functionsInput'] | undefined | null;
-  };
-  ['update_brands_users_input']: {
-    brands_id?: ValueTypes['update_brands_input'] | undefined | null;
-    id?: string | undefined | null;
-    users_id?: ValueTypes['update_users_input'] | undefined | null;
-  };
-  ['update_users_skills_input']: {
-    id?: string | undefined | null;
-    skills_id?: ValueTypes['update_skills_input'] | undefined | null;
-    users_id?: ValueTypes['update_users_input'] | undefined | null;
-  };
-  ['update_skills_input']: {
-    description?: string | undefined | null;
-    id?: string | undefined | null;
-    name?: string | undefined | null;
-    users?:
-      | Array<ValueTypes['update_users_skills_input'] | undefined | null>
-      | undefined
-      | null;
-    users_func?: ValueTypes['count_functionsInput'] | undefined | null;
-  };
-  ['update_collaborator_roles_input']: {
-    description?: string | undefined | null;
-    id?: string | undefined | null;
-    name?: string | undefined | null;
-  };
   ['update_products_production_methods_input']: {
     id?: string | undefined | null;
     production_methods_id?:
@@ -5802,6 +5857,24 @@ export type ValueTypes = {
       | undefined
       | null;
   };
+  ['update_products_contributors_input']: {
+    id?: string | undefined | null;
+    products_id?: ValueTypes['update_products_input'] | undefined | null;
+    collaborators_id?:
+      | ValueTypes['update_collaborators_input']
+      | undefined
+      | null;
+    contribution_share?: number | undefined | null;
+    robot_earned?: number | undefined | null;
+  };
+  ['update_brands_directus_users_input']: {
+    id?: string | undefined | null;
+    brands_id?: ValueTypes['update_brands_input'] | undefined | null;
+    directus_users_id?:
+      | ValueTypes['update_directus_users_input']
+      | undefined
+      | null;
+  };
   ['delete_many']: AliasType<{
     ids?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
@@ -5818,16 +5891,6 @@ export type ModelTypes = {
     brands_by_id?: GraphQLTypes['brands'] | undefined;
     brands_aggregated?:
       | Array<GraphQLTypes['brands_aggregated'] | undefined>
-      | undefined;
-    brands_users?: Array<GraphQLTypes['brands_users'] | undefined> | undefined;
-    brands_users_by_id?: GraphQLTypes['brands_users'] | undefined;
-    brands_users_aggregated?:
-      | Array<GraphQLTypes['brands_users_aggregated'] | undefined>
-      | undefined;
-    users?: Array<GraphQLTypes['users'] | undefined> | undefined;
-    users_by_id?: GraphQLTypes['users'] | undefined;
-    users_aggregated?:
-      | Array<GraphQLTypes['users_aggregated'] | undefined>
       | undefined;
     producers?: Array<GraphQLTypes['producers'] | undefined> | undefined;
     producers_by_id?: GraphQLTypes['producers'] | undefined;
@@ -5862,15 +5925,6 @@ export type ModelTypes = {
     production_methods_by_id?: GraphQLTypes['production_methods'] | undefined;
     production_methods_aggregated?:
       | Array<GraphQLTypes['production_methods_aggregated'] | undefined>
-      | undefined;
-    product_collaborators?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    product_collaborators_by_id?:
-      | GraphQLTypes['product_collaborators']
-      | undefined;
-    product_collaborators_aggregated?:
-      | Array<GraphQLTypes['product_collaborators_aggregated'] | undefined>
       | undefined;
     collaborator_roles?:
       | Array<GraphQLTypes['collaborator_roles'] | undefined>
@@ -5927,11 +5981,6 @@ export type ModelTypes = {
     skills_by_id?: GraphQLTypes['skills'] | undefined;
     skills_aggregated?:
       | Array<GraphQLTypes['skills_aggregated'] | undefined>
-      | undefined;
-    users_skills?: Array<GraphQLTypes['users_skills'] | undefined> | undefined;
-    users_skills_by_id?: GraphQLTypes['users_skills'] | undefined;
-    users_skills_aggregated?:
-      | Array<GraphQLTypes['users_skills_aggregated'] | undefined>
       | undefined;
     production_materials?:
       | Array<GraphQLTypes['production_materials'] | undefined>
@@ -5991,6 +6040,42 @@ export type ModelTypes = {
     stages_aggregated?:
       | Array<GraphQLTypes['stages_aggregated'] | undefined>
       | undefined;
+    junction_directus_users_skills?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    junction_directus_users_skills_by_id?:
+      | GraphQLTypes['junction_directus_users_skills']
+      | undefined;
+    junction_directus_users_skills_aggregated?:
+      | Array<
+          GraphQLTypes['junction_directus_users_skills_aggregated'] | undefined
+        >
+      | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    collaborators_by_id?: GraphQLTypes['collaborators'] | undefined;
+    collaborators_aggregated?:
+      | Array<GraphQLTypes['collaborators_aggregated'] | undefined>
+      | undefined;
+    brands_directus_users?:
+      | Array<GraphQLTypes['brands_directus_users'] | undefined>
+      | undefined;
+    brands_directus_users_by_id?:
+      | GraphQLTypes['brands_directus_users']
+      | undefined;
+    brands_directus_users_aggregated?:
+      | Array<GraphQLTypes['brands_directus_users_aggregated'] | undefined>
+      | undefined;
+    products_contributors?:
+      | Array<GraphQLTypes['products_contributors'] | undefined>
+      | undefined;
+    products_contributors_by_id?:
+      | GraphQLTypes['products_contributors']
+      | undefined;
+    products_contributors_aggregated?:
+      | Array<GraphQLTypes['products_contributors_aggregated'] | undefined>
+      | undefined;
   };
   ['brands']: {
     created_at?: GraphQLTypes['Date'] | undefined;
@@ -6006,8 +6091,10 @@ export type ModelTypes = {
     notion_id?: string | undefined;
     products?: Array<GraphQLTypes['products'] | undefined> | undefined;
     products_func?: GraphQLTypes['count_functions'] | undefined;
-    members?: Array<GraphQLTypes['brands_users'] | undefined> | undefined;
-    members_func?: GraphQLTypes['count_functions'] | undefined;
+    users?:
+      | Array<GraphQLTypes['brands_directus_users'] | undefined>
+      | undefined;
+    users_func?: GraphQLTypes['count_functions'] | undefined;
   };
   /** ISO8601 Date values */
   ['Date']: any;
@@ -6081,6 +6168,18 @@ export type ModelTypes = {
     auth_data?: GraphQLTypes['JSON'] | undefined;
     auth_data_func?: GraphQLTypes['count_functions'] | undefined;
     email_notifications?: boolean | undefined;
+    timezone?: string | undefined;
+    discord_handle?: string | undefined;
+    twitter_handle?: string | undefined;
+    discord_id?: string | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    collaborators_func?: GraphQLTypes['count_functions'] | undefined;
+    skills?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    skills_func?: GraphQLTypes['count_functions'] | undefined;
   };
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   ['JSON']: any;
@@ -6095,6 +6194,10 @@ export type ModelTypes = {
   ['boolean_filter_operators']: GraphQLTypes['boolean_filter_operators'];
   ['date_filter_operators']: GraphQLTypes['date_filter_operators'];
   ['datetime_function_filter_operators']: GraphQLTypes['datetime_function_filter_operators'];
+  ['collaborators_filter']: GraphQLTypes['collaborators_filter'];
+  ['collaborator_roles_filter']: GraphQLTypes['collaborator_roles_filter'];
+  ['junction_directus_users_skills_filter']: GraphQLTypes['junction_directus_users_skills_filter'];
+  ['skills_filter']: GraphQLTypes['skills_filter'];
   ['directus_roles']: {
     id?: string | undefined;
     name: string;
@@ -6107,10 +6210,36 @@ export type ModelTypes = {
     users?: Array<GraphQLTypes['directus_users'] | undefined> | undefined;
     users_func?: GraphQLTypes['count_functions'] | undefined;
   };
+  ['collaborators']: {
+    id?: string | undefined;
+    user_created?: GraphQLTypes['directus_users'] | undefined;
+    date_created?: GraphQLTypes['Date'] | undefined;
+    date_created_func?: GraphQLTypes['datetime_functions'] | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functions'] | undefined;
+    account?: GraphQLTypes['directus_users'] | undefined;
+    display_name?: string | undefined;
+    payment_eth_address?: string | undefined;
+    role?: GraphQLTypes['collaborator_roles'] | undefined;
+  };
+  ['collaborator_roles']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
+  ['junction_directus_users_skills']: {
+    id?: string | undefined;
+    directus_users_id?: GraphQLTypes['directus_users'] | undefined;
+    skills_id?: GraphQLTypes['skills'] | undefined;
+  };
+  ['skills']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name: string;
+  };
   ['products']: {
     brand_id?: GraphQLTypes['brands'] | undefined;
     brand_reward_share?: number | undefined;
-    collaborator_reward_share?: number | undefined;
     created_at?: GraphQLTypes['Date'] | undefined;
     created_at_func?: GraphQLTypes['datetime_functions'] | undefined;
     description?: string | undefined;
@@ -6132,10 +6261,7 @@ export type ModelTypes = {
     clo3d_file?: GraphQLTypes['directus_files'] | undefined;
     product_stage?: GraphQLTypes['stages'] | undefined;
     nft_token_id?: number | undefined;
-    collaborators?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    collaborators_func?: GraphQLTypes['count_functions'] | undefined;
+    contributor_reward_share?: number | undefined;
     production_methods?:
       | Array<GraphQLTypes['products_production_methods'] | undefined>
       | undefined;
@@ -6156,6 +6282,10 @@ export type ModelTypes = {
       | Array<GraphQLTypes['products_design_files'] | undefined>
       | undefined;
     design_files_func?: GraphQLTypes['count_functions'] | undefined;
+    contributors?:
+      | Array<GraphQLTypes['products_contributors'] | undefined>
+      | undefined;
+    contributors_func?: GraphQLTypes['count_functions'] | undefined;
   };
   ['brands_filter']: GraphQLTypes['brands_filter'];
   ['products_filter']: GraphQLTypes['products_filter'];
@@ -6168,12 +6298,6 @@ export type ModelTypes = {
   ['production_methods_filter']: GraphQLTypes['production_methods_filter'];
   ['producers_production_methods_filter']: GraphQLTypes['producers_production_methods_filter'];
   ['stages_filter']: GraphQLTypes['stages_filter'];
-  ['product_collaborators_filter']: GraphQLTypes['product_collaborators_filter'];
-  ['users_filter']: GraphQLTypes['users_filter'];
-  ['brands_users_filter']: GraphQLTypes['brands_users_filter'];
-  ['users_skills_filter']: GraphQLTypes['users_skills_filter'];
-  ['skills_filter']: GraphQLTypes['skills_filter'];
-  ['collaborator_roles_filter']: GraphQLTypes['collaborator_roles_filter'];
   ['products_production_methods_filter']: GraphQLTypes['products_production_methods_filter'];
   ['products_files_filter']: GraphQLTypes['products_files_filter'];
   ['products_production_materials_filter']: GraphQLTypes['products_production_materials_filter'];
@@ -6181,6 +6305,8 @@ export type ModelTypes = {
   ['file_formats_filter']: GraphQLTypes['file_formats_filter'];
   ['products_content_filter']: GraphQLTypes['products_content_filter'];
   ['products_design_files_filter']: GraphQLTypes['products_design_files_filter'];
+  ['products_contributors_filter']: GraphQLTypes['products_contributors_filter'];
+  ['brands_directus_users_filter']: GraphQLTypes['brands_directus_users_filter'];
   ['fulfillers']: {
     address?: string | undefined;
     created_at?: GraphQLTypes['Date'] | undefined;
@@ -6287,55 +6413,6 @@ export type ModelTypes = {
     sort?: number | undefined;
     description?: string | undefined;
   };
-  ['product_collaborators']: {
-    collaboration_share?: number | undefined;
-    collaborator_id?: GraphQLTypes['users'] | undefined;
-    id?: string | undefined;
-    product_id?: GraphQLTypes['products'] | undefined;
-    role?: GraphQLTypes['collaborator_roles'] | undefined;
-  };
-  ['users']: {
-    created_at: GraphQLTypes['Date'];
-    created_at_func?: GraphQLTypes['datetime_functions'] | undefined;
-    discord_handle?: string | undefined;
-    discord_id?: string | undefined;
-    eth_address?: string | undefined;
-    github_handle?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    timezone?: string | undefined;
-    twitter_handle?: string | undefined;
-    brands?: Array<GraphQLTypes['brands_users'] | undefined> | undefined;
-    brands_func?: GraphQLTypes['count_functions'] | undefined;
-    products?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    products_func?: GraphQLTypes['count_functions'] | undefined;
-    skills?: Array<GraphQLTypes['users_skills'] | undefined> | undefined;
-    skills_func?: GraphQLTypes['count_functions'] | undefined;
-  };
-  ['brands_users']: {
-    brands_id?: GraphQLTypes['brands'] | undefined;
-    id?: string | undefined;
-    users_id?: GraphQLTypes['users'] | undefined;
-  };
-  ['users_skills']: {
-    id?: string | undefined;
-    skills_id?: GraphQLTypes['skills'] | undefined;
-    users_id?: GraphQLTypes['users'] | undefined;
-  };
-  ['skills']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name: string;
-    users?: Array<GraphQLTypes['users_skills'] | undefined> | undefined;
-    users_func?: GraphQLTypes['count_functions'] | undefined;
-  };
-  ['collaborator_roles']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name: string;
-  };
   ['products_production_methods']: {
     id?: string | undefined;
     production_methods_id?: GraphQLTypes['production_methods'] | undefined;
@@ -6375,6 +6452,18 @@ export type ModelTypes = {
     products_id?: GraphQLTypes['products'] | undefined;
     directus_files_id?: GraphQLTypes['directus_files'] | undefined;
   };
+  ['products_contributors']: {
+    id?: string | undefined;
+    products_id?: GraphQLTypes['products'] | undefined;
+    collaborators_id?: GraphQLTypes['collaborators'] | undefined;
+    contribution_share?: number | undefined;
+    robot_earned?: number | undefined;
+  };
+  ['brands_directus_users']: {
+    id?: string | undefined;
+    brands_id?: GraphQLTypes['brands'] | undefined;
+    directus_users_id?: GraphQLTypes['directus_users'] | undefined;
+  };
   ['brands_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
     countAll?: number | undefined;
@@ -6392,46 +6481,7 @@ export type ModelTypes = {
     website_url?: number | undefined;
     notion_id?: number | undefined;
     products?: number | undefined;
-    members?: number | undefined;
-  };
-  ['brands_users_aggregated']: {
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['brands_users_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    countDistinct?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    avgDistinct?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    sumDistinct?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    min?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-  };
-  ['brands_users_aggregated_count']: {
-    brands_id?: number | undefined;
-    id?: number | undefined;
-    users_id?: number | undefined;
-  };
-  ['brands_users_aggregated_fields']: {
-    id?: number | undefined;
-  };
-  ['users_aggregated']: {
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['users_aggregated_count'] | undefined;
-  };
-  ['users_aggregated_count']: {
-    created_at?: number | undefined;
-    discord_handle?: number | undefined;
-    discord_id?: number | undefined;
-    eth_address?: number | undefined;
-    github_handle?: number | undefined;
-    id?: number | undefined;
-    name?: number | undefined;
-    timezone?: number | undefined;
-    twitter_handle?: number | undefined;
-    brands?: number | undefined;
-    products?: number | undefined;
-    skills?: number | undefined;
+    users?: number | undefined;
   };
   ['producers_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
@@ -6538,37 +6588,6 @@ export type ModelTypes = {
     /** List of producers that are cable of this production method */
     producers?: number | undefined;
     production_materials?: number | undefined;
-  };
-  ['product_collaborators_aggregated']: {
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['product_collaborators_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['product_collaborators_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['product_collaborators_aggregated_fields'] | undefined;
-    countDistinct?:
-      | GraphQLTypes['product_collaborators_aggregated_fields']
-      | undefined;
-    avgDistinct?:
-      | GraphQLTypes['product_collaborators_aggregated_fields']
-      | undefined;
-    sumDistinct?:
-      | GraphQLTypes['product_collaborators_aggregated_fields']
-      | undefined;
-    min?: GraphQLTypes['product_collaborators_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['product_collaborators_aggregated_fields'] | undefined;
-  };
-  ['product_collaborators_aggregated_count']: {
-    collaboration_share?: number | undefined;
-    collaborator_id?: number | undefined;
-    id?: number | undefined;
-    product_id?: number | undefined;
-    /** Designer, Technician, etc. */
-    role?: number | undefined;
-  };
-  ['product_collaborators_aggregated_fields']: {
-    collaboration_share?: number | undefined;
-    /** Designer, Technician, etc. */
-    role?: number | undefined;
   };
   ['collaborator_roles_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
@@ -6739,27 +6758,6 @@ export type ModelTypes = {
     description?: number | undefined;
     id?: number | undefined;
     name?: number | undefined;
-    users?: number | undefined;
-  };
-  ['users_skills_aggregated']: {
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['users_skills_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    countDistinct?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    avgDistinct?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    sumDistinct?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    min?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-  };
-  ['users_skills_aggregated_count']: {
-    id?: number | undefined;
-    skills_id?: number | undefined;
-    users_id?: number | undefined;
-  };
-  ['users_skills_aggregated_fields']: {
-    id?: number | undefined;
   };
   ['production_materials_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
@@ -6816,7 +6814,6 @@ export type ModelTypes = {
   ['products_aggregated_count']: {
     brand_id?: number | undefined;
     brand_reward_share?: number | undefined;
-    collaborator_reward_share?: number | undefined;
     created_at?: number | undefined;
     description?: number | undefined;
     discord_channel_id?: number | undefined;
@@ -6836,20 +6833,21 @@ export type ModelTypes = {
     clo3d_file?: number | undefined;
     product_stage?: number | undefined;
     nft_token_id?: number | undefined;
-    collaborators?: number | undefined;
+    contributor_reward_share?: number | undefined;
     production_methods?: number | undefined;
     images?: number | undefined;
     materials?: number | undefined;
     wearable_files?: number | undefined;
     content?: number | undefined;
     design_files?: number | undefined;
+    contributors?: number | undefined;
   };
   ['products_aggregated_fields']: {
     brand_reward_share?: number | undefined;
-    collaborator_reward_share?: number | undefined;
     production_cost?: number | undefined;
     season?: number | undefined;
     nft_token_id?: number | undefined;
+    contributor_reward_share?: number | undefined;
   };
   ['products_production_materials_aggregated']: {
     group?: GraphQLTypes['JSON'] | undefined;
@@ -7010,15 +7008,128 @@ export type ModelTypes = {
   ['stages_aggregated_fields']: {
     sort?: number | undefined;
   };
+  ['junction_directus_users_skills_aggregated']: {
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_count']
+      | undefined;
+    avg?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    sum?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    countDistinct?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    min?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    max?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+  };
+  ['junction_directus_users_skills_aggregated_count']: {
+    id?: number | undefined;
+    directus_users_id?: number | undefined;
+    skills_id?: number | undefined;
+  };
+  ['junction_directus_users_skills_aggregated_fields']: {
+    id?: number | undefined;
+  };
+  ['collaborators_aggregated']: {
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['collaborators_aggregated_count'] | undefined;
+    avg?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    sum?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    countDistinct?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    avgDistinct?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    sumDistinct?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    min?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    max?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+  };
+  ['collaborators_aggregated_count']: {
+    id?: number | undefined;
+    user_created?: number | undefined;
+    date_created?: number | undefined;
+    date_updated?: number | undefined;
+    account?: number | undefined;
+    display_name?: number | undefined;
+    payment_eth_address?: number | undefined;
+    role?: number | undefined;
+  };
+  ['collaborators_aggregated_fields']: {
+    id?: number | undefined;
+    role?: number | undefined;
+  };
+  ['brands_directus_users_aggregated']: {
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['brands_directus_users_aggregated_count'] | undefined;
+    avg?: GraphQLTypes['brands_directus_users_aggregated_fields'] | undefined;
+    sum?: GraphQLTypes['brands_directus_users_aggregated_fields'] | undefined;
+    countDistinct?:
+      | GraphQLTypes['brands_directus_users_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['brands_directus_users_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['brands_directus_users_aggregated_fields']
+      | undefined;
+    min?: GraphQLTypes['brands_directus_users_aggregated_fields'] | undefined;
+    max?: GraphQLTypes['brands_directus_users_aggregated_fields'] | undefined;
+  };
+  ['brands_directus_users_aggregated_count']: {
+    id?: number | undefined;
+    brands_id?: number | undefined;
+    directus_users_id?: number | undefined;
+  };
+  ['brands_directus_users_aggregated_fields']: {
+    id?: number | undefined;
+  };
+  ['products_contributors_aggregated']: {
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['products_contributors_aggregated_count'] | undefined;
+    avg?: GraphQLTypes['products_contributors_aggregated_fields'] | undefined;
+    sum?: GraphQLTypes['products_contributors_aggregated_fields'] | undefined;
+    countDistinct?:
+      | GraphQLTypes['products_contributors_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['products_contributors_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['products_contributors_aggregated_fields']
+      | undefined;
+    min?: GraphQLTypes['products_contributors_aggregated_fields'] | undefined;
+    max?: GraphQLTypes['products_contributors_aggregated_fields'] | undefined;
+  };
+  ['products_contributors_aggregated_count']: {
+    id?: number | undefined;
+    products_id?: number | undefined;
+    collaborators_id?: number | undefined;
+    contribution_share?: number | undefined;
+    robot_earned?: number | undefined;
+  };
+  ['products_contributors_aggregated_fields']: {
+    id?: number | undefined;
+    collaborators_id?: number | undefined;
+    contribution_share?: number | undefined;
+    robot_earned?: number | undefined;
+  };
   ['Mutation']: {
     create_brands_items?: Array<GraphQLTypes['brands'] | undefined> | undefined;
     create_brands_item?: GraphQLTypes['brands'] | undefined;
-    create_brands_users_items?:
-      | Array<GraphQLTypes['brands_users'] | undefined>
-      | undefined;
-    create_brands_users_item?: GraphQLTypes['brands_users'] | undefined;
-    create_users_items?: Array<GraphQLTypes['users'] | undefined> | undefined;
-    create_users_item?: GraphQLTypes['users'] | undefined;
     create_producers_items?:
       | Array<GraphQLTypes['producers'] | undefined>
       | undefined;
@@ -7040,12 +7151,6 @@ export type ModelTypes = {
       | undefined;
     create_production_methods_item?:
       | GraphQLTypes['production_methods']
-      | undefined;
-    create_product_collaborators_items?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    create_product_collaborators_item?:
-      | GraphQLTypes['product_collaborators']
       | undefined;
     create_collaborator_roles_items?:
       | Array<GraphQLTypes['collaborator_roles'] | undefined>
@@ -7081,10 +7186,6 @@ export type ModelTypes = {
       | undefined;
     create_skills_items?: Array<GraphQLTypes['skills'] | undefined> | undefined;
     create_skills_item?: GraphQLTypes['skills'] | undefined;
-    create_users_skills_items?:
-      | Array<GraphQLTypes['users_skills'] | undefined>
-      | undefined;
-    create_users_skills_item?: GraphQLTypes['users_skills'] | undefined;
     create_production_materials_items?:
       | Array<GraphQLTypes['production_materials'] | undefined>
       | undefined;
@@ -7123,14 +7224,30 @@ export type ModelTypes = {
     create_products_content_item?: GraphQLTypes['products_content'] | undefined;
     create_stages_items?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     create_stages_item?: GraphQLTypes['stages'] | undefined;
+    create_junction_directus_users_skills_items?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    create_junction_directus_users_skills_item?:
+      | GraphQLTypes['junction_directus_users_skills']
+      | undefined;
+    create_collaborators_items?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    create_collaborators_item?: GraphQLTypes['collaborators'] | undefined;
+    create_brands_directus_users_items?:
+      | Array<GraphQLTypes['brands_directus_users'] | undefined>
+      | undefined;
+    create_brands_directus_users_item?:
+      | GraphQLTypes['brands_directus_users']
+      | undefined;
+    create_products_contributors_items?:
+      | Array<GraphQLTypes['products_contributors'] | undefined>
+      | undefined;
+    create_products_contributors_item?:
+      | GraphQLTypes['products_contributors']
+      | undefined;
     update_brands_items?: Array<GraphQLTypes['brands'] | undefined> | undefined;
     update_brands_item?: GraphQLTypes['brands'] | undefined;
-    update_brands_users_items?:
-      | Array<GraphQLTypes['brands_users'] | undefined>
-      | undefined;
-    update_brands_users_item?: GraphQLTypes['brands_users'] | undefined;
-    update_users_items?: Array<GraphQLTypes['users'] | undefined> | undefined;
-    update_users_item?: GraphQLTypes['users'] | undefined;
     update_producers_items?:
       | Array<GraphQLTypes['producers'] | undefined>
       | undefined;
@@ -7152,12 +7269,6 @@ export type ModelTypes = {
       | undefined;
     update_production_methods_item?:
       | GraphQLTypes['production_methods']
-      | undefined;
-    update_product_collaborators_items?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    update_product_collaborators_item?:
-      | GraphQLTypes['product_collaborators']
       | undefined;
     update_collaborator_roles_items?:
       | Array<GraphQLTypes['collaborator_roles'] | undefined>
@@ -7193,10 +7304,6 @@ export type ModelTypes = {
       | undefined;
     update_skills_items?: Array<GraphQLTypes['skills'] | undefined> | undefined;
     update_skills_item?: GraphQLTypes['skills'] | undefined;
-    update_users_skills_items?:
-      | Array<GraphQLTypes['users_skills'] | undefined>
-      | undefined;
-    update_users_skills_item?: GraphQLTypes['users_skills'] | undefined;
     update_production_materials_items?:
       | Array<GraphQLTypes['production_materials'] | undefined>
       | undefined;
@@ -7235,12 +7342,30 @@ export type ModelTypes = {
     update_products_content_item?: GraphQLTypes['products_content'] | undefined;
     update_stages_items?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     update_stages_item?: GraphQLTypes['stages'] | undefined;
+    update_junction_directus_users_skills_items?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    update_junction_directus_users_skills_item?:
+      | GraphQLTypes['junction_directus_users_skills']
+      | undefined;
+    update_collaborators_items?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    update_collaborators_item?: GraphQLTypes['collaborators'] | undefined;
+    update_brands_directus_users_items?:
+      | Array<GraphQLTypes['brands_directus_users'] | undefined>
+      | undefined;
+    update_brands_directus_users_item?:
+      | GraphQLTypes['brands_directus_users']
+      | undefined;
+    update_products_contributors_items?:
+      | Array<GraphQLTypes['products_contributors'] | undefined>
+      | undefined;
+    update_products_contributors_item?:
+      | GraphQLTypes['products_contributors']
+      | undefined;
     delete_brands_items?: GraphQLTypes['delete_many'] | undefined;
     delete_brands_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_brands_users_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_brands_users_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_users_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_users_item?: GraphQLTypes['delete_one'] | undefined;
     delete_producers_items?: GraphQLTypes['delete_many'] | undefined;
     delete_producers_item?: GraphQLTypes['delete_one'] | undefined;
     delete_producers_production_materials_items?:
@@ -7257,10 +7382,6 @@ export type ModelTypes = {
       | undefined;
     delete_production_methods_items?: GraphQLTypes['delete_many'] | undefined;
     delete_production_methods_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_product_collaborators_items?:
-      | GraphQLTypes['delete_many']
-      | undefined;
-    delete_product_collaborators_item?: GraphQLTypes['delete_one'] | undefined;
     delete_collaborator_roles_items?: GraphQLTypes['delete_many'] | undefined;
     delete_collaborator_roles_item?: GraphQLTypes['delete_one'] | undefined;
     delete_production_materials_production_methods_items?:
@@ -7283,8 +7404,6 @@ export type ModelTypes = {
       | undefined;
     delete_skills_items?: GraphQLTypes['delete_many'] | undefined;
     delete_skills_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_users_skills_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_users_skills_item?: GraphQLTypes['delete_one'] | undefined;
     delete_production_materials_items?: GraphQLTypes['delete_many'] | undefined;
     delete_production_materials_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_items?: GraphQLTypes['delete_many'] | undefined;
@@ -7307,6 +7426,22 @@ export type ModelTypes = {
     delete_products_content_item?: GraphQLTypes['delete_one'] | undefined;
     delete_stages_items?: GraphQLTypes['delete_many'] | undefined;
     delete_stages_item?: GraphQLTypes['delete_one'] | undefined;
+    delete_junction_directus_users_skills_items?:
+      | GraphQLTypes['delete_many']
+      | undefined;
+    delete_junction_directus_users_skills_item?:
+      | GraphQLTypes['delete_one']
+      | undefined;
+    delete_collaborators_items?: GraphQLTypes['delete_many'] | undefined;
+    delete_collaborators_item?: GraphQLTypes['delete_one'] | undefined;
+    delete_brands_directus_users_items?:
+      | GraphQLTypes['delete_many']
+      | undefined;
+    delete_brands_directus_users_item?: GraphQLTypes['delete_one'] | undefined;
+    delete_products_contributors_items?:
+      | GraphQLTypes['delete_many']
+      | undefined;
+    delete_products_contributors_item?: GraphQLTypes['delete_one'] | undefined;
   };
   ['create_brands_input']: GraphQLTypes['create_brands_input'];
   ['datetime_functionsInput']: GraphQLTypes['datetime_functionsInput'];
@@ -7315,6 +7450,10 @@ export type ModelTypes = {
   ['create_directus_users_input']: GraphQLTypes['create_directus_users_input'];
   ['count_functionsInput']: GraphQLTypes['count_functionsInput'];
   ['create_directus_roles_input']: GraphQLTypes['create_directus_roles_input'];
+  ['create_collaborators_input']: GraphQLTypes['create_collaborators_input'];
+  ['create_collaborator_roles_input']: GraphQLTypes['create_collaborator_roles_input'];
+  ['create_junction_directus_users_skills_input']: GraphQLTypes['create_junction_directus_users_skills_input'];
+  ['create_skills_input']: GraphQLTypes['create_skills_input'];
   ['create_products_input']: GraphQLTypes['create_products_input'];
   ['create_fulfillers_input']: GraphQLTypes['create_fulfillers_input'];
   ['create_price_currencies_input']: GraphQLTypes['create_price_currencies_input'];
@@ -7325,12 +7464,6 @@ export type ModelTypes = {
   ['create_production_methods_input']: GraphQLTypes['create_production_methods_input'];
   ['create_producers_production_methods_input']: GraphQLTypes['create_producers_production_methods_input'];
   ['create_stages_input']: GraphQLTypes['create_stages_input'];
-  ['create_product_collaborators_input']: GraphQLTypes['create_product_collaborators_input'];
-  ['create_users_input']: GraphQLTypes['create_users_input'];
-  ['create_brands_users_input']: GraphQLTypes['create_brands_users_input'];
-  ['create_users_skills_input']: GraphQLTypes['create_users_skills_input'];
-  ['create_skills_input']: GraphQLTypes['create_skills_input'];
-  ['create_collaborator_roles_input']: GraphQLTypes['create_collaborator_roles_input'];
   ['create_products_production_methods_input']: GraphQLTypes['create_products_production_methods_input'];
   ['create_products_files_input']: GraphQLTypes['create_products_files_input'];
   ['create_products_production_materials_input']: GraphQLTypes['create_products_production_materials_input'];
@@ -7338,11 +7471,17 @@ export type ModelTypes = {
   ['create_file_formats_input']: GraphQLTypes['create_file_formats_input'];
   ['create_products_content_input']: GraphQLTypes['create_products_content_input'];
   ['create_products_design_files_input']: GraphQLTypes['create_products_design_files_input'];
+  ['create_products_contributors_input']: GraphQLTypes['create_products_contributors_input'];
+  ['create_brands_directus_users_input']: GraphQLTypes['create_brands_directus_users_input'];
   ['update_brands_input']: GraphQLTypes['update_brands_input'];
   ['update_directus_files_input']: GraphQLTypes['update_directus_files_input'];
   ['update_directus_folders_input']: GraphQLTypes['update_directus_folders_input'];
   ['update_directus_users_input']: GraphQLTypes['update_directus_users_input'];
   ['update_directus_roles_input']: GraphQLTypes['update_directus_roles_input'];
+  ['update_collaborators_input']: GraphQLTypes['update_collaborators_input'];
+  ['update_collaborator_roles_input']: GraphQLTypes['update_collaborator_roles_input'];
+  ['update_junction_directus_users_skills_input']: GraphQLTypes['update_junction_directus_users_skills_input'];
+  ['update_skills_input']: GraphQLTypes['update_skills_input'];
   ['update_products_input']: GraphQLTypes['update_products_input'];
   ['update_fulfillers_input']: GraphQLTypes['update_fulfillers_input'];
   ['update_price_currencies_input']: GraphQLTypes['update_price_currencies_input'];
@@ -7353,12 +7492,6 @@ export type ModelTypes = {
   ['update_production_methods_input']: GraphQLTypes['update_production_methods_input'];
   ['update_producers_production_methods_input']: GraphQLTypes['update_producers_production_methods_input'];
   ['update_stages_input']: GraphQLTypes['update_stages_input'];
-  ['update_product_collaborators_input']: GraphQLTypes['update_product_collaborators_input'];
-  ['update_users_input']: GraphQLTypes['update_users_input'];
-  ['update_brands_users_input']: GraphQLTypes['update_brands_users_input'];
-  ['update_users_skills_input']: GraphQLTypes['update_users_skills_input'];
-  ['update_skills_input']: GraphQLTypes['update_skills_input'];
-  ['update_collaborator_roles_input']: GraphQLTypes['update_collaborator_roles_input'];
   ['update_products_production_methods_input']: GraphQLTypes['update_products_production_methods_input'];
   ['update_products_files_input']: GraphQLTypes['update_products_files_input'];
   ['update_products_production_materials_input']: GraphQLTypes['update_products_production_materials_input'];
@@ -7366,6 +7499,8 @@ export type ModelTypes = {
   ['update_file_formats_input']: GraphQLTypes['update_file_formats_input'];
   ['update_products_content_input']: GraphQLTypes['update_products_content_input'];
   ['update_products_design_files_input']: GraphQLTypes['update_products_design_files_input'];
+  ['update_products_contributors_input']: GraphQLTypes['update_products_contributors_input'];
+  ['update_brands_directus_users_input']: GraphQLTypes['update_brands_directus_users_input'];
   ['delete_many']: {
     ids: Array<string | undefined>;
   };
@@ -7381,16 +7516,6 @@ export type GraphQLTypes = {
     brands_by_id?: GraphQLTypes['brands'] | undefined;
     brands_aggregated?:
       | Array<GraphQLTypes['brands_aggregated'] | undefined>
-      | undefined;
-    brands_users?: Array<GraphQLTypes['brands_users'] | undefined> | undefined;
-    brands_users_by_id?: GraphQLTypes['brands_users'] | undefined;
-    brands_users_aggregated?:
-      | Array<GraphQLTypes['brands_users_aggregated'] | undefined>
-      | undefined;
-    users?: Array<GraphQLTypes['users'] | undefined> | undefined;
-    users_by_id?: GraphQLTypes['users'] | undefined;
-    users_aggregated?:
-      | Array<GraphQLTypes['users_aggregated'] | undefined>
       | undefined;
     producers?: Array<GraphQLTypes['producers'] | undefined> | undefined;
     producers_by_id?: GraphQLTypes['producers'] | undefined;
@@ -7425,15 +7550,6 @@ export type GraphQLTypes = {
     production_methods_by_id?: GraphQLTypes['production_methods'] | undefined;
     production_methods_aggregated?:
       | Array<GraphQLTypes['production_methods_aggregated'] | undefined>
-      | undefined;
-    product_collaborators?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    product_collaborators_by_id?:
-      | GraphQLTypes['product_collaborators']
-      | undefined;
-    product_collaborators_aggregated?:
-      | Array<GraphQLTypes['product_collaborators_aggregated'] | undefined>
       | undefined;
     collaborator_roles?:
       | Array<GraphQLTypes['collaborator_roles'] | undefined>
@@ -7490,11 +7606,6 @@ export type GraphQLTypes = {
     skills_by_id?: GraphQLTypes['skills'] | undefined;
     skills_aggregated?:
       | Array<GraphQLTypes['skills_aggregated'] | undefined>
-      | undefined;
-    users_skills?: Array<GraphQLTypes['users_skills'] | undefined> | undefined;
-    users_skills_by_id?: GraphQLTypes['users_skills'] | undefined;
-    users_skills_aggregated?:
-      | Array<GraphQLTypes['users_skills_aggregated'] | undefined>
       | undefined;
     production_materials?:
       | Array<GraphQLTypes['production_materials'] | undefined>
@@ -7554,6 +7665,42 @@ export type GraphQLTypes = {
     stages_aggregated?:
       | Array<GraphQLTypes['stages_aggregated'] | undefined>
       | undefined;
+    junction_directus_users_skills?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    junction_directus_users_skills_by_id?:
+      | GraphQLTypes['junction_directus_users_skills']
+      | undefined;
+    junction_directus_users_skills_aggregated?:
+      | Array<
+          GraphQLTypes['junction_directus_users_skills_aggregated'] | undefined
+        >
+      | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    collaborators_by_id?: GraphQLTypes['collaborators'] | undefined;
+    collaborators_aggregated?:
+      | Array<GraphQLTypes['collaborators_aggregated'] | undefined>
+      | undefined;
+    brands_directus_users?:
+      | Array<GraphQLTypes['brands_directus_users'] | undefined>
+      | undefined;
+    brands_directus_users_by_id?:
+      | GraphQLTypes['brands_directus_users']
+      | undefined;
+    brands_directus_users_aggregated?:
+      | Array<GraphQLTypes['brands_directus_users_aggregated'] | undefined>
+      | undefined;
+    products_contributors?:
+      | Array<GraphQLTypes['products_contributors'] | undefined>
+      | undefined;
+    products_contributors_by_id?:
+      | GraphQLTypes['products_contributors']
+      | undefined;
+    products_contributors_aggregated?:
+      | Array<GraphQLTypes['products_contributors_aggregated'] | undefined>
+      | undefined;
   };
   ['brands']: {
     __typename: 'brands';
@@ -7570,8 +7717,10 @@ export type GraphQLTypes = {
     notion_id?: string | undefined;
     products?: Array<GraphQLTypes['products'] | undefined> | undefined;
     products_func?: GraphQLTypes['count_functions'] | undefined;
-    members?: Array<GraphQLTypes['brands_users'] | undefined> | undefined;
-    members_func?: GraphQLTypes['count_functions'] | undefined;
+    users?:
+      | Array<GraphQLTypes['brands_directus_users'] | undefined>
+      | undefined;
+    users_func?: GraphQLTypes['count_functions'] | undefined;
   };
   /** ISO8601 Date values */
   ['Date']: 'scalar' & { name: 'Date' };
@@ -7674,6 +7823,18 @@ export type GraphQLTypes = {
     auth_data?: GraphQLTypes['JSON'] | undefined;
     auth_data_func?: GraphQLTypes['count_functions'] | undefined;
     email_notifications?: boolean | undefined;
+    timezone?: string | undefined;
+    discord_handle?: string | undefined;
+    twitter_handle?: string | undefined;
+    discord_id?: string | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    collaborators_func?: GraphQLTypes['count_functions'] | undefined;
+    skills?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    skills_func?: GraphQLTypes['count_functions'] | undefined;
   };
   /** The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
   ['JSON']: 'scalar' & { name: 'JSON' };
@@ -7744,6 +7905,16 @@ export type GraphQLTypes = {
       | GraphQLTypes['count_function_filter_operators']
       | undefined;
     email_notifications?: GraphQLTypes['boolean_filter_operators'] | undefined;
+    timezone?: GraphQLTypes['string_filter_operators'] | undefined;
+    discord_handle?: GraphQLTypes['string_filter_operators'] | undefined;
+    twitter_handle?: GraphQLTypes['string_filter_operators'] | undefined;
+    discord_id?: GraphQLTypes['string_filter_operators'] | undefined;
+    collaborators?: GraphQLTypes['collaborators_filter'] | undefined;
+    collaborators_func?:
+      | GraphQLTypes['count_function_filter_operators']
+      | undefined;
+    skills?: GraphQLTypes['junction_directus_users_skills_filter'] | undefined;
+    skills_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
     _and?: Array<GraphQLTypes['directus_users_filter'] | undefined> | undefined;
     _or?: Array<GraphQLTypes['directus_users_filter'] | undefined> | undefined;
   };
@@ -7802,6 +7973,53 @@ export type GraphQLTypes = {
     minute?: GraphQLTypes['number_filter_operators'] | undefined;
     second?: GraphQLTypes['number_filter_operators'] | undefined;
   };
+  ['collaborators_filter']: {
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    user_created?: GraphQLTypes['directus_users_filter'] | undefined;
+    date_created?: GraphQLTypes['date_filter_operators'] | undefined;
+    date_created_func?:
+      | GraphQLTypes['datetime_function_filter_operators']
+      | undefined;
+    date_updated?: GraphQLTypes['date_filter_operators'] | undefined;
+    date_updated_func?:
+      | GraphQLTypes['datetime_function_filter_operators']
+      | undefined;
+    account?: GraphQLTypes['directus_users_filter'] | undefined;
+    display_name?: GraphQLTypes['string_filter_operators'] | undefined;
+    payment_eth_address?: GraphQLTypes['string_filter_operators'] | undefined;
+    role?: GraphQLTypes['collaborator_roles_filter'] | undefined;
+    _and?: Array<GraphQLTypes['collaborators_filter'] | undefined> | undefined;
+    _or?: Array<GraphQLTypes['collaborators_filter'] | undefined> | undefined;
+  };
+  ['collaborator_roles_filter']: {
+    description?: GraphQLTypes['string_filter_operators'] | undefined;
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    name?: GraphQLTypes['string_filter_operators'] | undefined;
+    _and?:
+      | Array<GraphQLTypes['collaborator_roles_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<GraphQLTypes['collaborator_roles_filter'] | undefined>
+      | undefined;
+  };
+  ['junction_directus_users_skills_filter']: {
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    directus_users_id?: GraphQLTypes['directus_users_filter'] | undefined;
+    skills_id?: GraphQLTypes['skills_filter'] | undefined;
+    _and?:
+      | Array<GraphQLTypes['junction_directus_users_skills_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<GraphQLTypes['junction_directus_users_skills_filter'] | undefined>
+      | undefined;
+  };
+  ['skills_filter']: {
+    description?: GraphQLTypes['string_filter_operators'] | undefined;
+    id?: GraphQLTypes['string_filter_operators'] | undefined;
+    name?: GraphQLTypes['string_filter_operators'] | undefined;
+    _and?: Array<GraphQLTypes['skills_filter'] | undefined> | undefined;
+    _or?: Array<GraphQLTypes['skills_filter'] | undefined> | undefined;
+  };
   ['directus_roles']: {
     __typename: 'directus_roles';
     id?: string | undefined;
@@ -7815,11 +8033,41 @@ export type GraphQLTypes = {
     users?: Array<GraphQLTypes['directus_users'] | undefined> | undefined;
     users_func?: GraphQLTypes['count_functions'] | undefined;
   };
+  ['collaborators']: {
+    __typename: 'collaborators';
+    id?: string | undefined;
+    user_created?: GraphQLTypes['directus_users'] | undefined;
+    date_created?: GraphQLTypes['Date'] | undefined;
+    date_created_func?: GraphQLTypes['datetime_functions'] | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functions'] | undefined;
+    account?: GraphQLTypes['directus_users'] | undefined;
+    display_name?: string | undefined;
+    payment_eth_address?: string | undefined;
+    role?: GraphQLTypes['collaborator_roles'] | undefined;
+  };
+  ['collaborator_roles']: {
+    __typename: 'collaborator_roles';
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
+  ['junction_directus_users_skills']: {
+    __typename: 'junction_directus_users_skills';
+    id?: string | undefined;
+    directus_users_id?: GraphQLTypes['directus_users'] | undefined;
+    skills_id?: GraphQLTypes['skills'] | undefined;
+  };
+  ['skills']: {
+    __typename: 'skills';
+    description?: string | undefined;
+    id?: string | undefined;
+    name: string;
+  };
   ['products']: {
     __typename: 'products';
     brand_id?: GraphQLTypes['brands'] | undefined;
     brand_reward_share?: number | undefined;
-    collaborator_reward_share?: number | undefined;
     created_at?: GraphQLTypes['Date'] | undefined;
     created_at_func?: GraphQLTypes['datetime_functions'] | undefined;
     description?: string | undefined;
@@ -7841,10 +8089,7 @@ export type GraphQLTypes = {
     clo3d_file?: GraphQLTypes['directus_files'] | undefined;
     product_stage?: GraphQLTypes['stages'] | undefined;
     nft_token_id?: number | undefined;
-    collaborators?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    collaborators_func?: GraphQLTypes['count_functions'] | undefined;
+    contributor_reward_share?: number | undefined;
     production_methods?:
       | Array<GraphQLTypes['products_production_methods'] | undefined>
       | undefined;
@@ -7865,6 +8110,10 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['products_design_files'] | undefined>
       | undefined;
     design_files_func?: GraphQLTypes['count_functions'] | undefined;
+    contributors?:
+      | Array<GraphQLTypes['products_contributors'] | undefined>
+      | undefined;
+    contributors_func?: GraphQLTypes['count_functions'] | undefined;
   };
   ['brands_filter']: {
     created_at?: GraphQLTypes['date_filter_operators'] | undefined;
@@ -7882,17 +8131,14 @@ export type GraphQLTypes = {
     notion_id?: GraphQLTypes['string_filter_operators'] | undefined;
     products?: GraphQLTypes['products_filter'] | undefined;
     products_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
-    members?: GraphQLTypes['brands_users_filter'] | undefined;
-    members_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
+    users?: GraphQLTypes['brands_directus_users_filter'] | undefined;
+    users_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
     _and?: Array<GraphQLTypes['brands_filter'] | undefined> | undefined;
     _or?: Array<GraphQLTypes['brands_filter'] | undefined> | undefined;
   };
   ['products_filter']: {
     brand_id?: GraphQLTypes['brands_filter'] | undefined;
     brand_reward_share?: GraphQLTypes['number_filter_operators'] | undefined;
-    collaborator_reward_share?:
-      | GraphQLTypes['number_filter_operators']
-      | undefined;
     created_at?: GraphQLTypes['date_filter_operators'] | undefined;
     created_at_func?:
       | GraphQLTypes['datetime_function_filter_operators']
@@ -7918,9 +8164,8 @@ export type GraphQLTypes = {
     clo3d_file?: GraphQLTypes['directus_files_filter'] | undefined;
     product_stage?: GraphQLTypes['stages_filter'] | undefined;
     nft_token_id?: GraphQLTypes['number_filter_operators'] | undefined;
-    collaborators?: GraphQLTypes['product_collaborators_filter'] | undefined;
-    collaborators_func?:
-      | GraphQLTypes['count_function_filter_operators']
+    contributor_reward_share?:
+      | GraphQLTypes['number_filter_operators']
       | undefined;
     production_methods?:
       | GraphQLTypes['products_production_methods_filter']
@@ -7944,6 +8189,10 @@ export type GraphQLTypes = {
     content_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
     design_files?: GraphQLTypes['products_design_files_filter'] | undefined;
     design_files_func?:
+      | GraphQLTypes['count_function_filter_operators']
+      | undefined;
+    contributors?: GraphQLTypes['products_contributors_filter'] | undefined;
+    contributors_func?:
       | GraphQLTypes['count_function_filter_operators']
       | undefined;
     _and?: Array<GraphQLTypes['products_filter'] | undefined> | undefined;
@@ -8127,75 +8376,6 @@ export type GraphQLTypes = {
     _and?: Array<GraphQLTypes['stages_filter'] | undefined> | undefined;
     _or?: Array<GraphQLTypes['stages_filter'] | undefined> | undefined;
   };
-  ['product_collaborators_filter']: {
-    collaboration_share?: GraphQLTypes['number_filter_operators'] | undefined;
-    collaborator_id?: GraphQLTypes['users_filter'] | undefined;
-    id?: GraphQLTypes['string_filter_operators'] | undefined;
-    product_id?: GraphQLTypes['products_filter'] | undefined;
-    role?: GraphQLTypes['collaborator_roles_filter'] | undefined;
-    _and?:
-      | Array<GraphQLTypes['product_collaborators_filter'] | undefined>
-      | undefined;
-    _or?:
-      | Array<GraphQLTypes['product_collaborators_filter'] | undefined>
-      | undefined;
-  };
-  ['users_filter']: {
-    created_at?: GraphQLTypes['date_filter_operators'] | undefined;
-    created_at_func?:
-      | GraphQLTypes['datetime_function_filter_operators']
-      | undefined;
-    discord_handle?: GraphQLTypes['string_filter_operators'] | undefined;
-    discord_id?: GraphQLTypes['string_filter_operators'] | undefined;
-    eth_address?: GraphQLTypes['string_filter_operators'] | undefined;
-    github_handle?: GraphQLTypes['string_filter_operators'] | undefined;
-    id?: GraphQLTypes['string_filter_operators'] | undefined;
-    name?: GraphQLTypes['string_filter_operators'] | undefined;
-    timezone?: GraphQLTypes['string_filter_operators'] | undefined;
-    twitter_handle?: GraphQLTypes['string_filter_operators'] | undefined;
-    brands?: GraphQLTypes['brands_users_filter'] | undefined;
-    brands_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
-    products?: GraphQLTypes['product_collaborators_filter'] | undefined;
-    products_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
-    skills?: GraphQLTypes['users_skills_filter'] | undefined;
-    skills_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
-    _and?: Array<GraphQLTypes['users_filter'] | undefined> | undefined;
-    _or?: Array<GraphQLTypes['users_filter'] | undefined> | undefined;
-  };
-  ['brands_users_filter']: {
-    brands_id?: GraphQLTypes['brands_filter'] | undefined;
-    id?: GraphQLTypes['number_filter_operators'] | undefined;
-    users_id?: GraphQLTypes['users_filter'] | undefined;
-    _and?: Array<GraphQLTypes['brands_users_filter'] | undefined> | undefined;
-    _or?: Array<GraphQLTypes['brands_users_filter'] | undefined> | undefined;
-  };
-  ['users_skills_filter']: {
-    id?: GraphQLTypes['number_filter_operators'] | undefined;
-    skills_id?: GraphQLTypes['skills_filter'] | undefined;
-    users_id?: GraphQLTypes['users_filter'] | undefined;
-    _and?: Array<GraphQLTypes['users_skills_filter'] | undefined> | undefined;
-    _or?: Array<GraphQLTypes['users_skills_filter'] | undefined> | undefined;
-  };
-  ['skills_filter']: {
-    description?: GraphQLTypes['string_filter_operators'] | undefined;
-    id?: GraphQLTypes['string_filter_operators'] | undefined;
-    name?: GraphQLTypes['string_filter_operators'] | undefined;
-    users?: GraphQLTypes['users_skills_filter'] | undefined;
-    users_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
-    _and?: Array<GraphQLTypes['skills_filter'] | undefined> | undefined;
-    _or?: Array<GraphQLTypes['skills_filter'] | undefined> | undefined;
-  };
-  ['collaborator_roles_filter']: {
-    description?: GraphQLTypes['string_filter_operators'] | undefined;
-    id?: GraphQLTypes['number_filter_operators'] | undefined;
-    name?: GraphQLTypes['string_filter_operators'] | undefined;
-    _and?:
-      | Array<GraphQLTypes['collaborator_roles_filter'] | undefined>
-      | undefined;
-    _or?:
-      | Array<GraphQLTypes['collaborator_roles_filter'] | undefined>
-      | undefined;
-  };
   ['products_production_methods_filter']: {
     id?: GraphQLTypes['number_filter_operators'] | undefined;
     production_methods_id?:
@@ -8271,6 +8451,30 @@ export type GraphQLTypes = {
       | undefined;
     _or?:
       | Array<GraphQLTypes['products_design_files_filter'] | undefined>
+      | undefined;
+  };
+  ['products_contributors_filter']: {
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    products_id?: GraphQLTypes['products_filter'] | undefined;
+    collaborators_id?: GraphQLTypes['collaborators_filter'] | undefined;
+    contribution_share?: GraphQLTypes['number_filter_operators'] | undefined;
+    robot_earned?: GraphQLTypes['number_filter_operators'] | undefined;
+    _and?:
+      | Array<GraphQLTypes['products_contributors_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<GraphQLTypes['products_contributors_filter'] | undefined>
+      | undefined;
+  };
+  ['brands_directus_users_filter']: {
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    brands_id?: GraphQLTypes['brands_filter'] | undefined;
+    directus_users_id?: GraphQLTypes['directus_users_filter'] | undefined;
+    _and?:
+      | Array<GraphQLTypes['brands_directus_users_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<GraphQLTypes['brands_directus_users_filter'] | undefined>
       | undefined;
   };
   ['fulfillers']: {
@@ -8388,61 +8592,6 @@ export type GraphQLTypes = {
     sort?: number | undefined;
     description?: string | undefined;
   };
-  ['product_collaborators']: {
-    __typename: 'product_collaborators';
-    collaboration_share?: number | undefined;
-    collaborator_id?: GraphQLTypes['users'] | undefined;
-    id?: string | undefined;
-    product_id?: GraphQLTypes['products'] | undefined;
-    role?: GraphQLTypes['collaborator_roles'] | undefined;
-  };
-  ['users']: {
-    __typename: 'users';
-    created_at: GraphQLTypes['Date'];
-    created_at_func?: GraphQLTypes['datetime_functions'] | undefined;
-    discord_handle?: string | undefined;
-    discord_id?: string | undefined;
-    eth_address?: string | undefined;
-    github_handle?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    timezone?: string | undefined;
-    twitter_handle?: string | undefined;
-    brands?: Array<GraphQLTypes['brands_users'] | undefined> | undefined;
-    brands_func?: GraphQLTypes['count_functions'] | undefined;
-    products?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    products_func?: GraphQLTypes['count_functions'] | undefined;
-    skills?: Array<GraphQLTypes['users_skills'] | undefined> | undefined;
-    skills_func?: GraphQLTypes['count_functions'] | undefined;
-  };
-  ['brands_users']: {
-    __typename: 'brands_users';
-    brands_id?: GraphQLTypes['brands'] | undefined;
-    id?: string | undefined;
-    users_id?: GraphQLTypes['users'] | undefined;
-  };
-  ['users_skills']: {
-    __typename: 'users_skills';
-    id?: string | undefined;
-    skills_id?: GraphQLTypes['skills'] | undefined;
-    users_id?: GraphQLTypes['users'] | undefined;
-  };
-  ['skills']: {
-    __typename: 'skills';
-    description?: string | undefined;
-    id?: string | undefined;
-    name: string;
-    users?: Array<GraphQLTypes['users_skills'] | undefined> | undefined;
-    users_func?: GraphQLTypes['count_functions'] | undefined;
-  };
-  ['collaborator_roles']: {
-    __typename: 'collaborator_roles';
-    description?: string | undefined;
-    id?: string | undefined;
-    name: string;
-  };
   ['products_production_methods']: {
     __typename: 'products_production_methods';
     id?: string | undefined;
@@ -8489,6 +8638,20 @@ export type GraphQLTypes = {
     products_id?: GraphQLTypes['products'] | undefined;
     directus_files_id?: GraphQLTypes['directus_files'] | undefined;
   };
+  ['products_contributors']: {
+    __typename: 'products_contributors';
+    id?: string | undefined;
+    products_id?: GraphQLTypes['products'] | undefined;
+    collaborators_id?: GraphQLTypes['collaborators'] | undefined;
+    contribution_share?: number | undefined;
+    robot_earned?: number | undefined;
+  };
+  ['brands_directus_users']: {
+    __typename: 'brands_directus_users';
+    id?: string | undefined;
+    brands_id?: GraphQLTypes['brands'] | undefined;
+    directus_users_id?: GraphQLTypes['directus_users'] | undefined;
+  };
   ['brands_aggregated']: {
     __typename: 'brands_aggregated';
     group?: GraphQLTypes['JSON'] | undefined;
@@ -8508,51 +8671,7 @@ export type GraphQLTypes = {
     website_url?: number | undefined;
     notion_id?: number | undefined;
     products?: number | undefined;
-    members?: number | undefined;
-  };
-  ['brands_users_aggregated']: {
-    __typename: 'brands_users_aggregated';
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['brands_users_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    countDistinct?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    avgDistinct?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    sumDistinct?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    min?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['brands_users_aggregated_fields'] | undefined;
-  };
-  ['brands_users_aggregated_count']: {
-    __typename: 'brands_users_aggregated_count';
-    brands_id?: number | undefined;
-    id?: number | undefined;
-    users_id?: number | undefined;
-  };
-  ['brands_users_aggregated_fields']: {
-    __typename: 'brands_users_aggregated_fields';
-    id?: number | undefined;
-  };
-  ['users_aggregated']: {
-    __typename: 'users_aggregated';
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['users_aggregated_count'] | undefined;
-  };
-  ['users_aggregated_count']: {
-    __typename: 'users_aggregated_count';
-    created_at?: number | undefined;
-    discord_handle?: number | undefined;
-    discord_id?: number | undefined;
-    eth_address?: number | undefined;
-    github_handle?: number | undefined;
-    id?: number | undefined;
-    name?: number | undefined;
-    timezone?: number | undefined;
-    twitter_handle?: number | undefined;
-    brands?: number | undefined;
-    products?: number | undefined;
-    skills?: number | undefined;
+    users?: number | undefined;
   };
   ['producers_aggregated']: {
     __typename: 'producers_aggregated';
@@ -8669,40 +8788,6 @@ export type GraphQLTypes = {
     /** List of producers that are cable of this production method */
     producers?: number | undefined;
     production_materials?: number | undefined;
-  };
-  ['product_collaborators_aggregated']: {
-    __typename: 'product_collaborators_aggregated';
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['product_collaborators_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['product_collaborators_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['product_collaborators_aggregated_fields'] | undefined;
-    countDistinct?:
-      | GraphQLTypes['product_collaborators_aggregated_fields']
-      | undefined;
-    avgDistinct?:
-      | GraphQLTypes['product_collaborators_aggregated_fields']
-      | undefined;
-    sumDistinct?:
-      | GraphQLTypes['product_collaborators_aggregated_fields']
-      | undefined;
-    min?: GraphQLTypes['product_collaborators_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['product_collaborators_aggregated_fields'] | undefined;
-  };
-  ['product_collaborators_aggregated_count']: {
-    __typename: 'product_collaborators_aggregated_count';
-    collaboration_share?: number | undefined;
-    collaborator_id?: number | undefined;
-    id?: number | undefined;
-    product_id?: number | undefined;
-    /** Designer, Technician, etc. */
-    role?: number | undefined;
-  };
-  ['product_collaborators_aggregated_fields']: {
-    __typename: 'product_collaborators_aggregated_fields';
-    collaboration_share?: number | undefined;
-    /** Designer, Technician, etc. */
-    role?: number | undefined;
   };
   ['collaborator_roles_aggregated']: {
     __typename: 'collaborator_roles_aggregated';
@@ -8892,30 +8977,6 @@ export type GraphQLTypes = {
     description?: number | undefined;
     id?: number | undefined;
     name?: number | undefined;
-    users?: number | undefined;
-  };
-  ['users_skills_aggregated']: {
-    __typename: 'users_skills_aggregated';
-    group?: GraphQLTypes['JSON'] | undefined;
-    countAll?: number | undefined;
-    count?: GraphQLTypes['users_skills_aggregated_count'] | undefined;
-    avg?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    sum?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    countDistinct?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    avgDistinct?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    sumDistinct?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    min?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-    max?: GraphQLTypes['users_skills_aggregated_fields'] | undefined;
-  };
-  ['users_skills_aggregated_count']: {
-    __typename: 'users_skills_aggregated_count';
-    id?: number | undefined;
-    skills_id?: number | undefined;
-    users_id?: number | undefined;
-  };
-  ['users_skills_aggregated_fields']: {
-    __typename: 'users_skills_aggregated_fields';
-    id?: number | undefined;
   };
   ['production_materials_aggregated']: {
     __typename: 'production_materials_aggregated';
@@ -8977,7 +9038,6 @@ export type GraphQLTypes = {
     __typename: 'products_aggregated_count';
     brand_id?: number | undefined;
     brand_reward_share?: number | undefined;
-    collaborator_reward_share?: number | undefined;
     created_at?: number | undefined;
     description?: number | undefined;
     discord_channel_id?: number | undefined;
@@ -8997,21 +9057,22 @@ export type GraphQLTypes = {
     clo3d_file?: number | undefined;
     product_stage?: number | undefined;
     nft_token_id?: number | undefined;
-    collaborators?: number | undefined;
+    contributor_reward_share?: number | undefined;
     production_methods?: number | undefined;
     images?: number | undefined;
     materials?: number | undefined;
     wearable_files?: number | undefined;
     content?: number | undefined;
     design_files?: number | undefined;
+    contributors?: number | undefined;
   };
   ['products_aggregated_fields']: {
     __typename: 'products_aggregated_fields';
     brand_reward_share?: number | undefined;
-    collaborator_reward_share?: number | undefined;
     production_cost?: number | undefined;
     season?: number | undefined;
     nft_token_id?: number | undefined;
+    contributor_reward_share?: number | undefined;
   };
   ['products_production_materials_aggregated']: {
     __typename: 'products_production_materials_aggregated';
@@ -9190,16 +9251,141 @@ export type GraphQLTypes = {
     __typename: 'stages_aggregated_fields';
     sort?: number | undefined;
   };
+  ['junction_directus_users_skills_aggregated']: {
+    __typename: 'junction_directus_users_skills_aggregated';
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_count']
+      | undefined;
+    avg?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    sum?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    countDistinct?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    min?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+    max?:
+      | GraphQLTypes['junction_directus_users_skills_aggregated_fields']
+      | undefined;
+  };
+  ['junction_directus_users_skills_aggregated_count']: {
+    __typename: 'junction_directus_users_skills_aggregated_count';
+    id?: number | undefined;
+    directus_users_id?: number | undefined;
+    skills_id?: number | undefined;
+  };
+  ['junction_directus_users_skills_aggregated_fields']: {
+    __typename: 'junction_directus_users_skills_aggregated_fields';
+    id?: number | undefined;
+  };
+  ['collaborators_aggregated']: {
+    __typename: 'collaborators_aggregated';
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['collaborators_aggregated_count'] | undefined;
+    avg?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    sum?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    countDistinct?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    avgDistinct?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    sumDistinct?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    min?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+    max?: GraphQLTypes['collaborators_aggregated_fields'] | undefined;
+  };
+  ['collaborators_aggregated_count']: {
+    __typename: 'collaborators_aggregated_count';
+    id?: number | undefined;
+    user_created?: number | undefined;
+    date_created?: number | undefined;
+    date_updated?: number | undefined;
+    account?: number | undefined;
+    display_name?: number | undefined;
+    payment_eth_address?: number | undefined;
+    role?: number | undefined;
+  };
+  ['collaborators_aggregated_fields']: {
+    __typename: 'collaborators_aggregated_fields';
+    id?: number | undefined;
+    role?: number | undefined;
+  };
+  ['brands_directus_users_aggregated']: {
+    __typename: 'brands_directus_users_aggregated';
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['brands_directus_users_aggregated_count'] | undefined;
+    avg?: GraphQLTypes['brands_directus_users_aggregated_fields'] | undefined;
+    sum?: GraphQLTypes['brands_directus_users_aggregated_fields'] | undefined;
+    countDistinct?:
+      | GraphQLTypes['brands_directus_users_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['brands_directus_users_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['brands_directus_users_aggregated_fields']
+      | undefined;
+    min?: GraphQLTypes['brands_directus_users_aggregated_fields'] | undefined;
+    max?: GraphQLTypes['brands_directus_users_aggregated_fields'] | undefined;
+  };
+  ['brands_directus_users_aggregated_count']: {
+    __typename: 'brands_directus_users_aggregated_count';
+    id?: number | undefined;
+    brands_id?: number | undefined;
+    directus_users_id?: number | undefined;
+  };
+  ['brands_directus_users_aggregated_fields']: {
+    __typename: 'brands_directus_users_aggregated_fields';
+    id?: number | undefined;
+  };
+  ['products_contributors_aggregated']: {
+    __typename: 'products_contributors_aggregated';
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?: GraphQLTypes['products_contributors_aggregated_count'] | undefined;
+    avg?: GraphQLTypes['products_contributors_aggregated_fields'] | undefined;
+    sum?: GraphQLTypes['products_contributors_aggregated_fields'] | undefined;
+    countDistinct?:
+      | GraphQLTypes['products_contributors_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['products_contributors_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['products_contributors_aggregated_fields']
+      | undefined;
+    min?: GraphQLTypes['products_contributors_aggregated_fields'] | undefined;
+    max?: GraphQLTypes['products_contributors_aggregated_fields'] | undefined;
+  };
+  ['products_contributors_aggregated_count']: {
+    __typename: 'products_contributors_aggregated_count';
+    id?: number | undefined;
+    products_id?: number | undefined;
+    collaborators_id?: number | undefined;
+    contribution_share?: number | undefined;
+    robot_earned?: number | undefined;
+  };
+  ['products_contributors_aggregated_fields']: {
+    __typename: 'products_contributors_aggregated_fields';
+    id?: number | undefined;
+    collaborators_id?: number | undefined;
+    contribution_share?: number | undefined;
+    robot_earned?: number | undefined;
+  };
   ['Mutation']: {
     __typename: 'Mutation';
     create_brands_items?: Array<GraphQLTypes['brands'] | undefined> | undefined;
     create_brands_item?: GraphQLTypes['brands'] | undefined;
-    create_brands_users_items?:
-      | Array<GraphQLTypes['brands_users'] | undefined>
-      | undefined;
-    create_brands_users_item?: GraphQLTypes['brands_users'] | undefined;
-    create_users_items?: Array<GraphQLTypes['users'] | undefined> | undefined;
-    create_users_item?: GraphQLTypes['users'] | undefined;
     create_producers_items?:
       | Array<GraphQLTypes['producers'] | undefined>
       | undefined;
@@ -9221,12 +9407,6 @@ export type GraphQLTypes = {
       | undefined;
     create_production_methods_item?:
       | GraphQLTypes['production_methods']
-      | undefined;
-    create_product_collaborators_items?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    create_product_collaborators_item?:
-      | GraphQLTypes['product_collaborators']
       | undefined;
     create_collaborator_roles_items?:
       | Array<GraphQLTypes['collaborator_roles'] | undefined>
@@ -9262,10 +9442,6 @@ export type GraphQLTypes = {
       | undefined;
     create_skills_items?: Array<GraphQLTypes['skills'] | undefined> | undefined;
     create_skills_item?: GraphQLTypes['skills'] | undefined;
-    create_users_skills_items?:
-      | Array<GraphQLTypes['users_skills'] | undefined>
-      | undefined;
-    create_users_skills_item?: GraphQLTypes['users_skills'] | undefined;
     create_production_materials_items?:
       | Array<GraphQLTypes['production_materials'] | undefined>
       | undefined;
@@ -9304,14 +9480,30 @@ export type GraphQLTypes = {
     create_products_content_item?: GraphQLTypes['products_content'] | undefined;
     create_stages_items?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     create_stages_item?: GraphQLTypes['stages'] | undefined;
+    create_junction_directus_users_skills_items?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    create_junction_directus_users_skills_item?:
+      | GraphQLTypes['junction_directus_users_skills']
+      | undefined;
+    create_collaborators_items?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    create_collaborators_item?: GraphQLTypes['collaborators'] | undefined;
+    create_brands_directus_users_items?:
+      | Array<GraphQLTypes['brands_directus_users'] | undefined>
+      | undefined;
+    create_brands_directus_users_item?:
+      | GraphQLTypes['brands_directus_users']
+      | undefined;
+    create_products_contributors_items?:
+      | Array<GraphQLTypes['products_contributors'] | undefined>
+      | undefined;
+    create_products_contributors_item?:
+      | GraphQLTypes['products_contributors']
+      | undefined;
     update_brands_items?: Array<GraphQLTypes['brands'] | undefined> | undefined;
     update_brands_item?: GraphQLTypes['brands'] | undefined;
-    update_brands_users_items?:
-      | Array<GraphQLTypes['brands_users'] | undefined>
-      | undefined;
-    update_brands_users_item?: GraphQLTypes['brands_users'] | undefined;
-    update_users_items?: Array<GraphQLTypes['users'] | undefined> | undefined;
-    update_users_item?: GraphQLTypes['users'] | undefined;
     update_producers_items?:
       | Array<GraphQLTypes['producers'] | undefined>
       | undefined;
@@ -9333,12 +9525,6 @@ export type GraphQLTypes = {
       | undefined;
     update_production_methods_item?:
       | GraphQLTypes['production_methods']
-      | undefined;
-    update_product_collaborators_items?:
-      | Array<GraphQLTypes['product_collaborators'] | undefined>
-      | undefined;
-    update_product_collaborators_item?:
-      | GraphQLTypes['product_collaborators']
       | undefined;
     update_collaborator_roles_items?:
       | Array<GraphQLTypes['collaborator_roles'] | undefined>
@@ -9374,10 +9560,6 @@ export type GraphQLTypes = {
       | undefined;
     update_skills_items?: Array<GraphQLTypes['skills'] | undefined> | undefined;
     update_skills_item?: GraphQLTypes['skills'] | undefined;
-    update_users_skills_items?:
-      | Array<GraphQLTypes['users_skills'] | undefined>
-      | undefined;
-    update_users_skills_item?: GraphQLTypes['users_skills'] | undefined;
     update_production_materials_items?:
       | Array<GraphQLTypes['production_materials'] | undefined>
       | undefined;
@@ -9416,12 +9598,30 @@ export type GraphQLTypes = {
     update_products_content_item?: GraphQLTypes['products_content'] | undefined;
     update_stages_items?: Array<GraphQLTypes['stages'] | undefined> | undefined;
     update_stages_item?: GraphQLTypes['stages'] | undefined;
+    update_junction_directus_users_skills_items?:
+      | Array<GraphQLTypes['junction_directus_users_skills'] | undefined>
+      | undefined;
+    update_junction_directus_users_skills_item?:
+      | GraphQLTypes['junction_directus_users_skills']
+      | undefined;
+    update_collaborators_items?:
+      | Array<GraphQLTypes['collaborators'] | undefined>
+      | undefined;
+    update_collaborators_item?: GraphQLTypes['collaborators'] | undefined;
+    update_brands_directus_users_items?:
+      | Array<GraphQLTypes['brands_directus_users'] | undefined>
+      | undefined;
+    update_brands_directus_users_item?:
+      | GraphQLTypes['brands_directus_users']
+      | undefined;
+    update_products_contributors_items?:
+      | Array<GraphQLTypes['products_contributors'] | undefined>
+      | undefined;
+    update_products_contributors_item?:
+      | GraphQLTypes['products_contributors']
+      | undefined;
     delete_brands_items?: GraphQLTypes['delete_many'] | undefined;
     delete_brands_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_brands_users_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_brands_users_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_users_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_users_item?: GraphQLTypes['delete_one'] | undefined;
     delete_producers_items?: GraphQLTypes['delete_many'] | undefined;
     delete_producers_item?: GraphQLTypes['delete_one'] | undefined;
     delete_producers_production_materials_items?:
@@ -9438,10 +9638,6 @@ export type GraphQLTypes = {
       | undefined;
     delete_production_methods_items?: GraphQLTypes['delete_many'] | undefined;
     delete_production_methods_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_product_collaborators_items?:
-      | GraphQLTypes['delete_many']
-      | undefined;
-    delete_product_collaborators_item?: GraphQLTypes['delete_one'] | undefined;
     delete_collaborator_roles_items?: GraphQLTypes['delete_many'] | undefined;
     delete_collaborator_roles_item?: GraphQLTypes['delete_one'] | undefined;
     delete_production_materials_production_methods_items?:
@@ -9464,8 +9660,6 @@ export type GraphQLTypes = {
       | undefined;
     delete_skills_items?: GraphQLTypes['delete_many'] | undefined;
     delete_skills_item?: GraphQLTypes['delete_one'] | undefined;
-    delete_users_skills_items?: GraphQLTypes['delete_many'] | undefined;
-    delete_users_skills_item?: GraphQLTypes['delete_one'] | undefined;
     delete_production_materials_items?: GraphQLTypes['delete_many'] | undefined;
     delete_production_materials_item?: GraphQLTypes['delete_one'] | undefined;
     delete_products_items?: GraphQLTypes['delete_many'] | undefined;
@@ -9488,6 +9682,22 @@ export type GraphQLTypes = {
     delete_products_content_item?: GraphQLTypes['delete_one'] | undefined;
     delete_stages_items?: GraphQLTypes['delete_many'] | undefined;
     delete_stages_item?: GraphQLTypes['delete_one'] | undefined;
+    delete_junction_directus_users_skills_items?:
+      | GraphQLTypes['delete_many']
+      | undefined;
+    delete_junction_directus_users_skills_item?:
+      | GraphQLTypes['delete_one']
+      | undefined;
+    delete_collaborators_items?: GraphQLTypes['delete_many'] | undefined;
+    delete_collaborators_item?: GraphQLTypes['delete_one'] | undefined;
+    delete_brands_directus_users_items?:
+      | GraphQLTypes['delete_many']
+      | undefined;
+    delete_brands_directus_users_item?: GraphQLTypes['delete_one'] | undefined;
+    delete_products_contributors_items?:
+      | GraphQLTypes['delete_many']
+      | undefined;
+    delete_products_contributors_item?: GraphQLTypes['delete_one'] | undefined;
   };
   ['create_brands_input']: {
     created_at?: GraphQLTypes['Date'] | undefined;
@@ -9505,10 +9715,10 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['create_products_input'] | undefined>
       | undefined;
     products_func?: GraphQLTypes['count_functionsInput'] | undefined;
-    members?:
-      | Array<GraphQLTypes['create_brands_users_input'] | undefined>
+    users?:
+      | Array<GraphQLTypes['create_brands_directus_users_input'] | undefined>
       | undefined;
-    members_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    users_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
   ['datetime_functionsInput']: {
     year?: number | undefined;
@@ -9578,6 +9788,21 @@ export type GraphQLTypes = {
     auth_data?: GraphQLTypes['JSON'] | undefined;
     auth_data_func?: GraphQLTypes['count_functionsInput'] | undefined;
     email_notifications?: boolean | undefined;
+    timezone?: string | undefined;
+    discord_handle?: string | undefined;
+    twitter_handle?: string | undefined;
+    discord_id?: string | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['create_collaborators_input'] | undefined>
+      | undefined;
+    collaborators_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    skills?:
+      | Array<
+          | GraphQLTypes['create_junction_directus_users_skills_input']
+          | undefined
+        >
+      | undefined;
+    skills_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
   ['count_functionsInput']: {
     count?: number | undefined;
@@ -9596,10 +9821,36 @@ export type GraphQLTypes = {
       | undefined;
     users_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
+  ['create_collaborators_input']: {
+    id?: string | undefined;
+    user_created?: GraphQLTypes['create_directus_users_input'] | undefined;
+    date_created?: GraphQLTypes['Date'] | undefined;
+    date_created_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
+    account?: GraphQLTypes['create_directus_users_input'] | undefined;
+    display_name?: string | undefined;
+    payment_eth_address?: string | undefined;
+    role?: GraphQLTypes['create_collaborator_roles_input'] | undefined;
+  };
+  ['create_collaborator_roles_input']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
+  ['create_junction_directus_users_skills_input']: {
+    id?: string | undefined;
+    directus_users_id?: GraphQLTypes['create_directus_users_input'] | undefined;
+    skills_id?: GraphQLTypes['create_skills_input'] | undefined;
+  };
+  ['create_skills_input']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name: string;
+  };
   ['create_products_input']: {
     brand_id?: GraphQLTypes['create_brands_input'] | undefined;
     brand_reward_share?: number | undefined;
-    collaborator_reward_share?: number | undefined;
     created_at?: GraphQLTypes['Date'] | undefined;
     created_at_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
     description?: string | undefined;
@@ -9621,10 +9872,7 @@ export type GraphQLTypes = {
     clo3d_file?: GraphQLTypes['create_directus_files_input'] | undefined;
     product_stage?: GraphQLTypes['create_stages_input'] | undefined;
     nft_token_id?: number | undefined;
-    collaborators?:
-      | Array<GraphQLTypes['create_product_collaborators_input'] | undefined>
-      | undefined;
-    collaborators_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    contributor_reward_share?: number | undefined;
     production_methods?:
       | Array<
           GraphQLTypes['create_products_production_methods_input'] | undefined
@@ -9653,6 +9901,10 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['create_products_design_files_input'] | undefined>
       | undefined;
     design_files_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    contributors?:
+      | Array<GraphQLTypes['create_products_contributors_input'] | undefined>
+      | undefined;
+    contributors_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
   ['create_fulfillers_input']: {
     address?: string | undefined;
@@ -9782,61 +10034,6 @@ export type GraphQLTypes = {
     sort?: number | undefined;
     description?: string | undefined;
   };
-  ['create_product_collaborators_input']: {
-    collaboration_share?: number | undefined;
-    collaborator_id?: GraphQLTypes['create_users_input'] | undefined;
-    id?: string | undefined;
-    product_id?: GraphQLTypes['create_products_input'] | undefined;
-    role?: GraphQLTypes['create_collaborator_roles_input'] | undefined;
-  };
-  ['create_users_input']: {
-    created_at: GraphQLTypes['Date'];
-    created_at_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
-    discord_handle?: string | undefined;
-    discord_id?: string | undefined;
-    eth_address?: string | undefined;
-    github_handle?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    timezone?: string | undefined;
-    twitter_handle?: string | undefined;
-    brands?:
-      | Array<GraphQLTypes['create_brands_users_input'] | undefined>
-      | undefined;
-    brands_func?: GraphQLTypes['count_functionsInput'] | undefined;
-    products?:
-      | Array<GraphQLTypes['create_product_collaborators_input'] | undefined>
-      | undefined;
-    products_func?: GraphQLTypes['count_functionsInput'] | undefined;
-    skills?:
-      | Array<GraphQLTypes['create_users_skills_input'] | undefined>
-      | undefined;
-    skills_func?: GraphQLTypes['count_functionsInput'] | undefined;
-  };
-  ['create_brands_users_input']: {
-    brands_id?: GraphQLTypes['create_brands_input'] | undefined;
-    id?: string | undefined;
-    users_id?: GraphQLTypes['create_users_input'] | undefined;
-  };
-  ['create_users_skills_input']: {
-    id?: string | undefined;
-    skills_id?: GraphQLTypes['create_skills_input'] | undefined;
-    users_id?: GraphQLTypes['create_users_input'] | undefined;
-  };
-  ['create_skills_input']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name: string;
-    users?:
-      | Array<GraphQLTypes['create_users_skills_input'] | undefined>
-      | undefined;
-    users_func?: GraphQLTypes['count_functionsInput'] | undefined;
-  };
-  ['create_collaborator_roles_input']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name: string;
-  };
   ['create_products_production_methods_input']: {
     id?: string | undefined;
     production_methods_id?:
@@ -9880,6 +10077,18 @@ export type GraphQLTypes = {
     products_id?: GraphQLTypes['create_products_input'] | undefined;
     directus_files_id?: GraphQLTypes['create_directus_files_input'] | undefined;
   };
+  ['create_products_contributors_input']: {
+    id?: string | undefined;
+    products_id?: GraphQLTypes['create_products_input'] | undefined;
+    collaborators_id?: GraphQLTypes['create_collaborators_input'] | undefined;
+    contribution_share?: number | undefined;
+    robot_earned?: number | undefined;
+  };
+  ['create_brands_directus_users_input']: {
+    id?: string | undefined;
+    brands_id?: GraphQLTypes['create_brands_input'] | undefined;
+    directus_users_id?: GraphQLTypes['create_directus_users_input'] | undefined;
+  };
   ['update_brands_input']: {
     created_at?: GraphQLTypes['Date'] | undefined;
     created_at_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
@@ -9896,10 +10105,10 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['update_products_input'] | undefined>
       | undefined;
     products_func?: GraphQLTypes['count_functionsInput'] | undefined;
-    members?:
-      | Array<GraphQLTypes['update_brands_users_input'] | undefined>
+    users?:
+      | Array<GraphQLTypes['update_brands_directus_users_input'] | undefined>
       | undefined;
-    members_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    users_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
   ['update_directus_files_input']: {
     id?: string | undefined;
@@ -9959,6 +10168,21 @@ export type GraphQLTypes = {
     auth_data?: GraphQLTypes['JSON'] | undefined;
     auth_data_func?: GraphQLTypes['count_functionsInput'] | undefined;
     email_notifications?: boolean | undefined;
+    timezone?: string | undefined;
+    discord_handle?: string | undefined;
+    twitter_handle?: string | undefined;
+    discord_id?: string | undefined;
+    collaborators?:
+      | Array<GraphQLTypes['update_collaborators_input'] | undefined>
+      | undefined;
+    collaborators_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    skills?:
+      | Array<
+          | GraphQLTypes['update_junction_directus_users_skills_input']
+          | undefined
+        >
+      | undefined;
+    skills_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
   ['update_directus_roles_input']: {
     id?: string | undefined;
@@ -9974,10 +10198,36 @@ export type GraphQLTypes = {
       | undefined;
     users_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
+  ['update_collaborators_input']: {
+    id?: string | undefined;
+    user_created?: GraphQLTypes['update_directus_users_input'] | undefined;
+    date_created?: GraphQLTypes['Date'] | undefined;
+    date_created_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
+    account?: GraphQLTypes['update_directus_users_input'] | undefined;
+    display_name?: string | undefined;
+    payment_eth_address?: string | undefined;
+    role?: GraphQLTypes['update_collaborator_roles_input'] | undefined;
+  };
+  ['update_collaborator_roles_input']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
+  ['update_junction_directus_users_skills_input']: {
+    id?: string | undefined;
+    directus_users_id?: GraphQLTypes['update_directus_users_input'] | undefined;
+    skills_id?: GraphQLTypes['update_skills_input'] | undefined;
+  };
+  ['update_skills_input']: {
+    description?: string | undefined;
+    id?: string | undefined;
+    name?: string | undefined;
+  };
   ['update_products_input']: {
     brand_id?: GraphQLTypes['update_brands_input'] | undefined;
     brand_reward_share?: number | undefined;
-    collaborator_reward_share?: number | undefined;
     created_at?: GraphQLTypes['Date'] | undefined;
     created_at_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
     description?: string | undefined;
@@ -9999,10 +10249,7 @@ export type GraphQLTypes = {
     clo3d_file?: GraphQLTypes['update_directus_files_input'] | undefined;
     product_stage?: GraphQLTypes['update_stages_input'] | undefined;
     nft_token_id?: number | undefined;
-    collaborators?:
-      | Array<GraphQLTypes['update_product_collaborators_input'] | undefined>
-      | undefined;
-    collaborators_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    contributor_reward_share?: number | undefined;
     production_methods?:
       | Array<
           GraphQLTypes['update_products_production_methods_input'] | undefined
@@ -10031,6 +10278,10 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['update_products_design_files_input'] | undefined>
       | undefined;
     design_files_func?: GraphQLTypes['count_functionsInput'] | undefined;
+    contributors?:
+      | Array<GraphQLTypes['update_products_contributors_input'] | undefined>
+      | undefined;
+    contributors_func?: GraphQLTypes['count_functionsInput'] | undefined;
   };
   ['update_fulfillers_input']: {
     address?: string | undefined;
@@ -10160,61 +10411,6 @@ export type GraphQLTypes = {
     sort?: number | undefined;
     description?: string | undefined;
   };
-  ['update_product_collaborators_input']: {
-    collaboration_share?: number | undefined;
-    collaborator_id?: GraphQLTypes['update_users_input'] | undefined;
-    id?: string | undefined;
-    product_id?: GraphQLTypes['update_products_input'] | undefined;
-    role?: GraphQLTypes['update_collaborator_roles_input'] | undefined;
-  };
-  ['update_users_input']: {
-    created_at?: GraphQLTypes['Date'] | undefined;
-    created_at_func?: GraphQLTypes['datetime_functionsInput'] | undefined;
-    discord_handle?: string | undefined;
-    discord_id?: string | undefined;
-    eth_address?: string | undefined;
-    github_handle?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    timezone?: string | undefined;
-    twitter_handle?: string | undefined;
-    brands?:
-      | Array<GraphQLTypes['update_brands_users_input'] | undefined>
-      | undefined;
-    brands_func?: GraphQLTypes['count_functionsInput'] | undefined;
-    products?:
-      | Array<GraphQLTypes['update_product_collaborators_input'] | undefined>
-      | undefined;
-    products_func?: GraphQLTypes['count_functionsInput'] | undefined;
-    skills?:
-      | Array<GraphQLTypes['update_users_skills_input'] | undefined>
-      | undefined;
-    skills_func?: GraphQLTypes['count_functionsInput'] | undefined;
-  };
-  ['update_brands_users_input']: {
-    brands_id?: GraphQLTypes['update_brands_input'] | undefined;
-    id?: string | undefined;
-    users_id?: GraphQLTypes['update_users_input'] | undefined;
-  };
-  ['update_users_skills_input']: {
-    id?: string | undefined;
-    skills_id?: GraphQLTypes['update_skills_input'] | undefined;
-    users_id?: GraphQLTypes['update_users_input'] | undefined;
-  };
-  ['update_skills_input']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    users?:
-      | Array<GraphQLTypes['update_users_skills_input'] | undefined>
-      | undefined;
-    users_func?: GraphQLTypes['count_functionsInput'] | undefined;
-  };
-  ['update_collaborator_roles_input']: {
-    description?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-  };
   ['update_products_production_methods_input']: {
     id?: string | undefined;
     production_methods_id?:
@@ -10257,6 +10453,18 @@ export type GraphQLTypes = {
     id?: string | undefined;
     products_id?: GraphQLTypes['update_products_input'] | undefined;
     directus_files_id?: GraphQLTypes['update_directus_files_input'] | undefined;
+  };
+  ['update_products_contributors_input']: {
+    id?: string | undefined;
+    products_id?: GraphQLTypes['update_products_input'] | undefined;
+    collaborators_id?: GraphQLTypes['update_collaborators_input'] | undefined;
+    contribution_share?: number | undefined;
+    robot_earned?: number | undefined;
+  };
+  ['update_brands_directus_users_input']: {
+    id?: string | undefined;
+    brands_id?: GraphQLTypes['update_brands_input'] | undefined;
+    directus_users_id?: GraphQLTypes['update_directus_users_input'] | undefined;
   };
   ['delete_many']: {
     __typename: 'delete_many';

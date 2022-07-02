@@ -25,7 +25,6 @@ async function setNftTokenIds(): Promise<void> {
   for (let i = 0; i < products.length; i += 1) {
     const { id } = products[i];
     if (id) {
-      // eslint-disable-next-line no-await-in-loop
       await client('mutation')({
         update_products_item: [
           {

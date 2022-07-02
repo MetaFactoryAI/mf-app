@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 import fs from 'fs';
 
 import { useZeusVariables } from '../graphql/__generated__/zeus';
-import { client } from '../graphql/client';
+import { hasuraClient } from '../graphql/client';
 
 type Claim = {
   to: string;
@@ -28,7 +29,7 @@ async function insertMerkleClaims() {
   });
   const { $ } = variables;
   try {
-    const insertMerkleRootRes = await client.mutate(
+    const insertMerkleRootRes = await hasuraClient.mutate(
       {
         insert_robot_merkle_roots_one: [
           {

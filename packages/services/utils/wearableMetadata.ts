@@ -1,10 +1,11 @@
 import assert from 'assert';
 
-import { FileRes, ProductNftMetadataInfo } from '../../lib/selectors';
-import { Creator, FileData, WearableMetadata } from '../../types/wearables';
-import { CONFIG } from '../config';
-import { EXTENSION_MIME_TYPES } from '../filesHelpers';
-import { composeListIntoString } from '../stringHelpers';
+import { FileRes, ProductNftMetadataInfo } from '../lib/selectors';
+import { COLLABORATOR_ROLES } from '../mfos';
+import { Creator, FileData, WearableMetadata } from '../types/wearables';
+import { CONFIG } from './config';
+import { EXTENSION_MIME_TYPES } from './filesHelpers';
+import { composeListIntoString } from './stringHelpers';
 
 export const getUrlForFile = (file: FileRes | null | undefined): string => {
   if (!file) return '';
@@ -36,20 +37,27 @@ export const getMetadataForProduct = (
     }),
   );
 
-  const collaborators: Creator[] = (product.collaborators || []).map((c) => ({
-    name: c.collaborator_id?.name || '<anonymous>',
-    role: c.role?.name || 'Collaborator',
-    share: c.collaboration_share,
+  const contributors: Creator[] = (product.contributors || []).map((c) => ({
+    name: c.collaborators_id?.display_name || '<anonymous>',
+    role: c.collaborators_id?.role?.name || 'Collaborator',
+    share: c.contribution_share,
   }));
   const designer = composeListIntoString(
-    (product.collaborators || [])
-      .filter((c) => c.role?.name === 'Designer')
-      .map((c) => c.collaborator_id?.name),
+    (product.contributors || [])
+      .filter(
+        (c) =>
+          c.collaborators_id?.role?.name === COLLABORATOR_ROLES.designer.name,
+      )
+      .map((c) => c.collaborators_id?.display_name),
   );
   const technician = composeListIntoString(
-    (product.collaborators || [])
-      .filter((c) => c.role?.name === 'Technician')
-      .map((c) => c.collaborator_id?.name),
+    (product.contributors || [])
+      .filter(
+        (c) =>
+          c.collaborators_id?.role?.name ===
+          COLLABORATOR_ROLES.productionManager.name,
+      )
+      .map((c) => c.collaborators_id?.display_name),
   );
   const composition = composeListIntoString(
     product.materials?.map((m) => m.production_materials_id?.composition),
@@ -82,7 +90,7 @@ export const getMetadataForProduct = (
         : undefined,
       designer,
       technician,
-      creators: collaborators,
+      creators: contributors,
       releaseDate: product.release_date
         ? {
             name: 'Release Date',

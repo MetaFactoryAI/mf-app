@@ -29,6 +29,7 @@ export const productsSelector = Selector('products')({
   id: true,
   name: true,
   description: true,
+  shopify_id: true,
   notion_id: true,
 });
 
@@ -38,9 +39,7 @@ export type CreateProductRes = InputType<
 >;
 
 export const productsFilesSelector = Selector('products')({
-  id: true,
-  name: true,
-  notion_id: true,
+  ...productsSelector,
   clo3d_file: [
     {},
     {
@@ -89,7 +88,58 @@ export type ProductWithFiles = InputType<
   GraphQLTypes['products'],
   typeof productsFilesSelector
 >;
+export const collaboratorRolesSelector = Selector('collaborator_roles')({
+  name: true,
+  id: true,
+});
+export type CollaboratorRole = InputType<
+  GraphQLTypes['collaborator_roles'],
+  typeof collaboratorRolesSelector
+>;
 
+export const collaboratorsSelector = Selector('collaborators')({
+  id: true,
+  role: [{}, collaboratorRolesSelector],
+  display_name: true,
+  payment_eth_address: true,
+  account: [
+    {},
+    {
+      id: true,
+      first_name: true,
+    },
+  ],
+});
+
+export type CollaboratorResult = InputType<
+  GraphQLTypes['collaborators'],
+  typeof collaboratorsSelector
+>;
+
+export const productsContributorsSelector = Selector('products')({
+  ...productsSelector,
+  brand_id: [
+    {},
+    {
+      id: true,
+      name: true,
+      eth_address: true,
+    },
+  ],
+  contributors: [
+    {},
+    {
+      id: true,
+      contribution_share: true,
+      collaborators_id: [{}, collaboratorsSelector],
+    },
+  ],
+});
+
+export type ProductWithContributors = InputType<
+  GraphQLTypes['products'],
+  typeof productsContributorsSelector
+>;
 export const fileFormatsSelector = Selector('file_formats')({
   id: true,
   name: true,
@@ -129,15 +179,15 @@ export const productNftMetadataSelector = Selector('products')({
       ],
     },
   ],
-  collaborators: [
-    { sort: ['-collaboration_share'] },
+  contributors: [
+    { sort: ['-contribution_share'] },
     {
-      collaboration_share: true,
-      role: [{}, { name: true }],
-      collaborator_id: [
+      contribution_share: true,
+      collaborators_id: [
         {},
         {
-          name: true,
+          display_name: true,
+          role: [{}, { name: true }],
         },
       ],
     },

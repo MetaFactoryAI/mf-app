@@ -1,8 +1,8 @@
 import { order_by } from '../graphql/__generated__/zeus';
-import { client } from '../graphql/client';
+import { hasuraClient } from '../graphql/client';
 
 export async function setNftTokenIds(): Promise<void> {
-  const data = await client.query({
+  const data = await hasuraClient.query({
     robot_product: [
       {
         where: { nft_metadata: { _is_null: false } },
@@ -17,8 +17,7 @@ export async function setNftTokenIds(): Promise<void> {
   });
 
   for (let i = 0; i < data.robot_product.length; i += 1) {
-    // eslint-disable-next-line no-await-in-loop
-    await client.mutate({
+    await hasuraClient.mutate({
       update_robot_product_by_pk: [
         {
           pk_columns: { id: data.robot_product[i].id },

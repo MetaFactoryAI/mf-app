@@ -36,3 +36,34 @@ export const PRODUCT_STAGES = {
     description: 'All orders of product are fulfilled',
   },
 };
+
+export const COLLABORATOR_ROLES = {
+  designer: {
+    name: 'Designer',
+    description:
+      'Controls the product design aspects and transforms what the brand wants into a finalized design.',
+  },
+  accountManager: {
+    name: 'Account Manager',
+    description:
+      'Owns the relationship with the brand and communicates important info & feedback',
+  },
+  productionManager: {
+    name: 'Production Manager',
+    description:
+      'Owns the relationship with a producer and adjusts production requirements as necessary.',
+  },
+  wearablesDesigner: {
+    name: 'Wearables Designer',
+    description:
+      'Takes the completed product design and turns it into 3D wearables.',
+  },
+  brand: {
+    name: 'Brand',
+    description: 'The IP owners of the brand the product was created for',
+  },
+  other: {
+    name: 'Other',
+    description: 'Misc. contributions',
+  },
+};

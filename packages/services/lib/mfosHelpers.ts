@@ -1,29 +1,29 @@
 /* eslint-disable no-await-in-loop */
 import assert from 'assert';
 
-import { useZeusVariables } from '../graphql/__generated__/zeus';
-import { Client, createSystemClient, ValueTypes } from '../mfos';
-import { CONFIG } from '../utils/config';
+import { useZeusVariables, ValueTypes } from '../mfos';
+import { mfosClient } from '../mfos/client';
+import { Creator } from '../types/wearables';
+import { isAddressEqual } from '../utils/addressHelpers';
 import { getFiles } from '../utils/filesHelpers';
 import { logger } from '../utils/logger';
 import { getWearablesFolder } from '../utils/notion/productHelpers';
+import { getSystemUserByAddress, uploadFile } from './mfosSystemHelpers';
 import { ProductPageFile } from './notionHelpers';
 import {
   brandSelector,
+  CollaboratorResult,
+  CollaboratorRole,
+  collaboratorsSelector,
   CreateBrandRes,
   CreateProductRes,
   fileFormatsSelector,
   productsSelector,
+  ProductWithContributors,
   ProductWithFiles,
 } from './selectors';
 
-const systemClient = createSystemClient(
-  CONFIG.mfosSystemGraphqlUrl,
-  CONFIG.mfosGraphqlToken,
-);
-
 export const createBrandIfNotExists = async (
-  client: Client,
   brand: ValueTypes['create_brands_input'],
 ): Promise<CreateBrandRes> => {
   assert(brand.notion_id, 'notion_id required');
@@ -33,7 +33,7 @@ export const createBrandIfNotExists = async (
     brand,
   });
 
-  const existingBrand = await client('query')({
+  const existingBrand = await mfosClient('query')({
     brands: [
       { filter: { notion_id: { _eq: brand.notion_id } } },
       brandSelector,
@@ -43,8 +43,9 @@ export const createBrandIfNotExists = async (
   if (existingBrand.brands?.[0]) {
     return existingBrand.brands[0];
   }
+  logger.info('Creating Brand', { brand });
 
-  const createBrandRes = await client('mutation')(
+  const createBrandRes = await mfosClient('mutation')(
     {
       create_brands_item: [
         {
@@ -67,7 +68,6 @@ export const createBrandIfNotExists = async (
 };
 
 export const createProductIfNotExists = async (
-  client: Client,
   product: ValueTypes['create_products_input'],
 ): Promise<CreateProductRes> => {
   assert(product.notion_id, 'notion_id required');
@@ -77,7 +77,7 @@ export const createProductIfNotExists = async (
     product,
   });
 
-  const existingQuery = await client('query')({
+  const existingQuery = await mfosClient('query')({
     products: [
       { filter: { notion_id: { _eq: product.notion_id } } },
       productsSelector,
@@ -87,13 +87,7 @@ export const createProductIfNotExists = async (
   const existing = existingQuery.products?.[0];
 
   if (existing?.id) {
-    const updateVariables = useZeusVariables({
-      product: 'update_products_input!',
-    })({
-      product,
-    });
-
-    const updatedRes = await client('mutation')(
+    const updatedRes = await mfosClient('mutation')(
       {
         update_products_item: [
           { id: existing.id, data: variables.$('product') },
@@ -102,14 +96,14 @@ export const createProductIfNotExists = async (
       },
       {
         operationName: 'updateProduct',
-        variables: updateVariables,
+        variables,
       },
     );
     assert(updatedRes.update_products_item, 'Unable to update product');
     return updatedRes.update_products_item;
   }
 
-  const createRes = await client('mutation')(
+  const createRes = await mfosClient('mutation')(
     {
       create_products_item: [
         {
@@ -131,50 +125,7 @@ export const createProductIfNotExists = async (
   return createRes.create_products_item;
 };
 
-async function uploadFile(
-  file: { name: string; url: string },
-  tags?: string[],
-) {
-  const uploadDate = new Date().toISOString();
-  const importFileVariables = useZeusVariables({
-    data: 'create_directus_files_input!',
-  })({
-    data: {
-      filename_download: file.name,
-      storage: 'ipfs',
-      uploaded_on: uploadDate,
-      modified_on: uploadDate,
-      tags,
-    },
-  });
-
-  const uploaded = await systemClient('mutation')(
-    {
-      import_file: [
-        {
-          url: file.url,
-          data: importFileVariables.$('data'),
-        },
-        {
-          id: true,
-          filename_download: true,
-          storage: true,
-          uploaded_on: true,
-          modified_on: true,
-        },
-      ],
-    },
-    {
-      operationName: 'UploadFile',
-      variables: importFileVariables,
-    },
-  );
-  assert(uploaded.import_file);
-  return uploaded.import_file;
-}
-
 export const uploadImagesForProduct = async (
-  client: Client,
   product: ProductWithFiles,
   productPage: ProductPageFile,
 ): Promise<void> => {
@@ -212,7 +163,7 @@ export const uploadImagesForProduct = async (
         },
       });
 
-      const linkedToFile = await client('mutation')(
+      const linkedToFile = await mfosClient('mutation')(
         {
           create_products_files_item: [
             {
@@ -239,7 +190,6 @@ export const uploadImagesForProduct = async (
 };
 
 export const uploadWearablesForProduct = async (
-  client: Client,
   product: ProductWithFiles,
   productPage: ProductPageFile,
 ): Promise<void> => {
@@ -259,7 +209,7 @@ export const uploadWearablesForProduct = async (
       ),
   );
 
-  const { file_formats: formats } = await client('query')({
+  const { file_formats: formats } = await mfosClient('query')({
     file_formats: [{}, fileFormatsSelector],
   });
 
@@ -289,7 +239,7 @@ export const uploadWearablesForProduct = async (
         },
       });
 
-      await client('mutation')(
+      await mfosClient('mutation')(
         {
           create_products_wearables_item: [
             {
@@ -316,7 +266,6 @@ export const uploadWearablesForProduct = async (
 };
 
 export const uploadClo3dFileForProduct = async (
-  client: Client,
   product: ProductWithFiles,
   productPage: ProductPageFile,
 ): Promise<void> => {
@@ -345,7 +294,7 @@ export const uploadClo3dFileForProduct = async (
       },
     });
 
-    const linkedToFile = await client('mutation')(
+    const linkedToFile = await mfosClient('mutation')(
       {
         update_products_item: [
           {
@@ -376,7 +325,6 @@ export const uploadClo3dFileForProduct = async (
 };
 
 export const uploadDesignFilesForProduct = async (
-  client: Client,
   product: ProductWithFiles,
   productPage: ProductPageFile,
 ): Promise<void> => {
@@ -415,7 +363,7 @@ export const uploadDesignFilesForProduct = async (
         },
       });
 
-      const linkedToFile = await client('mutation')(
+      const linkedToFile = await mfosClient('mutation')(
         {
           create_products_design_files_item: [
             {
@@ -446,7 +394,6 @@ export const uploadDesignFilesForProduct = async (
 };
 
 export const uploadContentForProduct = async (
-  client: Client,
   product: ProductWithFiles,
   productPage: ProductPageFile,
 ): Promise<void> => {
@@ -482,7 +429,7 @@ export const uploadContentForProduct = async (
         },
       });
 
-      const linkedToFile = await client('mutation')(
+      const linkedToFile = await mfosClient('mutation')(
         {
           create_products_content_item: [
             {
@@ -510,4 +457,130 @@ export const uploadContentForProduct = async (
       productPage,
     });
   }
+};
+
+export const addContributorsToProduct = async (
+  product: ProductWithContributors,
+  contributors: Creator[],
+  role: CollaboratorRole,
+): Promise<void> => {
+  if (!contributors.length) return;
+  const contributorsToAdd = contributors.filter(
+    (creatorToAdd) =>
+      !product.contributors?.find((c) =>
+        isAddressEqual(
+          c.collaborators_id?.payment_eth_address,
+          creatorToAdd.ethAddress,
+        ),
+      ),
+  );
+
+  logger.info(
+    `Adding ${contributorsToAdd.length} out of ${contributors.length} contributors to ${product.name}.`,
+  );
+
+  try {
+    for (const c of contributorsToAdd) {
+      // To link collaborator rows to directus user accounts
+      const account = c.ethAddress
+        ? await getSystemUserByAddress(c.ethAddress)
+        : null;
+
+      const collaborator = await createCollaboratorIfNotExists({
+        payment_eth_address: c.ethAddress?.toLowerCase(),
+        account,
+        role,
+        display_name: c.name,
+      });
+
+      const addContributorVars = useZeusVariables({
+        data: 'create_products_contributors_input!',
+      })({
+        data: {
+          products_id: { id: product.id, name: product.name },
+          collaborators_id: { id: collaborator.id },
+          contribution_share: c.share,
+          robot_earned: c.robotEarned,
+        },
+      });
+
+      await mfosClient('mutation')(
+        {
+          create_products_contributors_item: [
+            {
+              data: addContributorVars.$('data'),
+            },
+            {
+              id: true,
+            },
+          ],
+        },
+        {
+          operationName: 'AddContributorToProduct',
+          variables: addContributorVars,
+        },
+      );
+      logger.info(
+        `Added contributor ${c.name} (${c.share || 0}%) and linked to product ${
+          product.name
+        }`,
+      );
+    }
+  } catch (e) {
+    logger.warn('Failed to add contributors', {
+      error: e,
+      product,
+      contributors,
+    });
+  }
+};
+
+export const createCollaboratorIfNotExists = async (
+  collaborator: ValueTypes['create_collaborators_input'],
+): Promise<CollaboratorResult> => {
+  assert(collaborator.payment_eth_address, 'ethAddress required');
+  assert(collaborator.role, 'role required');
+  const variables = useZeusVariables({
+    collaborator: 'create_collaborators_input!',
+  })({
+    collaborator,
+  });
+
+  const existingQuery = await mfosClient('query')({
+    collaborators: [
+      {
+        filter: {
+          payment_eth_address: { _eq: collaborator.payment_eth_address },
+          role: { name: { _eq: collaborator.role.name } },
+        },
+      },
+      collaboratorsSelector,
+    ],
+  });
+
+  if (existingQuery.collaborators?.[0]) {
+    return existingQuery.collaborators[0];
+  }
+  logger.info('Creating Collaborator', { collaborator });
+
+  const createCollaboratorResult = await mfosClient('mutation')(
+    {
+      create_collaborators_item: [
+        {
+          data: variables.$('collaborator'),
+        },
+        collaboratorsSelector,
+      ],
+    },
+    {
+      operationName: 'createCollaborator',
+      variables,
+    },
+  );
+
+  if (!createCollaboratorResult.create_collaborators_item) {
+    throw new Error('Failed to create collaborator');
+  }
+
+  return createCollaboratorResult.create_collaborators_item;
 };
