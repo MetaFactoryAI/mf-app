@@ -1,4 +1,4 @@
-FROM directus/directus:9.12.1
+FROM directus/directus:9.15.1
 
 ARG OIDC_CLIENT_ID
 ARG OIDC_CLIENT_SECRET
@@ -19,4 +19,4 @@ COPY extensions /directus/extensions
 COPY uploads /directus/uploads
 COPY snapshot.yaml /directus/snapshot.yaml
 
-CMD npx directus bootstrap && npx directus schema apply --yes ./snapshot.yaml && npx directus start
+CMD npx directus bootstrap && npx directus start

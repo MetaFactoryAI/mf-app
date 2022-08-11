@@ -125,7 +125,7 @@ services:
         REMOTE_SCHEMA_PATH: remote-schemas/graphql
         TRIGGERS_PATH: triggers
     depends_on:
-      - postgres
+      - postgres-cms
       - directus
     ports:
       - ${LOCAL_HASURA_CMS_PORT}:8080
