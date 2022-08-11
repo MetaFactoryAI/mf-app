@@ -1,0 +1,211 @@
+[
+  {
+    "to": "0x4ee05f9DEDF5DC0d71490f39EBe6a85E202E1cB3",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["1", "16", "3", "18"],
+        "values": [1, 2, 1, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0x5779aa7d47ac981ce2e160f245b5874df8b8d1706c7a68a660f007ebbe4f4074",
+    "proof": [
+      "0x01d0b8ca8d55071aa11b04339c6a30f4bc2205aa7aac864b970448bb38e14d35",
+      "0x891099521bc68c6bb4aeccd0699b23876c9eabb6a2b3f336c9754106c5401e6e",
+      "0x0fa104d15f8b14e5ff2b5d318e47dc172d12df4d00a8bf559a6e2f161b142767",
+      "0xb9f363823f9043feacd1a1896e82ed4c373ba74e50fb898df470baadc1f772a8"
+    ]
+  },
+  {
+    "to": "0x5409ED021D9299bf6814279A6A1411A7e866A631",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["9", "12", "13", "15", "17"],
+        "values": [2, 8, 2, 5, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0xc0c1c78fb81c055f4b56d19f008eb3929c92adb4268c958174f22e21443ae4f4",
+    "proof": [
+      "0x56d6a50944584d60565a9cc84d4be3c88a84858a89bea210e5fcce4aa58d28c9",
+      "0xe84b548c594ac91adf7c4072c4b1628cb48d242c5faffff4330a233d31746906",
+      "0xbfc7b7fa72c41c72726c83fdce27868d728d26b88992b2bfcde068946c3206c0",
+      "0x4b25d4c272ec915301aeec6383a03e42386349c383d78fa98571548ae1bdc874"
+    ]
+  },
+  {
+    "to": "0x2Ff7A8DEbb107226e679Dbc8389ad579695899eE",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["9", "12", "13", "15", "17"],
+        "values": [1, 1, 2, 5, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0x9a659f767c318b0730243ed7f5511a82a9b067d8bb0bd79619f82fa9b5c49754",
+    "proof": [
+      "0xd6d7df430282c3006437b135eb089039b26eb9df0e3f0adf8af280db993877de",
+      "0x409998111e33109f8d7d68244966ca5a684b1c3d7466714a4b010e9bff497d45",
+      "0x9ef15fad0cc96d0181d246c3279b2a942834a824f74c4219081c91036e89c836",
+      "0xb9f363823f9043feacd1a1896e82ed4c373ba74e50fb898df470baadc1f772a8"
+    ]
+  },
+  {
+    "to": "0xE75304fE5bb590B6deA3CA13A8aBAb257c12E753",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["5", "7", "8", "9", "10", "11", "14"],
+        "values": [1, 1, 1, 1, 1, 5, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0xa01d5d7820a31442973409048e5798d06748d05080d27f537649a9747196800f",
+    "proof": [
+      "0x6e748cd49d44bb914f58e4b2dddac0289c0107adc1348b3e09f9738fd64c5b06",
+      "0xed7ae56fa63f9c69840ba0d7b1917ab791922ade771c7a5e320c94c87d75a21d",
+      "0xbfc7b7fa72c41c72726c83fdce27868d728d26b88992b2bfcde068946c3206c0",
+      "0x4b25d4c272ec915301aeec6383a03e42386349c383d78fa98571548ae1bdc874"
+    ]
+  },
+  {
+    "to": "0x8f942eced007bd3976927b7958b50df126feecb5",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["5", "7", "8", "9", "10", "11", "14"],
+        "values": [2, 1, 1, 2, 5, 1, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0x4cf56b6c6f828ed616c9104aa6b595265d88f39c10dc6684caff1fc6a833dddf",
+    "proof": [
+      "0x8892a749dce75d8e33b91cbd036ba60aea1f07646516edc3ee4aaf54cce87189",
+      "0x0b4c3508c1877b9c4f98188490c9d4bd5ad7028782538a328d14680379643fd0",
+      "0x9ef15fad0cc96d0181d246c3279b2a942834a824f74c4219081c91036e89c836",
+      "0xb9f363823f9043feacd1a1896e82ed4c373ba74e50fb898df470baadc1f772a8"
+    ]
+  },
+  {
+    "to": "0x58e2b4d76f66f2e71d1db865c4f4c8e9adcc13c0",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["2", "4", "6", "8"],
+        "values": [10, 1, 2, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0x4bd341bc50598043d093899d23431b5a99c5c875a7b0ce80d912f5b6b0c41c33",
+    "proof": [
+      "0x56d6a50944584d60565a9cc84d4be3c88a84858a89bea210e5fcce4aa58d28c9",
+      "0x5364bae2acb2e235e0dad5c472d547c41795f21813bec748b6466b5b4b76e64a",
+      "0x0fa104d15f8b14e5ff2b5d318e47dc172d12df4d00a8bf559a6e2f161b142767",
+      "0xb9f363823f9043feacd1a1896e82ed4c373ba74e50fb898df470baadc1f772a8"
+    ]
+  },
+  {
+    "to": "0x30b4a5477314e3FbD0C22D6Afcd71EeCF4d9D22F",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["1", "3", "5", "7"],
+        "values": [11, 1, 2, 4]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0xfbc61eef4500b392ef185ce8bea956d9487cc6d96350597f921573c3b5116208",
+    "proof": [
+      "0x336fec413102fd194ce3bb752b1c6de02a7a664247116665996ad358e22d492f",
+      "0x891099521bc68c6bb4aeccd0699b23876c9eabb6a2b3f336c9754106c5401e6e",
+      "0x0fa104d15f8b14e5ff2b5d318e47dc172d12df4d00a8bf559a6e2f161b142767",
+      "0xb9f363823f9043feacd1a1896e82ed4c373ba74e50fb898df470baadc1f772a8"
+    ]
+  },
+  {
+    "to": "0x670a6eb62f5146d4b3b40c7b58aa31d175e3d6fb",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["2", "4", "6", "8"],
+        "values": [20, 1, 1, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0x940bc72a70732c29726be2eb131ade8e5e0fde3434d4abb1e644402f5fd5b8a1",
+    "proof": [
+      "0xb7a7e52cba0e01c9e480ea7a4a317fd8bcd8a1c3093946a8efdcf6bd241e850c",
+      "0x0b4c3508c1877b9c4f98188490c9d4bd5ad7028782538a328d14680379643fd0",
+      "0x9ef15fad0cc96d0181d246c3279b2a942834a824f74c4219081c91036e89c836",
+      "0xb9f363823f9043feacd1a1896e82ed4c373ba74e50fb898df470baadc1f772a8"
+    ]
+  },
+  {
+    "to": "0x9bcdc7db2f57b0f960a737ccc29373a9bc760134",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["1", "5", "9", "13"],
+        "values": [1, 1, 12, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0x72ec8c438b1546ea972ffa7fd0533d2064ed656f2d9ef259fe484e437a0bf15f",
+    "proof": [
+      "0xd4f6741b0f44d5aaa8fb500f9442ef2d0e5a616890c84c86de2ee018af9637ea",
+      "0x409998111e33109f8d7d68244966ca5a684b1c3d7466714a4b010e9bff497d45",
+      "0x9ef15fad0cc96d0181d246c3279b2a942834a824f74c4219081c91036e89c836",
+      "0xb9f363823f9043feacd1a1896e82ed4c373ba74e50fb898df470baadc1f772a8"
+    ]
+  },
+  {
+    "to": "0xf8049c8425f9eab4e2ae9e1d950f9d3f71481882",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["1", "2", "3", "4"],
+        "values": [1, 12, 1, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0x8c685be37c06aeb519ca8bc567915e9f7ce5746e569e18c3f75749bce42e8c5d",
+    "proof": [
+      "0x6c13c3b5cda25b43e90ae1a67a23b7386bcac04d8cb2d5363cb997d449a9e58a",
+      "0xed7ae56fa63f9c69840ba0d7b1917ab791922ade771c7a5e320c94c87d75a21d",
+      "0xbfc7b7fa72c41c72726c83fdce27868d728d26b88992b2bfcde068946c3206c0",
+      "0x4b25d4c272ec915301aeec6383a03e42386349c383d78fa98571548ae1bdc874"
+    ]
+  },
+  {
+    "to": "0x4cca9821c246acd39a42f34e6ae4e520a8224565",
+    "erc1155": [
+      {
+        "contractAddress": "0x2D62Ec5B09c3De2106433d877EcB10C9424fCcD7",
+        "ids": ["2", "6", "10", "14", "19", "20", "21"],
+        "values": [1, 11, 1, 1, 1, 1, 1]
+      }
+    ],
+    "erc721": [],
+    "erc20": { "contractAddresses": [], "amounts": [] },
+    "salt": "0xbabf731817dc41b899758ea76109508244209589666e8a7df50a274eba781aba",
+    "proof": [
+      "0x5834a446306eb589e6eff4118a04d0411cc54cddb1b56305366a540f2941b22e",
+      "0x5364bae2acb2e235e0dad5c472d547c41795f21813bec748b6466b5b4b76e64a",
+      "0x0fa104d15f8b14e5ff2b5d318e47dc172d12df4d00a8bf559a6e2f161b142767",
+      "0xb9f363823f9043feacd1a1896e82ed4c373ba74e50fb898df470baadc1f772a8"
+    ]
+  }
+]
