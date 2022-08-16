@@ -1,4 +1,4 @@
-import { isAddress } from '@ethersproject/address';
+import { getAddress, isAddress } from '@ethersproject/address';
 import type { BaseProvider } from '@ethersproject/providers';
 
 export const resolveIfEnsName = async (
@@ -22,7 +22,10 @@ export const lookupEnsAddress = async (
 };
 
 export const ethAddressToEip155 = (address: string): string =>
-  `eip155:1:${address.toLowerCase()}`;
+  `eip155:1:${getAddress(address)}`;
+
+export const eip155ToEthAddress = (eip155String: string): string =>
+  getAddress(eip155String.replace('eip155:1:', ''));
 
 export const isAddressEqual = (
   a: string | null | undefined,
