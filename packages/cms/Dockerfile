@@ -20,6 +20,9 @@ COPY extensions /directus/extensions
 COPY uploads /directus/uploads
 COPY snapshot.yaml /directus/snapshot.yaml
 
+USER root
+RUN chmod -R 775 /directus/extensions/migrations
+
 CMD npx directus bootstrap \
 && npx directus schema apply --yes ./snapshot.yaml  \
 && cp -r /directus/custom_migrations/* /directus/extensions/migrations \
