@@ -22,27 +22,21 @@ module.exports = {
     for (let i = 0; i < products.length; i++) {
       const product = products[i];
       // get price currency for product
-      const priceCurrency = getThingByKey(
-        priceCurrencies,
-        'id',
-        product?.price,
-      );
+      if (!product) continue;
+      const priceCurrency = getThingByKey(priceCurrencies, 'id', product.price);
       // corresponding values to update
+      if (!priceCurrency) continue;
       const sale_price = priceCurrency?.amount;
       const sale_currency = getThingByKey(
         currencies,
         'currency',
-        priceCurrency?.currency,
+        priceCurrency.currency,
       );
       if (sale_price && sale_currency) {
         await knex('products')
-          .where({ id: product?.id })
-          .update({ sale_price, sale_currency: sale_currency?.id });
+          .where({ id: product.id })
+          .update({ sale_price, sale_currency: sale_currency.id });
       }
     }
-  },
-
-  async down() {
-    // do something?
   },
 };
