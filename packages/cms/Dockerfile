@@ -24,7 +24,7 @@ USER root
 RUN chmod -R 775 /directus/extensions/migrations
 
 CMD npx directus bootstrap \
-&& npx directus schema apply --yes ./snapshot.yaml  \
-&& cp -r /directus/custom_migrations/* /directus/extensions/migrations \
-&& npx directus database migrate:latest \
-&& npx directus start
+    && npx directus schema apply --yes ./snapshot.yaml  \
+    && cp -r /directus/custom_migrations/* /directus/extensions/migrations \
+    && npx directus database migrate:latest \
+    && npx directus start

@@ -97,6 +97,30 @@ collections:
       comment: null
       name: collaborators
       schema: public
+  - collection: currencies
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: currencies
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: null
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: currencies
+      schema: public
   - collection: file_formats
     meta:
       accountability: all
@@ -1696,6 +1720,88 @@ fields:
       schema: public
       table: collaborators
     type: uuid
+  - collection: currencies
+    field: currency
+    meta:
+      collection: currencies
+      conditions: null
+      display: null
+      display_options: null
+      field: currency
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: true
+      max_length: 255
+      name: currency
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: currencies
+    type: string
+  - collection: currencies
+    field: id
+    meta:
+      collection: currencies
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: null
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: integer
+      default_value: nextval('currencies_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: currencies
+    type: integer
   - collection: directus_users
     field: collaborators
     meta:
@@ -4611,7 +4717,7 @@ fields:
       options: {}
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special: null
       translations: null
       validation: null
@@ -4833,7 +4939,7 @@ fields:
         template: null
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - files
       translations: null
@@ -4925,7 +5031,7 @@ fields:
         min: 1
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special: null
       translations: null
       validation: null
@@ -5001,15 +5107,15 @@ fields:
       display_options:
         template: "{{amount}}\_{{currency}}"
       field: price
-      group: product_details
-      hidden: false
+      group: null
+      hidden: true
       interface: select-dropdown-m2o
       note: null
       options:
         template: "{{amount}}\_{{currency}}"
       readonly: false
       required: false
-      sort: 1
+      sort: 12
       special: null
       translations: null
       validation: null
@@ -5169,7 +5275,7 @@ fields:
         min: 0
       readonly: false
       required: false
-      sort: 2
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -5236,7 +5342,7 @@ fields:
         min: 0
       readonly: false
       required: false
-      sort: 4
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -5305,6 +5411,90 @@ fields:
       table: products
     type: dateTime
   - collection: products
+    field: sale_currency
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: sale_currency
+      group: product_details
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{currency}}'
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: integer
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: currencies
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sale_currency
+      numeric_precision: 32
+      numeric_scale: 0
+      schema: public
+      table: products
+    type: integer
+  - collection: products
+    field: sale_price
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: sale_price
+      group: product_details
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: sale_price
+      numeric_precision: 10
+      numeric_scale: 2
+      schema: public
+      table: products
+    type: decimal
+  - collection: products
     field: sale_type
     meta:
       collection: products
@@ -5324,7 +5514,7 @@ fields:
             value: limited_edition
       readonly: false
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -5366,7 +5556,7 @@ fields:
         min: 0
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -7341,6 +7531,28 @@ relations:
       foreign_key_column: name
       foreign_key_schema: public
       foreign_key_table: stages
+      on_delete: SET NULL
+      on_update: NO ACTION
+      table: products
+  - collection: products
+    field: sale_currency
+    meta:
+      junction_field: null
+      many_collection: products
+      many_field: sale_currency
+      one_allowed_collections: null
+      one_collection: currencies
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: currencies
+    schema:
+      column: sale_currency
+      constraint_name: products_sale_currency_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: currencies
       on_delete: SET NULL
       on_update: NO ACTION
       table: products
