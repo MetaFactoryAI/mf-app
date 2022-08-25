@@ -1,5 +1,7 @@
 /* eslint-disable */
 
+const _ = require('lodash');
+
 module.exports = {
   async up(knex) {
     // add default USD, ETH for currencies
@@ -10,28 +12,18 @@ module.exports = {
     const products = await knex('products').whereNotNull('price');
     const currencies = await knex('currencies');
 
-    const getThingByKey = (things, key, value) => {
-      for (let i = 0; i < things.length; i++) {
-        if (value === things[i][key]) {
-          return things[i];
-        }
-      }
-      return null;
-    };
-
     for (let i = 0; i < products.length; i++) {
       const product = products[i];
       // get price currency for product
       if (!product) continue;
-      const priceCurrency = getThingByKey(priceCurrencies, 'id', product.price);
+      const priceCurrency = _.find(priceCurrencies, ['id', product.price]);
       // corresponding values to update
       if (!priceCurrency) continue;
-      const sale_price = priceCurrency?.amount;
-      const sale_currency = getThingByKey(
-        currencies,
+      const sale_price = priceCurrency.amount;
+      const sale_currency = _.find(currencies, [
         'currency',
         priceCurrency.currency,
-      );
+      ]);
       if (sale_price && sale_currency) {
         await knex('products')
           .where({ id: product.id })
