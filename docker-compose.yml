@@ -15,6 +15,7 @@ services:
 
   postgres-cms:
     profiles: ['cms']
+    container_name: pg-cms
     image: postgres:13
     restart: always
     volumes:
@@ -25,6 +26,11 @@ services:
       - directus
     environment:
       POSTGRES_PASSWORD: ${LOCAL_POSTGRES_PASSWORD}
+    healthcheck:
+      test: pg_isready -U "postgres" -d "postgres"
+      interval: 5s
+      timeout: 2s
+      retries: 10
 
   cache:
     profiles: ['cms']
@@ -56,8 +62,10 @@ services:
     networks:
       - directus
     depends_on:
-      - cache
-      - postgres
+      cache:
+        condition: service_started
+      postgres-cms:
+        condition: service_healthy
     environment:
       # Make sure to set these in production
       # (see https://docs.directus.io/configuration/config-options/#general)
@@ -71,7 +79,7 @@ services:
       # DB Settings
       DB_CLIENT: 'pg'
       DB_HOST: postgres-cms
-      DB_PORT: ${LOCAL_POSTGRES_PORT}
+      DB_PORT: ${LOCAL_POSTGRES_CMS_PORT}
       DB_DATABASE: ${LOCAL_POSTGRES_DATABASE}
       DB_USER: ${LOCAL_POSTGRES_USER}
       DB_PASSWORD: ${LOCAL_POSTGRES_PASSWORD}
@@ -125,14 +133,16 @@ services:
         REMOTE_SCHEMA_PATH: remote-schemas/graphql
         TRIGGERS_PATH: triggers
     depends_on:
-      - postgres
-      - directus
+      postgres-cms:
+        condition: service_healthy
+      directus:
+        condition: service_started
     ports:
       - ${LOCAL_HASURA_CMS_PORT}:8080
     networks:
       - directus
     environment:
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres-cms:${LOCAL_POSTGRES_PORT}/${LOCAL_POSTGRES_DATABASE}
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres-cms:${LOCAL_POSTGRES_CMS_PORT}/${LOCAL_POSTGRES_DATABASE}
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
       HASURA_GRAPHQL_DEV_MODE: true
       DIRECTUS_AUTH_HEADER: ${DIRECTUS_AUTH_HEADER}
