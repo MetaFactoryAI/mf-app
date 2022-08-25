@@ -19,3 +19,4 @@ packages/cms/backups
 **/.env
 
 db_dumps
+/packages/cms/extensions/migrations
