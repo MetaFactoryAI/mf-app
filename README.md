@@ -13,16 +13,23 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 - `packages/ui` (import as `@mf/ui`)
   - Make sure to add any other package folders you make to `app/next.config.js` after `next-transpile-modules`.
 - `packages/app` (this is the app you run)
+- `packages/cms` (Directus folder)
+- `packages/services` (backend logic deployed to Vercel serverless)
 
-# Start app
+# Running
 
 - Clone the repo
+- Copy .env.example files and populate missing values
 - Run `yarn install`
-- `yarn start` to run the expo app, `yarn web` to run next.js
+- Run postgres + Hasura + Directus with `docker:cms:start`
+- Run services with `yarn services start`
+- Run Expo app with `yarn app start` or `yarn app web` to run next.js web version of the Expo app
 
-# Edit code
+# Creating Directus extensions
 
-Open `packages/app` and start editing. Watch changes happen instantly in your app.
+1. Run `yarn create directus-extension` inside the root `extensions` folder. Remove the npm lockfile
+2. cd back to root and run `yarn`
+3. Run `yarn cms add directus-extension-<name>@1`
 
 # Practices
 
@@ -36,7 +43,6 @@ yarn app add restyled
 yarn install
 
 # post install will inject the nessecery libraries for web3.js
-
 ```
 
 The nice thing about the monorepo is that you only need each package to be in **one `package.json` file**. You don't need to add a dependency in every `package.json`. So we can use the main app as the entry point for basically every dependency.
