@@ -146,7 +146,10 @@ export async function migrateProducts(): Promise<void> {
       const createProductRes = await createProductIfNotExists(product);
       createdProducts.push(createProductRes);
     } catch (e) {
-      logger.warn('Error creating product', { error: e, product: p });
+      logger.warn('Error creating product', {
+        error: e,
+        product: p.properties.Name.title,
+      });
     }
   }
 

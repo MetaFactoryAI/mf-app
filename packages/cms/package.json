@@ -14,7 +14,7 @@
     "node": "14"
   },
   "dependencies": {
-    "directus": "^9.16.1",
+    "directus": "^9.20.4",
     "graphql-zeus": "^5.0.3"
   },
   "devDependencies": {
