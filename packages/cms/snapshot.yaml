@@ -4621,7 +4621,7 @@ fields:
       interface: file
       note: null
       options:
-        folder: 6750798c-fae7-458a-bad3-70baf9cb3f4e
+        folder: null
       readonly: false
       required: false
       sort: 2
@@ -4664,7 +4664,7 @@ fields:
       interface: files
       note: null
       options:
-        folder: 61a8aede-df79-4d17-8264-4047ad87ea2a
+        folder: null
       readonly: false
       required: false
       sort: 4
@@ -4798,7 +4798,7 @@ fields:
       interface: files
       note: null
       options:
-        folder: 6750798c-fae7-458a-bad3-70baf9cb3f4e
+        folder: null
       readonly: false
       required: false
       sort: 1
@@ -5739,7 +5739,7 @@ fields:
       interface: files
       note: null
       options:
-        folder: 8cdd964b-8199-4515-bb4a-0127bf2943cc
+        folder: null
       readonly: false
       required: false
       sort: 3
