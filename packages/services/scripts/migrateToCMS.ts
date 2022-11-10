@@ -22,4 +22,5 @@ const migrate = async () => {
   await migrateProductContributors(client);
 };
 
-migrate();
+// eslint-disable-next-line no-console
+migrate().catch((e) => console.log(e));
