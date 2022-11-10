@@ -4499,7 +4499,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - alias
         - group
@@ -4526,7 +4526,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special:
         - alias
         - group
@@ -4553,7 +4553,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special:
         - alias
         - group
@@ -4717,7 +4717,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 11
+      sort: 12
       special:
         - date-created
       translations: null
@@ -4867,7 +4867,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special:
         - alias
         - group
@@ -5073,7 +5073,7 @@ fields:
         min: 1
       readonly: true
       required: false
-      sort: 13
+      sort: 14
       special: null
       translations: null
       validation: null
@@ -5099,6 +5099,59 @@ fields:
       schema: public
       table: products
     type: integer
+  - collection: products
+    field: notes
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: notes
+      group: null
+      hidden: false
+      interface: input-rich-text-md
+      note: null
+      options:
+        customSyntax: null
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - empty
+          - heading
+          - italic
+          - link
+          - numlist
+          - strikethrough
+          - table
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: notes
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: text
   - collection: products
     field: notion_id
     meta:
@@ -5157,7 +5210,7 @@ fields:
         template: "{{amount}}\_{{currency}}"
       readonly: false
       required: false
-      sort: 12
+      sort: 13
       special: null
       translations: null
       validation: null
@@ -5245,7 +5298,7 @@ fields:
         headerIcon: description
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special:
         - alias
         - group
@@ -5700,7 +5753,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special: null
       translations: null
       validation: null
