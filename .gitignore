@@ -12,7 +12,7 @@ yarn-error.log
 tags
 .vscode
 
-packages/app/mf-app-kv-storage-db
+packages/app-old/mf-app-kv-storage-db
 packages/cms/.envrc
 packages/cms/backups
 .vercel
