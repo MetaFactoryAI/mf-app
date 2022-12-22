@@ -6,7 +6,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": "^14"
+    "node": "^18"
   },
   "scripts": {
     "typecheck": "yarn services typecheck",
@@ -41,7 +41,6 @@
     "eslint-plugin-react-hooks": "4.5.0",
     "eslint-plugin-react-native": "4.0.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
-    "expo-cli": "5.4.3",
     "expo-yarn-workspaces": "1.5.2",
     "hasura-cli": "^2.7.0",
     "husky": "7.0.2",

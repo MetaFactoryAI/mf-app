@@ -16,3 +16,9 @@
 4. Make changes to datamodel in Directus admin panel at `http://localhost:8055/admin/settings/data-model`
 5. Run `yarn snapshot` to save changes to the datamodel to source control
 6. Commit `snapshot.yaml` and open a PR to sync changes to production
+
+## Fixing errors on ARM computers (M1 Macs)
+
+If you get an error like this for a package: `mach-o file, but is an incompatible architecture (have 'x86_64', need 'arm64e')`
+
+You can run this command to fix it: `npm rebuild argon2 --build-from-source`

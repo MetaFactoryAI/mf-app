@@ -1,5 +1,5 @@
 version: 1
-directus: 9.20.4
+directus: 9.22.1
 collections:
   - collection: brands
     meta:
@@ -7785,7 +7785,7 @@ fields:
       display_options: null
       field: sort
       group: null
-      hidden: true
+      hidden: false
       interface: input
       note: null
       options: null
