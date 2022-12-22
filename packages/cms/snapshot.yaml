@@ -5095,7 +5095,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 9
+      sort: 10
       special:
         - alias
         - group
@@ -5122,7 +5122,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 7
+      sort: 8
       special:
         - alias
         - group
@@ -5149,7 +5149,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 8
+      sort: 9
       special:
         - alias
         - group
@@ -5339,7 +5339,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 12
+      sort: 13
       special:
         - date-created
       translations: null
@@ -5361,6 +5361,49 @@ fields:
       is_unique: false
       max_length: null
       name: created_at
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: products
+    type: timestamp
+  - collection: products
+    field: date_updated
+    meta:
+      collection: products
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 15
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
       numeric_precision: null
       numeric_scale: null
       schema: public
@@ -5452,7 +5495,7 @@ fields:
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema:
       comment: null
       data_type: text
@@ -5514,7 +5557,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 10
+      sort: 11
       special:
         - alias
         - group
@@ -5712,7 +5755,7 @@ fields:
       display: null
       display_options: null
       field: nft_token_id
-      group: null
+      group: external_references
       hidden: false
       interface: input
       note: null
@@ -5720,7 +5763,7 @@ fields:
         min: 1
       readonly: true
       required: false
-      sort: 14
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -5773,7 +5816,7 @@ fields:
           - table
       readonly: false
       required: false
-      sort: 5
+      sort: 6
       special: null
       translations: null
       validation: null
@@ -5814,7 +5857,7 @@ fields:
       options: null
       readonly: true
       required: false
-      sort: 3
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -5857,7 +5900,7 @@ fields:
         template: "{{amount}}\_{{currency}}"
       readonly: false
       required: false
-      sort: 13
+      sort: 14
       special: null
       translations: null
       validation: null
@@ -5945,7 +5988,7 @@ fields:
         headerIcon: description
       readonly: false
       required: false
-      sort: 6
+      sort: 7
       special:
         - alias
         - group
@@ -6320,7 +6363,7 @@ fields:
       display_options: null
       field: season
       group: product_details
-      hidden: false
+      hidden: true
       interface: input
       note: null
       options:
@@ -6429,7 +6472,7 @@ fields:
             value: archived
       readonly: false
       required: false
-      sort: 11
+      sort: 12
       special: null
       translations: null
       validation: null
