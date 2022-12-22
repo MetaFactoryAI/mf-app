@@ -11,10 +11,10 @@
     "runScript": "node -r @swc-node/register"
   },
   "engines": {
-    "node": "14"
+    "node": "18"
   },
   "dependencies": {
-    "directus": "^9.20.4",
+    "directus": "^9.22.1",
     "graphql-zeus": "^5.0.3"
   },
   "devDependencies": {
