@@ -113,7 +113,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: null
+      sort: 14
       sort_field: null
       translations: null
       unarchive_value: null
@@ -169,6 +169,30 @@ collections:
       comment: null
       name: fulfillers
       schema: public
+  - collection: invoices
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: invoices
+      color: null
+      display_template: "{{description}}\_({{amount}}) -\_{{status}}"
+      group: null
+      hidden: true
+      icon: receipt_long
+      item_duplication_fields: null
+      note: null
+      singleton: false
+      sort: 12
+      sort_field: null
+      translations: null
+      unarchive_value: null
+    schema:
+      comment: null
+      name: invoices
+      schema: public
   - collection: junction_directus_users_skills
     meta:
       accountability: all
@@ -185,7 +209,7 @@ collections:
       item_duplication_fields: null
       note: null
       singleton: false
-      sort: 12
+      sort: 13
       sort_field: null
       translations: null
       unarchive_value: null
@@ -2423,6 +2447,578 @@ fields:
       schema: public
       table: fulfillers
     type: text
+  - collection: invoices
+    field: amount
+    meta:
+      collection: invoices
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+        prefix: $
+        suffix: ' USD'
+      field: amount
+      group: null
+      hidden: false
+      interface: input
+      note: Invoice amount in USD
+      options:
+        iconLeft: attach_money
+        min: 0
+        placeholder: USD
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: numeric
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: amount
+      numeric_precision: 19
+      numeric_scale: 4
+      schema: public
+      table: invoices
+    type: decimal
+  - collection: invoices
+    field: client_product_id
+    meta:
+      collection: invoices
+      conditions:
+        - name: Can either be production or client invoice, but not both
+          rule:
+            _and:
+              - production_product_id:
+                  _nnull: true
+          readonly: true
+          options:
+            enableCreate: true
+            enableSelect: true
+      display: null
+      display_options: null
+      field: client_product_id
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: Invoices to clients for a given product
+      options:
+        enableCreate: false
+      readonly: true
+      required: false
+      sort: 8
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: client_product_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: invoices
+    type: bigInteger
+  - collection: invoices
+    field: date_created
+    meta:
+      collection: invoices
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_created
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 10
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: invoices
+    type: timestamp
+  - collection: invoices
+    field: date_updated
+    meta:
+      collection: invoices
+      conditions: null
+      display: datetime
+      display_options:
+        relative: true
+      field: date_updated
+      group: null
+      hidden: true
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 12
+      special:
+        - date-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: timestamp with time zone
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: date_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: invoices
+    type: timestamp
+  - collection: invoices
+    field: description
+    meta:
+      collection: invoices
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: Purpose of the invoice
+      readonly: false
+      required: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: false
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: description
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: invoices
+    type: string
+  - collection: invoices
+    field: details
+    meta:
+      collection: invoices
+      conditions: null
+      display: null
+      display_options: null
+      field: details
+      group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: Any relevant info / recipients / links / images / files for this invoice
+      options:
+        toolbar:
+          - blockquote
+          - bold
+          - bullist
+          - customImage
+          - customLink
+          - customMedia
+          - fullscreen
+          - h1
+          - h2
+          - hr
+          - italic
+          - numlist
+          - underline
+      readonly: false
+      required: false
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: text
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: details
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: invoices
+    type: text
+  - collection: invoices
+    field: id
+    meta:
+      collection: invoices
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: nextval('invoices_id_seq'::regclass)
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: true
+      is_generated: false
+      is_nullable: false
+      is_primary_key: true
+      is_unique: true
+      max_length: null
+      name: id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: invoices
+    type: bigInteger
+  - collection: invoices
+    field: production_product_id
+    meta:
+      collection: invoices
+      conditions:
+        - name: Can either be production or client invoice, but not both
+          rule:
+            _and:
+              - client_product_id:
+                  _nnull: true
+          readonly: true
+          hidden: true
+          options:
+            enableCreate: false
+            enableSelect: true
+      display: null
+      display_options: null
+      field: production_product_id
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: The product that this production invoice is for
+      options:
+        enableCreate: false
+      readonly: true
+      required: false
+      sort: 7
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: bigint
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: production_product_id
+      numeric_precision: 64
+      numeric_scale: 0
+      schema: public
+      table: invoices
+    type: bigInteger
+  - collection: invoices
+    field: status
+    meta:
+      collection: invoices
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: Created
+            value: created
+            background: '#A2B5CD'
+            foreground: '#18222F'
+          - text: Sent
+            value: sent
+            background: '#FFC23B'
+            foreground: '#18222F'
+          - text: Paid
+            value: paid
+            background: '#2ECDA7'
+            foreground: '#18222F'
+          - text: Void
+            value: void
+            background: '#E35169'
+            foreground: '#18222F'
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Created
+            value: created
+          - text: Sent
+            value: sent
+          - text: Paid
+            value: paid
+          - text: Void
+            value: void
+      readonly: false
+      required: false
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: created
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: status
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: invoices
+    type: string
+  - collection: invoices
+    field: transaction_url
+    meta:
+      collection: invoices
+      conditions: null
+      display: null
+      display_options: null
+      field: transaction_url
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        placeholder: https://etherscan.io/tx/...
+        trim: true
+      readonly: false
+      required: false
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      comment: null
+      data_type: character varying
+      default_value: null
+      foreign_key_column: null
+      foreign_key_schema: null
+      foreign_key_table: null
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: 255
+      name: transaction_url
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: invoices
+    type: string
+  - collection: invoices
+    field: user_created
+    meta:
+      collection: invoices
+      conditions: null
+      display: user
+      display_options: null
+      field: user_created
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 9
+      special:
+        - user-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_created
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: invoices
+    type: uuid
+  - collection: invoices
+    field: user_updated
+    meta:
+      collection: invoices
+      conditions: null
+      display: user
+      display_options: null
+      field: user_updated
+      group: null
+      hidden: true
+      interface: select-dropdown-m2o
+      note: null
+      options:
+        template: '{{avatar.$thumbnail}} {{first_name}} {{last_name}}'
+      readonly: true
+      required: false
+      sort: 11
+      special:
+        - user-updated
+      translations: null
+      validation: null
+      validation_message: null
+      width: half
+    schema:
+      comment: null
+      data_type: uuid
+      default_value: null
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      generation_expression: null
+      has_auto_increment: false
+      is_generated: false
+      is_nullable: true
+      is_primary_key: false
+      is_unique: false
+      max_length: null
+      name: user_updated
+      numeric_precision: null
+      numeric_scale: null
+      schema: public
+      table: invoices
+    type: uuid
   - collection: junction_directus_users_skills
     field: directus_users_id
     meta:
@@ -4499,7 +5095,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 7
+      sort: 9
       special:
         - alias
         - group
@@ -4526,7 +5122,7 @@ fields:
         start: closed
       readonly: false
       required: false
-      sort: 9
+      sort: 7
       special:
         - alias
         - group
@@ -4608,6 +5204,32 @@ fields:
       schema: public
       table: products
     type: bigInteger
+  - collection: products
+    field: client_invoices
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: "{{description}}\_-\_{{status}}"
+      field: client_invoices
+      group: Production
+      hidden: false
+      interface: list-o2m
+      note: Invoices to clients for deposits
+      options:
+        enableSelect: false
+      readonly: false
+      required: false
+      sort: 2
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
   - collection: products
     field: clo3d_file
     meta:
@@ -4759,7 +5381,7 @@ fields:
       options: {}
       readonly: false
       required: false
-      sort: 8
+      sort: 7
       special: null
       translations: null
       validation: null
@@ -4823,7 +5445,7 @@ fields:
       interface: input
       note: null
       options: null
-      readonly: false
+      readonly: true
       required: false
       sort: 1
       special: null
@@ -4851,6 +5473,31 @@ fields:
       schema: public
       table: products
     type: text
+  - collection: products
+    field: divider-jqa2oh
+    meta:
+      collection: products
+      conditions: null
+      display: null
+      display_options: null
+      field: divider-jqa2oh
+      group: Production
+      hidden: false
+      interface: presentation-divider
+      note: null
+      options: null
+      readonly: false
+      required: false
+      sort: 4
+      special:
+        - alias
+        - no-data
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
   - collection: products
     field: external_references
     meta:
@@ -4895,7 +5542,7 @@ fields:
         template: '{{name}}'
       readonly: false
       required: false
-      sort: 4
+      sort: 8
       special: null
       translations:
         - language: en-US
@@ -4981,7 +5628,7 @@ fields:
         template: null
       readonly: false
       required: false
-      sort: 7
+      sort: 6
       special:
         - files
       translations: null
@@ -5007,13 +5654,13 @@ fields:
         template: '{{production_materials_id.name}}'
       readonly: false
       required: false
-      sort: 1
+      sort: 6
       special:
         - m2m
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema: null
     type: alias
   - collection: products
@@ -5165,7 +5812,7 @@ fields:
       interface: input
       note: null
       options: null
-      readonly: false
+      readonly: true
       required: false
       sort: 3
       special: null
@@ -5253,7 +5900,7 @@ fields:
         template: '{{name}}'
       readonly: false
       required: false
-      sort: 3
+      sort: 7
       special: null
       translations:
         - language: en-US
@@ -5361,7 +6008,7 @@ fields:
       display_options:
         prefix: $
       field: production_cost
-      group: product_details
+      group: Production
       hidden: false
       interface: input
       note: null
@@ -5370,7 +6017,7 @@ fields:
         min: 0
       readonly: false
       required: false
-      sort: 3
+      sort: 1
       special: null
       translations: null
       validation: null
@@ -5397,6 +6044,33 @@ fields:
       table: products
     type: decimal
   - collection: products
+    field: production_invoices
+    meta:
+      collection: products
+      conditions: null
+      display: related-values
+      display_options:
+        template: "{{description}}\_-\_{{status}}"
+      field: production_invoices
+      group: Production
+      hidden: false
+      interface: list-o2m
+      note: Invoices from producers for production costs
+      options:
+        enableLink: true
+        enableSelect: false
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema: null
+    type: alias
+  - collection: products
     field: production_methods
     meta:
       collection: products
@@ -5412,13 +6086,13 @@ fields:
         enableCreate: false
       readonly: false
       required: false
-      sort: 2
+      sort: 5
       special:
         - m2m
       translations: null
       validation: null
       validation_message: null
-      width: full
+      width: half
     schema: null
     type: alias
   - collection: products
@@ -5437,7 +6111,7 @@ fields:
         min: 0
       readonly: false
       required: false
-      sort: 5
+      sort: 4
       special: null
       translations: null
       validation: null
@@ -5607,9 +6281,11 @@ fields:
             value: open_edition
           - text: Limited Edition
             value: limited_edition
+          - text: Bulk Order
+            value: bulk_order
       readonly: false
       required: false
-      sort: 4
+      sort: 3
       special: null
       translations: null
       validation: null
@@ -5651,7 +6327,7 @@ fields:
         min: 0
       readonly: false
       required: false
-      sort: 6
+      sort: 5
       special: null
       translations: null
       validation: null
@@ -5690,7 +6366,7 @@ fields:
       interface: input
       note: null
       options: null
-      readonly: false
+      readonly: true
       required: false
       sort: 2
       special: null
@@ -7050,9 +7726,28 @@ fields:
       field: name
       group: null
       hidden: false
-      interface: input
+      interface: select-dropdown
       note: null
-      options: null
+      options:
+        choices:
+          - text: Submitted
+            value: submitted
+          - text: Rejected
+            value: rejected
+          - text: Design
+            value: design
+          - text: Sampling
+            value: sampling
+          - text: Scheduled
+            value: scheduled
+          - text: Sale Live
+            value: sale_live
+          - text: Production
+            value: production
+          - text: Shipping
+            value: shipping
+          - text: Fulfillment Completed
+            value: fulfillment_completed
       readonly: false
       required: false
       sort: null
@@ -7255,6 +7950,94 @@ relations:
       on_delete: NO ACTION
       on_update: NO ACTION
       table: collaborators
+  - collection: invoices
+    field: client_product_id
+    meta:
+      junction_field: null
+      many_collection: invoices
+      many_field: client_product_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: client_invoices
+      sort_field: null
+    related_collection: products
+    schema:
+      column: client_product_id
+      constraint_name: invoices_client_product_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      on_delete: CASCADE
+      on_update: NO ACTION
+      table: invoices
+  - collection: invoices
+    field: production_product_id
+    meta:
+      junction_field: null
+      many_collection: invoices
+      many_field: production_product_id
+      one_allowed_collections: null
+      one_collection: products
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: production_invoices
+      sort_field: null
+    related_collection: products
+    schema:
+      column: production_product_id
+      constraint_name: invoices_production_product_id_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: products
+      on_delete: CASCADE
+      on_update: NO ACTION
+      table: invoices
+  - collection: invoices
+    field: user_created
+    meta:
+      junction_field: null
+      many_collection: invoices
+      many_field: user_created
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_created
+      constraint_name: invoices_user_created_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: invoices
+  - collection: invoices
+    field: user_updated
+    meta:
+      junction_field: null
+      many_collection: invoices
+      many_field: user_updated
+      one_allowed_collections: null
+      one_collection: directus_users
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    related_collection: directus_users
+    schema:
+      column: user_updated
+      constraint_name: invoices_user_updated_foreign
+      foreign_key_column: id
+      foreign_key_schema: public
+      foreign_key_table: directus_users
+      on_delete: NO ACTION
+      on_update: NO ACTION
+      table: invoices
   - collection: junction_directus_users_skills
     field: directus_users_id
     meta:

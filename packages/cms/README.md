@@ -7,3 +7,12 @@
 5. run `yarn snapshot`
 6. update Directus version in Dockerfile
 7. Rebuild and run with docker-compose
+
+## Updating Datamodel
+
+1. Run CMS stack with docker-compose `yarn docker:cms:start`
+2. Open Directus admin panel at `http://localhost:8055/admin`
+3. Login with admin email and password from `.env`
+4. Make changes to datamodel in Directus admin panel at `http://localhost:8055/admin/settings/data-model`
+5. Run `yarn snapshot` to save changes to the datamodel to source control
+6. Commit `snapshot.yaml` and open a PR to sync changes to production
