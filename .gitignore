@@ -20,3 +20,8 @@ packages/cms/backups
 
 db_dumps
 /packages/cms/extensions/migrations
+
+.turbo
+build/**
+
+.env

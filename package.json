@@ -9,14 +9,14 @@
     "node": "^18"
   },
   "scripts": {
-    "typecheck": "yarn services typecheck",
-    "lint": "eslint \"**/*.{ts,tsx,js}\"",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
     "app": "yarn workspace mf-app",
     "services": "yarn workspace @mf/services",
     "cms": "yarn workspace @meta-factory/cms",
     "cms:start": "yarn workspace @meta-factory/cms start",
     "prepare": "husky install",
-    "test": "yarn workspaces run test",
+    "test": "turbo run test",
     "hasura": "hasura --envfile ../.env --project ./hasura",
     "hasura-cms": "hasura --envfile ../.env --endpoint http://localhost:8090 --project ./hasura-cms",
     "docker:cms:start": "docker compose --profile cms up -d",
@@ -48,6 +48,7 @@
     "lint-staged": "11.1.2",
     "next-compose-plugins": "2.2.1",
     "prettier": "2.6.2",
+    "turbo": "^1.6.3",
     "typescript": "4.4.2"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
 export * from './constants';
-export * from './graphql/client';
-export * as System from './graphql/system/zeus';
-export * from './graphql/user/zeus';
+export * from './__generated__/client';
+export * as System from './__generated__/system/zeus';
+export * from './__generated__/user/zeus';

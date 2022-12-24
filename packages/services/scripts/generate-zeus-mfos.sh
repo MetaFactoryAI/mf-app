@@ -5,8 +5,8 @@ set -o allexport
 source .env
 set +o allexport
 
-SYSTEM_PATH=./mfos/graphql/system
-USER_PATH=./mfos/graphql/user
+SYSTEM_PATH=./mfos/__generated__/system
+USER_PATH=./mfos/__generated__/user
 
 function generate() {
   # use the first argument as the path to move files to
