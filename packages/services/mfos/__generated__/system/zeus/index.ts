@@ -1,4 +1,5 @@
 /* eslint-disable */
+// noinspection UnnecessaryLocalVariableJS,RegExpRedundantEscape
 
 import { AllTypesProps, ReturnTypes, Ops } from './const';
 import fetch, { Response } from 'node-fetch';
