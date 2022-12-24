@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "React Library",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "lib": ["ES2015"],
+    "module": "esnext",
+    "target": "ES6",
+    "jsx": "react-jsx",
+    "noEmitOnError": true,
+    "pretty": false,
+    "sourceMap": true,
+    "baseUrl": "."
+  }
+}
