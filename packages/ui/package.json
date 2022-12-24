@@ -12,11 +12,11 @@
     "test": "echo 'No tests setup'"
   },
   "peerDependencies": {
+    "@react-navigation/elements": "*",
     "react": "*",
     "react-native": "*",
     "react-native-safe-area-context": "*",
-    "react-native-svg": "*",
-    "@react-navigation/elements": "*"
+    "react-native-svg": "*"
   },
   "dependencies": {
     "@shopify/restyle": "1.4.0"
