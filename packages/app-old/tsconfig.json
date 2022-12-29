@@ -1,8 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
-  "compilerOptions": {
-    "tsBuildInfoFile": "__generated__/.tsbuildinfo"
-  },
+  "compilerOptions": {},
   "include": ["next-env.d.ts", "jest", "./*.js", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import fs from 'fs';
 
-import { useZeusVariables } from '../graphql/__generated__/zeus';
+import { $, ValueTypes } from '../graphql/__generated__/zeus';
 import { hasuraClient } from '../graphql/client';
 
 type Claim = {
@@ -18,16 +18,12 @@ async function insertMerkleClaims() {
     process.argv.slice(2);
   const rawClaims = fs.readFileSync(claimsJsonFile, { encoding: 'utf8' });
   const claims = JSON.parse(rawClaims) as Claim[];
-  const merkleClaims = claims.map((c) => ({
-    recipient_eth_address: c.to,
-    claim_json: c,
-  }));
-  const variables = useZeusVariables({
-    data: '[robot_merkle_claims_insert_input!]!',
-  })({
-    data: merkleClaims,
-  });
-  const { $ } = variables;
+  const merkleClaims: Array<ValueTypes['robot_merkle_claims_insert_input']> =
+    claims.map((c) => ({
+      recipient_eth_address: c.to,
+      claim_json: c,
+    }));
+
   try {
     const insertMerkleRootRes = await hasuraClient.mutate(
       {
@@ -37,7 +33,9 @@ async function insertMerkleClaims() {
               contract_address: contractAddress,
               hash,
               network,
-              merkle_claims: { data: $('data') },
+              merkle_claims: {
+                data: $('data', '[robot_merkle_claims_insert_input!]!'),
+              },
             },
           },
           {
@@ -47,7 +45,9 @@ async function insertMerkleClaims() {
       },
       {
         operationName: 'insertMerkleRootWithClaims',
-        variables,
+        variables: {
+          data: merkleClaims,
+        },
       },
     );
     console.log(insertMerkleRootRes.insert_robot_merkle_roots_one);

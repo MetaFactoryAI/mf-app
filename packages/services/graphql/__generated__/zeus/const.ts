@@ -15,6 +15,14 @@ export const AllTypesProps: Record<string, any> = {
     _neq: 'bigint',
     _nin: 'bigint',
   },
+  contribution_votes_aggregate_bool_exp: {
+    count: 'contribution_votes_aggregate_bool_exp_count',
+  },
+  contribution_votes_aggregate_bool_exp_count: {
+    arguments: 'contribution_votes_select_column',
+    filter: 'contribution_votes_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   contribution_votes_aggregate_fields: {
     count: {
       columns: 'contribution_votes_select_column',
@@ -35,6 +43,7 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'contribution_votes_bool_exp',
     contribution: 'contributions_bool_exp',
     contribution_id: 'uuid_comparison_exp',
+    created_at: 'timestamptz_comparison_exp',
     rating: 'String_comparison_exp',
     user: 'users_bool_exp',
     user_id: 'uuid_comparison_exp',
@@ -43,16 +52,19 @@ export const AllTypesProps: Record<string, any> = {
   contribution_votes_insert_input: {
     contribution: 'contributions_obj_rel_insert_input',
     contribution_id: 'uuid',
+    created_at: 'timestamptz',
     user: 'users_obj_rel_insert_input',
     user_id: 'uuid',
   },
   contribution_votes_max_order_by: {
     contribution_id: 'order_by',
+    created_at: 'order_by',
     rating: 'order_by',
     user_id: 'order_by',
   },
   contribution_votes_min_order_by: {
     contribution_id: 'order_by',
+    created_at: 'order_by',
     rating: 'order_by',
     user_id: 'order_by',
   },
@@ -64,6 +76,7 @@ export const AllTypesProps: Record<string, any> = {
   contribution_votes_order_by: {
     contribution: 'contributions_order_by',
     contribution_id: 'order_by',
+    created_at: 'order_by',
     rating: 'order_by',
     user: 'users_order_by',
     user_id: 'order_by',
@@ -75,9 +88,23 @@ export const AllTypesProps: Record<string, any> = {
   contribution_votes_select_column: 'enum' as const,
   contribution_votes_set_input: {
     contribution_id: 'uuid',
+    created_at: 'timestamptz',
+    user_id: 'uuid',
+  },
+  contribution_votes_stream_cursor_input: {
+    initial_value: 'contribution_votes_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  contribution_votes_stream_cursor_value_input: {
+    contribution_id: 'uuid',
+    created_at: 'timestamptz',
     user_id: 'uuid',
   },
   contribution_votes_update_column: 'enum' as const,
+  contribution_votes_updates: {
+    _set: 'contribution_votes_set_input',
+    where: 'contribution_votes_bool_exp',
+  },
   contributions: {
     contributors: {
       distinct_on: 'contributors_select_column',
@@ -113,6 +140,7 @@ export const AllTypesProps: Record<string, any> = {
     author: 'users_bool_exp',
     category: 'String_comparison_exp',
     contributors: 'contributors_bool_exp',
+    contributors_aggregate: 'contributors_aggregate_bool_exp',
     created_at: 'timestamptz_comparison_exp',
     created_by: 'uuid_comparison_exp',
     date: 'date_comparison_exp',
@@ -122,6 +150,7 @@ export const AllTypesProps: Record<string, any> = {
     impact: 'String_comparison_exp',
     title: 'String_comparison_exp',
     votes: 'contribution_votes_bool_exp',
+    votes_aggregate: 'contribution_votes_aggregate_bool_exp',
     weight: 'Int_comparison_exp',
   },
   contributions_constraint: 'enum' as const,
@@ -170,7 +199,30 @@ export const AllTypesProps: Record<string, any> = {
     date: 'date',
     id: 'uuid',
   },
+  contributions_stream_cursor_input: {
+    initial_value: 'contributions_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  contributions_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+    created_by: 'uuid',
+    date: 'date',
+    id: 'uuid',
+  },
   contributions_update_column: 'enum' as const,
+  contributions_updates: {
+    _inc: 'contributions_inc_input',
+    _set: 'contributions_set_input',
+    where: 'contributions_bool_exp',
+  },
+  contributors_aggregate_bool_exp: {
+    count: 'contributors_aggregate_bool_exp_count',
+  },
+  contributors_aggregate_bool_exp_count: {
+    arguments: 'contributors_select_column',
+    filter: 'contributors_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   contributors_aggregate_fields: {
     count: {
       columns: 'contributors_select_column',
@@ -258,10 +310,24 @@ export const AllTypesProps: Record<string, any> = {
   contributors_stddev_samp_order_by: {
     contribution_share: 'order_by',
   },
+  contributors_stream_cursor_input: {
+    initial_value: 'contributors_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  contributors_stream_cursor_value_input: {
+    contribution_id: 'uuid',
+    contribution_share: 'numeric',
+    user_id: 'uuid',
+  },
   contributors_sum_order_by: {
     contribution_share: 'order_by',
   },
   contributors_update_column: 'enum' as const,
+  contributors_updates: {
+    _inc: 'contributors_inc_input',
+    _set: 'contributors_set_input',
+    where: 'contributors_bool_exp',
+  },
   contributors_var_pop_order_by: {
     contribution_share: 'order_by',
   },
@@ -271,6 +337,7 @@ export const AllTypesProps: Record<string, any> = {
   contributors_variance_order_by: {
     contribution_share: 'order_by',
   },
+  cursor_ordering: 'enum' as const,
   date: `scalar.date` as const,
   date_comparison_exp: {
     _eq: 'date',
@@ -281,17 +348,6 @@ export const AllTypesProps: Record<string, any> = {
     _lte: 'date',
     _neq: 'date',
     _nin: 'date',
-  },
-  json: `scalar.json` as const,
-  json_comparison_exp: {
-    _eq: 'json',
-    _gt: 'json',
-    _gte: 'json',
-    _in: 'json',
-    _lt: 'json',
-    _lte: 'json',
-    _neq: 'json',
-    _nin: 'json',
   },
   jsonb: `scalar.jsonb` as const,
   jsonb_cast_exp: {
@@ -354,9 +410,7 @@ export const AllTypesProps: Record<string, any> = {
     delete_omni_directus_files: {
       where: 'omni_directus_files_bool_exp',
     },
-    delete_omni_directus_files_by_pk: {
-      id: 'uuid',
-    },
+    delete_omni_directus_files_by_pk: {},
     delete_omni_fullfillers: {
       where: 'omni_fullfillers_bool_exp',
     },
@@ -865,6 +919,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'contribution_votes_set_input',
       pk_columns: 'contribution_votes_pk_columns_input',
     },
+    update_contribution_votes_many: {
+      updates: 'contribution_votes_updates',
+    },
     update_contributions: {
       _inc: 'contributions_inc_input',
       _set: 'contributions_set_input',
@@ -874,6 +931,9 @@ export const AllTypesProps: Record<string, any> = {
       _inc: 'contributions_inc_input',
       _set: 'contributions_set_input',
       pk_columns: 'contributions_pk_columns_input',
+    },
+    update_contributions_many: {
+      updates: 'contributions_updates',
     },
     update_contributors: {
       _inc: 'contributors_inc_input',
@@ -885,6 +945,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'contributors_set_input',
       pk_columns: 'contributors_pk_columns_input',
     },
+    update_contributors_many: {
+      updates: 'contributors_updates',
+    },
     update_omni_brand_statuses_enum: {
       _set: 'omni_brand_statuses_enum_set_input',
       where: 'omni_brand_statuses_enum_bool_exp',
@@ -892,6 +955,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_brand_statuses_enum_by_pk: {
       _set: 'omni_brand_statuses_enum_set_input',
       pk_columns: 'omni_brand_statuses_enum_pk_columns_input',
+    },
+    update_omni_brand_statuses_enum_many: {
+      updates: 'omni_brand_statuses_enum_updates',
     },
     update_omni_brand_users: {
       _set: 'omni_brand_users_set_input',
@@ -901,6 +967,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_brand_users_set_input',
       pk_columns: 'omni_brand_users_pk_columns_input',
     },
+    update_omni_brand_users_many: {
+      updates: 'omni_brand_users_updates',
+    },
     update_omni_brands: {
       _set: 'omni_brands_set_input',
       where: 'omni_brands_bool_exp',
@@ -908,6 +977,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_brands_by_pk: {
       _set: 'omni_brands_set_input',
       pk_columns: 'omni_brands_pk_columns_input',
+    },
+    update_omni_brands_many: {
+      updates: 'omni_brands_updates',
     },
     update_omni_collaborator_types_enum: {
       _set: 'omni_collaborator_types_enum_set_input',
@@ -917,15 +989,17 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_collaborator_types_enum_set_input',
       pk_columns: 'omni_collaborator_types_enum_pk_columns_input',
     },
+    update_omni_collaborator_types_enum_many: {
+      updates: 'omni_collaborator_types_enum_updates',
+    },
     update_omni_directus_files: {
-      _inc: 'omni_directus_files_inc_input',
-      _set: 'omni_directus_files_set_input',
       where: 'omni_directus_files_bool_exp',
     },
     update_omni_directus_files_by_pk: {
-      _inc: 'omni_directus_files_inc_input',
-      _set: 'omni_directus_files_set_input',
       pk_columns: 'omni_directus_files_pk_columns_input',
+    },
+    update_omni_directus_files_many: {
+      updates: 'omni_directus_files_updates',
     },
     update_omni_fullfillers: {
       _set: 'omni_fullfillers_set_input',
@@ -934,6 +1008,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_fullfillers_by_pk: {
       _set: 'omni_fullfillers_set_input',
       pk_columns: 'omni_fullfillers_pk_columns_input',
+    },
+    update_omni_fullfillers_many: {
+      updates: 'omni_fullfillers_updates',
     },
     update_omni_price_currencies: {
       _inc: 'omni_price_currencies_inc_input',
@@ -945,6 +1022,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_price_currencies_set_input',
       pk_columns: 'omni_price_currencies_pk_columns_input',
     },
+    update_omni_price_currencies_many: {
+      updates: 'omni_price_currencies_updates',
+    },
     update_omni_print_techs_enum: {
       _set: 'omni_print_techs_enum_set_input',
       where: 'omni_print_techs_enum_bool_exp',
@@ -952,6 +1032,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_print_techs_enum_by_pk: {
       _set: 'omni_print_techs_enum_set_input',
       pk_columns: 'omni_print_techs_enum_pk_columns_input',
+    },
+    update_omni_print_techs_enum_many: {
+      updates: 'omni_print_techs_enum_updates',
     },
     update_omni_producer_statuses_enum: {
       _set: 'omni_producer_statuses_enum_set_input',
@@ -961,6 +1044,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_producer_statuses_enum_set_input',
       pk_columns: 'omni_producer_statuses_enum_pk_columns_input',
     },
+    update_omni_producer_statuses_enum_many: {
+      updates: 'omni_producer_statuses_enum_updates',
+    },
     update_omni_producers: {
       _set: 'omni_producers_set_input',
       where: 'omni_producers_bool_exp',
@@ -968,6 +1054,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_producers_by_pk: {
       _set: 'omni_producers_set_input',
       pk_columns: 'omni_producers_pk_columns_input',
+    },
+    update_omni_producers_many: {
+      updates: 'omni_producers_updates',
     },
     update_omni_product_collaborators: {
       _inc: 'omni_product_collaborators_inc_input',
@@ -979,6 +1068,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_product_collaborators_set_input',
       pk_columns: 'omni_product_collaborators_pk_columns_input',
     },
+    update_omni_product_collaborators_many: {
+      updates: 'omni_product_collaborators_updates',
+    },
     update_omni_product_types_enum: {
       _set: 'omni_product_types_enum_set_input',
       where: 'omni_product_types_enum_bool_exp',
@@ -987,6 +1079,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_product_types_enum_set_input',
       pk_columns: 'omni_product_types_enum_pk_columns_input',
     },
+    update_omni_product_types_enum_many: {
+      updates: 'omni_product_types_enum_updates',
+    },
     update_omni_production_genders_enum: {
       _set: 'omni_production_genders_enum_set_input',
       where: 'omni_production_genders_enum_bool_exp',
@@ -994,6 +1089,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_production_genders_enum_by_pk: {
       _set: 'omni_production_genders_enum_set_input',
       pk_columns: 'omni_production_genders_enum_pk_columns_input',
+    },
+    update_omni_production_genders_enum_many: {
+      updates: 'omni_production_genders_enum_updates',
     },
     update_omni_production_materials: {
       _inc: 'omni_production_materials_inc_input',
@@ -1005,6 +1103,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_production_materials_set_input',
       pk_columns: 'omni_production_materials_pk_columns_input',
     },
+    update_omni_production_materials_many: {
+      updates: 'omni_production_materials_updates',
+    },
     update_omni_production_materials_producers: {
       _set: 'omni_production_materials_producers_set_input',
       where: 'omni_production_materials_producers_bool_exp',
@@ -1012,6 +1113,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_production_materials_producers_by_pk: {
       _set: 'omni_production_materials_producers_set_input',
       pk_columns: 'omni_production_materials_producers_pk_columns_input',
+    },
+    update_omni_production_materials_producers_many: {
+      updates: 'omni_production_materials_producers_updates',
     },
     update_omni_production_materials_ratings_enum: {
       _set: 'omni_production_materials_ratings_enum_set_input',
@@ -1021,6 +1125,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_production_materials_ratings_enum_set_input',
       pk_columns: 'omni_production_materials_ratings_enum_pk_columns_input',
     },
+    update_omni_production_materials_ratings_enum_many: {
+      updates: 'omni_production_materials_ratings_enum_updates',
+    },
     update_omni_production_methods: {
       _set: 'omni_production_methods_set_input',
       where: 'omni_production_methods_bool_exp',
@@ -1028,6 +1135,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_production_methods_by_pk: {
       _set: 'omni_production_methods_set_input',
       pk_columns: 'omni_production_methods_pk_columns_input',
+    },
+    update_omni_production_methods_many: {
+      updates: 'omni_production_methods_updates',
     },
     update_omni_production_methods_producers: {
       _set: 'omni_production_methods_producers_set_input',
@@ -1037,6 +1147,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_production_methods_producers_set_input',
       pk_columns: 'omni_production_methods_producers_pk_columns_input',
     },
+    update_omni_production_methods_producers_many: {
+      updates: 'omni_production_methods_producers_updates',
+    },
     update_omni_production_methods_products: {
       _set: 'omni_production_methods_products_set_input',
       where: 'omni_production_methods_products_bool_exp',
@@ -1044,6 +1157,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_production_methods_products_by_pk: {
       _set: 'omni_production_methods_products_set_input',
       pk_columns: 'omni_production_methods_products_pk_columns_input',
+    },
+    update_omni_production_methods_products_many: {
+      updates: 'omni_production_methods_products_updates',
     },
     update_omni_production_pallettes_enum: {
       _set: 'omni_production_pallettes_enum_set_input',
@@ -1053,6 +1169,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_production_pallettes_enum_set_input',
       pk_columns: 'omni_production_pallettes_enum_pk_columns_input',
     },
+    update_omni_production_pallettes_enum_many: {
+      updates: 'omni_production_pallettes_enum_updates',
+    },
     update_omni_production_styles_enum: {
       _set: 'omni_production_styles_enum_set_input',
       where: 'omni_production_styles_enum_bool_exp',
@@ -1060,6 +1179,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_production_styles_enum_by_pk: {
       _set: 'omni_production_styles_enum_set_input',
       pk_columns: 'omni_production_styles_enum_pk_columns_input',
+    },
+    update_omni_production_styles_enum_many: {
+      updates: 'omni_production_styles_enum_updates',
     },
     update_omni_products: {
       _inc: 'omni_products_inc_input',
@@ -1081,15 +1203,22 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_products_files_set_input',
       pk_columns: 'omni_products_files_pk_columns_input',
     },
+    update_omni_products_files_many: {
+      updates: 'omni_products_files_updates',
+    },
+    update_omni_products_many: {
+      updates: 'omni_products_updates',
+    },
     update_omni_products_production_materials: {
-      _inc: 'omni_products_production_materials_inc_input',
       _set: 'omni_products_production_materials_set_input',
       where: 'omni_products_production_materials_bool_exp',
     },
     update_omni_products_production_materials_by_pk: {
-      _inc: 'omni_products_production_materials_inc_input',
       _set: 'omni_products_production_materials_set_input',
       pk_columns: 'omni_products_production_materials_pk_columns_input',
+    },
+    update_omni_products_production_materials_many: {
+      updates: 'omni_products_production_materials_updates',
     },
     update_omni_products_stage_enum: {
       _set: 'omni_products_stage_enum_set_input',
@@ -1099,6 +1228,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_products_stage_enum_set_input',
       pk_columns: 'omni_products_stage_enum_pk_columns_input',
     },
+    update_omni_products_stage_enum_many: {
+      updates: 'omni_products_stage_enum_updates',
+    },
     update_omni_sale_types_enum: {
       _set: 'omni_sale_types_enum_set_input',
       where: 'omni_sale_types_enum_bool_exp',
@@ -1106,6 +1238,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_sale_types_enum_by_pk: {
       _set: 'omni_sale_types_enum_set_input',
       pk_columns: 'omni_sale_types_enum_pk_columns_input',
+    },
+    update_omni_sale_types_enum_many: {
+      updates: 'omni_sale_types_enum_updates',
     },
     update_omni_timezones_enum: {
       _set: 'omni_timezones_enum_set_input',
@@ -1115,6 +1250,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_timezones_enum_set_input',
       pk_columns: 'omni_timezones_enum_pk_columns_input',
     },
+    update_omni_timezones_enum_many: {
+      updates: 'omni_timezones_enum_updates',
+    },
     update_omni_user_skill_types_enum: {
       _set: 'omni_user_skill_types_enum_set_input',
       where: 'omni_user_skill_types_enum_bool_exp',
@@ -1122,6 +1260,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_user_skill_types_enum_by_pk: {
       _set: 'omni_user_skill_types_enum_set_input',
       pk_columns: 'omni_user_skill_types_enum_pk_columns_input',
+    },
+    update_omni_user_skill_types_enum_many: {
+      updates: 'omni_user_skill_types_enum_updates',
     },
     update_omni_user_skills: {
       _set: 'omni_user_skills_set_input',
@@ -1131,6 +1272,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_user_skills_set_input',
       pk_columns: 'omni_user_skills_pk_columns_input',
     },
+    update_omni_user_skills_many: {
+      updates: 'omni_user_skills_updates',
+    },
     update_omni_user_statuses_enum: {
       _set: 'omni_user_statuses_enum_set_input',
       where: 'omni_user_statuses_enum_bool_exp',
@@ -1139,6 +1283,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'omni_user_statuses_enum_set_input',
       pk_columns: 'omni_user_statuses_enum_pk_columns_input',
     },
+    update_omni_user_statuses_enum_many: {
+      updates: 'omni_user_statuses_enum_updates',
+    },
     update_omni_users: {
       _set: 'omni_users_set_input',
       where: 'omni_users_bool_exp',
@@ -1146,6 +1293,9 @@ export const AllTypesProps: Record<string, any> = {
     update_omni_users_by_pk: {
       _set: 'omni_users_set_input',
       pk_columns: 'omni_users_pk_columns_input',
+    },
+    update_omni_users_many: {
+      updates: 'omni_users_updates',
     },
     update_robot_merkle_claims: {
       _append: 'robot_merkle_claims_append_input',
@@ -1165,6 +1315,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'robot_merkle_claims_set_input',
       pk_columns: 'robot_merkle_claims_pk_columns_input',
     },
+    update_robot_merkle_claims_many: {
+      updates: 'robot_merkle_claims_updates',
+    },
     update_robot_merkle_roots: {
       _set: 'robot_merkle_roots_set_input',
       where: 'robot_merkle_roots_bool_exp',
@@ -1172,6 +1325,9 @@ export const AllTypesProps: Record<string, any> = {
     update_robot_merkle_roots_by_pk: {
       _set: 'robot_merkle_roots_set_input',
       pk_columns: 'robot_merkle_roots_pk_columns_input',
+    },
+    update_robot_merkle_roots_many: {
+      updates: 'robot_merkle_roots_updates',
     },
     update_robot_order: {
       _inc: 'robot_order_inc_input',
@@ -1182,6 +1338,9 @@ export const AllTypesProps: Record<string, any> = {
       _inc: 'robot_order_inc_input',
       _set: 'robot_order_set_input',
       pk_columns: 'robot_order_pk_columns_input',
+    },
+    update_robot_order_many: {
+      updates: 'robot_order_updates',
     },
     update_robot_product: {
       _append: 'robot_product_append_input',
@@ -1213,6 +1372,12 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'robot_product_designer_set_input',
       pk_columns: 'robot_product_designer_pk_columns_input',
     },
+    update_robot_product_designer_many: {
+      updates: 'robot_product_designer_updates',
+    },
+    update_robot_product_many: {
+      updates: 'robot_product_updates',
+    },
     update_shop_api_users: {
       _set: 'shop_api_users_set_input',
       where: 'shop_api_users_bool_exp',
@@ -1220,6 +1385,9 @@ export const AllTypesProps: Record<string, any> = {
     update_shop_api_users_by_pk: {
       _set: 'shop_api_users_set_input',
       pk_columns: 'shop_api_users_pk_columns_input',
+    },
+    update_shop_api_users_many: {
+      updates: 'shop_api_users_updates',
     },
     update_shop_product_locks: {
       _set: 'shop_product_locks_set_input',
@@ -1229,6 +1397,9 @@ export const AllTypesProps: Record<string, any> = {
       _set: 'shop_product_locks_set_input',
       pk_columns: 'shop_product_locks_pk_columns_input',
     },
+    update_shop_product_locks_many: {
+      updates: 'shop_product_locks_updates',
+    },
     update_users: {
       _set: 'users_set_input',
       where: 'users_bool_exp',
@@ -1236,6 +1407,9 @@ export const AllTypesProps: Record<string, any> = {
     update_users_by_pk: {
       _set: 'users_set_input',
       pk_columns: 'users_pk_columns_input',
+    },
+    update_users_many: {
+      updates: 'users_updates',
     },
   },
   numeric: `scalar.numeric` as const,
@@ -1271,6 +1445,7 @@ export const AllTypesProps: Record<string, any> = {
     _not: 'omni_brand_statuses_enum_bool_exp',
     _or: 'omni_brand_statuses_enum_bool_exp',
     brands: 'omni_brands_bool_exp',
+    brands_aggregate: 'omni_brands_aggregate_bool_exp',
     description: 'String_comparison_exp',
     value: 'String_comparison_exp',
   },
@@ -1302,7 +1477,24 @@ export const AllTypesProps: Record<string, any> = {
   omni_brand_statuses_enum_pk_columns_input: {},
   omni_brand_statuses_enum_select_column: 'enum' as const,
   omni_brand_statuses_enum_set_input: {},
+  omni_brand_statuses_enum_stream_cursor_input: {
+    initial_value: 'omni_brand_statuses_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_brand_statuses_enum_stream_cursor_value_input: {},
   omni_brand_statuses_enum_update_column: 'enum' as const,
+  omni_brand_statuses_enum_updates: {
+    _set: 'omni_brand_statuses_enum_set_input',
+    where: 'omni_brand_statuses_enum_bool_exp',
+  },
+  omni_brand_users_aggregate_bool_exp: {
+    count: 'omni_brand_users_aggregate_bool_exp_count',
+  },
+  omni_brand_users_aggregate_bool_exp_count: {
+    arguments: 'omni_brand_users_select_column',
+    filter: 'omni_brand_users_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_brand_users_aggregate_fields: {
     count: {
       columns: 'omni_brand_users_select_column',
@@ -1366,7 +1558,20 @@ export const AllTypesProps: Record<string, any> = {
     collaborator: 'uuid',
     id: 'uuid',
   },
+  omni_brand_users_stream_cursor_input: {
+    initial_value: 'omni_brand_users_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_brand_users_stream_cursor_value_input: {
+    brand: 'uuid',
+    collaborator: 'uuid',
+    id: 'uuid',
+  },
   omni_brand_users_update_column: 'enum' as const,
+  omni_brand_users_updates: {
+    _set: 'omni_brand_users_set_input',
+    where: 'omni_brand_users_bool_exp',
+  },
   omni_brands: {
     brand_users: {
       distinct_on: 'omni_brand_users_select_column',
@@ -1389,6 +1594,14 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_products_bool_exp',
     },
   },
+  omni_brands_aggregate_bool_exp: {
+    count: 'omni_brands_aggregate_bool_exp_count',
+  },
+  omni_brands_aggregate_bool_exp_count: {
+    arguments: 'omni_brands_select_column',
+    filter: 'omni_brands_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_brands_aggregate_fields: {
     count: {
       columns: 'omni_brands_select_column',
@@ -1409,6 +1622,7 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_brands_bool_exp',
     brand_statuses_enum: 'omni_brand_statuses_enum_bool_exp',
     brand_users: 'omni_brand_users_bool_exp',
+    brand_users_aggregate: 'omni_brand_users_aggregate_bool_exp',
     created_at: 'timestamptz_comparison_exp',
     description: 'String_comparison_exp',
     discord_url: 'String_comparison_exp',
@@ -1417,6 +1631,7 @@ export const AllTypesProps: Record<string, any> = {
     logo: 'String_comparison_exp',
     name: 'String_comparison_exp',
     products: 'omni_products_bool_exp',
+    products_aggregate: 'omni_products_aggregate_bool_exp',
     status: 'omni_brand_statuses_enum_enum_comparison_exp',
     twitter_url: 'String_comparison_exp',
     updated_at: 'timestamptz_comparison_exp',
@@ -1491,7 +1706,21 @@ export const AllTypesProps: Record<string, any> = {
     status: 'omni_brand_statuses_enum_enum',
     updated_at: 'timestamptz',
   },
+  omni_brands_stream_cursor_input: {
+    initial_value: 'omni_brands_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_brands_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+    id: 'uuid',
+    status: 'omni_brand_statuses_enum_enum',
+    updated_at: 'timestamptz',
+  },
   omni_brands_update_column: 'enum' as const,
+  omni_brands_updates: {
+    _set: 'omni_brands_set_input',
+    where: 'omni_brands_bool_exp',
+  },
   omni_collaborator_types_enum: {
     product_collaborators: {
       distinct_on: 'omni_product_collaborators_select_column',
@@ -1515,6 +1744,8 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_collaborator_types_enum_bool_exp',
     description: 'String_comparison_exp',
     product_collaborators: 'omni_product_collaborators_bool_exp',
+    product_collaborators_aggregate:
+      'omni_product_collaborators_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_collaborator_types_enum_constraint: 'enum' as const,
@@ -1546,9 +1777,15 @@ export const AllTypesProps: Record<string, any> = {
   omni_collaborator_types_enum_pk_columns_input: {},
   omni_collaborator_types_enum_select_column: 'enum' as const,
   omni_collaborator_types_enum_set_input: {},
+  omni_collaborator_types_enum_stream_cursor_input: {
+    initial_value: 'omni_collaborator_types_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_collaborator_types_enum_stream_cursor_value_input: {},
   omni_collaborator_types_enum_update_column: 'enum' as const,
-  omni_directus_files: {
-    metadata: {},
+  omni_collaborator_types_enum_updates: {
+    _set: 'omni_collaborator_types_enum_set_input',
+    where: 'omni_collaborator_types_enum_bool_exp',
   },
   omni_directus_files_aggregate_fields: {
     count: {
@@ -1559,85 +1796,29 @@ export const AllTypesProps: Record<string, any> = {
     _and: 'omni_directus_files_bool_exp',
     _not: 'omni_directus_files_bool_exp',
     _or: 'omni_directus_files_bool_exp',
-    charset: 'String_comparison_exp',
-    description: 'String_comparison_exp',
-    duration: 'Int_comparison_exp',
-    embed: 'String_comparison_exp',
-    filename_disk: 'String_comparison_exp',
-    filename_download: 'String_comparison_exp',
-    filesize: 'bigint_comparison_exp',
-    folder: 'uuid_comparison_exp',
-    height: 'Int_comparison_exp',
-    id: 'uuid_comparison_exp',
-    location: 'String_comparison_exp',
-    metadata: 'json_comparison_exp',
-    modified_by: 'uuid_comparison_exp',
-    modified_on: 'timestamptz_comparison_exp',
-    storage: 'String_comparison_exp',
-    tags: 'String_comparison_exp',
-    title: 'String_comparison_exp',
-    type: 'String_comparison_exp',
-    uploaded_by: 'uuid_comparison_exp',
-    uploaded_on: 'timestamptz_comparison_exp',
-    width: 'Int_comparison_exp',
+    id: 'Int_comparison_exp',
   },
   omni_directus_files_constraint: 'enum' as const,
-  omni_directus_files_inc_input: {
-    filesize: 'bigint',
-  },
-  omni_directus_files_insert_input: {
-    filesize: 'bigint',
-    folder: 'uuid',
-    id: 'uuid',
-    metadata: 'json',
-    modified_by: 'uuid',
-    modified_on: 'timestamptz',
-    uploaded_by: 'uuid',
-    uploaded_on: 'timestamptz',
-  },
+  omni_directus_files_insert_input: {},
   omni_directus_files_on_conflict: {
     constraint: 'omni_directus_files_constraint',
     update_columns: 'omni_directus_files_update_column',
     where: 'omni_directus_files_bool_exp',
   },
   omni_directus_files_order_by: {
-    charset: 'order_by',
-    description: 'order_by',
-    duration: 'order_by',
-    embed: 'order_by',
-    filename_disk: 'order_by',
-    filename_download: 'order_by',
-    filesize: 'order_by',
-    folder: 'order_by',
-    height: 'order_by',
     id: 'order_by',
-    location: 'order_by',
-    metadata: 'order_by',
-    modified_by: 'order_by',
-    modified_on: 'order_by',
-    storage: 'order_by',
-    tags: 'order_by',
-    title: 'order_by',
-    type: 'order_by',
-    uploaded_by: 'order_by',
-    uploaded_on: 'order_by',
-    width: 'order_by',
   },
-  omni_directus_files_pk_columns_input: {
-    id: 'uuid',
-  },
+  omni_directus_files_pk_columns_input: {},
   omni_directus_files_select_column: 'enum' as const,
-  omni_directus_files_set_input: {
-    filesize: 'bigint',
-    folder: 'uuid',
-    id: 'uuid',
-    metadata: 'json',
-    modified_by: 'uuid',
-    modified_on: 'timestamptz',
-    uploaded_by: 'uuid',
-    uploaded_on: 'timestamptz',
+  omni_directus_files_stream_cursor_input: {
+    initial_value: 'omni_directus_files_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
   },
+  omni_directus_files_stream_cursor_value_input: {},
   omni_directus_files_update_column: 'enum' as const,
+  omni_directus_files_updates: {
+    where: 'omni_directus_files_bool_exp',
+  },
   omni_fullfillers: {
     products: {
       distinct_on: 'omni_products_select_column',
@@ -1666,6 +1847,7 @@ export const AllTypesProps: Record<string, any> = {
     id: 'uuid_comparison_exp',
     name: 'String_comparison_exp',
     products: 'omni_products_bool_exp',
+    products_aggregate: 'omni_products_aggregate_bool_exp',
     updated_at: 'timestamptz_comparison_exp',
     website_url: 'String_comparison_exp',
   },
@@ -1705,7 +1887,20 @@ export const AllTypesProps: Record<string, any> = {
     id: 'uuid',
     updated_at: 'timestamptz',
   },
+  omni_fullfillers_stream_cursor_input: {
+    initial_value: 'omni_fullfillers_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_fullfillers_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+    id: 'uuid',
+    updated_at: 'timestamptz',
+  },
   omni_fullfillers_update_column: 'enum' as const,
+  omni_fullfillers_updates: {
+    _set: 'omni_fullfillers_set_input',
+    where: 'omni_fullfillers_bool_exp',
+  },
   omni_price_currencies_aggregate_fields: {
     count: {
       columns: 'omni_price_currencies_select_column',
@@ -1749,7 +1944,20 @@ export const AllTypesProps: Record<string, any> = {
     id: 'uuid',
     price: 'numeric',
   },
+  omni_price_currencies_stream_cursor_input: {
+    initial_value: 'omni_price_currencies_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_price_currencies_stream_cursor_value_input: {
+    id: 'uuid',
+    price: 'numeric',
+  },
   omni_price_currencies_update_column: 'enum' as const,
+  omni_price_currencies_updates: {
+    _inc: 'omni_price_currencies_inc_input',
+    _set: 'omni_price_currencies_set_input',
+    where: 'omni_price_currencies_bool_exp',
+  },
   omni_print_techs_enum: {
     production_materials: {
       distinct_on: 'omni_production_materials_select_column',
@@ -1773,6 +1981,8 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_print_techs_enum_bool_exp',
     description: 'String_comparison_exp',
     production_materials: 'omni_production_materials_bool_exp',
+    production_materials_aggregate:
+      'omni_production_materials_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_print_techs_enum_constraint: 'enum' as const,
@@ -1804,7 +2014,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_print_techs_enum_pk_columns_input: {},
   omni_print_techs_enum_select_column: 'enum' as const,
   omni_print_techs_enum_set_input: {},
+  omni_print_techs_enum_stream_cursor_input: {
+    initial_value: 'omni_print_techs_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_print_techs_enum_stream_cursor_value_input: {},
   omni_print_techs_enum_update_column: 'enum' as const,
+  omni_print_techs_enum_updates: {
+    _set: 'omni_print_techs_enum_set_input',
+    where: 'omni_print_techs_enum_bool_exp',
+  },
   omni_producer_statuses_enum: {
     producers: {
       distinct_on: 'omni_producers_select_column',
@@ -1828,6 +2047,7 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_producer_statuses_enum_bool_exp',
     description: 'String_comparison_exp',
     producers: 'omni_producers_bool_exp',
+    producers_aggregate: 'omni_producers_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_producer_statuses_enum_constraint: 'enum' as const,
@@ -1858,7 +2078,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_producer_statuses_enum_pk_columns_input: {},
   omni_producer_statuses_enum_select_column: 'enum' as const,
   omni_producer_statuses_enum_set_input: {},
+  omni_producer_statuses_enum_stream_cursor_input: {
+    initial_value: 'omni_producer_statuses_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_producer_statuses_enum_stream_cursor_value_input: {},
   omni_producer_statuses_enum_update_column: 'enum' as const,
+  omni_producer_statuses_enum_updates: {
+    _set: 'omni_producer_statuses_enum_set_input',
+    where: 'omni_producer_statuses_enum_bool_exp',
+  },
   omni_producers: {
     production_materials_producers: {
       distinct_on: 'omni_production_materials_producers_select_column',
@@ -1891,6 +2120,14 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_products_bool_exp',
     },
   },
+  omni_producers_aggregate_bool_exp: {
+    count: 'omni_producers_aggregate_bool_exp_count',
+  },
+  omni_producers_aggregate_bool_exp_count: {
+    arguments: 'omni_producers_select_column',
+    filter: 'omni_producers_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_producers_aggregate_fields: {
     count: {
       columns: 'omni_producers_select_column',
@@ -1918,8 +2155,13 @@ export const AllTypesProps: Record<string, any> = {
     producer_statuses_enum: 'omni_producer_statuses_enum_bool_exp',
     production_materials_producers:
       'omni_production_materials_producers_bool_exp',
+    production_materials_producers_aggregate:
+      'omni_production_materials_producers_aggregate_bool_exp',
     production_methods_producers: 'omni_production_methods_producers_bool_exp',
+    production_methods_producers_aggregate:
+      'omni_production_methods_producers_aggregate_bool_exp',
     productsByProducer: 'omni_products_bool_exp',
+    productsByProducer_aggregate: 'omni_products_aggregate_bool_exp',
     status: 'omni_producer_statuses_enum_enum_comparison_exp',
     updated_at: 'timestamptz_comparison_exp',
   },
@@ -1989,7 +2231,29 @@ export const AllTypesProps: Record<string, any> = {
     status: 'omni_producer_statuses_enum_enum',
     updated_at: 'timestamptz',
   },
+  omni_producers_stream_cursor_input: {
+    initial_value: 'omni_producers_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_producers_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+    id: 'uuid',
+    status: 'omni_producer_statuses_enum_enum',
+    updated_at: 'timestamptz',
+  },
   omni_producers_update_column: 'enum' as const,
+  omni_producers_updates: {
+    _set: 'omni_producers_set_input',
+    where: 'omni_producers_bool_exp',
+  },
+  omni_product_collaborators_aggregate_bool_exp: {
+    count: 'omni_product_collaborators_aggregate_bool_exp_count',
+  },
+  omni_product_collaborators_aggregate_bool_exp_count: {
+    arguments: 'omni_product_collaborators_select_column',
+    filter: 'omni_product_collaborators_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_product_collaborators_aggregate_fields: {
     count: {
       columns: 'omni_product_collaborators_select_column',
@@ -2090,10 +2354,26 @@ export const AllTypesProps: Record<string, any> = {
   omni_product_collaborators_stddev_samp_order_by: {
     collaboration_share: 'order_by',
   },
+  omni_product_collaborators_stream_cursor_input: {
+    initial_value: 'omni_product_collaborators_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_product_collaborators_stream_cursor_value_input: {
+    collaboration_share: 'numeric',
+    collaborator: 'uuid',
+    id: 'uuid',
+    product: 'uuid',
+    type: 'omni_collaborator_types_enum_enum',
+  },
   omni_product_collaborators_sum_order_by: {
     collaboration_share: 'order_by',
   },
   omni_product_collaborators_update_column: 'enum' as const,
+  omni_product_collaborators_updates: {
+    _inc: 'omni_product_collaborators_inc_input',
+    _set: 'omni_product_collaborators_set_input',
+    where: 'omni_product_collaborators_bool_exp',
+  },
   omni_product_collaborators_var_pop_order_by: {
     collaboration_share: 'order_by',
   },
@@ -2126,6 +2406,8 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_product_types_enum_bool_exp',
     description: 'String_comparison_exp',
     production_materials: 'omni_production_materials_bool_exp',
+    production_materials_aggregate:
+      'omni_production_materials_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_product_types_enum_constraint: 'enum' as const,
@@ -2150,7 +2432,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_product_types_enum_pk_columns_input: {},
   omni_product_types_enum_select_column: 'enum' as const,
   omni_product_types_enum_set_input: {},
+  omni_product_types_enum_stream_cursor_input: {
+    initial_value: 'omni_product_types_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_product_types_enum_stream_cursor_value_input: {},
   omni_product_types_enum_update_column: 'enum' as const,
+  omni_product_types_enum_updates: {
+    _set: 'omni_product_types_enum_set_input',
+    where: 'omni_product_types_enum_bool_exp',
+  },
   omni_production_genders_enum: {
     production_materials: {
       distinct_on: 'omni_production_materials_select_column',
@@ -2174,6 +2465,8 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_production_genders_enum_bool_exp',
     description: 'String_comparison_exp',
     production_materials: 'omni_production_materials_bool_exp',
+    production_materials_aggregate:
+      'omni_production_materials_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_production_genders_enum_constraint: 'enum' as const,
@@ -2205,7 +2498,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_production_genders_enum_pk_columns_input: {},
   omni_production_genders_enum_select_column: 'enum' as const,
   omni_production_genders_enum_set_input: {},
+  omni_production_genders_enum_stream_cursor_input: {
+    initial_value: 'omni_production_genders_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_genders_enum_stream_cursor_value_input: {},
   omni_production_genders_enum_update_column: 'enum' as const,
+  omni_production_genders_enum_updates: {
+    _set: 'omni_production_genders_enum_set_input',
+    where: 'omni_production_genders_enum_bool_exp',
+  },
   omni_production_materials: {
     production_materials_producers: {
       distinct_on: 'omni_production_materials_producers_select_column',
@@ -2227,6 +2529,28 @@ export const AllTypesProps: Record<string, any> = {
       order_by: 'omni_products_production_materials_order_by',
       where: 'omni_products_production_materials_bool_exp',
     },
+  },
+  omni_production_materials_aggregate_bool_exp: {
+    bool_and: 'omni_production_materials_aggregate_bool_exp_bool_and',
+    bool_or: 'omni_production_materials_aggregate_bool_exp_bool_or',
+    count: 'omni_production_materials_aggregate_bool_exp_count',
+  },
+  omni_production_materials_aggregate_bool_exp_bool_and: {
+    arguments:
+      'omni_production_materials_select_column_omni_production_materials_aggregate_bool_exp_bool_and_arguments_columns',
+    filter: 'omni_production_materials_bool_exp',
+    predicate: 'Boolean_comparison_exp',
+  },
+  omni_production_materials_aggregate_bool_exp_bool_or: {
+    arguments:
+      'omni_production_materials_select_column_omni_production_materials_aggregate_bool_exp_bool_or_arguments_columns',
+    filter: 'omni_production_materials_bool_exp',
+    predicate: 'Boolean_comparison_exp',
+  },
+  omni_production_materials_aggregate_bool_exp_count: {
+    arguments: 'omni_production_materials_select_column',
+    filter: 'omni_production_materials_bool_exp',
+    predicate: 'Int_comparison_exp',
   },
   omni_production_materials_aggregate_fields: {
     count: {
@@ -2272,6 +2596,8 @@ export const AllTypesProps: Record<string, any> = {
     production_genders_enum: 'omni_production_genders_enum_bool_exp',
     production_materials_producers:
       'omni_production_materials_producers_bool_exp',
+    production_materials_producers_aggregate:
+      'omni_production_materials_producers_aggregate_bool_exp',
     production_materials_ratings_enum:
       'omni_production_materials_ratings_enum_bool_exp',
     production_pallettes_enum: 'omni_production_pallettes_enum_bool_exp',
@@ -2283,6 +2609,8 @@ export const AllTypesProps: Record<string, any> = {
     type: 'String_comparison_exp',
     updated_at: 'timestamptz_comparison_exp',
     used_in_products: 'omni_products_production_materials_bool_exp',
+    used_in_products_aggregate:
+      'omni_products_production_materials_aggregate_bool_exp',
   },
   omni_production_materials_constraint: 'enum' as const,
   omni_production_materials_inc_input: {
@@ -2376,6 +2704,14 @@ export const AllTypesProps: Record<string, any> = {
   omni_production_materials_pk_columns_input: {
     id: 'uuid',
   },
+  omni_production_materials_producers_aggregate_bool_exp: {
+    count: 'omni_production_materials_producers_aggregate_bool_exp_count',
+  },
+  omni_production_materials_producers_aggregate_bool_exp_count: {
+    arguments: 'omni_production_materials_producers_select_column',
+    filter: 'omni_production_materials_producers_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_production_materials_producers_aggregate_fields: {
     count: {
       columns: 'omni_production_materials_producers_select_column',
@@ -2442,7 +2778,21 @@ export const AllTypesProps: Record<string, any> = {
     producer: 'uuid',
     production_material: 'uuid',
   },
+  omni_production_materials_producers_stream_cursor_input: {
+    initial_value:
+      'omni_production_materials_producers_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_materials_producers_stream_cursor_value_input: {
+    id: 'uuid',
+    producer: 'uuid',
+    production_material: 'uuid',
+  },
   omni_production_materials_producers_update_column: 'enum' as const,
+  omni_production_materials_producers_updates: {
+    _set: 'omni_production_materials_producers_set_input',
+    where: 'omni_production_materials_producers_bool_exp',
+  },
   omni_production_materials_ratings_enum: {
     production_materials: {
       distinct_on: 'omni_production_materials_select_column',
@@ -2466,6 +2816,8 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_production_materials_ratings_enum_bool_exp',
     description: 'String_comparison_exp',
     production_materials: 'omni_production_materials_bool_exp',
+    production_materials_aggregate:
+      'omni_production_materials_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_production_materials_ratings_enum_constraint: 'enum' as const,
@@ -2497,8 +2849,22 @@ export const AllTypesProps: Record<string, any> = {
   omni_production_materials_ratings_enum_pk_columns_input: {},
   omni_production_materials_ratings_enum_select_column: 'enum' as const,
   omni_production_materials_ratings_enum_set_input: {},
+  omni_production_materials_ratings_enum_stream_cursor_input: {
+    initial_value:
+      'omni_production_materials_ratings_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_materials_ratings_enum_stream_cursor_value_input: {},
   omni_production_materials_ratings_enum_update_column: 'enum' as const,
+  omni_production_materials_ratings_enum_updates: {
+    _set: 'omni_production_materials_ratings_enum_set_input',
+    where: 'omni_production_materials_ratings_enum_bool_exp',
+  },
   omni_production_materials_select_column: 'enum' as const,
+  omni_production_materials_select_column_omni_production_materials_aggregate_bool_exp_bool_and_arguments_columns:
+    'enum' as const,
+  omni_production_materials_select_column_omni_production_materials_aggregate_bool_exp_bool_or_arguments_columns:
+    'enum' as const,
   omni_production_materials_set_input: {
     base_price: 'numeric',
     created_at: 'timestamptz',
@@ -2519,10 +2885,30 @@ export const AllTypesProps: Record<string, any> = {
   omni_production_materials_stddev_samp_order_by: {
     base_price: 'order_by',
   },
+  omni_production_materials_stream_cursor_input: {
+    initial_value: 'omni_production_materials_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_materials_stream_cursor_value_input: {
+    base_price: 'numeric',
+    created_at: 'timestamptz',
+    gender: 'omni_production_genders_enum_enum',
+    id: 'uuid',
+    pallette: 'omni_production_pallettes_enum_enum',
+    print_tech: 'omni_print_techs_enum_enum',
+    rating: 'omni_production_materials_ratings_enum_enum',
+    style: 'omni_production_styles_enum_enum',
+    updated_at: 'timestamptz',
+  },
   omni_production_materials_sum_order_by: {
     base_price: 'order_by',
   },
   omni_production_materials_update_column: 'enum' as const,
+  omni_production_materials_updates: {
+    _inc: 'omni_production_materials_inc_input',
+    _set: 'omni_production_materials_set_input',
+    where: 'omni_production_materials_bool_exp',
+  },
   omni_production_materials_var_pop_order_by: {
     base_price: 'order_by',
   },
@@ -2568,7 +2954,11 @@ export const AllTypesProps: Record<string, any> = {
     id: 'uuid_comparison_exp',
     name: 'String_comparison_exp',
     production_methods_producers: 'omni_production_methods_producers_bool_exp',
+    production_methods_producers_aggregate:
+      'omni_production_methods_producers_aggregate_bool_exp',
     production_methods_products: 'omni_production_methods_products_bool_exp',
+    production_methods_products_aggregate:
+      'omni_production_methods_products_aggregate_bool_exp',
     updated_at: 'timestamptz_comparison_exp',
   },
   omni_production_methods_constraint: 'enum' as const,
@@ -2603,6 +2993,14 @@ export const AllTypesProps: Record<string, any> = {
   },
   omni_production_methods_pk_columns_input: {
     id: 'uuid',
+  },
+  omni_production_methods_producers_aggregate_bool_exp: {
+    count: 'omni_production_methods_producers_aggregate_bool_exp_count',
+  },
+  omni_production_methods_producers_aggregate_bool_exp_count: {
+    arguments: 'omni_production_methods_producers_select_column',
+    filter: 'omni_production_methods_producers_bool_exp',
+    predicate: 'Int_comparison_exp',
   },
   omni_production_methods_producers_aggregate_fields: {
     count: {
@@ -2668,7 +3066,29 @@ export const AllTypesProps: Record<string, any> = {
     producer: 'uuid',
     production_method: 'uuid',
   },
+  omni_production_methods_producers_stream_cursor_input: {
+    initial_value:
+      'omni_production_methods_producers_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_methods_producers_stream_cursor_value_input: {
+    id: 'uuid',
+    producer: 'uuid',
+    production_method: 'uuid',
+  },
   omni_production_methods_producers_update_column: 'enum' as const,
+  omni_production_methods_producers_updates: {
+    _set: 'omni_production_methods_producers_set_input',
+    where: 'omni_production_methods_producers_bool_exp',
+  },
+  omni_production_methods_products_aggregate_bool_exp: {
+    count: 'omni_production_methods_products_aggregate_bool_exp_count',
+  },
+  omni_production_methods_products_aggregate_bool_exp_count: {
+    arguments: 'omni_production_methods_products_select_column',
+    filter: 'omni_production_methods_products_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_production_methods_products_aggregate_fields: {
     count: {
       columns: 'omni_production_methods_products_select_column',
@@ -2733,14 +3153,40 @@ export const AllTypesProps: Record<string, any> = {
     product: 'uuid',
     production_method: 'uuid',
   },
+  omni_production_methods_products_stream_cursor_input: {
+    initial_value: 'omni_production_methods_products_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_methods_products_stream_cursor_value_input: {
+    id: 'uuid',
+    product: 'uuid',
+    production_method: 'uuid',
+  },
   omni_production_methods_products_update_column: 'enum' as const,
+  omni_production_methods_products_updates: {
+    _set: 'omni_production_methods_products_set_input',
+    where: 'omni_production_methods_products_bool_exp',
+  },
   omni_production_methods_select_column: 'enum' as const,
   omni_production_methods_set_input: {
     created_at: 'timestamptz',
     id: 'uuid',
     updated_at: 'timestamptz',
   },
+  omni_production_methods_stream_cursor_input: {
+    initial_value: 'omni_production_methods_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_methods_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+    id: 'uuid',
+    updated_at: 'timestamptz',
+  },
   omni_production_methods_update_column: 'enum' as const,
+  omni_production_methods_updates: {
+    _set: 'omni_production_methods_set_input',
+    where: 'omni_production_methods_bool_exp',
+  },
   omni_production_pallettes_enum: {
     production_materials: {
       distinct_on: 'omni_production_materials_select_column',
@@ -2764,6 +3210,8 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_production_pallettes_enum_bool_exp',
     description: 'String_comparison_exp',
     production_materials: 'omni_production_materials_bool_exp',
+    production_materials_aggregate:
+      'omni_production_materials_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_production_pallettes_enum_constraint: 'enum' as const,
@@ -2795,7 +3243,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_production_pallettes_enum_pk_columns_input: {},
   omni_production_pallettes_enum_select_column: 'enum' as const,
   omni_production_pallettes_enum_set_input: {},
+  omni_production_pallettes_enum_stream_cursor_input: {
+    initial_value: 'omni_production_pallettes_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_pallettes_enum_stream_cursor_value_input: {},
   omni_production_pallettes_enum_update_column: 'enum' as const,
+  omni_production_pallettes_enum_updates: {
+    _set: 'omni_production_pallettes_enum_set_input',
+    where: 'omni_production_pallettes_enum_bool_exp',
+  },
   omni_production_styles_enum: {
     production_materials: {
       distinct_on: 'omni_production_materials_select_column',
@@ -2819,6 +3276,8 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_production_styles_enum_bool_exp',
     description: 'String_comparison_exp',
     production_materials: 'omni_production_materials_bool_exp',
+    production_materials_aggregate:
+      'omni_production_materials_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_production_styles_enum_constraint: 'enum' as const,
@@ -2850,7 +3309,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_production_styles_enum_pk_columns_input: {},
   omni_production_styles_enum_select_column: 'enum' as const,
   omni_production_styles_enum_set_input: {},
+  omni_production_styles_enum_stream_cursor_input: {
+    initial_value: 'omni_production_styles_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_production_styles_enum_stream_cursor_value_input: {},
   omni_production_styles_enum_update_column: 'enum' as const,
+  omni_production_styles_enum_updates: {
+    _set: 'omni_production_styles_enum_set_input',
+    where: 'omni_production_styles_enum_bool_exp',
+  },
   omni_products: {
     files: {
       distinct_on: 'omni_products_files_select_column',
@@ -2893,6 +3361,14 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_production_methods_products_bool_exp',
     },
   },
+  omni_products_aggregate_bool_exp: {
+    count: 'omni_products_aggregate_bool_exp_count',
+  },
+  omni_products_aggregate_bool_exp_count: {
+    arguments: 'omni_products_select_column',
+    filter: 'omni_products_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_products_aggregate_fields: {
     count: {
       columns: 'omni_products_select_column',
@@ -2931,6 +3407,7 @@ export const AllTypesProps: Record<string, any> = {
     created_at: 'timestamptz_comparison_exp',
     discord_channel_id: 'String_comparison_exp',
     files: 'omni_products_files_bool_exp',
+    files_aggregate: 'omni_products_files_aggregate_bool_exp',
     fullfiller: 'omni_fullfillers_bool_exp',
     fullfillment: 'uuid_comparison_exp',
     id: 'uuid_comparison_exp',
@@ -2942,9 +3419,15 @@ export const AllTypesProps: Record<string, any> = {
     producer: 'uuid_comparison_exp',
     producerByProducer: 'omni_producers_bool_exp',
     product_collaborators: 'omni_product_collaborators_bool_exp',
+    product_collaborators_aggregate:
+      'omni_product_collaborators_aggregate_bool_exp',
     production_cost: 'uuid_comparison_exp',
     production_materials: 'omni_products_production_materials_bool_exp',
+    production_materials_aggregate:
+      'omni_products_production_materials_aggregate_bool_exp',
     production_methods_products: 'omni_production_methods_products_bool_exp',
+    production_methods_products_aggregate:
+      'omni_production_methods_products_aggregate_bool_exp',
     products_stage_enum: 'omni_products_stage_enum_bool_exp',
     quantity: 'bigint_comparison_exp',
     sale_type: 'omni_sale_types_enum_enum_comparison_exp',
@@ -2955,6 +3438,14 @@ export const AllTypesProps: Record<string, any> = {
     updated_at: 'timestamptz_comparison_exp',
   },
   omni_products_constraint: 'enum' as const,
+  omni_products_files_aggregate_bool_exp: {
+    count: 'omni_products_files_aggregate_bool_exp_count',
+  },
+  omni_products_files_aggregate_bool_exp_count: {
+    arguments: 'omni_products_files_select_column',
+    filter: 'omni_products_files_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_products_files_aggregate_fields: {
     count: {
       columns: 'omni_products_files_select_column',
@@ -2978,20 +3469,20 @@ export const AllTypesProps: Record<string, any> = {
     on_conflict: 'omni_products_files_on_conflict',
   },
   omni_products_files_avg_order_by: {
+    directus_files_id: 'order_by',
     id: 'order_by',
   },
   omni_products_files_bool_exp: {
     _and: 'omni_products_files_bool_exp',
     _not: 'omni_products_files_bool_exp',
     _or: 'omni_products_files_bool_exp',
-    directus_files_id: 'uuid_comparison_exp',
+    directus_files_id: 'Int_comparison_exp',
     id: 'Int_comparison_exp',
     products_id: 'uuid_comparison_exp',
   },
   omni_products_files_constraint: 'enum' as const,
   omni_products_files_inc_input: {},
   omni_products_files_insert_input: {
-    directus_files_id: 'uuid',
     products_id: 'uuid',
   },
   omni_products_files_max_order_by: {
@@ -3017,29 +3508,47 @@ export const AllTypesProps: Record<string, any> = {
   omni_products_files_pk_columns_input: {},
   omni_products_files_select_column: 'enum' as const,
   omni_products_files_set_input: {
-    directus_files_id: 'uuid',
     products_id: 'uuid',
   },
   omni_products_files_stddev_order_by: {
+    directus_files_id: 'order_by',
     id: 'order_by',
   },
   omni_products_files_stddev_pop_order_by: {
+    directus_files_id: 'order_by',
     id: 'order_by',
   },
   omni_products_files_stddev_samp_order_by: {
+    directus_files_id: 'order_by',
     id: 'order_by',
   },
+  omni_products_files_stream_cursor_input: {
+    initial_value: 'omni_products_files_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_products_files_stream_cursor_value_input: {
+    products_id: 'uuid',
+  },
   omni_products_files_sum_order_by: {
+    directus_files_id: 'order_by',
     id: 'order_by',
   },
   omni_products_files_update_column: 'enum' as const,
+  omni_products_files_updates: {
+    _inc: 'omni_products_files_inc_input',
+    _set: 'omni_products_files_set_input',
+    where: 'omni_products_files_bool_exp',
+  },
   omni_products_files_var_pop_order_by: {
+    directus_files_id: 'order_by',
     id: 'order_by',
   },
   omni_products_files_var_samp_order_by: {
+    directus_files_id: 'order_by',
     id: 'order_by',
   },
   omni_products_files_variance_order_by: {
+    directus_files_id: 'order_by',
     id: 'order_by',
   },
   omni_products_inc_input: {
@@ -3157,6 +3666,14 @@ export const AllTypesProps: Record<string, any> = {
   omni_products_pk_columns_input: {
     id: 'uuid',
   },
+  omni_products_production_materials_aggregate_bool_exp: {
+    count: 'omni_products_production_materials_aggregate_bool_exp_count',
+  },
+  omni_products_production_materials_aggregate_bool_exp_count: {
+    arguments: 'omni_products_production_materials_select_column',
+    filter: 'omni_products_production_materials_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_products_production_materials_aggregate_fields: {
     count: {
       columns: 'omni_products_production_materials_select_column',
@@ -3180,31 +3697,30 @@ export const AllTypesProps: Record<string, any> = {
     on_conflict: 'omni_products_production_materials_on_conflict',
   },
   omni_products_production_materials_avg_order_by: {
-    id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_bool_exp: {
     _and: 'omni_products_production_materials_bool_exp',
     _not: 'omni_products_production_materials_bool_exp',
     _or: 'omni_products_production_materials_bool_exp',
-    id: 'Int_comparison_exp',
     product_id: 'uuid_comparison_exp',
     production_material_id: 'uuid_comparison_exp',
+    products_production_materials: 'Int_comparison_exp',
   },
   omni_products_production_materials_constraint: 'enum' as const,
-  omni_products_production_materials_inc_input: {},
   omni_products_production_materials_insert_input: {
     product_id: 'uuid',
     production_material_id: 'uuid',
   },
   omni_products_production_materials_max_order_by: {
-    id: 'order_by',
     product_id: 'order_by',
     production_material_id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_min_order_by: {
-    id: 'order_by',
     product_id: 'order_by',
     production_material_id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_on_conflict: {
     constraint: 'omni_products_production_materials_constraint',
@@ -3212,9 +3728,9 @@ export const AllTypesProps: Record<string, any> = {
     where: 'omni_products_production_materials_bool_exp',
   },
   omni_products_production_materials_order_by: {
-    id: 'order_by',
     product_id: 'order_by',
     production_material_id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_pk_columns_input: {},
   omni_products_production_materials_select_column: 'enum' as const,
@@ -3223,26 +3739,39 @@ export const AllTypesProps: Record<string, any> = {
     production_material_id: 'uuid',
   },
   omni_products_production_materials_stddev_order_by: {
-    id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_stddev_pop_order_by: {
-    id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_stddev_samp_order_by: {
-    id: 'order_by',
+    products_production_materials: 'order_by',
+  },
+  omni_products_production_materials_stream_cursor_input: {
+    initial_value:
+      'omni_products_production_materials_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_products_production_materials_stream_cursor_value_input: {
+    product_id: 'uuid',
+    production_material_id: 'uuid',
   },
   omni_products_production_materials_sum_order_by: {
-    id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_update_column: 'enum' as const,
+  omni_products_production_materials_updates: {
+    _set: 'omni_products_production_materials_set_input',
+    where: 'omni_products_production_materials_bool_exp',
+  },
   omni_products_production_materials_var_pop_order_by: {
-    id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_var_samp_order_by: {
-    id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_production_materials_variance_order_by: {
-    id: 'order_by',
+    products_production_materials: 'order_by',
   },
   omni_products_select_column: 'enum' as const,
   omni_products_set_input: {
@@ -3283,6 +3812,7 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_products_stage_enum_bool_exp',
     description: 'String_comparison_exp',
     products: 'omni_products_bool_exp',
+    products_aggregate: 'omni_products_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_products_stage_enum_constraint: 'enum' as const,
@@ -3313,7 +3843,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_products_stage_enum_pk_columns_input: {},
   omni_products_stage_enum_select_column: 'enum' as const,
   omni_products_stage_enum_set_input: {},
+  omni_products_stage_enum_stream_cursor_input: {
+    initial_value: 'omni_products_stage_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_products_stage_enum_stream_cursor_value_input: {},
   omni_products_stage_enum_update_column: 'enum' as const,
+  omni_products_stage_enum_updates: {
+    _set: 'omni_products_stage_enum_set_input',
+    where: 'omni_products_stage_enum_bool_exp',
+  },
   omni_products_stddev_order_by: {
     brand_reward_share: 'order_by',
     collaborator_reward_share: 'order_by',
@@ -3329,12 +3868,36 @@ export const AllTypesProps: Record<string, any> = {
     collaborator_reward_share: 'order_by',
     quantity: 'order_by',
   },
+  omni_products_stream_cursor_input: {
+    initial_value: 'omni_products_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_products_stream_cursor_value_input: {
+    brand: 'uuid',
+    brand_reward_share: 'numeric',
+    collaborator_reward_share: 'numeric',
+    created_at: 'timestamptz',
+    fullfillment: 'uuid',
+    id: 'uuid',
+    price: 'uuid',
+    producer: 'uuid',
+    production_cost: 'uuid',
+    quantity: 'bigint',
+    sale_type: 'omni_sale_types_enum_enum',
+    stage: 'omni_products_stage_enum_enum',
+    updated_at: 'timestamptz',
+  },
   omni_products_sum_order_by: {
     brand_reward_share: 'order_by',
     collaborator_reward_share: 'order_by',
     quantity: 'order_by',
   },
   omni_products_update_column: 'enum' as const,
+  omni_products_updates: {
+    _inc: 'omni_products_inc_input',
+    _set: 'omni_products_set_input',
+    where: 'omni_products_bool_exp',
+  },
   omni_products_var_pop_order_by: {
     brand_reward_share: 'order_by',
     collaborator_reward_share: 'order_by',
@@ -3373,6 +3936,7 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_sale_types_enum_bool_exp',
     description: 'String_comparison_exp',
     products: 'omni_products_bool_exp',
+    products_aggregate: 'omni_products_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_sale_types_enum_constraint: 'enum' as const,
@@ -3403,7 +3967,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_sale_types_enum_pk_columns_input: {},
   omni_sale_types_enum_select_column: 'enum' as const,
   omni_sale_types_enum_set_input: {},
+  omni_sale_types_enum_stream_cursor_input: {
+    initial_value: 'omni_sale_types_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_sale_types_enum_stream_cursor_value_input: {},
   omni_sale_types_enum_update_column: 'enum' as const,
+  omni_sale_types_enum_updates: {
+    _set: 'omni_sale_types_enum_set_input',
+    where: 'omni_sale_types_enum_bool_exp',
+  },
   omni_timezones_enum: {
     users: {
       distinct_on: 'omni_users_select_column',
@@ -3427,6 +4000,7 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_timezones_enum_bool_exp',
     description: 'String_comparison_exp',
     users: 'omni_users_bool_exp',
+    users_aggregate: 'omni_users_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_timezones_enum_constraint: 'enum' as const,
@@ -3457,7 +4031,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_timezones_enum_pk_columns_input: {},
   omni_timezones_enum_select_column: 'enum' as const,
   omni_timezones_enum_set_input: {},
+  omni_timezones_enum_stream_cursor_input: {
+    initial_value: 'omni_timezones_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_timezones_enum_stream_cursor_value_input: {},
   omni_timezones_enum_update_column: 'enum' as const,
+  omni_timezones_enum_updates: {
+    _set: 'omni_timezones_enum_set_input',
+    where: 'omni_timezones_enum_bool_exp',
+  },
   omni_user_skill_types_enum: {
     user_skills: {
       distinct_on: 'omni_user_skills_select_column',
@@ -3481,6 +4064,7 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_user_skill_types_enum_bool_exp',
     description: 'String_comparison_exp',
     user_skills: 'omni_user_skills_bool_exp',
+    user_skills_aggregate: 'omni_user_skills_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_user_skill_types_enum_constraint: 'enum' as const,
@@ -3511,7 +4095,24 @@ export const AllTypesProps: Record<string, any> = {
   omni_user_skill_types_enum_pk_columns_input: {},
   omni_user_skill_types_enum_select_column: 'enum' as const,
   omni_user_skill_types_enum_set_input: {},
+  omni_user_skill_types_enum_stream_cursor_input: {
+    initial_value: 'omni_user_skill_types_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_user_skill_types_enum_stream_cursor_value_input: {},
   omni_user_skill_types_enum_update_column: 'enum' as const,
+  omni_user_skill_types_enum_updates: {
+    _set: 'omni_user_skill_types_enum_set_input',
+    where: 'omni_user_skill_types_enum_bool_exp',
+  },
+  omni_user_skills_aggregate_bool_exp: {
+    count: 'omni_user_skills_aggregate_bool_exp_count',
+  },
+  omni_user_skills_aggregate_bool_exp_count: {
+    arguments: 'omni_user_skills_select_column',
+    filter: 'omni_user_skills_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_user_skills_aggregate_fields: {
     count: {
       columns: 'omni_user_skills_select_column',
@@ -3573,7 +4174,20 @@ export const AllTypesProps: Record<string, any> = {
     skill: 'omni_user_skill_types_enum_enum',
     user: 'uuid',
   },
+  omni_user_skills_stream_cursor_input: {
+    initial_value: 'omni_user_skills_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_user_skills_stream_cursor_value_input: {
+    id: 'uuid',
+    skill: 'omni_user_skill_types_enum_enum',
+    user: 'uuid',
+  },
   omni_user_skills_update_column: 'enum' as const,
+  omni_user_skills_updates: {
+    _set: 'omni_user_skills_set_input',
+    where: 'omni_user_skills_bool_exp',
+  },
   omni_user_statuses_enum: {
     users: {
       distinct_on: 'omni_users_select_column',
@@ -3597,6 +4211,7 @@ export const AllTypesProps: Record<string, any> = {
     _or: 'omni_user_statuses_enum_bool_exp',
     description: 'String_comparison_exp',
     users: 'omni_users_bool_exp',
+    users_aggregate: 'omni_users_aggregate_bool_exp',
     value: 'String_comparison_exp',
   },
   omni_user_statuses_enum_constraint: 'enum' as const,
@@ -3627,7 +4242,16 @@ export const AllTypesProps: Record<string, any> = {
   omni_user_statuses_enum_pk_columns_input: {},
   omni_user_statuses_enum_select_column: 'enum' as const,
   omni_user_statuses_enum_set_input: {},
+  omni_user_statuses_enum_stream_cursor_input: {
+    initial_value: 'omni_user_statuses_enum_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_user_statuses_enum_stream_cursor_value_input: {},
   omni_user_statuses_enum_update_column: 'enum' as const,
+  omni_user_statuses_enum_updates: {
+    _set: 'omni_user_statuses_enum_set_input',
+    where: 'omni_user_statuses_enum_bool_exp',
+  },
   omni_users: {
     brand_users: {
       distinct_on: 'omni_brand_users_select_column',
@@ -3660,6 +4284,14 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_user_skills_bool_exp',
     },
   },
+  omni_users_aggregate_bool_exp: {
+    count: 'omni_users_aggregate_bool_exp_count',
+  },
+  omni_users_aggregate_bool_exp_count: {
+    arguments: 'omni_users_select_column',
+    filter: 'omni_users_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   omni_users_aggregate_fields: {
     count: {
       columns: 'omni_users_select_column',
@@ -3679,6 +4311,7 @@ export const AllTypesProps: Record<string, any> = {
     _not: 'omni_users_bool_exp',
     _or: 'omni_users_bool_exp',
     brand_users: 'omni_brand_users_bool_exp',
+    brand_users_aggregate: 'omni_brand_users_aggregate_bool_exp',
     created_at: 'timestamptz_comparison_exp',
     discord_handle: 'String_comparison_exp',
     discord_id: 'String_comparison_exp',
@@ -3687,12 +4320,15 @@ export const AllTypesProps: Record<string, any> = {
     id: 'uuid_comparison_exp',
     name: 'String_comparison_exp',
     product_collaborators: 'omni_product_collaborators_bool_exp',
+    product_collaborators_aggregate:
+      'omni_product_collaborators_aggregate_bool_exp',
     status: 'omni_user_statuses_enum_enum_comparison_exp',
     timezone: 'omni_timezones_enum_enum_comparison_exp',
     timezones_enum: 'omni_timezones_enum_bool_exp',
     twitter_handle: 'String_comparison_exp',
     updated_at: 'timestamptz_comparison_exp',
     user_skills: 'omni_user_skills_bool_exp',
+    user_skills_aggregate: 'omni_user_skills_aggregate_bool_exp',
     user_statuses_enum: 'omni_user_statuses_enum_bool_exp',
   },
   omni_users_constraint: 'enum' as const,
@@ -3769,7 +4405,22 @@ export const AllTypesProps: Record<string, any> = {
     timezone: 'omni_timezones_enum_enum',
     updated_at: 'timestamptz',
   },
+  omni_users_stream_cursor_input: {
+    initial_value: 'omni_users_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  omni_users_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+    id: 'uuid',
+    status: 'omni_user_statuses_enum_enum',
+    timezone: 'omni_timezones_enum_enum',
+    updated_at: 'timestamptz',
+  },
   omni_users_update_column: 'enum' as const,
+  omni_users_updates: {
+    _set: 'omni_users_set_input',
+    where: 'omni_users_bool_exp',
+  },
   order_by: 'enum' as const,
   query_root: {
     contribution_votes: {
@@ -3871,9 +4522,7 @@ export const AllTypesProps: Record<string, any> = {
       order_by: 'omni_directus_files_order_by',
       where: 'omni_directus_files_bool_exp',
     },
-    omni_directus_files_by_pk: {
-      id: 'uuid',
-    },
+    omni_directus_files_by_pk: {},
     omni_fullfillers: {
       distinct_on: 'omni_fullfillers_select_column',
       order_by: 'omni_fullfillers_order_by',
@@ -4280,6 +4929,14 @@ export const AllTypesProps: Record<string, any> = {
   robot_merkle_claims: {
     claim_json: {},
   },
+  robot_merkle_claims_aggregate_bool_exp: {
+    count: 'robot_merkle_claims_aggregate_bool_exp_count',
+  },
+  robot_merkle_claims_aggregate_bool_exp_count: {
+    arguments: 'robot_merkle_claims_select_column',
+    filter: 'robot_merkle_claims_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   robot_merkle_claims_aggregate_fields: {
     count: {
       columns: 'robot_merkle_claims_select_column',
@@ -4349,7 +5006,24 @@ export const AllTypesProps: Record<string, any> = {
     claim_json: 'jsonb',
     id: 'uuid',
   },
+  robot_merkle_claims_stream_cursor_input: {
+    initial_value: 'robot_merkle_claims_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  robot_merkle_claims_stream_cursor_value_input: {
+    claim_json: 'jsonb',
+    id: 'uuid',
+  },
   robot_merkle_claims_update_column: 'enum' as const,
+  robot_merkle_claims_updates: {
+    _append: 'robot_merkle_claims_append_input',
+    _delete_at_path: 'robot_merkle_claims_delete_at_path_input',
+    _delete_elem: 'robot_merkle_claims_delete_elem_input',
+    _delete_key: 'robot_merkle_claims_delete_key_input',
+    _prepend: 'robot_merkle_claims_prepend_input',
+    _set: 'robot_merkle_claims_set_input',
+    where: 'robot_merkle_claims_bool_exp',
+  },
   robot_merkle_roots: {
     merkle_claims: {
       distinct_on: 'robot_merkle_claims_select_column',
@@ -4375,6 +5049,7 @@ export const AllTypesProps: Record<string, any> = {
     created_at: 'timestamptz_comparison_exp',
     hash: 'String_comparison_exp',
     merkle_claims: 'robot_merkle_claims_bool_exp',
+    merkle_claims_aggregate: 'robot_merkle_claims_aggregate_bool_exp',
     network: 'String_comparison_exp',
   },
   robot_merkle_roots_constraint: 'enum' as const,
@@ -4403,7 +5078,18 @@ export const AllTypesProps: Record<string, any> = {
   robot_merkle_roots_set_input: {
     created_at: 'timestamptz',
   },
+  robot_merkle_roots_stream_cursor_input: {
+    initial_value: 'robot_merkle_roots_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  robot_merkle_roots_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+  },
   robot_merkle_roots_update_column: 'enum' as const,
+  robot_merkle_roots_updates: {
+    _set: 'robot_merkle_roots_set_input',
+    where: 'robot_merkle_roots_bool_exp',
+  },
   robot_order_aggregate_fields: {
     count: {
       columns: 'robot_order_select_column',
@@ -4455,7 +5141,22 @@ export const AllTypesProps: Record<string, any> = {
     dollars_spent: 'numeric',
     season: 'numeric',
   },
+  robot_order_stream_cursor_input: {
+    initial_value: 'robot_order_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  robot_order_stream_cursor_value_input: {
+    buyer_reward: 'numeric',
+    date: 'date',
+    dollars_spent: 'numeric',
+    season: 'numeric',
+  },
   robot_order_update_column: 'enum' as const,
+  robot_order_updates: {
+    _inc: 'robot_order_inc_input',
+    _set: 'robot_order_set_input',
+    where: 'robot_order_bool_exp',
+  },
   robot_product: {
     designers: {
       distinct_on: 'robot_product_designer_select_column',
@@ -4481,18 +5182,29 @@ export const AllTypesProps: Record<string, any> = {
     _and: 'robot_product_bool_exp',
     _not: 'robot_product_bool_exp',
     _or: 'robot_product_bool_exp',
+    created_at: 'timestamptz_comparison_exp',
     designers: 'robot_product_designer_bool_exp',
+    designers_aggregate: 'robot_product_designer_aggregate_bool_exp',
     id: 'String_comparison_exp',
     nft_metadata: 'jsonb_comparison_exp',
     nft_token_id: 'Int_comparison_exp',
     notion_id: 'String_comparison_exp',
     shopify_id: 'String_comparison_exp',
     title: 'String_comparison_exp',
+    updated_at: 'timestamptz_comparison_exp',
   },
   robot_product_constraint: 'enum' as const,
   robot_product_delete_at_path_input: {},
   robot_product_delete_elem_input: {},
   robot_product_delete_key_input: {},
+  robot_product_designer_aggregate_bool_exp: {
+    count: 'robot_product_designer_aggregate_bool_exp_count',
+  },
+  robot_product_designer_aggregate_bool_exp_count: {
+    arguments: 'robot_product_designer_select_column',
+    filter: 'robot_product_designer_bool_exp',
+    predicate: 'Int_comparison_exp',
+  },
   robot_product_designer_aggregate_fields: {
     count: {
       columns: 'robot_product_designer_select_column',
@@ -4585,11 +5297,24 @@ export const AllTypesProps: Record<string, any> = {
     contribution_share: 'order_by',
     robot_reward: 'order_by',
   },
+  robot_product_designer_stream_cursor_input: {
+    initial_value: 'robot_product_designer_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  robot_product_designer_stream_cursor_value_input: {
+    contribution_share: 'numeric',
+    robot_reward: 'numeric',
+  },
   robot_product_designer_sum_order_by: {
     contribution_share: 'order_by',
     robot_reward: 'order_by',
   },
   robot_product_designer_update_column: 'enum' as const,
+  robot_product_designer_updates: {
+    _inc: 'robot_product_designer_inc_input',
+    _set: 'robot_product_designer_set_input',
+    where: 'robot_product_designer_bool_exp',
+  },
   robot_product_designer_var_pop_order_by: {
     contribution_share: 'order_by',
     robot_reward: 'order_by',
@@ -4604,8 +5329,10 @@ export const AllTypesProps: Record<string, any> = {
   },
   robot_product_inc_input: {},
   robot_product_insert_input: {
+    created_at: 'timestamptz',
     designers: 'robot_product_designer_arr_rel_insert_input',
     nft_metadata: 'jsonb',
+    updated_at: 'timestamptz',
   },
   robot_product_obj_rel_insert_input: {
     data: 'robot_product_insert_input',
@@ -4617,6 +5344,7 @@ export const AllTypesProps: Record<string, any> = {
     where: 'robot_product_bool_exp',
   },
   robot_product_order_by: {
+    created_at: 'order_by',
     designers_aggregate: 'robot_product_designer_aggregate_order_by',
     id: 'order_by',
     nft_metadata: 'order_by',
@@ -4624,6 +5352,7 @@ export const AllTypesProps: Record<string, any> = {
     notion_id: 'order_by',
     shopify_id: 'order_by',
     title: 'order_by',
+    updated_at: 'order_by',
   },
   robot_product_pk_columns_input: {},
   robot_product_prepend_input: {
@@ -4631,9 +5360,30 @@ export const AllTypesProps: Record<string, any> = {
   },
   robot_product_select_column: 'enum' as const,
   robot_product_set_input: {
+    created_at: 'timestamptz',
     nft_metadata: 'jsonb',
+    updated_at: 'timestamptz',
+  },
+  robot_product_stream_cursor_input: {
+    initial_value: 'robot_product_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  robot_product_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+    nft_metadata: 'jsonb',
+    updated_at: 'timestamptz',
   },
   robot_product_update_column: 'enum' as const,
+  robot_product_updates: {
+    _append: 'robot_product_append_input',
+    _delete_at_path: 'robot_product_delete_at_path_input',
+    _delete_elem: 'robot_product_delete_elem_input',
+    _delete_key: 'robot_product_delete_key_input',
+    _inc: 'robot_product_inc_input',
+    _prepend: 'robot_product_prepend_input',
+    _set: 'robot_product_set_input',
+    where: 'robot_product_bool_exp',
+  },
   shop_api_users_aggregate_fields: {
     count: {
       columns: 'shop_api_users_select_column',
@@ -4660,7 +5410,16 @@ export const AllTypesProps: Record<string, any> = {
   shop_api_users_pk_columns_input: {},
   shop_api_users_select_column: 'enum' as const,
   shop_api_users_set_input: {},
+  shop_api_users_stream_cursor_input: {
+    initial_value: 'shop_api_users_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  shop_api_users_stream_cursor_value_input: {},
   shop_api_users_update_column: 'enum' as const,
+  shop_api_users_updates: {
+    _set: 'shop_api_users_set_input',
+    where: 'shop_api_users_bool_exp',
+  },
   shop_product_locks_aggregate_fields: {
     count: {
       columns: 'shop_product_locks_select_column',
@@ -4695,7 +5454,18 @@ export const AllTypesProps: Record<string, any> = {
   shop_product_locks_set_input: {
     created_at: 'timestamptz',
   },
+  shop_product_locks_stream_cursor_input: {
+    initial_value: 'shop_product_locks_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  shop_product_locks_stream_cursor_value_input: {
+    created_at: 'timestamptz',
+  },
   shop_product_locks_update_column: 'enum' as const,
+  shop_product_locks_updates: {
+    _set: 'shop_product_locks_set_input',
+    where: 'shop_product_locks_bool_exp',
+  },
   subscription_root: {
     contribution_votes: {
       distinct_on: 'contribution_votes_select_column',
@@ -4711,6 +5481,10 @@ export const AllTypesProps: Record<string, any> = {
       contribution_id: 'uuid',
       user_id: 'uuid',
     },
+    contribution_votes_stream: {
+      cursor: 'contribution_votes_stream_cursor_input',
+      where: 'contribution_votes_bool_exp',
+    },
     contributions: {
       distinct_on: 'contributions_select_column',
       order_by: 'contributions_order_by',
@@ -4723,6 +5497,10 @@ export const AllTypesProps: Record<string, any> = {
     },
     contributions_by_pk: {
       id: 'uuid',
+    },
+    contributions_stream: {
+      cursor: 'contributions_stream_cursor_input',
+      where: 'contributions_bool_exp',
     },
     contributors: {
       distinct_on: 'contributors_select_column',
@@ -4738,6 +5516,10 @@ export const AllTypesProps: Record<string, any> = {
       contribution_id: 'uuid',
       user_id: 'uuid',
     },
+    contributors_stream: {
+      cursor: 'contributors_stream_cursor_input',
+      where: 'contributors_bool_exp',
+    },
     omni_brand_statuses_enum: {
       distinct_on: 'omni_brand_statuses_enum_select_column',
       order_by: 'omni_brand_statuses_enum_order_by',
@@ -4749,6 +5531,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_brand_statuses_enum_bool_exp',
     },
     omni_brand_statuses_enum_by_pk: {},
+    omni_brand_statuses_enum_stream: {
+      cursor: 'omni_brand_statuses_enum_stream_cursor_input',
+      where: 'omni_brand_statuses_enum_bool_exp',
+    },
     omni_brand_users: {
       distinct_on: 'omni_brand_users_select_column',
       order_by: 'omni_brand_users_order_by',
@@ -4761,6 +5547,10 @@ export const AllTypesProps: Record<string, any> = {
     },
     omni_brand_users_by_pk: {
       id: 'uuid',
+    },
+    omni_brand_users_stream: {
+      cursor: 'omni_brand_users_stream_cursor_input',
+      where: 'omni_brand_users_bool_exp',
     },
     omni_brands: {
       distinct_on: 'omni_brands_select_column',
@@ -4775,6 +5565,10 @@ export const AllTypesProps: Record<string, any> = {
     omni_brands_by_pk: {
       id: 'uuid',
     },
+    omni_brands_stream: {
+      cursor: 'omni_brands_stream_cursor_input',
+      where: 'omni_brands_bool_exp',
+    },
     omni_collaborator_types_enum: {
       distinct_on: 'omni_collaborator_types_enum_select_column',
       order_by: 'omni_collaborator_types_enum_order_by',
@@ -4786,6 +5580,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_collaborator_types_enum_bool_exp',
     },
     omni_collaborator_types_enum_by_pk: {},
+    omni_collaborator_types_enum_stream: {
+      cursor: 'omni_collaborator_types_enum_stream_cursor_input',
+      where: 'omni_collaborator_types_enum_bool_exp',
+    },
     omni_directus_files: {
       distinct_on: 'omni_directus_files_select_column',
       order_by: 'omni_directus_files_order_by',
@@ -4796,8 +5594,10 @@ export const AllTypesProps: Record<string, any> = {
       order_by: 'omni_directus_files_order_by',
       where: 'omni_directus_files_bool_exp',
     },
-    omni_directus_files_by_pk: {
-      id: 'uuid',
+    omni_directus_files_by_pk: {},
+    omni_directus_files_stream: {
+      cursor: 'omni_directus_files_stream_cursor_input',
+      where: 'omni_directus_files_bool_exp',
     },
     omni_fullfillers: {
       distinct_on: 'omni_fullfillers_select_column',
@@ -4812,6 +5612,10 @@ export const AllTypesProps: Record<string, any> = {
     omni_fullfillers_by_pk: {
       id: 'uuid',
     },
+    omni_fullfillers_stream: {
+      cursor: 'omni_fullfillers_stream_cursor_input',
+      where: 'omni_fullfillers_bool_exp',
+    },
     omni_price_currencies: {
       distinct_on: 'omni_price_currencies_select_column',
       order_by: 'omni_price_currencies_order_by',
@@ -4825,6 +5629,10 @@ export const AllTypesProps: Record<string, any> = {
     omni_price_currencies_by_pk: {
       id: 'uuid',
     },
+    omni_price_currencies_stream: {
+      cursor: 'omni_price_currencies_stream_cursor_input',
+      where: 'omni_price_currencies_bool_exp',
+    },
     omni_print_techs_enum: {
       distinct_on: 'omni_print_techs_enum_select_column',
       order_by: 'omni_print_techs_enum_order_by',
@@ -4836,6 +5644,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_print_techs_enum_bool_exp',
     },
     omni_print_techs_enum_by_pk: {},
+    omni_print_techs_enum_stream: {
+      cursor: 'omni_print_techs_enum_stream_cursor_input',
+      where: 'omni_print_techs_enum_bool_exp',
+    },
     omni_producer_statuses_enum: {
       distinct_on: 'omni_producer_statuses_enum_select_column',
       order_by: 'omni_producer_statuses_enum_order_by',
@@ -4847,6 +5659,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_producer_statuses_enum_bool_exp',
     },
     omni_producer_statuses_enum_by_pk: {},
+    omni_producer_statuses_enum_stream: {
+      cursor: 'omni_producer_statuses_enum_stream_cursor_input',
+      where: 'omni_producer_statuses_enum_bool_exp',
+    },
     omni_producers: {
       distinct_on: 'omni_producers_select_column',
       order_by: 'omni_producers_order_by',
@@ -4859,6 +5675,10 @@ export const AllTypesProps: Record<string, any> = {
     },
     omni_producers_by_pk: {
       id: 'uuid',
+    },
+    omni_producers_stream: {
+      cursor: 'omni_producers_stream_cursor_input',
+      where: 'omni_producers_bool_exp',
     },
     omni_product_collaborators: {
       distinct_on: 'omni_product_collaborators_select_column',
@@ -4873,6 +5693,10 @@ export const AllTypesProps: Record<string, any> = {
     omni_product_collaborators_by_pk: {
       id: 'uuid',
     },
+    omni_product_collaborators_stream: {
+      cursor: 'omni_product_collaborators_stream_cursor_input',
+      where: 'omni_product_collaborators_bool_exp',
+    },
     omni_product_types_enum: {
       distinct_on: 'omni_product_types_enum_select_column',
       order_by: 'omni_product_types_enum_order_by',
@@ -4884,6 +5708,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_product_types_enum_bool_exp',
     },
     omni_product_types_enum_by_pk: {},
+    omni_product_types_enum_stream: {
+      cursor: 'omni_product_types_enum_stream_cursor_input',
+      where: 'omni_product_types_enum_bool_exp',
+    },
     omni_production_genders_enum: {
       distinct_on: 'omni_production_genders_enum_select_column',
       order_by: 'omni_production_genders_enum_order_by',
@@ -4895,6 +5723,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_production_genders_enum_bool_exp',
     },
     omni_production_genders_enum_by_pk: {},
+    omni_production_genders_enum_stream: {
+      cursor: 'omni_production_genders_enum_stream_cursor_input',
+      where: 'omni_production_genders_enum_bool_exp',
+    },
     omni_production_materials: {
       distinct_on: 'omni_production_materials_select_column',
       order_by: 'omni_production_materials_order_by',
@@ -4921,6 +5753,10 @@ export const AllTypesProps: Record<string, any> = {
     omni_production_materials_producers_by_pk: {
       id: 'uuid',
     },
+    omni_production_materials_producers_stream: {
+      cursor: 'omni_production_materials_producers_stream_cursor_input',
+      where: 'omni_production_materials_producers_bool_exp',
+    },
     omni_production_materials_ratings_enum: {
       distinct_on: 'omni_production_materials_ratings_enum_select_column',
       order_by: 'omni_production_materials_ratings_enum_order_by',
@@ -4932,6 +5768,14 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_production_materials_ratings_enum_bool_exp',
     },
     omni_production_materials_ratings_enum_by_pk: {},
+    omni_production_materials_ratings_enum_stream: {
+      cursor: 'omni_production_materials_ratings_enum_stream_cursor_input',
+      where: 'omni_production_materials_ratings_enum_bool_exp',
+    },
+    omni_production_materials_stream: {
+      cursor: 'omni_production_materials_stream_cursor_input',
+      where: 'omni_production_materials_bool_exp',
+    },
     omni_production_methods: {
       distinct_on: 'omni_production_methods_select_column',
       order_by: 'omni_production_methods_order_by',
@@ -4958,6 +5802,10 @@ export const AllTypesProps: Record<string, any> = {
     omni_production_methods_producers_by_pk: {
       id: 'uuid',
     },
+    omni_production_methods_producers_stream: {
+      cursor: 'omni_production_methods_producers_stream_cursor_input',
+      where: 'omni_production_methods_producers_bool_exp',
+    },
     omni_production_methods_products: {
       distinct_on: 'omni_production_methods_products_select_column',
       order_by: 'omni_production_methods_products_order_by',
@@ -4971,6 +5819,14 @@ export const AllTypesProps: Record<string, any> = {
     omni_production_methods_products_by_pk: {
       id: 'uuid',
     },
+    omni_production_methods_products_stream: {
+      cursor: 'omni_production_methods_products_stream_cursor_input',
+      where: 'omni_production_methods_products_bool_exp',
+    },
+    omni_production_methods_stream: {
+      cursor: 'omni_production_methods_stream_cursor_input',
+      where: 'omni_production_methods_bool_exp',
+    },
     omni_production_pallettes_enum: {
       distinct_on: 'omni_production_pallettes_enum_select_column',
       order_by: 'omni_production_pallettes_enum_order_by',
@@ -4982,6 +5838,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_production_pallettes_enum_bool_exp',
     },
     omni_production_pallettes_enum_by_pk: {},
+    omni_production_pallettes_enum_stream: {
+      cursor: 'omni_production_pallettes_enum_stream_cursor_input',
+      where: 'omni_production_pallettes_enum_bool_exp',
+    },
     omni_production_styles_enum: {
       distinct_on: 'omni_production_styles_enum_select_column',
       order_by: 'omni_production_styles_enum_order_by',
@@ -4993,6 +5853,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_production_styles_enum_bool_exp',
     },
     omni_production_styles_enum_by_pk: {},
+    omni_production_styles_enum_stream: {
+      cursor: 'omni_production_styles_enum_stream_cursor_input',
+      where: 'omni_production_styles_enum_bool_exp',
+    },
     omni_products: {
       distinct_on: 'omni_products_select_column',
       order_by: 'omni_products_order_by',
@@ -5017,6 +5881,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_products_files_bool_exp',
     },
     omni_products_files_by_pk: {},
+    omni_products_files_stream: {
+      cursor: 'omni_products_files_stream_cursor_input',
+      where: 'omni_products_files_bool_exp',
+    },
     omni_products_production_materials: {
       distinct_on: 'omni_products_production_materials_select_column',
       order_by: 'omni_products_production_materials_order_by',
@@ -5028,6 +5896,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_products_production_materials_bool_exp',
     },
     omni_products_production_materials_by_pk: {},
+    omni_products_production_materials_stream: {
+      cursor: 'omni_products_production_materials_stream_cursor_input',
+      where: 'omni_products_production_materials_bool_exp',
+    },
     omni_products_stage_enum: {
       distinct_on: 'omni_products_stage_enum_select_column',
       order_by: 'omni_products_stage_enum_order_by',
@@ -5039,6 +5911,14 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_products_stage_enum_bool_exp',
     },
     omni_products_stage_enum_by_pk: {},
+    omni_products_stage_enum_stream: {
+      cursor: 'omni_products_stage_enum_stream_cursor_input',
+      where: 'omni_products_stage_enum_bool_exp',
+    },
+    omni_products_stream: {
+      cursor: 'omni_products_stream_cursor_input',
+      where: 'omni_products_bool_exp',
+    },
     omni_sale_types_enum: {
       distinct_on: 'omni_sale_types_enum_select_column',
       order_by: 'omni_sale_types_enum_order_by',
@@ -5050,6 +5930,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_sale_types_enum_bool_exp',
     },
     omni_sale_types_enum_by_pk: {},
+    omni_sale_types_enum_stream: {
+      cursor: 'omni_sale_types_enum_stream_cursor_input',
+      where: 'omni_sale_types_enum_bool_exp',
+    },
     omni_timezones_enum: {
       distinct_on: 'omni_timezones_enum_select_column',
       order_by: 'omni_timezones_enum_order_by',
@@ -5061,6 +5945,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_timezones_enum_bool_exp',
     },
     omni_timezones_enum_by_pk: {},
+    omni_timezones_enum_stream: {
+      cursor: 'omni_timezones_enum_stream_cursor_input',
+      where: 'omni_timezones_enum_bool_exp',
+    },
     omni_user_skill_types_enum: {
       distinct_on: 'omni_user_skill_types_enum_select_column',
       order_by: 'omni_user_skill_types_enum_order_by',
@@ -5072,6 +5960,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_user_skill_types_enum_bool_exp',
     },
     omni_user_skill_types_enum_by_pk: {},
+    omni_user_skill_types_enum_stream: {
+      cursor: 'omni_user_skill_types_enum_stream_cursor_input',
+      where: 'omni_user_skill_types_enum_bool_exp',
+    },
     omni_user_skills: {
       distinct_on: 'omni_user_skills_select_column',
       order_by: 'omni_user_skills_order_by',
@@ -5085,6 +5977,10 @@ export const AllTypesProps: Record<string, any> = {
     omni_user_skills_by_pk: {
       id: 'uuid',
     },
+    omni_user_skills_stream: {
+      cursor: 'omni_user_skills_stream_cursor_input',
+      where: 'omni_user_skills_bool_exp',
+    },
     omni_user_statuses_enum: {
       distinct_on: 'omni_user_statuses_enum_select_column',
       order_by: 'omni_user_statuses_enum_order_by',
@@ -5096,6 +5992,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'omni_user_statuses_enum_bool_exp',
     },
     omni_user_statuses_enum_by_pk: {},
+    omni_user_statuses_enum_stream: {
+      cursor: 'omni_user_statuses_enum_stream_cursor_input',
+      where: 'omni_user_statuses_enum_bool_exp',
+    },
     omni_users: {
       distinct_on: 'omni_users_select_column',
       order_by: 'omni_users_order_by',
@@ -5108,6 +6008,10 @@ export const AllTypesProps: Record<string, any> = {
     },
     omni_users_by_pk: {
       id: 'uuid',
+    },
+    omni_users_stream: {
+      cursor: 'omni_users_stream_cursor_input',
+      where: 'omni_users_bool_exp',
     },
     robot_merkle_claims: {
       distinct_on: 'robot_merkle_claims_select_column',
@@ -5122,6 +6026,10 @@ export const AllTypesProps: Record<string, any> = {
     robot_merkle_claims_by_pk: {
       id: 'uuid',
     },
+    robot_merkle_claims_stream: {
+      cursor: 'robot_merkle_claims_stream_cursor_input',
+      where: 'robot_merkle_claims_bool_exp',
+    },
     robot_merkle_roots: {
       distinct_on: 'robot_merkle_roots_select_column',
       order_by: 'robot_merkle_roots_order_by',
@@ -5133,6 +6041,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'robot_merkle_roots_bool_exp',
     },
     robot_merkle_roots_by_pk: {},
+    robot_merkle_roots_stream: {
+      cursor: 'robot_merkle_roots_stream_cursor_input',
+      where: 'robot_merkle_roots_bool_exp',
+    },
     robot_order: {
       distinct_on: 'robot_order_select_column',
       order_by: 'robot_order_order_by',
@@ -5144,6 +6056,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'robot_order_bool_exp',
     },
     robot_order_by_pk: {},
+    robot_order_stream: {
+      cursor: 'robot_order_stream_cursor_input',
+      where: 'robot_order_bool_exp',
+    },
     robot_product: {
       distinct_on: 'robot_product_select_column',
       order_by: 'robot_product_order_by',
@@ -5166,6 +6082,14 @@ export const AllTypesProps: Record<string, any> = {
       where: 'robot_product_designer_bool_exp',
     },
     robot_product_designer_by_pk: {},
+    robot_product_designer_stream: {
+      cursor: 'robot_product_designer_stream_cursor_input',
+      where: 'robot_product_designer_bool_exp',
+    },
+    robot_product_stream: {
+      cursor: 'robot_product_stream_cursor_input',
+      where: 'robot_product_bool_exp',
+    },
     shop_api_users: {
       distinct_on: 'shop_api_users_select_column',
       order_by: 'shop_api_users_order_by',
@@ -5177,6 +6101,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'shop_api_users_bool_exp',
     },
     shop_api_users_by_pk: {},
+    shop_api_users_stream: {
+      cursor: 'shop_api_users_stream_cursor_input',
+      where: 'shop_api_users_bool_exp',
+    },
     shop_product_locks: {
       distinct_on: 'shop_product_locks_select_column',
       order_by: 'shop_product_locks_order_by',
@@ -5188,6 +6116,10 @@ export const AllTypesProps: Record<string, any> = {
       where: 'shop_product_locks_bool_exp',
     },
     shop_product_locks_by_pk: {},
+    shop_product_locks_stream: {
+      cursor: 'shop_product_locks_stream_cursor_input',
+      where: 'shop_product_locks_bool_exp',
+    },
     users: {
       distinct_on: 'users_select_column',
       order_by: 'users_order_by',
@@ -5200,6 +6132,10 @@ export const AllTypesProps: Record<string, any> = {
     },
     users_by_pk: {
       id: 'uuid',
+    },
+    users_stream: {
+      cursor: 'users_stream_cursor_input',
+      where: 'users_bool_exp',
     },
   },
   timestamptz: `scalar.timestamptz` as const,
@@ -5251,7 +6187,18 @@ export const AllTypesProps: Record<string, any> = {
   users_set_input: {
     id: 'uuid',
   },
+  users_stream_cursor_input: {
+    initial_value: 'users_stream_cursor_value_input',
+    ordering: 'cursor_ordering',
+  },
+  users_stream_cursor_value_input: {
+    id: 'uuid',
+  },
   users_update_column: 'enum' as const,
+  users_updates: {
+    _set: 'users_set_input',
+    where: 'users_bool_exp',
+  },
   uuid: `scalar.uuid` as const,
   uuid_comparison_exp: {
     _eq: 'uuid',
@@ -5274,6 +6221,7 @@ export const ReturnTypes: Record<string, any> = {
   contribution_votes: {
     contribution: 'contributions',
     contribution_id: 'uuid',
+    created_at: 'timestamptz',
     rating: 'String',
     user: 'users',
     user_id: 'uuid',
@@ -5289,11 +6237,13 @@ export const ReturnTypes: Record<string, any> = {
   },
   contribution_votes_max_fields: {
     contribution_id: 'uuid',
+    created_at: 'timestamptz',
     rating: 'String',
     user_id: 'uuid',
   },
   contribution_votes_min_fields: {
     contribution_id: 'uuid',
+    created_at: 'timestamptz',
     rating: 'String',
     user_id: 'uuid',
   },
@@ -5453,7 +6403,6 @@ export const ReturnTypes: Record<string, any> = {
     contribution_share: 'Float',
   },
   date: `scalar.date` as const,
-  json: `scalar.json` as const,
   jsonb: `scalar.jsonb` as const,
   mutation_root: {
     delete_contribution_votes: 'contribution_votes_mutation_response',
@@ -5667,109 +6616,172 @@ export const ReturnTypes: Record<string, any> = {
     insert_users_one: 'users',
     update_contribution_votes: 'contribution_votes_mutation_response',
     update_contribution_votes_by_pk: 'contribution_votes',
+    update_contribution_votes_many: 'contribution_votes_mutation_response',
     update_contributions: 'contributions_mutation_response',
     update_contributions_by_pk: 'contributions',
+    update_contributions_many: 'contributions_mutation_response',
     update_contributors: 'contributors_mutation_response',
     update_contributors_by_pk: 'contributors',
+    update_contributors_many: 'contributors_mutation_response',
     update_omni_brand_statuses_enum:
       'omni_brand_statuses_enum_mutation_response',
     update_omni_brand_statuses_enum_by_pk: 'omni_brand_statuses_enum',
+    update_omni_brand_statuses_enum_many:
+      'omni_brand_statuses_enum_mutation_response',
     update_omni_brand_users: 'omni_brand_users_mutation_response',
     update_omni_brand_users_by_pk: 'omni_brand_users',
+    update_omni_brand_users_many: 'omni_brand_users_mutation_response',
     update_omni_brands: 'omni_brands_mutation_response',
     update_omni_brands_by_pk: 'omni_brands',
+    update_omni_brands_many: 'omni_brands_mutation_response',
     update_omni_collaborator_types_enum:
       'omni_collaborator_types_enum_mutation_response',
     update_omni_collaborator_types_enum_by_pk: 'omni_collaborator_types_enum',
+    update_omni_collaborator_types_enum_many:
+      'omni_collaborator_types_enum_mutation_response',
     update_omni_directus_files: 'omni_directus_files_mutation_response',
     update_omni_directus_files_by_pk: 'omni_directus_files',
+    update_omni_directus_files_many: 'omni_directus_files_mutation_response',
     update_omni_fullfillers: 'omni_fullfillers_mutation_response',
     update_omni_fullfillers_by_pk: 'omni_fullfillers',
+    update_omni_fullfillers_many: 'omni_fullfillers_mutation_response',
     update_omni_price_currencies: 'omni_price_currencies_mutation_response',
     update_omni_price_currencies_by_pk: 'omni_price_currencies',
+    update_omni_price_currencies_many:
+      'omni_price_currencies_mutation_response',
     update_omni_print_techs_enum: 'omni_print_techs_enum_mutation_response',
     update_omni_print_techs_enum_by_pk: 'omni_print_techs_enum',
+    update_omni_print_techs_enum_many:
+      'omni_print_techs_enum_mutation_response',
     update_omni_producer_statuses_enum:
       'omni_producer_statuses_enum_mutation_response',
     update_omni_producer_statuses_enum_by_pk: 'omni_producer_statuses_enum',
+    update_omni_producer_statuses_enum_many:
+      'omni_producer_statuses_enum_mutation_response',
     update_omni_producers: 'omni_producers_mutation_response',
     update_omni_producers_by_pk: 'omni_producers',
+    update_omni_producers_many: 'omni_producers_mutation_response',
     update_omni_product_collaborators:
       'omni_product_collaborators_mutation_response',
     update_omni_product_collaborators_by_pk: 'omni_product_collaborators',
+    update_omni_product_collaborators_many:
+      'omni_product_collaborators_mutation_response',
     update_omni_product_types_enum: 'omni_product_types_enum_mutation_response',
     update_omni_product_types_enum_by_pk: 'omni_product_types_enum',
+    update_omni_product_types_enum_many:
+      'omni_product_types_enum_mutation_response',
     update_omni_production_genders_enum:
       'omni_production_genders_enum_mutation_response',
     update_omni_production_genders_enum_by_pk: 'omni_production_genders_enum',
+    update_omni_production_genders_enum_many:
+      'omni_production_genders_enum_mutation_response',
     update_omni_production_materials:
       'omni_production_materials_mutation_response',
     update_omni_production_materials_by_pk: 'omni_production_materials',
+    update_omni_production_materials_many:
+      'omni_production_materials_mutation_response',
     update_omni_production_materials_producers:
       'omni_production_materials_producers_mutation_response',
     update_omni_production_materials_producers_by_pk:
       'omni_production_materials_producers',
+    update_omni_production_materials_producers_many:
+      'omni_production_materials_producers_mutation_response',
     update_omni_production_materials_ratings_enum:
       'omni_production_materials_ratings_enum_mutation_response',
     update_omni_production_materials_ratings_enum_by_pk:
       'omni_production_materials_ratings_enum',
+    update_omni_production_materials_ratings_enum_many:
+      'omni_production_materials_ratings_enum_mutation_response',
     update_omni_production_methods: 'omni_production_methods_mutation_response',
     update_omni_production_methods_by_pk: 'omni_production_methods',
+    update_omni_production_methods_many:
+      'omni_production_methods_mutation_response',
     update_omni_production_methods_producers:
       'omni_production_methods_producers_mutation_response',
     update_omni_production_methods_producers_by_pk:
       'omni_production_methods_producers',
+    update_omni_production_methods_producers_many:
+      'omni_production_methods_producers_mutation_response',
     update_omni_production_methods_products:
       'omni_production_methods_products_mutation_response',
     update_omni_production_methods_products_by_pk:
       'omni_production_methods_products',
+    update_omni_production_methods_products_many:
+      'omni_production_methods_products_mutation_response',
     update_omni_production_pallettes_enum:
       'omni_production_pallettes_enum_mutation_response',
     update_omni_production_pallettes_enum_by_pk:
       'omni_production_pallettes_enum',
+    update_omni_production_pallettes_enum_many:
+      'omni_production_pallettes_enum_mutation_response',
     update_omni_production_styles_enum:
       'omni_production_styles_enum_mutation_response',
     update_omni_production_styles_enum_by_pk: 'omni_production_styles_enum',
+    update_omni_production_styles_enum_many:
+      'omni_production_styles_enum_mutation_response',
     update_omni_products: 'omni_products_mutation_response',
     update_omni_products_by_pk: 'omni_products',
     update_omni_products_files: 'omni_products_files_mutation_response',
     update_omni_products_files_by_pk: 'omni_products_files',
+    update_omni_products_files_many: 'omni_products_files_mutation_response',
+    update_omni_products_many: 'omni_products_mutation_response',
     update_omni_products_production_materials:
       'omni_products_production_materials_mutation_response',
     update_omni_products_production_materials_by_pk:
       'omni_products_production_materials',
+    update_omni_products_production_materials_many:
+      'omni_products_production_materials_mutation_response',
     update_omni_products_stage_enum:
       'omni_products_stage_enum_mutation_response',
     update_omni_products_stage_enum_by_pk: 'omni_products_stage_enum',
+    update_omni_products_stage_enum_many:
+      'omni_products_stage_enum_mutation_response',
     update_omni_sale_types_enum: 'omni_sale_types_enum_mutation_response',
     update_omni_sale_types_enum_by_pk: 'omni_sale_types_enum',
+    update_omni_sale_types_enum_many: 'omni_sale_types_enum_mutation_response',
     update_omni_timezones_enum: 'omni_timezones_enum_mutation_response',
     update_omni_timezones_enum_by_pk: 'omni_timezones_enum',
+    update_omni_timezones_enum_many: 'omni_timezones_enum_mutation_response',
     update_omni_user_skill_types_enum:
       'omni_user_skill_types_enum_mutation_response',
     update_omni_user_skill_types_enum_by_pk: 'omni_user_skill_types_enum',
+    update_omni_user_skill_types_enum_many:
+      'omni_user_skill_types_enum_mutation_response',
     update_omni_user_skills: 'omni_user_skills_mutation_response',
     update_omni_user_skills_by_pk: 'omni_user_skills',
+    update_omni_user_skills_many: 'omni_user_skills_mutation_response',
     update_omni_user_statuses_enum: 'omni_user_statuses_enum_mutation_response',
     update_omni_user_statuses_enum_by_pk: 'omni_user_statuses_enum',
+    update_omni_user_statuses_enum_many:
+      'omni_user_statuses_enum_mutation_response',
     update_omni_users: 'omni_users_mutation_response',
     update_omni_users_by_pk: 'omni_users',
+    update_omni_users_many: 'omni_users_mutation_response',
     update_robot_merkle_claims: 'robot_merkle_claims_mutation_response',
     update_robot_merkle_claims_by_pk: 'robot_merkle_claims',
+    update_robot_merkle_claims_many: 'robot_merkle_claims_mutation_response',
     update_robot_merkle_roots: 'robot_merkle_roots_mutation_response',
     update_robot_merkle_roots_by_pk: 'robot_merkle_roots',
+    update_robot_merkle_roots_many: 'robot_merkle_roots_mutation_response',
     update_robot_order: 'robot_order_mutation_response',
     update_robot_order_by_pk: 'robot_order',
+    update_robot_order_many: 'robot_order_mutation_response',
     update_robot_product: 'robot_product_mutation_response',
     update_robot_product_by_pk: 'robot_product',
     update_robot_product_designer: 'robot_product_designer_mutation_response',
     update_robot_product_designer_by_pk: 'robot_product_designer',
+    update_robot_product_designer_many:
+      'robot_product_designer_mutation_response',
+    update_robot_product_many: 'robot_product_mutation_response',
     update_shop_api_users: 'shop_api_users_mutation_response',
     update_shop_api_users_by_pk: 'shop_api_users',
+    update_shop_api_users_many: 'shop_api_users_mutation_response',
     update_shop_product_locks: 'shop_product_locks_mutation_response',
     update_shop_product_locks_by_pk: 'shop_product_locks',
+    update_shop_product_locks_many: 'shop_product_locks_mutation_response',
     update_users: 'users_mutation_response',
     update_users_by_pk: 'users',
+    update_users_many: 'users_mutation_response',
   },
   numeric: `scalar.numeric` as const,
   omni_brand_statuses_enum: {
@@ -5912,27 +6924,7 @@ export const ReturnTypes: Record<string, any> = {
     returning: 'omni_collaborator_types_enum',
   },
   omni_directus_files: {
-    charset: 'String',
-    description: 'String',
-    duration: 'Int',
-    embed: 'String',
-    filename_disk: 'String',
-    filename_download: 'String',
-    filesize: 'bigint',
-    folder: 'uuid',
-    height: 'Int',
-    id: 'uuid',
-    location: 'String',
-    metadata: 'json',
-    modified_by: 'uuid',
-    modified_on: 'timestamptz',
-    storage: 'String',
-    tags: 'String',
-    title: 'String',
-    type: 'String',
-    uploaded_by: 'uuid',
-    uploaded_on: 'timestamptz',
-    width: 'Int',
+    id: 'Int',
   },
   omni_directus_files_aggregate: {
     aggregate: 'omni_directus_files_aggregate_fields',
@@ -5952,100 +6944,38 @@ export const ReturnTypes: Record<string, any> = {
     variance: 'omni_directus_files_variance_fields',
   },
   omni_directus_files_avg_fields: {
-    duration: 'Float',
-    filesize: 'Float',
-    height: 'Float',
-    width: 'Float',
+    id: 'Float',
   },
   omni_directus_files_max_fields: {
-    charset: 'String',
-    description: 'String',
-    duration: 'Int',
-    embed: 'String',
-    filename_disk: 'String',
-    filename_download: 'String',
-    filesize: 'bigint',
-    folder: 'uuid',
-    height: 'Int',
-    id: 'uuid',
-    location: 'String',
-    modified_by: 'uuid',
-    modified_on: 'timestamptz',
-    storage: 'String',
-    tags: 'String',
-    title: 'String',
-    type: 'String',
-    uploaded_by: 'uuid',
-    uploaded_on: 'timestamptz',
-    width: 'Int',
+    id: 'Int',
   },
   omni_directus_files_min_fields: {
-    charset: 'String',
-    description: 'String',
-    duration: 'Int',
-    embed: 'String',
-    filename_disk: 'String',
-    filename_download: 'String',
-    filesize: 'bigint',
-    folder: 'uuid',
-    height: 'Int',
-    id: 'uuid',
-    location: 'String',
-    modified_by: 'uuid',
-    modified_on: 'timestamptz',
-    storage: 'String',
-    tags: 'String',
-    title: 'String',
-    type: 'String',
-    uploaded_by: 'uuid',
-    uploaded_on: 'timestamptz',
-    width: 'Int',
+    id: 'Int',
   },
   omni_directus_files_mutation_response: {
     affected_rows: 'Int',
     returning: 'omni_directus_files',
   },
   omni_directus_files_stddev_fields: {
-    duration: 'Float',
-    filesize: 'Float',
-    height: 'Float',
-    width: 'Float',
+    id: 'Float',
   },
   omni_directus_files_stddev_pop_fields: {
-    duration: 'Float',
-    filesize: 'Float',
-    height: 'Float',
-    width: 'Float',
+    id: 'Float',
   },
   omni_directus_files_stddev_samp_fields: {
-    duration: 'Float',
-    filesize: 'Float',
-    height: 'Float',
-    width: 'Float',
+    id: 'Float',
   },
   omni_directus_files_sum_fields: {
-    duration: 'Int',
-    filesize: 'bigint',
-    height: 'Int',
-    width: 'Int',
+    id: 'Int',
   },
   omni_directus_files_var_pop_fields: {
-    duration: 'Float',
-    filesize: 'Float',
-    height: 'Float',
-    width: 'Float',
+    id: 'Float',
   },
   omni_directus_files_var_samp_fields: {
-    duration: 'Float',
-    filesize: 'Float',
-    height: 'Float',
-    width: 'Float',
+    id: 'Float',
   },
   omni_directus_files_variance_fields: {
-    duration: 'Float',
-    filesize: 'Float',
-    height: 'Float',
-    width: 'Float',
+    id: 'Float',
   },
   omni_fullfillers: {
     address: 'String',
@@ -6746,7 +7676,7 @@ export const ReturnTypes: Record<string, any> = {
     quantity: 'Float',
   },
   omni_products_files: {
-    directus_files_id: 'uuid',
+    directus_files_id: 'Int',
     id: 'Int',
     products_id: 'uuid',
   },
@@ -6768,15 +7698,16 @@ export const ReturnTypes: Record<string, any> = {
     variance: 'omni_products_files_variance_fields',
   },
   omni_products_files_avg_fields: {
+    directus_files_id: 'Float',
     id: 'Float',
   },
   omni_products_files_max_fields: {
-    directus_files_id: 'uuid',
+    directus_files_id: 'Int',
     id: 'Int',
     products_id: 'uuid',
   },
   omni_products_files_min_fields: {
-    directus_files_id: 'uuid',
+    directus_files_id: 'Int',
     id: 'Int',
     products_id: 'uuid',
   },
@@ -6785,24 +7716,31 @@ export const ReturnTypes: Record<string, any> = {
     returning: 'omni_products_files',
   },
   omni_products_files_stddev_fields: {
+    directus_files_id: 'Float',
     id: 'Float',
   },
   omni_products_files_stddev_pop_fields: {
+    directus_files_id: 'Float',
     id: 'Float',
   },
   omni_products_files_stddev_samp_fields: {
+    directus_files_id: 'Float',
     id: 'Float',
   },
   omni_products_files_sum_fields: {
+    directus_files_id: 'Int',
     id: 'Int',
   },
   omni_products_files_var_pop_fields: {
+    directus_files_id: 'Float',
     id: 'Float',
   },
   omni_products_files_var_samp_fields: {
+    directus_files_id: 'Float',
     id: 'Float',
   },
   omni_products_files_variance_fields: {
+    directus_files_id: 'Float',
     id: 'Float',
   },
   omni_products_max_fields: {
@@ -6846,9 +7784,9 @@ export const ReturnTypes: Record<string, any> = {
     returning: 'omni_products',
   },
   omni_products_production_materials: {
-    id: 'Int',
     product_id: 'uuid',
     production_material_id: 'uuid',
+    products_production_materials: 'Int',
   },
   omni_products_production_materials_aggregate: {
     aggregate: 'omni_products_production_materials_aggregate_fields',
@@ -6868,42 +7806,42 @@ export const ReturnTypes: Record<string, any> = {
     variance: 'omni_products_production_materials_variance_fields',
   },
   omni_products_production_materials_avg_fields: {
-    id: 'Float',
+    products_production_materials: 'Float',
   },
   omni_products_production_materials_max_fields: {
-    id: 'Int',
     product_id: 'uuid',
     production_material_id: 'uuid',
+    products_production_materials: 'Int',
   },
   omni_products_production_materials_min_fields: {
-    id: 'Int',
     product_id: 'uuid',
     production_material_id: 'uuid',
+    products_production_materials: 'Int',
   },
   omni_products_production_materials_mutation_response: {
     affected_rows: 'Int',
     returning: 'omni_products_production_materials',
   },
   omni_products_production_materials_stddev_fields: {
-    id: 'Float',
+    products_production_materials: 'Float',
   },
   omni_products_production_materials_stddev_pop_fields: {
-    id: 'Float',
+    products_production_materials: 'Float',
   },
   omni_products_production_materials_stddev_samp_fields: {
-    id: 'Float',
+    products_production_materials: 'Float',
   },
   omni_products_production_materials_sum_fields: {
-    id: 'Int',
+    products_production_materials: 'Int',
   },
   omni_products_production_materials_var_pop_fields: {
-    id: 'Float',
+    products_production_materials: 'Float',
   },
   omni_products_production_materials_var_samp_fields: {
-    id: 'Float',
+    products_production_materials: 'Float',
   },
   omni_products_production_materials_variance_fields: {
-    id: 'Float',
+    products_production_materials: 'Float',
   },
   omni_products_stage_enum: {
     description: 'String',
@@ -7456,6 +8394,7 @@ export const ReturnTypes: Record<string, any> = {
     season: 'Float',
   },
   robot_product: {
+    created_at: 'timestamptz',
     designers: 'robot_product_designer',
     designers_aggregate: 'robot_product_designer_aggregate',
     id: 'String',
@@ -7464,6 +8403,7 @@ export const ReturnTypes: Record<string, any> = {
     notion_id: 'String',
     shopify_id: 'String',
     title: 'String',
+    updated_at: 'timestamptz',
   },
   robot_product_aggregate: {
     aggregate: 'robot_product_aggregate_fields',
@@ -7561,18 +8501,22 @@ export const ReturnTypes: Record<string, any> = {
     robot_reward: 'Float',
   },
   robot_product_max_fields: {
+    created_at: 'timestamptz',
     id: 'String',
     nft_token_id: 'Int',
     notion_id: 'String',
     shopify_id: 'String',
     title: 'String',
+    updated_at: 'timestamptz',
   },
   robot_product_min_fields: {
+    created_at: 'timestamptz',
     id: 'String',
     nft_token_id: 'Int',
     notion_id: 'String',
     shopify_id: 'String',
     title: 'String',
+    updated_at: 'timestamptz',
   },
   robot_product_mutation_response: {
     affected_rows: 'Int',
@@ -7659,55 +8603,71 @@ export const ReturnTypes: Record<string, any> = {
     contribution_votes: 'contribution_votes',
     contribution_votes_aggregate: 'contribution_votes_aggregate',
     contribution_votes_by_pk: 'contribution_votes',
+    contribution_votes_stream: 'contribution_votes',
     contributions: 'contributions',
     contributions_aggregate: 'contributions_aggregate',
     contributions_by_pk: 'contributions',
+    contributions_stream: 'contributions',
     contributors: 'contributors',
     contributors_aggregate: 'contributors_aggregate',
     contributors_by_pk: 'contributors',
+    contributors_stream: 'contributors',
     omni_brand_statuses_enum: 'omni_brand_statuses_enum',
     omni_brand_statuses_enum_aggregate: 'omni_brand_statuses_enum_aggregate',
     omni_brand_statuses_enum_by_pk: 'omni_brand_statuses_enum',
+    omni_brand_statuses_enum_stream: 'omni_brand_statuses_enum',
     omni_brand_users: 'omni_brand_users',
     omni_brand_users_aggregate: 'omni_brand_users_aggregate',
     omni_brand_users_by_pk: 'omni_brand_users',
+    omni_brand_users_stream: 'omni_brand_users',
     omni_brands: 'omni_brands',
     omni_brands_aggregate: 'omni_brands_aggregate',
     omni_brands_by_pk: 'omni_brands',
+    omni_brands_stream: 'omni_brands',
     omni_collaborator_types_enum: 'omni_collaborator_types_enum',
     omni_collaborator_types_enum_aggregate:
       'omni_collaborator_types_enum_aggregate',
     omni_collaborator_types_enum_by_pk: 'omni_collaborator_types_enum',
+    omni_collaborator_types_enum_stream: 'omni_collaborator_types_enum',
     omni_directus_files: 'omni_directus_files',
     omni_directus_files_aggregate: 'omni_directus_files_aggregate',
     omni_directus_files_by_pk: 'omni_directus_files',
+    omni_directus_files_stream: 'omni_directus_files',
     omni_fullfillers: 'omni_fullfillers',
     omni_fullfillers_aggregate: 'omni_fullfillers_aggregate',
     omni_fullfillers_by_pk: 'omni_fullfillers',
+    omni_fullfillers_stream: 'omni_fullfillers',
     omni_price_currencies: 'omni_price_currencies',
     omni_price_currencies_aggregate: 'omni_price_currencies_aggregate',
     omni_price_currencies_by_pk: 'omni_price_currencies',
+    omni_price_currencies_stream: 'omni_price_currencies',
     omni_print_techs_enum: 'omni_print_techs_enum',
     omni_print_techs_enum_aggregate: 'omni_print_techs_enum_aggregate',
     omni_print_techs_enum_by_pk: 'omni_print_techs_enum',
+    omni_print_techs_enum_stream: 'omni_print_techs_enum',
     omni_producer_statuses_enum: 'omni_producer_statuses_enum',
     omni_producer_statuses_enum_aggregate:
       'omni_producer_statuses_enum_aggregate',
     omni_producer_statuses_enum_by_pk: 'omni_producer_statuses_enum',
+    omni_producer_statuses_enum_stream: 'omni_producer_statuses_enum',
     omni_producers: 'omni_producers',
     omni_producers_aggregate: 'omni_producers_aggregate',
     omni_producers_by_pk: 'omni_producers',
+    omni_producers_stream: 'omni_producers',
     omni_product_collaborators: 'omni_product_collaborators',
     omni_product_collaborators_aggregate:
       'omni_product_collaborators_aggregate',
     omni_product_collaborators_by_pk: 'omni_product_collaborators',
+    omni_product_collaborators_stream: 'omni_product_collaborators',
     omni_product_types_enum: 'omni_product_types_enum',
     omni_product_types_enum_aggregate: 'omni_product_types_enum_aggregate',
     omni_product_types_enum_by_pk: 'omni_product_types_enum',
+    omni_product_types_enum_stream: 'omni_product_types_enum',
     omni_production_genders_enum: 'omni_production_genders_enum',
     omni_production_genders_enum_aggregate:
       'omni_production_genders_enum_aggregate',
     omni_production_genders_enum_by_pk: 'omni_production_genders_enum',
+    omni_production_genders_enum_stream: 'omni_production_genders_enum',
     omni_production_materials: 'omni_production_materials',
     omni_production_materials_aggregate: 'omni_production_materials_aggregate',
     omni_production_materials_by_pk: 'omni_production_materials',
@@ -7716,12 +8676,17 @@ export const ReturnTypes: Record<string, any> = {
       'omni_production_materials_producers_aggregate',
     omni_production_materials_producers_by_pk:
       'omni_production_materials_producers',
+    omni_production_materials_producers_stream:
+      'omni_production_materials_producers',
     omni_production_materials_ratings_enum:
       'omni_production_materials_ratings_enum',
     omni_production_materials_ratings_enum_aggregate:
       'omni_production_materials_ratings_enum_aggregate',
     omni_production_materials_ratings_enum_by_pk:
       'omni_production_materials_ratings_enum',
+    omni_production_materials_ratings_enum_stream:
+      'omni_production_materials_ratings_enum',
+    omni_production_materials_stream: 'omni_production_materials',
     omni_production_methods: 'omni_production_methods',
     omni_production_methods_aggregate: 'omni_production_methods_aggregate',
     omni_production_methods_by_pk: 'omni_production_methods',
@@ -7730,75 +8695,100 @@ export const ReturnTypes: Record<string, any> = {
       'omni_production_methods_producers_aggregate',
     omni_production_methods_producers_by_pk:
       'omni_production_methods_producers',
+    omni_production_methods_producers_stream:
+      'omni_production_methods_producers',
     omni_production_methods_products: 'omni_production_methods_products',
     omni_production_methods_products_aggregate:
       'omni_production_methods_products_aggregate',
     omni_production_methods_products_by_pk: 'omni_production_methods_products',
+    omni_production_methods_products_stream: 'omni_production_methods_products',
+    omni_production_methods_stream: 'omni_production_methods',
     omni_production_pallettes_enum: 'omni_production_pallettes_enum',
     omni_production_pallettes_enum_aggregate:
       'omni_production_pallettes_enum_aggregate',
     omni_production_pallettes_enum_by_pk: 'omni_production_pallettes_enum',
+    omni_production_pallettes_enum_stream: 'omni_production_pallettes_enum',
     omni_production_styles_enum: 'omni_production_styles_enum',
     omni_production_styles_enum_aggregate:
       'omni_production_styles_enum_aggregate',
     omni_production_styles_enum_by_pk: 'omni_production_styles_enum',
+    omni_production_styles_enum_stream: 'omni_production_styles_enum',
     omni_products: 'omni_products',
     omni_products_aggregate: 'omni_products_aggregate',
     omni_products_by_pk: 'omni_products',
     omni_products_files: 'omni_products_files',
     omni_products_files_aggregate: 'omni_products_files_aggregate',
     omni_products_files_by_pk: 'omni_products_files',
+    omni_products_files_stream: 'omni_products_files',
     omni_products_production_materials: 'omni_products_production_materials',
     omni_products_production_materials_aggregate:
       'omni_products_production_materials_aggregate',
     omni_products_production_materials_by_pk:
       'omni_products_production_materials',
+    omni_products_production_materials_stream:
+      'omni_products_production_materials',
     omni_products_stage_enum: 'omni_products_stage_enum',
     omni_products_stage_enum_aggregate: 'omni_products_stage_enum_aggregate',
     omni_products_stage_enum_by_pk: 'omni_products_stage_enum',
+    omni_products_stage_enum_stream: 'omni_products_stage_enum',
+    omni_products_stream: 'omni_products',
     omni_sale_types_enum: 'omni_sale_types_enum',
     omni_sale_types_enum_aggregate: 'omni_sale_types_enum_aggregate',
     omni_sale_types_enum_by_pk: 'omni_sale_types_enum',
+    omni_sale_types_enum_stream: 'omni_sale_types_enum',
     omni_timezones_enum: 'omni_timezones_enum',
     omni_timezones_enum_aggregate: 'omni_timezones_enum_aggregate',
     omni_timezones_enum_by_pk: 'omni_timezones_enum',
+    omni_timezones_enum_stream: 'omni_timezones_enum',
     omni_user_skill_types_enum: 'omni_user_skill_types_enum',
     omni_user_skill_types_enum_aggregate:
       'omni_user_skill_types_enum_aggregate',
     omni_user_skill_types_enum_by_pk: 'omni_user_skill_types_enum',
+    omni_user_skill_types_enum_stream: 'omni_user_skill_types_enum',
     omni_user_skills: 'omni_user_skills',
     omni_user_skills_aggregate: 'omni_user_skills_aggregate',
     omni_user_skills_by_pk: 'omni_user_skills',
+    omni_user_skills_stream: 'omni_user_skills',
     omni_user_statuses_enum: 'omni_user_statuses_enum',
     omni_user_statuses_enum_aggregate: 'omni_user_statuses_enum_aggregate',
     omni_user_statuses_enum_by_pk: 'omni_user_statuses_enum',
+    omni_user_statuses_enum_stream: 'omni_user_statuses_enum',
     omni_users: 'omni_users',
     omni_users_aggregate: 'omni_users_aggregate',
     omni_users_by_pk: 'omni_users',
+    omni_users_stream: 'omni_users',
     robot_merkle_claims: 'robot_merkle_claims',
     robot_merkle_claims_aggregate: 'robot_merkle_claims_aggregate',
     robot_merkle_claims_by_pk: 'robot_merkle_claims',
+    robot_merkle_claims_stream: 'robot_merkle_claims',
     robot_merkle_roots: 'robot_merkle_roots',
     robot_merkle_roots_aggregate: 'robot_merkle_roots_aggregate',
     robot_merkle_roots_by_pk: 'robot_merkle_roots',
+    robot_merkle_roots_stream: 'robot_merkle_roots',
     robot_order: 'robot_order',
     robot_order_aggregate: 'robot_order_aggregate',
     robot_order_by_pk: 'robot_order',
+    robot_order_stream: 'robot_order',
     robot_product: 'robot_product',
     robot_product_aggregate: 'robot_product_aggregate',
     robot_product_by_pk: 'robot_product',
     robot_product_designer: 'robot_product_designer',
     robot_product_designer_aggregate: 'robot_product_designer_aggregate',
     robot_product_designer_by_pk: 'robot_product_designer',
+    robot_product_designer_stream: 'robot_product_designer',
+    robot_product_stream: 'robot_product',
     shop_api_users: 'shop_api_users',
     shop_api_users_aggregate: 'shop_api_users_aggregate',
     shop_api_users_by_pk: 'shop_api_users',
+    shop_api_users_stream: 'shop_api_users',
     shop_product_locks: 'shop_product_locks',
     shop_product_locks_aggregate: 'shop_product_locks_aggregate',
     shop_product_locks_by_pk: 'shop_product_locks',
+    shop_product_locks_stream: 'shop_product_locks',
     users: 'users',
     users_aggregate: 'users_aggregate',
     users_by_pk: 'users',
+    users_stream: 'users',
   },
   timestamptz: `scalar.timestamptz` as const,
   users: {
