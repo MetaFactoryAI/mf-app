@@ -1,0 +1,40 @@
+{
+  "version": "0.0.0",
+  "name": "app",
+  "main": "index.ts",
+  "scripts": {
+    "lint": "eslint *.ts*",
+    "typecheck": "tsc "
+  },
+  "dependencies": {
+    "@expo-google-fonts/inter": "^0.2.2",
+    "@expo/vector-icons": "^13.0.0",
+    "@rainbow-me/rainbowkit": "^0.8.1",
+    "@rainbow-me/rainbowkit-siwe-next-auth": "^0.1.5",
+    "@react-native-async-storage/async-storage": "~1.17.3",
+    "@tanstack/query-async-storage-persister": "^4.14.1",
+    "@tanstack/react-query-persist-client": "^4.14.1",
+    "@walletconnect/react-native-dapp": "^1.8.0",
+    "connectkit": "^1.1.1",
+    "ethers": "^5.7.2",
+    "moti": "^0.19.0-alpha.6",
+    "nativewind": "next",
+    "next-auth": "^4.16.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.70.5",
+    "react-native-gesture-handler": "~2.8.0",
+    "react-native-reanimated": "~2.12.0",
+    "react-native-safe-area-context": "4.4.1",
+    "react-native-web": "~0.18.7",
+    "react-native-webview": "^11.23.1",
+    "solito": "^2.1.0",
+    "wagmi": "^0.9.2"
+  },
+  "devDependencies": {
+    "@radix-ui/colors": "^0.1.8",
+    "tsconfig": "*",
+    "windy-radix-palette": "^0.4.1"
+  },
+  "sideEffects": false
+}

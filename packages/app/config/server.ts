@@ -1,0 +1,10 @@
+import { getEnvValue } from './client';
+
+export const NEXTAUTH_URL = getEnvValue(
+  process.env.NEXTAUTH_URL,
+  process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : 'missing-nextauth-url',
+);
+export const NEXTAUTH_SECRET = getEnvValue(process.env.NEXTAUTH_SECRET, '');
+export const SESSION_SECRET = getEnvValue(process.env.SESSION_SECRET, '');

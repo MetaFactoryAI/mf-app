@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import assert from 'assert';
 
-import { System, useZeusVariables } from '../mfos';
+import { System, $ } from '../mfos';
 import { mfosSystemClient } from '../mfos/systemClient';
 import { Creator } from '../types/wearables';
 import { ethAddressToEip155, resolveIfEnsName } from '../utils/addressHelpers';
@@ -56,12 +56,6 @@ export const createSystemUserIfNotExists = async (
     role,
   };
 
-  const variables = useZeusVariables({
-    user: 'create_directus_users_input!',
-  })({
-    user,
-  });
-
   if (existingUser?.id) {
     return existingUser;
   }
@@ -72,14 +66,16 @@ export const createSystemUserIfNotExists = async (
     {
       create_users_item: [
         {
-          data: variables.$('user'),
+          data: $('user', 'create_directus_users_input!'),
         },
         systemUsersSelector,
       ],
     },
     {
       operationName: 'createSystemUser',
-      variables,
+      variables: {
+        user,
+      },
     },
   );
 
@@ -96,24 +92,21 @@ export async function uploadFile(
   tags?: string[],
 ) {
   const uploadDate = new Date().toISOString();
-  const importFileVariables = useZeusVariables({
-    data: 'create_directus_files_input!',
-  })({
-    data: {
-      filename_download: file.name,
-      storage: 'ipfs',
-      uploaded_on: uploadDate,
-      modified_on: uploadDate,
-      tags,
-    },
-  });
+
+  const data: System.ValueTypes['create_directus_files_input'] = {
+    filename_download: file.name,
+    storage: 'ipfs',
+    uploaded_on: uploadDate,
+    modified_on: uploadDate,
+    tags,
+  };
 
   const uploaded = await mfosSystemClient('mutation')(
     {
       import_file: [
         {
           url: file.url,
-          data: importFileVariables.$('data'),
+          data: $('data', 'create_directus_files_input!'),
         },
         {
           id: true,
@@ -126,7 +119,9 @@ export async function uploadFile(
     },
     {
       operationName: 'UploadFile',
-      variables: importFileVariables,
+      variables: {
+        data,
+      },
     },
   );
   assert(uploaded.import_file);

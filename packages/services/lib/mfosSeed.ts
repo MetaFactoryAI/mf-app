@@ -2,7 +2,8 @@ import {
   Client,
   COLLABORATOR_ROLES,
   PRODUCT_STAGES,
-  useZeusVariables,
+  $,
+  ValueTypes,
 } from '../mfos';
 import {
   EXTENSION_DESCRIPTIONS,
@@ -17,24 +18,18 @@ export async function seedStages(client: Client): Promise<void> {
   const existingStages = await client('query')({
     stages: [{}, { name: true }],
   });
-  const stagesToCreate = stages.filter(
-    (stage) => !existingStages.stages?.find((s) => s.name === stage.name),
-  );
+  const stagesToCreate: Array<ValueTypes['create_stages_input']> =
+    stages.filter(
+      (stage) => !existingStages.stages?.find((s) => s.name === stage.name),
+    );
 
   if (!stagesToCreate.length) return;
-
-  const variables = useZeusVariables({
-    data: '[create_stages_input!]',
-  })({
-    data: stagesToCreate,
-  });
-  const { $ } = variables;
 
   try {
     await client('mutation')(
       {
         create_stages_items: [
-          { data: $('data') },
+          { data: $('data', '[create_stages_input!]') },
           {
             name: true,
           },
@@ -42,7 +37,9 @@ export async function seedStages(client: Client): Promise<void> {
       },
       {
         operationName: 'initStages',
-        variables,
+        variables: {
+          data: stagesToCreate,
+        },
       },
     );
   } catch (e) {
@@ -63,29 +60,28 @@ export async function seedFileFormats(client: Client): Promise<void> {
     file_formats: [{}, fileFormatsSelector],
   });
 
-  const formatsToCreate = fileFormats.filter(
-    (format) =>
-      !existingFormats.file_formats?.find(
-        (f) => f.extension === format.extension,
-      ),
-  );
+  const formatsToCreate: Array<ValueTypes['create_file_formats_input']> =
+    fileFormats.filter(
+      (format) =>
+        !existingFormats.file_formats?.find(
+          (f) => f.extension === format.extension,
+        ),
+    );
   if (!formatsToCreate.length) return;
-
-  const variables = useZeusVariables({
-    data: '[create_file_formats_input!]',
-  })({
-    data: formatsToCreate,
-  });
-  const { $ } = variables;
 
   try {
     await client('mutation')(
       {
-        create_file_formats_items: [{ data: $('data') }, fileFormatsSelector],
+        create_file_formats_items: [
+          { data: $('data', '[create_file_formats_input!]') },
+          fileFormatsSelector,
+        ],
       },
       {
         operationName: 'initFileFormats',
-        variables,
+        variables: {
+          data: formatsToCreate,
+        },
       },
     );
   } catch (e) {
@@ -98,24 +94,19 @@ export async function seedCollaboratorRoles(client: Client): Promise<void> {
   const existingRoles = await client('query')({
     collaborator_roles: [{}, { name: true }],
   });
-  const rolesToCreate = roles.filter(
-    (role) =>
-      !existingRoles.collaborator_roles?.find((s) => s.name === role.name),
-  );
+  const rolesToCreate: Array<ValueTypes['create_collaborator_roles_input']> =
+    roles.filter(
+      (role) =>
+        !existingRoles.collaborator_roles?.find((s) => s.name === role.name),
+    );
 
   if (!rolesToCreate.length) return;
-
-  const variables = useZeusVariables({
-    data: '[create_collaborator_roles_input!]',
-  })({
-    data: rolesToCreate,
-  });
 
   try {
     await client('mutation')(
       {
         create_collaborator_roles_items: [
-          { data: variables.$('data') },
+          { data: $('data', '[create_collaborator_roles_input!]') },
           {
             name: true,
           },
@@ -123,7 +114,9 @@ export async function seedCollaboratorRoles(client: Client): Promise<void> {
       },
       {
         operationName: 'initCollaboratorRoles',
-        variables,
+        variables: {
+          data: rolesToCreate,
+        },
       },
     );
   } catch (e) {

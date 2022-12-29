@@ -25,7 +25,7 @@
     "dotenv": "16.0.0",
     "graphql": "15.5.1",
     "graphql-request": "3.5.0",
-    "graphql-zeus": "^5.0.3",
+    "graphql-zeus": "^5.2.3",
     "js-base64": "^3.7.2",
     "lodash": "^4.17.21",
     "nanoid": "^3.3.3",

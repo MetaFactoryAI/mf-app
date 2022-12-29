@@ -32,9 +32,11 @@ function generate() {
   if [[ "$PLATFORM" == "OSX" || "$PLATFORM" == "BSD" ]]; then
     sed -i "" 's,bigint"]:any,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
     sed -i "" 's,bigint"]:unknown,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
+    sed -i "" 's,T extends keyof ResolverInputTypes,T extends keyof ModelTypes,g' "$GEN_PATH"/zeus/index.ts
   elif [ "$PLATFORM" == "LINUX" ]; then
     sed -i 's,bigint"]:any,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
     sed -i 's,bigint"]:unknown,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
+    sed -i "" 's,T extends keyof ResolverInputTypes,T extends keyof ModelTypes,g' "$GEN_PATH"/zeus/index.ts
   else
     echo "unknown platform; exiting"
     exit 1
@@ -45,4 +47,4 @@ generate "$GEN_PATH" -h x-hasura-admin-secret:"$GRAPHQL_ADMIN_SECRET"
 #generate $GEN_PATH -h x-hasura-role:user -h "authorization:generate"
 
 # fix formatting of generated files
-node_modules/.bin/prettier --write $GEN_PATH
+#../../node_modules/.bin/prettier --write $GEN_PATH

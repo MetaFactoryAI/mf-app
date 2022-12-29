@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import assert from 'assert';
 
-import { useZeusVariables, ValueTypes } from '../mfos';
+import { $, ValueTypes } from '../mfos';
 import { mfosClient } from '../mfos/client';
 import { Creator } from '../types/wearables';
 import { isAddressEqual } from '../utils/addressHelpers';
@@ -27,11 +27,6 @@ export const createBrandIfNotExists = async (
   brand: ValueTypes['create_brands_input'],
 ): Promise<CreateBrandRes> => {
   assert(brand.notion_id, 'notion_id required');
-  const variables = useZeusVariables({
-    brand: 'create_brands_input!',
-  })({
-    brand,
-  });
 
   const existingBrand = await mfosClient('query')({
     brands: [
@@ -49,14 +44,16 @@ export const createBrandIfNotExists = async (
     {
       create_brands_item: [
         {
-          data: variables.$('brand'),
+          data: $('brand', 'create_brands_input!'),
         },
         brandSelector,
       ],
     },
     {
       operationName: 'createBrand',
-      variables,
+      variables: {
+        brand,
+      },
     },
   );
 
@@ -71,11 +68,6 @@ export const createProductIfNotExists = async (
   product: ValueTypes['create_products_input'],
 ): Promise<CreateProductRes> => {
   assert(product.notion_id, 'notion_id required');
-  const variables = useZeusVariables({
-    product: 'create_products_input!',
-  })({
-    product,
-  });
 
   const existingQuery = await mfosClient('query')({
     products: [
@@ -90,13 +82,15 @@ export const createProductIfNotExists = async (
     const updatedRes = await mfosClient('mutation')(
       {
         update_products_item: [
-          { id: existing.id, data: variables.$('product') },
+          { id: existing.id, data: $('product', 'create_products_input!') },
           productsSelector,
         ],
       },
       {
         operationName: 'updateProduct',
-        variables,
+        variables: {
+          product,
+        },
       },
     );
     assert(updatedRes.update_products_item, 'Unable to update product');
@@ -107,14 +101,14 @@ export const createProductIfNotExists = async (
     {
       create_products_item: [
         {
-          data: variables.$('product'),
+          data: $('product', 'create_products_input!'),
         },
         productsSelector,
       ],
     },
     {
       operationName: 'createProduct',
-      variables,
+      variables: { product },
     },
   );
 
@@ -151,23 +145,19 @@ export const uploadImagesForProduct = async (
     for (const i of imagesToUpload) {
       const file = await uploadFile(i, ['productImage']);
 
-      const linkFileVariables = useZeusVariables({
-        data: 'create_products_files_input!',
-      })({
-        data: {
-          directus_files_id: file,
-          products_id: {
-            id: product.id,
-            name: product.name,
-          },
+      const data: ValueTypes['create_products_files_input'] = {
+        directus_files_id: file,
+        products_id: {
+          id: product.id,
+          name: product.name,
         },
-      });
+      };
 
       const linkedToFile = await mfosClient('mutation')(
         {
           create_products_files_item: [
             {
-              data: linkFileVariables.$('data'),
+              data: $('data', 'create_products_files_input!'),
             },
             {
               id: true,
@@ -176,7 +166,9 @@ export const uploadImagesForProduct = async (
         },
         {
           operationName: 'LinkFileToProduct',
-          variables: linkFileVariables,
+          variables: {
+            data,
+          },
         },
       );
       logger.info(
@@ -226,24 +218,20 @@ export const uploadWearablesForProduct = async (
         ['wearable'],
       );
 
-      const linkWearableVariables = useZeusVariables({
-        data: 'create_products_wearables_input!',
-      })({
-        data: {
-          directus_files_id: file,
-          file_format: formats.find((f) => f.extension === wearable.extension),
-          products_id: {
-            id: product.id,
-            name: product.name,
-          },
+      const data: ValueTypes['create_products_wearables_input'] = {
+        directus_files_id: file,
+        file_format: formats.find((f) => f.extension === wearable.extension),
+        products_id: {
+          id: product.id,
+          name: product.name,
         },
-      });
+      };
 
       await mfosClient('mutation')(
         {
           create_products_wearables_item: [
             {
-              data: linkWearableVariables.$('data'),
+              data: $('data', 'create_products_wearables_input!'),
             },
             {
               id: true,
@@ -252,7 +240,7 @@ export const uploadWearablesForProduct = async (
         },
         {
           operationName: 'LinkWearableToProduct',
-          variables: linkWearableVariables,
+          variables: { data },
         },
       );
     }
@@ -284,22 +272,16 @@ export const uploadClo3dFileForProduct = async (
       ['productCloFile'],
     );
 
-    const linkFileVariables = useZeusVariables({
-      data: 'update_products_input!',
-      id: 'ID!',
-    })({
-      id: product.id,
-      data: {
-        clo3d_file: file,
-      },
-    });
+    const data: ValueTypes['update_products_input'] = {
+      clo3d_file: file,
+    };
 
     const linkedToFile = await mfosClient('mutation')(
       {
         update_products_item: [
           {
-            id: linkFileVariables.$('id'),
-            data: linkFileVariables.$('data'),
+            id: $('id', 'update_products_input!'),
+            data: $('data', 'ID!'),
           },
           {
             id: true,
@@ -308,7 +290,10 @@ export const uploadClo3dFileForProduct = async (
       },
       {
         operationName: 'LinkCloFileToProduct',
-        variables: linkFileVariables,
+        variables: {
+          id: product.id,
+          data,
+        },
       },
     );
     logger.info(
@@ -351,23 +336,19 @@ export const uploadDesignFilesForProduct = async (
     for (const i of filesToUpload) {
       const file = await uploadFile(i, ['productDesignFile']);
 
-      const linkFileVariables = useZeusVariables({
-        data: 'create_products_design_files_input!',
-      })({
-        data: {
-          directus_files_id: file,
-          products_id: {
-            id: product.id,
-            name: product.name,
-          },
+      const data: ValueTypes['create_products_design_files_input'] = {
+        directus_files_id: file,
+        products_id: {
+          id: product.id,
+          name: product.name,
         },
-      });
+      };
 
       const linkedToFile = await mfosClient('mutation')(
         {
           create_products_design_files_item: [
             {
-              data: linkFileVariables.$('data'),
+              data: $('data', 'create_products_design_files_input!'),
             },
             {
               id: true,
@@ -376,7 +357,7 @@ export const uploadDesignFilesForProduct = async (
         },
         {
           operationName: 'LinkDesignFileToProduct',
-          variables: linkFileVariables,
+          variables: { data },
         },
       );
       logger.info(
@@ -417,23 +398,19 @@ export const uploadContentForProduct = async (
     for (const i of filesToUpload) {
       const file = await uploadFile(i, ['productContentFile']);
 
-      const linkFileVariables = useZeusVariables({
-        data: 'create_products_content_input!',
-      })({
-        data: {
-          directus_files_id: file,
-          products_id: {
-            id: product.id,
-            name: product.name,
-          },
+      const data: ValueTypes['create_products_content_input'] = {
+        directus_files_id: file,
+        products_id: {
+          id: product.id,
+          name: product.name,
         },
-      });
+      };
 
       const linkedToFile = await mfosClient('mutation')(
         {
           create_products_content_item: [
             {
-              data: linkFileVariables.$('data'),
+              data: $('data', 'create_products_content_input!'),
             },
             {
               id: true,
@@ -442,7 +419,7 @@ export const uploadContentForProduct = async (
         },
         {
           operationName: 'LinkContentFileToProduct',
-          variables: linkFileVariables,
+          variables: { data },
         },
       );
       logger.info(
@@ -493,22 +470,18 @@ export const addContributorsToProduct = async (
         display_name: c.name,
       });
 
-      const addContributorVars = useZeusVariables({
-        data: 'create_products_contributors_input!',
-      })({
-        data: {
-          products_id: { id: product.id, name: product.name },
-          collaborators_id: { id: collaborator.id },
-          contribution_share: c.share,
-          robot_earned: c.robotEarned,
-        },
-      });
+      const data: ValueTypes['create_products_contributors_input'] = {
+        products_id: { id: product.id, name: product.name },
+        collaborators_id: { id: collaborator.id },
+        contribution_share: c.share,
+        robot_earned: c.robotEarned,
+      };
 
       await mfosClient('mutation')(
         {
           create_products_contributors_item: [
             {
-              data: addContributorVars.$('data'),
+              data: $('data', 'create_products_contributors_input!'),
             },
             {
               id: true,
@@ -517,7 +490,7 @@ export const addContributorsToProduct = async (
         },
         {
           operationName: 'AddContributorToProduct',
-          variables: addContributorVars,
+          variables: { data },
         },
       );
       logger.info(
@@ -540,17 +513,14 @@ export const createCollaboratorIfNotExists = async (
 ): Promise<CollaboratorResult> => {
   assert(collaborator.payment_eth_address, 'ethAddress required');
   assert(collaborator.role, 'role required');
-  const variables = useZeusVariables({
-    collaborator: 'create_collaborators_input!',
-  })({
-    collaborator,
-  });
 
   const existingQuery = await mfosClient('query')({
     collaborators: [
       {
         filter: {
           payment_eth_address: { _eq: collaborator.payment_eth_address },
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore - FIXME this is a bug in the generated types
           role: { name: { _eq: collaborator.role.name } },
         },
       },
@@ -567,14 +537,14 @@ export const createCollaboratorIfNotExists = async (
     {
       create_collaborators_item: [
         {
-          data: variables.$('collaborator'),
+          data: $('collaborator', 'create_collaborators_input!'),
         },
         collaboratorsSelector,
       ],
     },
     {
       operationName: 'createCollaborator',
-      variables,
+      variables: { collaborator },
     },
   );
 

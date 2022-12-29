@@ -1,0 +1,12 @@
+{
+  "extends": "tsconfig/expo.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "module": "esnext",
+    "paths": {
+      "app/*": ["./*"]
+    }
+  },
+  "include": ["."],
+  "exclude": ["dist", "build", "node_modules"]
+}
