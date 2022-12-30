@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "MetaFactory",
+    "slug": "mf",
+    "version": "1.0.0",
+    "scheme": "metafactory",
+    "platforms": ["ios", "android"],
+    "ios": {
+      "bundleIdentifier": "app.mf.app"
+    },
+    "userInterfaceStyle": "automatic",
+    "android": {
+      "package": "app.mf.app"
+    },
+    "extra": {},
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 31,
+            "targetSdkVersion": 31,
+            "buildToolsVersion": "31.0.0"
+          },
+          "ios": {
+            "deploymentTarget": "13.0"
+          }
+        }
+      ]
+    ]
+  }
+}

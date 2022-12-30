@@ -34,3 +34,16 @@ build/**
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+
+# Expo
+.expo/*
+web-build/
+
+**/*/.expo
+
+**/*/.next
+
+**/*/ios
+**/*/android
+

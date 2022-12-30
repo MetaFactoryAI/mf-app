@@ -1,7 +1,7 @@
 import { Provider } from 'app/provider';
 import Head from 'next/head';
 import React from 'react';
-import { type SolitoAppProps } from 'solito';
+import type { SolitoAppProps } from 'solito';
 import 'raf/polyfill';
 import '../global.css';
 import '@rainbow-me/rainbowkit/styles.css';

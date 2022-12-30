@@ -10,9 +10,10 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 
 # Folders
 
+- `apps/next` (Next.js web app)
 - `packages/ui` (import as `@mf/ui`)
-  - Make sure to add any other package folders you make to `app/next.config.js` after `next-transpile-modules`.
-- `packages/app` (this is the app you run)
+  - Make sure to add any other package folders you make to `apps/next/next.config.js` after `next-transpile-modules`.
+- `packages/app` (shared code between web and native, consumed by `apps/(next/expo)`)
 - `packages/cms` (Directus folder)
 - `packages/services` (backend logic deployed to Vercel serverless)
 
@@ -23,7 +24,7 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 - Run `yarn install`
 - Run postgres + Hasura + Directus with `docker:cms:start`
 - Run services with `yarn services start`
-- Run Expo app with `yarn app start` or `yarn app web` to run next.js web version of the Expo app
+- Run Next.js app with `yarn next start`
 
 # Creating Directus extensions
 

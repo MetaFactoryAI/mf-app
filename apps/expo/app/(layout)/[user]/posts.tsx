@@ -1,18 +1,18 @@
 import { SecondScreen } from 'app/features/home/SecondScreen';
 import { useParam } from 'app/features/user/UserDetailScreen';
-import { NavLayout } from '../../lib/NavLayout';
-import type { SolitoPage } from 'solito';
+import { Stack } from 'expo-router';
 
-const Posts: SolitoPage = () => {
+export default function Posts() {
   const [user] = useParam('user');
 
   return (
     <>
+      <Stack.Screen
+        options={{
+          title: `${user}'s Posts`,
+        }}
+      />
       <SecondScreen title={`Posts by ${user}`} />
     </>
   );
-};
-
-Posts.getLayout = (page) => <NavLayout>{page}</NavLayout>;
-
-export default Posts;
+}
