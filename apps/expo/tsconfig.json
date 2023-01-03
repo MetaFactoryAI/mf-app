@@ -4,6 +4,5 @@
     "noEmit": true,
     "typeRoots": ["expo-router/ts-declarations"]
   },
-  "include": ["app-env.d.ts", "**/*.ts", "**/*.tsx", "index.js"],
-  "exclude": ["node_modules"]
+  "include": ["app-env.d.ts", "**/*.ts", "**/*.tsx", "index.js"]
 }

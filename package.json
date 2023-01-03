@@ -13,6 +13,7 @@
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "next": "yarn apps/next",
+    "expo": "yarn apps/expo",
     "next:start": "yarn apps/next start",
     "services": "yarn packages/services",
     "app": "yarn packages/app",
@@ -24,7 +25,8 @@
     "hasura-cms": "hasura --envfile ../.env --endpoint http://localhost:8090 --project ./hasura-cms",
     "docker:cms:start": "docker compose --profile cms up -d",
     "docker:cms:stop": "docker compose --profile cms down",
-    "docker:cms:clean": "docker compose --profile cms down -v"
+    "docker:cms:clean": "docker compose --profile cms down -v",
+    "postinstall": "ln -s ../../../node_modules/react-native-codegen ./apps/expo/node_modules/react-native-codegen"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",

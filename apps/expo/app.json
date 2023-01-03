@@ -12,7 +12,11 @@
     "android": {
       "package": "app.mf.app"
     },
-    "extra": {},
+    "extra": {
+      "eas": {
+        "projectId": "0bc3a02d-731f-4aa5-95b9-67743529a7b1"
+      }
+    },
     "plugins": [
       [
         "expo-build-properties",

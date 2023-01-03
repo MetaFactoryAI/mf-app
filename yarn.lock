@@ -17343,7 +17343,7 @@ __metadata:
     app: "*"
     babel-plugin-transform-inline-environment-variables: ^0.4.4
     eslint-config-custom: "*"
-    expo: ~47.0.8
+    expo: ~47.0.9
     expo-build-properties: ~0.4.1
     expo-constants: ~14.0.2
     expo-dev-client: ~2.0.1
@@ -17552,9 +17552,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-modules-autolinking@npm:1.0.0":
-  version: 1.0.0
-  resolution: "expo-modules-autolinking@npm:1.0.0"
+"expo-modules-autolinking@npm:1.0.1":
+  version: 1.0.1
+  resolution: "expo-modules-autolinking@npm:1.0.1"
   dependencies:
     chalk: ^4.1.0
     commander: ^7.2.0
@@ -17563,17 +17563,17 @@ __metadata:
     fs-extra: ^9.1.0
   bin:
     expo-modules-autolinking: bin/expo-modules-autolinking.js
-  checksum: d6a0142b7fcddfe2fb62b417193fa7e1690890842331ffcfd322a82ca3d010abca099653628abc1cac8d5619a54570489a2edfd598a935e7090c088ece1463fe
+  checksum: b3123a3dae6ff2a238861724db553de5fb00aa2575fbaaadc2aa44a5d6735b010b07ecb70ea6555c8c2523a923fbd51c26b39ce8f1103510e5220e6f67539d64
   languageName: node
   linkType: hard
 
-"expo-modules-core@npm:1.0.4":
-  version: 1.0.4
-  resolution: "expo-modules-core@npm:1.0.4"
+"expo-modules-core@npm:1.1.0":
+  version: 1.1.0
+  resolution: "expo-modules-core@npm:1.1.0"
   dependencies:
     compare-versions: ^3.4.0
     invariant: ^2.2.4
-  checksum: 9a5a8b6b1208ced6ce3e9b55ec7c53cdd7ea393907cdd3ece4d1d8e2a21f044147d627d43e199665237ed1e95b14f99d57b742e4af7a1467daff581406dc76ff
+  checksum: f5add659b2f43c2784dce86986ec709feac38a60881afd013049ef86b106eeba9217427d01b9da27e00b678e9f47518ffa5d7676f95408c6e3966093d48252e8
   languageName: node
   linkType: hard
 
@@ -17663,9 +17663,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo@npm:~47.0.8":
-  version: 47.0.9
-  resolution: "expo@npm:47.0.9"
+"expo@npm:~47.0.9":
+  version: 47.0.10
+  resolution: "expo@npm:47.0.10"
   dependencies:
     "@babel/runtime": ^7.14.0
     "@expo/cli": 0.4.10
@@ -17681,8 +17681,8 @@ __metadata:
     expo-file-system: ~15.1.1
     expo-font: ~11.0.1
     expo-keep-awake: ~11.0.1
-    expo-modules-autolinking: 1.0.0
-    expo-modules-core: 1.0.4
+    expo-modules-autolinking: 1.0.1
+    expo-modules-core: 1.1.0
     fbemitter: ^3.0.0
     getenv: ^1.0.0
     invariant: ^2.2.4
@@ -17695,7 +17695,7 @@ __metadata:
       optional: true
   bin:
     expo: bin/cli.js
-  checksum: 315e86cfb9f64643c78d5bb2ac659575b0ffcd20d0a924417d080802f01fd7542d3d27cf18fcc9a94e865ba77dafc57a992e715e8a7ab3584be7ca6d505071e1
+  checksum: 6bde0837544b83941588e53fcfab35a3ca6bdb49695f71d923158dd1145d627fc9f312e64cf1c8bf0ad7a5083652fd352a490e2994d85b2ad384744dddcd19bf
   languageName: node
   linkType: hard
 
