@@ -7300,6 +7300,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@mertasan/tailwindcss-variables@npm:^2.5.1":
+  version: 2.5.1
+  resolution: "@mertasan/tailwindcss-variables@npm:2.5.1"
+  dependencies:
+    lodash: ^4.17.21
+  peerDependencies:
+    autoprefixer: ^10.0.2
+    postcss: ^8.0.9
+  checksum: c52123f4872a3963cbc4e9db40145f7399290909a77b9bf20319a7e29382638643766bb74eb4145d48f0d03a94f1d0f6c0ad75a45a89fe97d744558d6d014312
+  languageName: node
+  linkType: hard
+
 "@meta-factory/cms@workspace:packages/cms":
   version: 0.0.0-use.local
   resolution: "@meta-factory/cms@workspace:packages/cms"
@@ -11158,6 +11170,7 @@ __metadata:
   dependencies:
     "@expo-google-fonts/inter": ^0.2.2
     "@expo/vector-icons": ^13.0.0
+    "@mertasan/tailwindcss-variables": ^2.5.1
     "@radix-ui/colors": ^0.1.8
     "@rainbow-me/rainbowkit": ^0.8.1
     "@rainbow-me/rainbowkit-siwe-next-auth": ^0.1.5

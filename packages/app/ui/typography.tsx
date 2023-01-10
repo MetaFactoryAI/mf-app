@@ -8,14 +8,14 @@ export const Text = styled(NativeText);
 /**
  * You can use this pattern to create components with default styles
  */
-export const P = styled(NativeText, 'text-base text-grayTextContrast my-4');
+export const P = styled(NativeText, 'text-base text-grayText my-4');
 
 /**
  * Components can have defaultProps and styles
  */
 export const H1 = styled(
   NativeText,
-  'text-3xl text-grayTextContrast font-extrabold my-4',
+  'text-3xl text-grayText font-extrabold my-4',
 );
 H1.defaultProps = {
   accessibilityLevel: 1,
@@ -24,17 +24,14 @@ H1.defaultProps = {
 
 export const H2 = styled(
   NativeText,
-  'text-2xl text-grayTextContrast font-extrabold my-3',
+  'text-2xl text-grayText font-extrabold my-3',
 );
 H2.defaultProps = {
   accessibilityLevel: 2,
   accessibilityRole: 'header',
 };
 
-export const H3 = styled(
-  NativeText,
-  'text-xl text-grayTextContrast font-bold my-3',
-);
+export const H3 = styled(NativeText, 'text-xl text-grayText font-bold my-3');
 H3.defaultProps = {
   accessibilityLevel: 3,
   accessibilityRole: 'header',
@@ -108,8 +105,8 @@ export const TextLink = styled(
     variants: {
       intent: {
         primary: 'text-blue-11 hover:text-blue-9',
-        secondary: 'text-grayText hover:text-grayTextContrast',
-        active: 'text-grayTextContrast',
+        secondary: 'text-grayTextSubtle hover:text-grayText',
+        active: 'text-grayText',
       },
     },
     defaultProps: {
