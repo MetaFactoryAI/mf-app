@@ -39,30 +39,43 @@ const createAliasTheme = (aliases) => {
 };
 
 const aliasLightColors = {
-  appBg: toRadixVar('gray', 1),
-  appBgSubtle: toRadixVar('gray', 2),
+  appBg: toRadixVar('gray', 9),
+  appBgSubtle: toRadixVar('gray', 10),
   panel: toRadixVar('gray', 3),
   panelHover: toRadixVar('gray', 4),
   shadow: toRadixVar('grayA', 3),
-  overlay: toRadixVar('blackA', 8),
-  border: toRadixVar('gray', 6),
-  text: toRadixVar('gray', 12),
-  subtleText: toRadixVar('gray', 11),
-  brand: toRadixVars('teal'),
+  overlay: toRadixVar('blackA', 9),
+  danger: toRadixVar('red', 9),
+  success: toRadixVar('green', 9),
+
+  grayBg: toRadixVar('gray', 9),
+  grayBgSubtle: toRadixVar('gray', 10),
+  grayBgHover: toRadixVar('gray', 9),
+  grayBgActive: toRadixVar('gray', 10),
+  grayText: toRadixVar('gray', 12),
+  grayDivider: toRadixVar('gray', 11),
+  grayTextSubtle: toRadixVar('gray', 11),
+  grayBorder: toRadixVar('gray', 7),
+  grayBorderHover: toRadixVar('gray', 8),
+  grayTranslucent: toRadixVar('grayA', 2),
+
+  brandText: toRadixVar('lime', 11),
+  brandTextContrast: toRadixVar('lime', 11),
+  brandBg: toRadixVar('lime', 9),
+  brandBgHover: toRadixVar('lime', 9),
+  brandBgActive: toRadixVar('lime', 10),
+};
+const lightVars = {
+  boxRetro:
+    'inset 1px 1px 0px 1px var(--whiteA11), inset 0 0 0 1px var(--blackA9), 1px 1px 0 0px var(--blackA12)',
+  boxRetroFocus:
+    'inset 1px 1px 0px 1px var(--whiteA11), inset -0.5px -0.5px 0px 1px var(--blackA9), 1px 1px 0 1px var(--blackA12)',
+  boxRetroActive: 'inset 0 0 0 1px var(--blackA9), 0 0 0 1px var(--blackA12)',
 };
 
-const aliasDarkColors = {
-  ...aliasLightColors,
-  shadow: toRadixVar('blackA', 12),
-  overlay: toRadixVar('blackA', 12),
-};
-
-const lightColorVariables = createAliasColorVariables({
-  ...aliasLightColors,
-});
-const darkColorVariables = createAliasColorVariables({
-  ...aliasDarkColors,
-});
+// const lightColorVariables = createAliasColorVariables({
+//   ...aliasLightVars,
+// });
 
 const aliasTheme = createAliasTheme(aliasLightColors);
 
@@ -74,27 +87,17 @@ const theme = {
       retroActive: '8px 20px 4px',
     },
     boxShadow: {
-      retro:
-        'inset 1px 1px 0px 1px var(--whiteA11), inset 0 0 0 1px var(--blackA9), 1px 1px 0 0px var(--blackA12)',
-      retroFocus:
-        'inset 1px 1px 0px 1px var(--whiteA11), inset -0.5px -0.5px 0px 1px var(--blackA9), 1px 1px 0 1px var(--blackA12)',
-      retroActive: 'inset 0 0 0 1px var(--blackA9), 0 0 0 1px var(--blackA12)',
+      retro: 'var(--boxRetro)',
+      retroFocus: 'var(--boxRetroFocus)',
+      retroActive: 'var(--boxRetroActive)',
     },
     colors: {
       ...aliasTheme,
       brand: toRadixVars('lime'),
-      brandText: toRadixVar('lime', 11),
-      brandTextContrast: toRadixVar('lime', 11),
-      brandBg: toRadixVar('lime', 4),
-      brandBgHover: toRadixVar('lime', 5),
-      brandBgActive: toRadixVar('lime', 6),
-      grayText: toRadixVar('gray', 11),
-      grayTextContrast: toRadixVar('gray', 12),
-      grayBg: toRadixVar('gray', 3),
-      grayBgHover: toRadixVar('gray', 4),
-      grayBgActive: toRadixVar('gray', 5),
-      grayBorder: toRadixVar('gray', 7),
-      grayBorderHover: toRadixVar('gray', 8),
+      // appBg: toRadixVar('gray', 9),
+      // appBgSubtle: toRadixVar('gray', 10),
+      // panel: toRadixVar('gray', 3),
+      // panelHover: toRadixVar('gray', 4),
     },
     spacing: {
       'nav-height': '72px',
@@ -109,11 +112,14 @@ const theme = {
     full: '9999px',
   },
   variables: {
-    ...lightColorVariables,
+    DEFAULT: {
+      ...aliasLightColors,
+      ...lightVars,
+    },
   },
-  darkVariables: {
-    ...darkColorVariables,
-  },
+  // darkVariables: {
+  //   ...darkColorVariables,
+  // },
 };
 
 module.exports = {

@@ -19,9 +19,10 @@ module.exports = {
     require('windy-radix-palette')({
       colors: {
         ...lightColors,
-        ...darkColors,
+        // ...darkColors,
       },
     }),
+    require('@mertasan/tailwindcss-variables'),
   ],
   important: 'html',
 };

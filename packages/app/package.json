@@ -32,6 +32,7 @@
     "wagmi": "^0.9.2"
   },
   "devDependencies": {
+    "@mertasan/tailwindcss-variables": "^2.5.1",
     "@radix-ui/colors": "^0.1.8",
     "tsconfig": "*",
     "windy-radix-palette": "^0.4.1"
