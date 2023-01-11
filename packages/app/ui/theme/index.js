@@ -102,6 +102,7 @@ const theme = {
     },
     spacing: {
       'nav-height': '72px',
+      'bottom-tabs-height': '56px',
     },
   },
   borderRadius: {

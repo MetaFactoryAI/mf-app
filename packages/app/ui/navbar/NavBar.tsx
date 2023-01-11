@@ -11,13 +11,19 @@ type NavBarProps = {
   links: Array<{ href: string; label: string; isActive?: boolean }>;
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
+  showMenu?: boolean;
 };
 
 // Web Only
-export const NavBar: React.FC<NavBarProps> = ({ links, isOpen, setIsOpen }) => {
+export const NavBar: React.FC<NavBarProps> = ({
+  links,
+  isOpen,
+  setIsOpen,
+  showMenu = false,
+}) => {
   return (
-    <Box className="sticky top-0 right-0 left-0 z-20 flex w-full">
-      <Row className="h-nav-height flex w-full items-center justify-between border-b bg-black px-4 backdrop-blur-3xl backdrop-saturate-150 md:px-6">
+    <Box className="sticky top-0 right-0 left-0 z-20 flex w-full bg-black  pt-[env(safe-area-inset-top)]">
+      <Row className="h-nav-height flex w-full items-center justify-between border-b px-4 md:px-6">
         <Link className="flex-1 md:flex-none" href="/">
           <Row className="items-center justify-start pt-0.5">
             <MFLogo />
@@ -35,37 +41,42 @@ export const NavBar: React.FC<NavBarProps> = ({ links, isOpen, setIsOpen }) => {
             </TextLink>
           ))}
         </Row>
-        <Row className={'hidden md:flex'}>
-          <ConnectWalletButton />
-        </Row>
-        <Box className="ml-2 md:hidden">
-          <Button
-            intent={'icon'}
-            size={'icon'}
-            className={'ml-0'}
-            onPress={() => {
-              setIsOpen(!isOpen);
-            }}
-          >
-            <MenuIcon isOpen={isOpen} />
-          </Button>
-        </Box>
+        {showMenu ? (
+          <Box className="ml-2 md:hidden">
+            <Button
+              intent={'icon'}
+              size={'icon'}
+              className={'ml-0'}
+              onPress={() => {
+                setIsOpen(!isOpen);
+              }}
+            >
+              <MenuIcon isOpen={isOpen} />
+            </Button>
+          </Box>
+        ) : (
+          <Row className={'flex'}>
+            <ConnectWalletButton />
+          </Row>
+        )}
       </Row>
-      <NavBarCollapse isOpen={isOpen}>
-        {links.map(({ href, label, isActive }) => (
-          <TextLink
-            key={href}
-            href={href}
-            intent={isActive ? 'active' : 'secondary'}
-            className={`mt-6 text-3xl`}
-          >
-            {label}
-          </TextLink>
-        ))}
-        <Box className={'align-stretch flex h-full py-8'}>
-          <ConnectWalletButton />
-        </Box>
-      </NavBarCollapse>
+      {showMenu ? (
+        <NavBarCollapse isOpen={isOpen}>
+          {links.map(({ href, label, isActive }) => (
+            <TextLink
+              key={href}
+              href={href}
+              intent={isActive ? 'active' : 'secondary'}
+              className={`mt-6 text-3xl`}
+            >
+              {label}
+            </TextLink>
+          ))}
+          <Box className={'align-stretch flex h-full py-8'}>
+            <ConnectWalletButton />
+          </Box>
+        </NavBarCollapse>
+      ) : null}
     </Box>
   );
 };
