@@ -66,6 +66,6 @@ jobs:
           CI: true
 
       - name: Build NextJS App
-        run: yarn build
+        run: yarn next build
         env:
           CI: true
