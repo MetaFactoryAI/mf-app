@@ -1,13 +1,14 @@
-import { ConnectWalletButton } from 'app/lib/ConnectWalletButton';
 import { Box } from 'app/ui/layout';
+import { H1, P } from 'app/ui/typography';
 
 type SecondScreenProps = {
   title?: string;
 };
-export const SecondScreen: React.FC<SecondScreenProps> = () => {
+export const SecondScreen: React.FC<SecondScreenProps> = ({ title }) => {
   return (
     <Box className="flex-1 items-center justify-center">
-      <ConnectWalletButton />
+      <H1>Second Screen</H1>
+      <P className="text-center">{title}</P>
     </Box>
   );
 };

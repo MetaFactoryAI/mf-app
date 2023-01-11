@@ -62,6 +62,7 @@ const aliasLightColors = {
   brandText: toRadixVar('lime', 11),
   brandTextContrast: toRadixVar('lime', 11),
   brandBg: toRadixVar('lime', 9),
+  brandBgSubtle: toRadixVar('lime', 8),
   brandBgHover: toRadixVar('lime', 9),
   brandBgActive: toRadixVar('lime', 10),
 };

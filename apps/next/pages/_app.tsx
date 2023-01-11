@@ -24,10 +24,10 @@ function MyApp({
   return (
     <>
       <Head>
-        <title>METADREAM</title>
+        <title>MetaFactory</title>
         <meta
           name="description"
-          content="Universal Dapp Built With React Native Web"
+          content="Shop, curate and collect digiphysical goods for the metaverse."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -1,9 +1,10 @@
 {
-  "name": "@mf/services",
-  "private": true,
+  "name": "services",
   "version": "1.0.0",
+  "main": "index.ts",
   "scripts": {
     "test": "echo 'No tests setup'",
+    "build": "vercel build",
     "start": "yarn --cwd ../../ vercel dev -l 3003",
     "lint": "eslint ./**/*.ts*",
     "typecheck": "tsc",

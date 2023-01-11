@@ -51,6 +51,12 @@ export const Web3Provider: React.FC<Props> = ({ children }) => {
             '--ck-secondary-button-active-background': 'var(--grayBg)',
             '--ck-secondary-button-border-radius': '0',
 
+            '--ck-tertiary-button-color': 'var(--grayText)',
+            '--ck-tertiary-button-background': 'var(--grayBg)',
+            '--ck-tertiary-button-hover-background': 'var(--grayBgHover)',
+            '--ck-tertiary-button-active-background': 'var(--grayBgActive)',
+            '--ck-tertiary-button-border-radius': '0',
+
             '--ck-overlay-backdrop-filter': 'blur(4px)',
             '--ck-overlay-background': 'var(--overlay)',
 
@@ -76,6 +82,7 @@ export const Web3Provider: React.FC<Props> = ({ children }) => {
             '--ck-dropdown-active-background': 'var(--grayBgActive)',
             '--ck-spinner-color': 'var(--brandBg)',
             '--ck-focus-color': 'var(--brandBg)',
+            '--ck-qr-dot-color': 'var(--grayText)',
           }}
         >
           {children}
