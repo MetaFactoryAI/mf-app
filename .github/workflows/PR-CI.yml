@@ -44,7 +44,7 @@ jobs:
           NODE_OPTIONS: --openssl-legacy-provider
 
       - name: Testing
-        run: yarn test --ci --coverage
+        run: yarn test
         env:
           CI: true
           NODE_OPTIONS: --openssl-legacy-provider

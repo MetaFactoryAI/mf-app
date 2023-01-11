@@ -12,6 +12,7 @@
   "scripts": {
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
     "build": "turbo run build",
     "next": "yarn apps/next",
     "expo": "yarn apps/expo",
@@ -19,7 +20,6 @@
     "app": "yarn packages/app",
     "cms": "yarn packages/cms",
     "prepare": "husky install",
-    "test": "turbo run test",
     "hasura": "hasura --envfile ../.env --project ./hasura",
     "hasura-cms": "hasura --envfile ../.env --endpoint http://localhost:8090 --project ./hasura-cms",
     "docker:cms:start": "docker compose --profile cms up -d",
