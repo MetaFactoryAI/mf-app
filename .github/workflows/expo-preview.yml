@@ -32,7 +32,7 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Install packages
-        run: yarn --frozen-lockfile
+        run: yarn --immutable
       - name: Deploy Preview to Expo
         run: yarn deploy -- -- --release-channel=pr-${{ github.event.number }}
       - uses: unsplash/comment-on-pr@master
