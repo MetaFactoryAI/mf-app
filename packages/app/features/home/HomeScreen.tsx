@@ -5,7 +5,7 @@ import { RetroButton } from 'app/ui/RetroButton';
 
 export const HomeScreen: React.FC = () => {
   return (
-    <Box className="flex-1 items-center justify-center p-3">
+    <Box className="flex-1 items-center p-3">
       <H1>Welcome to MetaFactory</H1>
       <Box className="max-w-xl">
         <P className="text-center">
