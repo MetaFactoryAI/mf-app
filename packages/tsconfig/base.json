@@ -16,7 +16,8 @@
     "skipLibCheck": true,
     "strict": true,
     "paths": {
-      "app/*": ["./packages/app/*"]
+      "app/*": ["./packages/app/*"],
+      "services/*": ["./packages/services/*"]
     }
   },
   "exclude": ["node_modules"]

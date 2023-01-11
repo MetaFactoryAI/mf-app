@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, Text, TextLink } from 'app/ui/typography';
+import { Link, TextLink } from 'app/ui/typography';
 import MenuIcon from 'app/ui/icons/menu';
 import { Button } from 'app/ui/Button';
 import { ConnectWalletButton } from 'app/lib/ConnectWalletButton';
 import { NavBarCollapse } from './NavBarCollapse';
 import { Box, Row } from 'app/ui/layout';
+import { MFLogo } from 'app/ui/icons/mf-logo-gray';
 
 type NavBarProps = {
   links: Array<{ href: string; label: string; isActive?: boolean }>;
@@ -16,13 +17,10 @@ type NavBarProps = {
 export const NavBar: React.FC<NavBarProps> = ({ links, isOpen, setIsOpen }) => {
   return (
     <Box className="sticky top-0 right-0 left-0 z-20 flex w-full">
-      <Row className="bg-blackA-12 h-nav-height flex w-full items-center justify-between border-b px-4 backdrop-blur-md backdrop-saturate-150 md:px-6">
+      <Row className="h-nav-height flex w-full items-center justify-between border-b bg-black px-4 backdrop-blur-3xl backdrop-saturate-150 md:px-6">
         <Link className="flex-1 md:flex-none" href="/">
-          <Row className="items-center justify-start">
-            <Box className="bg-brand-5 mr-2 h-8 w-8 rounded-full"></Box>
-            <Text className="text-gray-9 text-xl font-semibold tracking-tight">
-              My App
-            </Text>
+          <Row className="items-center justify-start pt-0.5">
+            <MFLogo />
           </Row>
         </Link>
         <Row className="ml-10 hidden flex-grow md:flex">

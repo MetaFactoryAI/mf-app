@@ -6,7 +6,7 @@ import { Box } from 'app/ui/layout';
 
 const NavBarCollapseContainer = styled(
   View,
-  'bg-blackA-12 absolute top-0 right-0 left-0 w-full backdrop-blur-md backdrop-saturate-150 overflow-hidden md:hidden',
+  'bg-black absolute top-0 right-0 left-0 w-full backdrop-blur-lg backdrop-saturate-150 overflow-hidden md:hidden',
   {
     variants: {
       isOpen: {

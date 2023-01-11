@@ -105,8 +105,8 @@ export const TextLink = styled(
     variants: {
       intent: {
         primary: 'text-blue-11 hover:text-blue-9',
-        secondary: 'text-grayTextSubtle hover:text-grayText',
-        active: 'text-grayText',
+        secondary: 'text-grayBgSubtle hover:text-brandBgActive',
+        active: 'text-brandBgActive',
       },
     },
     defaultProps: {

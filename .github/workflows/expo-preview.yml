@@ -3,13 +3,14 @@ name: Expo Preview
 on:
   pull_request:
     paths:
-      - 'packages/app/**'
+      - 'packages/expo/**'
     branches:
       - master
 
 jobs:
   publish:
-    if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
+    if: ${{ false }} # disable for now
+    #    if: github.actor != 'dependabot[bot]' && github.actor != 'dependabot-preview[bot]'
     name: Publish Preview
     runs-on: ubuntu-latest
 

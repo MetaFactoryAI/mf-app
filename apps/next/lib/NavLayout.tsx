@@ -28,9 +28,14 @@ export const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
             isActive: pathname === '/settings',
           },
           {
-            href: '/username/posts',
+            href: '/metadreamer/posts',
             label: 'Posts',
             isActive: pathname.endsWith('/posts'),
+          },
+          {
+            href: '/inventory',
+            label: 'Inventory',
+            isActive: pathname === '/inventory',
           },
         ]}
       />
