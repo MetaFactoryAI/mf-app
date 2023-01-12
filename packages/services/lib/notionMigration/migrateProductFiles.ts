@@ -3,15 +3,15 @@ import assert from 'assert';
 
 import { Client } from '../../mfos';
 import { logger } from '../../utils/logger';
+import { getProductPageFiles } from '../notionHelpers';
 import {
   uploadClo3dFileForProduct,
   uploadContentForProduct,
   uploadDesignFilesForProduct,
   uploadImagesForProduct,
   uploadWearablesForProduct,
-} from '../mfosHelpers';
-import { getProductPageFiles } from '../notionHelpers';
-import { productsFilesSelector } from '../selectors';
+} from '../../mfos/products/mutations';
+import { productsFilesSelector } from '../../mfos/products/selectors';
 
 export async function migrateProductFiles(client: Client): Promise<void> {
   const productsQuery = await client('query')({

@@ -75,6 +75,7 @@ services:
       ADMIN_EMAIL: ${DIRECTUS_ADMIN_EMAIL}
       ADMIN_PASSWORD: ${DIRECTUS_ADMIN_PASSWORD}
       LOG_LEVEL: ${DIRECTUS_LOG_LEVEL}
+      CORS_ENABLED: true
 
       # DB Settings
       DB_CLIENT: 'pg'

@@ -13,3 +13,13 @@ export const ALCHEMY_ID = getEnvValue(
   process.env.NEXT_PUBLIC_ALCHEMY_ID,
   'missing-alchemy-id',
 );
+
+export const MFOS_GRAPHQL_URL = getEnvValue(
+  process.env.NEXT_PUBLIC_MFOS_GRAPHQL_URL,
+  'http://localhost:8055/graphql',
+);
+
+export const MFOS_GRAPHQL_TOKEN = getEnvValue(
+  process.env.NEXT_PUBLIC_MFOS_GRAPHQL_TOKEN,
+  '',
+);

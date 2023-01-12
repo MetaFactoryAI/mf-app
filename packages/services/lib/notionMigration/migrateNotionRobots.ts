@@ -3,9 +3,9 @@ import assert from 'assert';
 import { logger } from '../../utils/logger';
 import { getRobot } from '../../utils/notion/productHelpers';
 import { isNotNullOrUndefined } from '../../utils/typeHelpers';
-import { createSystemUserIfNotExists } from '../mfosSystemHelpers';
 import { getNotionRobots } from '../notionHelpers';
-import { SystemUser } from '../systemSelectors';
+import { createSystemUserIfNotExists } from '../../mfos/system/mutations';
+import { SystemUser } from '../../mfos/system/selectors';
 
 export async function migrateRobots(): Promise<void> {
   const robotsPages = await getNotionRobots({

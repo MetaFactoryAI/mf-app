@@ -1,29 +1,5 @@
-import { GraphQLTypes, InputType, Selector } from '../mfos';
-
-export const fileSelector = Selector('directus_files')({
-  id: true,
-  filename_download: true,
-});
-
-export type FileRes = InputType<
-  GraphQLTypes['directus_files'],
-  typeof fileSelector
->;
-
-export const brandSelector = Selector('brands')({
-  id: true,
-  name: true,
-  eth_address: true,
-  description: true,
-  notion_id: true,
-  discord_url: true,
-  created_at: true,
-});
-
-export type CreateBrandRes = InputType<
-  GraphQLTypes['brands'],
-  typeof brandSelector
->;
+import { GraphQLTypes, InputType, Selector } from '../__generated__/user/zeus';
+import { fileSelector } from '../files/selectors';
 
 export const productsSelector = Selector('products')({
   id: true,
@@ -32,12 +8,10 @@ export const productsSelector = Selector('products')({
   shopify_id: true,
   notion_id: true,
 });
-
 export type CreateProductRes = InputType<
   GraphQLTypes['products'],
   typeof productsSelector
 >;
-
 export const productsFilesSelector = Selector('products')({
   ...productsSelector,
   clo3d_file: [
@@ -83,7 +57,6 @@ export const productsFilesSelector = Selector('products')({
     },
   ],
 });
-
 export type ProductWithFiles = InputType<
   GraphQLTypes['products'],
   typeof productsFilesSelector
@@ -96,7 +69,6 @@ export type CollaboratorRole = InputType<
   GraphQLTypes['collaborator_roles'],
   typeof collaboratorRolesSelector
 >;
-
 export const collaboratorsSelector = Selector('collaborators')({
   id: true,
   role: [{}, collaboratorRolesSelector],
@@ -110,12 +82,10 @@ export const collaboratorsSelector = Selector('collaborators')({
     },
   ],
 });
-
 export type CollaboratorResult = InputType<
   GraphQLTypes['collaborators'],
   typeof collaboratorsSelector
 >;
-
 export const productsContributorsSelector = Selector('products')({
   ...productsSelector,
   brand_id: [
@@ -135,22 +105,10 @@ export const productsContributorsSelector = Selector('products')({
     },
   ],
 });
-
 export type ProductWithContributors = InputType<
   GraphQLTypes['products'],
   typeof productsContributorsSelector
 >;
-export const fileFormatsSelector = Selector('file_formats')({
-  id: true,
-  name: true,
-  mime_type: true,
-  extension: true,
-});
-export type FileFormat = InputType<
-  GraphQLTypes['file_formats'],
-  typeof fileFormatsSelector
->;
-
 export const productNftMetadataSelector = Selector('products')({
   id: true,
   nft_token_id: true,
@@ -216,7 +174,6 @@ export const productNftMetadataSelector = Selector('products')({
     },
   ],
 });
-
 export type ProductNftMetadataInfo = InputType<
   GraphQLTypes['products'],
   typeof productNftMetadataSelector

@@ -1,68 +1,24 @@
-/* eslint-disable no-await-in-loop */
+import { ProductPageFile } from '../../lib/notionHelpers';
+import { logger } from '../../utils/logger';
+import { $, ValueTypes } from '../__generated__/user/zeus';
+import { mfosClient } from '../client';
 import assert from 'assert';
-
-import { $, ValueTypes } from '../mfos';
-import { mfosClient } from '../mfos/client';
-import { Creator } from '../types/wearables';
-import { isAddressEqual } from '../utils/addressHelpers';
-import { getFiles } from '../utils/filesHelpers';
-import { logger } from '../utils/logger';
-import { getWearablesFolder } from '../utils/notion/productHelpers';
-import { getSystemUserByAddress, uploadFile } from './mfosSystemHelpers';
-import { ProductPageFile } from './notionHelpers';
+import { getWearablesFolder } from '../../utils/notion/productHelpers';
+import { getFiles } from '../../utils/filesHelpers';
+import { Creator } from '../../types/wearables';
+import { isAddressEqual } from '../../utils/addressHelpers';
+import { uploadFile } from '../system/mutations';
+import { getSystemUserByAddress } from '../system/queries';
 import {
-  brandSelector,
   CollaboratorResult,
   CollaboratorRole,
   collaboratorsSelector,
-  CreateBrandRes,
   CreateProductRes,
-  fileFormatsSelector,
   productsSelector,
   ProductWithContributors,
   ProductWithFiles,
 } from './selectors';
-
-export const createBrandIfNotExists = async (
-  brand: ValueTypes['create_brands_input'],
-): Promise<CreateBrandRes> => {
-  assert(brand.notion_id, 'notion_id required');
-
-  const existingBrand = await mfosClient('query')({
-    brands: [
-      { filter: { notion_id: { _eq: brand.notion_id } } },
-      brandSelector,
-    ],
-  });
-
-  if (existingBrand.brands?.[0]) {
-    return existingBrand.brands[0];
-  }
-  logger.info('Creating Brand', { brand });
-
-  const createBrandRes = await mfosClient('mutation')(
-    {
-      create_brands_item: [
-        {
-          data: $('brand', 'create_brands_input!'),
-        },
-        brandSelector,
-      ],
-    },
-    {
-      operationName: 'createBrand',
-      variables: {
-        brand,
-      },
-    },
-  );
-
-  if (!createBrandRes.create_brands_item) {
-    throw new Error('Failed to create Brand');
-  }
-
-  return createBrandRes.create_brands_item;
-};
+import { fileFormatsSelector } from '../files/selectors';
 
 export const createProductIfNotExists = async (
   product: ValueTypes['create_products_input'],
@@ -118,7 +74,6 @@ export const createProductIfNotExists = async (
 
   return createRes.create_products_item;
 };
-
 export const uploadImagesForProduct = async (
   product: ProductWithFiles,
   productPage: ProductPageFile,
@@ -180,7 +135,6 @@ export const uploadImagesForProduct = async (
     logger.warn('Failed to upload image', { error: e, product, productPage });
   }
 };
-
 export const uploadWearablesForProduct = async (
   product: ProductWithFiles,
   productPage: ProductPageFile,
@@ -252,7 +206,6 @@ export const uploadWearablesForProduct = async (
     });
   }
 };
-
 export const uploadClo3dFileForProduct = async (
   product: ProductWithFiles,
   productPage: ProductPageFile,
@@ -308,7 +261,6 @@ export const uploadClo3dFileForProduct = async (
     });
   }
 };
-
 export const uploadDesignFilesForProduct = async (
   product: ProductWithFiles,
   productPage: ProductPageFile,
@@ -373,7 +325,6 @@ export const uploadDesignFilesForProduct = async (
     });
   }
 };
-
 export const uploadContentForProduct = async (
   product: ProductWithFiles,
   productPage: ProductPageFile,
@@ -435,7 +386,6 @@ export const uploadContentForProduct = async (
     });
   }
 };
-
 export const addContributorsToProduct = async (
   product: ProductWithContributors,
   contributors: Creator[],
@@ -507,7 +457,6 @@ export const addContributorsToProduct = async (
     });
   }
 };
-
 export const createCollaboratorIfNotExists = async (
   collaborator: ValueTypes['create_collaborators_input'],
 ): Promise<CollaboratorResult> => {

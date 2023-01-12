@@ -16,7 +16,7 @@ interface IConfig {
   alchemyId: string;
 }
 
-function parseEnv<T extends string | number>(
+export function parseEnv<T extends string | number>(
   v: string | undefined,
   defaultValue?: T,
 ): T {

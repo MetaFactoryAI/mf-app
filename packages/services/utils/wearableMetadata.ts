@@ -1,11 +1,12 @@
 import assert from 'assert';
 
-import { FileRes, ProductNftMetadataInfo } from '../lib/selectors';
 import { COLLABORATOR_ROLES } from '../mfos';
 import { Creator, FileData, WearableMetadata } from '../types/wearables';
 import { CONFIG } from './config';
 import { EXTENSION_MIME_TYPES } from './filesHelpers';
 import { composeListIntoString } from './stringHelpers';
+import { ProductNftMetadataInfo } from '../mfos/products/selectors';
+import { FileRes } from '../mfos/files/selectors';
 
 export const getUrlForFile = (file: FileRes | null | undefined): string => {
   if (!file) return '';

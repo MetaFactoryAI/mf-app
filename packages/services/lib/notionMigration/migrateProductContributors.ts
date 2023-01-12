@@ -10,12 +10,12 @@ import {
   getProductDesigners,
   getProductTechs,
 } from '../../utils/notion/productHelpers';
-import { addContributorsToProduct } from '../mfosHelpers';
 import { getProductPage } from '../notionHelpers';
+import { addContributorsToProduct } from '../../mfos/products/mutations';
 import {
   collaboratorRolesSelector,
   productsContributorsSelector,
-} from '../selectors';
+} from '../../mfos/products/selectors';
 
 export async function migrateProductContributors(
   client: Client,
