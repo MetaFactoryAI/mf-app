@@ -16,12 +16,12 @@ import {
   getProductTitle,
 } from '../../utils/notion/productHelpers';
 import { isNotNullOrUndefined } from '../../utils/typeHelpers';
+import { getNotionProducts } from '../notionHelpers';
+import { createProductIfNotExists } from '../../mfos/products/mutations';
 import {
   createBrandIfNotExists,
-  createProductIfNotExists,
-} from '../mfosHelpers';
-import { getNotionProducts } from '../notionHelpers';
-import { CreateBrandRes } from '../selectors';
+  CreateBrandResult,
+} from '../../mfos/brands/mutations';
 
 const PRODUCT_STATUS_TO_STAGE: Record<
   string,
@@ -73,7 +73,7 @@ export async function migrateProducts(): Promise<void> {
     'id',
   );
 
-  const brandsRes: Record<string, CreateBrandRes> = {};
+  const brandsRes: Record<string, CreateBrandResult> = {};
   for (const b of brands) {
     try {
       brandsRes[b.id] = await createBrandIfNotExists({

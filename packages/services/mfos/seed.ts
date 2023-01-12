@@ -4,14 +4,14 @@ import {
   PRODUCT_STAGES,
   $,
   ValueTypes,
-} from '../mfos';
+} from './index';
 import {
   EXTENSION_DESCRIPTIONS,
   EXTENSION_MIME_TYPES,
   FileExtension,
 } from '../utils/filesHelpers';
 import { logger } from '../utils/logger';
-import { fileFormatsSelector } from './selectors';
+import { fileFormatsSelector } from './files/selectors';
 
 export async function seedStages(client: Client): Promise<void> {
   const stages = Object.values(PRODUCT_STAGES);

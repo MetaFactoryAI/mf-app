@@ -8938,6 +8938,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@tanstack/query-core@npm:4.22.0":
+  version: 4.22.0
+  resolution: "@tanstack/query-core@npm:4.22.0"
+  checksum: d24c13f8e21b65380230055a6673ae670aca5ee550c2f9a24b89fd3ac5243b465bb25f61b29da8ca285fc7fb0f4c2f8add3864f742eafac5131e777f3e52767a
+  languageName: node
+  linkType: hard
+
 "@tanstack/query-persist-client-core@npm:4.20.4":
   version: 4.20.4
   resolution: "@tanstack/query-persist-client-core@npm:4.20.4"
@@ -8983,6 +8990,25 @@ __metadata:
     react-native:
       optional: true
   checksum: ba9e2f175c58bde592c0ad14285f289585474763f8d68072d651fa75263a3a7f75eead5b62aa3140db133b95468498bc58817d07513f6f857be2bd8031b491da
+  languageName: node
+  linkType: hard
+
+"@tanstack/react-query@npm:^4.22.0":
+  version: 4.22.0
+  resolution: "@tanstack/react-query@npm:4.22.0"
+  dependencies:
+    "@tanstack/query-core": 4.22.0
+    use-sync-external-store: ^1.2.0
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    react-native: "*"
+  peerDependenciesMeta:
+    react-dom:
+      optional: true
+    react-native:
+      optional: true
+  checksum: b146774b44a79dd5a6412d981ce04790e66da5a36f907a03c85c36f50a38fb4e4dfbfca7b1561c86b39fb0df1c0c1ae0a0ef2930c06b444da3f430b9bad450f1
   languageName: node
   linkType: hard
 
@@ -11137,6 +11163,7 @@ __metadata:
     "@rainbow-me/rainbowkit-siwe-next-auth": ^0.1.5
     "@react-native-async-storage/async-storage": ~1.17.3
     "@tanstack/query-async-storage-persister": ^4.14.1
+    "@tanstack/react-query": ^4.22.0
     "@tanstack/react-query-persist-client": ^4.14.1
     "@walletconnect/react-native-dapp": ^1.8.0
     connectkit: ^1.1.1

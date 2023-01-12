@@ -2,7 +2,7 @@ import {
   seedCollaboratorRoles,
   seedFileFormats,
   seedStages,
-} from '../lib/mfosSeed';
+} from '../mfos/seed';
 import { migrateRobots } from '../lib/notionMigration/migrateNotionRobots';
 import { migrateProductContributors } from '../lib/notionMigration/migrateProductContributors';
 import { migrateProductFiles } from '../lib/notionMigration/migrateProductFiles';

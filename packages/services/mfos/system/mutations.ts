@@ -1,34 +1,20 @@
-/* eslint-disable no-await-in-loop */
+import { Creator } from 'services/types/wearables';
+import { System } from 'services/mfos';
+import {
+  ethAddressToEip155,
+  resolveIfEnsName,
+} from '../../utils/addressHelpers';
+import { defaultMainnetProvider } from '../../utils/defaultProvider';
 import assert from 'assert';
-
-import { System, $ } from '../mfos';
-import { mfosSystemClient } from '../mfos/systemClient';
-import { Creator } from '../types/wearables';
-import { ethAddressToEip155, resolveIfEnsName } from '../utils/addressHelpers';
-import { defaultMainnetProvider } from '../utils/defaultProvider';
-import { logger } from '../utils/logger';
+import { mfosSystemClient } from './client';
+import { logger } from '../../utils/logger';
+import { $ } from '../__generated__/user/zeus';
 import {
   systemRolesSelector,
   SystemUser,
   systemUsersSelector,
-} from './systemSelectors';
-
-export const getSystemUserByAddress = async (
-  ethAddress: string,
-): Promise<SystemUser | undefined> => {
-  const userQuery = await mfosSystemClient('query')({
-    users: [
-      {
-        filter: {
-          external_identifier: { _eq: ethAddressToEip155(ethAddress) },
-        },
-      },
-      systemUsersSelector,
-    ],
-  });
-
-  return userQuery.users?.[0];
-};
+} from './selectors';
+import { getSystemUserByAddress } from './queries';
 
 export const createSystemUserIfNotExists = async (
   creator: Creator,
