@@ -1,4 +1,3 @@
-import { Creator } from 'services/types/wearables';
 import { System } from 'services/mfos';
 import {
   ethAddressToEip155,
@@ -15,6 +14,7 @@ import {
   systemUsersSelector,
 } from './selectors';
 import { getSystemUserByAddress } from './queries';
+import { Creator } from 'shared/types/wearableTypes';
 
 export const createSystemUserIfNotExists = async (
   creator: Creator,

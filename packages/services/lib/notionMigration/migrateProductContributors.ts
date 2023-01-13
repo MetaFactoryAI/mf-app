@@ -3,7 +3,6 @@ import assert from 'assert';
 
 import { hasuraClient } from '../../graphql/client';
 import { Client, COLLABORATOR_ROLES } from '../../mfos';
-import { Creator } from '../../types/wearables';
 import { isAddressEqual } from '../../utils/addressHelpers';
 import { logger } from '../../utils/logger';
 import {
@@ -16,6 +15,7 @@ import {
   collaboratorRolesSelector,
   productsContributorsSelector,
 } from '../../mfos/products/selectors';
+import { Creator } from 'shared/types/wearableTypes';
 
 export async function migrateProductContributors(
   client: Client,

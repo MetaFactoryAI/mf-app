@@ -2,7 +2,7 @@ import { configureChains } from 'wagmi';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc';
-import * as config from 'app/config/client';
+import { ALCHEMY_ID } from 'shared/config/public';
 import { mainnet, polygon, optimism, Chain } from 'wagmi/chains';
 
 const GnosisChain: Chain = {
@@ -30,7 +30,7 @@ const GnosisChain: Chain = {
 export const { chains, provider, webSocketProvider } = configureChains(
   [mainnet, polygon, optimism, GnosisChain],
   [
-    alchemyProvider({ apiKey: config.ALCHEMY_ID }),
+    alchemyProvider({ apiKey: ALCHEMY_ID }),
     jsonRpcProvider({ rpc: () => ({ http: 'https://rpc.ankr.com/gnosis' }) }),
     publicProvider(),
   ],

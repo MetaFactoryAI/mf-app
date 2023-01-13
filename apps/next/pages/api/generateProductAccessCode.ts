@@ -2,9 +2,13 @@ import { VercelRequest, VercelResponse } from '@vercel/node';
 import fetch from 'node-fetch';
 
 import { LocksmithLockResponse } from 'services/types/locksmith';
-import { CONFIG } from 'services/utils/config';
 import { getOrCreateLock, isCodeRedeemed } from 'services/utils/lockHelpers';
 import { isValidAuthToken } from 'services/utils/userHelpers';
+import {
+  LOCKSMITH_ACCESS_TOKEN,
+  LOCKSMITH_ENDPOINT,
+  SHOP_DOMAIN,
+} from 'shared/config/secret';
 
 // Allows an authenticated API user to generate access codes for a given product lock and unique identifier.
 // Uses basic auth to protect the API. Saving the mapping of user to access code in the database to prevent the
@@ -40,10 +44,10 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     return;
   }
 
-  const response = await fetch(`${CONFIG.locksmithEndpoint}/locks/${lockId}`, {
+  const response = await fetch(`${LOCKSMITH_ENDPOINT}/locks/${lockId}`, {
     headers: {
-      'x-shopify-shop-domain': CONFIG.shopDomain,
-      'x-locksmith-access-token': CONFIG.locksmithAccessToken,
+      'x-shopify-shop-domain': SHOP_DOMAIN,
+      'x-locksmith-access-token': LOCKSMITH_ACCESS_TOKEN,
     },
   });
 

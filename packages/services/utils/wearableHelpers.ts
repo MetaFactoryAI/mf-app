@@ -3,8 +3,7 @@ import { z } from 'zod';
 
 import { $, ValueTypes } from '../graphql/__generated__/zeus';
 import { hasuraClient } from '../graphql/client';
-import { WearableMetadata } from '../types/wearables';
-import { EXTENSION_MIME_TYPES, getFiles } from './filesHelpers';
+import { getFiles } from './filesHelpers';
 import { ProductPage } from './notion/parser';
 import {
   getClo3dModel,
@@ -20,6 +19,8 @@ import {
   getWearablesFolder,
 } from './notion/productHelpers';
 import { isNotNullOrUndefined } from './typeHelpers';
+import { EXTENSION_MIME_TYPES } from 'shared/utils/files';
+import { WearableMetadata } from 'shared/types/wearableTypes';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const updateProduct = async (
