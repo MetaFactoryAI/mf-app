@@ -2,8 +2,13 @@
 import fetch from 'node-fetch';
 import { z } from 'zod';
 
-import { FileData } from '../types/wearables';
 import { logger } from './logger';
+import {
+  EXTENSION_DESCRIPTIONS,
+  EXTENSION_MIME_TYPES,
+  FileExtension,
+} from 'shared/utils/files';
+import { FileData } from 'shared/types/wearableTypes';
 
 export const githubContentsSchema = z.array(
   z.object({
@@ -42,26 +47,6 @@ export const getFiles = async (wearableUrl: string): Promise<FileData[]> => {
     });
     return [];
   }
-};
-
-export const EXTENSION_MIME_TYPES = {
-  glb: 'model/gltf-binary',
-  usdz: 'model/vnd.usd+zip',
-  png: 'image/png',
-  jpg: 'image/jpg',
-  fbx: 'application/octet-stream',
-  zprj: 'application/octet-stream',
-};
-
-export type FileExtension = keyof typeof EXTENSION_MIME_TYPES;
-
-export const EXTENSION_DESCRIPTIONS: Record<FileExtension, string> = {
-  glb: 'a GLTF file for Webaverse, NeosVR, etc',
-  usdz: 'a USD file for AR',
-  png: 'a texture file for VRoid Studio',
-  jpg: 'Texture file of original design',
-  fbx: 'FBX file for 3D software (Blender, Unreal Engine, etc)',
-  zprj: 'a project file for CLO3D / Marvelous Designer',
 };
 
 export const formatFileMetadata = (

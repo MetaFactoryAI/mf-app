@@ -1,4 +1,4 @@
-import { isNotNullOrUndefined } from './typeHelpers';
+import { isNotNullOrUndefined } from 'services/utils/typeHelpers';
 
 export const composeListIntoString = <T>(
   array: Array<T | null | undefined> | undefined,

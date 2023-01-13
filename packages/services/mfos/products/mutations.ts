@@ -5,7 +5,6 @@ import { mfosClient } from '../client';
 import assert from 'assert';
 import { getWearablesFolder } from '../../utils/notion/productHelpers';
 import { getFiles } from '../../utils/filesHelpers';
-import { Creator } from '../../types/wearables';
 import { isAddressEqual } from '../../utils/addressHelpers';
 import { uploadFile } from '../system/mutations';
 import { getSystemUserByAddress } from '../system/queries';
@@ -19,6 +18,7 @@ import {
   ProductWithFiles,
 } from './selectors';
 import { fileFormatsSelector } from '../files/selectors';
+import { Creator } from 'shared/types/wearableTypes';
 
 export const createProductIfNotExists = async (
   product: ValueTypes['create_products_input'],

@@ -5,6 +5,7 @@ const withPlugins = require('next-compose-plugins');
 const withTM = require('next-transpile-modules')([
   'app',
   'services',
+  'shared',
   'solito',
   'nativewind',
 ]);
@@ -23,7 +24,7 @@ const nextConfig = {
     scrollRestoration: true,
     forceSwcTransforms: true,
     swcPlugins: [[require.resolve('./plugins/swc_plugin_reanimated.wasm')]],
-    transpilePackages: ['app', 'services', 'solito', 'nativewind', 'moti'],
+    transpilePackages: ['app', 'services', 'shared', 'solito', 'nativewind'],
   },
   typescript: {
     ignoreBuildErrors: true,

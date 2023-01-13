@@ -29,6 +29,7 @@
     "react-native-safe-area-context": "4.4.1",
     "react-native-web": "~0.18.7",
     "react-native-webview": "^11.23.1",
+    "shared": "*",
     "solito": "^2.1.0",
     "wagmi": "^0.9.2"
   },

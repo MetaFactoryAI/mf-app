@@ -5,6 +5,7 @@ export const productsSelector = Selector('products')({
   id: true,
   name: true,
   description: true,
+  product_stage: [{}, { name: true, sort: true }],
   shopify_id: true,
   notion_id: true,
 });
@@ -73,14 +74,14 @@ export const collaboratorsSelector = Selector('collaborators')({
   id: true,
   role: [{}, collaboratorRolesSelector],
   display_name: true,
-  payment_eth_address: true,
-  account: [
-    {},
-    {
-      id: true,
-      first_name: true,
-    },
-  ],
+  // payment_eth_address: true,
+  // account: [
+  //   {},
+  //   {
+  //     id: true,
+  //     first_name: true,
+  //   },
+  // ],
 });
 export type CollaboratorResult = InputType<
   GraphQLTypes['collaborators'],
@@ -94,6 +95,7 @@ export const productsContributorsSelector = Selector('products')({
       id: true,
       name: true,
       eth_address: true,
+      logo: [{}, fileSelector],
     },
   ],
   contributors: [
@@ -118,6 +120,7 @@ export const productNftMetadataSelector = Selector('products')({
     {},
     {
       name: true,
+      id: true,
     },
   ],
   clo3d_file: [{}, fileSelector],

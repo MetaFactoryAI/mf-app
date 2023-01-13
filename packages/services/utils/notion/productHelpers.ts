@@ -1,6 +1,5 @@
 import { z } from 'zod';
 
-import { Creator, FileData } from '../../types/wearables';
 import {
   BrandPage,
   DesignerPage,
@@ -9,6 +8,7 @@ import {
   TemplatePage,
   TextBlock,
 } from './parser';
+import { Creator, FileData } from 'shared/types/wearableTypes';
 
 type ProductTemplate = {
   id: string;

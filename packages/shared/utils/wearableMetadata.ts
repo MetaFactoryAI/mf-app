@@ -1,22 +1,13 @@
+import { ProductNftMetadataInfo } from 'services/mfos/products/selectors';
 import assert from 'assert';
-
-import { COLLABORATOR_ROLES } from '../mfos';
-import { Creator, FileData, WearableMetadata } from '../types/wearables';
-import { CONFIG } from './config';
-import { EXTENSION_MIME_TYPES } from './filesHelpers';
 import { composeListIntoString } from './stringHelpers';
-import { ProductNftMetadataInfo } from '../mfos/products/selectors';
-import { FileRes } from '../mfos/files/selectors';
-
-export const getUrlForFile = (file: FileRes | null | undefined): string => {
-  if (!file) return '';
-  assert(file.id, 'Invalid File');
-  return `${CONFIG.mfosUrl}/assets/${file.id}`;
-};
+import { COLLABORATOR_ROLES } from 'services/mfos';
+import { SHOPIFY_URL } from '../config/public';
+import { EXTENSION_MIME_TYPES, getUrlForFile } from './files';
+import { Creator, FileData, WearableMetadata } from '../types/wearableTypes';
 
 export const getWearableShopLink = (shopifyId: string): string =>
-  `https://shop.metafactory.ai/products/${shopifyId}`;
-
+  `${SHOPIFY_URL}/products/${shopifyId}`;
 export const getMetadataForProduct = (
   product: ProductNftMetadataInfo,
 ): WearableMetadata => {
@@ -25,7 +16,7 @@ export const getMetadataForProduct = (
   const images = (product.images || []).map((i) =>
     getUrlForFile(i.directus_files_id),
   );
-
+  console.log({ product });
   const wearables: FileData[] = (product.wearable_files || []).map(
     ({ directus_files_id: file, file_format }) => ({
       name: file?.filename_download || file?.id || 'Untitled',

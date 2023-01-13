@@ -8,9 +8,10 @@ import { migrateProductContributors } from '../lib/notionMigration/migrateProduc
 import { migrateProductFiles } from '../lib/notionMigration/migrateProductFiles';
 import { migrateProducts } from '../lib/notionMigration/migrateProducts';
 import { createClient } from '../mfos';
-import { CONFIG } from '../utils/config';
+import { MFOS_GRAPHQL_URL } from 'shared/config/public';
+import { MFOS_GRAPHQL_TOKEN } from 'shared/config/secret';
 
-const client = createClient(CONFIG.mfosGraphqlUrl, CONFIG.mfosGraphqlToken);
+const client = createClient(MFOS_GRAPHQL_URL, MFOS_GRAPHQL_TOKEN);
 
 const migrate = async () => {
   await seedStages(client);

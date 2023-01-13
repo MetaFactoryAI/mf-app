@@ -17,7 +17,8 @@
     "strict": true,
     "paths": {
       "app/*": ["./packages/app/*"],
-      "services/*": ["./packages/services/*"]
+      "services/*": ["./packages/services/*"],
+      "shared/*": ["./packages/shared/*"]
     }
   },
   "exclude": ["node_modules"]

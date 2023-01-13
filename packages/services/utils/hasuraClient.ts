@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 
-import { CONFIG } from './config';
+import { GRAPHQL_ADMIN_SECRET, GRAPHQL_URL } from 'shared/config/secret';
 
 interface GetClientParams {
   role?: string;
@@ -9,10 +9,10 @@ interface GetClientParams {
 }
 
 export const getClient = (params: GetClientParams = {}): GraphQLClient =>
-  new GraphQLClient(CONFIG.graphqlURL, {
+  new GraphQLClient(GRAPHQL_URL, {
     headers: {
       'Content-Type': 'application/json',
-      'x-hasura-admin-secret': CONFIG.graphqlAdminSecret,
+      'x-hasura-admin-secret': GRAPHQL_ADMIN_SECRET,
       'x-hasura-role': params.role || 'admin',
     },
   });

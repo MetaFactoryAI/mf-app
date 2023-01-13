@@ -1,9 +1,9 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
-import { CONFIG } from '../utils/config';
 import { defaultMainnetProvider } from '../utils/defaultProvider';
 import { APITokenResult, isValidAuthToken } from '../utils/userHelpers';
 import { verifyToken } from '../utils/web3JWT';
+import { APP_NAME } from 'shared/config/auth';
 
 const unauthorizedVariables = {
   'X-Hasura-Role': 'public',
@@ -24,11 +24,7 @@ async function validateHeaderToken(
   const token = authHeader.replace('Bearer', '').trim();
   if (token.length === 0) return null;
 
-  const claim = await verifyToken(
-    token,
-    defaultMainnetProvider,
-    CONFIG.appName,
-  );
+  const claim = await verifyToken(token, defaultMainnetProvider, APP_NAME);
   if (!claim) {
     return null;
   }
