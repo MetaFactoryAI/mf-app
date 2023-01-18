@@ -1,10 +1,11 @@
-import { Pressable, Text } from 'react-native';
+import { Text, View } from 'react-native';
 import { styled } from 'nativewind';
+import { RETRO_FRAME_CLASSES } from 'app/ui/theme/constants';
 
 // Add variant to styled() components
 const RetroButtonContainer = styled(
-  Pressable,
-  'items-center p-retro active:p-retroActive active:border-none rounded-none bg-gray-8 shadow-retro outline-blackA-12 outline-1 active:outline-dotted focus:outline-dotted outline-offset-[-5px] focus:shadow-retroFocus active:shadow-retroActive',
+  View,
+  `bg-gray-8 min-h-[40px] items-center justify-center flex-row ${RETRO_FRAME_CLASSES}`,
   {
     variants: {
       intent: {

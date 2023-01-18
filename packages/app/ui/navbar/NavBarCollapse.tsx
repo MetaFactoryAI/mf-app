@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import { styled } from 'nativewind';
-import { Box } from 'app/ui/layout';
+import { Box } from 'app/ui/layout/Box';
 
 const NavBarCollapseContainer = styled(
   View,

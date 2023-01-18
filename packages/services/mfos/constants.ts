@@ -15,45 +15,46 @@ export const PRODUCT_STAGES = {
     name: 'design',
     displayName: 'Design',
     description: 'Products currently in the design phase',
-    progress: 0.2,
+    progress: 0.1,
   },
   sampling: {
     name: 'sampling',
     displayName: 'Sampling',
     description: 'Design completed, awaiting approval of samples',
-    progress: 0.3,
+    progress: 0.2,
   },
   scheduled: {
     name: 'scheduled',
     displayName: 'Scheduled',
     description: 'Product is scheduled for a release.',
-    progress: 0.5,
+    progress: 0.25,
   },
   sale_live: {
     name: 'sale_live',
     displayName: 'Sale Live',
     description: 'Product is available for purchase',
-    progress: 0.6,
+    progress: 0.3,
   },
   production: {
     name: 'production',
     displayName: 'Production',
     description: 'Product is in production',
-    progress: 0.8,
+    progress: 0.4,
   },
   shipping: {
     name: 'shipping',
     displayName: 'Shipping',
     description: 'Product is at fulfillment center and ready to ship',
-    progress: 0.9,
+    progress: 0.45,
   },
   fulfillment_completed: {
     name: 'fulfillment_completed',
     displayName: 'Fulfillment Completed',
     description: 'All orders of product are fulfilled',
-    progress: 1,
+    progress: 0.5,
   },
 };
+export type StageName = keyof typeof PRODUCT_STAGES;
 export type ProductStage = typeof PRODUCT_STAGES[keyof typeof PRODUCT_STAGES];
 
 export const COLLABORATOR_ROLES = {

@@ -2,7 +2,7 @@ import { useWalletConnect } from 'app/lib/walletconnect';
 import { useAccount, useBalance, useConnect, useDisconnect } from 'wagmi';
 import { useEffect } from 'react';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
-import { Button } from 'app/ui/Button';
+import { Button } from 'app/ui/input/Button';
 import { Text } from 'app/ui/typography';
 
 export const ConnectWalletButton = () => {

@@ -3,7 +3,14 @@ import { Text as NativeText, Platform, Linking } from 'react-native';
 import { styled, ClassProp } from 'nativewind';
 import { TextLink as SolitoTextLink, Link as SolitoLink } from 'solito/link';
 
-export const Text = styled(NativeText);
+export const Text = styled(NativeText, '', {
+  variants: {
+    intent: {
+      label: 'text-sm font-semibold text-grayText',
+      caption: 'text-xs text-grayText',
+    },
+  },
+});
 
 /**
  * You can use this pattern to create components with default styles

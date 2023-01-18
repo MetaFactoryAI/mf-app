@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextLink } from 'app/ui/typography';
-import { Box, Row } from 'app/ui/layout';
+import { Row } from 'app/ui/layout/Row';
+import { Box } from 'app/ui/layout/Box';
 
 type BottomTabsProps = {
   links: Array<{ href: string; label: string; isActive?: boolean }>;

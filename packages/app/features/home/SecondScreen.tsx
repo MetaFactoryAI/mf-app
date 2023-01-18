@@ -1,5 +1,5 @@
-import { Box } from 'app/ui/layout';
 import { H1, P } from 'app/ui/typography';
+import { Box } from 'app/ui/layout/Box';
 
 type SecondScreenProps = {
   title?: string;

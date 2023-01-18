@@ -1,14 +1,14 @@
 import { SecondScreen } from 'app/features/home/SecondScreen';
 import { useParam } from 'app/features/user/UserDetailScreen';
-import { NavLayout } from '../../lib/NavLayout';
+import { NavLayout } from '../../../lib/NavLayout';
 import type { SolitoPage } from 'solito';
 
 const Posts: SolitoPage = () => {
-  const [user] = useParam('user');
+  const [username] = useParam('username');
 
   return (
     <>
-      <SecondScreen title={`Posts by ${user}`} />
+      <SecondScreen title={`Posts by ${username}`} />
     </>
   );
 };
