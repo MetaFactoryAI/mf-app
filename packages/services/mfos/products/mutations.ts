@@ -12,7 +12,7 @@ import {
   CollaboratorResult,
   CollaboratorRole,
   collaboratorsSelector,
-  CreateProductRes,
+  ProductBase,
   productsSelector,
   ProductWithContributors,
   ProductWithFiles,
@@ -22,7 +22,7 @@ import { Creator } from 'shared/types/wearableTypes';
 
 export const createProductIfNotExists = async (
   product: ValueTypes['create_products_input'],
-): Promise<CreateProductRes> => {
+): Promise<ProductBase> => {
   assert(product.notion_id, 'notion_id required');
 
   const existingQuery = await mfosClient('query')({

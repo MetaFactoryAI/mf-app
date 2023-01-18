@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, TextLink } from 'app/ui/typography';
 import MenuIcon from 'app/ui/icons/menu';
-import { Button } from 'app/ui/Button';
+import { Button } from 'app/ui/input/Button';
 import { ConnectWalletButton } from 'app/lib/ConnectWalletButton';
 import { NavBarCollapse } from './NavBarCollapse';
-import { Box, Row } from 'app/ui/layout';
 import { MFLogo } from 'app/ui/icons/mf-logo-gray';
+import { Row } from 'app/ui/layout/Row';
+import { Box } from 'app/ui/layout/Box';
 
 type NavBarProps = {
   links: Array<{ href: string; label: string; isActive?: boolean }>;
@@ -29,13 +30,13 @@ export const NavBar: React.FC<NavBarProps> = ({
             <MFLogo />
           </Row>
         </Link>
-        <Row className="ml-10 hidden flex-grow md:flex">
+        <Row className="ml-10 hidden flex-grow justify-center md:flex">
           {links.map(({ href, label, isActive }) => (
             <TextLink
               key={href}
               href={href}
               intent={isActive ? 'active' : 'secondary'}
-              className={`mr-4`}
+              className={`mr-6`}
             >
               {label}
             </TextLink>

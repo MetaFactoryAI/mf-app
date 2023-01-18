@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavBar } from 'app/ui/navbar';
-import { Box } from 'app/ui/layout';
 import { useRouter } from 'next/router';
 import { BottomTabs } from 'app/ui/navbar/BottomTabs';
+import { Box } from 'app/ui/layout/Box';
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -19,14 +19,14 @@ export const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
 
   const links = [
     {
-      href: '/settings',
-      label: 'Settings',
-      isActive: pathname === '/settings',
+      href: '/shop',
+      label: 'Shop',
+      isActive: pathname === '/shop',
     },
     {
-      href: '/metadreamer/posts',
-      label: 'Posts',
-      isActive: pathname.endsWith('/posts'),
+      href: '/curate',
+      label: 'Curate',
+      isActive: pathname.endsWith('/curate'),
     },
     {
       href: '/inventory',

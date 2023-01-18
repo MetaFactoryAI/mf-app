@@ -55,8 +55,6 @@ const aliasLightColors = {
   grayText: toRadixVar('gray', 12),
   grayDivider: toRadixVar('gray', 11),
   grayTextSubtle: toRadixVar('gray', 11),
-  grayBorder: toRadixVar('gray', 7),
-  grayBorderHover: toRadixVar('gray', 8),
   grayTranslucent: toRadixVar('grayA', 2),
 
   brandText: toRadixVar('lime', 11),
@@ -65,13 +63,24 @@ const aliasLightColors = {
   brandBgSubtle: toRadixVar('lime', 8),
   brandBgHover: toRadixVar('lime', 9),
   brandBgActive: toRadixVar('lime', 10),
+
+  borderLightest: toRadixVar('gray', 1),
+  borderLight: toRadixVar('gray', 6),
+  borderDark: toRadixVar('blackA', 9),
+  borderDarkest: toRadixVar('blackA', 12),
 };
 const lightVars = {
   boxRetro:
-    'inset 1px 1px 0px 1px var(--whiteA11), inset 0 0 0 1px var(--blackA9), 1px 1px 0 0px var(--blackA12)',
+    'inset 1px 1px 0px 1px var(--borderLight), inset 0 0 0 1px var(--borderDark), 1px 1px 0 0px var(--borderDarkest)',
   boxRetroFocus:
-    'inset 1px 1px 0px 1px var(--whiteA11), inset -0.5px -0.5px 0px 1px var(--blackA9), 1px 1px 0 1px var(--blackA12)',
-  boxRetroActive: 'inset 0 0 0 1px var(--blackA9), 0 0 0 1px var(--blackA12)',
+    'inset 1px 1px 0px 1px var(--borderLight), inset -0.5px -0.5px 0px 1px var(--borderDark), 0.5px 0.5px 0 1px var(--borderDarkest)',
+  boxRetroActive:
+    'inset 0 0 0 1px var(--borderDark), 0 0 0 0px var(--borderDarkest)',
+  color: 'rgb(195 199 203)',
+  boxRetroInner:
+    'inset 0px 0px 0px 0px, inset 1px 1px 0px 0px var(--borderDark), 0.5px 0.5px 0px 0.5px var(--borderLight)',
+  boxRetroProgress:
+    'var(--gray8) -1px -1px 0px 0px inset, var(--borderDarkest) 1px 1px 0px 0px inset, var(--borderLightest) 0.5px 0.5px 0px 0.5px',
 };
 
 // const lightColorVariables = createAliasColorVariables({
@@ -84,13 +93,15 @@ const aliasTheme = createAliasTheme(aliasLightColors);
 const theme = {
   extend: {
     padding: {
-      retro: '7px 20px 5px',
-      retroActive: '8px 20px 4px',
+      retro: '7px 16px 5px',
+      retroActive: '8px 16px 4px',
     },
     boxShadow: {
       retro: 'var(--boxRetro)',
       retroFocus: 'var(--boxRetroFocus)',
       retroActive: 'var(--boxRetroActive)',
+      retroInner: 'var(--boxRetroInner)',
+      retroProgress: 'var(--boxRetroProgress)',
     },
     colors: {
       ...aliasTheme,

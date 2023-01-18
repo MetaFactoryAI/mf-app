@@ -12,7 +12,7 @@ const ButtonContainer = styled(
         primary:
           'bg-brandBg border-transparent hover:bg-brandBgHover active:bg-brandBgActive',
         secondary:
-          'bg-grayBg border-grayBorder hover:bg-grayBgHover hover:border-grayBorderHover active:bg-grayBgActive',
+          'bg-grayBg border-borderDark hover:bg-grayBgHover hover:border-borderDarkest active:bg-grayBgActive',
       },
       size: {
         small: 'py-1 px-2',

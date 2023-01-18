@@ -16,7 +16,7 @@
   }
 
   body {
-    @apply bg-appBg text-gray-12;
+    @apply bg-appBg text-grayText;
   }
 
   /*::selection {*/

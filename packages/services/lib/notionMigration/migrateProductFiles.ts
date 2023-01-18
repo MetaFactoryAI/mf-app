@@ -11,11 +11,17 @@ import {
   uploadImagesForProduct,
   uploadWearablesForProduct,
 } from '../../mfos/products/mutations';
-import { productsFilesSelector } from '../../mfos/products/selectors';
+import {
+  productsFilesSelector,
+  productsSelector,
+} from '../../mfos/products/selectors';
 
 export async function migrateProductFiles(client: Client): Promise<void> {
   const productsQuery = await client('query')({
-    products: [{ limit: 200 }, productsFilesSelector],
+    products: [
+      { limit: 200 },
+      { ...productsSelector, ...productsFilesSelector },
+    ],
   });
   assert(productsQuery.products, 'Failed to get products');
   logger.info('Got products', {

@@ -9,31 +9,24 @@ export const productsSelector = Selector('products')({
   shopify_id: true,
   notion_id: true,
 });
-export type CreateProductRes = InputType<
+export type ProductBase = InputType<
   GraphQLTypes['products'],
   typeof productsSelector
 >;
 export const productsFilesSelector = Selector('products')({
-  ...productsSelector,
-  clo3d_file: [
-    {},
-    {
-      id: true,
-      filename_download: true,
-    },
-  ],
+  clo3d_file: [{}, fileSelector],
   content: [
     {},
     {
       id: true,
-      directus_files_id: [{}, { id: true, filename_download: true }],
+      directus_files_id: [{}, fileSelector],
     },
   ],
   design_files: [
     {},
     {
       id: true,
-      directus_files_id: [{}, { id: true, filename_download: true }],
+      directus_files_id: [{}, fileSelector],
     },
   ],
   wearable_files: [
@@ -41,27 +34,24 @@ export const productsFilesSelector = Selector('products')({
     {
       id: true,
       file_format: [{}, { name: true, id: true, extension: true }],
-      directus_files_id: [{}, { id: true, filename_download: true }],
+      directus_files_id: [{}, fileSelector],
     },
   ],
   images: [
     {},
     {
       id: true,
-      directus_files_id: [
-        {},
-        {
-          id: true,
-          filename_download: true,
-        },
-      ],
+      directus_files_id: [{}, fileSelector],
     },
   ],
 });
-export type ProductWithFiles = InputType<
+export type ProductFiles = InputType<
   GraphQLTypes['products'],
   typeof productsFilesSelector
 >;
+
+export type ProductWithFiles = ProductBase & ProductFiles;
+
 export const collaboratorRolesSelector = Selector('collaborator_roles')({
   name: true,
   id: true,
@@ -74,19 +64,20 @@ export const collaboratorsSelector = Selector('collaborators')({
   id: true,
   role: [{}, collaboratorRolesSelector],
   display_name: true,
-  // payment_eth_address: true,
-  // account: [
-  //   {},
-  //   {
-  //     id: true,
-  //     first_name: true,
-  //   },
-  // ],
+  payment_eth_address: true,
+  account: [
+    {},
+    {
+      id: true,
+      first_name: true,
+    },
+  ],
 });
 export type CollaboratorResult = InputType<
   GraphQLTypes['collaborators'],
   typeof collaboratorsSelector
 >;
+
 export const productsContributorsSelector = Selector('products')({
   ...productsSelector,
   brand_id: [

@@ -159,6 +159,12 @@ const lightColors = {
   yellow: radixColors.yellow,
   yellowA: radixColors.yellowA,
 
+  pink: radixColors.pink,
+  pinkA: radixColors.pinkA,
+
+  orange: radixColors.orange,
+  orangeA: radixColors.orangeA,
+
   blue: radixColors.blue,
   blueA: radixColors.blueA,
 };
