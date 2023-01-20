@@ -1,6 +1,6 @@
 # MetaFactory App Monorepo
 
-Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces.
+Monorepo with Expo + Next.js + Tailwind. Uses yarn workspaces.
 
 # GETTING STARTED
 
@@ -11,8 +11,9 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 # Folders
 
 - `apps/next` (Next.js web app)
-- `packages/ui` (import as `@mf/ui`)
-  - Make sure to add any other package folders you make to `apps/next/next.config.js` after `next-transpile-modules`.
+- `apps/expo` (Expo native app)
+- `packages/tsconfig` (shared tsconfigs)
+  - Make sure to add any other package folders you make to `apps/next/next.config.js` in `const transpilePackages` and `packages/tsconfig/base.json`
 - `packages/app` (shared code between web and native, consumed by `apps/(next/expo)`)
 - `packages/cms` (Directus folder)
 - `packages/services` (backend logic deployed to Vercel serverless)
@@ -23,7 +24,6 @@ Monorepo with Expo/React Native Web + Next.js + TypeScript. Uses yarn workspaces
 - Copy .env.example files and populate missing values
 - Run `yarn install`
 - Run postgres + Hasura + Directus with `docker:cms:start`
-- Run services with `yarn services start`
 - Run Next.js app with `yarn next start`
 
 # Creating Directus extensions
