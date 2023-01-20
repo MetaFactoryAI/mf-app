@@ -32,7 +32,7 @@ type ConfigurableMessageOptions = Partial<
 };
 
 export const { connectors } = getDefaultWallets({
-  appName: 'METADREAM',
+  appName: 'MetaFactory',
   chains,
 });
 
