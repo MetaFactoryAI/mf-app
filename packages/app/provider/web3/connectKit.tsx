@@ -6,7 +6,7 @@ import { chains, provider } from 'app/provider/web3/chains';
 
 const client = createClient(
   getDefaultClient({
-    appName: 'METADREAM',
+    appName: 'MetaFactory',
     alchemyId: ALCHEMY_ID,
     chains: chains,
     provider: provider,
