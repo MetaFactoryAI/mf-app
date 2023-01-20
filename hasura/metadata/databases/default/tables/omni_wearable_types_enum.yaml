@@ -1,4 +1,0 @@
-table:
-  schema: omni
-  name: wearable_types_enum
-is_enum: true
