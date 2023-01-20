@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: product_collaborators
+  schema: omni
 object_relationships:
   - name: collaborator_types_enum
     using:

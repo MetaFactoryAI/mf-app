@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: timezones_enum
+  schema: omni
 is_enum: true
 array_relationships:
   - name: users
@@ -8,5 +8,5 @@ array_relationships:
       foreign_key_constraint_on:
         column: timezone
         table:
-          schema: omni
           name: users
+          schema: omni

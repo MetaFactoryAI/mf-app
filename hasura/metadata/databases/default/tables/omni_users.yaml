@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: users
+  schema: omni
 object_relationships:
   - name: timezones_enum
     using:
@@ -14,19 +14,19 @@ array_relationships:
       foreign_key_constraint_on:
         column: collaborator
         table:
-          schema: omni
           name: brand_users
+          schema: omni
   - name: product_collaborators
     using:
       foreign_key_constraint_on:
         column: collaborator
         table:
-          schema: omni
           name: product_collaborators
+          schema: omni
   - name: user_skills
     using:
       foreign_key_constraint_on:
         column: user
         table:
-          schema: omni
           name: user_skills
+          schema: omni
