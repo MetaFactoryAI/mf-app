@@ -2,13 +2,10 @@ const { withExpo } = require('@expo/next-adapter');
 const withFonts = require('next-fonts');
 const withImages = require('next-images');
 const withPlugins = require('next-compose-plugins');
-const withTM = require('next-transpile-modules')([
-  'app',
-  'services',
-  'shared',
-  'solito',
-  'nativewind',
-]);
+
+const transpilePackages = ['app', 'services', 'shared', 'solito', 'nativewind'];
+
+const withTM = require('next-transpile-modules')(transpilePackages);
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -24,7 +21,7 @@ const nextConfig = {
     scrollRestoration: true,
     forceSwcTransforms: true,
     swcPlugins: [[require.resolve('./plugins/swc_plugin_reanimated.wasm')]],
-    transpilePackages: ['app', 'services', 'shared', 'solito', 'nativewind'],
+    transpilePackages,
   },
   typescript: {
     ignoreBuildErrors: true,
