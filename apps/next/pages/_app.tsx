@@ -33,7 +33,14 @@ function MyApp({
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="150x150"
+          href="/robotFaceGreen.png"
+        />
+        <link rel="apple-touch-icon" sizes="180x180" href="/appIcon.png" />
       </Head>
       <Provider session={pageProps.session}>
         {getLayout(<Component {...pageProps} />)}
