@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: user_skills
+  schema: omni
 object_relationships:
   - name: userByUser
     using:

@@ -1,3 +1,3 @@
 table:
-  schema: shop
   name: product_locks
+  schema: shop

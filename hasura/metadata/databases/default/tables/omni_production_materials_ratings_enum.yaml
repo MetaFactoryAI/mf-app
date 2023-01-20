@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: production_materials_ratings_enum
+  schema: omni
 is_enum: true
 array_relationships:
   - name: production_materials
@@ -8,5 +8,5 @@ array_relationships:
       foreign_key_constraint_on:
         column: rating
         table:
-          schema: omni
           name: production_materials
+          schema: omni

@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: brand_users
+  schema: omni
 object_relationships:
   - name: brandByBrand
     using:

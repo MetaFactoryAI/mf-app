@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: contributors
+  schema: public
 object_relationships:
   - name: contribution
     using:
@@ -19,7 +19,6 @@ insert_permissions:
         - contribution_id
         - contribution_share
         - user_id
-      backend_only: false
 select_permissions:
   - role: public
     permission:

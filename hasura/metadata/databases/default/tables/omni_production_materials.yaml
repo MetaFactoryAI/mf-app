@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: production_materials
+  schema: omni
 object_relationships:
   - name: print_techs_enum
     using:
@@ -26,12 +26,12 @@ array_relationships:
       foreign_key_constraint_on:
         column: production_material
         table:
-          schema: omni
           name: production_materials_producers
+          schema: omni
   - name: used_in_products
     using:
       foreign_key_constraint_on:
         column: production_material_id
         table:
-          schema: omni
           name: products_production_materials
+          schema: omni

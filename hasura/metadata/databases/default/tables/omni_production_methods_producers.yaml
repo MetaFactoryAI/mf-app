@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: production_methods_producers
+  schema: omni
 object_relationships:
   - name: producerByProducer
     using:

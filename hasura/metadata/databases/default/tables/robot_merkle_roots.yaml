@@ -1,20 +1,28 @@
 table:
-  schema: robot
   name: merkle_roots
+  schema: robot
 array_relationships:
   - name: merkle_claims
     using:
       foreign_key_constraint_on:
         column: merkle_root_hash
         table:
-          schema: robot
           name: merkle_claims
+          schema: robot
 select_permissions:
   - role: public
     permission:
-      columns: []
+      columns:
+        - created_at
+        - hash
+        - network
+        - contract_address
       filter: {}
   - role: user
     permission:
-      columns: []
+      columns:
+        - contract_address
+        - hash
+        - network
+        - created_at
       filter: {}

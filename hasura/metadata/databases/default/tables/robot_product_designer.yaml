@@ -1,6 +1,6 @@
 table:
-  schema: robot
   name: product_designer
+  schema: robot
 object_relationships:
   - name: product
     using:

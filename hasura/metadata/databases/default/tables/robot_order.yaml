@@ -1,6 +1,6 @@
 table:
-  schema: robot
   name: order
+  schema: robot
 select_permissions:
   - role: api-user
     permission:

@@ -1,11 +1,11 @@
 table:
-  schema: omni
   name: fullfillers
+  schema: omni
 array_relationships:
   - name: products
     using:
       foreign_key_constraint_on:
         column: fullfillment
         table:
-          schema: omni
           name: products
+          schema: omni

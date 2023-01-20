@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: products
+  schema: omni
 object_relationships:
   - name: brandByBrand
     using:
@@ -29,26 +29,26 @@ array_relationships:
       foreign_key_constraint_on:
         column: products_id
         table:
-          schema: omni
           name: products_files
+          schema: omni
   - name: product_collaborators
     using:
       foreign_key_constraint_on:
         column: product
         table:
-          schema: omni
           name: product_collaborators
+          schema: omni
   - name: production_materials
     using:
       foreign_key_constraint_on:
         column: product_id
         table:
-          schema: omni
           name: products_production_materials
+          schema: omni
   - name: production_methods_products
     using:
       foreign_key_constraint_on:
         column: product
         table:
-          schema: omni
           name: production_methods_products
+          schema: omni

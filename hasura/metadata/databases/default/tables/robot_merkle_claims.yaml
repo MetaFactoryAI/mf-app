@@ -1,11 +1,18 @@
 table:
-  schema: robot
   name: merkle_claims
+  schema: robot
 object_relationships:
   - name: merkle_root
     using:
       foreign_key_constraint_on: merkle_root_hash
 select_permissions:
+  - role: public
+    permission:
+      columns:
+        - claim_json
+        - merkle_root_hash
+        - recipient_eth_address
+      filter: {}
   - role: user
     permission:
       columns:
@@ -13,6 +20,4 @@ select_permissions:
         - id
         - merkle_root_hash
         - recipient_eth_address
-      filter:
-        recipient_eth_address:
-          _ilike: X-Hasura-Eth-Address
+      filter: {}

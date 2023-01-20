@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: users
+  schema: public
 insert_permissions:
   - role: user
     permission:
@@ -8,7 +8,6 @@ insert_permissions:
       columns:
         - eth_address
         - name
-      backend_only: false
 select_permissions:
   - role: public
     permission:

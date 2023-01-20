@@ -1,6 +1,6 @@
 table:
-  schema: omni
   name: brands
+  schema: omni
 object_relationships:
   - name: brand_statuses_enum
     using:
@@ -11,12 +11,12 @@ array_relationships:
       foreign_key_constraint_on:
         column: brand
         table:
-          schema: omni
           name: brand_users
+          schema: omni
   - name: products
     using:
       foreign_key_constraint_on:
         column: brand
         table:
-          schema: omni
           name: products
+          schema: omni

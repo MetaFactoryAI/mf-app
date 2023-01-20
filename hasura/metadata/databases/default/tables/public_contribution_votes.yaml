@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: contribution_votes
+  schema: public
 object_relationships:
   - name: contribution
     using:
@@ -19,7 +19,6 @@ insert_permissions:
       columns:
         - contribution_id
         - rating
-      backend_only: false
 select_permissions:
   - role: public
     permission:

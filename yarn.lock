@@ -19700,15 +19700,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"hasura-cli@npm:^2.7.0":
-  version: 2.7.0
-  resolution: "hasura-cli@npm:2.7.0"
+"hasura-cli@npm:^2.16.1":
+  version: 2.16.1
+  resolution: "hasura-cli@npm:2.16.1"
   dependencies:
     axios: ^0.21.1
     chalk: ^2.4.2
   bin:
     hasura: hasura
-  checksum: afe87a5b678002f477971a01eb766821a275307b930aa23a27f5e84c4d8cf3a507e259f3cdab2bee4ec35a510f4c253a56e8f540587bd2de2709fa91dc376870
+  checksum: a2f825a685806f2376c05f6b9c4461d5845556df9e876147cf400af7aaf6a70a0c0bb81b3c7500a5b52780889927a8c03574b1220b910b4d5b84ad7841092ba5
   languageName: node
   linkType: hard
 
@@ -29663,7 +29663,7 @@ __metadata:
     "@types/react-native": 0.64.13
     eslint: 8.21.0
     eslint-config-custom: "*"
-    hasura-cli: ^2.7.0
+    hasura-cli: ^2.16.1
     husky: 7.0.2
     jest: 27.0.6
     lint-staged: 11.1.2

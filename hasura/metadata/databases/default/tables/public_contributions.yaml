@@ -1,6 +1,6 @@
 table:
-  schema: public
   name: contributions
+  schema: public
 object_relationships:
   - name: author
     using:
@@ -11,15 +11,15 @@ array_relationships:
       foreign_key_constraint_on:
         column: contribution_id
         table:
-          schema: public
           name: contributors
+          schema: public
   - name: votes
     using:
       foreign_key_constraint_on:
         column: contribution_id
         table:
-          schema: public
           name: contribution_votes
+          schema: public
 insert_permissions:
   - role: user
     permission:
@@ -39,7 +39,6 @@ insert_permissions:
         - impact
         - title
         - weight
-      backend_only: false
 select_permissions:
   - role: public
     permission:

@@ -1,14 +1,14 @@
 table:
-  schema: robot
   name: product
+  schema: robot
 array_relationships:
   - name: designers
     using:
       foreign_key_constraint_on:
         column: product_id
         table:
-          schema: robot
           name: product_designer
+          schema: robot
 select_permissions:
   - role: api-user
     permission:
