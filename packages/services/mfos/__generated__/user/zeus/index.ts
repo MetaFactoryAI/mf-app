@@ -53,7 +53,7 @@ const handleFetchResponse = (response: Response): Promise<GraphQLResponse> => {
         .catch(reject);
     });
   }
-  return response.json();
+  return response.json() as Promise<GraphQLResponse>;
 };
 
 export const apiFetch =
@@ -757,6 +757,7 @@ export const resolverFor = <
   X,
   T extends keyof ResolverInputTypes,
   Z extends keyof ResolverInputTypes[T],
+  RET = unknown,
 >(
   type: T,
   field: Z,
@@ -767,8 +768,8 @@ export const resolverFor = <
     source: any,
   ) => Z extends keyof ModelTypes[T]
     ? ModelTypes[T][Z] | Promise<ModelTypes[T][Z]> | X
-    : any,
-) => fn as (args?: any, source?: any) => any;
+    : RET,
+) => fn as (args?: any, source?: any) => RET;
 
 export type UnwrapPromise<T> = T extends Promise<infer R> ? R : T;
 export type ZeusState<T extends (...args: any[]) => Promise<any>> = NonNullable<

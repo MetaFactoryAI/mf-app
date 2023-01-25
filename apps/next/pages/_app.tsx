@@ -5,7 +5,7 @@ import type { SolitoAppProps } from 'solito';
 import 'raf/polyfill';
 import '../global.css';
 import '@rainbow-me/rainbowkit/styles.css';
-import { Session } from 'next-auth';
+import { api } from 'app/lib/api';
 
 // FIXME need reanimated update, see https://github.com/software-mansion/react-native-reanimated/issues/3355
 if (process.browser) {
@@ -13,12 +13,7 @@ if (process.browser) {
   window._frameTimestamp = null;
 }
 
-function MyApp({
-  Component,
-  pageProps,
-}: SolitoAppProps<{
-  session: Session;
-}>) {
+function MyApp({ Component, pageProps }: SolitoAppProps) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
@@ -42,11 +37,9 @@ function MyApp({
         />
         <link rel="apple-touch-icon" sizes="180x180" href="/appIcon.png" />
       </Head>
-      <Provider session={pageProps.session}>
-        {getLayout(<Component {...pageProps} />)}
-      </Provider>
+      <Provider>{getLayout(<Component {...pageProps} />)}</Provider>
     </>
   );
 }
 
-export default MyApp;
+export default api.withTRPC(MyApp);

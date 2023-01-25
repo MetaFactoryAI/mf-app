@@ -3,7 +3,14 @@ const withFonts = require('next-fonts');
 const withImages = require('next-images');
 const withPlugins = require('next-compose-plugins');
 
-const transpilePackages = ['app', 'services', 'shared', 'solito', 'nativewind'];
+const transpilePackages = [
+  'app',
+  '@mf/api',
+  'services',
+  'shared',
+  'solito',
+  'nativewind',
+];
 
 const withTM = require('next-transpile-modules')(transpilePackages);
 
@@ -24,8 +31,9 @@ const nextConfig = {
     transpilePackages,
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: !!process.env.CI,
   },
+  eslint: { ignoreDuringBuilds: !!process.env.CI },
 };
 
 const nextPlugins = [

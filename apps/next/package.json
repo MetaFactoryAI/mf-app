@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "clean": "rm -rf .next .turbo node_modules",
     "start": "yarn dev",
     "start:prod": "next start",
     "lint": "next lint",
@@ -12,6 +13,7 @@
   },
   "dependencies": {
     "@expo/next-adapter": "^4.0.13",
+    "@mf/api": "*",
     "app": "*",
     "connectkit-next-siwe": "^0.0.2",
     "next": "^13.0.6",
@@ -32,6 +34,6 @@
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4",
     "tsconfig": "*",
-    "typescript": "^4.8.4"
+    "typescript": "^4.9.4"
   }
 }

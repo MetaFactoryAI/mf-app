@@ -1,7 +1,7 @@
 import { WagmiConfig, createClient } from 'wagmi';
 import { ConnectKitProvider, getDefaultClient } from 'connectkit';
 import { ALCHEMY_ID } from 'shared/config/public';
-import { siwe } from 'app/lib/siwe';
+import { siwe } from 'shared/auth/siwe';
 import { chains, provider } from 'app/provider/web3/chains';
 
 const client = createClient(

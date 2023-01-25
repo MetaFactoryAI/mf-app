@@ -5,7 +5,7 @@ import { RETRO_FRAME_CLASSES } from 'app/ui/theme/constants';
 // Add variant to styled() components
 const RetroButtonContainer = styled(
   View,
-  `bg-gray-8 min-h-[40px] items-center justify-center flex-row ${RETRO_FRAME_CLASSES}`,
+  `bg-gray-8 px-4 min-h-[40px] items-center justify-center flex-row ${RETRO_FRAME_CLASSES}`,
   {
     variants: {
       intent: {
