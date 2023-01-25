@@ -1,2 +1,2 @@
-import { siwe } from 'app/lib/siwe';
+import { siwe } from 'shared/auth/siwe';
 export default siwe.apiRouteHandler;

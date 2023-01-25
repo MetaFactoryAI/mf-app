@@ -1,18 +1,24 @@
+import * as React from 'react';
 import { H1, P } from 'app/ui/typography';
 import Link from 'next/link';
 
 import { RetroButton } from 'app/ui/input/RetroButton';
-import { useProducts } from 'app/hooks/productHooks';
 import { Box } from 'app/ui/layout/Box';
 import { ProductProposalCard } from 'app/ui/components/ProductProposalCard';
 import { PRODUCT_STAGES } from 'services/mfos';
-import {
-  getProductTags,
-  getProgressFromTagsAndStage,
-} from 'shared/utils/productHelpers';
+import { api } from 'app/lib/api';
 
 export const HomeScreen: React.FC = () => {
-  const products = useProducts();
+  const { data, fetchNextPage, hasNextPage } = api.product.all.useInfiniteQuery(
+    {
+      // filter: {
+      //   product_stage: { name: { _in: [PRODUCT_STAGES.sale_live.name] } },
+      // },
+    },
+    {
+      getNextPageParam: (lastPage) => lastPage.nextPage,
+    },
+  );
 
   return (
     <Box className="flex-1 items-center p-3">
@@ -23,7 +29,6 @@ export const HomeScreen: React.FC = () => {
           experiences that travel seamlessly between digital and physical
           worlds.
         </P>
-        <RetroButton className="mt-4" title={`Retro Button`} />
       </Box>
       <Box className="h-8" />
       <Box
@@ -31,37 +36,45 @@ export const HomeScreen: React.FC = () => {
           'grid w-full max-w-screen-lg grid-cols-1 gap-4 md:grid-cols-2'
         }
       >
-        {products.data?.map((product) => {
-          const tags = getProductTags(product);
-          const progress = getProgressFromTagsAndStage(
-            tags,
-            product.product_stage?.name,
-          );
-          return (
-            <Link
-              key={product.name}
-              // href={`/product/${product.id}`}
-              href={`/`}
-              passHref
-              legacyBehavior
-              scroll={false}
-            >
-              <ProductProposalCard
-                title={product.name}
-                brand={product.brand_id?.name}
-                tags={tags}
-                stage={
-                  PRODUCT_STAGES[
-                    product.product_stage?.name as keyof typeof PRODUCT_STAGES
-                  ]
-                }
-                progress={progress}
-              />
-            </Link>
-          );
-        })}
-        <Box className="w-[32px]" />
+        {data?.pages.map((page) => (
+          <React.Fragment key={page.nextPage}>
+            {page.products.map((product) => {
+              return (
+                <Link
+                  key={product.name}
+                  href={`/product/${product.id}`}
+                  // href={`/`}
+                  passHref
+                  legacyBehavior
+                  scroll={false}
+                >
+                  <ProductProposalCard
+                    title={product.name}
+                    brand={product.brand_id?.name}
+                    tags={product.tags}
+                    stage={
+                      PRODUCT_STAGES[
+                        product.product_stage
+                          ?.name as keyof typeof PRODUCT_STAGES
+                      ]
+                    }
+                    progress={product.progress}
+                  />
+                </Link>
+              );
+            })}
+          </React.Fragment>
+        ))}
       </Box>
+      {hasNextPage && (
+        <RetroButton
+          className="my-10"
+          title={`Load More`}
+          onClick={() => fetchNextPage()}
+        />
+      )}
+
+      <Box className="w-[32px]" />
     </Box>
   );
 };

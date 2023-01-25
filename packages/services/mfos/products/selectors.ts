@@ -9,6 +9,7 @@ export const productsSelector = Selector('products')({
   shopify_id: true,
   notion_id: true,
 });
+
 export type ProductBase = InputType<
   GraphQLTypes['products'],
   typeof productsSelector

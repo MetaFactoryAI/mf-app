@@ -28,13 +28,12 @@
     "docker:cms:rebuild": "yarn docker:db:start --build",
     "docker:cms:start": "docker compose --profile cms up -d",
     "docker:cms:stop": "docker compose --profile cms down",
-    "docker:cms:clean": "docker compose --profile cms down -v",
-    "postinstall": "ln -sf ../../../node_modules/react-native-codegen ./apps/expo/node_modules/react-native-codegen"
+    "docker:cms:clean": "docker compose --profile cms down -v"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.19.1",
-    "@types/react": "17.0.19",
-    "@types/react-native": "0.64.13",
+    "@types/react": "17.0.53",
+    "@types/react-dom": "17.0.18",
     "eslint": "8.21.0",
     "eslint-config-custom": "*",
     "hasura-cli": "^2.16.1",
@@ -50,7 +49,9 @@
     "metro": "0.72.3",
     "json-rpc-engine": "5.4.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "@types/react": "<18.0.0",
+    "@types/react-dom": "<18.0.0"
   },
   "nohoist": [
     "**/expo-router",

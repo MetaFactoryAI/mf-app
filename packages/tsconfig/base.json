@@ -18,7 +18,8 @@
     "paths": {
       "app/*": ["./packages/app/*"],
       "services/*": ["./packages/services/*"],
-      "shared/*": ["./packages/shared/*"]
+      "shared/*": ["./packages/shared/*"],
+      "@mf/api/*": ["./packages/api/*"]
     }
   },
   "exclude": ["node_modules"]

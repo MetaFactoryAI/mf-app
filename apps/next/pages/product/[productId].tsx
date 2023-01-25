@@ -1,4 +1,4 @@
-import { NavLayout } from '../../lib/NavLayout';
+import { NavLayout } from '~/lib/NavLayout';
 import type { SolitoPage } from 'solito';
 import { ProductScreen } from 'app/features/product/ProductScreen';
 
