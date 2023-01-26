@@ -18,7 +18,7 @@
     "@trpc/next": "10.8.2",
     "@trpc/react-query": "10.8.2",
     "@walletconnect/react-native-dapp": "^1.8.0",
-    "connectkit": "^1.1.1",
+    "connectkit": "1.1.1",
     "ethers": "^5.7.2",
     "moti": "^0.19.0-alpha.6",
     "nativewind": "next",

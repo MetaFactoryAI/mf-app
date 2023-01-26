@@ -8775,7 +8775,7 @@ __metadata:
     "@trpc/next": 10.8.2
     "@trpc/react-query": 10.8.2
     "@walletconnect/react-native-dapp": ^1.8.0
-    connectkit: ^1.1.1
+    connectkit: 1.1.1
     ethers: ^5.7.2
     moti: ^0.19.0-alpha.6
     nativewind: next
@@ -11323,9 +11323,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"connectkit@npm:^1.1.1":
-  version: 1.1.2
-  resolution: "connectkit@npm:1.1.2"
+"connectkit@npm:1.1.1":
+  version: 1.1.1
+  resolution: "connectkit@npm:1.1.1"
   dependencies:
     buffer: ^6.0.3
     detect-browser: ^5.3.0
@@ -11339,8 +11339,8 @@ __metadata:
     ethers: ">=5.5.0 <6"
     react: 17.x || 18.x
     react-dom: 17.x || 18.x
-    wagmi: 0.10.x
-  checksum: 70dd85f6efb51300ed8f78595c61b98e103c21fb297da8cd8188b1fe8a65396b89ab14faab66feb1a36f4bf25eb9753485deda874248cd3fd94b2b75b9c86c79
+    wagmi: 0.9.x
+  checksum: 5d165cea082c5b0d44308e947083a99d865e111eedcd8c7591280ccf3625283aa6db0e44a7732effe1490a73fe240d13328d36ebb2c758cfa5bf1e7333f5ea77
   languageName: node
   linkType: hard
 

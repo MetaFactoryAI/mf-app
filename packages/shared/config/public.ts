@@ -13,10 +13,6 @@ export const FILES_BASE_URL = getEnvValue(
   process.env.NEXT_PUBLIC_FILES_BASE_URL,
   'http://localhost:8055/assets',
 );
-export const MFOS_GRAPHQL_PUBLIC_TOKEN = getEnvValue(
-  process.env.NEXT_PUBLIC_MFOS_GRAPHQL_TOKEN,
-  '',
-);
 
 export const SHOPIFY_URL = getEnvValue(
   process.env.NEXT_PUBLIC_SHOPIFY_URL,
