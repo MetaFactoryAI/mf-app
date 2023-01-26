@@ -7,6 +7,7 @@
     "start": "expo start --dev-client",
     "dev": "npx expo start",
     "dev-client": "npx expo start --dev-client",
+    "clean": "rm -rf ios android .turbo .expo node_modules",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
