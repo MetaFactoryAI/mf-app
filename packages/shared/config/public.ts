@@ -18,3 +18,13 @@ export const SHOPIFY_URL = getEnvValue(
   'NEXT_PUBLIC_SHOPIFY_URL',
   'https://shop.metafactory.ai',
 );
+
+export const IPFS_CLAIMS_SNAPSHOT_URL = getEnvValue(
+  'NEXT_PUBLIC_IPFS_CLAIMS_SNAPSHOT_URL',
+  '',
+);
+
+export const IPFS_NODE = getEnvValue(
+  'NEXT_PUBLIC_IPFS_NODE',
+  'cloudflare-ipfs.com',
+);
