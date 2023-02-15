@@ -8,6 +8,7 @@ const transpilePackages = [
   '@mf/api',
   'services',
   'shared',
+  'contracts',
   'solito',
   'nativewind',
 ];

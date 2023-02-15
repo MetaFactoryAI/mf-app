@@ -1,0 +1,14 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo 'No tests setup'",
+    "lint": "eslint ./**/*.ts*",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "eslint-config-custom": "*",
+    "tsconfig": "*"
+  }
+}
