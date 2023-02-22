@@ -32,10 +32,14 @@ function generate() {
   if [[ "$PLATFORM" == "OSX" || "$PLATFORM" == "BSD" ]]; then
     sed -i "" 's,bigint"]:any,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
     sed -i "" 's,bigint"]:unknown,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
+    sed -i "" 's,numeric"]:any,numeric"]:number,g' "$GEN_PATH"/zeus/index.ts
+    sed -i "" 's,numeric"]:unknown,numeric"]:number,g' "$GEN_PATH"/zeus/index.ts
     sed -i "" 's,T extends keyof ResolverInputTypes,T extends keyof ModelTypes,g' "$GEN_PATH"/zeus/index.ts
   elif [ "$PLATFORM" == "LINUX" ]; then
     sed -i 's,bigint"]:any,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
     sed -i 's,bigint"]:unknown,bigint"]:number,g' "$GEN_PATH"/zeus/index.ts
+    sed -i 's,numeric"]:any,numeric"]:number,g' "$GEN_PATH"/zeus/index.ts
+    sed -i 's,numeric"]:unknown,numeric"]:number,g' "$GEN_PATH"/zeus/index.ts
     sed -i "" 's,T extends keyof ResolverInputTypes,T extends keyof ModelTypes,g' "$GEN_PATH"/zeus/index.ts
   else
     echo "unknown platform; exiting"
