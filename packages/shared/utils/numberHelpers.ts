@@ -1,22 +1,15 @@
 import { BigNumber } from '@ethersproject/bignumber';
 import { formatUnits } from '@ethersproject/units';
 
-export const formatAddress = (
-  address: string | null | undefined,
-  ensName?: string | null,
-  chars = 4,
-): string => {
-  if (ensName) return ensName;
-  if (address)
-    return `${address.substring(0, chars)}...${address.substring(
-      address.length - chars,
-    )}`;
-  return '';
+export const formatNumber = (number: number | string, decimals = 2): string => {
+  if (typeof number === 'string') {
+    number = parseFloat(number);
+  }
+  return number.toLocaleString(undefined, {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: decimals,
+  });
 };
-
-export const formatNumber = (number: number): string =>
-  new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(number);
-
 export const formatToUSD = ({
   usdPrice,
   number,
@@ -27,7 +20,6 @@ export const formatToUSD = ({
   const usdValue = usdPrice * Number(formatToken(number));
   return formatNumber(usdValue);
 };
-
 export const formatToken = (
   number?: BigNumber | string,
   decimals: string | number = 18,

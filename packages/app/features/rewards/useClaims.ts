@@ -7,7 +7,6 @@ import {
   getClaimsWeeksProofs,
 } from './utils/claims';
 import { useQuery } from '@tanstack/react-query';
-import { formatNumber } from './utils/format';
 import {
   useAccount,
   useContractRead,
@@ -16,6 +15,7 @@ import {
 } from 'wagmi';
 import { BigNumber } from 'ethers';
 import { MerkleRedeemABI } from 'contracts/abis/MerkleRedeem';
+import { formatNumber } from 'shared/utils/numberHelpers';
 
 const useClaims = () => {
   const { address } = useAccount();

@@ -2,6 +2,7 @@
 import { ethers, BigNumber } from 'ethers';
 import { getIpfsHash } from './ipfsClient';
 import { loadTree } from './merkle';
+import { formatNumber } from 'shared/utils/numberHelpers';
 
 export interface ClaimWeek {
   [address: string]: number;
@@ -23,7 +24,7 @@ export const getClaimWeeks = async () => {
 };
 
 export const getIpfsSnapshot = async () => {
-  const url = `https://${process.env.NEXT_PUBLIC_IPFS_CLAIMS_SNAPSHOT_URL}`;
+  const url = `${process.env.NEXT_PUBLIC_IPFS_CLAIMS_SNAPSHOT_URL}`;
 
   return fetch(url).then((res) => res.json());
 };
@@ -32,28 +33,30 @@ export const getUnclaimedWeeksValues = (
   claimWeeks: Record<number, ClaimWeek>,
   unclaimedWeeks: string[],
   address: string,
-) =>
+): Record<string, string> =>
   Object.fromEntries(
     Object.entries(claimWeeks)
-      .map((report) => [report[0], report[1][address] || 0])
       .filter(
         (report) =>
-          unclaimedWeeks.includes(report[0].toString()) && report[1] > 0,
-      ),
+          unclaimedWeeks.includes(report[0].toString()) &&
+          report[1][address] > 0,
+      )
+      .map((report) => [report[0], formatNumber(report[1][address] || 0)]),
   );
 
 export const getClaimedWeeksValues = (
   claimWeeks: Record<number, ClaimWeek>,
   unclaimedWeeks: string[],
   address: string,
-) =>
+): Record<number, string> =>
   Object.fromEntries(
     Object.entries(claimWeeks)
-      .map((report) => [report[0], report[1][address] || 0])
       .filter(
         (report) =>
-          !unclaimedWeeks.includes(report[0].toString()) && report[1] > 0,
-      ),
+          !unclaimedWeeks.includes(report[0].toString()) &&
+          report[1][address] > 0,
+      )
+      .map((report) => [report[0], formatNumber(report[1][address] || 0)]),
   );
 
 export const getWeekValuesTotal = (unclaimedWeeksValues: {
