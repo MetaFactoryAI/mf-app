@@ -26,5 +26,5 @@ export const IPFS_CLAIMS_SNAPSHOT_URL = getEnvValue(
 
 export const IPFS_NODE = getEnvValue(
   'NEXT_PUBLIC_IPFS_NODE',
-  'cloudflare-ipfs.com',
+  'https://cloudflare-ipfs.com',
 );
