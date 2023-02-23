@@ -65,7 +65,7 @@ const aliasLightColors = {
   brandBgActive: toRadixVar('lime', 10),
 
   borderLightest: toRadixVar('gray', 1),
-  borderLight: toRadixVar('gray', 6),
+  borderLight: toRadixVar('whiteA', 11),
   borderDark: toRadixVar('blackA', 9),
   borderDarkest: toRadixVar('blackA', 12),
 };

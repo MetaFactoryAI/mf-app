@@ -14,7 +14,10 @@ import {
   useContractWrite,
 } from 'wagmi';
 import { BigNumber } from 'ethers';
-import { MerkleRedeemABI } from 'contracts/abis/MerkleRedeem';
+import {
+  MerkleRedeemABI,
+  MerkleRedeemAddress,
+} from 'contracts/abis/MerkleRedeem';
 import { formatNumber } from 'shared/utils/numberHelpers';
 
 const useClaims = () => {
@@ -34,7 +37,7 @@ const useClaims = () => {
 
   const { data: unclaimedWeeks } = useContractRead({
     abi: MerkleRedeemABI,
-    address: process.env.NEXT_PUBLIC_MERKLE_REDEEM_CONTRACT,
+    address: MerkleRedeemAddress.mainnet,
     functionName: 'claimStatus',
     args: [
       address || '0x',
@@ -94,9 +97,9 @@ const useClaims = () => {
     };
   }, [claimWeeksData, unclaimedWeeks, address]);
 
-  const { config } = usePrepareContractWrite({
+  const { config, ...res } = usePrepareContractWrite({
     abi: MerkleRedeemABI,
-    address: process.env.NEXT_PUBLIC_MERKLE_REDEEM_CONTRACT,
+    address: MerkleRedeemAddress.mainnet,
     functionName: 'claimWeeks',
     args: [address || '0x', claimWeeksProofs],
   });

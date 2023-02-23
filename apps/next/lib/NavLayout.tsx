@@ -24,9 +24,9 @@ export const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
       isActive: pathname === '/shop',
     },
     {
-      href: '/curate',
-      label: 'Curate',
-      isActive: pathname.endsWith('/curate'),
+      href: '/rewards',
+      label: 'Rewards',
+      isActive: pathname.endsWith('/rewards'),
     },
     {
       href: '/inventory',

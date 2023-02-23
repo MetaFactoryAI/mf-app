@@ -1,15 +1,20 @@
-import { Text, View } from 'react-native';
+import { Text, Pressable } from 'react-native';
 import { styled } from 'nativewind';
 import { RETRO_FRAME_CLASSES } from 'app/ui/theme/constants';
+import React from 'react';
 
 // Add variant to styled() components
 const RetroButtonContainer = styled(
-  View,
-  `bg-gray-8 px-4 min-h-[40px] items-center justify-center flex-row ${RETRO_FRAME_CLASSES}`,
+  Pressable,
+  `px-4 min-h-[40px] items-center justify-center flex-row ${RETRO_FRAME_CLASSES}`,
   {
     variants: {
+      disabled: {
+        true: 'opacity-50',
+      },
       intent: {
         primary: 'bg-brand-9',
+        secondary: 'bg-gray-8 ',
       },
       size: {
         small: '',
@@ -18,7 +23,7 @@ const RetroButtonContainer = styled(
       },
     },
     defaultProps: {
-      // intent: 'primary',
+      intent: 'secondary',
       size: 'medium',
     },
   },
@@ -44,9 +49,10 @@ export const RetroButton: React.FC<RetroButtonProps> = ({
   size,
   title,
   children,
+  intent,
   ...props
 }) => (
-  <RetroButtonContainer size={size} {...props}>
+  <RetroButtonContainer size={size} intent={intent} {...props}>
     <>
       {children}
       {title ? <RetroButtonText size={size}>{title}</RetroButtonText> : null}

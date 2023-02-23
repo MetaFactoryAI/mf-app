@@ -1,4 +1,6 @@
-export const MerkleRedeemAddress = {};
+export const MerkleRedeemAddress = {
+  mainnet: '0x67f5C948DceAf99352f6cac71c862C1C3b60dfDF',
+};
 
 export const MerkleRedeemABI = [
   {
