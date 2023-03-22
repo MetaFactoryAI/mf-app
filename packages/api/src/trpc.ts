@@ -20,6 +20,7 @@ import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
 
 import { siwe, SiweSession } from 'shared/auth/siwe';
 import { mfosClient } from 'services/mfos/client';
+import { hasuraClient } from 'services/graphql/client';
 
 interface CreateInnerContextOptions {
   session: SiweSession | null;
@@ -37,6 +38,7 @@ const createInnerTRPCContext = (opts: CreateInnerContextOptions) => {
   return {
     session: opts.session,
     mfosClient,
+    hasuraClient,
   };
 };
 

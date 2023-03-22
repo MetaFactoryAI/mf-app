@@ -1,20 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import { utils, BigNumberish } from 'ethers';
-import { useContractReads } from 'wagmi';
+import { useContractRead } from 'wagmi';
 import _ from 'lodash';
-import { NftItem } from './utils/tempType';
-import nftWearablesAbi from './utils/nftWearables.json';
+import {
+  NftWearablesAddress,
+  NftWearablesAbi,
+} from 'contracts/abis/NftWearables';
 import { parseIds } from './utils/nft';
 
 const useNfts = () => {
   const fetchNfts = async () => {
-    return fetch('api/nfts')
+    return fetch('api/nftMetadata')
       .then((res) => res.json())
       .then((data) => {
-        const initialObject: { [key: number]: NftItem } = {};
+        const initialObject: { [key: number]: any } = {};
         const nftListObject = _.reduce(
           data,
-          (result: Record<string, NftItem>, nft: NftItem) =>
+          (result: Record<string, any>, nft: any) =>
             (result[nft.nft_token_id] = nft),
           initialObject,
         );
@@ -46,16 +48,11 @@ const useNfts = () => {
  */
 const useWearables = ({ address }: { address: string }) => {
   const { nfts, nftIds } = useNfts();
-  const { data: rawWearables, error } = useContractReads({
-    contracts: [
-      {
-        // TODO replace address
-        address: '0x8e9a29e7e8e3dcd7ea31b1792a8078b5723ed4d8',
-        abi: nftWearablesAbi,
-        functionName: 'balanceOfBatch',
-        args: [Array(nftIds.length).fill(address), nftIds],
-      },
-    ],
+  const { data: rawWearables, error } = useContractRead({
+    address: NftWearablesAddress.mainnet,
+    abi: NftWearablesAbi,
+    functionName: 'balanceOfBatch',
+    args: [Array(nftIds.length).fill(address), nftIds],
     enabled: !!nfts && !!nftIds,
   });
 
@@ -67,7 +64,7 @@ const useWearables = ({ address }: { address: string }) => {
 
   // reduce to nft items only with existing balance
   const wearables = parsedBalances.reduce(
-    (sum: NftItem[], currentValue: boolean | string, currentIndex: number) => {
+    (sum: any[], currentValue: boolean | string, currentIndex: number) => {
       if (currentValue === '0') return sum;
 
       const nftId = nftIds[currentIndex];
