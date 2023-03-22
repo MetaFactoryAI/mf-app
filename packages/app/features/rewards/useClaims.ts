@@ -97,7 +97,7 @@ const useClaims = () => {
     };
   }, [claimWeeksData, unclaimedWeeks, address]);
 
-  const { config, ...res } = usePrepareContractWrite({
+  const { config, ...rest } = usePrepareContractWrite({
     abi: MerkleRedeemABI,
     address: MerkleRedeemAddress.mainnet,
     functionName: 'claimWeeks',
@@ -111,6 +111,7 @@ const useClaims = () => {
     claimedWeeksValues,
     unclaimedWeeksValues,
     claimRewardWrite,
+    ...rest,
   };
 };
 
