@@ -7,7 +7,7 @@ import {
 import { api } from 'app/lib/api';
 import { NftGiveawayAddress, NftGiveawayAbi } from 'contracts/abis/NftGiveaway';
 
-const useWearableClaim = ({ address }: { address: string }) => {
+export const useWearableClaim = ({ address }: { address: string }) => {
   const { data: wearableClaims, isLoading: wearableClaimsLoading } =
     api.claims.wearableMerkleClaims.useQuery();
 
@@ -64,5 +64,3 @@ const useWearableClaim = ({ address }: { address: string }) => {
     isLoading: claimStatusLoading || wearableClaimsLoading,
   };
 };
-
-export default useWearableClaim;

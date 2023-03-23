@@ -46,7 +46,7 @@ const useNfts = () => {
  * @param address address of the user
  * @returns list of wearables `parsedBalances` or error
  */
-const useWearables = ({ address }: { address: string }) => {
+export const useWearables = ({ address }: { address: string }) => {
   const { nfts, nftIds } = useNfts();
   const { data: rawWearables, error } = useContractRead({
     address: NftWearablesAddress.mainnet,
@@ -78,5 +78,3 @@ const useWearables = ({ address }: { address: string }) => {
 
   return { wearables, rawWearables, error };
 };
-
-export default useWearables;
