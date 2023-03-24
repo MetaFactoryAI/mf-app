@@ -25,8 +25,9 @@ interface CreateInnerContextOptions {
   session: SiweSession | null;
 }
 /**
- * This helper generates the "internals" for a tRPC context. If you need to use
- * it, you can export it from here
+ * This helper generates the "internals" for a tRPC context. Inner context is for
+ * things that dont depends on the incoming request (e.g. DB connections).
+ * Whatever is defined here will always be available in your procedures.
  *
  * Examples of things you may need it for:
  * - testing, so we don't have to mock Next.js' req/res
@@ -42,7 +43,8 @@ const createInnerTRPCContext = (opts: CreateInnerContextOptions) => {
 
 /**
  * This is the actual context you'll use in your router. It will be used to
- * process every request that goes through your tRPC endpoint
+ * process every request that goes through your tRPC endpoint. Whatever is
+ * defined here is only available for procedures that are called via HTTP.
  * @link https://trpc.io/docs/context
  */
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {

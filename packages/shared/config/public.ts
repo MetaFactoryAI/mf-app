@@ -5,13 +5,18 @@ export const ALCHEMY_ID = getEnvValue(
   'missing-alchemy-id',
 );
 
+export const MFOS_URL = getEnvValue(
+  process.env.NEXT_PUBLIC_MFOS_URL,
+  'http://localhost:8055',
+);
+
 export const MFOS_GRAPHQL_URL = getEnvValue(
   process.env.NEXT_PUBLIC_MFOS_GRAPHQL_URL,
-  'http://localhost:8055/graphql',
+  `${MFOS_URL}/graphql`,
 );
 export const FILES_BASE_URL = getEnvValue(
   process.env.NEXT_PUBLIC_FILES_BASE_URL,
-  'http://localhost:8055/assets',
+  `${MFOS_URL}/assets`,
 );
 
 export const SHOPIFY_URL = getEnvValue(
