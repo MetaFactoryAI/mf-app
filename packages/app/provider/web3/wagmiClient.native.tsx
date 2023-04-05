@@ -1,5 +1,5 @@
 import { createClient, createStorage } from 'wagmi';
-import { provider } from 'app/provider/web3/chains';
+import { provider } from 'shared/config/chains';
 import { noopStorage } from '@wagmi/core';
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
 import AsyncStorage from '@react-native-async-storage/async-storage';

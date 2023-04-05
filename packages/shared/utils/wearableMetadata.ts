@@ -16,7 +16,6 @@ export const getMetadataForProduct = (
   const images = (product.images || []).map((i) =>
     getUrlForFile(i.directus_files_id),
   );
-  console.log({ product });
   const wearables: FileData[] = (product.wearable_files || []).map(
     ({ directus_files_id: file, file_format }) => ({
       name: file?.filename_download || file?.id || 'Untitled',

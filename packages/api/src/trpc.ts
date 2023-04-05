@@ -17,13 +17,16 @@
  *
  */
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
+import { Chain } from 'wagmi';
 
-import { siwe, SiweSession } from 'shared/auth/siwe';
+import { siweServer, SiweSession } from 'shared/auth/siweServer';
 import { mfosClient } from 'services/mfos/client';
 import { hasuraClient } from 'services/graphql/client';
+import { ChainsById } from 'shared/config/chains';
 
 interface CreateInnerContextOptions {
   session: SiweSession | null;
+  chain: Chain;
 }
 /**
  * This helper generates the "internals" for a tRPC context. If you need to use
@@ -37,6 +40,7 @@ interface CreateInnerContextOptions {
 const createInnerTRPCContext = (opts: CreateInnerContextOptions) => {
   return {
     session: opts.session,
+    chain: opts.chain,
     mfosClient,
     hasuraClient,
   };
@@ -50,11 +54,11 @@ const createInnerTRPCContext = (opts: CreateInnerContextOptions) => {
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   const { req, res } = opts;
 
-  // Get the session from the server using the unstable_getServerSession wrapper function
-  const session = await siwe.getSession(req, res);
+  const session = await siweServer.getSession(req, res);
 
   return createInnerTRPCContext({
     session,
+    chain: ChainsById[session?.chainId || 1],
   });
 };
 

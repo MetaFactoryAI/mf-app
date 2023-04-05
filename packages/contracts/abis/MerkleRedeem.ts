@@ -1,5 +1,8 @@
-export const MerkleRedeemAddress = {
-  mainnet: '0x67f5C948DceAf99352f6cac71c862C1C3b60dfDF',
+import { mainnet } from 'wagmi/chains';
+import { HexString } from 'shared/utils/stringHelpers';
+
+export const MerkleRedeemAddress: Record<number, HexString> = {
+  [mainnet.id]: '0x67f5C948DceAf99352f6cac71c862C1C3b60dfDF',
 };
 
 export const MerkleRedeemABI = [

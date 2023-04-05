@@ -1,5 +1,8 @@
-export const NftGiveawayAddress = {
-  mainnet: '0x',
+import { mainnet } from 'wagmi/chains';
+import { HexString } from 'shared/utils/stringHelpers';
+
+export const NftGiveawayAddress: Record<number, HexString> = {
+  [mainnet.id]: '0x',
 };
 
 export const NftGiveawayAbi = [
@@ -477,4 +480,4 @@ export const NftGiveawayAbi = [
     stateMutability: 'view',
     type: 'function',
   },
-];
+] as const;

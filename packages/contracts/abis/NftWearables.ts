@@ -1,5 +1,8 @@
-export const NftWearablesAddress = {
-  mainnet: '',
+import { mainnet } from 'wagmi/chains';
+import { HexString } from 'shared/utils/stringHelpers';
+
+export const NftWearablesAddress: Record<number, HexString> = {
+  [mainnet.id]: '0x65725931BF9d37d7e1b1CEb90928271B572829F4',
 };
 
 export const NftWearablesAbi = [
@@ -807,4 +810,4 @@ export const NftWearablesAbi = [
     stateMutability: 'view',
     type: 'function',
   },
-];
+] as const;

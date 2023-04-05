@@ -1,12 +1,12 @@
 import { createTRPCRouter } from './trpc';
 import { productRouter } from './products/router';
 import { authRouter } from './auth/router';
-import { claimsRouter } from './claims/router';
+import { wearablesRouter } from './wearables/router';
 
 export const appRouter = createTRPCRouter({
   product: productRouter,
   auth: authRouter,
-  claims: claimsRouter,
+  wearables: wearablesRouter,
 });
 
 // export type definition of API

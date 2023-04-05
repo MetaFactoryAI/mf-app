@@ -4,7 +4,7 @@ import {
   RainbowKitAuthenticationProvider,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { chains } from 'app/provider/web3/chains';
+import { chains } from 'shared/config/chains';
 import { GetSiweMessageOptions } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { ReactNode, useMemo } from 'react';
 import {

@@ -1,3 +1,5 @@
+import type { HexString } from 'shared/utils/stringHelpers';
+
 export type NftItem = {
   nft_token_id: number;
   id: number;
@@ -14,9 +16,9 @@ export type NftItem = {
 
 export type NftClaim = {
   claim_json: {
-    to: string;
+    to: HexString;
     erc1155: {
-      contractAddress: string;
+      contractAddress: HexString;
       ids: string[];
       values: number[];
     }[];
@@ -25,9 +27,8 @@ export type NftClaim = {
       contractAddresses: never[];
       amounts: never[];
     };
-    salt: string;
-    proof: string[];
-    claim_count: number;
+    salt: HexString;
+    proof: HexString[];
   };
-  merkle_root_hash: string;
+  merkle_root_hash: HexString;
 };

@@ -12,6 +12,7 @@
   "dependencies": {
     "@trpc/client": "10.8.2",
     "@trpc/server": "10.8.2",
+    "@wagmi/core": "0.10.8",
     "graphql-request": "^5.1.0",
     "services": "*",
     "shared": "*",
