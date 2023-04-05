@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { hasuraClient } from 'services/graphql/client';
 import { order_by } from 'services/graphql/__generated__/zeus';
 
-import { formatNumber } from './utils/format';
+import { formatNumber } from 'shared/utils/numberHelpers';
 
 export type DesignerReward = {
   robot_reward: number;

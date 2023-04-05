@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavBar } from 'app/ui/navbar';
 import { useRouter } from 'next/router';
 import { BottomTabs } from 'app/ui/navbar/BottomTabs';
 import { Box } from 'app/ui/layout/Box';
+import { wagmiClient } from 'app/provider/web3/connectKit';
 
 type NavLayoutProps = {
   children: React.ReactNode;
@@ -16,6 +17,10 @@ export const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
   React.useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  useEffect(() => {
+    wagmiClient.autoConnect();
+  }, []);
 
   const links = [
     {

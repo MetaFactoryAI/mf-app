@@ -1,9 +1,9 @@
-import { NavLayout } from '../lib/NavLayout';
+import { NavLayout } from '~/lib/NavLayout';
 import type { SolitoPage } from 'solito';
-import { SecondScreen } from 'app/features/home/SecondScreen';
+import { Inventory } from 'app/features/inventory/Inventory';
 
-const Settings: SolitoPage = () => <SecondScreen title={'My Inventory'} />;
+const InventoryPage: SolitoPage = () => <Inventory />;
 
-Settings.getLayout = (page) => <NavLayout>{page}</NavLayout>;
+InventoryPage.getLayout = (page) => <NavLayout>{page}</NavLayout>;
 
-export default Settings;
+export default InventoryPage;

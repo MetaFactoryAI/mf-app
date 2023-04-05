@@ -5,7 +5,7 @@ export const formatAddress = (
 ): string => {
   if (ensName) return ensName;
   if (address)
-    return `${address.substring(0, chars)}...${address.substring(
+    return `${address.substring(0, chars + 2)}•••${address.substring(
       address.length - chars,
     )}`;
   return '';

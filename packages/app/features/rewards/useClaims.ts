@@ -12,6 +12,8 @@ import {
   useContractRead,
   usePrepareContractWrite,
   useContractWrite,
+  mainnet,
+  useNetwork,
 } from 'wagmi';
 import { BigNumber } from 'ethers';
 import {
@@ -22,7 +24,7 @@ import { formatNumber } from 'shared/utils/numberHelpers';
 
 const useClaims = () => {
   const { address } = useAccount();
-
+  const { chain } = useNetwork();
   const { data: claimWeeksData } = useQuery(['claimWeeks'], async () => {
     const claimWeeks = await getClaimWeeks();
 
@@ -37,7 +39,7 @@ const useClaims = () => {
 
   const { data: unclaimedWeeks } = useContractRead({
     abi: MerkleRedeemABI,
-    address: MerkleRedeemAddress.mainnet,
+    address: MerkleRedeemAddress[chain?.id || mainnet.id],
     functionName: 'claimStatus',
     args: [
       address || '0x',
@@ -97,9 +99,9 @@ const useClaims = () => {
     };
   }, [claimWeeksData, unclaimedWeeks, address]);
 
-  const { config, ...res } = usePrepareContractWrite({
+  const { config, ...rest } = usePrepareContractWrite({
     abi: MerkleRedeemABI,
-    address: MerkleRedeemAddress.mainnet,
+    address: MerkleRedeemAddress[mainnet.id],
     functionName: 'claimWeeks',
     args: [address || '0x', claimWeeksProofs],
   });
@@ -111,6 +113,7 @@ const useClaims = () => {
     claimedWeeksValues,
     unclaimedWeeksValues,
     claimRewardWrite,
+    ...rest,
   };
 };
 

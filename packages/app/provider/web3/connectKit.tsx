@@ -1,15 +1,16 @@
 import { WagmiConfig, createClient } from 'wagmi';
 import { ConnectKitProvider, getDefaultClient } from 'connectkit';
 import { ALCHEMY_ID } from 'shared/config/public';
-import { siwe } from 'shared/auth/siwe';
-import { chains, provider } from 'app/provider/web3/chains';
+import { siweClient } from 'shared/auth/siweClient';
+import { chains, provider } from 'shared/config/chains';
 
-const client = createClient(
+export const wagmiClient = createClient(
   getDefaultClient({
     appName: 'MetaFactory',
     alchemyId: ALCHEMY_ID,
     chains: chains,
     provider: provider,
+    autoConnect: false,
   }),
 );
 
@@ -19,8 +20,8 @@ type Props = {
 
 export const Web3Provider: React.FC<Props> = ({ children }) => {
   return (
-    <WagmiConfig client={client}>
-      <siwe.Provider>
+    <WagmiConfig client={wagmiClient}>
+      <siweClient.Provider>
         <ConnectKitProvider
           // theme="minimal"
           customTheme={{
@@ -87,7 +88,7 @@ export const Web3Provider: React.FC<Props> = ({ children }) => {
         >
           {children}
         </ConnectKitProvider>
-      </siwe.Provider>
+      </siweClient.Provider>
     </WagmiConfig>
   );
 };
