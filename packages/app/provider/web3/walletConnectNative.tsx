@@ -1,9 +1,9 @@
 import '../../../../apps/expo/shim';
 import WalletConnectProvider from '@walletconnect/react-native-dapp';
 import { WagmiConfig } from 'wagmi';
-import { wagmiClient } from './wagmiClient';
 import { Platform } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { wagmiClient } from 'app/provider/web3/rainbowKit';
 
 export const Web3Provider: React.FC<{ children: React.ReactNode }> = ({
   children,

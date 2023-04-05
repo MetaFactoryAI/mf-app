@@ -1,10 +1,10 @@
 import {
-  getDefaultWallets,
   createAuthenticationAdapter,
+  getDefaultWallets,
   RainbowKitAuthenticationProvider,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
-import { chains } from 'shared/config/chains';
+import { chains, provider, webSocketProvider } from 'shared/config/chains';
 import { GetSiweMessageOptions } from '@rainbow-me/rainbowkit-siwe-next-auth';
 import { ReactNode, useMemo } from 'react';
 import {
@@ -15,8 +15,7 @@ import {
   useSession,
 } from 'next-auth/react';
 import { SiweMessage } from 'siwe';
-import { WagmiConfig } from 'wagmi';
-import { wagmiClient } from 'app/provider/web3/wagmiClient';
+import { createClient, WagmiConfig } from 'wagmi';
 import { Session } from 'next-auth';
 
 type UnconfigurableMessageOptions = {
@@ -34,6 +33,13 @@ type ConfigurableMessageOptions = Partial<
 export const { connectors } = getDefaultWallets({
   appName: 'MetaFactory',
   chains,
+});
+
+export const wagmiClient = createClient({
+  autoConnect: false,
+  connectors,
+  provider,
+  webSocketProvider,
 });
 
 interface RainbowKitSiweNextAuthProviderProps {

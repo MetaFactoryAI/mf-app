@@ -46,49 +46,53 @@ export const wearablesRouter = createTRPCRouter({
       const address = input || ctx.session?.address;
       if (!address) return null;
 
-      const tokenIdRes = await ctx.mfosClient('query')({
-        products: [
-          { filter: { nft_token_id: { _nnull: true } } },
-          { nft_token_id: true, id: true },
-        ],
-      });
+      try {
+        const tokenIdRes = await ctx.mfosClient('query')({
+          products: [
+            { filter: { nft_token_id: { _nnull: true } } },
+            { nft_token_id: true, id: true },
+          ],
+        });
 
-      const allTokenIds = tokenIdRes.products.map((p) =>
-        // Query filters non nulls
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        BigNumber.from(p.nft_token_id!),
-      );
+        const allTokenIds = tokenIdRes.products.map((p) =>
+          // Query filters non nulls
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          BigNumber.from(p.nft_token_id!),
+        );
 
-      const balances = await readContract({
-        address: NftWearablesAddress[ctx.chain.id],
-        abi: NftWearablesAbi,
-        functionName: 'balanceOfBatch',
-        args: [Array(allTokenIds.length).fill(address), allTokenIds],
-        chainId: ctx.chain.id,
-      });
+        const balances = await readContract({
+          address: NftWearablesAddress[ctx.chain.id],
+          abi: NftWearablesAbi,
+          functionName: 'balanceOfBatch',
+          args: [Array(allTokenIds.length).fill(address), allTokenIds],
+          chainId: ctx.chain.id,
+        });
+        const tokenIdsForUser = balances.reduce(
+          (ids: number[], balance, index) => {
+            if (balance.isZero()) return ids;
 
-      const tokenIdsForUser = balances.reduce(
-        (ids: number[], balance, index) => {
-          if (balance.isZero()) return ids;
+            const tokenId = allTokenIds[index].toNumber();
+            return [...ids, tokenId];
+          },
+          [],
+        );
 
-          const tokenId = allTokenIds[index].toNumber();
-          return [...ids, tokenId];
-        },
-        [],
-      );
+        const nftMetadataRes = await ctx.mfosClient('query')({
+          products: [
+            { filter: { nft_token_id: { _in: tokenIdsForUser } } },
+            productNftMetadataSelector,
+          ],
+        });
 
-      const nftMetadataRes = await ctx.mfosClient('query')({
-        products: [
-          { filter: { nft_token_id: { _in: tokenIdsForUser } } },
-          productNftMetadataSelector,
-        ],
-      });
-
-      return (nftMetadataRes.products || []).map((p) => ({
-        id: p.id,
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        nft_token_id: p.nft_token_id!,
-        nft_metadata: getMetadataForProduct(p),
-      }));
+        return (nftMetadataRes.products || []).map((p) => ({
+          id: p.id,
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          nft_token_id: p.nft_token_id!,
+          nft_metadata: getMetadataForProduct(p),
+        }));
+      } catch (e) {
+        console.log(e);
+        return [];
+      }
     }),
 });
