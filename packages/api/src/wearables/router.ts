@@ -77,6 +77,8 @@ export const wearablesRouter = createTRPCRouter({
           [],
         );
 
+        if (!tokenIdsForUser.length) return [];
+
         const nftMetadataRes = await ctx.mfosClient('query')({
           products: [
             { filter: { nft_token_id: { _in: tokenIdsForUser } } },
