@@ -13,4 +13,41 @@ module.exports = {
   plugins: ['@typescript-eslint'],
   ignorePatterns: ['.eslintrc.js', '*.config.js', 'shim.js'],
   root: true,
+  rules: {
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+        ],
+        pathGroups: [
+          {
+            pattern: 'shared/**',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: 'services/**',
+            group: 'internal',
+            position: 'after',
+          },
+          {
+            pattern: '@*/**',
+            group: 'external',
+          },
+        ],
+        pathGroupsExcludedImportTypes: ['builtin'],
+        alphabetize: {
+          order: 'asc',
+          caseInsensitive: true,
+        },
+        'newlines-between': 'always',
+      },
+    ],
+  },
 };
