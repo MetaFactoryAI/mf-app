@@ -184,6 +184,13 @@ export const AllTypesProps: Record<string, any> = {
     invoices_aggregated: {
       filter: 'invoices_filter',
     },
+    production_materials_files: {
+      filter: 'production_materials_files_filter',
+    },
+    production_materials_files_by_id: {},
+    production_materials_files_aggregated: {
+      filter: 'production_materials_files_filter',
+    },
   },
   brands: {
     logo: {
@@ -431,8 +438,20 @@ export const AllTypesProps: Record<string, any> = {
     sale_currency: {
       filter: 'currencies_filter',
     },
+    html_file: {
+      filter: 'directus_files_filter',
+    },
+    thumbnail: {
+      filter: 'directus_files_filter',
+    },
+    vrm_file: {
+      filter: 'directus_files_filter',
+    },
     contributors: {
       filter: 'products_contributors_filter',
+    },
+    materials: {
+      filter: 'products_production_materials_filter',
     },
     design_files: {
       filter: 'products_design_files_filter',
@@ -442,9 +461,6 @@ export const AllTypesProps: Record<string, any> = {
     },
     images: {
       filter: 'products_files_filter',
-    },
-    materials: {
-      filter: 'products_production_materials_filter',
     },
     wearable_files: {
       filter: 'products_wearables_filter',
@@ -504,16 +520,21 @@ export const AllTypesProps: Record<string, any> = {
     shopify_id: 'string_filter_operators',
     status: 'string_filter_operators',
     notes: 'string_filter_operators',
+    date_updated: 'date_filter_operators',
+    date_updated_func: 'datetime_function_filter_operators',
+    html_file: 'directus_files_filter',
+    thumbnail: 'directus_files_filter',
+    vrm_file: 'directus_files_filter',
     contributors: 'products_contributors_filter',
     contributors_func: 'count_function_filter_operators',
+    materials: 'products_production_materials_filter',
+    materials_func: 'count_function_filter_operators',
     design_files: 'products_design_files_filter',
     design_files_func: 'count_function_filter_operators',
     content: 'products_content_filter',
     content_func: 'count_function_filter_operators',
     images: 'products_files_filter',
     images_func: 'count_function_filter_operators',
-    materials: 'products_production_materials_filter',
-    materials_func: 'count_function_filter_operators',
     wearable_files: 'products_wearables_filter',
     wearable_files_func: 'count_function_filter_operators',
     production_methods: 'products_production_methods_filter',
@@ -593,6 +614,8 @@ export const AllTypesProps: Record<string, any> = {
     production_methods_func: 'count_function_filter_operators',
     stocked_at: 'producers_production_materials_filter',
     stocked_at_func: 'count_function_filter_operators',
+    base_assets: 'production_materials_files_filter',
+    base_assets_func: 'count_function_filter_operators',
     _and: 'production_materials_filter',
     _or: 'production_materials_filter',
   },
@@ -623,6 +646,13 @@ export const AllTypesProps: Record<string, any> = {
     _and: 'producers_production_methods_filter',
     _or: 'producers_production_methods_filter',
   },
+  production_materials_files_filter: {
+    directus_files_id: 'directus_files_filter',
+    id: 'number_filter_operators',
+    production_materials_id: 'production_materials_filter',
+    _and: 'production_materials_files_filter',
+    _or: 'production_materials_files_filter',
+  },
   stages_filter: {
     description: 'string_filter_operators',
     name: 'string_filter_operators',
@@ -645,6 +675,13 @@ export const AllTypesProps: Record<string, any> = {
     _and: 'products_contributors_filter',
     _or: 'products_contributors_filter',
   },
+  products_production_materials_filter: {
+    id: 'number_filter_operators',
+    production_materials_id: 'production_materials_filter',
+    products_id: 'products_filter',
+    _and: 'products_production_materials_filter',
+    _or: 'products_production_materials_filter',
+  },
   products_design_files_filter: {
     directus_files_id: 'directus_files_filter',
     id: 'number_filter_operators',
@@ -665,13 +702,6 @@ export const AllTypesProps: Record<string, any> = {
     products_id: 'products_filter',
     _and: 'products_files_filter',
     _or: 'products_files_filter',
-  },
-  products_production_materials_filter: {
-    id: 'number_filter_operators',
-    production_materials_id: 'production_materials_filter',
-    products_id: 'products_filter',
-    _and: 'products_production_materials_filter',
-    _or: 'products_production_materials_filter',
   },
   products_wearables_filter: {
     directus_files_id: 'directus_files_filter',
@@ -758,6 +788,9 @@ export const AllTypesProps: Record<string, any> = {
     stocked_at: {
       filter: 'producers_production_materials_filter',
     },
+    base_assets: {
+      filter: 'production_materials_files_filter',
+    },
   },
   production_materials_production_methods: {
     production_materials_id: {
@@ -783,9 +816,25 @@ export const AllTypesProps: Record<string, any> = {
       filter: 'production_methods_filter',
     },
   },
+  production_materials_files: {
+    directus_files_id: {
+      filter: 'directus_files_filter',
+    },
+    production_materials_id: {
+      filter: 'production_materials_filter',
+    },
+  },
   products_contributors: {
     collaborators_id: {
       filter: 'collaborators_filter',
+    },
+    products_id: {
+      filter: 'products_filter',
+    },
+  },
+  products_production_materials: {
+    production_materials_id: {
+      filter: 'production_materials_filter',
     },
     products_id: {
       filter: 'products_filter',
@@ -810,14 +859,6 @@ export const AllTypesProps: Record<string, any> = {
   products_files: {
     directus_files_id: {
       filter: 'directus_files_filter',
-    },
-    products_id: {
-      filter: 'products_filter',
-    },
-  },
-  products_production_materials: {
-    production_materials_id: {
-      filter: 'production_materials_filter',
     },
     products_id: {
       filter: 'products_filter',
@@ -1046,6 +1087,13 @@ export const AllTypesProps: Record<string, any> = {
     },
     create_invoices_item: {
       data: 'create_invoices_input',
+    },
+    create_production_materials_files_items: {
+      filter: 'production_materials_files_filter',
+      data: 'create_production_materials_files_input',
+    },
+    create_production_materials_files_item: {
+      data: 'create_production_materials_files_input',
     },
     update_brands_items: {
       filter: 'brands_filter',
@@ -1333,6 +1381,17 @@ export const AllTypesProps: Record<string, any> = {
     update_invoices_item: {
       data: 'update_invoices_input',
     },
+    update_production_materials_files_items: {
+      filter: 'production_materials_files_filter',
+      data: 'update_production_materials_files_input',
+    },
+    update_production_materials_files_batch: {
+      filter: 'production_materials_files_filter',
+      data: 'update_production_materials_files_input',
+    },
+    update_production_materials_files_item: {
+      data: 'update_production_materials_files_input',
+    },
     delete_brands_items: {},
     delete_brands_item: {},
     delete_brands_directus_users_items: {},
@@ -1385,6 +1444,8 @@ export const AllTypesProps: Record<string, any> = {
     delete_production_materials_item: {},
     delete_invoices_items: {},
     delete_invoices_item: {},
+    delete_production_materials_files_items: {},
+    delete_production_materials_files_item: {},
   },
   create_brands_input: {
     created_at: 'Date',
@@ -1444,11 +1505,15 @@ export const AllTypesProps: Record<string, any> = {
     quantity: 'GraphQLBigInt',
     release_date: 'Date',
     sale_currency: 'create_currencies_input',
+    date_updated: 'Date',
+    html_file: 'create_directus_files_input',
+    thumbnail: 'create_directus_files_input',
+    vrm_file: 'create_directus_files_input',
     contributors: 'create_products_contributors_input',
+    materials: 'create_products_production_materials_input',
     design_files: 'create_products_design_files_input',
     content: 'create_products_content_input',
     images: 'create_products_files_input',
-    materials: 'create_products_production_materials_input',
     wearable_files: 'create_products_wearables_input',
     production_methods: 'create_products_production_methods_input',
     client_invoices: 'create_invoices_input',
@@ -1477,6 +1542,7 @@ export const AllTypesProps: Record<string, any> = {
     tags: 'JSON',
     production_methods: 'create_production_materials_production_methods_input',
     stocked_at: 'create_producers_production_materials_input',
+    base_assets: 'create_production_materials_files_input',
   },
   create_production_materials_production_methods_input: {
     production_materials_id: 'create_production_materials_input',
@@ -1492,10 +1558,18 @@ export const AllTypesProps: Record<string, any> = {
     producers_id: 'create_producers_input',
     production_methods_id: 'create_production_methods_input',
   },
+  create_production_materials_files_input: {
+    directus_files_id: 'create_directus_files_input',
+    production_materials_id: 'create_production_materials_input',
+  },
   create_stages_input: {},
   create_currencies_input: {},
   create_products_contributors_input: {
     collaborators_id: 'create_collaborators_input',
+    products_id: 'create_products_input',
+  },
+  create_products_production_materials_input: {
+    production_materials_id: 'create_production_materials_input',
     products_id: 'create_products_input',
   },
   create_products_design_files_input: {
@@ -1508,10 +1582,6 @@ export const AllTypesProps: Record<string, any> = {
   },
   create_products_files_input: {
     directus_files_id: 'create_directus_files_input',
-    products_id: 'create_products_input',
-  },
-  create_products_production_materials_input: {
-    production_materials_id: 'create_production_materials_input',
     products_id: 'create_products_input',
   },
   create_products_wearables_input: {
@@ -1594,11 +1664,15 @@ export const AllTypesProps: Record<string, any> = {
     quantity: 'GraphQLBigInt',
     release_date: 'Date',
     sale_currency: 'update_currencies_input',
+    date_updated: 'Date',
+    html_file: 'update_directus_files_input',
+    thumbnail: 'update_directus_files_input',
+    vrm_file: 'update_directus_files_input',
     contributors: 'update_products_contributors_input',
+    materials: 'update_products_production_materials_input',
     design_files: 'update_products_design_files_input',
     content: 'update_products_content_input',
     images: 'update_products_files_input',
-    materials: 'update_products_production_materials_input',
     wearable_files: 'update_products_wearables_input',
     production_methods: 'update_products_production_methods_input',
     client_invoices: 'update_invoices_input',
@@ -1627,6 +1701,7 @@ export const AllTypesProps: Record<string, any> = {
     tags: 'JSON',
     production_methods: 'update_production_materials_production_methods_input',
     stocked_at: 'update_producers_production_materials_input',
+    base_assets: 'update_production_materials_files_input',
   },
   update_production_materials_production_methods_input: {
     production_materials_id: 'update_production_materials_input',
@@ -1642,10 +1717,18 @@ export const AllTypesProps: Record<string, any> = {
     producers_id: 'update_producers_input',
     production_methods_id: 'update_production_methods_input',
   },
+  update_production_materials_files_input: {
+    directus_files_id: 'update_directus_files_input',
+    production_materials_id: 'update_production_materials_input',
+  },
   update_stages_input: {},
   update_currencies_input: {},
   update_products_contributors_input: {
     collaborators_id: 'update_collaborators_input',
+    products_id: 'update_products_input',
+  },
+  update_products_production_materials_input: {
+    production_materials_id: 'update_production_materials_input',
     products_id: 'update_products_input',
   },
   update_products_design_files_input: {
@@ -1658,10 +1741,6 @@ export const AllTypesProps: Record<string, any> = {
   },
   update_products_files_input: {
     directus_files_id: 'update_directus_files_input',
-    products_id: 'update_products_input',
-  },
-  update_products_production_materials_input: {
-    production_materials_id: 'update_production_materials_input',
     products_id: 'update_products_input',
   },
   update_products_wearables_input: {
@@ -1776,6 +1855,10 @@ export const ReturnTypes: Record<string, any> = {
     invoices: 'invoices',
     invoices_by_id: 'invoices',
     invoices_aggregated: 'invoices_aggregated',
+    production_materials_files: 'production_materials_files',
+    production_materials_files_by_id: 'production_materials_files',
+    production_materials_files_aggregated:
+      'production_materials_files_aggregated',
   },
   brands: {
     created_at: 'Date',
@@ -1944,16 +2027,21 @@ export const ReturnTypes: Record<string, any> = {
     shopify_id: 'String',
     status: 'String',
     notes: 'String',
+    date_updated: 'Date',
+    date_updated_func: 'datetime_functions',
+    html_file: 'directus_files',
+    thumbnail: 'directus_files',
+    vrm_file: 'directus_files',
     contributors: 'products_contributors',
     contributors_func: 'count_functions',
+    materials: 'products_production_materials',
+    materials_func: 'count_functions',
     design_files: 'products_design_files',
     design_files_func: 'count_functions',
     content: 'products_content',
     content_func: 'count_functions',
     images: 'products_files',
     images_func: 'count_functions',
-    materials: 'products_production_materials',
-    materials_func: 'count_functions',
     wearable_files: 'products_wearables',
     wearable_files_func: 'count_functions',
     production_methods: 'products_production_methods',
@@ -2023,6 +2111,8 @@ export const ReturnTypes: Record<string, any> = {
     production_methods_func: 'count_functions',
     stocked_at: 'producers_production_materials',
     stocked_at_func: 'count_functions',
+    base_assets: 'production_materials_files',
+    base_assets_func: 'count_functions',
   },
   production_materials_production_methods: {
     id: 'ID',
@@ -2045,6 +2135,11 @@ export const ReturnTypes: Record<string, any> = {
     producers_id: 'producers',
     production_methods_id: 'production_methods',
   },
+  production_materials_files: {
+    directus_files_id: 'directus_files',
+    id: 'ID',
+    production_materials_id: 'production_materials',
+  },
   stages: {
     description: 'String',
     name: 'ID',
@@ -2061,6 +2156,11 @@ export const ReturnTypes: Record<string, any> = {
     products_id: 'products',
     robot_earned: 'Float',
   },
+  products_production_materials: {
+    id: 'ID',
+    production_materials_id: 'production_materials',
+    products_id: 'products',
+  },
   products_design_files: {
     directus_files_id: 'directus_files',
     id: 'ID',
@@ -2074,11 +2174,6 @@ export const ReturnTypes: Record<string, any> = {
   products_files: {
     directus_files_id: 'directus_files',
     id: 'ID',
-    products_id: 'products',
-  },
-  products_production_materials: {
-    id: 'ID',
-    production_materials_id: 'production_materials',
     products_id: 'products',
   },
   products_wearables: {
@@ -2629,11 +2724,15 @@ export const ReturnTypes: Record<string, any> = {
     shopify_id: 'Int',
     status: 'Int',
     notes: 'Int',
+    date_updated: 'Int',
+    html_file: 'Int',
+    thumbnail: 'Int',
+    vrm_file: 'Int',
     contributors: 'Int',
+    materials: 'Int',
     design_files: 'Int',
     content: 'Int',
     images: 'Int',
-    materials: 'Int',
     wearable_files: 'Int',
     production_methods: 'Int',
     client_invoices: 'Int',
@@ -2683,6 +2782,7 @@ export const ReturnTypes: Record<string, any> = {
     tags: 'Int',
     production_methods: 'Int',
     stocked_at: 'Int',
+    base_assets: 'Int',
   },
   production_materials_aggregated_fields: {
     base_price: 'Float',
@@ -2720,6 +2820,27 @@ export const ReturnTypes: Record<string, any> = {
     amount: 'Float',
     production_product_id: 'Float',
     client_product_id: 'Float',
+  },
+  production_materials_files_aggregated: {
+    group: 'JSON',
+    countAll: 'Int',
+    count: 'production_materials_files_aggregated_count',
+    countDistinct: 'production_materials_files_aggregated_count',
+    avg: 'production_materials_files_aggregated_fields',
+    sum: 'production_materials_files_aggregated_fields',
+    avgDistinct: 'production_materials_files_aggregated_fields',
+    sumDistinct: 'production_materials_files_aggregated_fields',
+    min: 'production_materials_files_aggregated_fields',
+    max: 'production_materials_files_aggregated_fields',
+  },
+  production_materials_files_aggregated_count: {
+    directus_files_id: 'Int',
+    id: 'Int',
+    production_materials_id: 'Int',
+  },
+  production_materials_files_aggregated_fields: {
+    id: 'Float',
+    production_materials_id: 'Float',
   },
   Mutation: {
     create_brands_items: 'brands',
@@ -2780,6 +2901,8 @@ export const ReturnTypes: Record<string, any> = {
     create_production_materials_item: 'production_materials',
     create_invoices_items: 'invoices',
     create_invoices_item: 'invoices',
+    create_production_materials_files_items: 'production_materials_files',
+    create_production_materials_files_item: 'production_materials_files',
     update_brands_items: 'brands',
     update_brands_batch: 'brands',
     update_brands_item: 'brands',
@@ -2867,6 +2990,9 @@ export const ReturnTypes: Record<string, any> = {
     update_invoices_items: 'invoices',
     update_invoices_batch: 'invoices',
     update_invoices_item: 'invoices',
+    update_production_materials_files_items: 'production_materials_files',
+    update_production_materials_files_batch: 'production_materials_files',
+    update_production_materials_files_item: 'production_materials_files',
     delete_brands_items: 'delete_many',
     delete_brands_item: 'delete_one',
     delete_brands_directus_users_items: 'delete_many',
@@ -2919,6 +3045,8 @@ export const ReturnTypes: Record<string, any> = {
     delete_production_materials_item: 'delete_one',
     delete_invoices_items: 'delete_many',
     delete_invoices_item: 'delete_one',
+    delete_production_materials_files_items: 'delete_many',
+    delete_production_materials_files_item: 'delete_one',
   },
   delete_many: {
     ids: 'ID',
