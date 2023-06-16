@@ -1,6 +1,7 @@
-import { SystemUser, systemUsersSelector } from './selectors';
-import { mfosSystemClient } from './client';
 import { ethAddressToEip155 } from '../../utils/addressHelpers';
+
+import { mfosSystemClient } from './client';
+import { SystemUser, systemUsersSelector } from './selectors';
 
 export const getSystemUserByAddress = async (
   ethAddress: string,

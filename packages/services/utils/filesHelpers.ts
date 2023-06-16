@@ -2,13 +2,14 @@
 import fetch from 'node-fetch';
 import { z } from 'zod';
 
-import { logger } from './logger';
+import { FileData } from 'shared/types/wearableTypes';
 import {
   EXTENSION_DESCRIPTIONS,
   EXTENSION_MIME_TYPES,
   FileExtension,
 } from 'shared/utils/files';
-import { FileData } from 'shared/types/wearableTypes';
+
+import { logger } from './logger';
 
 export const githubContentsSchema = z.array(
   z.object({

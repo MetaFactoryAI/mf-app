@@ -1,12 +1,14 @@
+import assert from 'assert';
+
+import { logger } from '../../utils/logger';
 import {
   $,
   GraphQLTypes,
   InputType,
   ValueTypes,
 } from '../__generated__/user/zeus';
-import assert from 'assert';
 import { mfosClient } from '../client';
-import { logger } from '../../utils/logger';
+
 import { brandSelector } from './selectors';
 
 export type CreateBrandResult = InputType<

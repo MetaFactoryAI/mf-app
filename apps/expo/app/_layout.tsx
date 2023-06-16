@@ -1,7 +1,8 @@
-import { Provider } from 'app/provider';
-import { Tabs, RootContainer } from 'expo-router';
 import { DarkTheme, DefaultTheme } from '@react-navigation/native';
+import { Tabs, RootContainer } from 'expo-router';
 import { useColorScheme } from 'react-native';
+
+import { Provider } from 'app/provider';
 
 export default function _layout() {
   const colorMode = useColorScheme();

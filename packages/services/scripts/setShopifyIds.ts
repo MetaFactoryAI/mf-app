@@ -1,6 +1,7 @@
-import { createClient } from '../mfos';
-import { MFOS_GRAPHQL_TOKEN } from 'shared/config/secret';
 import { MFOS_GRAPHQL_URL } from 'shared/config/public';
+import { MFOS_GRAPHQL_TOKEN } from 'shared/config/secret';
+
+import { createClient } from '../mfos';
 import { fileSelector } from '../mfos/files/selectors';
 import { getShopProducts } from '../shopify/queries';
 import { nodeIdToProductId } from '../shopify/utils';

@@ -1,20 +1,24 @@
+import assert from 'assert';
+
+import { Creator } from 'shared/types/wearableTypes';
+
 import { System } from 'services/mfos';
+
 import {
   ethAddressToEip155,
   resolveIfEnsName,
 } from '../../utils/addressHelpers';
 import { defaultMainnetProvider } from '../../utils/defaultProvider';
-import assert from 'assert';
-import { mfosSystemClient } from './client';
 import { logger } from '../../utils/logger';
 import { $ } from '../__generated__/user/zeus';
+
+import { mfosSystemClient } from './client';
+import { getSystemUserByAddress } from './queries';
 import {
   systemRolesSelector,
   SystemUser,
   systemUsersSelector,
 } from './selectors';
-import { getSystemUserByAddress } from './queries';
-import { Creator } from 'shared/types/wearableTypes';
 
 export const createSystemUserIfNotExists = async (
   creator: Creator,

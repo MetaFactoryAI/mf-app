@@ -1,15 +1,16 @@
-import {
-  seedCollaboratorRoles,
-  seedFileFormats,
-  seedStages,
-} from '../mfos/seed';
+import { MFOS_GRAPHQL_URL } from 'shared/config/public';
+import { MFOS_GRAPHQL_TOKEN } from 'shared/config/secret';
+
 import { migrateRobots } from '../lib/notionMigration/migrateNotionRobots';
 import { migrateProductContributors } from '../lib/notionMigration/migrateProductContributors';
 import { migrateProductFiles } from '../lib/notionMigration/migrateProductFiles';
 import { migrateProducts } from '../lib/notionMigration/migrateProducts';
 import { createClient } from '../mfos';
-import { MFOS_GRAPHQL_URL } from 'shared/config/public';
-import { MFOS_GRAPHQL_TOKEN } from 'shared/config/secret';
+import {
+  seedCollaboratorRoles,
+  seedFileFormats,
+  seedStages,
+} from '../mfos/seed';
 
 const client = createClient(MFOS_GRAPHQL_URL, MFOS_GRAPHQL_TOKEN);
 

@@ -1,14 +1,15 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 import fetch from 'node-fetch';
 
-import { LocksmithLockResponse } from 'services/types/locksmith';
-import { getOrCreateLock, isCodeRedeemed } from 'services/utils/lockHelpers';
-import { isValidAuthToken } from 'services/utils/userHelpers';
 import {
   LOCKSMITH_ACCESS_TOKEN,
   LOCKSMITH_ENDPOINT,
   SHOP_DOMAIN,
 } from 'shared/config/secret';
+
+import { LocksmithLockResponse } from 'services/types/locksmith';
+import { getOrCreateLock, isCodeRedeemed } from 'services/utils/lockHelpers';
+import { isValidAuthToken } from 'services/utils/userHelpers';
 
 // Allows an authenticated API user to generate access codes for a given product lock and unique identifier.
 // Uses basic auth to protect the API. Saving the mapping of user to access code in the database to prevent the

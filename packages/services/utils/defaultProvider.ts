@@ -1,4 +1,5 @@
 import { getDefaultProvider } from '@ethersproject/providers';
+
 import { ALCHEMY_ID, INFURA_ID } from 'shared/config/secret';
 
 export const defaultMainnetProvider = getDefaultProvider('mainnet', {

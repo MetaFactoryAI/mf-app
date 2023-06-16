@@ -1,10 +1,13 @@
-import { ProductNftMetadataInfo } from 'services/mfos/products/selectors';
 import assert from 'assert';
-import { composeListIntoString } from './stringHelpers';
+
 import { COLLABORATOR_ROLES } from 'services/mfos';
+import { ProductNftMetadataInfo } from 'services/mfos/products/selectors';
+
 import { SHOPIFY_URL } from '../config/public';
-import { EXTENSION_MIME_TYPES, getUrlForFile } from './files';
 import { Creator, FileData, WearableMetadata } from '../types/wearableTypes';
+
+import { EXTENSION_MIME_TYPES, getUrlForFile } from './files';
+import { composeListIntoString } from './stringHelpers';
 
 export const getWearableShopLink = (shopifyId: string): string =>
   `${SHOPIFY_URL}/products/${shopifyId}`;

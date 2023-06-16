@@ -1,6 +1,7 @@
-import { createClient } from '../mfos';
-import { MFOS_GRAPHQL_TOKEN } from 'shared/config/secret';
 import { MFOS_GRAPHQL_URL } from 'shared/config/public';
+import { MFOS_GRAPHQL_TOKEN } from 'shared/config/secret';
+
+import { createClient } from '../mfos';
 
 const client = createClient(MFOS_GRAPHQL_URL, MFOS_GRAPHQL_TOKEN);
 

@@ -1,8 +1,15 @@
 /* eslint-disable no-await-in-loop */
 import assert from 'assert';
 
+import { Creator } from 'shared/types/wearableTypes';
+
 import { hasuraClient } from '../../graphql/client';
 import { Client, COLLABORATOR_ROLES } from '../../mfos';
+import { addContributorsToProduct } from '../../mfos/products/mutations';
+import {
+  collaboratorRolesSelector,
+  productsContributorsSelector,
+} from '../../mfos/products/selectors';
 import { isAddressEqual } from '../../utils/addressHelpers';
 import { logger } from '../../utils/logger';
 import {
@@ -10,12 +17,6 @@ import {
   getProductTechs,
 } from '../../utils/notion/productHelpers';
 import { getProductPage } from '../notionHelpers';
-import { addContributorsToProduct } from '../../mfos/products/mutations';
-import {
-  collaboratorRolesSelector,
-  productsContributorsSelector,
-} from '../../mfos/products/selectors';
-import { Creator } from 'shared/types/wearableTypes';
 
 export async function migrateProductContributors(
   client: Client,

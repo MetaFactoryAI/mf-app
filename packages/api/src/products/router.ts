@@ -1,12 +1,16 @@
-import { createTRPCRouter, publicProcedure } from '../trpc';
 import { z } from 'zod';
-import { baseProductsSelector, contributorsSelector } from './selectors';
-import { productsFilesSelector } from 'services/mfos/products/selectors';
-import { ResolverInputTypes } from 'services/mfos';
+
 import {
   getProductTags,
   getProgressFromTagsAndStage,
 } from 'shared/utils/productHelpers';
+
+import { ResolverInputTypes } from 'services/mfos';
+import { productsFilesSelector } from 'services/mfos/products/selectors';
+
+import { createTRPCRouter, publicProcedure } from '../trpc';
+
+import { baseProductsSelector, contributorsSelector } from './selectors';
 
 type ProductFilter = ResolverInputTypes['products_filter'];
 

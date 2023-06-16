@@ -1,5 +1,7 @@
-import { HomeScreen } from 'app/features/home/HomeScreen';
 import type { SolitoPage } from 'solito';
+
+import { HomeScreen } from 'app/features/home/HomeScreen';
+
 import { NavLayout } from '~/lib/NavLayout';
 
 const Home: SolitoPage = () => <HomeScreen />;

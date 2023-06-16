@@ -1,4 +1,5 @@
 import { configureSIWE } from 'connectkit-next-siwe';
+
 import { SESSION_SECRET } from '../config/auth';
 
 type SessionData = {

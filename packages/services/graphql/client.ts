@@ -1,5 +1,6 @@
-import { apiFetch, Thunder } from './__generated__/zeus';
 import { GRAPHQL_ADMIN_SECRET, GRAPHQL_URL } from 'shared/config/secret';
+
+import { apiFetch, Thunder } from './__generated__/zeus';
 
 const thunder = Thunder((...params) =>
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return

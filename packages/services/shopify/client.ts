@@ -1,5 +1,6 @@
-import { apiFetch, Thunder } from './__generated__/zeus';
 import { SHOPIFY_API_TOKEN, SHOPIFY_API_URL } from 'shared/config/secret';
+
+import { apiFetch, Thunder } from './__generated__/zeus';
 
 export const shopifyClient = Thunder((...params) => {
   // eslint-disable-next-line @typescript-eslint/no-unsafe-return
