@@ -1,6 +1,8 @@
-import { ShopScreen } from 'app/features/shop/ShopScreen';
-import { NavLayout } from '../lib/NavLayout';
 import type { SolitoPage } from 'solito';
+
+import { ShopScreen } from 'app/features/shop/ShopScreen';
+
+import { NavLayout } from '~/lib/NavLayout';
 
 const Shop: SolitoPage = () => <ShopScreen />;
 

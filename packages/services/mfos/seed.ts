@@ -1,17 +1,20 @@
 import {
+  EXTENSION_DESCRIPTIONS,
+  EXTENSION_MIME_TYPES,
+  FileExtension,
+} from 'shared/utils/files';
+
+import { logger } from '../utils/logger';
+
+import { fileFormatsSelector } from './files/selectors';
+
+import {
   Client,
   COLLABORATOR_ROLES,
   PRODUCT_STAGES,
   $,
   ValueTypes,
 } from './index';
-import { logger } from '../utils/logger';
-import { fileFormatsSelector } from './files/selectors';
-import {
-  EXTENSION_DESCRIPTIONS,
-  EXTENSION_MIME_TYPES,
-  FileExtension,
-} from 'shared/utils/files';
 
 export async function seedStages(client: Client): Promise<void> {
   const stages = Object.values(PRODUCT_STAGES);

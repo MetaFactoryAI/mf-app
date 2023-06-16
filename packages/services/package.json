@@ -4,7 +4,7 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo 'No tests setup'",
-    "lint": "eslint ./**/*.ts*",
+    "lint": "eslint . --ext .ts",
     "typecheck": "tsc",
     "generate-hasura": "./scripts/generate-zeus.sh",
     "generate-mfos": "./scripts/generate-zeus-mfos.sh",

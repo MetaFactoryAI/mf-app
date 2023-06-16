@@ -1,8 +1,9 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { getCsrfToken } from 'next-auth/react';
 import { SiweMessage } from 'siwe';
-import { NextApiRequest, NextApiResponse } from 'next';
+
 import { NEXTAUTH_SECRET, NEXTAUTH_URL } from 'shared/config/auth';
 
 // For more information on each option (and a full list of options) go to

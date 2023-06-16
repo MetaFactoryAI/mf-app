@@ -16,9 +16,12 @@
  * processing a request
  *
  */
+import { inferAsyncReturnType, initTRPC, TRPCError } from '@trpc/server';
 import { type CreateNextContextOptions } from '@trpc/server/adapters/next';
+import superjson from 'superjson';
 
 import { siwe, SiweSession } from 'shared/auth/siwe';
+
 import { mfosClient } from 'services/mfos/client';
 
 interface CreateInnerContextOptions {
@@ -66,8 +69,6 @@ export type Context = inferAsyncReturnType<typeof createInnerTRPCContext>;
  * This is where the trpc api is initialized, connecting the context and
  * transformer
  */
-import { inferAsyncReturnType, initTRPC, TRPCError } from '@trpc/server';
-import superjson from 'superjson';
 
 const t = initTRPC.context<Context>().create({
   transformer: superjson,

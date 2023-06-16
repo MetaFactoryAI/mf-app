@@ -1,6 +1,7 @@
 import { gql } from 'graphql-request';
 
 import { LocksmithLockResponse } from '../types/locksmith';
+
 import { getRandomElement } from './arrayHelpers';
 import { client } from './hasuraClient';
 

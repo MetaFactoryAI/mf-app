@@ -1,11 +1,16 @@
-import { Provider } from 'app/provider';
-import Head from 'next/head';
 import React from 'react';
+
+import Head from 'next/head';
+
 import type { SolitoAppProps } from 'solito';
+
+import { api } from 'app/lib/api';
+import { Provider } from 'app/provider';
+
 import 'raf/polyfill';
+
 import '../global.css';
 import '@rainbow-me/rainbowkit/styles.css';
-import { api } from 'app/lib/api';
 
 // FIXME need reanimated update, see https://github.com/software-mansion/react-native-reanimated/issues/3355
 if (process.browser) {

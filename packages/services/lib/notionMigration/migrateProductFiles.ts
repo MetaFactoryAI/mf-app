@@ -2,8 +2,6 @@
 import assert from 'assert';
 
 import { Client } from '../../mfos';
-import { logger } from '../../utils/logger';
-import { getProductPageFiles } from '../notionHelpers';
 import {
   uploadClo3dFileForProduct,
   uploadContentForProduct,
@@ -15,6 +13,8 @@ import {
   productsFilesSelector,
   productsSelector,
 } from '../../mfos/products/selectors';
+import { logger } from '../../utils/logger';
+import { getProductPageFiles } from '../notionHelpers';
 
 export async function migrateProductFiles(client: Client): Promise<void> {
   const productsQuery = await client('query')({

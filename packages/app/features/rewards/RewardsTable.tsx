@@ -1,6 +1,7 @@
 import React from 'react';
-import { H2, P, Text } from 'app/ui/typography';
+
 import { Separator } from 'app/ui/layout/Separator';
+import { H2, P, Text } from 'app/ui/typography';
 
 type RewardsTableProps = {
   values: Record<number, string>;

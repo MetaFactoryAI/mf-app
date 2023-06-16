@@ -1,8 +1,10 @@
 import React from 'react';
-import { NavBar } from 'app/ui/navbar';
+
 import { useRouter } from 'next/router';
-import { BottomTabs } from 'app/ui/navbar/BottomTabs';
+
 import { Box } from 'app/ui/layout/Box';
+import { NavBar } from 'app/ui/navbar';
+import { BottomTabs } from 'app/ui/navbar/BottomTabs';
 
 type NavLayoutProps = {
   children: React.ReactNode;

@@ -1,8 +1,14 @@
 /* eslint-disable no-await-in-loop */
 import assert from 'assert';
+
 import uniqBy from 'lodash/uniqBy';
 
 import { PRODUCT_STAGES, ValueTypes } from '../../mfos';
+import {
+  createBrandIfNotExists,
+  CreateBrandResult,
+} from '../../mfos/brands/mutations';
+import { createProductIfNotExists } from '../../mfos/products/mutations';
 import { logger } from '../../utils/logger';
 import {
   getProductBrand,
@@ -17,11 +23,6 @@ import {
 } from '../../utils/notion/productHelpers';
 import { isNotNullOrUndefined } from '../../utils/typeHelpers';
 import { getNotionProducts } from '../notionHelpers';
-import { createProductIfNotExists } from '../../mfos/products/mutations';
-import {
-  createBrandIfNotExists,
-  CreateBrandResult,
-} from '../../mfos/brands/mutations';
 
 const PRODUCT_STATUS_TO_STAGE: Record<
   string,

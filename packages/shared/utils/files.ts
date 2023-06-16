@@ -1,5 +1,7 @@
-import { FileRes } from 'services/mfos/files/selectors';
 import assert from 'assert';
+
+import { FileRes } from 'services/mfos/files/selectors';
+
 import { FILES_BASE_URL } from '../config/public';
 
 export const EXTENSION_MIME_TYPES = {

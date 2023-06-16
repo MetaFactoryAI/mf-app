@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { z } from 'zod';
 
+import { WearableMetadata } from 'shared/types/wearableTypes';
+import { EXTENSION_MIME_TYPES } from 'shared/utils/files';
+
 import { $, ValueTypes } from '../graphql/__generated__/zeus';
 import { hasuraClient } from '../graphql/client';
+
 import { getFiles } from './filesHelpers';
 import { ProductPage } from './notion/parser';
 import {
@@ -19,8 +23,6 @@ import {
   getWearablesFolder,
 } from './notion/productHelpers';
 import { isNotNullOrUndefined } from './typeHelpers';
-import { EXTENSION_MIME_TYPES } from 'shared/utils/files';
-import { WearableMetadata } from 'shared/types/wearableTypes';
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const updateProduct = async (

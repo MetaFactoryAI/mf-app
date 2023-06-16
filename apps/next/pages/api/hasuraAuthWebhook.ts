@@ -1,9 +1,10 @@
 import { VercelRequest, VercelResponse } from '@vercel/node';
 
+import { APP_NAME } from 'shared/config/auth';
+
 import { defaultMainnetProvider } from 'services/utils/defaultProvider';
 import { APITokenResult, isValidAuthToken } from 'services/utils/userHelpers';
 import { verifyToken } from 'services/utils/web3JWT';
-import { APP_NAME } from 'shared/config/auth';
 
 const unauthorizedVariables = {
   'X-Hasura-Role': 'public',

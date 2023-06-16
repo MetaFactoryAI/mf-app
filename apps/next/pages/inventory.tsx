@@ -1,6 +1,8 @@
-import { NavLayout } from '../lib/NavLayout';
 import type { SolitoPage } from 'solito';
+
 import { SecondScreen } from 'app/features/home/SecondScreen';
+
+import { NavLayout } from '../lib/NavLayout';
 
 const Settings: SolitoPage = () => <SecondScreen title={'My Inventory'} />;
 

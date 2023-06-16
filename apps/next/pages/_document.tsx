@@ -1,9 +1,10 @@
 import React from 'react';
-import { AppRegistry } from 'react-native';
-import { NativeWindStyleSheet } from 'nativewind';
 
 import NextDocument, { Html, Head, Main, NextScript } from 'next/document';
 import type { DocumentContext } from 'next/document';
+
+import { NativeWindStyleSheet } from 'nativewind';
+import { AppRegistry } from 'react-native';
 
 class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {

@@ -11,7 +11,12 @@ module.exports = {
     },
   },
   plugins: ['@typescript-eslint'],
-  ignorePatterns: ['.eslintrc.js', '*.config.js', 'shim.js'],
+  ignorePatterns: [
+    '.eslintrc.js',
+    '*.config.js',
+    'shim.js',
+    './node_modules/**',
+  ],
   root: true,
   rules: {
     'import/order': [
@@ -27,6 +32,11 @@ module.exports = {
         ],
         pathGroups: [
           {
+            pattern: 'app/**',
+            group: 'internal',
+            position: 'after',
+          },
+          {
             pattern: 'shared/**',
             group: 'internal',
             position: 'after',
@@ -37,8 +47,23 @@ module.exports = {
             position: 'after',
           },
           {
+            pattern: '~/**',
+            group: 'internal',
+            position: 'after',
+          },
+          {
             pattern: '@*/**',
             group: 'external',
+          },
+          {
+            pattern: 'react',
+            group: 'external',
+            position: 'before',
+          },
+          {
+            pattern: 'next/**',
+            group: 'external',
+            position: 'before',
           },
         ],
         pathGroupsExcludedImportTypes: ['builtin'],

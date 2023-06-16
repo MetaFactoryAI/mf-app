@@ -3,11 +3,10 @@
 import { useQuery } from '@tanstack/react-query';
 import dayjs from 'dayjs';
 
-import { hasuraClient } from 'services/graphql/client';
+import { formatNumber } from 'shared/utils/numberHelpers';
 
 import { order_by } from 'services/graphql/__generated__/zeus';
-
-import { formatNumber } from 'shared/utils/numberHelpers';
+import { hasuraClient } from 'services/graphql/client';
 
 export type DesignerReward = {
   robot_reward: number;
