@@ -2182,6 +2182,51 @@ export type ValueTypes = {
       },
       ValueTypes['invoices_aggregated'],
     ];
+    production_materials_files?: [
+      {
+        filter?:
+          | ValueTypes['production_materials_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['production_materials_files'],
+    ];
+    production_materials_files_by_id?: [
+      { id: string | Variable<any, string> },
+      ValueTypes['production_materials_files'],
+    ];
+    production_materials_files_aggregated?: [
+      {
+        groupBy?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        filter?:
+          | ValueTypes['production_materials_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+      },
+      ValueTypes['production_materials_files_aggregated'],
+    ];
     __typename?: boolean | `@${string}`;
   }>;
   ['brands']: AliasType<{
@@ -3519,6 +3564,65 @@ export type ValueTypes = {
     shopify_id?: boolean | `@${string}`;
     status?: boolean | `@${string}`;
     notes?: boolean | `@${string}`;
+    date_updated?: boolean | `@${string}`;
+    date_updated_func?: ValueTypes['datetime_functions'];
+    html_file?: [
+      {
+        filter?:
+          | ValueTypes['directus_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['directus_files'],
+    ];
+    thumbnail?: [
+      {
+        filter?:
+          | ValueTypes['directus_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['directus_files'],
+    ];
+    vrm_file?: [
+      {
+        filter?:
+          | ValueTypes['directus_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['directus_files'],
+    ];
     contributors?: [
       {
         filter?:
@@ -3539,6 +3643,26 @@ export type ValueTypes = {
       ValueTypes['products_contributors'],
     ];
     contributors_func?: ValueTypes['count_functions'];
+    materials?: [
+      {
+        filter?:
+          | ValueTypes['products_production_materials_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['products_production_materials'],
+    ];
+    materials_func?: ValueTypes['count_functions'];
     design_files?: [
       {
         filter?:
@@ -3599,26 +3723,6 @@ export type ValueTypes = {
       ValueTypes['products_files'],
     ];
     images_func?: ValueTypes['count_functions'];
-    materials?: [
-      {
-        filter?:
-          | ValueTypes['products_production_materials_filter']
-          | undefined
-          | null
-          | Variable<any, string>;
-        sort?:
-          | Array<string | undefined | null>
-          | undefined
-          | null
-          | Variable<any, string>;
-        limit?: number | undefined | null | Variable<any, string>;
-        offset?: number | undefined | null | Variable<any, string>;
-        page?: number | undefined | null | Variable<any, string>;
-        search?: string | undefined | null | Variable<any, string>;
-      },
-      ValueTypes['products_production_materials'],
-    ];
-    materials_func?: ValueTypes['count_functions'];
     wearable_files?: [
       {
         filter?:
@@ -3914,12 +4018,47 @@ export type ValueTypes = {
       | undefined
       | null
       | Variable<any, string>;
+    date_updated?:
+      | ValueTypes['date_filter_operators']
+      | undefined
+      | null
+      | Variable<any, string>;
+    date_updated_func?:
+      | ValueTypes['datetime_function_filter_operators']
+      | undefined
+      | null
+      | Variable<any, string>;
+    html_file?:
+      | ValueTypes['directus_files_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
+    thumbnail?:
+      | ValueTypes['directus_files_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
+    vrm_file?:
+      | ValueTypes['directus_files_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
     contributors?:
       | ValueTypes['products_contributors_filter']
       | undefined
       | null
       | Variable<any, string>;
     contributors_func?:
+      | ValueTypes['count_function_filter_operators']
+      | undefined
+      | null
+      | Variable<any, string>;
+    materials?:
+      | ValueTypes['products_production_materials_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
+    materials_func?:
       | ValueTypes['count_function_filter_operators']
       | undefined
       | null
@@ -3950,16 +4089,6 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
     images_func?:
-      | ValueTypes['count_function_filter_operators']
-      | undefined
-      | null
-      | Variable<any, string>;
-    materials?:
-      | ValueTypes['products_production_materials_filter']
-      | undefined
-      | null
-      | Variable<any, string>;
-    materials_func?:
       | ValueTypes['count_function_filter_operators']
       | undefined
       | null
@@ -4323,6 +4452,16 @@ export type ValueTypes = {
       | undefined
       | null
       | Variable<any, string>;
+    base_assets?:
+      | ValueTypes['production_materials_files_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
+    base_assets_func?:
+      | ValueTypes['count_function_filter_operators']
+      | undefined
+      | null
+      | Variable<any, string>;
     _and?:
       | Array<ValueTypes['production_materials_filter'] | undefined | null>
       | undefined
@@ -4457,6 +4596,37 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
   };
+  ['production_materials_files_filter']: {
+    directus_files_id?:
+      | ValueTypes['directus_files_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
+    id?:
+      | ValueTypes['number_filter_operators']
+      | undefined
+      | null
+      | Variable<any, string>;
+    production_materials_id?:
+      | ValueTypes['production_materials_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
+    _and?:
+      | Array<
+          ValueTypes['production_materials_files_filter'] | undefined | null
+        >
+      | undefined
+      | null
+      | Variable<any, string>;
+    _or?:
+      | Array<
+          ValueTypes['production_materials_files_filter'] | undefined | null
+        >
+      | undefined
+      | null
+      | Variable<any, string>;
+  };
   ['stages_filter']: {
     description?:
       | ValueTypes['string_filter_operators']
@@ -4543,6 +4713,37 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
   };
+  ['products_production_materials_filter']: {
+    id?:
+      | ValueTypes['number_filter_operators']
+      | undefined
+      | null
+      | Variable<any, string>;
+    production_materials_id?:
+      | ValueTypes['production_materials_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
+    products_id?:
+      | ValueTypes['products_filter']
+      | undefined
+      | null
+      | Variable<any, string>;
+    _and?:
+      | Array<
+          ValueTypes['products_production_materials_filter'] | undefined | null
+        >
+      | undefined
+      | null
+      | Variable<any, string>;
+    _or?:
+      | Array<
+          ValueTypes['products_production_materials_filter'] | undefined | null
+        >
+      | undefined
+      | null
+      | Variable<any, string>;
+  };
   ['products_design_files_filter']: {
     directus_files_id?:
       | ValueTypes['directus_files_filter']
@@ -4620,37 +4821,6 @@ export type ValueTypes = {
       | Variable<any, string>;
     _or?:
       | Array<ValueTypes['products_files_filter'] | undefined | null>
-      | undefined
-      | null
-      | Variable<any, string>;
-  };
-  ['products_production_materials_filter']: {
-    id?:
-      | ValueTypes['number_filter_operators']
-      | undefined
-      | null
-      | Variable<any, string>;
-    production_materials_id?:
-      | ValueTypes['production_materials_filter']
-      | undefined
-      | null
-      | Variable<any, string>;
-    products_id?:
-      | ValueTypes['products_filter']
-      | undefined
-      | null
-      | Variable<any, string>;
-    _and?:
-      | Array<
-          ValueTypes['products_production_materials_filter'] | undefined | null
-        >
-      | undefined
-      | null
-      | Variable<any, string>;
-    _or?:
-      | Array<
-          ValueTypes['products_production_materials_filter'] | undefined | null
-        >
       | undefined
       | null
       | Variable<any, string>;
@@ -5113,6 +5283,26 @@ export type ValueTypes = {
       ValueTypes['producers_production_materials'],
     ];
     stocked_at_func?: ValueTypes['count_functions'];
+    base_assets?: [
+      {
+        filter?:
+          | ValueTypes['production_materials_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['production_materials_files'],
+    ];
+    base_assets_func?: ValueTypes['count_functions'];
     __typename?: boolean | `@${string}`;
   }>;
   ['production_materials_production_methods']: AliasType<{
@@ -5247,6 +5437,48 @@ export type ValueTypes = {
     ];
     __typename?: boolean | `@${string}`;
   }>;
+  ['production_materials_files']: AliasType<{
+    directus_files_id?: [
+      {
+        filter?:
+          | ValueTypes['directus_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['directus_files'],
+    ];
+    id?: boolean | `@${string}`;
+    production_materials_id?: [
+      {
+        filter?:
+          | ValueTypes['production_materials_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['production_materials'],
+    ];
+    __typename?: boolean | `@${string}`;
+  }>;
   ['stages']: AliasType<{
     description?: boolean | `@${string}`;
     name?: boolean | `@${string}`;
@@ -5300,6 +5532,48 @@ export type ValueTypes = {
       ValueTypes['products'],
     ];
     robot_earned?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['products_production_materials']: AliasType<{
+    id?: boolean | `@${string}`;
+    production_materials_id?: [
+      {
+        filter?:
+          | ValueTypes['production_materials_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['production_materials'],
+    ];
+    products_id?: [
+      {
+        filter?:
+          | ValueTypes['products_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+      },
+      ValueTypes['products'],
+    ];
     __typename?: boolean | `@${string}`;
   }>;
   ['products_design_files']: AliasType<{
@@ -5407,48 +5681,6 @@ export type ValueTypes = {
       ValueTypes['directus_files'],
     ];
     id?: boolean | `@${string}`;
-    products_id?: [
-      {
-        filter?:
-          | ValueTypes['products_filter']
-          | undefined
-          | null
-          | Variable<any, string>;
-        sort?:
-          | Array<string | undefined | null>
-          | undefined
-          | null
-          | Variable<any, string>;
-        limit?: number | undefined | null | Variable<any, string>;
-        offset?: number | undefined | null | Variable<any, string>;
-        page?: number | undefined | null | Variable<any, string>;
-        search?: string | undefined | null | Variable<any, string>;
-      },
-      ValueTypes['products'],
-    ];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['products_production_materials']: AliasType<{
-    id?: boolean | `@${string}`;
-    production_materials_id?: [
-      {
-        filter?:
-          | ValueTypes['production_materials_filter']
-          | undefined
-          | null
-          | Variable<any, string>;
-        sort?:
-          | Array<string | undefined | null>
-          | undefined
-          | null
-          | Variable<any, string>;
-        limit?: number | undefined | null | Variable<any, string>;
-        offset?: number | undefined | null | Variable<any, string>;
-        page?: number | undefined | null | Variable<any, string>;
-        search?: string | undefined | null | Variable<any, string>;
-      },
-      ValueTypes['production_materials'],
-    ];
     products_id?: [
       {
         filter?:
@@ -6291,11 +6523,15 @@ export type ValueTypes = {
     shopify_id?: boolean | `@${string}`;
     status?: boolean | `@${string}`;
     notes?: boolean | `@${string}`;
+    date_updated?: boolean | `@${string}`;
+    html_file?: boolean | `@${string}`;
+    thumbnail?: boolean | `@${string}`;
+    vrm_file?: boolean | `@${string}`;
     contributors?: boolean | `@${string}`;
+    materials?: boolean | `@${string}`;
     design_files?: boolean | `@${string}`;
     content?: boolean | `@${string}`;
     images?: boolean | `@${string}`;
-    materials?: boolean | `@${string}`;
     wearable_files?: boolean | `@${string}`;
     production_methods?: boolean | `@${string}`;
     /** Invoices to clients for deposits */
@@ -6350,6 +6586,8 @@ export type ValueTypes = {
     tags?: boolean | `@${string}`;
     production_methods?: boolean | `@${string}`;
     stocked_at?: boolean | `@${string}`;
+    /** Design files, mockups, base meshes for wearbles, CLO3d files, etc */
+    base_assets?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['production_materials_aggregated_fields']: AliasType<{
@@ -6398,6 +6636,30 @@ export type ValueTypes = {
     production_product_id?: boolean | `@${string}`;
     /** Invoices to clients for a given product */
     client_product_id?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['production_materials_files_aggregated']: AliasType<{
+    group?: boolean | `@${string}`;
+    countAll?: boolean | `@${string}`;
+    count?: ValueTypes['production_materials_files_aggregated_count'];
+    countDistinct?: ValueTypes['production_materials_files_aggregated_count'];
+    avg?: ValueTypes['production_materials_files_aggregated_fields'];
+    sum?: ValueTypes['production_materials_files_aggregated_fields'];
+    avgDistinct?: ValueTypes['production_materials_files_aggregated_fields'];
+    sumDistinct?: ValueTypes['production_materials_files_aggregated_fields'];
+    min?: ValueTypes['production_materials_files_aggregated_fields'];
+    max?: ValueTypes['production_materials_files_aggregated_fields'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['production_materials_files_aggregated_count']: AliasType<{
+    directus_files_id?: boolean | `@${string}`;
+    id?: boolean | `@${string}`;
+    production_materials_id?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['production_materials_files_aggregated_fields']: AliasType<{
+    id?: boolean | `@${string}`;
+    production_materials_id?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['Mutation']: AliasType<{
@@ -7194,6 +7456,38 @@ export type ValueTypes = {
     create_invoices_item?: [
       { data: ValueTypes['create_invoices_input'] | Variable<any, string> },
       ValueTypes['invoices'],
+    ];
+    create_production_materials_files_items?: [
+      {
+        filter?:
+          | ValueTypes['production_materials_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+        data?:
+          | Array<ValueTypes['create_production_materials_files_input']>
+          | undefined
+          | null
+          | Variable<any, string>;
+      },
+      ValueTypes['production_materials_files'],
+    ];
+    create_production_materials_files_item?: [
+      {
+        data:
+          | ValueTypes['create_production_materials_files_input']
+          | Variable<any, string>;
+      },
+      ValueTypes['production_materials_files'],
     ];
     update_brands_items?: [
       {
@@ -8609,6 +8903,62 @@ export type ValueTypes = {
       },
       ValueTypes['invoices'],
     ];
+    update_production_materials_files_items?: [
+      {
+        filter?:
+          | ValueTypes['production_materials_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+        ids: Array<string | undefined | null> | Variable<any, string>;
+        data:
+          | ValueTypes['update_production_materials_files_input']
+          | Variable<any, string>;
+      },
+      ValueTypes['production_materials_files'],
+    ];
+    update_production_materials_files_batch?: [
+      {
+        filter?:
+          | ValueTypes['production_materials_files_filter']
+          | undefined
+          | null
+          | Variable<any, string>;
+        sort?:
+          | Array<string | undefined | null>
+          | undefined
+          | null
+          | Variable<any, string>;
+        limit?: number | undefined | null | Variable<any, string>;
+        offset?: number | undefined | null | Variable<any, string>;
+        page?: number | undefined | null | Variable<any, string>;
+        search?: string | undefined | null | Variable<any, string>;
+        data?:
+          | Array<ValueTypes['update_production_materials_files_input']>
+          | undefined
+          | null
+          | Variable<any, string>;
+      },
+      ValueTypes['production_materials_files'],
+    ];
+    update_production_materials_files_item?: [
+      {
+        id: string | Variable<any, string>;
+        data:
+          | ValueTypes['update_production_materials_files_input']
+          | Variable<any, string>;
+      },
+      ValueTypes['production_materials_files'],
+    ];
     delete_brands_items?: [
       { ids: Array<string | undefined | null> | Variable<any, string> },
       ValueTypes['delete_many'],
@@ -8814,6 +9164,14 @@ export type ValueTypes = {
       ValueTypes['delete_many'],
     ];
     delete_invoices_item?: [
+      { id: string | Variable<any, string> },
+      ValueTypes['delete_one'],
+    ];
+    delete_production_materials_files_items?: [
+      { ids: Array<string | undefined | null> | Variable<any, string> },
+      ValueTypes['delete_many'],
+    ];
+    delete_production_materials_files_item?: [
       { id: string | Variable<any, string> },
       ValueTypes['delete_one'],
     ];
@@ -9077,9 +9435,38 @@ export type ValueTypes = {
     shopify_id?: string | undefined | null | Variable<any, string>;
     status?: string | undefined | null | Variable<any, string>;
     notes?: string | undefined | null | Variable<any, string>;
+    date_updated?:
+      | ValueTypes['Date']
+      | undefined
+      | null
+      | Variable<any, string>;
+    html_file?:
+      | ValueTypes['create_directus_files_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+    thumbnail?:
+      | ValueTypes['create_directus_files_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+    vrm_file?:
+      | ValueTypes['create_directus_files_input']
+      | undefined
+      | null
+      | Variable<any, string>;
     contributors?:
       | Array<
           ValueTypes['create_products_contributors_input'] | undefined | null
+        >
+      | undefined
+      | null
+      | Variable<any, string>;
+    materials?:
+      | Array<
+          | ValueTypes['create_products_production_materials_input']
+          | undefined
+          | null
         >
       | undefined
       | null
@@ -9098,15 +9485,6 @@ export type ValueTypes = {
       | Variable<any, string>;
     images?:
       | Array<ValueTypes['create_products_files_input'] | undefined | null>
-      | undefined
-      | null
-      | Variable<any, string>;
-    materials?:
-      | Array<
-          | ValueTypes['create_products_production_materials_input']
-          | undefined
-          | null
-        >
       | undefined
       | null
       | Variable<any, string>;
@@ -9247,6 +9625,15 @@ export type ValueTypes = {
       | undefined
       | null
       | Variable<any, string>;
+    base_assets?:
+      | Array<
+          | ValueTypes['create_production_materials_files_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null
+      | Variable<any, string>;
   };
   ['create_production_materials_production_methods_input']: {
     id?: string | undefined | null | Variable<any, string>;
@@ -9298,6 +9685,19 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
   };
+  ['create_production_materials_files_input']: {
+    directus_files_id?:
+      | ValueTypes['create_directus_files_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+    id?: string | undefined | null | Variable<any, string>;
+    production_materials_id?:
+      | ValueTypes['create_production_materials_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+  };
   ['create_stages_input']: {
     description?: string | undefined | null | Variable<any, string>;
     name: string | Variable<any, string>;
@@ -9321,6 +9721,19 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
     robot_earned?: number | undefined | null | Variable<any, string>;
+  };
+  ['create_products_production_materials_input']: {
+    id?: string | undefined | null | Variable<any, string>;
+    production_materials_id?:
+      | ValueTypes['create_production_materials_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+    products_id?:
+      | ValueTypes['create_products_input']
+      | undefined
+      | null
+      | Variable<any, string>;
   };
   ['create_products_design_files_input']: {
     directus_files_id?:
@@ -9355,19 +9768,6 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
     id?: string | undefined | null | Variable<any, string>;
-    products_id?:
-      | ValueTypes['create_products_input']
-      | undefined
-      | null
-      | Variable<any, string>;
-  };
-  ['create_products_production_materials_input']: {
-    id?: string | undefined | null | Variable<any, string>;
-    production_materials_id?:
-      | ValueTypes['create_production_materials_input']
-      | undefined
-      | null
-      | Variable<any, string>;
     products_id?:
       | ValueTypes['create_products_input']
       | undefined
@@ -9724,9 +10124,38 @@ export type ValueTypes = {
     shopify_id?: string | undefined | null | Variable<any, string>;
     status?: string | undefined | null | Variable<any, string>;
     notes?: string | undefined | null | Variable<any, string>;
+    date_updated?:
+      | ValueTypes['Date']
+      | undefined
+      | null
+      | Variable<any, string>;
+    html_file?:
+      | ValueTypes['update_directus_files_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+    thumbnail?:
+      | ValueTypes['update_directus_files_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+    vrm_file?:
+      | ValueTypes['update_directus_files_input']
+      | undefined
+      | null
+      | Variable<any, string>;
     contributors?:
       | Array<
           ValueTypes['update_products_contributors_input'] | undefined | null
+        >
+      | undefined
+      | null
+      | Variable<any, string>;
+    materials?:
+      | Array<
+          | ValueTypes['update_products_production_materials_input']
+          | undefined
+          | null
         >
       | undefined
       | null
@@ -9745,15 +10174,6 @@ export type ValueTypes = {
       | Variable<any, string>;
     images?:
       | Array<ValueTypes['update_products_files_input'] | undefined | null>
-      | undefined
-      | null
-      | Variable<any, string>;
-    materials?:
-      | Array<
-          | ValueTypes['update_products_production_materials_input']
-          | undefined
-          | null
-        >
       | undefined
       | null
       | Variable<any, string>;
@@ -9894,6 +10314,15 @@ export type ValueTypes = {
       | undefined
       | null
       | Variable<any, string>;
+    base_assets?:
+      | Array<
+          | ValueTypes['update_production_materials_files_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null
+      | Variable<any, string>;
   };
   ['update_production_materials_production_methods_input']: {
     id?: string | undefined | null | Variable<any, string>;
@@ -9945,6 +10374,19 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
   };
+  ['update_production_materials_files_input']: {
+    directus_files_id?:
+      | ValueTypes['update_directus_files_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+    id?: string | undefined | null | Variable<any, string>;
+    production_materials_id?:
+      | ValueTypes['update_production_materials_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+  };
   ['update_stages_input']: {
     description?: string | undefined | null | Variable<any, string>;
     name?: string | undefined | null | Variable<any, string>;
@@ -9968,6 +10410,19 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
     robot_earned?: number | undefined | null | Variable<any, string>;
+  };
+  ['update_products_production_materials_input']: {
+    id?: string | undefined | null | Variable<any, string>;
+    production_materials_id?:
+      | ValueTypes['update_production_materials_input']
+      | undefined
+      | null
+      | Variable<any, string>;
+    products_id?:
+      | ValueTypes['update_products_input']
+      | undefined
+      | null
+      | Variable<any, string>;
   };
   ['update_products_design_files_input']: {
     directus_files_id?:
@@ -10002,19 +10457,6 @@ export type ValueTypes = {
       | null
       | Variable<any, string>;
     id?: string | undefined | null | Variable<any, string>;
-    products_id?:
-      | ValueTypes['update_products_input']
-      | undefined
-      | null
-      | Variable<any, string>;
-  };
-  ['update_products_production_materials_input']: {
-    id?: string | undefined | null | Variable<any, string>;
-    production_materials_id?:
-      | ValueTypes['update_production_materials_input']
-      | undefined
-      | null
-      | Variable<any, string>;
     products_id?:
       | ValueTypes['update_products_input']
       | undefined
@@ -10834,6 +11276,37 @@ export type ResolverInputTypes = {
         sort?: Array<string | undefined | null> | undefined | null;
       },
       ResolverInputTypes['invoices_aggregated'],
+    ];
+    production_materials_files?: [
+      {
+        filter?:
+          | ResolverInputTypes['production_materials_files_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['production_materials_files'],
+    ];
+    production_materials_files_by_id?: [
+      { id: string },
+      ResolverInputTypes['production_materials_files'],
+    ];
+    production_materials_files_aggregated?: [
+      {
+        groupBy?: Array<string | undefined | null> | undefined | null;
+        filter?:
+          | ResolverInputTypes['production_materials_files_filter']
+          | undefined
+          | null;
+        limit?: number | undefined | null;
+        search?: string | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+      },
+      ResolverInputTypes['production_materials_files_aggregated'],
     ];
     __typename?: boolean | `@${string}`;
   }>;
@@ -11683,6 +12156,41 @@ export type ResolverInputTypes = {
     shopify_id?: boolean | `@${string}`;
     status?: boolean | `@${string}`;
     notes?: boolean | `@${string}`;
+    date_updated?: boolean | `@${string}`;
+    date_updated_func?: ResolverInputTypes['datetime_functions'];
+    html_file?: [
+      {
+        filter?: ResolverInputTypes['directus_files_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['directus_files'],
+    ];
+    thumbnail?: [
+      {
+        filter?: ResolverInputTypes['directus_files_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['directus_files'],
+    ];
+    vrm_file?: [
+      {
+        filter?: ResolverInputTypes['directus_files_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['directus_files'],
+    ];
     contributors?: [
       {
         filter?:
@@ -11698,6 +12206,21 @@ export type ResolverInputTypes = {
       ResolverInputTypes['products_contributors'],
     ];
     contributors_func?: ResolverInputTypes['count_functions'];
+    materials?: [
+      {
+        filter?:
+          | ResolverInputTypes['products_production_materials_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['products_production_materials'],
+    ];
+    materials_func?: ResolverInputTypes['count_functions'];
     design_files?: [
       {
         filter?:
@@ -11740,21 +12263,6 @@ export type ResolverInputTypes = {
       ResolverInputTypes['products_files'],
     ];
     images_func?: ResolverInputTypes['count_functions'];
-    materials?: [
-      {
-        filter?:
-          | ResolverInputTypes['products_production_materials_filter']
-          | undefined
-          | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ResolverInputTypes['products_production_materials'],
-    ];
-    materials_func?: ResolverInputTypes['count_functions'];
     wearable_files?: [
       {
         filter?:
@@ -11925,11 +12433,30 @@ export type ResolverInputTypes = {
       | null;
     status?: ResolverInputTypes['string_filter_operators'] | undefined | null;
     notes?: ResolverInputTypes['string_filter_operators'] | undefined | null;
+    date_updated?:
+      | ResolverInputTypes['date_filter_operators']
+      | undefined
+      | null;
+    date_updated_func?:
+      | ResolverInputTypes['datetime_function_filter_operators']
+      | undefined
+      | null;
+    html_file?: ResolverInputTypes['directus_files_filter'] | undefined | null;
+    thumbnail?: ResolverInputTypes['directus_files_filter'] | undefined | null;
+    vrm_file?: ResolverInputTypes['directus_files_filter'] | undefined | null;
     contributors?:
       | ResolverInputTypes['products_contributors_filter']
       | undefined
       | null;
     contributors_func?:
+      | ResolverInputTypes['count_function_filter_operators']
+      | undefined
+      | null;
+    materials?:
+      | ResolverInputTypes['products_production_materials_filter']
+      | undefined
+      | null;
+    materials_func?:
       | ResolverInputTypes['count_function_filter_operators']
       | undefined
       | null;
@@ -11948,14 +12475,6 @@ export type ResolverInputTypes = {
       | null;
     images?: ResolverInputTypes['products_files_filter'] | undefined | null;
     images_func?:
-      | ResolverInputTypes['count_function_filter_operators']
-      | undefined
-      | null;
-    materials?:
-      | ResolverInputTypes['products_production_materials_filter']
-      | undefined
-      | null;
-    materials_func?:
       | ResolverInputTypes['count_function_filter_operators']
       | undefined
       | null;
@@ -12172,6 +12691,14 @@ export type ResolverInputTypes = {
       | ResolverInputTypes['count_function_filter_operators']
       | undefined
       | null;
+    base_assets?:
+      | ResolverInputTypes['production_materials_files_filter']
+      | undefined
+      | null;
+    base_assets_func?:
+      | ResolverInputTypes['count_function_filter_operators']
+      | undefined
+      | null;
     _and?:
       | Array<
           ResolverInputTypes['production_materials_filter'] | undefined | null
@@ -12277,6 +12804,33 @@ export type ResolverInputTypes = {
       | undefined
       | null;
   };
+  ['production_materials_files_filter']: {
+    directus_files_id?:
+      | ResolverInputTypes['directus_files_filter']
+      | undefined
+      | null;
+    id?: ResolverInputTypes['number_filter_operators'] | undefined | null;
+    production_materials_id?:
+      | ResolverInputTypes['production_materials_filter']
+      | undefined
+      | null;
+    _and?:
+      | Array<
+          | ResolverInputTypes['production_materials_files_filter']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+    _or?:
+      | Array<
+          | ResolverInputTypes['production_materials_files_filter']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+  };
   ['stages_filter']: {
     description?:
       | ResolverInputTypes['string_filter_operators']
@@ -12333,6 +12887,30 @@ export type ResolverInputTypes = {
       | undefined
       | null;
   };
+  ['products_production_materials_filter']: {
+    id?: ResolverInputTypes['number_filter_operators'] | undefined | null;
+    production_materials_id?:
+      | ResolverInputTypes['production_materials_filter']
+      | undefined
+      | null;
+    products_id?: ResolverInputTypes['products_filter'] | undefined | null;
+    _and?:
+      | Array<
+          | ResolverInputTypes['products_production_materials_filter']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+    _or?:
+      | Array<
+          | ResolverInputTypes['products_production_materials_filter']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+  };
   ['products_design_files_filter']: {
     directus_files_id?:
       | ResolverInputTypes['directus_files_filter']
@@ -12382,30 +12960,6 @@ export type ResolverInputTypes = {
       | null;
     _or?:
       | Array<ResolverInputTypes['products_files_filter'] | undefined | null>
-      | undefined
-      | null;
-  };
-  ['products_production_materials_filter']: {
-    id?: ResolverInputTypes['number_filter_operators'] | undefined | null;
-    production_materials_id?:
-      | ResolverInputTypes['production_materials_filter']
-      | undefined
-      | null;
-    products_id?: ResolverInputTypes['products_filter'] | undefined | null;
-    _and?:
-      | Array<
-          | ResolverInputTypes['products_production_materials_filter']
-          | undefined
-          | null
-        >
-      | undefined
-      | null;
-    _or?:
-      | Array<
-          | ResolverInputTypes['products_production_materials_filter']
-          | undefined
-          | null
-        >
       | undefined
       | null;
   };
@@ -12735,6 +13289,21 @@ export type ResolverInputTypes = {
       ResolverInputTypes['producers_production_materials'],
     ];
     stocked_at_func?: ResolverInputTypes['count_functions'];
+    base_assets?: [
+      {
+        filter?:
+          | ResolverInputTypes['production_materials_files_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['production_materials_files'],
+    ];
+    base_assets_func?: ResolverInputTypes['count_functions'];
     __typename?: boolean | `@${string}`;
   }>;
   ['production_materials_production_methods']: AliasType<{
@@ -12836,6 +13405,35 @@ export type ResolverInputTypes = {
     ];
     __typename?: boolean | `@${string}`;
   }>;
+  ['production_materials_files']: AliasType<{
+    directus_files_id?: [
+      {
+        filter?: ResolverInputTypes['directus_files_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['directus_files'],
+    ];
+    id?: boolean | `@${string}`;
+    production_materials_id?: [
+      {
+        filter?:
+          | ResolverInputTypes['production_materials_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['production_materials'],
+    ];
+    __typename?: boolean | `@${string}`;
+  }>;
   ['stages']: AliasType<{
     description?: boolean | `@${string}`;
     name?: boolean | `@${string}`;
@@ -12873,6 +13471,35 @@ export type ResolverInputTypes = {
       ResolverInputTypes['products'],
     ];
     robot_earned?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['products_production_materials']: AliasType<{
+    id?: boolean | `@${string}`;
+    production_materials_id?: [
+      {
+        filter?:
+          | ResolverInputTypes['production_materials_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['production_materials'],
+    ];
+    products_id?: [
+      {
+        filter?: ResolverInputTypes['products_filter'] | undefined | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+      },
+      ResolverInputTypes['products'],
+    ];
     __typename?: boolean | `@${string}`;
   }>;
   ['products_design_files']: AliasType<{
@@ -12940,35 +13567,6 @@ export type ResolverInputTypes = {
       ResolverInputTypes['directus_files'],
     ];
     id?: boolean | `@${string}`;
-    products_id?: [
-      {
-        filter?: ResolverInputTypes['products_filter'] | undefined | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ResolverInputTypes['products'],
-    ];
-    __typename?: boolean | `@${string}`;
-  }>;
-  ['products_production_materials']: AliasType<{
-    id?: boolean | `@${string}`;
-    production_materials_id?: [
-      {
-        filter?:
-          | ResolverInputTypes['production_materials_filter']
-          | undefined
-          | null;
-        sort?: Array<string | undefined | null> | undefined | null;
-        limit?: number | undefined | null;
-        offset?: number | undefined | null;
-        page?: number | undefined | null;
-        search?: string | undefined | null;
-      },
-      ResolverInputTypes['production_materials'],
-    ];
     products_id?: [
       {
         filter?: ResolverInputTypes['products_filter'] | undefined | null;
@@ -13718,11 +14316,15 @@ export type ResolverInputTypes = {
     shopify_id?: boolean | `@${string}`;
     status?: boolean | `@${string}`;
     notes?: boolean | `@${string}`;
+    date_updated?: boolean | `@${string}`;
+    html_file?: boolean | `@${string}`;
+    thumbnail?: boolean | `@${string}`;
+    vrm_file?: boolean | `@${string}`;
     contributors?: boolean | `@${string}`;
+    materials?: boolean | `@${string}`;
     design_files?: boolean | `@${string}`;
     content?: boolean | `@${string}`;
     images?: boolean | `@${string}`;
-    materials?: boolean | `@${string}`;
     wearable_files?: boolean | `@${string}`;
     production_methods?: boolean | `@${string}`;
     /** Invoices to clients for deposits */
@@ -13777,6 +14379,8 @@ export type ResolverInputTypes = {
     tags?: boolean | `@${string}`;
     production_methods?: boolean | `@${string}`;
     stocked_at?: boolean | `@${string}`;
+    /** Design files, mockups, base meshes for wearbles, CLO3d files, etc */
+    base_assets?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['production_materials_aggregated_fields']: AliasType<{
@@ -13825,6 +14429,30 @@ export type ResolverInputTypes = {
     production_product_id?: boolean | `@${string}`;
     /** Invoices to clients for a given product */
     client_product_id?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['production_materials_files_aggregated']: AliasType<{
+    group?: boolean | `@${string}`;
+    countAll?: boolean | `@${string}`;
+    count?: ResolverInputTypes['production_materials_files_aggregated_count'];
+    countDistinct?: ResolverInputTypes['production_materials_files_aggregated_count'];
+    avg?: ResolverInputTypes['production_materials_files_aggregated_fields'];
+    sum?: ResolverInputTypes['production_materials_files_aggregated_fields'];
+    avgDistinct?: ResolverInputTypes['production_materials_files_aggregated_fields'];
+    sumDistinct?: ResolverInputTypes['production_materials_files_aggregated_fields'];
+    min?: ResolverInputTypes['production_materials_files_aggregated_fields'];
+    max?: ResolverInputTypes['production_materials_files_aggregated_fields'];
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['production_materials_files_aggregated_count']: AliasType<{
+    directus_files_id?: boolean | `@${string}`;
+    id?: boolean | `@${string}`;
+    production_materials_id?: boolean | `@${string}`;
+    __typename?: boolean | `@${string}`;
+  }>;
+  ['production_materials_files_aggregated_fields']: AliasType<{
+    id?: boolean | `@${string}`;
+    production_materials_id?: boolean | `@${string}`;
     __typename?: boolean | `@${string}`;
   }>;
   ['Mutation']: AliasType<{
@@ -14386,6 +15014,28 @@ export type ResolverInputTypes = {
     create_invoices_item?: [
       { data: ResolverInputTypes['create_invoices_input'] },
       ResolverInputTypes['invoices'],
+    ];
+    create_production_materials_files_items?: [
+      {
+        filter?:
+          | ResolverInputTypes['production_materials_files_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        data?:
+          | Array<ResolverInputTypes['create_production_materials_files_input']>
+          | undefined
+          | null;
+      },
+      ResolverInputTypes['production_materials_files'],
+    ];
+    create_production_materials_files_item?: [
+      { data: ResolverInputTypes['create_production_materials_files_input'] },
+      ResolverInputTypes['production_materials_files'],
     ];
     update_brands_items?: [
       {
@@ -15360,6 +16010,47 @@ export type ResolverInputTypes = {
       { id: string; data: ResolverInputTypes['update_invoices_input'] },
       ResolverInputTypes['invoices'],
     ];
+    update_production_materials_files_items?: [
+      {
+        filter?:
+          | ResolverInputTypes['production_materials_files_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        ids: Array<string | undefined | null>;
+        data: ResolverInputTypes['update_production_materials_files_input'];
+      },
+      ResolverInputTypes['production_materials_files'],
+    ];
+    update_production_materials_files_batch?: [
+      {
+        filter?:
+          | ResolverInputTypes['production_materials_files_filter']
+          | undefined
+          | null;
+        sort?: Array<string | undefined | null> | undefined | null;
+        limit?: number | undefined | null;
+        offset?: number | undefined | null;
+        page?: number | undefined | null;
+        search?: string | undefined | null;
+        data?:
+          | Array<ResolverInputTypes['update_production_materials_files_input']>
+          | undefined
+          | null;
+      },
+      ResolverInputTypes['production_materials_files'],
+    ];
+    update_production_materials_files_item?: [
+      {
+        id: string;
+        data: ResolverInputTypes['update_production_materials_files_input'];
+      },
+      ResolverInputTypes['production_materials_files'],
+    ];
     delete_brands_items?: [
       { ids: Array<string | undefined | null> },
       ResolverInputTypes['delete_many'],
@@ -15544,6 +16235,14 @@ export type ResolverInputTypes = {
       ResolverInputTypes['delete_many'],
     ];
     delete_invoices_item?: [{ id: string }, ResolverInputTypes['delete_one']];
+    delete_production_materials_files_items?: [
+      { ids: Array<string | undefined | null> },
+      ResolverInputTypes['delete_many'],
+    ];
+    delete_production_materials_files_item?: [
+      { id: string },
+      ResolverInputTypes['delete_one'],
+    ];
     __typename?: boolean | `@${string}`;
   }>;
   ['create_brands_input']: {
@@ -15750,9 +16449,30 @@ export type ResolverInputTypes = {
     shopify_id?: string | undefined | null;
     status?: string | undefined | null;
     notes?: string | undefined | null;
+    date_updated?: ResolverInputTypes['Date'] | undefined | null;
+    html_file?:
+      | ResolverInputTypes['create_directus_files_input']
+      | undefined
+      | null;
+    thumbnail?:
+      | ResolverInputTypes['create_directus_files_input']
+      | undefined
+      | null;
+    vrm_file?:
+      | ResolverInputTypes['create_directus_files_input']
+      | undefined
+      | null;
     contributors?:
       | Array<
           | ResolverInputTypes['create_products_contributors_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+    materials?:
+      | Array<
+          | ResolverInputTypes['create_products_production_materials_input']
           | undefined
           | null
         >
@@ -15775,14 +16495,6 @@ export type ResolverInputTypes = {
     images?:
       | Array<
           ResolverInputTypes['create_products_files_input'] | undefined | null
-        >
-      | undefined
-      | null;
-    materials?:
-      | Array<
-          | ResolverInputTypes['create_products_production_materials_input']
-          | undefined
-          | null
         >
       | undefined
       | null;
@@ -15908,6 +16620,14 @@ export type ResolverInputTypes = {
         >
       | undefined
       | null;
+    base_assets?:
+      | Array<
+          | ResolverInputTypes['create_production_materials_files_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
   };
   ['create_production_materials_production_methods_input']: {
     id?: string | undefined | null;
@@ -15953,6 +16673,17 @@ export type ResolverInputTypes = {
       | undefined
       | null;
   };
+  ['create_production_materials_files_input']: {
+    directus_files_id?:
+      | ResolverInputTypes['create_directus_files_input']
+      | undefined
+      | null;
+    id?: string | undefined | null;
+    production_materials_id?:
+      | ResolverInputTypes['create_production_materials_input']
+      | undefined
+      | null;
+  };
   ['create_stages_input']: {
     description?: string | undefined | null;
     name: string;
@@ -15974,6 +16705,17 @@ export type ResolverInputTypes = {
       | undefined
       | null;
     robot_earned?: number | undefined | null;
+  };
+  ['create_products_production_materials_input']: {
+    id?: string | undefined | null;
+    production_materials_id?:
+      | ResolverInputTypes['create_production_materials_input']
+      | undefined
+      | null;
+    products_id?:
+      | ResolverInputTypes['create_products_input']
+      | undefined
+      | null;
   };
   ['create_products_design_files_input']: {
     directus_files_id?:
@@ -16003,17 +16745,6 @@ export type ResolverInputTypes = {
       | undefined
       | null;
     id?: string | undefined | null;
-    products_id?:
-      | ResolverInputTypes['create_products_input']
-      | undefined
-      | null;
-  };
-  ['create_products_production_materials_input']: {
-    id?: string | undefined | null;
-    production_materials_id?:
-      | ResolverInputTypes['create_production_materials_input']
-      | undefined
-      | null;
     products_id?:
       | ResolverInputTypes['create_products_input']
       | undefined
@@ -16293,9 +17024,30 @@ export type ResolverInputTypes = {
     shopify_id?: string | undefined | null;
     status?: string | undefined | null;
     notes?: string | undefined | null;
+    date_updated?: ResolverInputTypes['Date'] | undefined | null;
+    html_file?:
+      | ResolverInputTypes['update_directus_files_input']
+      | undefined
+      | null;
+    thumbnail?:
+      | ResolverInputTypes['update_directus_files_input']
+      | undefined
+      | null;
+    vrm_file?:
+      | ResolverInputTypes['update_directus_files_input']
+      | undefined
+      | null;
     contributors?:
       | Array<
           | ResolverInputTypes['update_products_contributors_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
+    materials?:
+      | Array<
+          | ResolverInputTypes['update_products_production_materials_input']
           | undefined
           | null
         >
@@ -16318,14 +17070,6 @@ export type ResolverInputTypes = {
     images?:
       | Array<
           ResolverInputTypes['update_products_files_input'] | undefined | null
-        >
-      | undefined
-      | null;
-    materials?:
-      | Array<
-          | ResolverInputTypes['update_products_production_materials_input']
-          | undefined
-          | null
         >
       | undefined
       | null;
@@ -16451,6 +17195,14 @@ export type ResolverInputTypes = {
         >
       | undefined
       | null;
+    base_assets?:
+      | Array<
+          | ResolverInputTypes['update_production_materials_files_input']
+          | undefined
+          | null
+        >
+      | undefined
+      | null;
   };
   ['update_production_materials_production_methods_input']: {
     id?: string | undefined | null;
@@ -16496,6 +17248,17 @@ export type ResolverInputTypes = {
       | undefined
       | null;
   };
+  ['update_production_materials_files_input']: {
+    directus_files_id?:
+      | ResolverInputTypes['update_directus_files_input']
+      | undefined
+      | null;
+    id?: string | undefined | null;
+    production_materials_id?:
+      | ResolverInputTypes['update_production_materials_input']
+      | undefined
+      | null;
+  };
   ['update_stages_input']: {
     description?: string | undefined | null;
     name?: string | undefined | null;
@@ -16517,6 +17280,17 @@ export type ResolverInputTypes = {
       | undefined
       | null;
     robot_earned?: number | undefined | null;
+  };
+  ['update_products_production_materials_input']: {
+    id?: string | undefined | null;
+    production_materials_id?:
+      | ResolverInputTypes['update_production_materials_input']
+      | undefined
+      | null;
+    products_id?:
+      | ResolverInputTypes['update_products_input']
+      | undefined
+      | null;
   };
   ['update_products_design_files_input']: {
     directus_files_id?:
@@ -16546,17 +17320,6 @@ export type ResolverInputTypes = {
       | undefined
       | null;
     id?: string | undefined | null;
-    products_id?:
-      | ResolverInputTypes['update_products_input']
-      | undefined
-      | null;
-  };
-  ['update_products_production_materials_input']: {
-    id?: string | undefined | null;
-    production_materials_id?:
-      | ResolverInputTypes['update_production_materials_input']
-      | undefined
-      | null;
     products_id?:
       | ResolverInputTypes['update_products_input']
       | undefined
@@ -16782,6 +17545,13 @@ export type ModelTypes = {
     invoices: Array<ModelTypes['invoices']>;
     invoices_by_id?: ModelTypes['invoices'] | undefined;
     invoices_aggregated: Array<ModelTypes['invoices_aggregated']>;
+    production_materials_files: Array<ModelTypes['production_materials_files']>;
+    production_materials_files_by_id?:
+      | ModelTypes['production_materials_files']
+      | undefined;
+    production_materials_files_aggregated: Array<
+      ModelTypes['production_materials_files_aggregated']
+    >;
   };
   ['brands']: {
     created_at?: ModelTypes['Date'] | undefined;
@@ -17177,10 +17947,19 @@ export type ModelTypes = {
     shopify_id?: string | undefined;
     status?: string | undefined;
     notes?: string | undefined;
+    date_updated?: ModelTypes['Date'] | undefined;
+    date_updated_func?: ModelTypes['datetime_functions'] | undefined;
+    html_file?: ModelTypes['directus_files'] | undefined;
+    thumbnail?: ModelTypes['directus_files'] | undefined;
+    vrm_file?: ModelTypes['directus_files'] | undefined;
     contributors?:
       | Array<ModelTypes['products_contributors'] | undefined>
       | undefined;
     contributors_func?: ModelTypes['count_functions'] | undefined;
+    materials?:
+      | Array<ModelTypes['products_production_materials'] | undefined>
+      | undefined;
+    materials_func?: ModelTypes['count_functions'] | undefined;
     design_files?:
       | Array<ModelTypes['products_design_files'] | undefined>
       | undefined;
@@ -17189,10 +17968,6 @@ export type ModelTypes = {
     content_func?: ModelTypes['count_functions'] | undefined;
     images?: Array<ModelTypes['products_files'] | undefined> | undefined;
     images_func?: ModelTypes['count_functions'] | undefined;
-    materials?:
-      | Array<ModelTypes['products_production_materials'] | undefined>
-      | undefined;
-    materials_func?: ModelTypes['count_functions'] | undefined;
     wearable_files?:
       | Array<ModelTypes['products_wearables'] | undefined>
       | undefined;
@@ -17257,10 +18032,19 @@ export type ModelTypes = {
     shopify_id?: ModelTypes['string_filter_operators'] | undefined;
     status?: ModelTypes['string_filter_operators'] | undefined;
     notes?: ModelTypes['string_filter_operators'] | undefined;
+    date_updated?: ModelTypes['date_filter_operators'] | undefined;
+    date_updated_func?:
+      | ModelTypes['datetime_function_filter_operators']
+      | undefined;
+    html_file?: ModelTypes['directus_files_filter'] | undefined;
+    thumbnail?: ModelTypes['directus_files_filter'] | undefined;
+    vrm_file?: ModelTypes['directus_files_filter'] | undefined;
     contributors?: ModelTypes['products_contributors_filter'] | undefined;
     contributors_func?:
       | ModelTypes['count_function_filter_operators']
       | undefined;
+    materials?: ModelTypes['products_production_materials_filter'] | undefined;
+    materials_func?: ModelTypes['count_function_filter_operators'] | undefined;
     design_files?: ModelTypes['products_design_files_filter'] | undefined;
     design_files_func?:
       | ModelTypes['count_function_filter_operators']
@@ -17269,8 +18053,6 @@ export type ModelTypes = {
     content_func?: ModelTypes['count_function_filter_operators'] | undefined;
     images?: ModelTypes['products_files_filter'] | undefined;
     images_func?: ModelTypes['count_function_filter_operators'] | undefined;
-    materials?: ModelTypes['products_production_materials_filter'] | undefined;
-    materials_func?: ModelTypes['count_function_filter_operators'] | undefined;
     wearable_files?: ModelTypes['products_wearables_filter'] | undefined;
     wearable_files_func?:
       | ModelTypes['count_function_filter_operators']
@@ -17390,6 +18172,10 @@ export type ModelTypes = {
       | ModelTypes['producers_production_materials_filter']
       | undefined;
     stocked_at_func?: ModelTypes['count_function_filter_operators'] | undefined;
+    base_assets?: ModelTypes['production_materials_files_filter'] | undefined;
+    base_assets_func?:
+      | ModelTypes['count_function_filter_operators']
+      | undefined;
     _and?:
       | Array<ModelTypes['production_materials_filter'] | undefined>
       | undefined;
@@ -17450,6 +18236,19 @@ export type ModelTypes = {
       | Array<ModelTypes['producers_production_methods_filter'] | undefined>
       | undefined;
   };
+  ['production_materials_files_filter']: {
+    directus_files_id?: ModelTypes['directus_files_filter'] | undefined;
+    id?: ModelTypes['number_filter_operators'] | undefined;
+    production_materials_id?:
+      | ModelTypes['production_materials_filter']
+      | undefined;
+    _and?:
+      | Array<ModelTypes['production_materials_files_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<ModelTypes['production_materials_files_filter'] | undefined>
+      | undefined;
+  };
   ['stages_filter']: {
     description?: ModelTypes['string_filter_operators'] | undefined;
     name?: ModelTypes['string_filter_operators'] | undefined;
@@ -17476,6 +18275,19 @@ export type ModelTypes = {
       | Array<ModelTypes['products_contributors_filter'] | undefined>
       | undefined;
   };
+  ['products_production_materials_filter']: {
+    id?: ModelTypes['number_filter_operators'] | undefined;
+    production_materials_id?:
+      | ModelTypes['production_materials_filter']
+      | undefined;
+    products_id?: ModelTypes['products_filter'] | undefined;
+    _and?:
+      | Array<ModelTypes['products_production_materials_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<ModelTypes['products_production_materials_filter'] | undefined>
+      | undefined;
+  };
   ['products_design_files_filter']: {
     directus_files_id?: ModelTypes['directus_files_filter'] | undefined;
     id?: ModelTypes['number_filter_operators'] | undefined;
@@ -17500,19 +18312,6 @@ export type ModelTypes = {
     products_id?: ModelTypes['products_filter'] | undefined;
     _and?: Array<ModelTypes['products_files_filter'] | undefined> | undefined;
     _or?: Array<ModelTypes['products_files_filter'] | undefined> | undefined;
-  };
-  ['products_production_materials_filter']: {
-    id?: ModelTypes['number_filter_operators'] | undefined;
-    production_materials_id?:
-      | ModelTypes['production_materials_filter']
-      | undefined;
-    products_id?: ModelTypes['products_filter'] | undefined;
-    _and?:
-      | Array<ModelTypes['products_production_materials_filter'] | undefined>
-      | undefined;
-    _or?:
-      | Array<ModelTypes['products_production_materials_filter'] | undefined>
-      | undefined;
   };
   ['products_wearables_filter']: {
     directus_files_id?: ModelTypes['directus_files_filter'] | undefined;
@@ -17652,6 +18451,10 @@ export type ModelTypes = {
       | Array<ModelTypes['producers_production_materials'] | undefined>
       | undefined;
     stocked_at_func?: ModelTypes['count_functions'] | undefined;
+    base_assets?:
+      | Array<ModelTypes['production_materials_files'] | undefined>
+      | undefined;
+    base_assets_func?: ModelTypes['count_functions'] | undefined;
   };
   ['production_materials_production_methods']: {
     id: string;
@@ -17678,6 +18481,11 @@ export type ModelTypes = {
     producers_id?: ModelTypes['producers'] | undefined;
     production_methods_id?: ModelTypes['production_methods'] | undefined;
   };
+  ['production_materials_files']: {
+    directus_files_id?: ModelTypes['directus_files'] | undefined;
+    id: string;
+    production_materials_id?: ModelTypes['production_materials'] | undefined;
+  };
   ['stages']: {
     description?: string | undefined;
     name: string;
@@ -17694,6 +18502,11 @@ export type ModelTypes = {
     products_id?: ModelTypes['products'] | undefined;
     robot_earned?: number | undefined;
   };
+  ['products_production_materials']: {
+    id: string;
+    production_materials_id?: ModelTypes['production_materials'] | undefined;
+    products_id?: ModelTypes['products'] | undefined;
+  };
   ['products_design_files']: {
     directus_files_id?: ModelTypes['directus_files'] | undefined;
     id: string;
@@ -17707,11 +18520,6 @@ export type ModelTypes = {
   ['products_files']: {
     directus_files_id?: ModelTypes['directus_files'] | undefined;
     id: string;
-    products_id?: ModelTypes['products'] | undefined;
-  };
-  ['products_production_materials']: {
-    id: string;
-    production_materials_id?: ModelTypes['production_materials'] | undefined;
     products_id?: ModelTypes['products'] | undefined;
   };
   ['products_wearables']: {
@@ -18395,11 +19203,15 @@ export type ModelTypes = {
     shopify_id?: number | undefined;
     status?: number | undefined;
     notes?: number | undefined;
+    date_updated?: number | undefined;
+    html_file?: number | undefined;
+    thumbnail?: number | undefined;
+    vrm_file?: number | undefined;
     contributors?: number | undefined;
+    materials?: number | undefined;
     design_files?: number | undefined;
     content?: number | undefined;
     images?: number | undefined;
-    materials?: number | undefined;
     wearable_files?: number | undefined;
     production_methods?: number | undefined;
     /** Invoices to clients for deposits */
@@ -18457,6 +19269,8 @@ export type ModelTypes = {
     tags?: number | undefined;
     production_methods?: number | undefined;
     stocked_at?: number | undefined;
+    /** Design files, mockups, base meshes for wearbles, CLO3d files, etc */
+    base_assets?: number | undefined;
   };
   ['production_materials_aggregated_fields']: {
     base_price?: number | undefined;
@@ -18501,6 +19315,43 @@ export type ModelTypes = {
     production_product_id?: number | undefined;
     /** Invoices to clients for a given product */
     client_product_id?: number | undefined;
+  };
+  ['production_materials_files_aggregated']: {
+    group?: ModelTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?:
+      | ModelTypes['production_materials_files_aggregated_count']
+      | undefined;
+    countDistinct?:
+      | ModelTypes['production_materials_files_aggregated_count']
+      | undefined;
+    avg?:
+      | ModelTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    sum?:
+      | ModelTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | ModelTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | ModelTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    min?:
+      | ModelTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    max?:
+      | ModelTypes['production_materials_files_aggregated_fields']
+      | undefined;
+  };
+  ['production_materials_files_aggregated_count']: {
+    directus_files_id?: number | undefined;
+    id?: number | undefined;
+    production_materials_id?: number | undefined;
+  };
+  ['production_materials_files_aggregated_fields']: {
+    id?: number | undefined;
+    production_materials_id?: number | undefined;
   };
   ['Mutation']: {
     create_brands_items: Array<ModelTypes['brands']>;
@@ -18601,6 +19452,12 @@ export type ModelTypes = {
       | undefined;
     create_invoices_items: Array<ModelTypes['invoices']>;
     create_invoices_item?: ModelTypes['invoices'] | undefined;
+    create_production_materials_files_items: Array<
+      ModelTypes['production_materials_files']
+    >;
+    create_production_materials_files_item?:
+      | ModelTypes['production_materials_files']
+      | undefined;
     update_brands_items: Array<ModelTypes['brands']>;
     update_brands_batch: Array<ModelTypes['brands']>;
     update_brands_item?: ModelTypes['brands'] | undefined;
@@ -18745,6 +19602,15 @@ export type ModelTypes = {
     update_invoices_items: Array<ModelTypes['invoices']>;
     update_invoices_batch: Array<ModelTypes['invoices']>;
     update_invoices_item?: ModelTypes['invoices'] | undefined;
+    update_production_materials_files_items: Array<
+      ModelTypes['production_materials_files']
+    >;
+    update_production_materials_files_batch: Array<
+      ModelTypes['production_materials_files']
+    >;
+    update_production_materials_files_item?:
+      | ModelTypes['production_materials_files']
+      | undefined;
     delete_brands_items?: ModelTypes['delete_many'] | undefined;
     delete_brands_item?: ModelTypes['delete_one'] | undefined;
     delete_brands_directus_users_items?: ModelTypes['delete_many'] | undefined;
@@ -18821,6 +19687,12 @@ export type ModelTypes = {
     delete_production_materials_item?: ModelTypes['delete_one'] | undefined;
     delete_invoices_items?: ModelTypes['delete_many'] | undefined;
     delete_invoices_item?: ModelTypes['delete_one'] | undefined;
+    delete_production_materials_files_items?:
+      | ModelTypes['delete_many']
+      | undefined;
+    delete_production_materials_files_item?:
+      | ModelTypes['delete_one']
+      | undefined;
   };
   ['create_brands_input']: {
     created_at?: ModelTypes['Date'] | undefined;
@@ -18966,8 +19838,17 @@ export type ModelTypes = {
     shopify_id?: string | undefined;
     status?: string | undefined;
     notes?: string | undefined;
+    date_updated?: ModelTypes['Date'] | undefined;
+    html_file?: ModelTypes['create_directus_files_input'] | undefined;
+    thumbnail?: ModelTypes['create_directus_files_input'] | undefined;
+    vrm_file?: ModelTypes['create_directus_files_input'] | undefined;
     contributors?:
       | Array<ModelTypes['create_products_contributors_input'] | undefined>
+      | undefined;
+    materials?:
+      | Array<
+          ModelTypes['create_products_production_materials_input'] | undefined
+        >
       | undefined;
     design_files?:
       | Array<ModelTypes['create_products_design_files_input'] | undefined>
@@ -18977,11 +19858,6 @@ export type ModelTypes = {
       | undefined;
     images?:
       | Array<ModelTypes['create_products_files_input'] | undefined>
-      | undefined;
-    materials?:
-      | Array<
-          ModelTypes['create_products_production_materials_input'] | undefined
-        >
       | undefined;
     wearable_files?:
       | Array<ModelTypes['create_products_wearables_input'] | undefined>
@@ -19069,6 +19945,9 @@ export type ModelTypes = {
           ModelTypes['create_producers_production_materials_input'] | undefined
         >
       | undefined;
+    base_assets?:
+      | Array<ModelTypes['create_production_materials_files_input'] | undefined>
+      | undefined;
   };
   ['create_production_materials_production_methods_input']: {
     id?: string | undefined;
@@ -19103,6 +19982,13 @@ export type ModelTypes = {
       | ModelTypes['create_production_methods_input']
       | undefined;
   };
+  ['create_production_materials_files_input']: {
+    directus_files_id?: ModelTypes['create_directus_files_input'] | undefined;
+    id?: string | undefined;
+    production_materials_id?:
+      | ModelTypes['create_production_materials_input']
+      | undefined;
+  };
   ['create_stages_input']: {
     description?: string | undefined;
     name: string;
@@ -19119,6 +20005,13 @@ export type ModelTypes = {
     products_id?: ModelTypes['create_products_input'] | undefined;
     robot_earned?: number | undefined;
   };
+  ['create_products_production_materials_input']: {
+    id?: string | undefined;
+    production_materials_id?:
+      | ModelTypes['create_production_materials_input']
+      | undefined;
+    products_id?: ModelTypes['create_products_input'] | undefined;
+  };
   ['create_products_design_files_input']: {
     directus_files_id?: ModelTypes['create_directus_files_input'] | undefined;
     id?: string | undefined;
@@ -19132,13 +20025,6 @@ export type ModelTypes = {
   ['create_products_files_input']: {
     directus_files_id?: ModelTypes['create_directus_files_input'] | undefined;
     id?: string | undefined;
-    products_id?: ModelTypes['create_products_input'] | undefined;
-  };
-  ['create_products_production_materials_input']: {
-    id?: string | undefined;
-    production_materials_id?:
-      | ModelTypes['create_production_materials_input']
-      | undefined;
     products_id?: ModelTypes['create_products_input'] | undefined;
   };
   ['create_products_wearables_input']: {
@@ -19327,8 +20213,17 @@ export type ModelTypes = {
     shopify_id?: string | undefined;
     status?: string | undefined;
     notes?: string | undefined;
+    date_updated?: ModelTypes['Date'] | undefined;
+    html_file?: ModelTypes['update_directus_files_input'] | undefined;
+    thumbnail?: ModelTypes['update_directus_files_input'] | undefined;
+    vrm_file?: ModelTypes['update_directus_files_input'] | undefined;
     contributors?:
       | Array<ModelTypes['update_products_contributors_input'] | undefined>
+      | undefined;
+    materials?:
+      | Array<
+          ModelTypes['update_products_production_materials_input'] | undefined
+        >
       | undefined;
     design_files?:
       | Array<ModelTypes['update_products_design_files_input'] | undefined>
@@ -19338,11 +20233,6 @@ export type ModelTypes = {
       | undefined;
     images?:
       | Array<ModelTypes['update_products_files_input'] | undefined>
-      | undefined;
-    materials?:
-      | Array<
-          ModelTypes['update_products_production_materials_input'] | undefined
-        >
       | undefined;
     wearable_files?:
       | Array<ModelTypes['update_products_wearables_input'] | undefined>
@@ -19430,6 +20320,9 @@ export type ModelTypes = {
           ModelTypes['update_producers_production_materials_input'] | undefined
         >
       | undefined;
+    base_assets?:
+      | Array<ModelTypes['update_production_materials_files_input'] | undefined>
+      | undefined;
   };
   ['update_production_materials_production_methods_input']: {
     id?: string | undefined;
@@ -19464,6 +20357,13 @@ export type ModelTypes = {
       | ModelTypes['update_production_methods_input']
       | undefined;
   };
+  ['update_production_materials_files_input']: {
+    directus_files_id?: ModelTypes['update_directus_files_input'] | undefined;
+    id?: string | undefined;
+    production_materials_id?:
+      | ModelTypes['update_production_materials_input']
+      | undefined;
+  };
   ['update_stages_input']: {
     description?: string | undefined;
     name?: string | undefined;
@@ -19480,6 +20380,13 @@ export type ModelTypes = {
     products_id?: ModelTypes['update_products_input'] | undefined;
     robot_earned?: number | undefined;
   };
+  ['update_products_production_materials_input']: {
+    id?: string | undefined;
+    production_materials_id?:
+      | ModelTypes['update_production_materials_input']
+      | undefined;
+    products_id?: ModelTypes['update_products_input'] | undefined;
+  };
   ['update_products_design_files_input']: {
     directus_files_id?: ModelTypes['update_directus_files_input'] | undefined;
     id?: string | undefined;
@@ -19493,13 +20400,6 @@ export type ModelTypes = {
   ['update_products_files_input']: {
     directus_files_id?: ModelTypes['update_directus_files_input'] | undefined;
     id?: string | undefined;
-    products_id?: ModelTypes['update_products_input'] | undefined;
-  };
-  ['update_products_production_materials_input']: {
-    id?: string | undefined;
-    production_materials_id?:
-      | ModelTypes['update_production_materials_input']
-      | undefined;
     products_id?: ModelTypes['update_products_input'] | undefined;
   };
   ['update_products_wearables_input']: {
@@ -19695,6 +20595,15 @@ export type GraphQLTypes = {
     invoices: Array<GraphQLTypes['invoices']>;
     invoices_by_id?: GraphQLTypes['invoices'] | undefined;
     invoices_aggregated: Array<GraphQLTypes['invoices_aggregated']>;
+    production_materials_files: Array<
+      GraphQLTypes['production_materials_files']
+    >;
+    production_materials_files_by_id?:
+      | GraphQLTypes['production_materials_files']
+      | undefined;
+    production_materials_files_aggregated: Array<
+      GraphQLTypes['production_materials_files_aggregated']
+    >;
   };
   ['brands']: {
     __typename: 'brands';
@@ -20112,10 +21021,19 @@ export type GraphQLTypes = {
     shopify_id?: string | undefined;
     status?: string | undefined;
     notes?: string | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    date_updated_func?: GraphQLTypes['datetime_functions'] | undefined;
+    html_file?: GraphQLTypes['directus_files'] | undefined;
+    thumbnail?: GraphQLTypes['directus_files'] | undefined;
+    vrm_file?: GraphQLTypes['directus_files'] | undefined;
     contributors?:
       | Array<GraphQLTypes['products_contributors'] | undefined>
       | undefined;
     contributors_func?: GraphQLTypes['count_functions'] | undefined;
+    materials?:
+      | Array<GraphQLTypes['products_production_materials'] | undefined>
+      | undefined;
+    materials_func?: GraphQLTypes['count_functions'] | undefined;
     design_files?:
       | Array<GraphQLTypes['products_design_files'] | undefined>
       | undefined;
@@ -20124,10 +21042,6 @@ export type GraphQLTypes = {
     content_func?: GraphQLTypes['count_functions'] | undefined;
     images?: Array<GraphQLTypes['products_files'] | undefined> | undefined;
     images_func?: GraphQLTypes['count_functions'] | undefined;
-    materials?:
-      | Array<GraphQLTypes['products_production_materials'] | undefined>
-      | undefined;
-    materials_func?: GraphQLTypes['count_functions'] | undefined;
     wearable_files?:
       | Array<GraphQLTypes['products_wearables'] | undefined>
       | undefined;
@@ -20194,8 +21108,21 @@ export type GraphQLTypes = {
     shopify_id?: GraphQLTypes['string_filter_operators'] | undefined;
     status?: GraphQLTypes['string_filter_operators'] | undefined;
     notes?: GraphQLTypes['string_filter_operators'] | undefined;
+    date_updated?: GraphQLTypes['date_filter_operators'] | undefined;
+    date_updated_func?:
+      | GraphQLTypes['datetime_function_filter_operators']
+      | undefined;
+    html_file?: GraphQLTypes['directus_files_filter'] | undefined;
+    thumbnail?: GraphQLTypes['directus_files_filter'] | undefined;
+    vrm_file?: GraphQLTypes['directus_files_filter'] | undefined;
     contributors?: GraphQLTypes['products_contributors_filter'] | undefined;
     contributors_func?:
+      | GraphQLTypes['count_function_filter_operators']
+      | undefined;
+    materials?:
+      | GraphQLTypes['products_production_materials_filter']
+      | undefined;
+    materials_func?:
       | GraphQLTypes['count_function_filter_operators']
       | undefined;
     design_files?: GraphQLTypes['products_design_files_filter'] | undefined;
@@ -20206,12 +21133,6 @@ export type GraphQLTypes = {
     content_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
     images?: GraphQLTypes['products_files_filter'] | undefined;
     images_func?: GraphQLTypes['count_function_filter_operators'] | undefined;
-    materials?:
-      | GraphQLTypes['products_production_materials_filter']
-      | undefined;
-    materials_func?:
-      | GraphQLTypes['count_function_filter_operators']
-      | undefined;
     wearable_files?: GraphQLTypes['products_wearables_filter'] | undefined;
     wearable_files_func?:
       | GraphQLTypes['count_function_filter_operators']
@@ -20339,6 +21260,10 @@ export type GraphQLTypes = {
     stocked_at_func?:
       | GraphQLTypes['count_function_filter_operators']
       | undefined;
+    base_assets?: GraphQLTypes['production_materials_files_filter'] | undefined;
+    base_assets_func?:
+      | GraphQLTypes['count_function_filter_operators']
+      | undefined;
     _and?:
       | Array<GraphQLTypes['production_materials_filter'] | undefined>
       | undefined;
@@ -20405,6 +21330,19 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['producers_production_methods_filter'] | undefined>
       | undefined;
   };
+  ['production_materials_files_filter']: {
+    directus_files_id?: GraphQLTypes['directus_files_filter'] | undefined;
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    production_materials_id?:
+      | GraphQLTypes['production_materials_filter']
+      | undefined;
+    _and?:
+      | Array<GraphQLTypes['production_materials_files_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<GraphQLTypes['production_materials_files_filter'] | undefined>
+      | undefined;
+  };
   ['stages_filter']: {
     description?: GraphQLTypes['string_filter_operators'] | undefined;
     name?: GraphQLTypes['string_filter_operators'] | undefined;
@@ -20429,6 +21367,19 @@ export type GraphQLTypes = {
       | undefined;
     _or?:
       | Array<GraphQLTypes['products_contributors_filter'] | undefined>
+      | undefined;
+  };
+  ['products_production_materials_filter']: {
+    id?: GraphQLTypes['number_filter_operators'] | undefined;
+    production_materials_id?:
+      | GraphQLTypes['production_materials_filter']
+      | undefined;
+    products_id?: GraphQLTypes['products_filter'] | undefined;
+    _and?:
+      | Array<GraphQLTypes['products_production_materials_filter'] | undefined>
+      | undefined;
+    _or?:
+      | Array<GraphQLTypes['products_production_materials_filter'] | undefined>
       | undefined;
   };
   ['products_design_files_filter']: {
@@ -20459,19 +21410,6 @@ export type GraphQLTypes = {
     products_id?: GraphQLTypes['products_filter'] | undefined;
     _and?: Array<GraphQLTypes['products_files_filter'] | undefined> | undefined;
     _or?: Array<GraphQLTypes['products_files_filter'] | undefined> | undefined;
-  };
-  ['products_production_materials_filter']: {
-    id?: GraphQLTypes['number_filter_operators'] | undefined;
-    production_materials_id?:
-      | GraphQLTypes['production_materials_filter']
-      | undefined;
-    products_id?: GraphQLTypes['products_filter'] | undefined;
-    _and?:
-      | Array<GraphQLTypes['products_production_materials_filter'] | undefined>
-      | undefined;
-    _or?:
-      | Array<GraphQLTypes['products_production_materials_filter'] | undefined>
-      | undefined;
   };
   ['products_wearables_filter']: {
     directus_files_id?: GraphQLTypes['directus_files_filter'] | undefined;
@@ -20620,6 +21558,10 @@ export type GraphQLTypes = {
       | Array<GraphQLTypes['producers_production_materials'] | undefined>
       | undefined;
     stocked_at_func?: GraphQLTypes['count_functions'] | undefined;
+    base_assets?:
+      | Array<GraphQLTypes['production_materials_files'] | undefined>
+      | undefined;
+    base_assets_func?: GraphQLTypes['count_functions'] | undefined;
   };
   ['production_materials_production_methods']: {
     __typename: 'production_materials_production_methods';
@@ -20651,6 +21593,12 @@ export type GraphQLTypes = {
     producers_id?: GraphQLTypes['producers'] | undefined;
     production_methods_id?: GraphQLTypes['production_methods'] | undefined;
   };
+  ['production_materials_files']: {
+    __typename: 'production_materials_files';
+    directus_files_id?: GraphQLTypes['directus_files'] | undefined;
+    id: string;
+    production_materials_id?: GraphQLTypes['production_materials'] | undefined;
+  };
   ['stages']: {
     __typename: 'stages';
     description?: string | undefined;
@@ -20670,6 +21618,12 @@ export type GraphQLTypes = {
     products_id?: GraphQLTypes['products'] | undefined;
     robot_earned?: number | undefined;
   };
+  ['products_production_materials']: {
+    __typename: 'products_production_materials';
+    id: string;
+    production_materials_id?: GraphQLTypes['production_materials'] | undefined;
+    products_id?: GraphQLTypes['products'] | undefined;
+  };
   ['products_design_files']: {
     __typename: 'products_design_files';
     directus_files_id?: GraphQLTypes['directus_files'] | undefined;
@@ -20686,12 +21640,6 @@ export type GraphQLTypes = {
     __typename: 'products_files';
     directus_files_id?: GraphQLTypes['directus_files'] | undefined;
     id: string;
-    products_id?: GraphQLTypes['products'] | undefined;
-  };
-  ['products_production_materials']: {
-    __typename: 'products_production_materials';
-    id: string;
-    production_materials_id?: GraphQLTypes['production_materials'] | undefined;
     products_id?: GraphQLTypes['products'] | undefined;
   };
   ['products_wearables']: {
@@ -21458,11 +22406,15 @@ export type GraphQLTypes = {
     shopify_id?: number | undefined;
     status?: number | undefined;
     notes?: number | undefined;
+    date_updated?: number | undefined;
+    html_file?: number | undefined;
+    thumbnail?: number | undefined;
+    vrm_file?: number | undefined;
     contributors?: number | undefined;
+    materials?: number | undefined;
     design_files?: number | undefined;
     content?: number | undefined;
     images?: number | undefined;
-    materials?: number | undefined;
     wearable_files?: number | undefined;
     production_methods?: number | undefined;
     /** Invoices to clients for deposits */
@@ -21523,6 +22475,8 @@ export type GraphQLTypes = {
     tags?: number | undefined;
     production_methods?: number | undefined;
     stocked_at?: number | undefined;
+    /** Design files, mockups, base meshes for wearbles, CLO3d files, etc */
+    base_assets?: number | undefined;
   };
   ['production_materials_aggregated_fields']: {
     __typename: 'production_materials_aggregated_fields';
@@ -21571,6 +22525,46 @@ export type GraphQLTypes = {
     production_product_id?: number | undefined;
     /** Invoices to clients for a given product */
     client_product_id?: number | undefined;
+  };
+  ['production_materials_files_aggregated']: {
+    __typename: 'production_materials_files_aggregated';
+    group?: GraphQLTypes['JSON'] | undefined;
+    countAll?: number | undefined;
+    count?:
+      | GraphQLTypes['production_materials_files_aggregated_count']
+      | undefined;
+    countDistinct?:
+      | GraphQLTypes['production_materials_files_aggregated_count']
+      | undefined;
+    avg?:
+      | GraphQLTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    sum?:
+      | GraphQLTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    avgDistinct?:
+      | GraphQLTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    sumDistinct?:
+      | GraphQLTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    min?:
+      | GraphQLTypes['production_materials_files_aggregated_fields']
+      | undefined;
+    max?:
+      | GraphQLTypes['production_materials_files_aggregated_fields']
+      | undefined;
+  };
+  ['production_materials_files_aggregated_count']: {
+    __typename: 'production_materials_files_aggregated_count';
+    directus_files_id?: number | undefined;
+    id?: number | undefined;
+    production_materials_id?: number | undefined;
+  };
+  ['production_materials_files_aggregated_fields']: {
+    __typename: 'production_materials_files_aggregated_fields';
+    id?: number | undefined;
+    production_materials_id?: number | undefined;
   };
   ['Mutation']: {
     __typename: 'Mutation';
@@ -21672,6 +22666,12 @@ export type GraphQLTypes = {
       | undefined;
     create_invoices_items: Array<GraphQLTypes['invoices']>;
     create_invoices_item?: GraphQLTypes['invoices'] | undefined;
+    create_production_materials_files_items: Array<
+      GraphQLTypes['production_materials_files']
+    >;
+    create_production_materials_files_item?:
+      | GraphQLTypes['production_materials_files']
+      | undefined;
     update_brands_items: Array<GraphQLTypes['brands']>;
     update_brands_batch: Array<GraphQLTypes['brands']>;
     update_brands_item?: GraphQLTypes['brands'] | undefined;
@@ -21816,6 +22816,15 @@ export type GraphQLTypes = {
     update_invoices_items: Array<GraphQLTypes['invoices']>;
     update_invoices_batch: Array<GraphQLTypes['invoices']>;
     update_invoices_item?: GraphQLTypes['invoices'] | undefined;
+    update_production_materials_files_items: Array<
+      GraphQLTypes['production_materials_files']
+    >;
+    update_production_materials_files_batch: Array<
+      GraphQLTypes['production_materials_files']
+    >;
+    update_production_materials_files_item?:
+      | GraphQLTypes['production_materials_files']
+      | undefined;
     delete_brands_items?: GraphQLTypes['delete_many'] | undefined;
     delete_brands_item?: GraphQLTypes['delete_one'] | undefined;
     delete_brands_directus_users_items?:
@@ -21898,6 +22907,12 @@ export type GraphQLTypes = {
     delete_production_materials_item?: GraphQLTypes['delete_one'] | undefined;
     delete_invoices_items?: GraphQLTypes['delete_many'] | undefined;
     delete_invoices_item?: GraphQLTypes['delete_one'] | undefined;
+    delete_production_materials_files_items?:
+      | GraphQLTypes['delete_many']
+      | undefined;
+    delete_production_materials_files_item?:
+      | GraphQLTypes['delete_one']
+      | undefined;
   };
   ['create_brands_input']: {
     created_at?: GraphQLTypes['Date'] | undefined;
@@ -22044,8 +23059,17 @@ export type GraphQLTypes = {
     shopify_id?: string | undefined;
     status?: string | undefined;
     notes?: string | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    html_file?: GraphQLTypes['create_directus_files_input'] | undefined;
+    thumbnail?: GraphQLTypes['create_directus_files_input'] | undefined;
+    vrm_file?: GraphQLTypes['create_directus_files_input'] | undefined;
     contributors?:
       | Array<GraphQLTypes['create_products_contributors_input'] | undefined>
+      | undefined;
+    materials?:
+      | Array<
+          GraphQLTypes['create_products_production_materials_input'] | undefined
+        >
       | undefined;
     design_files?:
       | Array<GraphQLTypes['create_products_design_files_input'] | undefined>
@@ -22055,11 +23079,6 @@ export type GraphQLTypes = {
       | undefined;
     images?:
       | Array<GraphQLTypes['create_products_files_input'] | undefined>
-      | undefined;
-    materials?:
-      | Array<
-          GraphQLTypes['create_products_production_materials_input'] | undefined
-        >
       | undefined;
     wearable_files?:
       | Array<GraphQLTypes['create_products_wearables_input'] | undefined>
@@ -22149,6 +23168,11 @@ export type GraphQLTypes = {
           | undefined
         >
       | undefined;
+    base_assets?:
+      | Array<
+          GraphQLTypes['create_production_materials_files_input'] | undefined
+        >
+      | undefined;
   };
   ['create_production_materials_production_methods_input']: {
     id?: string | undefined;
@@ -22183,6 +23207,13 @@ export type GraphQLTypes = {
       | GraphQLTypes['create_production_methods_input']
       | undefined;
   };
+  ['create_production_materials_files_input']: {
+    directus_files_id?: GraphQLTypes['create_directus_files_input'] | undefined;
+    id?: string | undefined;
+    production_materials_id?:
+      | GraphQLTypes['create_production_materials_input']
+      | undefined;
+  };
   ['create_stages_input']: {
     description?: string | undefined;
     name: string;
@@ -22199,6 +23230,13 @@ export type GraphQLTypes = {
     products_id?: GraphQLTypes['create_products_input'] | undefined;
     robot_earned?: number | undefined;
   };
+  ['create_products_production_materials_input']: {
+    id?: string | undefined;
+    production_materials_id?:
+      | GraphQLTypes['create_production_materials_input']
+      | undefined;
+    products_id?: GraphQLTypes['create_products_input'] | undefined;
+  };
   ['create_products_design_files_input']: {
     directus_files_id?: GraphQLTypes['create_directus_files_input'] | undefined;
     id?: string | undefined;
@@ -22212,13 +23250,6 @@ export type GraphQLTypes = {
   ['create_products_files_input']: {
     directus_files_id?: GraphQLTypes['create_directus_files_input'] | undefined;
     id?: string | undefined;
-    products_id?: GraphQLTypes['create_products_input'] | undefined;
-  };
-  ['create_products_production_materials_input']: {
-    id?: string | undefined;
-    production_materials_id?:
-      | GraphQLTypes['create_production_materials_input']
-      | undefined;
     products_id?: GraphQLTypes['create_products_input'] | undefined;
   };
   ['create_products_wearables_input']: {
@@ -22408,8 +23439,17 @@ export type GraphQLTypes = {
     shopify_id?: string | undefined;
     status?: string | undefined;
     notes?: string | undefined;
+    date_updated?: GraphQLTypes['Date'] | undefined;
+    html_file?: GraphQLTypes['update_directus_files_input'] | undefined;
+    thumbnail?: GraphQLTypes['update_directus_files_input'] | undefined;
+    vrm_file?: GraphQLTypes['update_directus_files_input'] | undefined;
     contributors?:
       | Array<GraphQLTypes['update_products_contributors_input'] | undefined>
+      | undefined;
+    materials?:
+      | Array<
+          GraphQLTypes['update_products_production_materials_input'] | undefined
+        >
       | undefined;
     design_files?:
       | Array<GraphQLTypes['update_products_design_files_input'] | undefined>
@@ -22419,11 +23459,6 @@ export type GraphQLTypes = {
       | undefined;
     images?:
       | Array<GraphQLTypes['update_products_files_input'] | undefined>
-      | undefined;
-    materials?:
-      | Array<
-          GraphQLTypes['update_products_production_materials_input'] | undefined
-        >
       | undefined;
     wearable_files?:
       | Array<GraphQLTypes['update_products_wearables_input'] | undefined>
@@ -22513,6 +23548,11 @@ export type GraphQLTypes = {
           | undefined
         >
       | undefined;
+    base_assets?:
+      | Array<
+          GraphQLTypes['update_production_materials_files_input'] | undefined
+        >
+      | undefined;
   };
   ['update_production_materials_production_methods_input']: {
     id?: string | undefined;
@@ -22547,6 +23587,13 @@ export type GraphQLTypes = {
       | GraphQLTypes['update_production_methods_input']
       | undefined;
   };
+  ['update_production_materials_files_input']: {
+    directus_files_id?: GraphQLTypes['update_directus_files_input'] | undefined;
+    id?: string | undefined;
+    production_materials_id?:
+      | GraphQLTypes['update_production_materials_input']
+      | undefined;
+  };
   ['update_stages_input']: {
     description?: string | undefined;
     name?: string | undefined;
@@ -22563,6 +23610,13 @@ export type GraphQLTypes = {
     products_id?: GraphQLTypes['update_products_input'] | undefined;
     robot_earned?: number | undefined;
   };
+  ['update_products_production_materials_input']: {
+    id?: string | undefined;
+    production_materials_id?:
+      | GraphQLTypes['update_production_materials_input']
+      | undefined;
+    products_id?: GraphQLTypes['update_products_input'] | undefined;
+  };
   ['update_products_design_files_input']: {
     directus_files_id?: GraphQLTypes['update_directus_files_input'] | undefined;
     id?: string | undefined;
@@ -22576,13 +23630,6 @@ export type GraphQLTypes = {
   ['update_products_files_input']: {
     directus_files_id?: GraphQLTypes['update_directus_files_input'] | undefined;
     id?: string | undefined;
-    products_id?: GraphQLTypes['update_products_input'] | undefined;
-  };
-  ['update_products_production_materials_input']: {
-    id?: string | undefined;
-    production_materials_id?:
-      | GraphQLTypes['update_production_materials_input']
-      | undefined;
     products_id?: GraphQLTypes['update_products_input'] | undefined;
   };
   ['update_products_wearables_input']: {
@@ -22668,13 +23715,14 @@ type ZEUS_VARIABLES = {
   ['production_materials_production_methods_filter']: ValueTypes['production_materials_production_methods_filter'];
   ['production_methods_filter']: ValueTypes['production_methods_filter'];
   ['producers_production_methods_filter']: ValueTypes['producers_production_methods_filter'];
+  ['production_materials_files_filter']: ValueTypes['production_materials_files_filter'];
   ['stages_filter']: ValueTypes['stages_filter'];
   ['currencies_filter']: ValueTypes['currencies_filter'];
   ['products_contributors_filter']: ValueTypes['products_contributors_filter'];
+  ['products_production_materials_filter']: ValueTypes['products_production_materials_filter'];
   ['products_design_files_filter']: ValueTypes['products_design_files_filter'];
   ['products_content_filter']: ValueTypes['products_content_filter'];
   ['products_files_filter']: ValueTypes['products_files_filter'];
-  ['products_production_materials_filter']: ValueTypes['products_production_materials_filter'];
   ['products_wearables_filter']: ValueTypes['products_wearables_filter'];
   ['file_formats_filter']: ValueTypes['file_formats_filter'];
   ['products_production_methods_filter']: ValueTypes['products_production_methods_filter'];
@@ -22698,13 +23746,14 @@ type ZEUS_VARIABLES = {
   ['create_production_materials_production_methods_input']: ValueTypes['create_production_materials_production_methods_input'];
   ['create_production_methods_input']: ValueTypes['create_production_methods_input'];
   ['create_producers_production_methods_input']: ValueTypes['create_producers_production_methods_input'];
+  ['create_production_materials_files_input']: ValueTypes['create_production_materials_files_input'];
   ['create_stages_input']: ValueTypes['create_stages_input'];
   ['create_currencies_input']: ValueTypes['create_currencies_input'];
   ['create_products_contributors_input']: ValueTypes['create_products_contributors_input'];
+  ['create_products_production_materials_input']: ValueTypes['create_products_production_materials_input'];
   ['create_products_design_files_input']: ValueTypes['create_products_design_files_input'];
   ['create_products_content_input']: ValueTypes['create_products_content_input'];
   ['create_products_files_input']: ValueTypes['create_products_files_input'];
-  ['create_products_production_materials_input']: ValueTypes['create_products_production_materials_input'];
   ['create_products_wearables_input']: ValueTypes['create_products_wearables_input'];
   ['create_file_formats_input']: ValueTypes['create_file_formats_input'];
   ['create_products_production_methods_input']: ValueTypes['create_products_production_methods_input'];
@@ -22728,13 +23777,14 @@ type ZEUS_VARIABLES = {
   ['update_production_materials_production_methods_input']: ValueTypes['update_production_materials_production_methods_input'];
   ['update_production_methods_input']: ValueTypes['update_production_methods_input'];
   ['update_producers_production_methods_input']: ValueTypes['update_producers_production_methods_input'];
+  ['update_production_materials_files_input']: ValueTypes['update_production_materials_files_input'];
   ['update_stages_input']: ValueTypes['update_stages_input'];
   ['update_currencies_input']: ValueTypes['update_currencies_input'];
   ['update_products_contributors_input']: ValueTypes['update_products_contributors_input'];
+  ['update_products_production_materials_input']: ValueTypes['update_products_production_materials_input'];
   ['update_products_design_files_input']: ValueTypes['update_products_design_files_input'];
   ['update_products_content_input']: ValueTypes['update_products_content_input'];
   ['update_products_files_input']: ValueTypes['update_products_files_input'];
-  ['update_products_production_materials_input']: ValueTypes['update_products_production_materials_input'];
   ['update_products_wearables_input']: ValueTypes['update_products_wearables_input'];
   ['update_file_formats_input']: ValueTypes['update_file_formats_input'];
   ['update_products_production_methods_input']: ValueTypes['update_products_production_methods_input'];
