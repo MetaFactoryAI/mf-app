@@ -5125,7 +5125,7 @@ __metadata:
   dependencies:
     "@directus/cli": ^9.14.2
     "@swc-node/register": ^1.5.1
-    directus: ^9.22.1
+    directus: 9.22.4
     graphql-zeus: ^5.0.3
   languageName: unknown
   linkType: soft
@@ -12646,7 +12646,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"directus@npm:^9.22.1":
+"directus@npm:9.22.4":
   version: 9.22.4
   resolution: "directus@npm:9.22.4"
   dependencies:

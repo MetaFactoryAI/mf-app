@@ -1,4 +1,4 @@
-FROM directus/directus:9.22.1
+FROM directus/directus:9.22.4
 
 ARG OIDC_CLIENT_ID
 ARG OIDC_CLIENT_SECRET
