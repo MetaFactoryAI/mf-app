@@ -4,7 +4,7 @@ import { Creator } from 'shared/types/wearableTypes';
 
 import { ProductPageFile } from '../../lib/notionHelpers';
 import { isAddressEqual } from '../../utils/addressHelpers';
-import { getFiles } from '../../utils/filesHelpers';
+import { getWearableFilesFromGithubForProduct } from '../../utils/filesHelpers';
 import { logger } from '../../utils/logger';
 import { getWearablesFolder } from '../../utils/notion/productHelpers';
 import { $, ValueTypes } from '../__generated__/user/zeus';
@@ -149,7 +149,9 @@ export const uploadWearablesForProduct = async (
     });
     return;
   }
-  const wearableFiles = await getFiles(wearablesFolder);
+  const wearableFiles = await getWearableFilesFromGithubForProduct(
+    wearablesFolder,
+  );
 
   const wearablesToUpload = wearableFiles.filter(
     (file) =>
@@ -209,6 +211,7 @@ export const uploadWearablesForProduct = async (
     });
   }
 };
+
 export const uploadClo3dFileForProduct = async (
   product: ProductWithFiles,
   productPage: ProductPageFile,

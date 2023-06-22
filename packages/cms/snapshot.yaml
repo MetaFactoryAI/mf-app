@@ -9195,7 +9195,7 @@ relations:
       foreign_key_column: id
       foreign_key_schema: public
       foreign_key_table: directus_files
-      on_delete: NO ACTION
+      on_delete: CASCADE
       on_update: NO ACTION
       table: products_wearables
   - collection: products_wearables

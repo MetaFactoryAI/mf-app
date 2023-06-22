@@ -6,7 +6,7 @@ export const fileSelector = Selector('directus_files')({
   filename_disk: true,
   tags: true,
 });
-export type FileRes = InputType<
+export type MfosFile = InputType<
   GraphQLTypes['directus_files'],
   typeof fileSelector
 >;

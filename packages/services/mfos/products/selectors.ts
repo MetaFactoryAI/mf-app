@@ -14,8 +14,31 @@ export type ProductBase = InputType<
   GraphQLTypes['products'],
   typeof productsSelector
 >;
+
+export const productWearableSelector = Selector('products_wearables')({
+  id: true,
+  file_format: [
+    {},
+    {
+      name: true,
+      id: true,
+      extension: true,
+      mime_type: true,
+      description: true,
+    },
+  ],
+  directus_files_id: [{}, fileSelector],
+});
+export type ProductWearable = InputType<
+  GraphQLTypes['products_wearables'],
+  typeof productWearableSelector
+>;
 export const productsFilesSelector = Selector('products')({
   clo3d_file: [{}, fileSelector],
+  html_file: [{}, fileSelector],
+  thumbnail: [{}, fileSelector],
+  vrm_file: [{}, fileSelector],
+  wearable_files: [{}, productWearableSelector],
   content: [
     {},
     {
@@ -27,14 +50,6 @@ export const productsFilesSelector = Selector('products')({
     {},
     {
       id: true,
-      directus_files_id: [{}, fileSelector],
-    },
-  ],
-  wearable_files: [
-    {},
-    {
-      id: true,
-      file_format: [{}, { name: true, id: true, extension: true }],
       directus_files_id: [{}, fileSelector],
     },
   ],
@@ -103,6 +118,7 @@ export type ProductWithContributors = InputType<
   GraphQLTypes['products'],
   typeof productsContributorsSelector
 >;
+
 export const productNftMetadataSelector = Selector('products')({
   id: true,
   nft_token_id: true,
@@ -115,7 +131,6 @@ export const productNftMetadataSelector = Selector('products')({
       id: true,
     },
   ],
-  clo3d_file: [{}, fileSelector],
   season: true,
   release_date: true,
   shopify_id: true,
@@ -145,23 +160,11 @@ export const productNftMetadataSelector = Selector('products')({
       ],
     },
   ],
-  wearable_files: [
-    {},
-    {
-      id: true,
-      file_format: [
-        {},
-        {
-          extension: true,
-          mime_type: true,
-          description: true,
-          name: true,
-          id: true,
-        },
-      ],
-      directus_files_id: [{}, fileSelector],
-    },
-  ],
+  clo3d_file: [{}, fileSelector],
+  html_file: [{}, fileSelector],
+  thumbnail: [{}, fileSelector],
+  vrm_file: [{}, fileSelector],
+  wearable_files: [{}, productWearableSelector],
   images: [
     {},
     {
