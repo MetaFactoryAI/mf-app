@@ -10,6 +10,7 @@ import {
 } from '../../utils/addressHelpers';
 import { defaultMainnetProvider } from '../../utils/defaultProvider';
 import { logger } from '../../utils/logger';
+import { isNotNullOrUndefined } from '../../utils/typeHelpers';
 import { $ } from '../__generated__/user/zeus';
 
 import { mfosSystemClient } from './client';
@@ -80,6 +81,7 @@ export const createSystemUserIfNotExists = async (
 export async function uploadFile(
   file: { name: string; url: string },
   tags?: string[],
+  folder?: { id: string; name: string },
 ) {
   const uploadDate = new Date().toISOString();
 
@@ -89,6 +91,7 @@ export async function uploadFile(
     uploaded_on: uploadDate,
     modified_on: uploadDate,
     tags,
+    folder,
   };
 
   const uploaded = await mfosSystemClient('mutation')(
@@ -117,3 +120,25 @@ export async function uploadFile(
   assert(uploaded.import_file);
   return uploaded.import_file;
 }
+
+export const deleteFiles = async (
+  fileIds: string[],
+): Promise<string[] | undefined> => {
+  const res = await mfosSystemClient('mutation')(
+    {
+      delete_files_items: [
+        {
+          ids: fileIds,
+        },
+        {
+          ids: true,
+        },
+      ],
+    },
+    {
+      operationName: 'DeleteFile',
+    },
+  );
+
+  return res.delete_files_items?.ids.filter(isNotNullOrUndefined);
+};

@@ -12,6 +12,9 @@ jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
     steps:
       - name: Cancel Previous Runs
@@ -72,7 +75,7 @@ jobs:
           NODE_OPTIONS: --openssl-legacy-provider
 
       - name: Build NextJS App
-        run: yarn next build
+        run: yarn build
         env:
           CI: true
           NODE_OPTIONS: --openssl-legacy-provider

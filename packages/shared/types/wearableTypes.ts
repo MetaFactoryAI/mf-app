@@ -22,7 +22,7 @@ export interface WearableMetadata {
     creators: Creator[];
     images: string[];
   };
-  files: FileData[];
+  files: NftFileData[];
 }
 
 export interface Creator {
@@ -35,12 +35,12 @@ export interface Creator {
   url?: string | null;
 }
 
-export type FileData = {
+export type NftFileData = {
   mimeType: string;
   uri: string;
   name: string;
-  extension: string;
-  properties: {
+  extension?: string;
+  properties?: {
     description: string;
   };
 };

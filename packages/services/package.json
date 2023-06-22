@@ -6,9 +6,9 @@
     "test": "echo 'No tests setup'",
     "lint": "eslint . --ext .ts",
     "typecheck": "tsc",
-    "generate-hasura": "./scripts/generate-zeus.sh",
-    "generate-mfos": "./scripts/generate-zeus-mfos.sh",
-    "generate-shopify": "./scripts/generate-zeus-shopify.sh"
+    "generate:hasura": "./scripts/generate-zeus.sh",
+    "generate:mfos": "./scripts/generate-zeus-mfos.sh",
+    "generate:shopify": "./scripts/generate-zeus-shopify.sh"
   },
   "dependencies": {
     "@ethersproject/address": "^5.5.0",

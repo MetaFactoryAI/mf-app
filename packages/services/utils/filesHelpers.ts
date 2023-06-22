@@ -2,7 +2,7 @@
 import fetch from 'node-fetch';
 import { z } from 'zod';
 
-import { FileData } from 'shared/types/wearableTypes';
+import { NftFileData } from 'shared/types/wearableTypes';
 import {
   EXTENSION_DESCRIPTIONS,
   EXTENSION_MIME_TYPES,
@@ -11,39 +11,45 @@ import {
 
 import { logger } from './logger';
 
-export const githubContentsSchema = z.array(
-  z.object({
-    name: z.string(),
-    path: z.string(),
-    sha: z.string(),
-    size: z.number(),
-    url: z.string().url(),
-    html_url: z.string().url(),
-    git_url: z.string().url(),
-    download_url: z.string().url(),
-    type: z.string(),
-    _links: z.object({
-      self: z.string(),
-      git: z.string(),
-      html: z.string(),
-    }),
+export const githubFileSchema = z.object({
+  name: z.string(),
+  path: z.string(),
+  sha: z.string(),
+  size: z.number(),
+  url: z.string().url(),
+  html_url: z.string().url(),
+  git_url: z.string().url(),
+  download_url: z.string().url(),
+  type: z.string(),
+  _links: z.object({
+    self: z.string(),
+    git: z.string(),
+    html: z.string(),
   }),
-);
+});
+
+export const githubContentsSchema = z.array(githubFileSchema);
 
 const baseUrl =
-  'https://api.github.com/repos/MetaFactoryAI/mf-wearables/contents';
+  'https://api.github.com/repos/MetaFactoryAI/mf-wearables/contents/wearables';
 
-export const getFiles = async (wearableUrl: string): Promise<FileData[]> => {
-  const folderName = wearableUrl.split(/\S*main\//g)[1];
-  const res = await fetch(`${baseUrl}/${folderName}`);
+export const getWearableFilesFromGithubForProduct = async (
+  productId: string,
+): Promise<NftFileData[]> => {
+  const response = await fetch(`${baseUrl}/${productId}`, {
+    headers: {
+      Authorization: `Basic ${process.env.GITHUB_CREDENTIAL}`,
+      'X-GitHub-Api-Version': '2022-11-28',
+    },
+  });
 
   try {
-    const json: unknown = await res.json();
+    const json: unknown = await response.json();
     const files = githubContentsSchema.parse(json);
     return files.map(formatFileMetadata);
   } catch (e) {
     logger.warn('Unable to get files from URL', {
-      wearableUrl,
+      productId,
       error: e,
     });
     return [];
@@ -52,7 +58,7 @@ export const getFiles = async (wearableUrl: string): Promise<FileData[]> => {
 
 export const formatFileMetadata = (
   data: z.infer<typeof githubContentsSchema.element>,
-): FileData => {
+): NftFileData => {
   const fileExtension = /[^.]+$/.exec(data.name)?.[0] as FileExtension;
   if (!fileExtension) throw new Error('Invalid File Name');
 

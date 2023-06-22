@@ -4,7 +4,7 @@ import { COLLABORATOR_ROLES } from 'services/mfos';
 import { ProductNftMetadataInfo } from 'services/mfos/products/selectors';
 
 import { SHOPIFY_URL } from '../config/public';
-import { Creator, FileData, WearableMetadata } from '../types/wearableTypes';
+import { Creator, WearableMetadata } from '../types/wearableTypes';
 
 import { EXTENSION_MIME_TYPES, getUrlForFile } from './files';
 import { composeListIntoString } from './stringHelpers';
@@ -19,16 +19,11 @@ export const getMetadataForProduct = (
   const images = (product.images || []).map((i) =>
     getUrlForFile(i.directus_files_id),
   );
-  console.log({ product });
-  const wearables: FileData[] = (product.wearable_files || []).map(
+  const wearables = (product.wearable_files || []).map(
     ({ directus_files_id: file, file_format }) => ({
       name: file?.filename_download || file?.id || 'Untitled',
-      extension: file_format?.extension || '',
       mimeType: file_format?.mime_type || '',
-      uri: getUrlForFile(file),
-      properties: {
-        description: file_format?.description || '',
-      },
+      uri: getUrlForFile(file, product.name),
     }),
   );
 
@@ -64,7 +59,7 @@ export const getMetadataForProduct = (
 
   return {
     name: product.name,
-    image: images[0],
+    image: product.thumbnail ? getUrlForFile(product.thumbnail) : images[0],
     description:
       product.description ||
       'Interoperable wearable for the open metaverse. Powered by MetaFactory.',

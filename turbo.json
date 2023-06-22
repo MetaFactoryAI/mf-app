@@ -19,6 +19,10 @@
     },
     "dev": {
       "cache": false
+    },
+    "generate:mfos": {
+      "inputs": ["../cms/snapshot.yaml"],
+      "outputs": ["./mfos/__generated__/**"]
     }
   }
 }

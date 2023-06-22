@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-import { Creator, FileData } from 'shared/types/wearableTypes';
+import { Creator, NftFileData } from 'shared/types/wearableTypes';
 
 import {
   BrandPage,
@@ -146,7 +146,9 @@ export const getProductTechs = (
   return techPages.map(getRobot);
 };
 
-export const getClo3dModel = (page: z.infer<typeof ProductPage>): FileData => ({
+export const getClo3dModel = (
+  page: z.infer<typeof ProductPage>,
+): NftFileData => ({
   uri: page.properties['CLO3d Model'].files[0]?.file.url,
   name: page.properties['CLO3d Model'].files[0]?.name,
   extension: 'zprj',

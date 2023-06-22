@@ -19,3 +19,23 @@ export const getSystemUserByAddress = async (
 
   return userQuery.users?.[0];
 };
+
+export async function getWearablesFolder(): Promise<
+  { id: string; name: string } | undefined
+> {
+  const res = await mfosSystemClient('query')({
+    folders: [
+      {
+        filter: {
+          name: { _eq: 'Wearables' },
+        },
+      },
+      {
+        id: true,
+        name: true,
+      },
+    ],
+  });
+
+  return res.folders?.[0];
+}
