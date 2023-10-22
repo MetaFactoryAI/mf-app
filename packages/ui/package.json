@@ -18,7 +18,7 @@
     "react-native-svg": "*"
   },
   "dependencies": {
-    "@react-navigation/elements": "1.1.0",
+    "@react-navigation/elements": "1.3.20",
     "@shopify/restyle": "1.4.0"
   }
 }

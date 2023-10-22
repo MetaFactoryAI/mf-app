@@ -5,6 +5,7 @@ import { useColorScheme } from 'react-native';
 import { Provider } from 'app/provider';
 
 export default function _layout() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const colorMode = useColorScheme();
   return (
     <Provider>

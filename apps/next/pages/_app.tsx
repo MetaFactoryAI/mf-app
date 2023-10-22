@@ -10,7 +10,6 @@ import { Provider } from 'app/provider';
 import 'raf/polyfill';
 
 import '../global.css';
-import '@rainbow-me/rainbowkit/styles.css';
 
 // FIXME need reanimated update, see https://github.com/software-mansion/react-native-reanimated/issues/3355
 if (process.browser) {

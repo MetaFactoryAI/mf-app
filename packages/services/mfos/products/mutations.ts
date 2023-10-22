@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import assert from 'assert';
 
 import { Creator } from 'shared/types/wearableTypes';
@@ -81,6 +82,7 @@ export const uploadImagesForProduct = async (
   product: ProductWithFiles,
   productPage: ProductPageFile,
 ): Promise<void> => {
+  // @ts-expect-error breaking change in new TS
   const notionImages = productPage.properties['3D Static'].files.map((f) => {
     if (f.type === 'file') {
       return { name: f.name, url: f.file.url };
@@ -89,7 +91,7 @@ export const uploadImagesForProduct = async (
   });
 
   const imagesToUpload = notionImages.filter(
-    (i) =>
+    (i: any) =>
       !product.images?.find(
         (img) => img.directus_files_id?.filename_download === i.name,
       ),
@@ -149,9 +151,8 @@ export const uploadWearablesForProduct = async (
     });
     return;
   }
-  const wearableFiles = await getWearableFilesFromGithubForProduct(
-    wearablesFolder,
-  );
+  const wearableFiles =
+    await getWearableFilesFromGithubForProduct(wearablesFolder);
 
   const wearablesToUpload = wearableFiles.filter(
     (file) =>
