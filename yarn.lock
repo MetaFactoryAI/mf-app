@@ -8729,7 +8729,7 @@ __metadata:
     tsconfig: "*"
     wagmi: ^0.9.2
     web3-utils: ^1.8.2
-    windy-radix-palette: ^0.4.1
+    windy-radix-palette: 1.0.0
   languageName: unknown
   linkType: soft
 
@@ -28022,13 +28022,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"windy-radix-palette@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "windy-radix-palette@npm:0.4.1"
+"windy-radix-palette@npm:1.0.0":
+  version: 1.0.0
+  resolution: "windy-radix-palette@npm:1.0.0"
   peerDependencies:
-    "@radix-ui/colors": ">=0.1.0"
+    "@radix-ui/colors": ">=3.0.0"
     tailwindcss: ">=3.0.0"
-  checksum: 666307fa5653d8edc678e61ae08e1688e7dc4cd2acb3cf5a480c38a69ee73744fc630cb0647b5fdb0f4d99b3cbeb7c5e31922a926a04f627765138338aaaddad
+  checksum: 154933393df98b949c580728c6c5ba144b53759170fb6695974e61ed737bf0c92f0d3775948e4036543262db25f3ce7bcef7f1c660fc7422566947feffd6522b
   languageName: node
   linkType: hard
 

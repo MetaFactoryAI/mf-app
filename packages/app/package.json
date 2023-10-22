@@ -39,7 +39,7 @@
     "@mertasan/tailwindcss-variables": "^2.7.0",
     "@radix-ui/colors": "^3.0.0",
     "tsconfig": "*",
-    "windy-radix-palette": "^0.4.1"
+    "windy-radix-palette": "1.0.0"
   },
   "sideEffects": false
 }
