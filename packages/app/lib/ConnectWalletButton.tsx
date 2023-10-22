@@ -1,4 +1,3 @@
-// import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { ConnectKitButton } from 'connectkit';
 
 export const ConnectWalletButton: React.FC<

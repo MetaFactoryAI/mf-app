@@ -7,22 +7,19 @@
     "typecheck": "tsc "
   },
   "dependencies": {
-    "@expo-google-fonts/inter": "^0.2.2",
+    "@expo-google-fonts/inter": "^0.2.3",
     "@expo/vector-icons": "^13.0.0",
-    "@rainbow-me/rainbowkit": "^0.8.1",
-    "@rainbow-me/rainbowkit-siwe-next-auth": "^0.1.5",
-    "@react-native-async-storage/async-storage": "~1.17.3",
+    "@react-native-async-storage/async-storage": "~1.19.3",
     "@tanstack/query-async-storage-persister": "^4.14.1",
     "@tanstack/react-query": "^4.22.0",
     "@tanstack/react-query-persist-client": "^4.14.1",
-    "@trpc/next": "10.8.2",
-    "@trpc/react-query": "10.8.2",
+    "@trpc/next": "10.41.0",
+    "@trpc/react-query": "10.41.0",
     "@walletconnect/react-native-dapp": "^1.8.0",
     "connectkit": "1.1.1",
     "contracts": "*",
     "ethereum-block-by-date": "^1.4.6",
     "ethers": "^5.7.2",
-    "moti": "^0.19.0-alpha.6",
     "nativewind": "next",
     "next-auth": "^4.16.4",
     "react": "18.2.0",
@@ -39,8 +36,8 @@
     "web3-utils": "^1.8.2"
   },
   "devDependencies": {
-    "@mertasan/tailwindcss-variables": "^2.5.1",
-    "@radix-ui/colors": "^0.1.8",
+    "@mertasan/tailwindcss-variables": "^2.7.0",
+    "@radix-ui/colors": "^3.0.0",
     "tsconfig": "*",
     "windy-radix-palette": "^0.4.1"
   },

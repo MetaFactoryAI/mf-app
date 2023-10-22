@@ -8,7 +8,6 @@ import { fileFormatsSelector } from 'services/mfos/files/selectors';
 import {
   productNftMetadataSelector,
   productsFilesSelector,
-  productsSelector,
 } from 'services/mfos/products/selectors';
 import { deleteFiles, uploadFile } from 'services/mfos/system/mutations';
 import { getWearablesFolder } from 'services/mfos/system/queries';

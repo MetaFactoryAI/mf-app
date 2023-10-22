@@ -159,6 +159,7 @@ export const getClo3dModel = (
 });
 
 export const getProductImages = (page: z.infer<typeof ProductPage>): string[] =>
+  // @ts-expect-error bug in new ts version
   page.properties['3D Static'].files.map((f) => {
     if (f.type === 'file') {
       return f.file.url;

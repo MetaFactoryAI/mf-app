@@ -332,7 +332,7 @@ export const ProductPage = BasePage.extend({
     'Wearable Status': MultiSelectProperty,
     SKU: RichTextProperty,
     // Producer: RelationProperty,
-    '3D Static': FilesProperty.or(ExternalFilesProperty),
+    '3D Static': z.union([FilesProperty, ExternalFilesProperty]),
     'Social Assets': FilesProperty,
     'Shopify Link': URLProperty,
 
@@ -349,7 +349,7 @@ export const ProductPageFiles = BasePage.extend({
     'Wearable Files': ExternalFilesProperty,
     'Design File(s)': FilesProperty,
     'Neck Tag design': FilesProperty,
-    '3D Static': FilesProperty.or(ExternalFilesProperty),
+    '3D Static': z.union([FilesProperty, ExternalFilesProperty]),
     'Social Assets': FilesProperty,
     '3D Animation': FilesProperty,
     Name: TitleProperty,
