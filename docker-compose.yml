@@ -1,18 +1,6 @@
 version: '3.9'
 
 services:
-  postgres:
-    profiles: ['db']
-    image: postgres:13
-    restart: always
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    ports:
-      ## Expose the port for tooling (SQL language server in IDE, connecting with GUI's etc)
-      - ${LOCAL_POSTGRES_PORT}:5432
-    environment:
-      POSTGRES_PASSWORD: ${LOCAL_POSTGRES_PASSWORD}
-
   postgres-cms:
     profiles: ['cms']
     container_name: pg-cms
