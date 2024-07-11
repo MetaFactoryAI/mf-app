@@ -1,8 +1,10 @@
 // import { Fonts } from './fonts';
-import { SafeArea } from './safe-area';
-import { Web3Provider } from 'app/provider/web3';
 import { QueryClientProvider } from '@tanstack/react-query';
+
 import { queryClient } from 'app/lib/queryClient';
+import { Web3Provider } from 'app/provider/web3';
+
+import { SafeArea } from './safe-area';
 
 type ProviderProps = {
   children: React.ReactNode;

@@ -1,15 +1,5 @@
 import { getEnvValue } from './getEnvValue';
 
-export const GRAPHQL_URL: string = getEnvValue(
-  process.env.GRAPHQL_URL,
-  'http://localhost:8055/graphql',
-);
-
-export const GRAPHQL_ADMIN_SECRET: string = getEnvValue(
-  process.env.GRAPHQL_ADMIN_SECRET,
-  '',
-);
-
 export const MFOS_GRAPHQL_TOKEN = getEnvValue(
   process.env.MFOS_GRAPHQL_TOKEN,
   '',
