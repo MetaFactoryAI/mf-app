@@ -46,7 +46,6 @@ function generate() {
 }
 
 generate "$GEN_PATH" -h X-Shopify-Access-Token:"$SHOPIFY_API_TOKEN"
-#generate $GEN_PATH -h x-hasura-role:user -h "authorization:generate"
 
 # fix formatting of generated files
 #../../node_modules/.bin/prettier --write $GEN_PATH
