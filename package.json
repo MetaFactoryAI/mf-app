@@ -21,7 +21,7 @@
     "app": "yarn packages/app",
     "cms": "yarn packages/cms",
     "prepare": "husky install",
-    "docker:cms:rebuild": "yarn docker:db:start --build",
+    "docker:cms:rebuild": "yarn docker:cms:start --build",
     "docker:cms:start": "docker compose --profile cms up -d",
     "docker:cms:stop": "docker compose --profile cms down",
     "docker:cms:clean": "docker compose --profile cms down -v"
