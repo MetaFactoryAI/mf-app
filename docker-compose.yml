@@ -76,7 +76,7 @@ services:
       # Cache Settings
       CACHE_ENABLED: ${DIRECTUS_CACHE_ENABLED}
       CACHE_STORE: 'redis'
-      CACHE_REDIS: 'redis://cache:6379'
+      REDIS: 'redis://cache:6379'
 
       # Storage
       STORAGE_LOCATIONS: 'ipfs'
