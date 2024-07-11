@@ -100,56 +100,6 @@ services:
       STORAGE_IPFS_ENDPOINT: ${STORAGE_IPFS_ENDPOINT}
       STORAGE_IPFS_FORCE_PATH_STYLE: true
 
-  graphql-engine:
-    profiles: ['db']
-    container_name: hasura
-    build:
-      context: ./hasura
-      args:
-        BACKEND_HOST: host.docker.internal:3003/api
-        AUTH_HOOK_PATH: hasuraAuthWebhook
-        ACTION_BASE_PATH: actions
-        REMOTE_SCHEMA_PATH: remote-schemas/graphql
-        TRIGGERS_PATH: triggers
-    depends_on:
-      - postgres
-    ports:
-      - ${LOCAL_HASURA_PORT}:8080
-    environment:
-      ## postgres database to store Hasura metadata
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres:${LOCAL_POSTGRES_PORT}/${LOCAL_POSTGRES_DATABASE}
-      HASURA_GRAPHQL_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres:${LOCAL_POSTGRES_PORT}/${LOCAL_POSTGRES_DATABASE}
-      HEROKU_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres:${LOCAL_POSTGRES_PORT}/${LOCAL_POSTGRES_DATABASE}
-      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
-      HASURA_GRAPHQL_DEV_MODE: true
-
-  graphql-engine-cms:
-    profiles: ['cms']
-    container_name: hasura-cms
-    build:
-      context: ./hasura-cms
-      args:
-        BACKEND_HOST: host.docker.internal:3003/api
-        AUTH_HOOK_PATH: hasuraAuthWebhook
-        ACTION_BASE_PATH: actions
-        REMOTE_SCHEMA_PATH: remote-schemas/graphql
-        TRIGGERS_PATH: triggers
-    depends_on:
-      postgres-cms:
-        condition: service_healthy
-      directus:
-        condition: service_started
-    ports:
-      - ${LOCAL_HASURA_CMS_PORT}:8080
-    networks:
-      - directus
-    environment:
-      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://${LOCAL_POSTGRES_USER}:${LOCAL_POSTGRES_PASSWORD}@postgres-cms:${LOCAL_POSTGRES_PORT}/${LOCAL_POSTGRES_DATABASE}
-      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
-      HASURA_GRAPHQL_DEV_MODE: true
-      DIRECTUS_AUTH_HEADER: ${DIRECTUS_AUTH_HEADER}
-      DIRECTUS_GRAPHQL_URL: http://directus:${LOCAL_DIRECTUS_PORT}/graphql
-
 volumes:
   db_data:
   cms_db_data:

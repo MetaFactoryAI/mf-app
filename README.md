@@ -23,7 +23,7 @@ Monorepo with Expo + Next.js + Tailwind. Uses yarn workspaces.
 - Clone the repo
 - Copy .env.example files and populate missing values
 - Run `yarn install`
-- Run postgres + Hasura + Directus with `docker:cms:start`
+- Run postgres + Directus with `docker:cms:start`
 - Run Next.js app with `yarn next start`
 
 # Creating Directus extensions
