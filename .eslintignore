@@ -8,6 +8,8 @@ webpack.config.js
 .next
 web-build
 
+packages/cms/custom_migrations/**
+
 # jest
 coverage
 _old
